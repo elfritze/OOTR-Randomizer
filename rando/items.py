@@ -36,7 +36,74 @@ ITEMS = {
     "Item_DekuStickBundle_Small": "RG_DEKU_STICK_1",   # (3 sticks)
     "Tbox_MagicJar_Large": "RG_NONE",   # (a magic refill: nothing in logic)
     "Item_ScrubBusinessSeed": "RG_NONE",   # (the remake's own collectible, up to 30: nothing in SoH's logic)
+    # (what NPCs give and what lies in the world: data/gifts.json)
+    "Obj_Heart_Container": "RG_HEART_CONTAINER",
+    "Item_BombBag_Medium": "RG_PROGRESSIVE_BOMB_BAG", "Item_BombBag_Large": "RG_PROGRESSIVE_BOMB_BAG",
+    "Item_BulletBag_Medium": "RG_PROGRESSIVE_SLINGSHOT", "Item_BulletBag_Large": "RG_PROGRESSIVE_SLINGSHOT",
+    "Item_Quiver_Medium": "RG_PROGRESSIVE_BOW", "Item_Quiver_Large": "RG_PROGRESSIVE_BOW",
+    "Item_StickBag_Medium": "RG_PROGRESSIVE_STICK_UPGRADE", "Item_StickBag_Large": "RG_PROGRESSIVE_STICK_UPGRADE",
+    "Item_NutBag_Medium": "RG_PROGRESSIVE_NUT_UPGRADE", "Item_NutBag_Large": "RG_PROGRESSIVE_NUT_UPGRADE",
+    "Item_Wallet_Medium": "RG_PROGRESSIVE_WALLET", "Item_Wallet_Large": "RG_PROGRESSIVE_WALLET",
+    "Item_Scale_Silver": "RG_PROGRESSIVE_SCALE", "Item_Scale_Gold": "RG_PROGRESSIVE_SCALE",
+    "Item_Bottle": "RG_EMPTY_BOTTLE",
+    "Item_Bottle_Milk": "RG_BOTTLE_WITH_MILK",
+    "Item_AgonyStone": "RG_STONE_OF_AGONY",
+    "Item_BombchuBundle_Medium": "RG_BOMBCHU_10", "Item_BombchuBundle_Large": "RG_BOMBCHU_20",
+    "Obj_Armor_Zora": "RG_ZORA_TUNIC",
 }
+
+# Upgrades the remake has as separate items, each setting its capacity outright (PouchActorInfo AfterExpansionMaxNum: a
+# Medium bomb bag got after the Large one makes it 30 again). Logic counts each group as one progressive SoH item, so the fill
+# places "one of the group" and the actors are chosen once the seed is made: the group's spots in playthrough order get its
+# tiers in order (the earliest gets the Bow, the next quivers), the last tier for any spare. (generate.assign_tiers)
+TIERS = (
+    ("Item_BombBag_Small", "Item_BombBag_Medium", "Item_BombBag_Large"),
+    ("Item_Range_SlingShot", "Item_BulletBag_Medium", "Item_BulletBag_Large"),
+    ("Item_Range_Bow", "Item_Quiver_Medium", "Item_Quiver_Large"),
+    ("Item_StickBag_Medium", "Item_StickBag_Large"),
+    ("Item_NutBag_Medium", "Item_NutBag_Large"),
+    ("Item_Wallet_Medium", "Item_Wallet_Large"),
+    ("Item_Scale_Silver", "Item_Scale_Gold"),
+)
+TIER_OF = {a: g for g in TIERS for a in g}
+
+# Where each item can go. A chest gives any item actor its Drop__DropActor names (proven for Item_*, Obj_Heart_Piece, the
+# chests' own TBox_ rupees and ammunition); an NPC's gift event names Item_* and Obj_ pickups (rupees, Heart Pieces, shields,
+# tunics: the game's own gifts); a loose spot holds an Obj_ pickup, or the pickup made for an Item_ (rando.pickups).
+# Ammunition and the remake's small refills stay in chests (no gift or loose form of their bundles is known); dungeon items
+# stay in chests (their keys are forward-filled there); a Heart Container stays loose or in a chest (no NPC gives one).
+# (chest form: gift and loose forms)
+OBJ_FORM = {"TBox_Rupee_Green": "Obj_Rupee_Green", "TBox_Rupee_Blue": "Obj_Rupee_Blue", "TBox_Rupee_Red": "Obj_Rupee_Red",
+            "TBox_Rupee_Purple": "Obj_Rupee_Purple", "TBox_Rupee_Gold": "Obj_Rupee_Gold",
+            "TBox_Shield_Deku": "Obj_Shield_Deku", "TBox_Shield_Hylian": "Obj_Shield_Hylian"}
+CHEST_ONLY = {"Item_BombBundle_Small", "Item_BombchuBundle_Small", "TBox_ArrowBundle_Medium", "TBox_ArrowBundle_Large",
+              "TBox_DekuNutBundle", "Item_DekuStickBundle_Small", "Tbox_MagicJar_Large", "Item_ScrubBusinessSeed"}
+NOT_GIFT = {"Obj_Heart_Container"}
+NOT_CHEST = {"Obj_Armor_Zora"}   # (its chest form is not known: the remake's Zora Tunic only comes from King Zora and a shop)
+
+
+def allowed(actor, kind):
+    """can this item (as the pool names it: its chest form) go in a location of this kind ("chest", "gift", "loose")?"""
+    if kind == "chest":
+        return actor not in NOT_CHEST
+    if actor in DUNGEON_ITEMS or actor in CHEST_ONLY:
+        return False
+    if kind == "gift":
+        return actor not in NOT_GIFT
+    return kind == "loose"
+
+
+def form(actor, kind):
+    """the actor a location of this kind is written with for the item (a chest's TBox_ rupee is an Obj_ rupee elsewhere)"""
+    if not allowed(actor, kind):
+        raise ValueError("%s cannot go in a %s" % (actor, kind))
+    return actor if kind == "chest" else OBJ_FORM.get(actor, actor)
+
+
+def canonical(actor):
+    """the pool's name for an item a gift or loose spot gives (its chest form)"""
+    back = {v: k for k, v in OBJ_FORM.items()}
+    return back.get(actor, actor)
 
 # (remake map: SoH dungeon name, as in RG_<name>_SMALL_KEY)
 DUNGEONS = {

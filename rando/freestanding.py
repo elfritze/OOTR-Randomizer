@@ -28,7 +28,7 @@ def write(romfs, codec, mod, contents):
     want = {int(h): v for h, v in contents.items()}
     written, seen = [], set()
     for rel in chests.map_files(romfs):
-        root, version = byml.read(codec.read(os.path.join(romfs, rel)))
+        root, version = byml.read(mod.read(rel))
         changed = False
         for a in root.get("Actors", []):
             h = int(a.get("Hash", 0))

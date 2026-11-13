@@ -1,0 +1,1709 @@
+{
+ "about": "Non-chest checks for the randomizer (v1): gifts = event-flow string parameters to rewrite (every first-time branch, .110 twins included); loose = world item actors to swap (every map file holding the Hash). Built from research/mapping/gifts_*.json and verified against the romfs; see research/gifts_review.txt.",
+ "checks": [
+  {
+   "id": "RC_LW_SKULL_KID",
+   "rc": "RC_LW_SKULL_KID",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "Npc_SkullKid_Child",
+     "event": 62,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_THE_LOST_WOODS",
+   "rule": null,
+   "name": "Skull Kid (Saria's Song)",
+   "area": "Lost Woods",
+   "confidence": "high",
+   "notes": "One-time flag Npc_SkullKid_Child_IsGetHeartPiece (event 6). GetInEvent_NotTurn_NotNpc."
+  },
+  {
+   "id": "RC_LW_OCARINA_MEMORY_GAME",
+   "rc": "RC_LW_OCARINA_MEMORY_GAME",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "Npc_SkullKid_Child_02",
+     "event": 203,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_THE_LOST_WOODS",
+   "rule": null,
+   "name": "Skull Kid ocarina memory game",
+   "area": "Lost Woods",
+   "confidence": "high",
+   "notes": "Flag Minigame_SkullKidSession_IsGetHeartPiece (event 34). Leave 201/202/204 (rupee prizes of the shorter rounds / repeats). Number of ocarina buttons needed not checked (SoH: 5)."
+  },
+  {
+   "id": "RC_LW_TARGET_IN_WOODS",
+   "rc": "RC_LW_TARGET_IN_WOODS",
+   "kind": "gift",
+   "vanilla": "Item_BulletBag_Medium",
+   "edits": [
+    {
+     "flow": "Dm_LostWood_0040",
+     "event": 85,
+     "param": "ActorName",
+     "value": "Item_BulletBag_Medium"
+    },
+    {
+     "flow": "Dm_LostWood_0040",
+     "event": 84,
+     "param": "ActorName",
+     "value": "Item_BulletBag_Large"
+    }
+   ],
+   "soh_region": "RR_THE_LOST_WOODS",
+   "rule": null,
+   "name": "Deku scrub target game",
+   "area": "Lost Woods",
+   "confidence": "high",
+   "notes": "Both tier branches of the first clear (56 ?IsGet.Item_BulletBag_Medium). First clear only (45 ?LostWood_HitTargetOfDekuScrub_FirstClear); later clears give rupees (86 TBox_Rupee_Green etc.: leave). The cutscene shows a bullet-bag model (cosmetic). Mechanism tested in game (round 4 test mod: target game -> Iron Boots)."
+  },
+  {
+   "id": "RC_LW_DEKU_SCRUB_NEAR_BRIDGE",
+   "rc": "RC_LW_DEKU_SCRUB_NEAR_BRIDGE",
+   "kind": "gift",
+   "vanilla": "Item_StickBag_Medium",
+   "edits": [
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 325,
+     "param": "ActorName",
+     "value": "Item_StickBag_Medium"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 167,
+     "param": "ActorName",
+     "value": "Item_StickBag_Medium"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 165,
+     "param": "ActorName",
+     "value": "Item_StickBag_Large"
+    }
+   ],
+   "soh_region": "RR_LW_UNDER_BRIDGE",
+   "rule": null,
+   "name": "Deku scrub under the bridge (40 rupees)",
+   "area": "Lost Woods",
+   "confidence": "high",
+   "notes": "Shared flow: the item is hard-coded in 3 branches (324 ?IsGet.Item_DekuStick false -> 325; else 166 ?IsExistInPouch StickBag_Medium -> 167/165), chosen by the map's ScrubBusiness_ShopItemActorName0 = Item_StickBag_Medium (keep the map value). Only this scrub sells it (LostWood Child/Adult 5406759280757349546/11192313919554167152 and KokiriForest Child/Adult 182031956235860994/7488448334396031424 copies, all TalkEventName Enemy_Scrub_Business_DekuStickPouch_01; flag LostWood_Enemy_Scrub_Business_DekuStickPouch_01 shared). Adult copies exist: whether adult can buy is untested (SoH: child). Tested in game round 4 (-> Heart Piece)."
+  },
+  {
+   "id": "RC_LW_DEKU_SCRUB_GROTTO_FRONT",
+   "rc": "RC_LW_DEKU_SCRUB_GROTTO_FRONT",
+   "kind": "gift",
+   "vanilla": "Item_NutBag_Medium",
+   "edits": [
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 170,
+     "param": "ActorName",
+     "value": "Item_NutBag_Medium"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 168,
+     "param": "ActorName",
+     "value": "Item_NutBag_Large"
+    }
+   ],
+   "soh_region": "RR_LW_SCRUBS_GROTTO",
+   "rule": null,
+   "name": "Lost Woods scrub grotto, front scrub (40 rupees)",
+   "area": "Lost Woods",
+   "confidence": "high",
+   "notes": "Shared flow, dispatched by ScrubBusiness_ShopItemActorName0 = Item_NutBag_Medium (164); 169 ?IsExistInPouch NutBag_Medium picks 168/170. Only this scrub sells it (LostWood Child 4328741615941752705 / Adult 5764461665617243979). Flag Lostwood_Enemy_Scrub_Business_DekuNutsPouch_01."
+  },
+  {
+   "id": "RC_DEKU_THEATER_SKULL_MASK",
+   "rc": "RC_DEKU_THEATER_SKULL_MASK",
+   "kind": "gift",
+   "vanilla": "Item_StickBag_Medium",
+   "edits": [
+    {
+     "flow": "LostWood_ScrubForestStageElder_SkullMaskFirst",
+     "event": 28,
+     "param": "ActorName",
+     "value": "Item_StickBag_Medium"
+    },
+    {
+     "flow": "LostWood_ScrubForestStageElder_SkullMaskFirst",
+     "event": 29,
+     "param": "ActorName",
+     "value": "Item_StickBag_Large"
+    }
+   ],
+   "soh_region": "RR_DEKU_THEATER",
+   "rule": null,
+   "name": "Deku Theater, Skull Mask",
+   "area": "Lost Woods (Deku Theater)",
+   "confidence": "high",
+   "notes": "Both tier branches of the one-time prize (flag LostWood_ScrubForestStage_SkullMaskEventLaunched)."
+  },
+  {
+   "id": "RC_DEKU_THEATER_MASK_OF_TRUTH",
+   "rc": "RC_DEKU_THEATER_MASK_OF_TRUTH",
+   "kind": "gift",
+   "vanilla": "Item_NutBag_Medium",
+   "edits": [
+    {
+     "flow": "LostWood_ScrubForestStageElder_TrueMaskFirst",
+     "event": 28,
+     "param": "ActorName",
+     "value": "Item_NutBag_Medium"
+    },
+    {
+     "flow": "LostWood_ScrubForestStageElder_TrueMaskFirst",
+     "event": 29,
+     "param": "ActorName",
+     "value": "Item_NutBag_Large"
+    }
+   ],
+   "soh_region": "RR_DEKU_THEATER",
+   "rule": null,
+   "name": "Deku Theater, Mask of Truth",
+   "area": "Lost Woods (Deku Theater)",
+   "confidence": "high",
+   "notes": "Both tier branches of the one-time prize (flag LostWood_ScrubForestStage_TrueMaskEventLaunched). If REMAKE_MASK_OF_TRUTH is shuffled, RG_MASK_OF_TRUTH becomes a placed item for this rule."
+  },
+  {
+   "id": "RC_HF_DEKU_SCRUB_GROTTO",
+   "rc": "RC_HF_DEKU_SCRUB_GROTTO",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 386,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 394,
+     "param": "Value",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_HF_INSIDE_FENCE_GROTTO",
+   "rule": null,
+   "name": "Hyrule Field scrub grotto (Heart Piece, 100 rupees)",
+   "area": "Hyrule Field",
+   "confidence": "high",
+   "notes": "Reached only from entries Enemy_Scrub_Business_Heart (TalkEventName Enemy_Scrub_Business_Heart_01, HyruleField Child 10364468093017215295 / Adult 1888007325063123154) and Secret. Remake asks a quiz first (FirstTalk_Secret, answer probably on Hyrule Field note 07); price 100 (SoH 10; remake small wallet holds 200). Event 394 (SetGameDataString64 Shop_SelectItemName) is not the give (that is GetInEvent_NotTurn_2DShop with the ActorName argument) but the shop UI / ActionGuide read it after the purchase (ActionGuide 21/26/31/39): set it to the new item too, as the game does for its own shop sales. Flag HyruleField_Enemy_Scrub_Business_HeartPiece_01."
+  },
+  {
+   "id": "RC_MARKET_BOMBCHU_BOWLING_FIRST_PRIZE",
+   "rc": "RC_MARKET_BOMBCHU_BOWLING_FIRST_PRIZE",
+   "kind": "gift",
+   "vanilla": "Item_BombBag_Medium",
+   "edits": [
+    {
+     "flow": "MiniGame_BombchuBowling",
+     "event": 297,
+     "param": "ReveiveItem",
+     "value": "Item_BombBag_Medium"
+    },
+    {
+     "flow": "MiniGame_BombchuBowling",
+     "event": 298,
+     "param": "ReveiveItem",
+     "value": "Item_BombBag_Large"
+    }
+   ],
+   "soh_region": "RR_MARKET_BOMBCHU_BOWLING",
+   "rule": null,
+   "name": "Bombchu Bowling bomb bag (2nd win)",
+   "area": "Market",
+   "confidence": "high",
+   "notes": "Fixed prize order in the remake (entry MiniGame_BombchuBowling_GetPrise): 1st win bombchus (REMAKE_BOWLING_BOMBCHUS), 2nd win this bomb bag (43 ?IsExistInPouch BombBag_Medium picks 298/297), 3rd win the Heart Piece, then 293 red rupee (leave). Flags MiniGame_BombchuBowling_ClearFirst/Second/ThirdTime (MiniGameClearCount 44-47,172). The alley host Npc_Hylia_067 has no presence condition; Npc_Hylia_021 (present after Get_StoneOfFire) is the Bombchu SHOP owner (Obj_Door_ShopBombChu), not the alley."
+  },
+  {
+   "id": "RC_MARKET_BOMBCHU_BOWLING_SECOND_PRIZE",
+   "rc": "RC_MARKET_BOMBCHU_BOWLING_SECOND_PRIZE",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "MiniGame_BombchuBowling",
+     "event": 296,
+     "param": "ReveiveItem",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_MARKET_BOMBCHU_BOWLING",
+   "rule": null,
+   "name": "Bombchu Bowling Heart Piece (3rd win)",
+   "area": "Market",
+   "confidence": "high",
+   "notes": "160 ?ClearThirdTime false -> 296; true -> 293 Obj_Rupee_Red (repeat, leave). Needs three wins."
+  },
+  {
+   "id": "REMAKE_BOWLING_BOMBCHUS",
+   "rc": null,
+   "kind": "gift",
+   "vanilla": "Item_BombchuBundle_Medium",
+   "edits": [
+    {
+     "flow": "MiniGame_BombchuBowling",
+     "event": 299,
+     "param": "ReveiveItem",
+     "value": "Item_BombchuBundle_Medium"
+    }
+   ],
+   "soh_region": "RR_MARKET_BOMBCHU_BOWLING",
+   "soh_region_reason": "the bowling alley (same minigame as RC_MARKET_BOMBCHU_BOWLING_*)",
+   "rule": "logic->Get(LOGIC_COULD_PLAY_BOWLING) && logic->BombchusEnabled()",
+   "rule_evidence": "Same game as SoH's two bowling prizes (RR_MARKET_BOMBCHU_BOWLING rule); first win of MiniGame_BombchuBowling_GetPrise.",
+   "name": "Bombchu Bowling bombchus (1st win)",
+   "area": "Market",
+   "confidence": "high",
+   "notes": "Remake-only one-time prize: 42 ?MiniGame_BombchuBowling_ClearFirstTime false -> 299; the flag is set by MiniGameClearCount 45 -> 46 right after. SoH has no check here."
+  },
+  {
+   "id": "RC_MARKET_LOST_DOG",
+   "rc": "RC_MARKET_LOST_DOG",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "SubEvent_FindRichard",
+     "event": 35,
+     "param": "ReveiveItem",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_MARKET_DOG_LADY_HOUSE",
+   "rule": null,
+   "name": "Lost dog Richard",
+   "area": "Market",
+   "confidence": "high",
+   "notes": "8 ?SubEvent_FindRichard_IsCompleted_Exp: not completed -> 35 Heart Piece, completed -> 34 Obj_Rupee_Blue (leave). Flag SubEvent_FindRichard_GetHeartPiece (event 9)."
+  },
+  {
+   "id": "RC_MARKET_SHOOTING_GALLERY_REWARD",
+   "rc": "RC_MARKET_SHOOTING_GALLERY_REWARD",
+   "kind": "gift",
+   "vanilla": "Item_BulletBag_Medium",
+   "edits": [
+    {
+     "flow": "MiniGame_HitTarget",
+     "event": 292,
+     "param": "ReveiveItem",
+     "value": "Item_BulletBag_Medium"
+    },
+    {
+     "flow": "MiniGame_HitTarget",
+     "event": 291,
+     "param": "ReveiveItem",
+     "value": "Item_BulletBag_Large"
+    }
+   ],
+   "soh_region": "RR_MARKET_SHOOTING_GALLERY",
+   "rule": null,
+   "name": "Market shooting gallery (child)",
+   "area": "Market",
+   "confidence": "high",
+   "notes": "Entry Child_Reward: 41 ?MiniGame_HitTarget_HrlCity_Get_BulletBag false -> 39 ?IsExistInPouch BulletBag_Medium -> 291/292; repeats 290/356 rupees (leave). Same flow as the Kakariko gallery (events 293/294, other check)."
+  },
+  {
+   "id": "RC_MARKET_10_BIG_POES",
+   "rc": "RC_MARKET_10_BIG_POES",
+   "kind": "gift",
+   "vanilla": "Item_Bottle",
+   "edits": [
+    {
+     "flow": "Npc_Hylia_048_BottleShop",
+     "event": 319,
+     "param": "ActorName",
+     "value": "Item_Bottle"
+    }
+   ],
+   "soh_region": "RR_MARKET_GUARD_HOUSE",
+   "rule": null,
+   "name": "Poe collector bottle",
+   "area": "Market (adult)",
+   "confidence": "medium",
+   "notes": "Every sell sub-flow funnels to this single give. Points GhostShop_CouponNum +100 per Big Poe (events 16/168/231); the bottle branch is taken when the count equals 400 before the sale (queries 242/243/244/252), so about the 5th Big Poe (SoH default 10: SoH's rule stays, it is stricter). Event 320 (Obj_Rupee_Gold at 900 points) is a second remake reward: leave. GetInEvent_Poeshop variant untested."
+  },
+  {
+   "id": "RC_LLR_TALONS_CHICKENS",
+   "rc": "RC_LLR_TALONS_CHICKENS",
+   "kind": "gift",
+   "vanilla": "Item_Bottle_Milk",
+   "edits": [
+    {
+     "flow": "Minigame_FindOutCucco",
+     "event": 262,
+     "param": "ReveiveItem",
+     "value": "Item_Bottle_Milk"
+    }
+   ],
+   "soh_region": "RR_LLR_TALONS_HOUSE",
+   "rule": null,
+   "name": "Talon's cucco game",
+   "area": "Lon Lon Ranch",
+   "confidence": "high",
+   "notes": "First clear (71 ?IsClear_Minigame_FindOutCucco false). Leave 190 (repeat clears fill an empty bottle) and 261 (milk purchase). Lon Lon Ranch is part of the HyruleField maps."
+  },
+  {
+   "id": "RC_KAK_10_GOLD_SKULLTULA_REWARD",
+   "rc": "RC_KAK_10_GOLD_SKULLTULA_REWARD",
+   "kind": "gift",
+   "vanilla": "Item_Wallet_Medium",
+   "edits": [
+    {
+     "flow": "GatheringTokenGold",
+     "event": 245,
+     "param": "TakenRewardActor",
+     "value": "Item_Wallet_Medium"
+    }
+   ],
+   "soh_region": "RR_KAK_HOUSE_OF_SKULLTULA",
+   "rule": null,
+   "name": "House of Skulltula: 10 tokens",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "Self-call TakenReward_Common_Event; its TakenRewardActor feeds both givers (532 GetInEvent_NotTurn, 578 after the father is cured). One-time flag KakarikoVillage_GatheringTokenGold_GetReward10. Wallets are separate actors (Small 200, Medium 500, Large 1000), not progressive: the patcher must pick the wallet actor by how many the player will own."
+  },
+  {
+   "id": "RC_KAK_20_GOLD_SKULLTULA_REWARD",
+   "rc": "RC_KAK_20_GOLD_SKULLTULA_REWARD",
+   "kind": "gift",
+   "vanilla": "Item_AgonyStone",
+   "edits": [
+    {
+     "flow": "GatheringTokenGold",
+     "event": 246,
+     "param": "TakenRewardActor",
+     "value": "Item_AgonyStone"
+    }
+   ],
+   "soh_region": "RR_KAK_HOUSE_OF_SKULLTULA",
+   "rule": null,
+   "name": "House of Skulltula: 20 tokens",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "Self-call TakenReward_Common_Event; its TakenRewardActor feeds both givers (532 GetInEvent_NotTurn, 578 after the father is cured). One-time flag KakarikoVillage_GatheringTokenGold_GetReward20."
+  },
+  {
+   "id": "RC_KAK_30_GOLD_SKULLTULA_REWARD",
+   "rc": "RC_KAK_30_GOLD_SKULLTULA_REWARD",
+   "kind": "gift",
+   "vanilla": "Item_Wallet_Large",
+   "edits": [
+    {
+     "flow": "GatheringTokenGold",
+     "event": 247,
+     "param": "TakenRewardActor",
+     "value": "Item_Wallet_Large"
+    }
+   ],
+   "soh_region": "RR_KAK_HOUSE_OF_SKULLTULA",
+   "rule": null,
+   "name": "House of Skulltula: 30 tokens",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "Self-call TakenReward_Common_Event; its TakenRewardActor feeds both givers (532 GetInEvent_NotTurn, 578 after the father is cured). One-time flag KakarikoVillage_GatheringTokenGold_GetReward30."
+  },
+  {
+   "id": "RC_KAK_40_GOLD_SKULLTULA_REWARD",
+   "rc": "RC_KAK_40_GOLD_SKULLTULA_REWARD",
+   "kind": "gift",
+   "vanilla": "Item_BombchuBundle_Large",
+   "edits": [
+    {
+     "flow": "GatheringTokenGold",
+     "event": 248,
+     "param": "TakenRewardActor",
+     "value": "Item_BombchuBundle_Large"
+    }
+   ],
+   "soh_region": "RR_KAK_HOUSE_OF_SKULLTULA",
+   "rule": null,
+   "name": "House of Skulltula: 40 tokens",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "Self-call TakenReward_Common_Event; its TakenRewardActor feeds both givers (532 GetInEvent_NotTurn, 578 after the father is cured). One-time flag KakarikoVillage_GatheringTokenGold_GetReward40. SoH's 40-token reward is bombchus too."
+  },
+  {
+   "id": "RC_KAK_50_GOLD_SKULLTULA_REWARD",
+   "rc": "RC_KAK_50_GOLD_SKULLTULA_REWARD",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "GatheringTokenGold",
+     "event": 249,
+     "param": "TakenRewardActor",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_KAK_HOUSE_OF_SKULLTULA",
+   "rule": null,
+   "name": "House of Skulltula: 50 tokens",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "Self-call TakenReward_Common_Event; its TakenRewardActor feeds both givers (532 GetInEvent_NotTurn, 578 after the father is cured). One-time flag KakarikoVillage_GatheringTokenGold_GetReward50."
+  },
+  {
+   "id": "RC_KAK_MAN_ON_ROOF",
+   "rc": "RC_KAK_MAN_ON_ROOF",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "Npc_Hylia_001_Adult",
+     "event": 14,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_KAK_ROOFTOP",
+   "rule": null,
+   "name": "Man on the roof",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "The child man (Npc_Hylia_001_Child event 62) calls Npc_Hylia_001_Adult:Get_HeartPiece (2 -> 5 flag Npc_Hylia_001_IsGetHeartPiece -> 14), so one edit covers both ages."
+  },
+  {
+   "id": "RC_KAK_SHOOTING_GALLERY_REWARD",
+   "rc": "RC_KAK_SHOOTING_GALLERY_REWARD",
+   "kind": "gift",
+   "vanilla": "Item_Quiver_Medium",
+   "edits": [
+    {
+     "flow": "MiniGame_HitTarget",
+     "event": 294,
+     "param": "ReveiveItem",
+     "value": "Item_Quiver_Medium"
+    },
+    {
+     "flow": "MiniGame_HitTarget",
+     "event": 293,
+     "param": "ReveiveItem",
+     "value": "Item_Quiver_Large"
+    }
+   ],
+   "soh_region": "RR_KAK_SHOOTING_GALLERY",
+   "rule": null,
+   "name": "Kakariko shooting gallery (adult)",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "Entry Adult_Reward: 99 ?MiniGame_HitTarget_Kakariko_Get_Quiver false -> 100 ?IsExistInPouch Quiver_Medium -> 293/294; later wins 295 Obj_Rupee_Purple / rupee add (leave)."
+  },
+  {
+   "id": "RC_KAK_ANJU_AS_CHILD",
+   "rc": "RC_KAK_ANJU_AS_CHILD",
+   "kind": "gift",
+   "vanilla": "Item_Bottle",
+   "edits": [
+    {
+     "flow": "Minigame_CatchCucco",
+     "event": 124,
+     "param": "ReveiveItem",
+     "value": "Item_Bottle"
+    }
+   ],
+   "soh_region": "RR_KAK_HILL",
+   "rule": null,
+   "name": "Anju's cuccos (child)",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "Entry RewardFlow: 45 ?MiniGame_CatchCucco_IsCompleted false -> 124, true -> 125 Obj_Rupee_Red (repeat, leave)."
+  },
+  {
+   "id": "RC_GRAVEYARD_DAMPE_GRAVEDIGGING_TOUR",
+   "rc": "RC_GRAVEYARD_DAMPE_GRAVEDIGGING_TOUR",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "Npc_Hylia_Dampe_001",
+     "event": 602,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    },
+    {
+     "flow": "Npc_Hylia_Dampe_001.110",
+     "event": 602,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_THE_GRAVEYARD",
+   "rule": null,
+   "name": "Dampe's gravedigging tour",
+   "area": "Graveyard",
+   "confidence": "high",
+   "notes": "The game loads the .110 twin (identical events). The Heart Piece is a lottery outcome of the tour (not guaranteed on the first dig). Events 179 (DropActorName) and 224 (EventMiniGameDiggingHoleAdventActor) are the dug-up model: left alone they show a Heart Piece, the give is 602. Flag GraveYard_DiggingHoleTour_Drop_HeartPiece (221)."
+  },
+  {
+   "id": "RC_GC_ROLLING_GORON_AS_CHILD",
+   "rc": "RC_GC_ROLLING_GORON_AS_CHILD",
+   "kind": "gift",
+   "vanilla": "Item_BombBag_Medium",
+   "edits": [
+    {
+     "flow": "Npc_Goron_006_Child",
+     "event": 72,
+     "param": "ReveiveItem",
+     "value": "Item_BombBag_Medium"
+    },
+    {
+     "flow": "Npc_Goron_006_Child",
+     "event": 73,
+     "param": "ReveiveItem",
+     "value": "Item_BombBag_Large"
+    }
+   ],
+   "soh_region": "RR_GORON_CITY",
+   "rule": "logic->IsChild && logic->HasItem(RG_SPEAK_GORON) && logic->HasItem(RG_PROGRESSIVE_BOMB_BAG)",
+   "rule_evidence": "Npc_Goron_006_Child 4 ?IsExistInPouch Item_BombBag_Medium {owned:10, no:3}, 3 ?IsExistInPouch Item_BombBag_Small {owned:11, no:12 talk only}: the gift needs a bomb bag; SoH's HasExplosives also allows bombchus and its rolling-strength trick. (The port's CanUse(RG_BOMB_BAG) includes the remake's Goron's Bracelet requirement for bombs.) HookshotRando: HasItem, not CanUse: the Goron only looks for a bag in the pouch; CanUse(RG_BOMB_BAG) also asks for the Goron's Bracelet (the remake's bomb-pull rule).",
+   "name": "Rolling Goron (child)",
+   "area": "Goron City",
+   "confidence": "medium",
+   "notes": "Precondition: owning a bomb bag (4 ?IsExistInPouch BombBag_Medium / 3 ?BombBag_Small, then 10/11 ?IsGet.Item_BombBag_Small); with none the Goron only talks (12) and gives nothing. Owning a Medium bag without ever getting the Small one also gives nothing (10). Gives through the flow's own NpcCommon_HandOver_NpcToPlayer_NoDisplay_BombBag -> Dm_SY_GetInEvent:GetInEvent_NotTurn_BombBag (bomb-bag get animation; ActorName from the argument): this variant is untested. Flag GoronCity_GetBombBag_fromGoron006."
+  },
+  {
+   "id": "RC_DMC_DEKU_SCRUB",
+   "rc": "RC_DMC_DEKU_SCRUB",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 155,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 364,
+     "param": "Value",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_DMC_SCRUB",
+   "soh_region_reason": "SoH scrub check (RCTYPE_SCRUB, not in nonchest_checks.json): location_access/overworld/death_mountain_crater.cpp RR_DMC_SCRUB, rule logic->IsChild && logic->CanStunDeku() && logic->HasItem(RG_SPEAK_DEKU) && GetCheckPrice() <= GetWalletCapacity()",
+   "rule": null,
+   "name": "Death Mountain Crater scrub (Heart Piece, 100 rupees)",
+   "area": "Death Mountain Crater",
+   "confidence": "high",
+   "notes": "SoH's DMC Deku Scrub (scrub check, vanilla bombs in SoH) sells a Heart Piece in the remake: Enemy_Scrub_Business 2518138296199711695 (DeathMountainCrater_Child_Static, ScrubBusiness_ShopItemActorName0 Obj_Heart_Piece, TalkEventName Enemy_Scrub_Business_Heart_02) -> SimpleShopRoot dispatch 162 -> 363 -> 364 -> 155. It is the only pouch-root scrub selling Obj_Heart_Piece (all maps checked). Flag DeathMountain_Enemy_Scrub_Business_HeartPiece_01 (326, also the HeartPieceAnchor flag). 364 sets Shop_SelectItemName (read by the shop UI / ActionGuide, not the give): set it to the new item too. Price 100 (SoH 40); remake small wallet holds 200."
+  },
+  {
+   "id": "RC_LH_CHILD_FISHING",
+   "rc": "RC_LH_CHILD_FISHING",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "MiniGame_Fishing",
+     "event": 482,
+     "param": "ReveiveItem",
+     "value": "Obj_Heart_Piece"
+    },
+    {
+     "flow": "MiniGame_Fishing",
+     "event": 489,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_LH_FISHING_POND",
+   "rule": null,
+   "name": "Fishing pond (child)",
+   "area": "Lake Hylia",
+   "confidence": "high",
+   "notes": "Two first-time branches: 482 (fish >= 50, 215 ?MiniGame_Fishing_GetHeartPiece false) and 489 (after handing in the Hyrule Loach as child, 446 ?GetHeartPiece false). Leave 659 (repeat rupee) and 478 (DisplayItemSet, shop display model, cosmetic)."
+  },
+  {
+   "id": "RC_LH_ADULT_FISHING",
+   "rc": "RC_LH_ADULT_FISHING",
+   "kind": "gift",
+   "vanilla": "Item_Scale_Gold",
+   "edits": [
+    {
+     "flow": "MiniGame_Fishing",
+     "event": 483,
+     "param": "ReveiveItem",
+     "value": "Item_Scale_Gold"
+    },
+    {
+     "flow": "MiniGame_Fishing",
+     "event": 490,
+     "param": "ActorName",
+     "value": "Item_Scale_Gold"
+    }
+   ],
+   "soh_region": "RR_LH_FISHING_POND",
+   "rule": null,
+   "name": "Fishing pond (adult)",
+   "area": "Lake Hylia",
+   "confidence": "high",
+   "notes": "Two first-time branches: 483 (fish >= 60, 217 ?MiniGame_Fishing_GetGoldScale false) and 490 (after the loach as adult, 448). Leave 660 (repeat rupee) and 477 (display model). Scales are separate actors: Silver before Gold (fill ORDERED rule)."
+  },
+  {
+   "id": "RC_LH_LAB_DIVE",
+   "rc": "RC_LH_LAB_DIVE",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "Npc_Hylia_045_Child",
+     "event": 55,
+     "param": "ReveiveItem",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_LH_LAB",
+   "soh_region_also": [
+    "RR_LH_LAB_UNDERWATER"
+   ],
+   "rule": null,
+   "name": "Lakeside lab dive",
+   "area": "Lake Hylia",
+   "confidence": "high",
+   "notes": "Both ages' entries (AdultDivingChallenge / ChildDivingChallenge) reach the same event 55; repeats gated by Npc_Hylia_045_HasDived (52/115). Mapping: sinking with Iron Boots does not count (Npc_Hylia_045_DivingChallenge_SinkWithHeavyBoots); which scale reaches the 9 m mark is untested. SoH's Golden Scale rule kept (stricter); SoH's trick region RR_LH_LAB_UNDERWATER (hookshot + iron boots) may not work in the remake."
+  },
+  {
+   "id": "RC_GF_HBA_1000_POINTS",
+   "rc": "RC_GF_HBA_1000_POINTS",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "Minigame_HorsebackArchery",
+     "event": 313,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_GF_HBA_RANGE",
+   "rule": null,
+   "name": "Horseback archery 1000 points",
+   "area": "Gerudo Fortress",
+   "confidence": "high",
+   "notes": "Single give (entry HourseBackArchery_HeartGet, called at 750+ points and at 1400+ when the heart is not yet won). Remake threshold 750 points. Flag MiniGame_HorsebackArchery_GotaHeart."
+  },
+  {
+   "id": "RC_GF_HBA_1500_POINTS",
+   "rc": "RC_GF_HBA_1500_POINTS",
+   "kind": "gift",
+   "vanilla": "Item_Quiver_Medium",
+   "edits": [
+    {
+     "flow": "Minigame_HorsebackArchery",
+     "event": 312,
+     "param": "ActorName",
+     "value": "Item_Quiver_Medium"
+    },
+    {
+     "flow": "Minigame_HorsebackArchery",
+     "event": 311,
+     "param": "ActorName",
+     "value": "Item_Quiver_Large"
+    }
+   ],
+   "soh_region": "RR_GF_HBA_RANGE",
+   "rule": null,
+   "name": "Horseback archery 1500 points",
+   "area": "Gerudo Fortress",
+   "confidence": "high",
+   "notes": "Remake threshold 1400 points. 40 ?IsExistInPouch Quiver_Medium picks 311 (Large) / 312 (Medium). Leave 310 (Obj_Rupee_Purple repeat after MiniGame_HorseBackArchery_Get_Quiver)."
+  },
+  {
+   "id": "RC_ZR_FROGS_IN_THE_RAIN",
+   "rc": "RC_ZR_FROGS_IN_THE_RAIN",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "MiniGame_FrogTenors",
+     "event": 247,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_ZORAS_RIVER",
+   "rule": null,
+   "name": "Frogs, Song of Storms",
+   "area": "Zora's River",
+   "confidence": "high",
+   "notes": "Flag MiniGame_FrogTenors_StormSong (set 23, gates 18/22). The other song rewards are rupee increases (EventTriggerIncreaseRupee), not items."
+  },
+  {
+   "id": "RC_ZR_FROGS_OCARINA_GAME",
+   "rc": "RC_ZR_FROGS_OCARINA_GAME",
+   "kind": "gift",
+   "vanilla": "Obj_Heart_Piece",
+   "edits": [
+    {
+     "flow": "MiniGame_FrogTenors",
+     "event": 71,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    },
+    {
+     "flow": "MiniGame_FrogTenors",
+     "event": 91,
+     "param": "ActorName",
+     "value": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_ZORAS_RIVER",
+   "rule": null,
+   "name": "Frogs, bug-catching ocarina game",
+   "area": "Zora's River",
+   "confidence": "high",
+   "notes": "The item is the ActorName argument of the self-call MushiToriGame (first try 71, retry 91; 100/93 ?MiniGame_FrogTenors_InsectRepellent false), handed out by the shared event 246: edit the callers, never 246 (72/92 pass Obj_Rupee_Blue for later clears)."
+  },
+  {
+   "id": "RC_ZD_DIVING_MINIGAME",
+   "rc": "RC_ZD_DIVING_MINIGAME",
+   "kind": "gift",
+   "vanilla": "Item_Scale_Silver",
+   "edits": [
+    {
+     "flow": "MiniGame_Diving",
+     "event": 316,
+     "param": "ActorName",
+     "value": "Item_Scale_Silver"
+    }
+   ],
+   "soh_region": "RR_ZORAS_DOMAIN",
+   "rule": null,
+   "name": "Zora diving game",
+   "area": "Zora's Domain",
+   "confidence": "high",
+   "notes": "First clear; 315 (entry SecondClear, Obj_Rupee_Red) is the repeat: leave. After the first clear the game spawns deeper rupees assuming the Silver Scale (repeat game only)."
+  },
+  {
+   "id": "RC_ZD_KING_ZORA_THAWED",
+   "rc": "RC_ZD_KING_ZORA_THAWED",
+   "kind": "gift",
+   "vanilla": "Obj_Armor_Zora",
+   "edits": [
+    {
+     "flow": "SageOfWater",
+     "event": 252,
+     "param": "ActorName",
+     "value": "Obj_Armor_Zora"
+    }
+   ],
+   "soh_region": "RR_ZORAS_DOMAIN",
+   "rule": null,
+   "name": "King Zora thawed (Zora Tunic)",
+   "area": "Zora's Domain",
+   "confidence": "medium",
+   "notes": "FREE-TUNIC PROBLEM: when the player does not own Armor_Adult_Zora, King Zora's later talk (Npc_Zora_KingZora_adult 139 ?IsExistInPouch Armor_Adult_Zora false -> 140) sets Npc_Zora_011_Shop_Adult_CanGetZoraArmor, and the Zora shop then gives a free Obj_Armor_Zora (Npc_Zora_011_Shop_Adult 57 -> ... -> 64 GetInEvent_Mask, 58 clears the flag). Not an edit of this check: the patcher must neutralise it (e.g. 140 Value false) or accept a free Zora Tunic outside logic. Both adult Zora's Domain map variants have King Zora and the shop."
+  },
+  {
+   "id": "RC_LLR_FREESTANDING_POH",
+   "rc": "RC_LLR_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/HyruleField/HyruleField_Child_Static.bcett.byml.zs",
+     "hash": "9814903750835309225",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_LLR_TOWER",
+   "rule": null,
+   "name": "Lon Lon Ranch tower Heart Piece",
+   "area": "Lon Lon Ranch",
+   "confidence": "high",
+   "notes": "Child map only (HyruleField_Child_Static), behind crawl holes next to a 7-box puzzle (flag LonLonRanch_ClearBlockPuzzle); whether strength is needed is untested (SoH: Power Bracelet + crawl)."
+  },
+  {
+   "id": "RC_KAK_IMPAS_HOUSE_FREESTANDING_POH",
+   "rc": "RC_KAK_IMPAS_HOUSE_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/KakarikoVillage/KakarikoVillage_Adult_Alternative_Static.bcett.byml.zs",
+     "hash": "17926402522258180222",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/KakarikoVillage/KakarikoVillage_Adult_Static.bcett.byml.zs",
+     "hash": "17926402522258180222",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/KakarikoVillage/KakarikoVillage_Child_Static.bcett.byml.zs",
+     "hash": "17926402522258180222",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_KAK_IMPAS_HOUSE_BACK",
+   "rule": null,
+   "name": "Impa's house cow-pen Heart Piece",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "Same hash in the child, adult and adult-alternative Kakariko maps."
+  },
+  {
+   "id": "RC_KAK_WINDMILL_FREESTANDING_POH",
+   "rc": "RC_KAK_WINDMILL_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/KakarikoVillage/KakarikoVillage_Adult_Alternative_Static.bcett.byml.zs",
+     "hash": "13389209437182306002",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/KakarikoVillage/KakarikoVillage_Adult_Static.bcett.byml.zs",
+     "hash": "13389209437182306002",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/KakarikoVillage/KakarikoVillage_Child_Static.bcett.byml.zs",
+     "hash": "13389209437182306002",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_KAK_WINDMILL_LOWER",
+   "soh_region_also": [
+    "RR_KAK_WINDMILL_UPPER"
+   ],
+   "rule": null,
+   "name": "Windmill Heart Piece",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "Same hash in 3 Kakariko maps. How the ledge is reached in the remake is an open in-game question."
+  },
+  {
+   "id": "RC_GRAVEYARD_FREESTANDING_POH",
+   "rc": "RC_GRAVEYARD_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/Graveyard/Graveyard_Adult_Static.bcett.byml.zs",
+     "hash": "2157466067026784951",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/Graveyard/Graveyard_Child_Static.bcett.byml.zs",
+     "hash": "2157466067026784951",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_THE_GRAVEYARD",
+   "rule": null,
+   "name": "Graveyard ledge Heart Piece",
+   "area": "Graveyard",
+   "confidence": "high",
+   "notes": "Child and adult maps. Open question: lies open on the ledge (no crate)?"
+  },
+  {
+   "id": "RC_DMT_FREESTANDING_POH",
+   "rc": "RC_DMT_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/DeathMountainTrail/DeathMountainTrail_Adult_Static.bcett.byml.zs",
+     "hash": "715147239509454487",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/DeathMountainTrail/DeathMountainTrail_Child_Static.bcett.byml.zs",
+     "hash": "715147239509454487",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_DEATH_MOUNTAIN_TRAIL",
+   "rule": null,
+   "name": "Death Mountain Trail wall Heart Piece",
+   "area": "Death Mountain Trail",
+   "confidence": "high",
+   "notes": "Child and adult maps."
+  },
+  {
+   "id": "RC_DMC_WALL_FREESTANDING_POH",
+   "rc": "RC_DMC_WALL_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/DeathMountainCrater/DeathMountainCrater_Adult_Static.bcett.byml.zs",
+     "hash": "10331043360028932045",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/DeathMountainCrater/DeathMountainCrater_Child_Static.bcett.byml.zs",
+     "hash": "10331043360028932045",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_DMC_UPPER_ENTRY",
+   "soh_region_also": [
+    "RR_DMC_ROCKS_GROTTO_ENTRY",
+    "RR_DMC_BLOCKED_ENTRY",
+    "RR_DMC_POTS_ENTRY",
+    "RR_DMC_POT_GROTTO_ENTRY",
+    "RR_DMC_PAD_ENTRY",
+    "RR_DMC_TEMPLE_ENTRY"
+   ],
+   "rule": null,
+   "name": "Crater wall Heart Piece",
+   "area": "Death Mountain Crater",
+   "confidence": "medium",
+   "notes": "Child and adult maps; wall niche below the path from the trail entrance."
+  },
+  {
+   "id": "RC_DMC_VOLCANO_FREESTANDING_POH",
+   "rc": "RC_DMC_VOLCANO_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/DeathMountainCrater/DeathMountainCrater_Adult_Static.bcett.byml.zs",
+     "hash": "744856631664786545",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/DeathMountainCrater/DeathMountainCrater_Child_Static.bcett.byml.zs",
+     "hash": "744856631664786545",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_DMC_UPPER_ENTRY",
+   "soh_region_also": [
+    "RR_DMC_ROCKS_GROTTO_ENTRY",
+    "RR_DMC_BLOCKED_ENTRY",
+    "RR_DMC_POTS_ENTRY",
+    "RR_DMC_POT_GROTTO_ENTRY",
+    "RR_DMC_PAD_ENTRY",
+    "RR_DMC_TEMPLE_ENTRY"
+   ],
+   "rule": null,
+   "name": "Crater volcano Heart Piece",
+   "area": "Death Mountain Crater",
+   "confidence": "high",
+   "notes": "Child and adult maps."
+  },
+  {
+   "id": "RC_LH_FREESTANDING_POH",
+   "rc": "RC_LH_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/HyruleField/HyruleField_Adult_Static.bcett.byml.zs",
+     "hash": "13469300937852836203",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_LAKE_HYLIA",
+   "rule": null,
+   "name": "Lab roof Heart Piece",
+   "area": "Lake Hylia",
+   "confidence": "high",
+   "notes": "Adult map only (HyruleField_Adult_Static)."
+  },
+  {
+   "id": "RC_GV_WATERFALL_FREESTANDING_POH",
+   "rc": "RC_GV_WATERFALL_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/GerudoValley/GerudoValley_Adult_Static.bcett.byml.zs",
+     "hash": "16129198288828948135",
+     "gyaml": "Obj_GerudoValley_Heart_Piece"
+    },
+    {
+     "map": "Banc/GerudoValley/GerudoValley_Child_Static.bcett.byml.zs",
+     "hash": "16129198288828948135",
+     "gyaml": "Obj_GerudoValley_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_GV_WATERFALL_ALCOVE",
+   "rule": null,
+   "name": "Gerudo Valley waterfall Heart Piece",
+   "area": "Gerudo Valley",
+   "confidence": "high",
+   "notes": "Gyaml is Obj_GerudoValley_Heart_Piece (Obj_Heart_Piece variant, LiftableRef cleared): the swap must accept it."
+  },
+  {
+   "id": "RC_COLOSSUS_FREESTANDING_POH",
+   "rc": "RC_COLOSSUS_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/DesertColossus/DesertColossus_Adult_Static.bcett.byml.zs",
+     "hash": "10592092054086534681",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/DesertColossus/DesertColossus_Child_Static.bcett.byml.zs",
+     "hash": "10592092054086534681",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_DESERT_COLOSSUS_ARCH",
+   "soh_region_also": [
+    "RR_DESERT_COLOSSUS_ARCH_FROM_SPIRIT"
+   ],
+   "rule": null,
+   "name": "Desert Colossus arch Heart Piece",
+   "area": "Desert Colossus",
+   "confidence": "medium",
+   "notes": "Child and adult maps, on top of the temple gate; route (bean ride) not verified."
+  },
+  {
+   "id": "RC_ZR_NEAR_OPEN_GROTTO_FREESTANDING_POH",
+   "rc": "RC_ZR_NEAR_OPEN_GROTTO_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/ZoraRiver/ZoraRiver_Adult_Static.bcett.byml.zs",
+     "hash": "11455676800795329345",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/ZoraRiver/ZoraRiver_Child_Static.bcett.byml.zs",
+     "hash": "11455676800795329345",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_ZORAS_RIVER",
+   "soh_region_also": [
+    "RR_ZR_PILLAR"
+   ],
+   "rule": null,
+   "name": "Zora's River pillar Heart Piece",
+   "area": "Zora's River",
+   "confidence": "medium",
+   "notes": "Child and adult maps; the one at (-4.0,111.4,-34.3). Which remake HP is SoH's 'near open grotto' vs 'near domain' is by position only (open question)."
+  },
+  {
+   "id": "RC_ZR_NEAR_DOMAIN_FREESTANDING_POH",
+   "rc": "RC_ZR_NEAR_DOMAIN_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/ZoraRiver/ZoraRiver_Adult_Static.bcett.byml.zs",
+     "hash": "4189391771527808272",
+     "gyaml": "Obj_Heart_Piece"
+    },
+    {
+     "map": "Banc/ZoraRiver/ZoraRiver_Child_Static.bcett.byml.zs",
+     "hash": "4189391771527808272",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_ZORAS_RIVER",
+   "rule": null,
+   "name": "Zora's River waterfall ledge Heart Piece",
+   "area": "Zora's River",
+   "confidence": "medium",
+   "notes": "Child and adult maps; the one at (99.5,120.1,-61.7) by the domain waterfall. See the other ZR entry."
+  },
+  {
+   "id": "RC_ZF_ICEBERG_FREESTANDING_POH",
+   "rc": "RC_ZF_ICEBERG_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/ZoraFountain/ZoraFountain_Adult_Static.bcett.byml.zs",
+     "hash": "12406896586250888098",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_ZF_ICEBERGS",
+   "rule": null,
+   "name": "Zora's Fountain iceberg Heart Piece",
+   "area": "Zora's Fountain",
+   "confidence": "high",
+   "notes": "Adult map only."
+  },
+  {
+   "id": "RC_ZF_BOTTOM_FREESTANDING_POH",
+   "rc": "RC_ZF_BOTTOM_FREESTANDING_POH",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Piece",
+   "loose": [
+    {
+     "map": "Banc/ZoraFountain/ZoraFountain_Adult_Static.bcett.byml.zs",
+     "hash": "8030885465575590602",
+     "gyaml": "Obj_Heart_Piece"
+    }
+   ],
+   "soh_region": "RR_ZF_LAKEBED",
+   "rule": null,
+   "name": "Zora's Fountain bottom Heart Piece",
+   "area": "Zora's Fountain",
+   "confidence": "high",
+   "notes": "Adult map only (lake bed)."
+  },
+  {
+   "id": "RC_DEKU_TREE_QUEEN_GOHMA_HEART",
+   "rc": "RC_DEKU_TREE_QUEEN_GOHMA_HEART",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Container",
+   "loose": [
+    {
+     "map": "Banc/InsideTheDekuTree/InsideTheDekuTree_Static.bcett.byml.zs",
+     "hash": "17948245526767051747",
+     "gyaml": "Obj_Heart_Container"
+    }
+   ],
+   "soh_region": "RR_DEKU_TREE_BOSS_ROOM",
+   "rule": null,
+   "name": "Queen Gohma Heart Container",
+   "area": "Deku Tree",
+   "confidence": "high",
+   "notes": "Spawned by the boss room logic (Logic_Create <- Gohma_DefeatBoss); this module also deletes it once InsideTheDekuTree_Heart_Container_Obtained is set. Confirmed in game: a pickup made at this spot works (round 5); a chest made from this logic-spawned actor could not be opened (round 4). The after-boss timeline (Dm_*_BossOut) casts its own Obj_Heart_Container event model: check in game it does not show/spawn an extra container. Nothing else in the room depends on the container."
+  },
+  {
+   "id": "RC_DODONGOS_CAVERN_KING_DODONGO_HEART",
+   "rc": "RC_DODONGOS_CAVERN_KING_DODONGO_HEART",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Container",
+   "loose": [
+    {
+     "map": "Banc/DodongoCavern/DodongoCavern_Static.bcett.byml.zs",
+     "hash": "5936534468710061389",
+     "gyaml": "Obj_Heart_Container"
+    }
+   ],
+   "soh_region": "RR_DODONGOS_CAVERN_BOSS_ROOM",
+   "rule": null,
+   "name": "King Dodongo Heart Container",
+   "area": "Dodongo's Cavern",
+   "confidence": "high",
+   "notes": "Spawned by the boss room logic (DodongoCavern_BossGroundChange). The after-boss timeline (Dm_*_BossOut) casts its own Obj_Heart_Container event model: check in game it does not show/spawn an extra container. Nothing else in the room depends on the container."
+  },
+  {
+   "id": "RC_JABU_JABUS_BELLY_BARINADE_HEART",
+   "rc": "RC_JABU_JABUS_BELLY_BARINADE_HEART",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Container",
+   "loose": [
+    {
+     "map": "Banc/InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs",
+     "hash": "17608884438514432711",
+     "gyaml": "Obj_Heart_Container"
+    }
+   ],
+   "soh_region": "RR_JABU_JABUS_BELLY_BOSS_ROOM",
+   "rule": null,
+   "name": "Barinade Heart Container",
+   "area": "Jabu-Jabu's Belly",
+   "confidence": "high",
+   "notes": "Spawned by the boss room logic (Get_StoneOfWater_IsAfter_Step13_01_Exp). The after-boss timeline (Dm_*_BossOut) casts its own Obj_Heart_Container event model: check in game it does not show/spawn an extra container. Nothing else in the room depends on the container."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_PHANTOM_GANON_HEART",
+   "rc": "RC_FOREST_TEMPLE_PHANTOM_GANON_HEART",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Container",
+   "loose": [
+    {
+     "map": "Banc/ForestTemple/ForestTemple_Static.bcett.byml.zs",
+     "hash": "18379569660496940670",
+     "gyaml": "Obj_Heart_Container"
+    }
+   ],
+   "soh_region": "RR_FOREST_TEMPLE_BOSS_ROOM",
+   "rule": null,
+   "name": "Phantom Ganon Heart Container",
+   "area": "Forest Temple",
+   "confidence": "high",
+   "notes": "Spawned by the boss room logic (SageOfForest_IsAfter_Step08_Exp). The after-boss timeline (Dm_*_BossOut) casts its own Obj_Heart_Container event model: check in game it does not show/spawn an extra container. Nothing else in the room depends on the container."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_VOLVAGIA_HEART",
+   "rc": "RC_FIRE_TEMPLE_VOLVAGIA_HEART",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Container",
+   "loose": [
+    {
+     "map": "Banc/FireTemple/FireTemple_Static.bcett.byml.zs",
+     "hash": "9478330070473364248",
+     "gyaml": "Obj_Heart_Container"
+    }
+   ],
+   "soh_region": "RR_FIRE_TEMPLE_BOSS_ROOM",
+   "rule": null,
+   "name": "Volvagia Heart Container",
+   "area": "Fire Temple",
+   "confidence": "high",
+   "notes": "Spawned by the boss room logic (FireTemple_BossGroundChange); this actor has no Dynamic (no DefaultDungeonRoomIndex). The after-boss timeline (Dm_*_BossOut) casts its own Obj_Heart_Container event model: check in game it does not show/spawn an extra container. Nothing else in the room depends on the container."
+  },
+  {
+   "id": "RC_WATER_TEMPLE_MORPHA_HEART",
+   "rc": "RC_WATER_TEMPLE_MORPHA_HEART",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Container",
+   "loose": [
+    {
+     "map": "Banc/WaterTemple/WaterTemple_Static.bcett.byml.zs",
+     "hash": "14426685265732353862",
+     "gyaml": "Obj_Heart_Container"
+    }
+   ],
+   "soh_region": "RR_WATER_TEMPLE_BOSS_ROOM",
+   "rule": null,
+   "name": "Morpha Heart Container",
+   "area": "Water Temple",
+   "confidence": "high",
+   "notes": "Spawned by the boss room logic (SageOfWater Step07_2). The after-boss timeline (Dm_*_BossOut) casts its own Obj_Heart_Container event model: check in game it does not show/spawn an extra container. Nothing else in the room depends on the container."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_TWINROVA_HEART",
+   "rc": "RC_SPIRIT_TEMPLE_TWINROVA_HEART",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Container",
+   "loose": [
+    {
+     "map": "Banc/SpiritTemple/SpiritTemple_Static.bcett.byml.zs",
+     "hash": "4720088048159616469",
+     "gyaml": "Obj_Heart_Container"
+    }
+   ],
+   "soh_region": "RR_SPIRIT_TEMPLE_BOSS_ROOM",
+   "rule": null,
+   "name": "Twinrova Heart Container",
+   "area": "Spirit Temple",
+   "confidence": "high",
+   "notes": "Spawned by the boss room logic (SageOfSpirit_IsAfter_Step09_01_Exp). The after-boss timeline (Dm_*_BossOut) casts its own Obj_Heart_Container event model: check in game it does not show/spawn an extra container. Nothing else in the room depends on the container."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_BONGO_BONGO_HEART",
+   "rc": "RC_SHADOW_TEMPLE_BONGO_BONGO_HEART",
+   "kind": "loose",
+   "vanilla": "Obj_Heart_Container",
+   "loose": [
+    {
+     "map": "Banc/ShadowTemple/ShadowTemple_Static.bcett.byml.zs",
+     "hash": "17599164808183510748",
+     "gyaml": "Obj_Heart_Container"
+    }
+   ],
+   "soh_region": "RR_SHADOW_TEMPLE_BOSS_ROOM",
+   "rule": null,
+   "name": "Bongo Bongo Heart Container",
+   "area": "Shadow Temple",
+   "confidence": "high",
+   "notes": "Spawned by the boss room logic (SageOfShadow_IsAfter_DefeatBoss_Exp). The after-boss timeline (Dm_*_BossOut) casts its own Obj_Heart_Container event model: check in game it does not show/spawn an extra container. Nothing else in the room depends on the container."
+  }
+ ],
+ "excluded": [
+  {
+   "id": "RC_SHEIK_IN_FOREST",
+   "rc": "RC_SHEIK_IN_FOREST",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SHEIK_AT_TEMPLE",
+   "rc": "RC_SHEIK_AT_TEMPLE",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SONG_FROM_IMPA",
+   "rc": "RC_SONG_FROM_IMPA",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SONG_FROM_MALON",
+   "rc": "RC_SONG_FROM_MALON",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SONG_FROM_SARIA",
+   "rc": "RC_SONG_FROM_SARIA",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SONG_FROM_OCARINA_OF_TIME",
+   "rc": "RC_SONG_FROM_OCARINA_OF_TIME",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SHEIK_IN_CRATER",
+   "rc": "RC_SHEIK_IN_CRATER",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SHEIK_IN_KAKARIKO",
+   "rc": "RC_SHEIK_IN_KAKARIKO",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SONG_FROM_ROYAL_FAMILYS_TOMB",
+   "rc": "RC_SONG_FROM_ROYAL_FAMILYS_TOMB",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SONG_FROM_WINDMILL",
+   "rc": "RC_SONG_FROM_WINDMILL",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SHEIK_AT_COLOSSUS",
+   "rc": "RC_SHEIK_AT_COLOSSUS",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_SHEIK_IN_ICE_CAVERN",
+   "rc": "RC_SHEIK_IN_ICE_CAVERN",
+   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+  },
+  {
+   "id": "RC_LH_SCARECROWS_SONG",
+   "rc": "RC_LH_SCARECROWS_SONG",
+   "reason": "song (Scarecrow's Song, Npc_Bonooru 145): songs pending an in-game test"
+  },
+  {
+   "id": "RC_HF_OCARINA_OF_TIME_ITEM",
+   "rc": "RC_HF_OCARINA_OF_TIME_ITEM",
+   "reason": "Ocarina of Time: pending (the Song of Time lesson right after needs an ocarina)"
+  },
+  {
+   "id": "RC_LW_GIFT_FROM_SARIA",
+   "rc": "RC_LW_GIFT_FROM_SARIA",
+   "reason": "Saria's Fairy Ocarina: pending (AddOrRemovePouchContent + display; round-4 test)"
+  },
+  {
+   "id": "RC_GIFT_FROM_RAURU",
+   "rc": "RC_GIFT_FROM_RAURU",
+   "reason": "dungeon reward (Light Medallion), given by the reward cutscene: not shuffled in v1"
+  },
+  {
+   "id": "RC_QUEEN_GOHMA",
+   "rc": "RC_QUEEN_GOHMA",
+   "reason": "dungeon reward (Kokiri's Emerald), given by the reward cutscene: not shuffled in v1"
+  },
+  {
+   "id": "RC_KING_DODONGO",
+   "rc": "RC_KING_DODONGO",
+   "reason": "dungeon reward (Goron's Ruby), given by the reward cutscene: not shuffled in v1"
+  },
+  {
+   "id": "RC_BARINADE",
+   "rc": "RC_BARINADE",
+   "reason": "dungeon reward (Zora's Sapphire), given by the reward cutscene: not shuffled in v1"
+  },
+  {
+   "id": "RC_PHANTOM_GANON",
+   "rc": "RC_PHANTOM_GANON",
+   "reason": "dungeon reward (Forest Medallion), given by the reward cutscene: not shuffled in v1"
+  },
+  {
+   "id": "RC_VOLVAGIA",
+   "rc": "RC_VOLVAGIA",
+   "reason": "dungeon reward (Fire Medallion), given by the reward cutscene: not shuffled in v1"
+  },
+  {
+   "id": "RC_MORPHA",
+   "rc": "RC_MORPHA",
+   "reason": "dungeon reward (Water Medallion), given by the reward cutscene: not shuffled in v1"
+  },
+  {
+   "id": "RC_TWINROVA",
+   "rc": "RC_TWINROVA",
+   "reason": "dungeon reward (Spirit Medallion), given by the reward cutscene: not shuffled in v1"
+  },
+  {
+   "id": "RC_BONGO_BONGO",
+   "rc": "RC_BONGO_BONGO",
+   "reason": "dungeon reward (Shadow Medallion), given by the reward cutscene: not shuffled in v1"
+  },
+  {
+   "id": "RC_GANON",
+   "rc": "RC_GANON",
+   "reason": "Ganon: not an item location (none in the remake)"
+  },
+  {
+   "id": "RC_TOT_MASTER_SWORD",
+   "rc": "RC_TOT_MASTER_SWORD",
+   "reason": "Master Sword: story-bound (DoorOfTime), not shuffled"
+  },
+  {
+   "id": "RC_TOT_LIGHT_ARROWS_CUTSCENE",
+   "rc": "RC_TOT_LIGHT_ARROWS_CUTSCENE",
+   "reason": "Light Arrows: story cutscene (Dm_TimeTemple_0130), not shuffled in v1"
+  },
+  {
+   "id": "RC_LH_SUN",
+   "rc": "RC_LH_SUN",
+   "reason": "Fire Arrows at the lake: cutscene-bound world actor (Obj_Arrow_Fire 4598657944866228526), not shuffled in v1"
+  },
+  {
+   "id": "RC_HC_ZELDAS_LETTER",
+   "rc": "RC_HC_ZELDAS_LETTER",
+   "reason": "Zelda's Letter: story item, not shuffled in v1"
+  },
+  {
+   "id": "RC_HC_MALON_EGG",
+   "rc": "RC_HC_MALON_EGG",
+   "reason": "Weird Egg: story item (hatch event), not shuffled in v1"
+  },
+  {
+   "id": "RC_LH_UNDERWATER_ITEM",
+   "rc": "RC_LH_UNDERWATER_ITEM",
+   "reason": "Ruto's Letter (Obj_Bottle_Letter world actor): story item, not shuffled in v1"
+  },
+  {
+   "id": "RC_KAK_ANJU_AS_ADULT",
+   "rc": "RC_KAK_ANJU_AS_ADULT",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_KAK_TRADE_POCKET_CUCCO",
+   "rc": "RC_KAK_TRADE_POCKET_CUCCO",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_LW_TRADE_COJIRO",
+   "rc": "RC_LW_TRADE_COJIRO",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_KAK_TRADE_ODD_MUSHROOM",
+   "rc": "RC_KAK_TRADE_ODD_MUSHROOM",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_LW_TRADE_ODD_POTION",
+   "rc": "RC_LW_TRADE_ODD_POTION",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_GV_TRADE_SAW",
+   "rc": "RC_GV_TRADE_SAW",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_DMT_TRADE_BROKEN_SWORD",
+   "rc": "RC_DMT_TRADE_BROKEN_SWORD",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_ZD_TRADE_PRESCRIPTION",
+   "rc": "RC_ZD_TRADE_PRESCRIPTION",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_LH_TRADE_FROG",
+   "rc": "RC_LH_TRADE_FROG",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_DMT_TRADE_EYEDROPS",
+   "rc": "RC_DMT_TRADE_EYEDROPS",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_DMT_TRADE_CLAIM_CHECK",
+   "rc": "RC_DMT_TRADE_CLAIM_CHECK",
+   "reason": "adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1"
+  },
+  {
+   "id": "RC_GC_MEDIGORON",
+   "rc": "RC_GC_MEDIGORON",
+   "reason": "Medigoron: a shop sale (Shop_Sword_Giant), not shuffled in v1"
+  },
+  {
+   "id": "RC_ZR_MAGIC_BEAN_SALESMAN",
+   "rc": "RC_ZR_MAGIC_BEAN_SALESMAN",
+   "reason": "bean salesman: repeatable shop sale"
+  },
+  {
+   "id": "RC_WASTELAND_BOMBCHU_SALESMAN",
+   "rc": "RC_WASTELAND_BOMBCHU_SALESMAN",
+   "reason": "carpet merchant: repeatable shop sale (Shop_BombchuBundle_01)"
+  },
+  {
+   "id": "RC_KAK_GRANNYS_SHOP",
+   "rc": "RC_KAK_GRANNYS_SHOP",
+   "reason": "Granny's potion shop: shop sale (bottle content), not shuffled in v1"
+  },
+  {
+   "id": "RC_TH_FREED_CARPENTERS",
+   "rc": "RC_TH_FREED_CARPENTERS",
+   "reason": "Gerudo Membership Card: story-bound (guards' state), not shuffled in v1"
+  },
+  {
+   "id": "RC_TH_1_TORCH_CARPENTER",
+   "rc": "RC_TH_1_TORCH_CARPENTER",
+   "reason": "Thieves' Hideout key (dropped by a defeated guard): Gerudo keys not shuffled in v1; room-to-carpenter mapping still open"
+  },
+  {
+   "id": "RC_TH_STEEP_SLOPE_CARPENTER",
+   "rc": "RC_TH_STEEP_SLOPE_CARPENTER",
+   "reason": "Thieves' Hideout key (dropped by a defeated guard): Gerudo keys not shuffled in v1; room-to-carpenter mapping still open"
+  },
+  {
+   "id": "RC_TH_DOUBLE_CELL_CARPENTER",
+   "rc": "RC_TH_DOUBLE_CELL_CARPENTER",
+   "reason": "Thieves' Hideout key (dropped by a defeated guard): Gerudo keys not shuffled in v1; room-to-carpenter mapping still open"
+  },
+  {
+   "id": "RC_TH_DEAD_END_CARPENTER",
+   "rc": "RC_TH_DEAD_END_CARPENTER",
+   "reason": "Thieves' Hideout key (dropped by a defeated guard): Gerudo keys not shuffled in v1; room-to-carpenter mapping still open"
+  },
+  {
+   "id": "RC_HC_GREAT_FAIRY_REWARD",
+   "rc": "RC_HC_GREAT_FAIRY_REWARD",
+   "reason": "Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)"
+  },
+  {
+   "id": "RC_OGC_GREAT_FAIRY_REWARD",
+   "rc": "RC_OGC_GREAT_FAIRY_REWARD",
+   "reason": "Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)"
+  },
+  {
+   "id": "RC_DMT_GREAT_FAIRY_REWARD",
+   "rc": "RC_DMT_GREAT_FAIRY_REWARD",
+   "reason": "Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)"
+  },
+  {
+   "id": "RC_DMC_GREAT_FAIRY_REWARD",
+   "rc": "RC_DMC_GREAT_FAIRY_REWARD",
+   "reason": "Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)"
+  },
+  {
+   "id": "RC_ZF_GREAT_FAIRY_REWARD",
+   "rc": "RC_ZF_GREAT_FAIRY_REWARD",
+   "reason": "Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)"
+  },
+  {
+   "id": "RC_COLOSSUS_GREAT_FAIRY_REWARD",
+   "rc": "RC_COLOSSUS_GREAT_FAIRY_REWARD",
+   "reason": "Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)"
+  },
+  {
+   "id": "RC_GC_DARUNIAS_JOY",
+   "rc": "RC_GC_DARUNIAS_JOY",
+   "reason": "Darunia's joy (Goron's Bracelet): kept fixed by the fill's ordering rule (ORDERED_FIXED)"
+  },
+  {
+   "id": "RC_GC_ROLLING_GORON_AS_ADULT",
+   "rc": "RC_GC_ROLLING_GORON_AS_ADULT",
+   "reason": "rolling Goron as adult (SageOfFire 177): the same event opens Darunia's door"
+  },
+  {
+   "id": "RC_GC_POT_FREESTANDING_POH",
+   "rc": "RC_GC_POT_FREESTANDING_POH",
+   "reason": "Goron City pot Heart Piece: set in the pot's actor pack (ActorHolderParam Prize_HeartPiece), not a map actor or flow parameter"
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_FREESTANDING_KEY",
+   "rc": "RC_SHADOW_TEMPLE_FREESTANDING_KEY",
+   "reason": "freestanding dungeon key: pending"
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_FREESTANDING_KEY",
+   "rc": "RC_BOTTOM_OF_THE_WELL_FREESTANDING_KEY",
+   "reason": "freestanding dungeon key: pending"
+  },
+  {
+   "id": "RC_KAK_100_GOLD_SKULLTULA_REWARD",
+   "rc": "RC_KAK_100_GOLD_SKULLTULA_REWARD",
+   "reason": "100-token reward repeats (250 gated only by GatheringTokenGold_ContinuousRewardTalk; 573 gives a gold rupee on every later talk)"
+  },
+  {
+   "id": "RC_LH_HYRULE_LOACH",
+   "rc": "RC_LH_HYRULE_LOACH",
+   "reason": "Hyrule Loach purple rupee (MiniGame_Fishing 655/656): no once-flag, would repeat"
+  },
+  {
+   "id": "RC_HF_TEKTITE_GROTTO_FREESTANDING_POH",
+   "rc": "RC_HF_TEKTITE_GROTTO_FREESTANDING_POH",
+   "reason": "none: the remake's tektite grotto has no Heart Piece"
+  },
+  {
+   "id": "RC_ICE_CAVERN_FREESTANDING_POH",
+   "rc": "RC_ICE_CAVERN_FREESTANDING_POH",
+   "reason": "none: the remake's Ice Cavern has no Heart Piece (compass room red ice freezes two rupee pots)"
+  },
+  {
+   "id": "RC_DODONGOS_CAVERN_DEKU_SCRUB_LOBBY",
+   "rc": "RC_DODONGOS_CAVERN_DEKU_SCRUB_LOBBY",
+   "reason": "none: no lobby scrub in the remake (its only scrub sells a variable, repeatable stock)"
+  },
+  {
+   "id": "REMAKE_KOKIRI_SHOP_DEKU_SHIELD",
+   "rc": null,
+   "reason": "Kokiri shop free Deku Shield (Npc_Kokiri_001_Shop_Child 109/110): a burnt-shield refill after Mido lets you pass, repeats (in-game round 4)"
+  },
+  {
+   "id": "REMAKE_POTION_SHOP_BOTTLE",
+   "rc": null,
+   "reason": "Market potion shop free empty bottle (Npc_Hylia_020_Shop_Child 162): one-time, but the bottle tutorial follows and the shop door is locked while it runs (CheckRestrictedDoor 46 ?Market_Item_Bottle_TutorialEvent_Started && 47 !Cleared -> talk 48, no door) until a bug is caught in a bottle (138, Insect_GetEvent 35 RemoveFromSelectedBottle): with another item and no bottle owned the child is shut in the shop. Left vanilla: note the logic gets a free child bottle in the Market"
+  },
+  {
+   "id": "REMAKE_KOKIRI_005_RUPEE",
+   "rc": null,
+   "reason": "Kokiri girl's weeding gift (Npc_Kokiri_005_Child 122, Obj_Rupee_Blue): rupee-only remake gift, left vanilla in v1 (mechanism confirmed in game, round 3)"
+  },
+  {
+   "id": "REMAKE_KOKIRI_008_RUPEE",
+   "rc": null,
+   "reason": "Kokiri boy's rock gift (Npc_Kokiri_008_Child 218, Obj_Rupee_Blue): rupee-only remake gift, left vanilla in v1 (mechanism confirmed in game, round 3)"
+  },
+  {
+   "id": "REMAKE_POE_COLLECTOR_900",
+   "rc": null,
+   "reason": "poe collector's 900-point reward (Npc_Hylia_048_BottleShop 320, Obj_Rupee_Gold): rupee-only remake reward, left vanilla in v1"
+  },
+  {
+   "id": "REMAKE_ZORA_SHOP_TUNIC",
+   "rc": null,
+   "reason": "Zora shop free Zora Tunic (Npc_Zora_011_Shop_Adult 64): fallback copy of King Zora's gift, not a check (see RC_ZD_KING_ZORA_THAWED notes)"
+  },
+  {
+   "id": "REMAKE_LH_UNDERWATER_DEKU_NUT",
+   "rc": null,
+   "reason": "underwater Deku Nut next to Ruto's letter (HyruleField_Child_Static 9807262312429560898): consumable pickup, not a check in v1"
+  },
+  {
+   "id": "REMAKE_LH_UNDERWATER_DEKU_STICK",
+   "rc": null,
+   "reason": "underwater Deku Stick next to Ruto's letter (HyruleField_Child_Static 8980892284071798868): consumable pickup, not a check in v1"
+  },
+  {
+   "id": "REMAKE_DUNGEON_BUSINESS_SCRUBS",
+   "rc": null,
+   "reason": "Business Scrubs in Dodongo's Cavern, Jabu-Jabu, Bottom of the Well and Shadow Temple: variable / repeatable shops, not one-time items"
+  },
+  {
+   "id": "REMAKE_GV_RUNNING_MAN_RACE",
+   "rc": null,
+   "reason": "Gerudo Valley running man race: repeatable rupee prizes"
+  },
+  {
+   "id": "REMAKE_MASK_OF_TRUTH",
+   "rc": null,
+   "reason": "kept as it is (2026-11-13): with masks unshuffled the port derives the Mask of Truth from the mask-selling chain; moving it needs that logic first"
+  }
+ ]
+}

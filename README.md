@@ -1,6 +1,6 @@
 # HookshotRando
 
-A chest randomizer for The Legend of Zelda: Ocarina of Time (Nintendo Switch 2) as [Hookshot](https://github.com/NotRexed/Hookshot)
+A randomizer for The Legend of Zelda: Ocarina of Time (Nintendo Switch 2) as [Hookshot](https://github.com/NotRexed/Hookshot)
 runs it. It is a RomFS mod: no change to Hookshot, nothing to rebuild. You make it from your own copy of the game.
 
 ## Use
@@ -30,6 +30,14 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 
 - **Every one-time chest is randomized**: 180 locations (148 of SoH's checks, 32 chests only the remake has), each with
   the logic of Ship of Harkinian's randomizer, adapted where the remake changed a room, a door or a key.
+- **NPCs' and minigames' prizes** (35: the Skull Kid, the scrubs' upgrades, bowling, the shooting galleries, the House of
+  Skulltula, fishing, the frogs, horseback archery, Dampe, the dog, Talon, Anju, King Zora...) give the item placed there:
+  `data/gifts.json` names each event parameter that says what is given.
+- **Items lying in the world** (the 14 loose Heart Pieces and the 8 bosses' Heart Containers) are the item placed there,
+  lying where the old one was: a pickup made for each item as the remake made its own loose Fire Arrows.
+- **Upgrades come in order**: the remake's bags, quivers, wallets and scales are separate items, each setting its capacity
+  outright; the earliest of each kind in the playthrough is the first tier (the Bow before the quivers, the Slingshot
+  before the bullet bags, the small bomb bag before the bigger ones).
 - **Every seed can be finished**: the fill (SoH's way: dungeon items first, then assumed fill) is checked by playing the
   seed from a new game; a seed that fails is drawn again. No tricks or glitches are needed.
 - **Keys, boss keys, maps and compasses stay in their own dungeon**: the remake has one key item for every dungeon, which
@@ -44,6 +52,12 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 - **Bombs need the Goron's Bracelet** in the remake (Bombchus do not): the logic counts bombs only once Link has it.
 - **The Deku Tree's slingshot room can lock you in**, as in SoH's randomizer: its way out is a ladder its eye switch drops,
   and only the Slingshot and the Boomerang hit it (Bombchus do not). The game autosaves before the room: load that save.
+
+Left as they are for now (`data/gifts.json` "excluded" has each one's reason): the songs (pending a test of the lessons),
+the stones and medallions, the Master Sword, the Light and Fire Arrows, the ocarinas, Zelda's Letter and the Weird Egg, the
+adult trade items, the Gerudo keys and card, the Great Fairies (they charge rupees in the remake and would sell again),
+Darunia's bracelet, the shops and repeatable prizes. King Zora's Zora Tunic shop gift stays: without a tunic, his later
+talk makes the Zora shop give one free (an extra tunic, never needed by logic).
 
 Left as they are: the 22 minigame chests filled again at each play (the treasure chest game's but its Heart Piece prize,
 the Hall of Fallen Foes, Dampe's race rupees) and the ice-trap chests (they hold no item).

@@ -15,7 +15,7 @@ EMPTY_EVENT = "DefaultParentEvent"
 
 
 def skip_intro(romfs, codec, mod):
-    raw = codec.read(os.path.join(romfs, *EVENT_SETTING.split("/")))
+    raw = mod.read(EVENT_SETTING)
     rows, version = byml.read(raw)
     by_id = {r["__RowId"]: i for i, r in enumerate(rows)}
     empty = rows[by_id[EMPTY_EVENT]]
@@ -43,7 +43,7 @@ def song_models(romfs, codec, mod, songs=SONGS):
         if not os.path.exists(os.path.join(romfs, "Model", "%s.%s.bfres.zs" % (project, model))):
             raise ValueError("no model %s.%s" % (project, model))
         rel = "Pack/Actor/%s.pack.zs" % actor
-        files = sarc.read(codec.read(os.path.join(romfs, *rel.split("/"))))
+        files = sarc.read(mod.read(rel))
         key = "Component/ModelInfo/%s.engine__component__ModelInfo.bgyml" % actor
         info, version = byml.read(files[key])
         if info != {"FmdbName": "Obj_Rupee", "ModelProjectName": "Obj_Rupee"}:

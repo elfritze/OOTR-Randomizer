@@ -11,9 +11,11 @@ class FillError(Exception):
 
 
 class Location:
-    """one randomized chest: id (its SoH check, or CHEST_<hash> for one SoH does not have), hash, map, vanilla actor"""
-    def __init__(self, id, hash, remake_map, vanilla, name):
-        self.id, self.hash, self.map, self.vanilla, self.name = id, hash, remake_map, vanilla, name
+    """one randomized check: id (its SoH check, or CHEST_<hash> / REMAKE_<name> for one SoH does not have), hash (a chest's;
+    None for others), map, vanilla actor (as the pool names it: its chest form), name, kind ("chest", "gift": an NPC's or a
+    minigame's prize, "loose": an item lying in the world)"""
+    def __init__(self, id, hash, remake_map, vanilla, name, kind="chest"):
+        self.id, self.hash, self.map, self.vanilla, self.name, self.kind = id, hash, remake_map, vanilla, name, kind
         self.dungeon = remake_map if remake_map in I.DUNGEONS else None
 
 
@@ -91,6 +93,7 @@ def _attempt(world, locations, fixed, progression, rng, closed):
         return world.reachable(have)
 
     def put(item, origin, spots):
+        spots = [l for l in spots if I.allowed(item, l.kind)]
         if not spots:
             raise FillError("nowhere reachable for %s (from %s)" % (item, origin.name))
         spot = rng.choice(spots)
@@ -151,9 +154,9 @@ def _attempt(world, locations, fixed, progression, rng, closed):
         owned = counted(prog)
         r = reach(owned)   # (assumed fill: every item still to place counts as owned)
         put(item, origin, container_spots(item, owned, [l for l in empty if l.id in r]))
-    # 4. the rest: the ammunition first, where its container is needed
+    # 4. the rest: the ammunition first, where its container is needed; then what only some kinds of location take
     rng.shuffle(rest)
-    rest.sort(key=lambda x: x[0] not in I.NEEDS_CONTAINER)
+    rest.sort(key=lambda x: (x[0] not in I.NEEDS_CONTAINER, sum(I.allowed(x[0], k) for k in ("chest", "gift", "loose"))))
     for item, origin in rest:
         spots = empty + junk_only
         if item in I.NEEDS_CONTAINER:

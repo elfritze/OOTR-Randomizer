@@ -27,12 +27,20 @@ class Mod:
         self.table = restbl.Table(raw)
         self.original = restbl.Table(raw)   # (the game's own entries, for each kind of file's margin)
         self.grown = []
+        self.data = {}   # (rel: what was last written: a second change to a file builds on the first)
 
     def original_entry(self, rel):
         return self.original.get(rel)
 
+    def read(self, rel):
+        """a file's contents as the mod has it so far: the game's own, or what was last written for it"""
+        if rel in self.data:
+            return self.data[rel]
+        return self.codec.read(os.path.join(self.romfs, *rel.split("/")))
+
     def write(self, rel, data):
-        """rel: the romfs path ("Banc/X/Y.bcett.byml.zs"); data: its new decompressed contents"""
+        """rel: the romfs path ("Banc/X/Y.bcett.byml.zs"); data: its new decompressed contents (build it on read(rel))"""
+        self.data[rel] = data
         original = open(os.path.join(self.romfs, *rel.split("/")), "rb").read()
         name = os.path.basename(rel)
         packed = self.codec.compress_like(data, original)
@@ -45,6 +53,27 @@ class Mod:
         if need > entry:
             self.table.set(rel, need)
             self.grown.append((rel, entry, need))
+        dst = os.path.join(self.out, *rel.split("/"))
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        with open(dst, "wb") as f:
+            f.write(packed)
+
+    def add(self, rel, data, like):
+        """a file the game does not have (Hookshot's mods may add files): compressed as the game file `like` is, with a
+        size-table entry of its size and `like`'s margin"""
+        import zlib
+        if os.path.exists(os.path.join(self.romfs, *rel.split("/"))):
+            raise ValueError("%s is a game file: write it" % rel)
+        original = open(os.path.join(self.romfs, *like.split("/")), "rb").read()
+        packed = self.codec.compress_like(data, original)
+        if self.codec.decompress(packed, os.path.basename(rel)) != data:
+            raise ValueError("%s: does not decompress back" % rel)
+        key = restbl.Table.key(rel)
+        if key in self.table.names or (zlib.crc32(key.encode("utf-8")) & 0xFFFFFFFF) in self.table.crc:
+            raise ValueError("%s: its CRC32 is another file's" % rel)
+        need = entry_for(len(data), len(self.codec.decompress(original, os.path.basename(like))), self.original_entry(like))
+        self.table.set(rel, need)
+        self.grown.append((rel, 0, need))
         dst = os.path.join(self.out, *rel.split("/"))
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         with open(dst, "wb") as f:

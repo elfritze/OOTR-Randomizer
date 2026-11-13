@@ -1,0 +1,215 @@
+gifts.json review (data/gifts.json, built and verified against the romfs on 2026-11-13)
+====================================================================================================
+58 checks included (36 gifts with 53 flow edits, 22 loose with 34 map-actor copies), 77 excluded.
+Verification: every edit re-read from its flow (event exists, is a give call or the scrub UI string, param present, value equal);
+every loose Hash looked up in all 160 map files (each file holding it listed, Gyaml equal); .110 twins checked against
+EventFlowFileEntry.Product.110 (only Npc_Hylia_Dampe_001 is touched: both files listed); all 122 SoH non-chest checks are in
+exactly one list; rule tokens exist in SoH's sources. Result: 0 failures (also re-checked with evfl.read/byml.read directly).
+
+INCLUDED (id | kind | vanilla | edits or loose copies | confidence)
+  RC_LW_SKULL_KID                            gift  Obj_Heart_Piece            1 edits   high
+  RC_LW_OCARINA_MEMORY_GAME                  gift  Obj_Heart_Piece            1 edits   high
+  RC_LW_TARGET_IN_WOODS                      gift  Item_BulletBag_Medium      2 edits   high
+  RC_LW_DEKU_SCRUB_NEAR_BRIDGE               gift  Item_StickBag_Medium       3 edits   high
+  RC_LW_DEKU_SCRUB_GROTTO_FRONT              gift  Item_NutBag_Medium         2 edits   high
+  RC_DEKU_THEATER_SKULL_MASK                 gift  Item_StickBag_Medium       2 edits   high
+  RC_DEKU_THEATER_MASK_OF_TRUTH              gift  Item_NutBag_Medium         2 edits   high
+  RC_HF_DEKU_SCRUB_GROTTO                    gift  Obj_Heart_Piece            2 edits   high
+  RC_MARKET_BOMBCHU_BOWLING_FIRST_PRIZE      gift  Item_BombBag_Medium        2 edits   high
+  RC_MARKET_BOMBCHU_BOWLING_SECOND_PRIZE     gift  Obj_Heart_Piece            1 edits   high
+  REMAKE_BOWLING_BOMBCHUS                    gift  Item_BombchuBundle_Medium  1 edits   high  [rule]
+  RC_MARKET_LOST_DOG                         gift  Obj_Heart_Piece            1 edits   high
+  RC_MARKET_SHOOTING_GALLERY_REWARD          gift  Item_BulletBag_Medium      2 edits   high
+  RC_MARKET_10_BIG_POES                      gift  Item_Bottle                1 edits   medium
+  RC_LLR_TALONS_CHICKENS                     gift  Item_Bottle_Milk           1 edits   high
+  RC_KAK_10_GOLD_SKULLTULA_REWARD            gift  Item_Wallet_Medium         1 edits   high
+  RC_KAK_20_GOLD_SKULLTULA_REWARD            gift  Item_AgonyStone            1 edits   high
+  RC_KAK_30_GOLD_SKULLTULA_REWARD            gift  Item_Wallet_Large          1 edits   high
+  RC_KAK_40_GOLD_SKULLTULA_REWARD            gift  Item_BombchuBundle_Large   1 edits   high
+  RC_KAK_50_GOLD_SKULLTULA_REWARD            gift  Obj_Heart_Piece            1 edits   high
+  RC_KAK_MAN_ON_ROOF                         gift  Obj_Heart_Piece            1 edits   high
+  RC_KAK_SHOOTING_GALLERY_REWARD             gift  Item_Quiver_Medium         2 edits   high
+  RC_KAK_ANJU_AS_CHILD                       gift  Item_Bottle                1 edits   high
+  RC_GRAVEYARD_DAMPE_GRAVEDIGGING_TOUR       gift  Obj_Heart_Piece            2 edits   high
+  RC_GC_ROLLING_GORON_AS_CHILD               gift  Item_BombBag_Medium        2 edits   medium  [rule]
+  RC_DMC_DEKU_SCRUB                          gift  Obj_Heart_Piece            2 edits   high
+  RC_LH_CHILD_FISHING                        gift  Obj_Heart_Piece            2 edits   high
+  RC_LH_ADULT_FISHING                        gift  Item_Scale_Gold            2 edits   high
+  RC_LH_LAB_DIVE                             gift  Obj_Heart_Piece            1 edits   high
+  RC_GF_HBA_1000_POINTS                      gift  Obj_Heart_Piece            1 edits   high
+  RC_GF_HBA_1500_POINTS                      gift  Item_Quiver_Medium         2 edits   high
+  RC_ZR_FROGS_IN_THE_RAIN                    gift  Obj_Heart_Piece            1 edits   high
+  RC_ZR_FROGS_OCARINA_GAME                   gift  Obj_Heart_Piece            2 edits   high
+  RC_ZD_DIVING_MINIGAME                      gift  Item_Scale_Silver          1 edits   high
+  RC_ZD_KING_ZORA_THAWED                     gift  Obj_Armor_Zora             1 edits   medium
+  REMAKE_MASK_OF_TRUTH                       gift  Item_Mask_Truth            1 edits   medium  [rule]
+  RC_LLR_FREESTANDING_POH                    loose Obj_Heart_Piece            1 loose   high
+  RC_KAK_IMPAS_HOUSE_FREESTANDING_POH        loose Obj_Heart_Piece            3 loose   high
+  RC_KAK_WINDMILL_FREESTANDING_POH           loose Obj_Heart_Piece            3 loose   high
+  RC_GRAVEYARD_FREESTANDING_POH              loose Obj_Heart_Piece            2 loose   high
+  RC_DMT_FREESTANDING_POH                    loose Obj_Heart_Piece            2 loose   high
+  RC_DMC_WALL_FREESTANDING_POH               loose Obj_Heart_Piece            2 loose   medium
+  RC_DMC_VOLCANO_FREESTANDING_POH            loose Obj_Heart_Piece            2 loose   high
+  RC_LH_FREESTANDING_POH                     loose Obj_Heart_Piece            1 loose   high
+  RC_GV_WATERFALL_FREESTANDING_POH           loose Obj_Heart_Piece            2 loose   high
+  RC_COLOSSUS_FREESTANDING_POH               loose Obj_Heart_Piece            2 loose   medium
+  RC_ZR_NEAR_OPEN_GROTTO_FREESTANDING_POH    loose Obj_Heart_Piece            2 loose   medium
+  RC_ZR_NEAR_DOMAIN_FREESTANDING_POH         loose Obj_Heart_Piece            2 loose   medium
+  RC_ZF_ICEBERG_FREESTANDING_POH             loose Obj_Heart_Piece            1 loose   high
+  RC_ZF_BOTTOM_FREESTANDING_POH              loose Obj_Heart_Piece            1 loose   high
+  RC_DEKU_TREE_QUEEN_GOHMA_HEART             loose Obj_Heart_Container        1 loose   high
+  RC_DODONGOS_CAVERN_KING_DODONGO_HEART      loose Obj_Heart_Container        1 loose   high
+  RC_JABU_JABUS_BELLY_BARINADE_HEART         loose Obj_Heart_Container        1 loose   high
+  RC_FOREST_TEMPLE_PHANTOM_GANON_HEART       loose Obj_Heart_Container        1 loose   high
+  RC_FIRE_TEMPLE_VOLVAGIA_HEART              loose Obj_Heart_Container        1 loose   high
+  RC_WATER_TEMPLE_MORPHA_HEART               loose Obj_Heart_Container        1 loose   high
+  RC_SPIRIT_TEMPLE_TWINROVA_HEART            loose Obj_Heart_Container        1 loose   high
+  RC_SHADOW_TEMPLE_BONGO_BONGO_HEART         loose Obj_Heart_Container        1 loose   high
+
+PLACES I WAS UNSURE (which branch is first-time, conflicting agent notes)
+- Tier branches: every progressive prize lists both tier branches (Medium + Large), all gated by a one-time flag or
+  challenge step: LW target 85/84, bridge scrub 325/167/165, grotto scrub 170/168, theater 28/29 (x2), bowling 297/298,
+  Market gallery 292/291, Kakariko gallery 294/293, HBA 312/311, rolling Goron 72/73. "vanilla" is the tier a new
+  player gets (Medium). Repeat branches left out: rupee prizes after the first win (Skull Kid session 201/202/204, LW
+  target 86, bowling 293, lost dog 34, galleries 290/295, Anju 125, fishing 659/660, frogs 72/92, diving 315, HBA 310,
+  Talon 190/261, GS 573).
+- Fishing: two first-time branches per age (482/483 for a big fish, 489/490 after the Hyrule Loach, each gated by
+  MiniGame_Fishing_GetHeartPiece / _GetGoldScale). Both listed; the loach rupee itself (655/656) is excluded.
+- Frogs' bug game: the item is the ActorName ARGUMENT of the self-call MushiToriGame (71 first try, 91 retry); the
+  shared give 246 must stay untouched. Same pattern as GatheringTokenGold's TakenRewardActor, but untested in game.
+- Bombchu Bowling: SoH's FIRST prize is the bomb bag and SECOND the Heart Piece; the remake's fixed order is 1st win
+  bombchus (new REMAKE_BOWLING_BOMBCHUS, one-time by ClearFirstTime), 2nd win bomb bag, 3rd win Heart Piece. Mapped by
+  item, not by order. Conflicting note: the forest agent said the alley NPC appears only after the Goron's Ruby; the
+  data shows that NPC (Npc_Hylia_021, Presence Get_StoneOfFire_IsCompleted_Exp) is the Bombchu SHOP owner
+  (Obj_Door_ShopBombChu CheckEventName Npc_Hylia_021_Shop_Child_RestrictedDoor); the alley host Npc_Hylia_067 has no
+  presence condition. No rule change.
+- Poe collector: the bottle branch fires when GhostShop_CouponNum EQUALS 400 before the sale's +100 (queries
+  242/243/244/252, +100 at 231 later on the same path), i.e. about the 5th Big Poe; the agent said 4. SoH's rule kept
+  (its default count is stricter). Point value of small poes not checked.
+- Scrub UI string: Enemy_Scrub_Business_Common 394 (HF) and 364 (DMC) SetGameDataString64 Shop_SelectItemName =
+  Obj_Heart_Piece. Not the give (the give is GetInEvent_NotTurn_2DShop with ActorName), but ActionGuide and the shop UI
+  read it; listed as edits (param "Value") to mirror how the game's shops set it. The stick/nut scrubs have no such set.
+  The round-4 bridge-scrub test did not need one.
+- DMC scrub: the Kakariko agent named "Enemy_Scrub_Business_Common event 326" - that is the flag set
+  (DeathMountain_Enemy_Scrub_Business_HeartPiece_01); the give is 155 (forest agent). Used 155 (+364). Mapped to SoH's
+  RC_DMC_DEKU_SCRUB (scrub check, vanilla bombs in SoH, RR_DMC_SCRUB, child) - not in nonchest_checks.json.
+- Rolling Goron (child): needs a bomb bag in the pouch (else talk only), and a Medium bag without ever getting the Small
+  one gives nothing (10 ?IsGet.Item_BombBag_Small). Rule set: IsChild && SPEAK_GORON && CanUse(RG_BOMB_BAG) (the port's
+  CanUse(RG_BOMB_BAG) already requires the Goron's Bracelet). Gives through a bomb-bag-specific get animation
+  (GetInEvent_NotTurn_BombBag): untested with another item.
+- King Zora: the Zora shop gives a free Obj_Armor_Zora (Npc_Zora_011_Shop_Adult 64) once King Zora's talk sees no
+  Armor_Adult_Zora in the pouch (Npc_Zora_KingZora_adult 139 -> 140 sets Npc_Zora_011_Shop_Adult_CanGetZoraArmor).
+  Not an edit of the check (that would give the new item twice); the patcher must neutralise 140 or accept a free tunic.
+- Mask of Truth (remake-only, included): one-time (Pay_usagi, then SubEvent_MaskSalesman Complete). But the port derives
+  HasItem(RG_MASK_OF_TRUTH) from the borrow chain when masks are not shuffled: shuffling this location needs the logic to
+  treat RG_MASK_OF_TRUTH as a placed item. Rule given = SoH's borrow chain (all four masks sold).
+- Potion-shop child bottle (remake-only): one-time, but EXCLUDED because the shop door is held shut during the bug
+  tutorial that follows (CheckRestrictedDoor: Started && !Cleared -> talk, no door), and the tutorial needs a bottle:
+  another item there can lock a bottle-less child in the shop. Left vanilla, so the logic should know the child gets a
+  free bottle in the Market (the agent said "may soft-lock or skip"; the door check decides it).
+- Rupee-only remake gifts (Kokiri 005 / 008 blue rupees, poe 900-point gold rupee): excluded as "not a real item" - a
+  judgment call; the Kokiri ones are one-time and their mechanism is confirmed in game, easy to add later.
+- Lab dive: one event for both ages; the mapping says Iron Boots do not count (DivingChallenge_SinkWithHeavyBoots) and
+  which scale reaches 9 m is untested. SoH's Golden Scale rule kept; SoH's trick region RR_LH_LAB_UNDERWATER (listed in
+  soh_region_also) may not work in the remake.
+- Zora's River Heart Pieces: which remake actor is "near open grotto" (pillar, -4,111,-34) and which "near domain"
+  (99,120,-62) is by position only (agent open question).
+- LW bridge scrub: also drawn in KokiriForest Child/Adult maps and in LostWood_Adult (same TalkEventName and flag);
+  whether adult can buy is untested (SoH: child only, rule kept).
+- HF scrub grotto: the remake asks a quiz before the sale (Secret / FirstTalk_Secret); knowledge only, rule kept.
+- HBA: thresholds are 750 and 1400 points in the remake (SoH names 1000/1500); requirements unchanged, rule kept.
+- Gold Skulltula wallets: Item_Wallet_Medium / _Large are separate, non-progressive actors; the patcher must pick by
+  count owned.
+- Dampe: the Heart Piece is a lottery outcome within the tour; events 179/224 (the dug-up model) are left showing a Heart
+  Piece.
+- Boss Heart Containers: loose pickups (confirmed working in game for Gohma's spot); each after-boss timeline casts its
+  own Obj_Heart_Container event model - check that no extra container appears.
+
+VERIFICATION FAILURES FIXED / AGENT DATA CORRECTED
+- 0 failures on the final table (every edit value and every loose Gyaml matched the game).
+- Corrected from the agents' files: DMC scrub give is 155, not 326 (326 = flag); Dampe's flow field
+  "Npc_Hylia_Dampe_001.110 (and Npc_Hylia_Dampe_001)" split into two edits; map paths without "Banc/" (LLR, scrub
+  notes) normalised to the romfs path; loose map lists rebuilt from a scan of all map files (they matched); the
+  forest agent's HF-scrub 394 note ("set to the new item") checked and kept as an edit; the bowling-NPC presence claim
+  and the 4-poe count corrected as above. A scan of all event flows for Obj_Heart_Piece / Obj_Heart_Container givers and of
+  all maps for Heart Piece / Heart Container actors found nothing beyond the listed checks (other hits: pot scene
+  Dm_Goron_0045, boss-rush Dream scrubs, the display/model events left alone).
+
+EXCLUDED (id: reason)
+  RC_SHEIK_IN_FOREST: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SHEIK_AT_TEMPLE: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SONG_FROM_IMPA: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SONG_FROM_MALON: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SONG_FROM_SARIA: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SONG_FROM_OCARINA_OF_TIME: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SHEIK_IN_CRATER: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SHEIK_IN_KAKARIKO: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SONG_FROM_ROYAL_FAMILYS_TOMB: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SONG_FROM_WINDMILL: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SHEIK_AT_COLOSSUS: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_SHEIK_IN_ICE_CAVERN: song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test
+  RC_LH_SCARECROWS_SONG: song (Scarecrow's Song, Npc_Bonooru 145): songs pending an in-game test
+  RC_HF_OCARINA_OF_TIME_ITEM: Ocarina of Time: pending (the Song of Time lesson right after needs an ocarina)
+  RC_LW_GIFT_FROM_SARIA: Saria's Fairy Ocarina: pending (AddOrRemovePouchContent + display; round-4 test)
+  RC_GIFT_FROM_RAURU: dungeon reward (Light Medallion), given by the reward cutscene: not shuffled in v1
+  RC_QUEEN_GOHMA: dungeon reward (Kokiri's Emerald), given by the reward cutscene: not shuffled in v1
+  RC_KING_DODONGO: dungeon reward (Goron's Ruby), given by the reward cutscene: not shuffled in v1
+  RC_BARINADE: dungeon reward (Zora's Sapphire), given by the reward cutscene: not shuffled in v1
+  RC_PHANTOM_GANON: dungeon reward (Forest Medallion), given by the reward cutscene: not shuffled in v1
+  RC_VOLVAGIA: dungeon reward (Fire Medallion), given by the reward cutscene: not shuffled in v1
+  RC_MORPHA: dungeon reward (Water Medallion), given by the reward cutscene: not shuffled in v1
+  RC_TWINROVA: dungeon reward (Spirit Medallion), given by the reward cutscene: not shuffled in v1
+  RC_BONGO_BONGO: dungeon reward (Shadow Medallion), given by the reward cutscene: not shuffled in v1
+  RC_GANON: Ganon: not an item location (none in the remake)
+  RC_TOT_MASTER_SWORD: Master Sword: story-bound (DoorOfTime), not shuffled
+  RC_TOT_LIGHT_ARROWS_CUTSCENE: Light Arrows: story cutscene (Dm_TimeTemple_0130), not shuffled in v1
+  RC_LH_SUN: Fire Arrows at the lake: cutscene-bound world actor (Obj_Arrow_Fire 4598657944866228526), not shuffled in v1
+  RC_HC_ZELDAS_LETTER: Zelda's Letter: story item, not shuffled in v1
+  RC_HC_MALON_EGG: Weird Egg: story item (hatch event), not shuffled in v1
+  RC_LH_UNDERWATER_ITEM: Ruto's Letter (Obj_Bottle_Letter world actor): story item, not shuffled in v1
+  RC_KAK_ANJU_AS_ADULT: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_KAK_TRADE_POCKET_CUCCO: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_LW_TRADE_COJIRO: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_KAK_TRADE_ODD_MUSHROOM: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_LW_TRADE_ODD_POTION: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_GV_TRADE_SAW: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_DMT_TRADE_BROKEN_SWORD: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_ZD_TRADE_PRESCRIPTION: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_LH_TRADE_FROG: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_DMT_TRADE_EYEDROPS: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_DMT_TRADE_CLAIM_CHECK: adult trade chain (SubEvent_GetSwordBigGoron steps, incl. Pocket Egg, Biggoron's sword / claim check): not shuffled in v1
+  RC_GC_MEDIGORON: Medigoron: a shop sale (Shop_Sword_Giant), not shuffled in v1
+  RC_ZR_MAGIC_BEAN_SALESMAN: bean salesman: repeatable shop sale
+  RC_WASTELAND_BOMBCHU_SALESMAN: carpet merchant: repeatable shop sale (Shop_BombchuBundle_01)
+  RC_KAK_GRANNYS_SHOP: Granny's potion shop: shop sale (bottle content), not shuffled in v1
+  RC_TH_FREED_CARPENTERS: Gerudo Membership Card: story-bound (guards' state), not shuffled in v1
+  RC_TH_1_TORCH_CARPENTER: Thieves' Hideout key (dropped by a defeated guard): Gerudo keys not shuffled in v1; room-to-carpenter mapping still open
+  RC_TH_STEEP_SLOPE_CARPENTER: Thieves' Hideout key (dropped by a defeated guard): Gerudo keys not shuffled in v1; room-to-carpenter mapping still open
+  RC_TH_DOUBLE_CELL_CARPENTER: Thieves' Hideout key (dropped by a defeated guard): Gerudo keys not shuffled in v1; room-to-carpenter mapping still open
+  RC_TH_DEAD_END_CARPENTER: Thieves' Hideout key (dropped by a defeated guard): Gerudo keys not shuffled in v1; room-to-carpenter mapping still open
+  RC_HC_GREAT_FAIRY_REWARD: Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)
+  RC_OGC_GREAT_FAIRY_REWARD: Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)
+  RC_DMT_GREAT_FAIRY_REWARD: Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)
+  RC_DMC_GREAT_FAIRY_REWARD: Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)
+  RC_ZF_GREAT_FAIRY_REWARD: Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)
+  RC_COLOSSUS_GREAT_FAIRY_REWARD: Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)
+  RC_GC_DARUNIAS_JOY: Darunia's joy (Goron's Bracelet): kept fixed by the fill's ordering rule (ORDERED_FIXED)
+  RC_GC_ROLLING_GORON_AS_ADULT: rolling Goron as adult (SageOfFire 177): the same event opens Darunia's door
+  RC_GC_POT_FREESTANDING_POH: Goron City pot Heart Piece: set in the pot's actor pack (ActorHolderParam Prize_HeartPiece), not a map actor or flow parameter
+  RC_SHADOW_TEMPLE_FREESTANDING_KEY: freestanding dungeon key: pending
+  RC_BOTTOM_OF_THE_WELL_FREESTANDING_KEY: freestanding dungeon key: pending
+  RC_KAK_100_GOLD_SKULLTULA_REWARD: 100-token reward repeats (250 gated only by GatheringTokenGold_ContinuousRewardTalk; 573 gives a gold rupee on every later talk)
+  RC_LH_HYRULE_LOACH: Hyrule Loach purple rupee (MiniGame_Fishing 655/656): no once-flag, would repeat
+  RC_HF_TEKTITE_GROTTO_FREESTANDING_POH: none: the remake's tektite grotto has no Heart Piece
+  RC_ICE_CAVERN_FREESTANDING_POH: none: the remake's Ice Cavern has no Heart Piece (compass room red ice freezes two rupee pots)
+  RC_DODONGOS_CAVERN_DEKU_SCRUB_LOBBY: none: no lobby scrub in the remake (its only scrub sells a variable, repeatable stock)
+  REMAKE_KOKIRI_SHOP_DEKU_SHIELD: Kokiri shop free Deku Shield (Npc_Kokiri_001_Shop_Child 109/110): a burnt-shield refill after Mido lets you pass, repeats (in-game round 4)
+  REMAKE_POTION_SHOP_BOTTLE: Market potion shop free empty bottle (Npc_Hylia_020_Shop_Child 162): one-time, but the bottle tutorial follows and the shop door is locked while it runs (CheckRestrictedDoor 46 ?Market_Item_Bottle_TutorialEvent_Started && 47 !Cleared -> talk 48, no door) until a bug is caught in a bottle (138, Insect_GetEvent 35 RemoveFromSelectedBottle): with another item and no bottle owned the child is shut in the shop. Left vanilla: note the logic gets a free child bottle in the Market
+  REMAKE_KOKIRI_005_RUPEE: Kokiri girl's weeding gift (Npc_Kokiri_005_Child 122, Obj_Rupee_Blue): rupee-only remake gift, left vanilla in v1 (mechanism confirmed in game, round 3)
+  REMAKE_KOKIRI_008_RUPEE: Kokiri boy's rock gift (Npc_Kokiri_008_Child 218, Obj_Rupee_Blue): rupee-only remake gift, left vanilla in v1 (mechanism confirmed in game, round 3)
+  REMAKE_POE_COLLECTOR_900: poe collector's 900-point reward (Npc_Hylia_048_BottleShop 320, Obj_Rupee_Gold): rupee-only remake reward, left vanilla in v1
+  REMAKE_ZORA_SHOP_TUNIC: Zora shop free Zora Tunic (Npc_Zora_011_Shop_Adult 64): fallback copy of King Zora's gift, not a check (see RC_ZD_KING_ZORA_THAWED notes)
+  REMAKE_LH_UNDERWATER_DEKU_NUT: underwater Deku Nut next to Ruto's letter (HyruleField_Child_Static 9807262312429560898): consumable pickup, not a check in v1
+  REMAKE_LH_UNDERWATER_DEKU_STICK: underwater Deku Stick next to Ruto's letter (HyruleField_Child_Static 8980892284071798868): consumable pickup, not a check in v1
+  REMAKE_DUNGEON_BUSINESS_SCRUBS: Business Scrubs in Dodongo's Cavern, Jabu-Jabu, Bottom of the Well and Shadow Temple: variable / repeatable shops, not one-time items
+  REMAKE_GV_RUNNING_MAN_RACE: Gerudo Valley running man race: repeatable rupee prizes

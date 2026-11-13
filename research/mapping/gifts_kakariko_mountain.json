@@ -1,0 +1,704 @@
+{
+ "group": "kakariko_mountain",
+ "checks": [
+  {
+   "rc": "RC_SHEIK_IN_CRATER",
+   "remake_vanilla_item": "Item_Melody_FireBolero",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Fire",
+   "event": 208,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    "Dm_MelodyGet_Fire event 39: call Dm_SY_Ocarina:LearningOcarinaPlayAutoForSeek (no params) silently adds the song of the current MelodyType (7 = Bolero, set by event 1 LearningOcarinaPlayExample MelodyType 7) through Dm_SY_Ocarina event 34 (Actor Item_Melody_FireBolero). Remove or redirect it, or the player still gets Bolero.",
+    "Dm_MelodyGet_Fire event 0 (entry C21, reached at the end of EntryPoint0): EventTriggerSetGameDataBool IsGet.Item_Melody_FireBolero = true, set by hand. Other flows read IsGet.* flags as 'has the item'.",
+    "Events 1/2: LearningOcarinaPlayExample / FollowExample MelodyType 7 (the lesson; the player plays Bolero once).",
+    "Sheik's harp model events (Dm_Item_Sheik_Harp 183, 222-229) are cosmetic."
+   ],
+   "trigger": "Adult in Death Mountain Crater: EventSetting row SageOfFire_MelodyGetFire (flow SageOfFire entry SageOfFire_MelodyGetFire = event 275 -> event 26 EventTransition Dm_MelodyGet_Fire), started by EventRequestActor 13416397632384752550 at (-15.3,116.6,-12.3) in DeathMountainCrater_Adult_Static (centre of the crater, near the warp pad and the Fire Temple bridge). Flag IsGet.Item_Melody_FireBolero.",
+   "logic_note": "SoH: IsAdult in RR_DMC_CENTRAL. In the remake Bolero is step MeetSheik of challenge SageOfFire (steps Ready, StopDaruniaJr, TalkDaruniaJr, MoveStatue, EnterCrater, MeetSheik, EnterTemple, ...). No flow advances EnterCrater/MeetSheik, so whether the trigger needs the earlier steps (stopping adult Link the Goron, moving Darunia's statue) is not visible in the data. Possible new requirement: in-game check.",
+   "risk": "Double give: the lesson (event 39) adds Bolero whatever event 208 says. IsGet.Item_Melody_FireBolero is set explicitly (event 0).",
+   "confidence": "high",
+   "evidence": "EventSetting row Dm_MelodyGet_Fire -> flow Dm_MelodyGet_Fire. EntryPoint0 path: 210, 18(C01), 19, 59, 60, 61(C05 with event 1 MelodyType 7), 108(C06 with event 2), 111 fork[123->39, 20], 121, 203, 208 GetPouchContentByActorName Item_Melody_FireBolero, then ... 66 call C21 -> event 0. SageOfFire event 26 is the only EventTransition to Dm_MelodyGet_Fire. Dm_SY_Ocarina:LearningOcarinaPlayAuto (entry 39 -> PlayAuto_MelodyGet -> event 18 EventQueryMelodyTypeForNormal -> events 26-31/77) and LearningOcarinaPlayAutoForSeek (entry 25 -> event 33 -> events 32/34-38) each run PouchSystemActor.EventTriggerAddOrRemovePouchContent with the song of the current MelodyType (IsGetEvent false, silent). So the lesson itself adds the vanilla song before GetPouchContentByActorName shows the get window. LearningOcarinaPlayExample / LearningOcarinaFollowExample only teach (no add)."
+  },
+  {
+   "rc": "RC_SHEIK_IN_KAKARIKO",
+   "remake_vanilla_item": "Item_Melody_ShadowNocturne",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Shadow",
+   "event": 15,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    "Dm_MelodyGet_Shadow event 17: call Dm_SY_Ocarina:LearningOcarinaPlayAutoForSeek -> silent add of MelodyType 10 = Item_Melody_ShadowNocturne (Dm_SY_Ocarina event 37). Remove or redirect.",
+    "Events 7/8: LearningOcarinaPlayExample / FollowExample MelodyType 10 (lesson).",
+    "Events 132/133 (entries C14/C15): switch on Armor_Adult_GlassTruth (Lens): cutscene variant, not a give.",
+    "Dm_SY_BancChangeArrive after event 308: 318 SubEvent_GetSwordBigGoron:SubEvent_TimerCheck_Demo_DeleteItem, 312 IsExistInPouch Armor_Adult_GlassTruth -> SageOfShadow step GotGlassTruth (313) or GoToDungeon (306)."
+   ],
+   "trigger": "Adult arrives in Kakariko when the burning event is due: EventSetting row KakarikoVillage_MelodyGet_Shadow (flow Dm_SY_BancChangeArrive entry KakarikoVillage_MelodyGet_Shadow -> 326 -> 308 EventTransition Dm_MelodyGet_Shadow). Kakariko entrance actors (e.g. Graveyard_Adult_Static FieldAndDungeonEntranceEventRequestActor 14053432579658385329) carry AddEventFlag SageOfShadow_BurningEventShouldPlayed / AddEventName KakarikoVillage_Arrive (-> Dm_Kakariko_0030 burning scene).",
+   "logic_note": "SoH: adult + Forest, Fire and Water medallions. The remake's condition is GameData SageOfShadow_BurningEventShouldPlayed; GameDataList stores hashed names, so its formula was not read. Probably the same medallions: in-game check.",
+   "risk": "Double give via event 17. The scene also advances challenge SageOfShadow (GoToDungeon / GotGlassTruth depending on owning the Lens).",
+   "confidence": "high",
+   "evidence": "Dm_MelodyGet_Shadow events 7, 8 (MelodyType 10), 15 GetPouchContentByActorName Item_Melody_ShadowNocturne, 17 LearningOcarinaPlayAutoForSeek, all reachable from EntryPoint0. Only caller: Dm_SY_BancChangeArrive event 308. Dm_SY_Ocarina:LearningOcarinaPlayAuto (entry 39 -> PlayAuto_MelodyGet -> event 18 EventQueryMelodyTypeForNormal -> events 26-31/77) and LearningOcarinaPlayAutoForSeek (entry 25 -> event 33 -> events 32/34-38) each run PouchSystemActor.EventTriggerAddOrRemovePouchContent with the song of the current MelodyType (IsGetEvent false, silent). So the lesson itself adds the vanilla song before GetPouchContentByActorName shows the get window. LearningOcarinaPlayExample / LearningOcarinaFollowExample only teach (no add)."
+  },
+  {
+   "rc": "RC_SONG_FROM_ROYAL_FAMILYS_TOMB",
+   "remake_vanilla_item": "Item_Melody_SunSong",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Sun_03",
+   "event": 30,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    "Flow Dm_MelodyGet_Sun (the lesson scene, played first by GimmickFlow_RoyalFamilyTomb event 3): events 31 and 70 call Dm_SY_Ocarina:LearningOcarinaPlayAuto, which silently adds MelodyType 3 = Item_Melody_SunSong (Dm_SY_Ocarina event 29). Remove them or redirect to Dm_SY_Ocarina:PlayAuto_MelodyGet (the same demo without the add).",
+    "Dm_MelodyGet_Sun events 34/140 PlayExample and 30/69 FollowExample MelodyType 3: lesson only.",
+    "GimmickFlow_RoyalFamilyTomb event 12 sets RoyalFamilyTomb_MelodyGet_Clear (event 11 tests it: the scene plays once) and event 18 completes challenge SubEvent_GetMelodySun.",
+    "Dm_MelodyGet_Sun_01/04/05/06/07/08/09/10: age/time variants played before Sun_03 (GimmickFlow_RoyalFamilyTomb events 29, 36, 38, 39, 41, 42, 44, 45 then SetTime 51-58 -> 30); none gives the song."
+   ],
+   "trigger": "Read the wall in the Royal Family tomb (EventSetting row Obj_Graveyard_Monument_A_02 -> GimmickFlow_RoyalFamilyTomb event 11): RoyalFamilyTomb_MelodyGet_Clear false -> CheckStone_To_MelodyGet_Sun -> 3 Dm_MelodyGet_Sun (lesson) -> variant -> 30 Dm_MelodyGet_Sun_03 (give). Both ages.",
+   "logic_note": "Same as SoH (either age at the back wall). The tomb's first room has EventRequestActor RoyalFamilyTomb_00_EnemyAnnihilation_Clear (kill-all room), consistent with SoH's CanUseProjectile || CanJumpslash.",
+   "risk": "Double give through the lesson (Dm_MelodyGet_Sun 31/70).",
+   "confidence": "high",
+   "evidence": "EventSetting row Dm_MelodyGet_Sun_03 -> flow Dm_MelodyGet_Sun_03; its only give is event 30. GimmickFlow_RoyalFamilyTomb event 30 EventTransition Dm_MelodyGet_Sun_03 after event 3 EventTransition Dm_MelodyGet_Sun. Dm_SY_Ocarina:LearningOcarinaPlayAuto (entry 39 -> PlayAuto_MelodyGet -> event 18 EventQueryMelodyTypeForNormal -> events 26-31/77) and LearningOcarinaPlayAutoForSeek (entry 25 -> event 33 -> events 32/34-38) each run PouchSystemActor.EventTriggerAddOrRemovePouchContent with the song of the current MelodyType (IsGetEvent false, silent). So the lesson itself adds the vanilla song before GetPouchContentByActorName shows the get window. LearningOcarinaPlayExample / LearningOcarinaFollowExample only teach (no add)."
+  },
+  {
+   "rc": "RC_SONG_FROM_WINDMILL",
+   "remake_vanilla_item": "Item_Melody_StormSong",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Storm",
+   "event": 21,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    "Dm_MelodyGet_Storm event 9: call Dm_SY_Ocarina:LearningOcarinaPlayAuto -> silent add of MelodyType 5 = Item_Melody_StormSong (Dm_SY_Ocarina event 31). Remove or redirect to PlayAuto_MelodyGet.",
+    "Events 4/6: LearningOcarinaPlayExample / FollowExample MelodyType 5 (lesson).",
+    "Npc_Hylia_009_Adult events 51 and 54 query IsGet.Item_Melody_StormSong: false -> Dm_MelodyGet_Storm again. With another item the flag never turns true and the man would teach and give again on every ocarina play: set IsGet.Item_Melody_StormSong (or a new once-flag) in the patched flow.",
+    "Npc_Hylia_009_Child events 18/102 and Npc_Hylia_007_Adult 169/172/175 switch on owning Item_Melody_StormSong (child drains the well, Dm_Kakariko_0050; dialogue). They read the real song, so they work when Storms comes from elsewhere."
+   ],
+   "trigger": "Adult plays the ocarina near the windmill man (Npc_Hylia_009_Adult, hash 8120347729850789739 / 6970904047551049257, (1.2,105.1,51.3)): EventSetting rows PlayStormSong_Adult / KakarikoVillage_Hylia_009_PlaySormSong_Back_Adult -> Npc_Hylia_009_Adult 51/54 (IsGet false) -> 126 -> 55 EventTransition Dm_MelodyGet_Storm. OcarinaPoint_Kakariko_WindmillHouse_Adult 2263965204950105743 at (1.5,107.6,43.9).",
+   "logic_note": "Same as SoH (adult with an ocarina).",
+   "risk": "Double give via event 9; repeat-gift risk because the NPC decides by IsGet.Item_Melody_StormSong.",
+   "confidence": "high",
+   "evidence": "Dm_MelodyGet_Storm events 4, 6, 9, 21 reachable from EntryPoint0; Npc_Hylia_009_Adult event 55 is the only EventTransition to it. Dm_SY_Ocarina:LearningOcarinaPlayAuto (entry 39 -> PlayAuto_MelodyGet -> event 18 EventQueryMelodyTypeForNormal -> events 26-31/77) and LearningOcarinaPlayAutoForSeek (entry 25 -> event 33 -> events 32/34-38) each run PouchSystemActor.EventTriggerAddOrRemovePouchContent with the song of the current MelodyType (IsGetEvent false, silent). So the lesson itself adds the vanilla song before GetPouchContentByActorName shows the get window. LearningOcarinaPlayExample / LearningOcarinaFollowExample only teach (no add)."
+  },
+  {
+   "rc": "RC_KAK_10_GOLD_SKULLTULA_REWARD",
+   "remake_vanilla_item": "Item_Wallet_Medium",
+   "kind": "flow_param",
+   "flow": "GatheringTokenGold",
+   "event": 245,
+   "param": "TakenRewardActor",
+   "what": "call GatheringTokenGold:TakenReward_Common_Event (-> Dm_SY_GetInEvent:GetInEvent_NotTurn)",
+   "also": [
+    "Each reward event is a self-call GatheringTokenGold:TakenReward_Common_Event (entry 244) whose TakenRewardActor string goes to Dm_SY_GetInEvent:GetInEvent_NotTurn (event 532, Npc_EventStarter) or GetInEvent_NotTurn_PosCam_InvNPC (event 578, Npc_Hylia_024, after the father is cured, GatheringTokenGold_Father_BacktoHuman). Rewriting the caller's TakenRewardActor changes both branches. No .110 twin for GatheringTokenGold. Rewards are handed out in sequence by TokenCheck_Reward / TokenCheck_AfterReward10..40 (token count PouchData.Item_Token_Gold.StockNum >= 10/20/30/40/50/100 and the GetRewardNN flags)."
+   ],
+   "trigger": "Talk to a cursed child (Npc_SkullChild_00x) / the father in the House of Skulltula with N tokens; either age (HoS NPCs in KakarikoVillage child, adult and adult-alternative maps). Flag KakarikoVillage_GatheringTokenGold_GetReward10 (set by event 145).",
+   "logic_note": "Same as SoH (10 tokens, House of Skulltula, both ages).",
+   "risk": "Low: generic give. The remake's wallets are separate actors, not progressive: Item_Wallet_Small 200, Item_Wallet_Medium 500, Item_Wallet_Large 1000 (PouchActorInfo AfterExpansionMaxNum). The vanilla rewards here are Medium then Large; giving Large before Medium (or Medium after Large) may lower the cap. The randomizer must pick the wallet actor by count owned.",
+   "confidence": "high",
+   "evidence": "GatheringTokenGold events 245-249 TakenRewardActor Item_Wallet_Medium / Item_AgonyStone / Item_Wallet_Large / Item_BombchuBundle_Large / Obj_Heart_Piece, each followed by the GetRewardNN flag (145, 101, 104, 109, 107). Token checks: events 143/94/95/96/93 (EventQueryIsGameDataInt PouchData.Item_Token_Gold.StockNum 10/20/30/40/50)."
+  },
+  {
+   "rc": "RC_KAK_20_GOLD_SKULLTULA_REWARD",
+   "remake_vanilla_item": "Item_AgonyStone",
+   "kind": "flow_param",
+   "flow": "GatheringTokenGold",
+   "event": 246,
+   "param": "TakenRewardActor",
+   "what": "call GatheringTokenGold:TakenReward_Common_Event (-> Dm_SY_GetInEvent:GetInEvent_NotTurn)",
+   "also": [
+    "Each reward event is a self-call GatheringTokenGold:TakenReward_Common_Event (entry 244) whose TakenRewardActor string goes to Dm_SY_GetInEvent:GetInEvent_NotTurn (event 532, Npc_EventStarter) or GetInEvent_NotTurn_PosCam_InvNPC (event 578, Npc_Hylia_024, after the father is cured, GatheringTokenGold_Father_BacktoHuman). Rewriting the caller's TakenRewardActor changes both branches. No .110 twin for GatheringTokenGold. Rewards are handed out in sequence by TokenCheck_Reward / TokenCheck_AfterReward10..40 (token count PouchData.Item_Token_Gold.StockNum >= 10/20/30/40/50/100 and the GetRewardNN flags).",
+    "GatheringTokenGold events 230/233/235 + 229: after reward 20 an ActionGuide screen about the Stone of Agony (type 54) opens once (flag KakarikoVillage_GatheringTokenGold_ActionGuide_AgonyStone_True): cosmetic if another item is given."
+   ],
+   "trigger": "Talk to a cursed child (Npc_SkullChild_00x) / the father in the House of Skulltula with N tokens; either age (HoS NPCs in KakarikoVillage child, adult and adult-alternative maps). Flag KakarikoVillage_GatheringTokenGold_GetReward20 (event 101).",
+   "logic_note": "Same as SoH (20 tokens, House of Skulltula, both ages).",
+   "risk": "Low: generic give.",
+   "confidence": "high",
+   "evidence": "GatheringTokenGold events 245-249 TakenRewardActor Item_Wallet_Medium / Item_AgonyStone / Item_Wallet_Large / Item_BombchuBundle_Large / Obj_Heart_Piece, each followed by the GetRewardNN flag (145, 101, 104, 109, 107). Token checks: events 143/94/95/96/93 (EventQueryIsGameDataInt PouchData.Item_Token_Gold.StockNum 10/20/30/40/50)."
+  },
+  {
+   "rc": "RC_KAK_30_GOLD_SKULLTULA_REWARD",
+   "remake_vanilla_item": "Item_Wallet_Large",
+   "kind": "flow_param",
+   "flow": "GatheringTokenGold",
+   "event": 247,
+   "param": "TakenRewardActor",
+   "what": "call GatheringTokenGold:TakenReward_Common_Event (-> Dm_SY_GetInEvent:GetInEvent_NotTurn)",
+   "also": [
+    "Each reward event is a self-call GatheringTokenGold:TakenReward_Common_Event (entry 244) whose TakenRewardActor string goes to Dm_SY_GetInEvent:GetInEvent_NotTurn (event 532, Npc_EventStarter) or GetInEvent_NotTurn_PosCam_InvNPC (event 578, Npc_Hylia_024, after the father is cured, GatheringTokenGold_Father_BacktoHuman). Rewriting the caller's TakenRewardActor changes both branches. No .110 twin for GatheringTokenGold. Rewards are handed out in sequence by TokenCheck_Reward / TokenCheck_AfterReward10..40 (token count PouchData.Item_Token_Gold.StockNum >= 10/20/30/40/50/100 and the GetRewardNN flags)."
+   ],
+   "trigger": "Talk to a cursed child (Npc_SkullChild_00x) / the father in the House of Skulltula with N tokens; either age (HoS NPCs in KakarikoVillage child, adult and adult-alternative maps). Flag KakarikoVillage_GatheringTokenGold_GetReward30 (event 104).",
+   "logic_note": "Same as SoH (30 tokens, House of Skulltula, both ages).",
+   "risk": "Low: generic give. The remake's wallets are separate actors, not progressive: Item_Wallet_Small 200, Item_Wallet_Medium 500, Item_Wallet_Large 1000 (PouchActorInfo AfterExpansionMaxNum). The vanilla rewards here are Medium then Large; giving Large before Medium (or Medium after Large) may lower the cap. The randomizer must pick the wallet actor by count owned.",
+   "confidence": "high",
+   "evidence": "GatheringTokenGold events 245-249 TakenRewardActor Item_Wallet_Medium / Item_AgonyStone / Item_Wallet_Large / Item_BombchuBundle_Large / Obj_Heart_Piece, each followed by the GetRewardNN flag (145, 101, 104, 109, 107). Token checks: events 143/94/95/96/93 (EventQueryIsGameDataInt PouchData.Item_Token_Gold.StockNum 10/20/30/40/50)."
+  },
+  {
+   "rc": "RC_KAK_40_GOLD_SKULLTULA_REWARD",
+   "remake_vanilla_item": "Item_BombchuBundle_Large",
+   "kind": "flow_param",
+   "flow": "GatheringTokenGold",
+   "event": 248,
+   "param": "TakenRewardActor",
+   "what": "call GatheringTokenGold:TakenReward_Common_Event (-> Dm_SY_GetInEvent:GetInEvent_NotTurn)",
+   "also": [
+    "Each reward event is a self-call GatheringTokenGold:TakenReward_Common_Event (entry 244) whose TakenRewardActor string goes to Dm_SY_GetInEvent:GetInEvent_NotTurn (event 532, Npc_EventStarter) or GetInEvent_NotTurn_PosCam_InvNPC (event 578, Npc_Hylia_024, after the father is cured, GatheringTokenGold_Father_BacktoHuman). Rewriting the caller's TakenRewardActor changes both branches. No .110 twin for GatheringTokenGold. Rewards are handed out in sequence by TokenCheck_Reward / TokenCheck_AfterReward10..40 (token count PouchData.Item_Token_Gold.StockNum >= 10/20/30/40/50/100 and the GetRewardNN flags)."
+   ],
+   "trigger": "Talk to a cursed child (Npc_SkullChild_00x) / the father in the House of Skulltula with N tokens; either age (HoS NPCs in KakarikoVillage child, adult and adult-alternative maps). Flag KakarikoVillage_GatheringTokenGold_GetReward40 (event 109).",
+   "logic_note": "Same as SoH (40 tokens, House of Skulltula, both ages).",
+   "risk": "Low: generic give. Item_BombchuBundle_Large is 20 bombchus in the remake (BundleActorNum 20); SoH's vanilla is Bombchus (10).",
+   "confidence": "high",
+   "evidence": "GatheringTokenGold events 245-249 TakenRewardActor Item_Wallet_Medium / Item_AgonyStone / Item_Wallet_Large / Item_BombchuBundle_Large / Obj_Heart_Piece, each followed by the GetRewardNN flag (145, 101, 104, 109, 107). Token checks: events 143/94/95/96/93 (EventQueryIsGameDataInt PouchData.Item_Token_Gold.StockNum 10/20/30/40/50)."
+  },
+  {
+   "rc": "RC_KAK_50_GOLD_SKULLTULA_REWARD",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "GatheringTokenGold",
+   "event": 249,
+   "param": "TakenRewardActor",
+   "what": "call GatheringTokenGold:TakenReward_Common_Event (-> Dm_SY_GetInEvent:GetInEvent_NotTurn)",
+   "also": [
+    "Each reward event is a self-call GatheringTokenGold:TakenReward_Common_Event (entry 244) whose TakenRewardActor string goes to Dm_SY_GetInEvent:GetInEvent_NotTurn (event 532, Npc_EventStarter) or GetInEvent_NotTurn_PosCam_InvNPC (event 578, Npc_Hylia_024, after the father is cured, GatheringTokenGold_Father_BacktoHuman). Rewriting the caller's TakenRewardActor changes both branches. No .110 twin for GatheringTokenGold. Rewards are handed out in sequence by TokenCheck_Reward / TokenCheck_AfterReward10..40 (token count PouchData.Item_Token_Gold.StockNum >= 10/20/30/40/50/100 and the GetRewardNN flags).",
+    "HeartPieceAnchor 12012336414699946951 (GameDataPath KakarikoVillage_IsAfterSave_Npc_Hylia_025) shows a heart-piece map marker until event 148 sets the flag: cosmetic."
+   ],
+   "trigger": "Talk to a cursed child (Npc_SkullChild_00x) / the father in the House of Skulltula with N tokens; either age (HoS NPCs in KakarikoVillage child, adult and adult-alternative maps). Flag KakarikoVillage_GatheringTokenGold_GetReward50 (event 107); map marker flag KakarikoVillage_IsAfterSave_Npc_Hylia_025 (event 148, HeartPieceAnchor 12012336414699946951).",
+   "logic_note": "Same as SoH (50 tokens, House of Skulltula, both ages).",
+   "risk": "Low: generic give.",
+   "confidence": "high",
+   "evidence": "GatheringTokenGold events 245-249 TakenRewardActor Item_Wallet_Medium / Item_AgonyStone / Item_Wallet_Large / Item_BombchuBundle_Large / Obj_Heart_Piece, each followed by the GetRewardNN flag (145, 101, 104, 109, 107). Token checks: events 143/94/95/96/93 (EventQueryIsGameDataInt PouchData.Item_Token_Gold.StockNum 10/20/30/40/50)."
+  },
+  {
+   "rc": "RC_KAK_100_GOLD_SKULLTULA_REWARD",
+   "remake_vanilla_item": "Obj_Rupee_Gold",
+   "kind": "flow_param",
+   "flow": "GatheringTokenGold",
+   "event": 250,
+   "param": "TakenRewardActor",
+   "what": "call GatheringTokenGold:TakenReward_Common_Event_200Rupee (-> GetInEvent_NotTurn)",
+   "also": [
+    "Each reward event is a self-call GatheringTokenGold:TakenReward_Common_Event (entry 244) whose TakenRewardActor string goes to Dm_SY_GetInEvent:GetInEvent_NotTurn (event 532, Npc_EventStarter) or GetInEvent_NotTurn_PosCam_InvNPC (event 578, Npc_Hylia_024, after the father is cured, GatheringTokenGold_Father_BacktoHuman). Rewriting the caller's TakenRewardActor changes both branches. No .110 twin for GatheringTokenGold. Rewards are handed out in sequence by TokenCheck_Reward / TokenCheck_AfterReward10..40 (token count PouchData.Item_Token_Gold.StockNum >= 10/20/30/40/50/100 and the GetRewardNN flags).",
+    "GatheringTokenGold event 573 (entry FinishTalk_SkullDad): call Dm_SY_GetInEvent:GetInEvent_NotTurn ActorName Obj_Rupee_Gold: the repeat gift every later talk after completion (N64's endless huge rupee). Leave it as Obj_Rupee_Gold; changing it would hand the new item out on every talk.",
+    "Reward100 (entry 163) cures the father (event 161 GatheringTokenGold_Father_BacktoHuman, 151 challenge GatheringTokenGold Complete) and then runs TokenCheck_Reward, which reaches 250 through events 177/174 (tokens >= 100)."
+   ],
+   "trigger": "Talk to a cursed child (Npc_SkullChild_00x) / the father in the House of Skulltula with N tokens; either age (HoS NPCs in KakarikoVillage child, adult and adult-alternative maps). 100 tokens; the father is cured in the same scene.",
+   "logic_note": "Same as SoH.",
+   "risk": "The repeat gift (event 573) must stay a rupee. Obj_Rupee_Gold = 200 rupees (BundleActorNum 200) = SoH's huge rupee.",
+   "confidence": "high",
+   "evidence": "GatheringTokenGold event 250 TakenRewardActor Obj_Rupee_Gold in TokenCheck_AfterReward40/TokenCheck_Reward; event 573 in FinishTalk_SkullDad."
+  },
+  {
+   "rc": "RC_KAK_MAN_ON_ROOF",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_001_Adult",
+   "event": 14,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent",
+   "also": [
+    "Npc_Hylia_001_Adult event 5 sets Npc_Hylia_001_IsGetHeartPiece = true just before the give; events 1/16/33/37/38/44/45/47/49 read it (dialogue, no repeat).",
+    "The child man (Npc_Hylia_001_Child, event 62) calls Npc_Hylia_001_Adult:Get_HeartPiece (entry 2 -> 5 -> 14), so one patch covers both ages.",
+    "HeartPieceAnchor 1416092057268113387 (GameDataPath Npc_Hylia_001_IsGetHeartPiece) at (-36.1,107.5,29.0): map marker, cosmetic."
+   ],
+   "trigger": "Talk to the man on the roof (Npc_Hylia_001_Adult 12776988828576055281 / 2389527966922047158 at (-37.0,107.9,29.1); Npc_Hylia_001_Child 7501967565062429996 at (-36.1,108.0,30.2)), y~108 = on the roof. Child flow gives it only when Npc_Hylia_001_IsOnTheRoof is true (set by no flow; probably his AI schedule). Flag Npc_Hylia_001_IsGetHeartPiece.",
+   "logic_note": "Same as SoH (rooftop, either age).",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "Npc_Hylia_001_Adult Talk path 4 (IsOnTheRoof) -> 22 -> 1 (IsGetHeartPiece false) -> 2 -> 5 -> 14 GetInEvent Obj_Heart_Piece. EventSetting rows Npc_Hylia_001_Adult_D_T / Npc_Hylia_001_Child_D_T."
+  },
+  {
+   "rc": "RC_KAK_SHOOTING_GALLERY_REWARD",
+   "remake_vanilla_item": "Item_Quiver_Medium (Item_Quiver_Large if a Medium quiver is already owned)",
+   "kind": "flow_param",
+   "flow": "MiniGame_HitTarget",
+   "event": 294,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    "MiniGame_HitTarget event 293 (same call, ReveiveItem Item_Quiver_Large): chosen by event 100 EventQueryIsExistInPouch Item_Quiver_Medium (case 0 = owned -> 293, case 1 -> 294). Both must get the new item.",
+    "Event 99 / 101: flag MiniGame_HitTarget_Kakariko_Get_Quiver (checked first; set after the give). Later wins: 358 (MiniGame_HitTarget_IsHardMode) -> 295 Obj_Rupee_Purple or 552 GetRupy_HitTarget 70: repeat prizes, leave them.",
+    "Same flow serves the child gallery in the Market: Child_Reward (events 39, 41, 290-292, bullet bags) is chosen by event 96 EventQueryPlayerIsChild; the Kakariko gallery exists only in the adult Kakariko maps, so Adult_Reward = this check.",
+    "Event 227 (Ready talk) switch on Weapon_Range_Bow: the adult game needs the bow."
+   ],
+   "trigger": "Adult wins the Kakariko shooting gallery (Npc_Hylia_019_Shop_Child 13971867059412656374 / 10383083684595623093 and MiniGame_HitTarget_Manager in KakarikoVillage_Adult_Static / _Alternative_Static) with the required score (event 27 EventQueryGameDataIntBranch MiniGame_Score). Flag MiniGame_HitTarget_Kakariko_Get_Quiver.",
+   "logic_note": "Same as SoH (adult, bow, rupees to play: event 11 HasRuppe 30 / event 6 HasRuppe 10).",
+   "risk": "Quivers are separate actors (Medium 40, Large 50 arrows): progressive choice is made by the flow. Replace both 293 and 294.",
+   "confidence": "high",
+   "evidence": "Adult_Reward entry 99: 99 Get_Quiver flag -> 100 IsExistInPouch Item_Quiver_Medium -> 293 Large / 294 Medium -> 101 set flag. 96 IsChild -> 97 Child_Reward / 98 Adult_Reward."
+  },
+  {
+   "rc": "RC_KAK_ANJU_AS_CHILD",
+   "remake_vanilla_item": "Item_Bottle",
+   "kind": "flow_param",
+   "flow": "Minigame_CatchCucco",
+   "event": 124,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    "Event 45 MiniGame_CatchCucco_IsCompleted: false -> 124 (bottle), true -> 125 Obj_Rupee_Red (repeat prize; leave it). Event 64 sets the flag; 44 sets Npc_Hylia_049_Child_IsCompleted; 66 stores CatchCucco_ElapsedTime (the game can be replayed)."
+   ],
+   "trigger": "Child brings all cuccos back to Anju's pen (flow Minigame_CatchCucco, EventSetting rows Captured_/Ready_Npc_Hylia_049_*; Npc_Hylia_049_Child 12103214172692277280 at (-72.1,99.3,73.2), KakarikoVillage_Child_Static). Flag MiniGame_CatchCucco_IsCompleted.",
+   "logic_note": "SoH: child, day, power bracelet, CanBreakCrates (cucco behind crate). Requirements for individual cuccos not checked in the remake data.",
+   "risk": "Low (generic give).",
+   "confidence": "high",
+   "evidence": "Minigame_CatchCucco RewardFlow: 45 -> 124 HandOver Item_Bottle / 125 Obj_Rupee_Red."
+  },
+  {
+   "rc": "RC_KAK_ANJU_AS_ADULT",
+   "remake_vanilla_item": "Item_PocketEgg",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_049_Adult",
+   "event": 223,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    "Event 14 right after: challenge SubEvent_GetSwordBigGoron step StartSubEvent (starts the trade quest and the egg-hatch wait).",
+    "SubEvent_GetSwordBigGoron entry EggHatch_PocketEgg: events 0/54 remove Item_PocketEgg and 55 GetPouchContentByActorName / 132 GetInEvent_EggHatche give Item_PocketCucco when the egg hatches (step WaitEggHatch -> EggHatched). If the egg is no longer given here, the hatch may still give a Pocket Cucco or never trigger: in-game check.",
+    "Remake trade quest = challenge SubEvent_GetSwordBigGoron (RSDB Challenge steps Ready, StartSubEvent, WaitEggHatch, EggHatched, Step01, Step01_01, Step02, Step03, Step03_01-03, Step04, Step05, Step05_01, Step06, Step06_01-03, Step07, Step08, Step08_01, Step09, Step09_01, Step10, Step11, Complete). Each trade NPC's show-item event is an EventSetting row named after a step (SubEvent_GetSwordBigGoron_Step04 = Granny, ..._Step07/10/11 = Biggoron) and NPC talk branches test SubEvent_GetSwordBigGoron_IsAfter_StepXX_Exp; the gift event advances the step."
+   ],
+   "trigger": "Adult talks to Anju (Npc_Hylia_049_Adult 12017054652689871297 / 3049509132581664510 at (-70.6,99.3,74.6)) before the trade quest starts: entries Before_StartSubEvent_Talk / SubEvent_GetSwordBigGoron_Start / Talk_WithNPC (EventSetting rows Npc_Hylia_049_Adult_C0_T, _C1_GT) -> choice yes -> 223. The default Talk row (D_T) never reaches 223.",
+   "logic_note": "SoH lists vanilla RG_CLAIM_CHECK for this rc but the N64/remake gift is the Pocket Egg. SoH: adult, day. The remake gates it by event-setting condition C0/C1 (not readable here) and her AI schedule.",
+   "risk": "Starts the trade challenge (step StartSubEvent) and the egg-hatch timer whatever item is given.",
+   "confidence": "high",
+   "evidence": "Npc_Hylia_049_Adult path Before_StartSubEvent_Talk: 130 WithHylia005, 61 Greetings, 8, 63, 9, 10 (choice), 11, 198, 12, 223 HandOver Item_PocketEgg -> 85 -> 14 StartSubEvent."
+  },
+  {
+   "rc": "RC_KAK_TRADE_POCKET_CUCCO",
+   "remake_vanilla_item": "Item_CojiroCucco",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_049_Adult",
+   "event": 194,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    "Event 36 right after removes Item_PocketCucco (Num -1); event 35 advances SubEvent_GetSwordBigGoron to Step03.",
+    "Reached from the show-item row Npc_Hylia_049_Adult_ShowPocketCucco (entry 276: 224 ShowItem AssignableItem 35) and from talk entries IsAfter_StartSubEvent_Talk / SubEvent_GetSwordBigGoron_UntilStep03_Talk / _UntilStep03_ShowItemTalk / IsAfter_KakarikoBurned_Talk (all through 191 -> 33 -> 194).",
+    "Remake trade quest = challenge SubEvent_GetSwordBigGoron (RSDB Challenge steps Ready, StartSubEvent, WaitEggHatch, EggHatched, Step01, Step01_01, Step02, Step03, Step03_01-03, Step04, Step05, Step05_01, Step06, Step06_01-03, Step07, Step08, Step08_01, Step09, Step09_01, Step10, Step11, Complete). Each trade NPC's show-item event is an EventSetting row named after a step (SubEvent_GetSwordBigGoron_Step04 = Granny, ..._Step07/10/11 = Biggoron) and NPC talk branches test SubEvent_GetSwordBigGoron_IsAfter_StepXX_Exp; the gift event advances the step."
+   ],
+   "trigger": "Adult shows / gives the Pocket Cucco to Anju after Talon was woken: tests KakarikoVillage_CrowedCucco_Npc_Hylia_Talon_Adult (event 23), IsAfter_Step01_01_Exp (29) and IsAfter_Step02_Exp (133).",
+   "logic_note": "Same as SoH (Pocket Cucco + LOGIC_WAKE_UP_ADULT_TALON), but in the remake the steps must have happened in order (see trade note).",
+   "risk": "Item removal of the Pocket Cucco follows the give (fine). The next trade (Grog, Npc_Hylia_017_Adult in LostWood) waits on step Step03.",
+   "confidence": "high",
+   "evidence": "Npc_Hylia_049_Adult path from row Npc_Hylia_049_Adult_ShowPocketCucco: 276, 39, 224, 151, 309, 310, 23, 29, 30, ... 191, 33, 194 -> 36 -> 37 -> 35 Step03."
+  },
+  {
+   "rc": "RC_KAK_TRADE_ODD_MUSHROOM",
+   "remake_vanilla_item": "Item_OddPowder",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_053_Adult",
+   "event": 127,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    "Event 104 then: IsExistInPouch Item_OddMushroom -> 36 remove it (Num -1) -> 34 -> 35 challenge step Step05.",
+    "Event 109: call SubEvent_GetSwordBigGoron:BigGoronTimerStop (stops the mushroom spoil timer).",
+    "ShowItem flow events 32/33/41 (Item_EyeDrop, Item_Prescription, Item_OddPowder switches): generic show-item checks, not gives.",
+    "Remake trade quest = challenge SubEvent_GetSwordBigGoron (RSDB Challenge steps Ready, StartSubEvent, WaitEggHatch, EggHatched, Step01, Step01_01, Step02, Step03, Step03_01-03, Step04, Step05, Step05_01, Step06, Step06_01-03, Step07, Step08, Step08_01, Step09, Step09_01, Step10, Step11, Complete). Each trade NPC's show-item event is an EventSetting row named after a step (SubEvent_GetSwordBigGoron_Step04 = Granny, ..._Step07/10/11 = Biggoron) and NPC talk branches test SubEvent_GetSwordBigGoron_IsAfter_StepXX_Exp; the gift event advances the step."
+   ],
+   "trigger": "Adult shows the Odd Mushroom to the old woman in the potion shop (EventSetting row SubEvent_GetSwordBigGoron_Step04 -> entry 37: 116 ShowItemSuccess AssignableItem 37 -> ... 108 choice -> 109 -> 106 -> 127). Npc_Hylia_053_Adult 10539403194818447006 at (-31.8,103.8,28.9).",
+   "logic_note": "Same as SoH in principle; in the remake the show event is the Step04 row (needs the earlier trade steps).",
+   "risk": "Spoil timer (BigGoronTimerStop) and step chaining.",
+   "confidence": "high",
+   "evidence": "Npc_Hylia_053_Adult path 37,116,147,50,25,31,107,108,109,106,32,126,150,123,124,148,127,104,34,35."
+  },
+  {
+   "rc": "RC_KAK_GRANNYS_SHOP",
+   "remake_vanilla_item": "Item_Bottle_BluePotion (BottleItem 2)",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_053_Adult",
+   "event": 152,
+   "param": "ActorName (+ BottleItem int 2)",
+   "what": "call Dm_SY_GetInEvent:GetInEventInBottle_BlueBottleShop",
+   "also": [
+    "Event 152 params: BottleItem 2, ActorName Item_Bottle_BluePotion, PriceGameData SimpleShop_Price (set to 100 by event 151). The subflow pours BottleItem into the selected bottle (GetPouchContent:PushToSelectedBottle) and uses ActorName only for animation/fanfare: rewriting ActorName alone would not change what is given. A non-bottle prize needs the call retargeted (e.g. to GetInEvent_NotTurn plus a separate rupee charge).",
+    "Event 13 HasRuppe 100 and event 16 IsAnyBottleEmpty gate the sale; repeatable shop (no once-flag)."
+   ],
+   "trigger": "Adult talks to the old woman (Talk -> 8 IsAfter_Step03_03 -> 7 IsAfter_Step04 -> 0 IsAfter_Step05_01 -> 21 Buy_BluePotion): pays 100 rupees with an empty bottle.",
+   "logic_note": "SoH: Odd Mushroom traded (or claim check) + 100 rupees. Remake: sells only after trade step Step05_01 (Step05_01 is set by Npc_Kokiri_Fado_Adult events 38/39, i.e. after the Odd Potion was handed on), needs an empty bottle and 100 rupees.",
+   "risk": "High: bottle-only give path; repeatable; would need a once-flag to act as a single check.",
+   "confidence": "medium",
+   "evidence": "Npc_Hylia_053_Adult path Talk: 102, 8, 7, 0, 21 -> Buy_BluePotion 113, 114, 81, 129, 83, 10, 13 (HasRuppe 100), 16 (IsAnyBottleEmpty), 151, 152."
+  },
+  {
+   "rc": "RC_KAK_IMPAS_HOUSE_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/KakarikoVillage/KakarikoVillage_Child_Static.bcett.byml.zs",
+    "Banc/KakarikoVillage/KakarikoVillage_Adult_Static.bcett.byml.zs",
+    "Banc/KakarikoVillage/KakarikoVillage_Adult_Alternative_Static.bcett.byml.zs"
+   ],
+   "hash": "17926402522258180222",
+   "gyaml": "Obj_Heart_Piece",
+   "pos": [
+    -44.07,
+    107.97,
+    112.0
+   ],
+   "appears": "No Dynamic, no links: always there, a plain Obj_Heart_Piece. A HeartPieceAnchor (map marker) links to it with Reference. Anchor 1051454338871863592. Next to the cow (Animal_Cow at (-46.7,104.6,114.6), adult maps): the cow-pen Heart Piece of Impa's house.",
+   "trigger": "Pick it up (reach the back of Impa's house). Same actor/hash in the child, adult and adult-alternative Kakariko maps.",
+   "logic_note": "Same as SoH (Impa's house back, either age).",
+   "risk": "Low: same Hash in 3 map files, patch all three.",
+   "confidence": "high",
+   "evidence": "world_items.json; 2.7 m from the only Kakariko cow; no other Heart Piece nearby."
+  },
+  {
+   "rc": "RC_KAK_WINDMILL_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/KakarikoVillage/KakarikoVillage_Child_Static.bcett.byml.zs",
+    "Banc/KakarikoVillage/KakarikoVillage_Adult_Static.bcett.byml.zs",
+    "Banc/KakarikoVillage/KakarikoVillage_Adult_Alternative_Static.bcett.byml.zs"
+   ],
+   "hash": "13389209437182306002",
+   "gyaml": "Obj_Heart_Piece",
+   "pos": [
+    1.48,
+    108.9,
+    37.52
+   ],
+   "appears": "No Dynamic, no links: always there, a plain Obj_Heart_Piece. A HeartPieceAnchor (map marker) links to it with Reference. Anchor 3518965357024502806. Inside the windmill, ~7 m from the windmill gimmick Obj_Kakariko_Windmill_A_02 (1.4,104.9,44.3) and the ocarina point (1.5,107.6,43.9), 4 m above the floor level; EventRequestActor PlayStormSong_fromBancLogic(_Adult) 3.9 m away.",
+   "trigger": "Pick it up on the windmill ledge (N64: rotating platform as adult, boomerang as child).",
+   "logic_note": "SoH: lower windmill needs Boomerang, upper free. How the remake ledge is reached is not in the data (collision): in-game check.",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "world_items.json; position next to the windmill actors."
+  },
+  {
+   "rc": "RC_GRAVEYARD_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/Graveyard/Graveyard_Child_Static.bcett.byml.zs",
+    "Banc/Graveyard/Graveyard_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "2157466067026784951",
+   "gyaml": "Obj_Heart_Piece",
+   "pos": [
+    -16.61,
+    108.02,
+    -8.91
+   ],
+   "appears": "No Dynamic, no links: always there, a plain Obj_Heart_Piece. A HeartPieceAnchor (map marker) links to it with Reference. Anchor 77201491298807580. On a ledge ~5 m above the graveyard floor; NOT inside a crate (no Obj_BrokenBox within 6 m). The graveyard bean soil Obj_SmallFarm_A_01 17500344509500247365 at (-12.2,103.1,-12.2) has a bean platform (Obj_SmallFarm_A_03 15942608435809377510) whose DestinationAnchor is at (-12.2,106.6,-12.2), 5.7 m from the Heart Piece.",
+   "trigger": "Pick it up on the ledge (adult bean platform, or longshot).",
+   "logic_note": "SoH: (adult bean or longshot) AND CanBreakCrates. The remake has no crate there, so CanBreakCrates can likely be dropped (data only; confirm).",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "world_items.json; bean platform link to an anchor next to it."
+  },
+  {
+   "rc": "RC_GRAVEYARD_DAMPE_GRAVEDIGGING_TOUR",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_Dampe_001.110 (and Npc_Hylia_Dampe_001)",
+   "event": 602,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc_Dampe",
+   "also": [
+    "The game loads Npc_Hylia_Dampe_001.110 (Event/EventFlow/EventFlowFileEntry.Product.110 lists it); the two files have identical events (641 each, no parameter difference). Patch both at the same indices.",
+    "Event 179: call (self):DiggingHoleTour_Demo DropActorName Obj_Heart_Piece (what the dig-up scene shows) and event 224: Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor ActorName Obj_Heart_Piece (the actor that pops out of the hole). Both are the visible model; the give is 602. Leaving them shows a Heart Piece and gives the new item; changing 224 to a non-pickup actor may fail.",
+    "Event 221 sets GraveYard_DiggingHoleTour_Drop_HeartPiece after the give; events 21/66/67 test it (afterwards the 'big hit' gives rupees). HeartPieceAnchor 10075158462075677237 (Graveyard_Child_Static) uses the same flag (map marker)."
+   ],
+   "trigger": "Child at night pays Dampe for a digging tour; when his lottery (event 100 EventQueryMiniGameDiggingHoleLottery, case 6 -> 457) offers the 'big hit' spot, pay 5/10/20 rupees (events 46/48/49) and he digs the Heart Piece (179 -> 224 -> ... -> 602 -> 221). Lottery case 7 gives a rock (event 180 Dm_Obj_Graveyard_Rock_A_01). Flag GraveYard_DiggingHoleTour_Drop_HeartPiece.",
+   "logic_note": "Same as SoH in requirements (child, night, rupees), but the Heart Piece is a random lottery outcome inside the tour, not guaranteed on the first dig.",
+   "risk": "The scene's model params (179, 224) name the Heart Piece; .110 twin must be patched too.",
+   "confidence": "high",
+   "evidence": "Npc_Hylia_Dampe_001(.110) path 100 -> 457 -> 68 -> 41 -> 91 -> 371 -> 46 -> 35 -> 459 -> 460 -> 37 -> 36 -> 179 -> 224 -> 251 ... 618 fork -> 602; 224 -> ... -> 221 flag. Npc_Hylia_Dampe_001 placed only in Graveyard_Child_Static (12178544538281952965)."
+  },
+  {
+   "rc": "RC_DMT_TRADE_BROKEN_SWORD",
+   "remake_vanilla_item": "Item_Prescription",
+   "kind": "flow_param",
+   "flow": "Npc_Goron_Biggoron_Adult",
+   "event": 266,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurnForPosCamera_BigGoron",
+   "also": [
+    "Event 9 right after removes Item_BrokenSword (Num -1); event 10 advances SubEvent_GetSwordBigGoron to Step08.",
+    "Event 4 sets GetSwordBigGoron_IsAfterFirstShowBrokenSword_Npc_BigGoron (dialogue).",
+    "GetInEvent_NotTurnForPosCamera_BigGoron is a Biggoron-specific camera variant of the generic give (GetPouchContentByActorName_ForGetInEvent + CheckHeart): should take any actor.",
+    "Remake trade quest = challenge SubEvent_GetSwordBigGoron (RSDB Challenge steps Ready, StartSubEvent, WaitEggHatch, EggHatched, Step01, Step01_01, Step02, Step03, Step03_01-03, Step04, Step05, Step05_01, Step06, Step06_01-03, Step07, Step08, Step08_01, Step09, Step09_01, Step10, Step11, Complete). Each trade NPC's show-item event is an EventSetting row named after a step (SubEvent_GetSwordBigGoron_Step04 = Granny, ..._Step07/10/11 = Biggoron) and NPC talk branches test SubEvent_GetSwordBigGoron_IsAfter_StepXX_Exp; the gift event advances the step."
+   ],
+   "trigger": "Adult shows the Broken Goron's Sword to Biggoron (EventSetting row SubEvent_GetSwordBigGoron_Step07 -> entry 153 -> 101, 3, 5, 51, 7, 6, 125, 100, 102, 8, 103, 266).",
+   "logic_note": "Same as SoH in principle; remake needs trade step Step07 (Carpenter boss gave the sword: Npc_Hylia_012_Adult event 18).",
+   "risk": "Trade chain/timer (see trade note).",
+   "confidence": "high",
+   "evidence": "Npc_Goron_Biggoron_Adult Step07 path ends 266 -> 9 -> 75 -> 10."
+  },
+  {
+   "rc": "RC_DMT_TRADE_EYEDROPS",
+   "remake_vanilla_item": "Item_ClaimCheck",
+   "kind": "flow_param",
+   "flow": "Dm_DeathMtTrail_0050",
+   "event": 5,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotLookatObjectTurnOff",
+   "also": [
+    "Event 91 IsExistInPouch Item_EyeDrop -> 14 removes Item_EyeDrop.",
+    "Event 21/42 Item_ClaimCheck.EventTriggerModelBind on Biggoron's finger (cutscene shows the Claim Check model) and 18/41 Item_EyeDrop model: cosmetic.",
+    "Event 45 BigGoronTimerStop (stops the eye-drop spoil timer); event 50 EventTriggerSetDayTimeStruct GetSwordBigGoron_ElapsedTime (starts the sword timer); 49 Step11.",
+    "Remake trade quest = challenge SubEvent_GetSwordBigGoron (RSDB Challenge steps Ready, StartSubEvent, WaitEggHatch, EggHatched, Step01, Step01_01, Step02, Step03, Step03_01-03, Step04, Step05, Step05_01, Step06, Step06_01-03, Step07, Step08, Step08_01, Step09, Step09_01, Step10, Step11, Complete). Each trade NPC's show-item event is an EventSetting row named after a step (SubEvent_GetSwordBigGoron_Step04 = Granny, ..._Step07/10/11 = Biggoron) and NPC talk branches test SubEvent_GetSwordBigGoron_IsAfter_StepXX_Exp; the gift event advances the step."
+   ],
+   "trigger": "Adult shows the Eyedrops to Biggoron (row SubEvent_GetSwordBigGoron_Step10 -> Npc_Goron_Biggoron_Adult entry 50 -> 47 EventTransition Dm_DeathMtTrail_0050, cutscene entry C08).",
+   "logic_note": "Same as SoH (eyedrops in time); remake needs step Step10.",
+   "risk": "Claim Check model still appears in the scene; spoil timer.",
+   "confidence": "high",
+   "evidence": "Dm_DeathMtTrail_0050 event 5 GetInEvent_NotLookatObjectTurnOff Item_ClaimCheck -> 91 -> 14; EventSetting row Dm_DeathMtTrail_0050."
+  },
+  {
+   "rc": "RC_DMT_TRADE_CLAIM_CHECK",
+   "remake_vanilla_item": "Item_Sword_Biggoron",
+   "kind": "flow_param",
+   "flow": "Npc_Goron_Biggoron_Adult",
+   "event": 95,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEventItemSwordBiggoron",
+   "also": [
+    "Events 112 / 119: before the give Biggoron REMOVES Weapon_Sword_Giant (if owned, event 57) or Weapon_Sword_BrokenGiant (58): he reforges the Giant's Knife. With another item at this check those removals must be cut, or the player loses Medigoron's knife.",
+    "Events 113/115/169/173: Item_Sword_Giant / Item_Sword_BrokenGiant model binds (ItemGiantSword_Receive / ItemBrokenGiantSword_Receive), cosmetic.",
+    "Events 35/66/67: EventQueryCheckElapsedTime GetSwordBigGoron_ElapsedTime >= 72 h (started by Dm_DeathMtTrail_0050 event 50); earlier he only says 'not ready' (BiggoronWaitTalkShowClaimCheck).",
+    "GetInEventItemSwordBiggoron is sword-specific (BigGoronSword_GetAndEquipCheck, EquipmentUserRequestChangeState): for another item retarget the call to a generic give (GetInEvent_NotTurn).",
+    "Event 33 completes the challenge (Complete)."
+   ],
+   "trigger": "Adult shows the Claim Check to Biggoron at least 72 in-game hours after the eyedrops (row SubEvent_GetSwordBigGoron_Step11 -> entry 90 -> 105 ShowItem AssignableItem 44 -> 55 -> 57/58/35 -> 94 -> 95).",
+   "logic_note": "SoH: claim check only. Remake adds a 72-hour wait (time passes / sleep).",
+   "risk": "High: knife removal (112/119) and the sword-specific get subflow.",
+   "confidence": "high",
+   "evidence": "Npc_Goron_Biggoron_Adult Step11 reach set: 57 IsExistInPouch Weapon_Sword_Giant, 58 Weapon_Sword_BrokenGiant, 112/119 Num -1, 95 Item_Sword_Biggoron."
+  },
+  {
+   "rc": "RC_DMT_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/DeathMountainTrail/DeathMountainTrail_Child_Static.bcett.byml.zs",
+    "Banc/DeathMountainTrail/DeathMountainTrail_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "715147239509454487",
+   "gyaml": "Obj_Heart_Piece",
+   "pos": [
+    -39.66,
+    122.21,
+    -26.0
+   ],
+   "appears": "No Dynamic, no links: always there, a plain Obj_Heart_Piece. A HeartPieceAnchor (map marker) links to it with Reference. Anchor 15856934019904510189. On the ledge ~13 m above Dodongo's Cavern entrance (entrance marker (-50.8,108.7,-21.3)), the same level as the bomb flower Obj_BombFlower_Grass_For_Break_Obj_DeathMtTrail_BrokenRock_A_01 12145309744777105449 (-34.6,123.8,-12.5) that breaks the cavern rock 9966036182374691433.",
+   "trigger": "Pick it up on the ledge above Dodongo's Cavern.",
+   "logic_note": "Same as SoH.",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "world_items.json; nearest ledge objects."
+  },
+  {
+   "rc": "RC_DMT_GREAT_FAIRY_REWARD",
+   "remake_vanilla_item": "Item_DinFire",
+   "kind": "flow_param",
+   "flow": "Dm_FairyFountain_Din",
+   "event": 308,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_GreatFairyDin",
+   "also": [
+    "The DMT fountain is the remake's Din's Fire fairy, not the magic fairy: Obj_TriForcePoint_A_02 (DeathMountainTrail child 1296690888128037896 / adult 15242597595648756116, (-34.0,211.2,-189.2)) -> EventSetting row Obj_TriForcePoint_A_02 -> TriForcePoint entry Demo_FairyFountain_Din (SpecialAbility 2) -> event 34 EventTransition Dm_FairyFountain_Din. Map icon MapIconFacilityAnchor ... HavePlayedEvent.Dm_FairyFountain_Din. The magic meter (Item_FairyBless_MP, Dm_FairyFountain_Power event 108, 50 rupees) is given by the Hyrule Castle fountain (Obj_TriForcePoint_A_01).",
+    "Item_DinFire itself carries the magic meter (PouchActorInfo ExpansionAvility MPMaxUP, MPMax 24); if MP max is 0, event 579/580 set GreatFairy_HasNoMPOnDinDemo and the get subflow plays EventBornMPGauge (Dm_SY_GetInEvent 377/378/81). So giving Din's Fire anywhere also gives magic.",
+    "Dm_FairyFountain_Din events 21 IsGet.Item_DinFire (decides first visit vs heal-only RecoverSequence) and 1-5/25-29 IsGet of the other blessings (Meet_GreatFairy progress). Changing the item without setting IsGet.Item_DinFire lets the fairy sell it again.",
+    "Dm_FairyFountain_Din is also the shared library of the other fountains (FirstTimeAnother, VisitedNoAbility, Pay, DontPay, GreatFairy_Appear ...): patch only event 308."
+   ],
+   "trigger": "Play Zelda's Lullaby on the triforce mark (TriForcePoint event 0 PlayOcarinaSequence MelodyType 0), then pay 25 rupees (Dm_FairyFountain_Din 16 choice -> 17 HasRuppe 25 -> 43 Pay -25). No free path to 308.",
+   "logic_note": "Different from SoH: SoH vanilla is RG_PROGRESSIVE_MAGIC_METER here; the remake gives Din's Fire (with 24 MP). Needs Zelda's Lullaby + 25 rupees.",
+   "risk": "Rupee payment; IsGet.Item_DinFire decides repeats; the item's own MPMaxUP (giving Din's Fire elsewhere also grants magic, which changes logic for magic checks).",
+   "confidence": "high",
+   "evidence": "TriForcePoint entries Demo_FairyFountain_Power(SpecialAbility 1)->29 Power, _Din(2)->34 Din, _Frore(3)->33, _Wisdom(4)->32, _Nayru(5)->31, _Courage(6)->30; placements: A_01 HyruleCastle, A_02 DeathMountainTrail, A_03 ZoraFountain, A_04 DeathMountainCrater, A_05 DesertColossus, A_06 GanonCastle. Dm_FairyFountain_Din path 205,...,14,21,22,79,503,504,16,17(HasRuppe 25),43(Pay -25),453,80,579,42,128-133,259,258,308."
+  },
+  {
+   "rc": "RC_GC_ROLLING_GORON_AS_CHILD",
+   "remake_vanilla_item": "Item_BombBag_Medium (Item_BombBag_Large if a Medium bag is owned)",
+   "kind": "flow_param",
+   "flow": "Npc_Goron_006_Child",
+   "event": 72,
+   "param": "ReveiveItem",
+   "what": "call Npc_Goron_006_Child:NpcCommon_HandOver_NpcToPlayer_NoDisplay_BombBag",
+   "also": [
+    "Event 73: same call with ReveiveItem Item_BombBag_Large, chosen by event 4 IsExistInPouch Item_BombBag_Medium (owned -> 10 -> 76 -> 73). Both must change.",
+    "Event 3 IsExistInPouch Item_BombBag_Small and events 10/11 IsGet.Item_BombBag_Small: with no bomb bag at all the Goron only talks (event 12) and gives nothing.",
+    "Event 8 sets GoronCity_GetBombBag_fromGoron006 after the give (events 0/13/53/85 test it).",
+    "The self entry NpcCommon_HandOver_NpcToPlayer_NoDisplay_BombBag (80) calls Dm_SY_GetInEvent:GetInEvent_NotTurn_BombBag (event 77), a bomb-bag variant (GetInEvent_Animation_BombBag, player offsets); generic give inside (GetPouchContentByActorName_ForGetInEvent)."
+   ],
+   "trigger": "Child stops the rolling Goron (Npc_Goron_006_Child 8605079872767834211, GoronCity_Child_Static, (-10.3,109.6,-16.5)) with a bomb hit (GoronCity_StopGoron006 / GoronCity_Goron006_BombHits_*) and talks to him while owning a bomb bag.",
+   "logic_note": "SoH: HasExplosives (bombs OR bombchus). Remake: the gift needs a bomb bag in the pouch (Item_BombBag_Small or _Medium) - bombchus alone give nothing. Bombs also need the Goron's Bracelet in the remake (user finding). Rule: child + bomb bag usable.",
+   "risk": "Two branches (72/73) and a bomb-bag-specific get animation; progressive bag choice is in the flow.",
+   "confidence": "high",
+   "evidence": "Npc_Goron_006_Child path BombHits_Talk: 23, 83, 1, 0, 44, 4, 3, 11, 75, 72; 4 -> 10 -> 76 -> 73."
+  },
+  {
+   "rc": "RC_GC_ROLLING_GORON_AS_ADULT",
+   "remake_vanilla_item": "Obj_Armor_Goron (pouch actor whose AdultEquipment is Armor_Adult_Goron)",
+   "kind": "flow_param",
+   "flow": "SageOfFire",
+   "event": 177,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+   "also": [
+    "Part of challenge SageOfFire: event 21 sets SageOfFire_Step01_DaruniaJr_BombHit, 3 advances TalkDaruniaJr, after the give 6 advances MoveStatue and 7 sets SageOfFire_Step02_DoorOpen (opens Darunia's room for adult). These must stay whatever is given.",
+    "Reached through the dialogue choice at event 42 (TalkChoice3: options 0 and 1 lead to 177, option 2 to 53 = no gift until talked again).",
+    "SageOfFire event 80 and Dm_SY_BancChangeArrive 491/492 test owning/wearing Armor_Adult_Goron (Navi heat warnings in the crater) - they read the real tunic.",
+    "Goron shop also sells the tunic (Shop_Armor_Goron, GoronCity maps, 15075156905719609791 / 9081723785715040392)."
+   ],
+   "trigger": "Adult stops Link the Goron (Npc_Goron_DaruniaJr_Adult, GoronCity_Adult_Static) with a bomb (row Step01_Npc_Goron_DaruniaJr_Adult_BombHit / _Talk) and talks to him.",
+   "logic_note": "Same as SoH (LOGIC_GORON_CITY_STOP_ROLLING_GORON_AS_ADULT). The same talk opens Darunia's door (MoveStatue/DoorOpen) - consistent with N64.",
+   "risk": "The gift is inside the SageOfFire story scene; only change event 177's ActorName.",
+   "confidence": "high",
+   "evidence": "SageOfFire path Step01_..._BombHit: 20, 227, 228, 17, 89, 229, 90, 29, 99, 98, 19, 21, 3, 101, 102, 28 -> Step02_DaruniaJr_FirstTalk 52, 51, 45, 43, 42, 158, 47, 161, 389, 38, 188, 189, 177 -> 40 -> ... 6, 7. PouchActorInfo row Obj_Armor_Goron: AdultEquipment Armor_Adult_Goron. (The first gift_events index missed Obj_Armor_*.)"
+  },
+  {
+   "rc": "RC_GC_DARUNIAS_JOY",
+   "remake_vanilla_item": "Item_Gauntlet_Goron",
+   "kind": "flow_param",
+   "flow": "Dm_Goron_0030",
+   "event": 128,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_Goron",
+   "also": [
+    "Event 36: Item_Gauntlet_Goron.EventTriggerModelBind on Darunia's hand (Weapon_R) and 54 ParticipateEvent: the cutscene shows the bracelet model.",
+    "GetInEvent_Goron opens ActionGuide screen type 49 (the bracelet tutorial, event 73) whatever is given: cosmetic.",
+    "Event 164: challenge Get_StoneOfFire step DodongoCavernOpne (opens Dodongo's Cavern progress) - keep."
+   ],
+   "trigger": "Child plays Saria's Song to Darunia: Get_StoneOfFire entry Get_StoneOfFire_PlayOcarina (row Meet_Darunia_PlayOcarina) -> 189 PlayOcarinaFree MelodyType 2 -> 14 recommended melody -> 82 Dm_Goron_0025 -> 16 (Get_StoneOfFire_IsAfter_SariaMelodyPlay_Exp false) -> 12 EventTransition Dm_Goron_0030.",
+   "logic_note": "Same as SoH (child, Saria's Song, Darunia's room opened with Zelda's Lullaby: Get_StoneOfFire row GoronCity_PlayZeldasLullaby_OpenDaruniaRoom).",
+   "risk": "The bracelet is required to pull bombs in the remake: if it moves, logic must follow (already in rando/logic). Cutscene still shows the bracelet.",
+   "confidence": "high",
+   "evidence": "Dm_Goron_0030 event 128; Get_StoneOfFire event 12 is the only EventTransition to Dm_Goron_0030."
+  },
+  {
+   "rc": "RC_GC_POT_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "drop",
+   "map": [
+    "Banc/GoronCity/GoronCity_Child_Static.bcett.byml.zs"
+   ],
+   "hash": "14691060592470890818",
+   "gyaml": "Obj_GoronCity_LargePot_A_01",
+   "pos": [
+    0.0,
+    100.29,
+    0.0
+   ],
+   "how": "The spinning pot actor drops it. Pack/Actor/Obj_GoronCity_LargePot_A_01.pack.zs: Component/ActorHolderParam/Obj_GoronCity_LargePot_A_01.game__component__ActorHolderParam.bgyml ActorHoldSettings.Prize_HeartPiece.Actor = Work/Actor/Obj_Heart_Piece.engine__actor__ActorParam.gyml; GameParameter/GoronLargePotParameter/... HeartPieceDropEventName = GoronCity_LargePotRoulette_HeartPieceDrop (rupee/bomb prizes for the other faces in the same file). The drop scene Dm_Goron_0045 (EventSetting row GoronCity_LargePotRoulette_HeartPieceDrop -> GoronCity_LargePot event 5 -> 4) has a flow actor named Obj_Heart_Piece (events 2, 3, 4, 7, 8, 16: AS, warp to DestinationAnchor 13399069537343309178 (0,99,4.5), ELink hidden settings) and event 1 Obj_GoronCity_LargePot_A_01.EventGoronLargePotDropPrize.",
+   "also": [
+    "GoronCity_LargePot event 7 sets GoronCity_LargePot_HeartPieceDrop after the scene; HeartPieceAnchor 3483734707455267135 uses GoronLargePot_IsGetHeartPiece (marker).",
+    "Dm_Goron_0045 calls Dm_Goron_0040:RoulettePot / AfterDrop: the game loads Dm_Goron_0040.110 for Dm_Goron_0040 (EventFlowFileEntry.Product.110)."
+   ],
+   "trigger": "Child drops a bomb (or lit object) into the spinning pot when its face is the heart-piece face (pot AI decides: blackboard IsPreDropHeartPiece/FaceType).",
+   "logic_note": "SoH: child + GC torches lit (LOGIC_GORON_CITY_CHILD_FIRE) + bombs. The remake's face/fire condition is in the pot's AI (ainb), not read. Child map only.",
+   "risk": "Changing it means editing the actor pack's ActorHolder prize (shared by the only pot) and the Dm_Goron_0045 actor name; or replacing the mechanism. Alternative: give the item by a new GetInEvent in Dm_Goron_0045 and keep the Heart Piece model hidden. Not tested.",
+   "confidence": "medium",
+   "evidence": "Obj_GoronCity_LargePot_A_01 placed only in GoronCity_Child_Static; pack files read with rando.formats.sarc."
+  },
+  {
+   "rc": "RC_GC_MEDIGORON",
+   "remake_vanilla_item": "Shop_Sword_Giant (gives Weapon_Sword_Giant, Giant's Knife)",
+   "kind": "flow_param",
+   "flow": "Npc_Goron_Medigoron_Adult",
+   "event": 6,
+   "param": "ActorName",
+   "what": "call SimpleShop:SimpleShopRoot_Npc_Goron_Medigoron_Adult",
+   "also": [
+    "Event 6 params: ActorName Shop_Sword_Giant (what is given, passed to SimpleShop event 112 Dm_SY_GetInEvent:GetInEventItemSwordMedigoron), DisplayItemActor actor ref Item_Sword_Giant (shown model; an actor-table reference, not a string), Price 200 / MinusRupeeValue -200.",
+    "SimpleShop 15 EventQueryCanAddToPorch ActorName; 36/37 remove Weapon_Sword_BrokenGiant after the purchase (replaces a broken knife).",
+    "Npc_Goron_Medigoron_Adult 17 (has Weapon_Sword_Biggoron), 2 (Weapon_Sword_Giant), 3 (Weapon_Sword_BrokenGiant) decide whether he sells: no once-flag; with a non-sword item he would sell it again and again.",
+    "GetInEventItemSwordMedigoron is a sword variant (GetItemSwordBiggoron); for another item retarget to a generic give."
+   ],
+   "trigger": "Adult talks to Medigoron (Npc_Goron_Medigoron_Adult 17027280679108631710, GoronCity_Adult_Static, (36.3,115.7,6.7)) and pays 200 rupees.",
+   "logic_note": "Same as SoH (adult, 200 rupees -> needs a 200+ wallet).",
+   "risk": "Repeatable shop; sword-specific get subflow; Biggoron later removes the knife (RC_DMT_TRADE_CLAIM_CHECK events 112/119).",
+   "confidence": "high",
+   "evidence": "Npc_Goron_Medigoron_Adult path Talk: 50, 17, 14, 2, 3, 21, 0, 27 (SimpleShop_Price 200), 4, 5, 6; SimpleShop path 10, 85, 11, 15, 18, ..., 111, 112."
+  },
+  {
+   "rc": "RC_DMC_WALL_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/DeathMountainCrater/DeathMountainCrater_Child_Static.bcett.byml.zs",
+    "Banc/DeathMountainCrater/DeathMountainCrater_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "10331043360028932045",
+   "gyaml": "Obj_Heart_Piece",
+   "pos": [
+    -0.5,
+    116.77,
+    32.34
+   ],
+   "appears": "No Dynamic, no links: always there, a plain Obj_Heart_Piece. A HeartPieceAnchor (map marker) links to it with Reference. Anchor 16784485264831565984. In the rock wall below the path from the DMT entrance (entrance (16.5,131.9,59.4)); 8-9 m below the liftable rocks at y~125 (Obj_LiftRock_A_01 12149948234252356692, 14936226666394533208). Not connected to the bean platform.",
+   "trigger": "Climb down to the wall niche and pick it up.",
+   "logic_note": "Same as SoH (wall Heart Piece from the upper entry).",
+   "risk": "Low.",
+   "confidence": "medium",
+   "evidence": "Identified by elimination: the other crater Heart Piece sits at the bean platform's destination. Same hash in child and adult crater maps."
+  },
+  {
+   "rc": "RC_DMC_VOLCANO_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/DeathMountainCrater/DeathMountainCrater_Child_Static.bcett.byml.zs",
+    "Banc/DeathMountainCrater/DeathMountainCrater_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "744856631664786545",
+   "gyaml": "Obj_Heart_Piece",
+   "pos": [
+    -17.5,
+    127.15,
+    3.95
+   ],
+   "appears": "No Dynamic, no links: always there, a plain Obj_Heart_Piece. A HeartPieceAnchor (map marker) links to it with Reference. Anchor 12975373498949047978. On the volcano top: the crater bean soil Obj_SmallFarm_A_01 12044463103654268862 (3.75,110.9,-0.75) has a bean platform Obj_SmallFarm_A_03 1344034613986367661 whose Reference DestinationAnchor 10372626041611838465 is at (-15.1,127.4,5.0), 2.7 m from this Heart Piece.",
+   "trigger": "Ride the bean platform (adult) or hover across, pick it up.",
+   "logic_note": "Same as SoH (bean / hover boots).",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "Bean platform link to an anchor next to the Heart Piece."
+  },
+  {
+   "rc": "RC_DMC_GREAT_FAIRY_REWARD",
+   "remake_vanilla_item": "Item_FairyBless_MPDouble",
+   "kind": "flow_param",
+   "flow": "Dm_FairyFountain_Wisdom",
+   "event": 72,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_GreatFairyWisdom",
+   "also": [
+    "Obj_TriForcePoint_A_04 (crater child 10770210177522013561 / adult 10790201113834074371, (-76.6,122.2,46.6)) -> TriForcePoint Demo_FairyFountain_Wisdom (SpecialAbility 4) -> 32 EventTransition Dm_FairyFountain_Wisdom.",
+    "Events 3 HavePlayedEvent.Dm_FairyFountain_Wisdom and 4 IsGet.Item_FairyBless_MPDouble decide first visit / repeat (RecoverSequence): set IsGet.Item_FairyBless_MPDouble or the fairy sells again.",
+    "Item_FairyBless_MPDouble sets MPMax 48 directly (PouchActorInfo ExpansionAvility MPMaxUP, MPMax 48): not progressive; given before the first magic it is a full double meter."
+   ],
+   "trigger": "Play Zelda's Lullaby on the triforce mark, accept and pay 200 rupees (event 8 choice -> 9 HasRuppe 200 -> 14 Pay -200). No free path.",
+   "logic_note": "New requirement: 200 rupees, so a wallet holding 200 (remake wallets: Small 200, Medium 500, Large 1000). Item is a fixed double magic, not progressive.",
+   "risk": "Rupee cost; IsGet flag decides repeats; magic level set by the item's MPMax, not progressive.",
+   "confidence": "high",
+   "evidence": "Dm_FairyFountain_Wisdom path 26, 27, 0, 2, 123, 3, 5, 15, 29, 30, 22, 8, 9 (HasRuppe 200), 14 (Pay -200), 124, 82, 17, 20, 83, 84, 61, 95, 96, 67, 66, 72."
+  }
+ ],
+ "remake_only": [
+  {
+   "soh_region_guess": "RR_DMC_LOWER_NEARBY (SoH RC_DMC_DEKU_SCRUB area)",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param/scrub",
+   "note": "Not a new check: SoH's DMC Deku Scrub (vanilla Bombs) sells a Heart Piece in the remake. Enemy_Scrub_Business 2518138296199711695 (DeathMountainCrater_Child_Static, (-23.0,119.1,33.0)) Dynamic ScrubBusiness_ShopItemActorName0 = Obj_Heart_Piece, TalkEventName Enemy_Scrub_Business_Heart_02; flag DeathMountain_Enemy_Scrub_Business_HeartPiece_01 (Enemy_Scrub_Business_Common event 326; HeartPieceAnchor 12493798230772313904). Belongs to the scrub group; listed so it is not missed.",
+   "trigger": "Child buys from the scrub.",
+   "confidence": "high",
+   "evidence": "Map actor Dynamic and HeartPieceAnchor GameDataPath."
+  }
+ ],
+ "open_questions_for_in_game_check": [
+  "Bolero: as adult, entering Death Mountain Crater from the Death Mountain Trail side without having stopped Link the Goron / moved Darunia's statue, does Sheik appear and teach Bolero?",
+  "Nocturne: does the Kakariko burning scene with Sheik play as soon as adult Link has the Forest, Fire and Water medallions (and nothing else)?",
+  "Dampe's tour: how many digs until the 'big hit' Heart Piece spot is offered, and is it random every night?",
+  "Goron City child rolling Goron: if he is stopped with Bombchus while Link owns no bomb bag, does he give anything?",
+  "Goron City pot: what must be done to get the Heart Piece (light the torches? bomb when the face shows a heart?)",
+  "Great Fairies: DMT fairy gives Din's Fire for 25 rupees, crater fairy double magic for 200 rupees - confirm (the data has no path to the gift without paying, even on the first visit).",
+  "Biggoron's sword: confirm he wants 3 in-game days after the eyedrops and that he takes away a Giant's Knife (or broken one) if Link carries it.",
+  "Granny's shop: when does she start selling Blue Potions as adult (only after the Odd Potion was traded on?), and is the sale repeatable?",
+  "Adult Anju: what must happen before she offers the Pocket Egg (time of day, after Kakariko burned, ...)?",
+  "Windmill Heart Piece: how is the ledge reached as child and as adult in the remake?",
+  "Graveyard ledge Heart Piece: confirm it lies open on the ledge (no crate) and is reached from the bean platform."
+ ]
+}
