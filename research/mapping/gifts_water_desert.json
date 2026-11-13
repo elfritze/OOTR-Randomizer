@@ -1,0 +1,771 @@
+{
+ "group": "water_desert",
+ "checks": [
+  {
+   "rc": "RC_SHEIK_AT_COLOSSUS",
+   "remake_vanilla_item": "Item_Melody_SpiritRequiem",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Spilit",
+   "event": 11,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    "No .110 twin of Dm_MelodyGet_Spilit exists.",
+    "Lesson events teach MelodyType 9 (Requiem notes): event 3 call Dm_SY_Ocarina:LearningOcarinaPlayExample {MelodyType 9}, event 4 LearningOcarinaFollowExample {MelodyType 9}; they only teach/play the notes, they do not add the song (cosmetic).",
+    "GameData 'IsGet.Item_Melody_SpiritRequiem' is queried by AllSage and SageOfWater (sage/Sheik dialogue branches): a replaced gift leaves it false."
+   ],
+   "trigger": "Walk into the EventRequestActor (RequestEventName Dm_MelodyGet_Spilit) in front of the Spirit Temple; entry Learn_melody (EventSetting row Dm_MelodyGet_Spilit, default entry). Played-flag: HavePlayedEvent.Dm_MelodyGet_Spilit (generic).",
+   "logic_note": "Trigger actor is in both DesertColossus_Adult_Static (hash 5908239113959309063) and DesertColossus_Child_Static (hash 6553787065434503832) at (-155.76,97.9,10.0) with no Presence condition, so it may play for child too. SoH rule is 'true' in RR_DESERT_COLOSSUS_OUTSIDE_TEMPLE (both ages): consistent. Only the adult copy links the Sheik/Player DestinationAnchors.",
+   "risk": "Cutscene shows Sheik with a harp (Dm_Item_Sheik_Harp model bind, event 309) and teaches Requiem's notes; giving another item only changes the GetPouchContent call. Songs are added with GetPouchContentByActorName (no NPC hand-over), so the get display is the generic one for whatever actor is named.",
+   "confidence": "high",
+   "evidence": "Dm_MelodyGet_Spilit entry Learn_melody reaches event 11 (back-chain 101->219->3->5->6->43->42->8->160->161->204->11). Map: EventRequestActor RequestEventName=Dm_MelodyGet_Spilit at the colossus temple front, linked to DestinationAnchors Dm_MelodyGet_Spilit_Sheik_pos / _Player_pos."
+  },
+  {
+   "rc": "RC_LH_CHILD_FISHING",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "MiniGame_Fishing",
+   "event": 482,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay (passes ReveiveItem to Dm_SY_GetInEvent:GetInEvent_NotTurn)",
+   "also": [
+    "MiniGame_Fishing event 489 (call Dm_SY_GetInEvent:GetInEvent_NotTurn, ActorName Obj_Heart_Piece): second branch, child prize given after the Hyrule Loach (after its purple rupee) if not yet won. Change both.",
+    "MiniGame_Fishing event 478 (call NpcCommon:DisplayItemSet, DisplayItemActor.actor=Obj_Heart_Piece, entry HideItem): prize model displayed in the shop; an event-actor reference, cosmetic.",
+    "GameData MiniGame_Fishing_GetHeartPiece (set by events 214 and 449; queried at 215 and 446) decides whether the prize is given again; it is also the HeartPieceAnchor map-icon flag (HyruleField_Child_Static hash 6175378250368022556)."
+   ],
+   "trigger": "Child: pay, fish, hand in (entry GiveReward) a kept fish of size >= 50 (IsGameDataInt MiniGame_Fishing_KeepFishSize 50 at event 213 after >= 40 at 218) without the sinking lure (MiniGame_Fishing_UseSinkingLure at 298). Flag MiniGame_Fishing_GetHeartPiece.",
+   "logic_note": "Same as SoH (child + fishing pond). The pond is inside the HyruleField maps (Lake Hylia part), around (-98.8,134.8,493.3). Remake size units: 50 (child) / 60 (adult).",
+   "risk": "Already-won flag is a GameData bool, not the item. Sinking-lure branch gives no prize. 489 runs only after a loach catch.",
+   "confidence": "high",
+   "evidence": "251 KeepLoach false -> 218 (>=40) -> 213 (>=50) -> 220 PlayerIsChild -> 225 -> 298 -> 226 -> 495 -> 215 GetHeartPiece false -> 482 -> 214 sets flag. Loach: 251 true -> 631 -> 295 -> 390 -> 637 -> 455 -> 656 purple rupee -> 456 -> 447 child -> 446 -> 454 -> 489 -> 449 sets flag. Switch convention verified on several flows: bool case 0 = true, 1 = false."
+  },
+  {
+   "rc": "RC_LH_ADULT_FISHING",
+   "remake_vanilla_item": "Item_Scale_Gold",
+   "kind": "flow_param",
+   "flow": "MiniGame_Fishing",
+   "event": 483,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    "MiniGame_Fishing event 490 (call Dm_SY_GetInEvent:GetInEvent_NotTurn, ActorName Item_Scale_Gold): adult prize after the loach. Change both.",
+    "MiniGame_Fishing event 477 (NpcCommon:DisplayItemSet, DisplayItemActor.actor=Item_Scale_Gold, entry HideItem): displayed prize model (cosmetic).",
+    "GameData MiniGame_Fishing_GetGoldScale (set 216/450, queried 217/448)."
+   ],
+   "trigger": "Adult: kept fish size >= 60 (event 219), no sinking lure; or the loach. Flag MiniGame_Fishing_GetGoldScale.",
+   "logic_note": "Same as SoH (adult + fishing).",
+   "risk": "Item_Scale_Gold is the second scale upgrade actor; a progressive scale must be resolved to the exact actor (Item_Scale_Silver/Gold) at patch time. NPC text checks Item_Scale_Gold/Silver in pouch (Npc_Hylia_045_Child 152/156/159, Npc_Zora_002_Adult 23).",
+   "confidence": "high",
+   "evidence": "218 -> 213 -> 220 adult -> 227 -> 299 -> 228 -> 496 -> 219 (>=60) -> 217 GetGoldScale false -> 483 -> 216 sets flag."
+  },
+  {
+   "rc": "RC_LH_HYRULE_LOACH",
+   "remake_vanilla_item": "Obj_Rupee_Purple",
+   "kind": "flow_param",
+   "flow": "MiniGame_Fishing",
+   "event": 656,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent",
+   "also": [
+    "MiniGame_Fishing event 655 (GetInEvent ActorName Obj_Rupee_Purple): same reward when the loach was caught with the sinking lure (UseSinkingLure true at 295). Change both.",
+    "After 656 the flow continues to the age prize (489/490) if not yet won: the loach also awards the child/adult fishing check."
+   ],
+   "trigger": "Keep the Hyrule Loach and hand it in (GiveReward; KeepLoach true at event 251). No once-only flag guards the rupee.",
+   "logic_note": "Same as SoH (either age). Animal_Fish_Loach exists in both HyruleField child and adult static maps.",
+   "risk": "Repeatable: nothing guards 655/656, so a replaced item would be given on every loach hand-in (needs a flag or acceptance of repeats). Loach spawn rules in the remake unknown.",
+   "confidence": "medium",
+   "evidence": "Entry GiveReward 252 -> 251 KeepLoach true -> 631 -> 250/634 -> 295 UseSinkingLure: true -> 388 Talk_194 -> 655; false -> 390 -> 637 -> 638 -> 455 Talk_194 -> 656. SoH vanilla purple rupee matches."
+  },
+  {
+   "rc": "RC_LH_LAB_DIVE",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_045_Child",
+   "event": 55,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    "Same event for both ages: entries AdultDivingChallenge (EventSetting Npc_Hylia_045_AdultDivingChallenge) and ChildDivingChallenge (Npc_Hylia_045_ChildDivingChallenge) both call DivingChallenge_Common (events 24/25), which reaches 55.",
+    "GameData Npc_Hylia_045_HasDived (set at 19 right after 55; queried at 52 and 115) gates repeats; it is also the HeartPieceAnchor map-icon flag (HyruleField Child/Adult Dynamic, hash 3889886157160285015, at (-174.39,138.0,418.02))."
+   ],
+   "trigger": "Dive in the lab pool to depth >= 9 (Npc_Hylia_045_DepthOfDiving, checked at 201/123) without sinking with Iron Boots (Npc_Hylia_045_DivingChallenge_SinkWithHeavyBoots must be false; sinking only gets a scolding), then talk to the scientist. Flag Npc_Hylia_045_HasDived.",
+   "logic_note": "Differs from SoH: works for child as well as adult (two entries), and Iron Boots do NOT count. SoH base rule is Golden Scale (+ trick hookshot/boots). Which scale reaches 9 m is not stated in the flow (the scientist offers a 'deep dive tip' when you own the Silver Scale, event 38) - verify in game.",
+   "risk": "Low: plain hand-over; the repeat flag is GameData.",
+   "confidence": "high",
+   "evidence": "Npc_Hylia_045_Child: 52 HasDived false -> 102 DivingChallenge_Common_Talk returns 0xa0bde3f5 (depth >= 9 branch 201->91->101) -> 163 -> 55 Obj_Heart_Piece -> 19 SetGameDataBool Npc_Hylia_045_HasDived. Anchor GameDataPath Npc_Hylia_045_HasDived ties it to the Heart Piece."
+  },
+  {
+   "rc": "RC_LH_TRADE_FROG",
+   "remake_vanilla_item": "Item_EyeDrop",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_045_Adult",
+   "event": 182,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    "Npc_Hylia_045_Adult event 184 (entry SubEvent_GetSwordBigGoron_Step09Retry, ReveiveItem Item_EyeDrop): re-issue after the eye drops spoiled. Change too.",
+    "Npc_Hylia_045_Adult event 183 (entry CarryMedicine, ReveiveItem Item_EyeDrop), after query 10 IsExistInPouch Item_EyeDrop: another re-issue path. Change too.",
+    "Event 7 removes Item_EyeballFrog (the traded item, keep); event 54 removes Item_EyeDrop on retry.",
+    "Trade progress is ChallengeSystem quest 'SubEvent_GetSwordBigGoron' (Step06..Step09, timer BigGoronTimer_Step09); EventSetting rows SubEvent_GetSwordBigGoron_Step09 / ShowEyeDrop_Hakase_Adult start these entries when the item is presented (ShowItem)."
+   ],
+   "trigger": "Adult: present (ShowItem) the Eyeball Frog to the lab scientist; entry SubEvent_GetSwordBigGoron_Step09.",
+   "logic_note": "Same as SoH (adult + Eyeball Frog), but the remake chains trades through challenge steps (SubEvent_GetSwordBigGoron_IsAfter_StepNN_Exp) and a spoil timer.",
+   "risk": "High: Biggoron and the retry branches depend on challenge-step GameData, not only pouch content; the eye-drop timer starts here. Retry/CarryMedicine paths can re-issue the gift.",
+   "confidence": "high",
+   "evidence": "182 only from entry SubEvent_GetSwordBigGoron_Step09; 184 from Step09Retry; 183 from CarryMedicine. The only other Item_EyeDrop give is Dm_DeathMtTrail_0050 (Biggoron side)."
+  },
+  {
+   "rc": "RC_LH_UNDERWATER_ITEM",
+   "remake_vanilla_item": "Obj_Bottle_Letter (pouch: Item_Bottle_Letter)",
+   "kind": "world_item",
+   "map": [
+    "Banc/HyruleField/HyruleField_Child_Static.bcett.byml.zs"
+   ],
+   "hash": "474136620438465634",
+   "gyaml": "Obj_Bottle_Letter",
+   "position": [
+    -151.62,
+    124.97,
+    461.04
+   ],
+   "appears": "Always there (no Presence), child map only, underwater on the Lake Hylia bed (~7-8 m below shore level y~132). Obj_DekuNut 9807262312429560898 and Obj_DekuStick 8980892284071798868 lie 2-3 m away at the same depth.",
+   "trigger": "Child dives and picks it up. Pickup flags: per-actor NoRespawn and IsGet.Item_Bottle_Letter; quest flag Get_StoneOfWater_GetRutoLetter is set by flow Get_StoneOfWater entry StoneOfWater_GetRutoletter (event 85), whose caller was not found in flows or maps (likely actor/pouch logic on pickup).",
+   "logic_note": "Same as SoH (child; diving depth needs a scale - not verified which).",
+   "risk": "King Zora's progression (Get_StoneOfWater, Npc_Zora_007 event 8) queries the quest flag Get_StoneOfWater_GetRutoLetter, not only the pouch; if the letter is shuffled elsewhere that flag may never be set and King Zora may not move. Scrubs query IsGet.Item_Bottle_Letter for hint text. The actor is also a bottle (Weapon_Bottle components).",
+   "confidence": "high",
+   "evidence": "Only Obj_Bottle_Letter in all maps; Get_StoneOfWater has entries StoneOfWater_GetRutoletter / StoneOfWater_ShowLetter; Dm_Zora_0010 binds the Item_Bottle_Letter model (King Zora reads it)."
+  },
+  {
+   "rc": "RC_LH_SCARECROWS_SONG",
+   "remake_vanilla_item": "Item_Melody_ScarecrowSong",
+   "kind": "flow_param",
+   "flow": "Npc_Bonooru",
+   "event": 145,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    "The melody itself is the player's own tune stored by GameSystemActor.EventTriggerSetScarecrowMelodyGameData (events 13, 36) when taught as child; Pierre (Npc_Pierre_CallOcarina, AppearPierre_ByScarecrowSong) uses that GameData.",
+    "Quest 'SubEvent_GetScarecrow' (steps MeetBonooru, PlayScarecrowSong, IntoTheFuture, Complete) advanced in Npc_Bonooru (events 27, 96, 101, 103, 105) - leave as is."
+   ],
+   "trigger": "Child: play a tune for Bonooru (BlewOcarinaByPlayer_Child stores it); adult: play it again (EventSetting BlewOcarinaByPlayer_Adult -> entry 2, flag AskBonooru_listentothesong) -> event 145.",
+   "logic_note": "Same as SoH (child teach + adult). Npc_Bonooru is in both HyruleField static maps (Lake Hylia).",
+   "risk": "Medium: whether Pierre appears with the tune but without Item_Melody_ScarecrowSong in the pouch is unknown. Event 16 auto-plays the learned tune right before the gift.",
+   "confidence": "high",
+   "evidence": "145 only from entry BlewOcarinaByPlayer_Adult (EventSetting row of the same name). Only flow giving Item_Melody_ScarecrowSong besides the generic Dm_SY_Ocarina song table."
+  },
+  {
+   "rc": "RC_LH_SUN",
+   "remake_vanilla_item": "Obj_Arrow_Fire (pouch: Item_Arrow_Fire)",
+   "kind": "world_item",
+   "map": [
+    "Banc/HyruleField/HyruleField_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "4598657944866228526",
+   "gyaml": "Obj_Arrow_Fire",
+   "position": [
+    -158.13,
+    131.46,
+    523.36
+   ],
+   "appears": "Placed actor with Name 'Item' on the Lake Hylia island, adult map only. Revealed by cutscene Dm_LakeHrl_0030, started from SubEvent_GetFireArrow:FireArrow_Appear (EventSetting GetFireArrow_FireArrowAppear) by EventRequestActor 2584425271645274601 at (-185.71,133.5,518.32) beside stone tablet Obj_LakeHrl_StoneTablet_A_01 'LakeHylia_01'; the cutscene binds actor Obj_Arrow_Fire/instance 'Item' to Dm_Locator, shows Obj_Sun_A_01 and drops it.",
+   "trigger": "Adult: read the tablet (SubEvent_GetFireArrow Step02), shoot the sun -> Dm_LakeHrl_0030 -> pick it up. Picking up a fire-arrow-tagged pouch actor runs Dm_SY_Get event 15 -> SubEvent_GetFireArrow:GetFireArrow (challenge Complete). Flags: SubEvent_GetFireArrow_IsCompleted_Exp, IsGet.Item_Arrow_Fire.",
+   "logic_note": "Probably same as SoH (adult, lake refilled after the Water Temple, bow); the challenge 'Ready' condition (SubEvent_GetFireArrow_IsAfter_Ready_Exp) was not traced.",
+   "risk": "High for the chest trick: the cutscene addresses the actor by name Obj_Arrow_Fire + instance 'Item' (ModelBind/PlayAS/GoOffstage). Replacing it with a chest breaks that event actor binding unless Dm_LakeHrl_0030's actor entry is changed too. The challenge only completes on picking up a fire-arrow-tagged actor (Dm_SY_Get CheckTagOnPouchActor case 1) - a substitute item never completes it (probably harmless).",
+   "confidence": "high",
+   "evidence": "Only Obj_Arrow_Fire in the maps; Dm_LakeHrl_0030 actor Obj_Arrow_Fire sub 'Item' with ModelBind/EmitXLink/PlayAS/GoOffstage/ModelUnbind and Dm_Locator warped to (-158.13,134.6,523.36), right above the placed actor."
+  },
+  {
+   "rc": "RC_LH_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/HyruleField/HyruleField_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "13469300937852836203",
+   "gyaml": "Obj_Heart_Piece",
+   "position": [
+    -180.58,
+    163.09,
+    424.97
+   ],
+   "appears": "Always there, adult map only, ~25 m above the lab (lab dive anchor at (-174.39,138.0,418.02), 8.5 m away horizontally): the lab roof. HeartPieceAnchor 8693044901437535425 links to it.",
+   "trigger": "Adult reaches the lab roof (N64: bean plant or scarecrow).",
+   "logic_note": "Same as SoH (adult only; absent from the child map). How the remake reaches the roof not verified.",
+   "risk": "Low (plain freestanding item).",
+   "confidence": "high",
+   "evidence": "Only freestanding Heart Piece at Lake Hylia; adult-only like SoH (IsAdult && scarecrow/bean)."
+  },
+  {
+   "rc": "RC_GV_TRADE_SAW",
+   "remake_vanilla_item": "Item_BrokenSword",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_012_Adult",
+   "event": 113,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    "Event 16 (right after 113) removes Item_PoacherSaw (the traded item; keep).",
+    "Trade step is challenge 'SubEvent_GetSwordBigGoron' Step06 (EventSetting row SubEvent_GetSwordBigGoron_Step06); queries 127/128/190 IsExistInPouch Item_PoacherSaw only choose dialogue."
+   ],
+   "trigger": "Adult: present the Poacher's Saw to the carpenter boss (Npc_Hylia_012_Adult, Gerudo Valley fortress side).",
+   "logic_note": "Same as SoH.",
+   "risk": "Medium: later steps (Biggoron, sword repair) follow challenge steps; Npc_Goron_Biggoron_Adult checks Item_BrokenSword.",
+   "confidence": "high",
+   "evidence": "113 only reachable from entry SubEvent_GetSwordBigGoron_Step06; the only Item_BrokenSword hand-over in all flows."
+  },
+  {
+   "rc": "RC_GV_WATERFALL_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_GerudoValley_Heart_Piece (Obj_Heart_Piece variant)",
+   "kind": "world_item",
+   "map": [
+    "Banc/GerudoValley/GerudoValley_Child_Static.bcett.byml.zs",
+    "Banc/GerudoValley/GerudoValley_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "16129198288828948135",
+   "gyaml": "Obj_GerudoValley_Heart_Piece",
+   "position": [
+    4.85,
+    59.16,
+    -78.16
+   ],
+   "appears": "Always there, both ages (same hash in both files), at the waterfall. HeartPieceAnchor 1077480308077338993 links to it. Its actor pack derives from Obj_Heart_Piece with LiftableRef cleared, otherwise identical.",
+   "trigger": "Reach the waterfall alcove.",
+   "logic_note": "Same as SoH (rule 'true' in RR_GV_WATERFALL_ALCOVE). world_items.json missed it (its regex lacks Obj_GerudoValley_*). The valley's other SoH PoH (RC_GV_CRATE_FREESTANDING_POH) became big chest 15856256242099990922 (overworld.json).",
+   "risk": "Low; distinct Gyaml: the freestanding converter must accept Obj_GerudoValley_Heart_Piece.",
+   "confidence": "high",
+   "evidence": "Only non-chest Heart Piece actor in Gerudo Valley; chest mapping already describes its anchor at (4.9,59.2,-78.2) as 'at the waterfall'."
+  },
+  {
+   "rc": "RC_GF_HBA_1000_POINTS",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "Minigame_HorsebackArchery",
+   "event": 313,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera",
+   "also": [
+    "313 is the only give; it is the body of entry HourseBackArchery_HeartGet, called from event 51 (750..1399 points) and from event 54 (>= 1400 points when the heart was not yet won; then the quiver follows via HourseBackArchery_MakeQuiverLarger_DoubleGet).",
+    "GameData MiniGame_HorsebackArchery_GotaHeart (set at 49 after 313; queried 39, 47, 52, 223, 283) gates the prize and is the HeartPieceAnchor map-icon flag (GerudoFortress_Adult_Static hash 3389467775572858537 at (70.48,115.0,37.42)).",
+    "Npc_Gerudo_008 text Talk_16 names the prize ('750 points for a Piece of Heart')."
+   ],
+   "trigger": "Adult on own horse (Epona; Get_Epona_IsCompleted_Exp) with own bow (IsExistInPouch Weapon_Range_Bow, events 147/149), daytime only, 30 rupees; score >= 750 (IsGameDataInt MiniGame_Score 750, event 37). Talk to Npc_Gerudo_008 (EventSetting Ready_Npc_Gerudo_008_Talk). Flag MiniGame_HorsebackArchery_GotaHeart.",
+   "logic_note": "Threshold differs: 750 points in the remake vs 1000 in SoH/N64 (score scale may differ). Requirements (adult, Epona, bow, day, 30 rupees) match SoH; whether the Gerudo Membership Card is required to reach the range was not checked.",
+   "risk": "Low: GameData flag, plain GetInEvent. Text names the Piece of Heart.",
+   "confidence": "high",
+   "evidence": "Score branch 38 (>=1400?) case0(less) -> 37 (>=750?) -> 52 GotaHeart false -> 50 -> ... 51 call HourseBackArchery_HeartGet -> 48 -> 213 -> 325 fork -> 313. Int-switch convention: case 0 = below the value."
+  },
+  {
+   "rc": "RC_GF_HBA_1500_POINTS",
+   "remake_vanilla_item": "Item_Quiver_Medium (or Item_Quiver_Large if the medium quiver is owned)",
+   "kind": "flow_param",
+   "flow": "Minigame_HorsebackArchery",
+   "event": 312,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera",
+   "also": [
+    "Minigame_HorsebackArchery event 311 (same call, ActorName Item_Quiver_Large): chosen when query 40 IsExistInPouch Item_Quiver_Medium is true. Set both 311 and 312 to the randomized item.",
+    "Event 310 (ActorName Obj_Rupee_Purple): repeat prize once MiniGame_HorseBackArchery_Get_Quiver is set (event 58, queried 59/138/224). Leave as is.",
+    "Npc_Gerudo_008 texts Talk_16/Talk_17/Talk_07_3 mention 'bigger quiver'."
+   ],
+   "trigger": "Same game, score >= 1400 (IsGameDataInt MiniGame_Score 1400, event 38). Flag MiniGame_HorseBackArchery_Get_Quiver.",
+   "logic_note": "Threshold differs: 1400 points vs 1500 in SoH. Prize is a progressive quiver chosen by pouch content (medium -> large), like SoH's progressive bow.",
+   "risk": "Medium: upgrade chosen by IsExistInPouch at event 40, so both branches must be rewritten. The minigame lends 20 arrows (EventPlayerSetItemForMiniGame, event 57) but requires owning a bow.",
+   "confidence": "high",
+   "evidence": "Entry HourseBackArchery_MakeQuiverLarger: 59 Get_Quiver false -> 233 -> 40 IsExistInPouch Item_Quiver_Medium: true -> 322 -> 311 Large; false -> 319 -> 312 Medium; both -> 58 set flag. Get_Quiver true -> 300 -> 75 -> 316 -> 310 purple rupee."
+  },
+  {
+   "rc": "RC_TH_FREED_CARPENTERS",
+   "remake_vanilla_item": "Item_Token_Gerudo",
+   "kind": "flow_param",
+   "flow": "Dm_Gerudo_0025",
+   "event": 120,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotLookatObjectTurnOff",
+   "also": [
+    "Dm_Gerudo_0025 is a movie-driven event (EventSetting row Dm_Gerudo_0025 has MovieFileName Dm_Gerudo_0025); event 120 is in cut entry C05. The movie may show the card model (not checked).",
+    "No other flow queries Item_Token_Gerudo or IsGet.Item_Token_Gerudo; guard friendliness is probably driven by GameData (e.g. GerudoFortress_Meet_FourCarpenter_NumOfCarpenterHelped / clear flags), not by the item - unverified."
+   ],
+   "trigger": "Free the 4th carpenter: entry EntryPoint0 checks GerudoFortress_WarpPoint01..04_ClearEvent and plays at the last cell; challenge counter GerudoFortress_Meet_FourCarpenter_NumOfCarpenterHelped (SageOfSpirit_RescueCarpenter, Npc_Hylia_012_Adult).",
+   "logic_note": "Same as SoH (all four carpenters freed).",
+   "risk": "Medium: if gate/guard behaviour is tied to having the card item (not found) moving it could lock or unlock GF; if it is tied to the freed-carpenter flags, a card shuffled elsewhere would NOT make guards friendly. Movie may show the card.",
+   "confidence": "high",
+   "evidence": "Only give of Item_Token_Gerudo in all flows: Dm_Gerudo_0025 event 120 (back-chain 104 -> 102 -> 120, entry C05)."
+  },
+  {
+   "rc": "RC_TH_1_TORCH_CARPENTER",
+   "remake_vanilla_item": "Obj_Dungeon_SmallKey_GerudoFortress_01",
+   "kind": "drop",
+   "how": "Defeating the Gerudo thief Enemy_MiddleBoss_GerudoThief (entry GerudoFortress_DestroyGerudoThief01, EventSetting GerudoFortress_MiddleBossDefeat_01) calls SageOfSpirit_RescueCarpenter:GerudoThiefDropKey (event 94) with Obj_SmallKey = {actor Obj_Dungeon_SmallKey_GerudoFortress_01, sub SmallKeyForEvent_01}; event 106 Obj_Dungeon_SmallKey.EventWarpToActorIncludedRayCheck moves that map-placed key to the thief. The key is then a world pickup.",
+   "map": [
+    "Banc/GerudoFortress/GerudoFortress_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "5126034700935231136",
+   "gyaml": "Obj_Dungeon_SmallKey_GerudoFortress_01",
+   "position": [
+    28.77,
+    101.0,
+    -61.43
+   ],
+   "appears": "Key actor Name SmallKeyForEvent_01 with Presence FlagName GerudoFortress_DestroyGerudoThief_Npc_Hylia_013_Adult (appears once the thief is beaten; linked from the thief actor). A second identical key actor (hash 14727159573379044362 at [27.57, 102.5, -69.15], no Name, no Presence) is referenced by the room logic module GerudoFortress_Common_Level_CarpenterSet_01 (AiGroup) - role unknown (respawn/fallback).",
+   "also": [
+    "Both key actors (5126034700935231136 event copy, 14727159573379044362 logic copy) carry the same Gyaml; change both or the logic copy may still hand out the key.",
+    "SageOfSpirit_RescueCarpenter event 94 actor parameter Obj_SmallKey.actor names the Gyaml; if the event copy's Gyaml is changed (e.g. into a chest) the flow actor entry must change too or the warp breaks.",
+    "Pickup flag IsGet_SmallKey_GerudoFortress.SmallKey01 is what the cell door uses (SageOfSpirit events 74/101/103/105 call GerudoFortress_Imprisoned_UntilUnlocked_Near with the per-key flag; door Obj_Gerudo_SwitchShutter_A_03 OpenChainEvent GerudoFortress_OpenDoorChainLock_Npc_Hylia_013)."
+   ],
+   "trigger": "Adult: enter the carpenter's room, beat the Gerudo thief (mid-boss) guarding Npc_Hylia_013_Adult, pick up the key, open that cell.",
+   "logic_note": "Structure same as SoH (one key per carpenter's guard), but keys are NOT generic: key 01 opens only the cell of Npc_Hylia_013_Adult (per-key GameData flag). Room identification: Room Land_Gerudo_FortressRoom_A_01 at y=102.5 (lowest, 2 doors A_07), next to the GF grotto hole (34.5,113.5,-65.4) = SoH 'GF near grotto' side; carpenter 013 is the 'Step01 ... IsCallingHelp' one (first). Steep-slope vs 1-torch between 013 and 016 is a guess.",
+   "risk": "High: keys are distinct actors per cell (counted by their own name/flag, not a key count like SoH's RG_GERUDO_FORTRESS_SMALL_KEY). Shuffling GF keys as interchangeable items needs the 4 key identities mapped (e.g. rando key k -> Obj_Dungeon_SmallKey_GerudoFortress_0k). The event copy is warped by the defeat event, so a chest replacement is not straightforward.",
+   "confidence": "low",
+   "evidence": "Carpenter Npc_Hylia_013_Adult at [31.87, 102.56, -66.55]; thief Enemy_MiddleBoss_GerudoThief linked (Reference) to key 5126034700935231136; KeyPosition param of event 94 is next to the cell; SoH room guess: Room Land_Gerudo_FortressRoom_A_01 at y=102.5 (lowest, 2 doors A_07), next to the GF grotto hole (34.5,113.5,-65.4) = SoH 'GF near grotto' side; carpenter 013 is the 'Step01 ... IsCallingHelp' one (first). Steep-slope vs 1-torch between 013 and 016 is a guess."
+  },
+  {
+   "rc": "RC_TH_STEEP_SLOPE_CARPENTER",
+   "remake_vanilla_item": "Obj_Dungeon_SmallKey_GerudoFortress_04",
+   "kind": "drop",
+   "how": "Defeating the Gerudo thief Enemy_MiddleBoss_GerudoThief_04 (entry GerudoFortress_DestroyGerudoThief04, EventSetting GerudoFortress_MiddleBossDefeat_04) calls SageOfSpirit_RescueCarpenter:GerudoThiefDropKey (event 97) with Obj_SmallKey = {actor Obj_Dungeon_SmallKey_GerudoFortress_04, sub SmallKeyForEvent_04}; event 106 Obj_Dungeon_SmallKey.EventWarpToActorIncludedRayCheck moves that map-placed key to the thief. The key is then a world pickup.",
+   "map": [
+    "Banc/GerudoFortress/GerudoFortress_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "18396961731144479654",
+   "gyaml": "Obj_Dungeon_SmallKey_GerudoFortress_04",
+   "position": [
+    16.94,
+    106.21,
+    -84.01
+   ],
+   "appears": "Key actor Name SmallKeyForEvent_04 with Presence FlagName GerudoFortress_DestroyGerudoThief_Npc_Hylia_016_Adult (appears once the thief is beaten; linked from the thief actor). A second identical key actor (hash 10731814783987785199 at [15.82, 110.0, -78.0], no Name, no Presence) is referenced by the room logic module GerudoFortress_Common_Level_CarpenterSet_04 (AiGroup) - role unknown (respawn/fallback).",
+   "also": [
+    "Both key actors (18396961731144479654 event copy, 10731814783987785199 logic copy) carry the same Gyaml; change both or the logic copy may still hand out the key.",
+    "SageOfSpirit_RescueCarpenter event 97 actor parameter Obj_SmallKey.actor names the Gyaml; if the event copy's Gyaml is changed (e.g. into a chest) the flow actor entry must change too or the warp breaks.",
+    "Pickup flag IsGet_SmallKey_GerudoFortress.SmallKey04 is what the cell door uses (SageOfSpirit events 74/101/103/105 call GerudoFortress_Imprisoned_UntilUnlocked_Near with the per-key flag; door Obj_Gerudo_SwitchShutter_A_03 OpenChainEvent GerudoFortress_OpenDoorChainLock_Npc_Hylia_016)."
+   ],
+   "trigger": "Adult: enter the carpenter's room, beat the Gerudo thief (mid-boss) guarding Npc_Hylia_016_Adult, pick up the key, open that cell.",
+   "logic_note": "Structure same as SoH (one key per carpenter's guard), but keys are NOT generic: key 04 opens only the cell of Npc_Hylia_016_Adult (per-key GameData flag). Room identification: Room Land_Gerudo_FortressRoom_A_04 at y=110 (2 doors A_07 + 2 A_05), window to the outside (CheckAttentionActor_GerudoWindow; 016 can be talked to from outdoors). 1-torch vs steep-slope between 013 and 016 is a guess.",
+   "risk": "High: keys are distinct actors per cell (counted by their own name/flag, not a key count like SoH's RG_GERUDO_FORTRESS_SMALL_KEY). Shuffling GF keys as interchangeable items needs the 4 key identities mapped (e.g. rando key k -> Obj_Dungeon_SmallKey_GerudoFortress_0k). The event copy is warped by the defeat event, so a chest replacement is not straightforward.",
+   "confidence": "low",
+   "evidence": "Carpenter Npc_Hylia_016_Adult at [10.66, 109.98, -78.28]; thief Enemy_MiddleBoss_GerudoThief_04 linked (Reference) to key 18396961731144479654; KeyPosition param of event 97 is next to the cell; SoH room guess: Room Land_Gerudo_FortressRoom_A_04 at y=110 (2 doors A_07 + 2 A_05), window to the outside (CheckAttentionActor_GerudoWindow; 016 can be talked to from outdoors). 1-torch vs steep-slope between 013 and 016 is a guess."
+  },
+  {
+   "rc": "RC_TH_DOUBLE_CELL_CARPENTER",
+   "remake_vanilla_item": "Obj_Dungeon_SmallKey_GerudoFortress_03",
+   "kind": "drop",
+   "how": "Defeating the Gerudo thief Enemy_MiddleBoss_GerudoThief_03 (entry GerudoFortress_DestroyGerudoThief03, EventSetting GerudoFortress_MiddleBossDefeat_03) calls SageOfSpirit_RescueCarpenter:GerudoThiefDropKey (event 96) with Obj_SmallKey = {actor Obj_Dungeon_SmallKey_GerudoFortress_03, sub SmallKeyForEvent_03}; event 106 Obj_Dungeon_SmallKey.EventWarpToActorIncludedRayCheck moves that map-placed key to the thief. The key is then a world pickup.",
+   "map": [
+    "Banc/GerudoFortress/GerudoFortress_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "7337789119684854050",
+   "gyaml": "Obj_Dungeon_SmallKey_GerudoFortress_03",
+   "position": [
+    34.01,
+    117.5,
+    -29.0
+   ],
+   "appears": "Key actor Name SmallKeyForEvent_03 with Presence FlagName GerudoFortress_DestroyGerudoThief_Npc_Hylia_015_Adult (appears once the thief is beaten; linked from the thief actor). A second identical key actor (hash 1406667554698159711 at [38.56, 119.0, -26.1], no Name, no Presence) is referenced by the room logic module GerudoFortress_Common_Level_CarpenterSet_03 (AiGroup) - role unknown (respawn/fallback).",
+   "also": [
+    "Both key actors (7337789119684854050 event copy, 1406667554698159711 logic copy) carry the same Gyaml; change both or the logic copy may still hand out the key.",
+    "SageOfSpirit_RescueCarpenter event 96 actor parameter Obj_SmallKey.actor names the Gyaml; if the event copy's Gyaml is changed (e.g. into a chest) the flow actor entry must change too or the warp breaks.",
+    "Pickup flag IsGet_SmallKey_GerudoFortress.SmallKey03 is what the cell door uses (SageOfSpirit events 74/101/103/105 call GerudoFortress_Imprisoned_UntilUnlocked_Near with the per-key flag; door Obj_Gerudo_SwitchShutter_A_03 OpenChainEvent GerudoFortress_OpenDoorChainLock_Npc_Hylia_015)."
+   ],
+   "trigger": "Adult: enter the carpenter's room, beat the Gerudo thief (mid-boss) guarding Npc_Hylia_015_Adult, pick up the key, open that cell.",
+   "logic_note": "Structure same as SoH (one key per carpenter's guard), but keys are NOT generic: key 03 opens only the cell of Npc_Hylia_015_Adult (per-key GameData flag). Room identification: Room Land_Gerudo_FortressRoom_A_03 is the only one with two prison pieces (Land_Gerudo_FortressHousePrison_A_01 + A_02, extra cell shutter Obj_Gerudo_SwitchShutter_B_03) and 3 outer doors - SoH's double cell has 3 entrances.",
+   "risk": "High: keys are distinct actors per cell (counted by their own name/flag, not a key count like SoH's RG_GERUDO_FORTRESS_SMALL_KEY). Shuffling GF keys as interchangeable items needs the 4 key identities mapped (e.g. rando key k -> Obj_Dungeon_SmallKey_GerudoFortress_0k). The event copy is warped by the defeat event, so a chest replacement is not straightforward.",
+   "confidence": "medium",
+   "evidence": "Carpenter Npc_Hylia_015_Adult at [39.73, 119.0, -22.89]; thief Enemy_MiddleBoss_GerudoThief_03 linked (Reference) to key 7337789119684854050; KeyPosition param of event 96 is next to the cell; SoH room guess: Room Land_Gerudo_FortressRoom_A_03 is the only one with two prison pieces (Land_Gerudo_FortressHousePrison_A_01 + A_02, extra cell shutter Obj_Gerudo_SwitchShutter_B_03) and 3 outer doors - SoH's double cell has 3 entrances."
+  },
+  {
+   "rc": "RC_TH_DEAD_END_CARPENTER",
+   "remake_vanilla_item": "Obj_Dungeon_SmallKey_GerudoFortress_02",
+   "kind": "drop",
+   "how": "Defeating the Gerudo thief Enemy_MiddleBoss_GerudoThief_02 (entry GerudoFortress_DestroyGerudoThief02, EventSetting GerudoFortress_MiddleBossDefeat_02) calls SageOfSpirit_RescueCarpenter:GerudoThiefDropKey (event 95) with Obj_SmallKey = {actor Obj_Dungeon_SmallKey_GerudoFortress_02, sub SmallKeyForEvent_02}; event 106 Obj_Dungeon_SmallKey.EventWarpToActorIncludedRayCheck moves that map-placed key to the thief. The key is then a world pickup.",
+   "map": [
+    "Banc/GerudoFortress/GerudoFortress_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "12946017077004046962",
+   "gyaml": "Obj_Dungeon_SmallKey_GerudoFortress_02",
+   "position": [
+    69.33,
+    118.87,
+    -106.6
+   ],
+   "appears": "Key actor Name SmallKeyForEvent_02 with Presence FlagName GerudoFortress_DestroyGerudoThief_Npc_Hylia_014_Adult (appears once the thief is beaten; linked from the thief actor). A second identical key actor (hash 5303541637929200213 at [69.78, 120.5, -113.31], no Name, no Presence) is referenced by the room logic module GerudoFortress_Common_Level_CarpenterSet_02 (AiGroup) - role unknown (respawn/fallback).",
+   "also": [
+    "Both key actors (12946017077004046962 event copy, 5303541637929200213 logic copy) carry the same Gyaml; change both or the logic copy may still hand out the key.",
+    "SageOfSpirit_RescueCarpenter event 95 actor parameter Obj_SmallKey.actor names the Gyaml; if the event copy's Gyaml is changed (e.g. into a chest) the flow actor entry must change too or the warp breaks.",
+    "Pickup flag IsGet_SmallKey_GerudoFortress.SmallKey02 is what the cell door uses (SageOfSpirit events 74/101/103/105 call GerudoFortress_Imprisoned_UntilUnlocked_Near with the per-key flag; door Obj_Gerudo_SwitchShutter_A_03 OpenChainEvent GerudoFortress_OpenDoorChainLock_Npc_Hylia_014)."
+   ],
+   "trigger": "Adult: enter the carpenter's room, beat the Gerudo thief (mid-boss) guarding Npc_Hylia_014_Adult, pick up the key, open that cell.",
+   "logic_note": "Structure same as SoH (one key per carpenter's guard), but keys are NOT generic: key 02 opens only the cell of Npc_Hylia_014_Adult (per-key GameData flag). Room identification: Room Land_Gerudo_FortressRoom_A_02 at y=120.5 (highest, nearest the top-floor Gold Skulltula (55.3,131.9,-70.2)) with a single outer door (A_07 at (69.5,120.5,-99.8)) - SoH's dead-end cell has one entrance (GF below GS).",
+   "risk": "High: keys are distinct actors per cell (counted by their own name/flag, not a key count like SoH's RG_GERUDO_FORTRESS_SMALL_KEY). Shuffling GF keys as interchangeable items needs the 4 key identities mapped (e.g. rando key k -> Obj_Dungeon_SmallKey_GerudoFortress_0k). The event copy is warped by the defeat event, so a chest replacement is not straightforward.",
+   "confidence": "low",
+   "evidence": "Carpenter Npc_Hylia_014_Adult at [72.55, 120.57, -111.38]; thief Enemy_MiddleBoss_GerudoThief_02 linked (Reference) to key 12946017077004046962; KeyPosition param of event 95 is next to the cell; SoH room guess: Room Land_Gerudo_FortressRoom_A_02 at y=120.5 (highest, nearest the top-floor Gold Skulltula (55.3,131.9,-70.2)) with a single outer door (A_07 at (69.5,120.5,-99.8)) - SoH's dead-end cell has one entrance (GF below GS)."
+  },
+  {
+   "rc": "RC_WASTELAND_BOMBCHU_SALESMAN",
+   "remake_vanilla_item": "Shop_BombchuBundle_01",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_044_Adult",
+   "event": 0,
+   "param": "ActorName",
+   "what": "call SimpleShop:SimpleShopRoot (price 90; SimpleShop hands over ActorName via Sub_SimpleShop_Buy event 39 NpcCommon_HandOver_NpcToPlayer_NoTurn_NoWaitAS ReceiveItem)",
+   "also": [
+    "Npc_Hylia_044_Child entry Talk just calls Npc_Hylia_044_Adult:Talk, so the same event 0 serves both ages.",
+    "Price params on event 0: Price 90, MinusRupeeValue -90; event 2 sets SimpleShop_Price 90 (used by SimpleShop AddGameDataIntToRupee).",
+    "Npc_Hylia_044_Buy (set in SimpleShop event 84, queried at 11) only switches the sales text (Talk_08/Talk_09).",
+    "Texts Talk_03/Talk_08/Mask_05 name Bombchus."
+   ],
+   "trigger": "Talk to the carpet merchant (Npc_Hylia_044_Adult / _Child, HountedWasteland static maps at (37.26,90.46,60.56)) and buy for 90 rupees.",
+   "logic_note": "Price 90 in the remake (SoH vanilla 200; SoH rule uses the check price), both ages like SoH.",
+   "risk": "High: repeatable purchase (no once-only flag; SimpleShop CanAddToPorch decides), so a unique item would be sold again and again. 'Shop_*' actor names are shop wrappers (not Item_* actors): a replacement must be a valid pouch actor name for NpcCommon hand-over.",
+   "confidence": "high",
+   "evidence": "Npc_Hylia_044_Adult event 0 params {ActorName Shop_BombchuBundle_01, Price 90}; EventSetting rows Npc_Hylia_044_Adult_D_T / Npc_Hylia_044_Child_D_T. Only bombchu merchant in the wasteland."
+  },
+  {
+   "rc": "RC_COLOSSUS_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/DesertColossus/DesertColossus_Child_Static.bcett.byml.zs",
+    "Banc/DesertColossus/DesertColossus_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "10592092054086534681",
+   "gyaml": "Obj_Heart_Piece",
+   "position": [
+    -137.13,
+    103.49,
+    10.51
+   ],
+   "appears": "Always there, both ages (same hash), 9.5 m above the temple gate (Land_DesertColossus_TempleGate_A_01 at y=94.0) - on top of the gate structure; HeartPieceAnchor 2308531337658761834; magic bean soil (Obj_SmallFarm_A_01, Gimmick_MagicBeanSoil_DesertColossus) at (-157.5,95.4,17.2), 21 m away.",
+   "trigger": "Reach the top of the gate/arch (N64: bean plant ride).",
+   "logic_note": "Probably same as SoH (RR_DESERT_COLOSSUS_ARCH reached by bean). Exact route not verified.",
+   "risk": "Low.",
+   "confidence": "medium",
+   "evidence": "Only freestanding Heart Piece in the Colossus maps; adjacent bean soil like N64."
+  },
+  {
+   "rc": "RC_ZR_MAGIC_BEAN_SALESMAN",
+   "remake_vanilla_item": "Item_MagicBean",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_047_Child",
+   "event": 0,
+   "param": "ActorName",
+   "what": "call SimpleShop:SimpleShopRoot_3Choices (first bean, Price 10)",
+   "also": [
+    "The bean branch of SimpleShop hardcodes the item: SimpleShop event 63 (entry Sub_SimpleShop_Buy_MagicBean) call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay with ReveiveItem 'Item_MagicBean' - this is what is actually given; the ActorName argument only feeds CanAddToPorch (SimpleShop event 23). Change SimpleShop 63 (shared flow, but only the bean seller uses SimpleShopRoot_3Choices).",
+    "Later purchases: Npc_Hylia_047_Child events 24-28 and 51-52 (prices 20..100 by GameData int Get_MagicBeans, branch at event 1) also name Item_MagicBean; since SimpleShop 63 is shared, every purchase would give the replaced item unless the flow is split.",
+    "SimpleShop event 34 increments Get_MagicBeans (drives price), event 72 sets Get_MagicBean_After; Npc_Hylia_047_Child text Talk_12/Talk_16 describes beans."
+   ],
+   "trigger": "Child: talk to the bean seller (Npc_Hylia_047_Child, ZoraRiver_Child_Static at (-53.0,100.77,-12.25)) and buy; first bean costs 10 rupees, price rises 10 per bean up to 10 beans.",
+   "logic_note": "Same as SoH (child, Zora's River). SoH sells one randomized item; the remake sells up to 10 beans.",
+   "risk": "High: the give is hardcoded in the shared SimpleShop flow (event 63) and the purchase is repeatable (10 times, increasing price) - a unique item would be sold repeatedly unless the bean count/price branch is reworked. Beans are planted via Field_PlantMagicBean (removes Item_MagicBean).",
+   "confidence": "high",
+   "evidence": "Npc_Hylia_047_Child event 0 params {ActorName Item_MagicBean, Price 10, ProgressBranch_GameDataName Gimmick_MagicBeanSoil_ZoraRiver}; SimpleShop 23 CanAddToPorch -> 66 Sub_SimpleShop_Buy_MagicBean -> 109 -> 101 -> 102 -> 65 -> 99 -> 63 hardcoded Item_MagicBean."
+  },
+  {
+   "rc": "RC_ZR_FROGS_IN_THE_RAIN",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "MiniGame_FrogTenors",
+   "event": 247,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+   "also": [
+    "GameData MiniGame_FrogTenors_StormSong (set at 23 on the same path; queried at 18 and 22) gates the prize; HeartPieceAnchor in ZoraRiver_Child_Static (hash 18246168067761770276, GameDataPath MiniGame_FrogTenors_StormSong)."
+   ],
+   "trigger": "Child: play Song of Storms to the frogs (entry PlayOcarinaForFrogMiniGame_Melody, EventSetting MiniGame_FrogTenors; MelodyType 5 at event 5 -> 22). Flag MiniGame_FrogTenors_StormSong.",
+   "logic_note": "Same as SoH (child + Song of Storms). Frogs (Animal_Frog_*) exist only in ZoraRiver_Child_Static.",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "22 IsGameDataBool StormSong case1(false) -> 167 -> 184 -> 141 -> 146 -> 23 (set flag) and 141 -> 140 -> 309 -> 310 -> 190 -> 145 -> 247. Anchor flag name matches."
+  },
+  {
+   "rc": "RC_ZR_FROGS_OCARINA_GAME",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "MiniGame_FrogTenors",
+   "event": 71,
+   "param": "ActorName",
+   "what": "call MiniGame_FrogTenors:MushiToriGame (argument, given later by event 246 call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc ActorName {argument ActorName})",
+   "also": [
+    "MiniGame_FrogTenors event 91 (call MushiToriGame ActorName Obj_Heart_Piece, IsRetry true; entry FrogMiniGame_RetryFlow): the retry path. Change both 71 and 91.",
+    "Events 72/92 pass Obj_Rupee_Blue for later clears (chosen by MiniGame_FrogTenors_InsectRepellent at 100/93) - leave.",
+    "GameData MiniGame_FrogTenors_InsectRepellent (set at 63 after the gift) gates the prize; HeartPieceAnchor hash 4877056571307262080 (GameDataPath MiniGame_FrogTenors_InsectRepellent)."
+   ],
+   "trigger": "Child, after teaching the frogs all six songs (Zelda, Saria, Epona, Time, Sun, Storms -> MiniGame_FrogTenors_SongClear set at 19): play the bug-catching ocarina game (entry FrogMiniGame_Insectrepellent / MushiToriGame; PrepareScoreForFrog 14-18 notes). First clear = Heart Piece. Flag MiniGame_FrogTenors_InsectRepellent.",
+   "logic_note": "Same requirements as SoH (child + the 6 songs). The remake game has levels (MiniGame_FrogTenors_InsectRepellent_Clearnumber 0..4); only the first clear gives the Heart Piece.",
+   "risk": "Low-medium: gift is a subflow argument; event 246 is shared with the blue-rupee repeat, so change the callers 71/91, not 246.",
+   "confidence": "high",
+   "evidence": "100 IsGameDataBool InsectRepellent case0(true) -> 72 blue rupee, case1(false) -> 71 HP; 246 -> 232 -> 113 -> 63 sets InsectRepellent. Songs 13-19 all required for SongClear (queried at 109)."
+  },
+  {
+   "rc": "RC_ZR_NEAR_OPEN_GROTTO_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/ZoraRiver/ZoraRiver_Child_Static.bcett.byml.zs",
+    "Banc/ZoraRiver/ZoraRiver_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "11455676800795329345",
+   "gyaml": "Obj_Heart_Piece",
+   "position": [
+    -3.99,
+    111.42,
+    -34.3
+   ],
+   "appears": "Always there, both ages (same hash); HeartPieceAnchor 3814878871658269103. On the lower/middle river near gossip stone GOSSIP_ZORA_RIVER_01 (12.4,115.3,-32.1); the ZR open grotto hole is at (-18.1,116.1,16.2) (overworld.json), 52 m away; the other river PoH is 140 m from that grotto.",
+   "trigger": "Reach the pillar/ledge (SoH: boomerang from the river or stand on the pillar).",
+   "logic_note": "Probably same as SoH; exact perch not verified.",
+   "risk": "Low.",
+   "confidence": "medium",
+   "evidence": "Of the two ZR Heart Pieces this is the one toward the Hyrule Field end (HF exits at x~-97) and nearest the open grotto; the other is next to the Zora's Domain exit."
+  },
+  {
+   "rc": "RC_ZR_NEAR_DOMAIN_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/ZoraRiver/ZoraRiver_Child_Static.bcett.byml.zs",
+    "Banc/ZoraRiver/ZoraRiver_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "4189391771527808272",
+   "gyaml": "Obj_Heart_Piece",
+   "position": [
+    99.49,
+    120.1,
+    -61.73
+   ],
+   "appears": "Always there, both ages; HeartPieceAnchor 6961804965205481566. Upper river near the waterfall: Zora's Domain exit (FieldAndDungeonEntranceEventRequestActor to Goto_ZoraDomain) at (148.2,143.8,-40.9), gossip stone GOSSIP_ZORA_RIVER_03 at (117.9,112.1,-33.7).",
+   "trigger": "Reach the ledge near the domain waterfall (SoH: child with bracelet, boomerang, hover boots, bunny hood, or adult trick).",
+   "logic_note": "Probably same as SoH; access route not verified.",
+   "risk": "Low.",
+   "confidence": "medium",
+   "evidence": "Easternmost ZR Heart Piece, ~55 m from the domain exit."
+  },
+  {
+   "rc": "RC_ZD_DIVING_MINIGAME",
+   "remake_vanilla_item": "Item_Scale_Silver",
+   "kind": "flow_param",
+   "flow": "MiniGame_Diving",
+   "event": 316,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+   "also": [
+    "Event 315 (entry SecondClear, ActorName Obj_Rupee_Red): repeat prize once MiniGame_Diving_Cleared is set - leave.",
+    "GameData MiniGame_Diving_Cleared (set at 29; queried 12, 37, 38, 52, 75, 90, 113, 133, 185) switches to the 10-rupee hard game (ScoreMax 5 -> 10) and Npc_Zora_001.MiniGameDivingRequestCreateActor {IsAfterGetScaleSilver true} (deeper rupees). MiniGame_Diving_ShilverScale_First (136/137) is another first-time flag.",
+    "Get_StoneOfWater event 91 queries MiniGame_Diving_Cleared (Ruto's letter story text).",
+    "Npc_Zora_002/Npc_Zora_009 query Item_Scale_Silver in pouch for dialogue."
+   ],
+   "trigger": "Child: pay 10 rupees to Npc_Zora_001 (ZoraDomain_Child_Static at (30.67,113.61,-8.18), EventSetting Ready_Npc_Zora_001_Talk), collect the 5 thrown rupees in time (MiniGame_Diving_Clear). Flag MiniGame_Diving_Cleared.",
+   "logic_note": "Same as SoH (child). Fee 10 rupees in the remake (N64 20).",
+   "risk": "Medium: after the first clear the game spawns deeper rupees assuming the Silver Scale (IsAfterGetScaleSilver) - only matters for the repeat game. Scale is progressive (silver then gold).",
+   "confidence": "high",
+   "evidence": "who: 316 only from entry FirstClear (142 -> 323 -> 321 -> 6 -> 122 -> 162 -> 13 -> 276 -> 316); 315 from SecondClear."
+  },
+  {
+   "rc": "RC_ZD_KING_ZORA_THAWED",
+   "remake_vanilla_item": "Obj_Armor_Zora (pouch: Armor_Adult_Zora)",
+   "kind": "flow_param",
+   "flow": "SageOfWater",
+   "event": 252,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera (NpcActorName Npc_Zora_KingZora_adult)",
+   "also": [
+    "Fallback giver: Npc_Zora_011_Shop_Adult event 64 call Dm_SY_GetInEvent:GetInEvent_Mask ActorName Obj_Armor_Zora (Zora shop, adult), enabled by GameData Npc_Zora_011_Shop_Adult_CanGetZoraArmor, which King Zora's talk sets (Npc_Zora_KingZora_adult event 140) when query 139 IsExistInPouch Armor_Adult_Zora is false; the shop resets it (event 58). With a randomized gift the player has no Zora Tunic, so King Zora would unlock a FREE second gift at the shop: change shop event 64 too (or the query at 139).",
+    "Both gifts were missed by gift_events.json (its regex lacks 'Obj_Armor_*'); SageOfFire event 177 gives Obj_Armor_Goron the same way (other group).",
+    "Dialogue before the gift (KingZora_Talk_37/_55 'I've got just the thing') and Zora shop flavor text assume the tunic."
+   ],
+   "trigger": "Adult: thaw King Zora with blue fire -> event SageOfWater_KingZora_IsMelted_Ice (entry KingZora_IsMelted_Ice); both dialogue branches (SageOfWater_GetWaterSerenade true via 31/154/155/37/45/46, false via 26/157/158) join at fork 166 -> 252.",
+   "logic_note": "Same as SoH (adult, King Zora thawed). Zora's Domain adult has two map variants (ZoraDomain_Adult_* and ZoraDomain_Adult_Alternative_*), both with King Zora and the shop.",
+   "risk": "High: second free giver (shop) keyed on not owning Armor_Adult_Zora; gift is an Obj_* pickup-model actor rather than the pouch name.",
+   "confidence": "high",
+   "evidence": "SageOfWater 252 back-chain 167 <- 166 <- {46,158} ... <- 171 (entry KingZora_IsMelted_Ice, EventSetting SageOfWater_KingZora_IsMelted_Ice). Npc_Zora_KingZora_adult 139 {0(has): 44, 1(not): 138 Talk_300 'you ought to visit the shop'} -> 140 sets Npc_Zora_011_Shop_Adult_CanGetZoraArmor; shop 57 case0(true) -> 59 -> 60 -> 67 -> ... -> 64 Obj_Armor_Zora -> 58 clears it (shop Talk_23 'King Zora sent word that we should give this to you')."
+  },
+  {
+   "rc": "RC_ZD_TRADE_PRESCRIPTION",
+   "remake_vanilla_item": "Item_EyeballFrog",
+   "kind": "flow_param",
+   "flow": "Npc_Zora_KingZora_adult",
+   "event": 174,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera",
+   "also": [
+    "Npc_Zora_KingZora_adult event 175 (entries SubEvent_GetSwordBigGoron_Step09Retry and EyeballFrogFailed, ActorName Item_EyeballFrog): re-issue after the frog spoiled. Change too.",
+    "Event 20 removes Item_Prescription right after 174 (keep); event 59 removes Item_EyeballFrog on retry.",
+    "Challenge SubEvent_GetSwordBigGoron Step08 (EventSetting SubEvent_GetSwordBigGoron_Step08) and timer BigGoronTimer_Step09 (events 39/147) start here; queries 79/81 IsExistInPouch Item_EyeballFrog pick retry branches."
+   ],
+   "trigger": "Adult, King Zora thawed: present the Prescription (ShowItem AssignableItem 41, entry ShowItem_KingZoraOnly -> SubEvent_GetSwordBigGoron_Step08).",
+   "logic_note": "Same as SoH, plus the remake's spoil timer and challenge steps.",
+   "risk": "High (same as the other trades): progression via challenge steps/timer; retry branch re-issues the gift.",
+   "confidence": "high",
+   "evidence": "174 only from entry SubEvent_GetSwordBigGoron_Step08 (178 -> 21 -> 48 -> ... -> 15 -> 174 -> 20); 175 from Step09Retry/EyeballFrogFailed."
+  },
+  {
+   "rc": "RC_ZF_ICEBERG_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/ZoraFountain/ZoraFountain_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "12406896586250888098",
+   "gyaml": "Obj_Heart_Piece",
+   "position": [
+    84.96,
+    103.15,
+    -34.8
+   ],
+   "appears": "Always there, adult map only, at water level on an iceberg; HeartPieceAnchor 12439817999368518552.",
+   "trigger": "Adult: hop the icebergs.",
+   "logic_note": "Same as SoH (adult).",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "Two ZF Heart Pieces, adult only; this one at the surface (y=103.15), the other 32 m deeper."
+  },
+  {
+   "rc": "RC_ZF_BOTTOM_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "Banc/ZoraFountain/ZoraFountain_Adult_Static.bcett.byml.zs"
+   ],
+   "hash": "8030885465575590602",
+   "gyaml": "Obj_Heart_Piece",
+   "position": [
+    56.85,
+    70.93,
+    -27.41
+   ],
+   "appears": "Always there, adult map only, on the lakebed ~32 m below the surface; HeartPieceAnchor 11514535765115882860.",
+   "trigger": "Adult: sink with Iron Boots (or dive) to the fountain floor.",
+   "logic_note": "Same as SoH (adult + Iron Boots).",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "Deep ZF Heart Piece (y=70.93) vs iceberg one (y=103.15)."
+  },
+  {
+   "rc": "RC_ZF_GREAT_FAIRY_REWARD",
+   "remake_vanilla_item": "Item_FaroreWind",
+   "kind": "flow_param",
+   "flow": "Dm_FairyFountain_Frore",
+   "event": 107,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_Demo_NotLookatObjectEntry",
+   "also": [
+    "Dm_FairyFountain_Frore event 4 queries GameData 'IsGet.Item_FaroreWind': true -> 7 RecoverSequence (heal only), false -> 6 VisitedNoAbility (offer again). With a randomized gift the flag stays false and the fairy would sell the gift again on every visit: patch the query (e.g. to HavePlayedEvent/GreatFairy flag) or the GameDataName.",
+    "TriForcePoint events 13-18 (entry Check_Complete) and Dm_FairyFountain_Din, Npc_Gerudo_012, Enemy_Scrub_Business_Seed also query IsGet.Item_FaroreWind (completion count, hints).",
+    "Offer/pay: Dm_FairyFountain_Frore event 9 HasRuppe 100, event 13 Dm_FairyFountain_Din:Pay {Value -100}; event 11 DontPay2 {SpecialAbility 3}. TriForcePoint entry Demo_FairyFountain_Frore calls Sub_PlayOcarinaSequence_FairyFountain {SpecialAbility 3} (FairyFountainSelectSpecialAbility).",
+    "Cutscene text (e.g. Dm_FairyFountain_Frore_0004_01) explains the spell."
+   ],
+   "trigger": "Play Zelda's Lullaby on the Triforce mark in the fountain (TriForcePoint -> EventTransition Dm_FairyFountain_Frore), then OFFER 100 rupees when asked. MapIconFacilityAnchor 6453185663751533626 (ZoraFountain_Adult_Dynamic) / 18044734573932171356 (Child_Dynamic) at (60.68,103.16,48.07) opens on HavePlayedEvent.Dm_FairyFountain_Frore.",
+   "logic_note": "Differs from SoH: the remake Great Fairy asks for a rupee offering of 100 before granting the spell (SoH: Zelda's Lullaby only). 100 > 99 needs at least the Adult's Wallet. Both ages (fountain present in child and adult maps).",
+   "risk": "High: repeat-gift via IsGet.Item_FaroreWind query; wallet requirement must be added to logic.",
+   "confidence": "high",
+   "evidence": "Dm_FairyFountain_Frore entries; event 107 is the only give of Item_FaroreWind; fountain located by MapIconFacilityAnchor (MapIconFacilityIsOpen HavePlayedEvent.Dm_FairyFountain_Frore) in the ZoraFountain maps."
+  },
+  {
+   "rc": "RC_COLOSSUS_GREAT_FAIRY_REWARD",
+   "remake_vanilla_item": "Item_NayruLove",
+   "kind": "flow_param",
+   "flow": "Dm_FairyFountain_Nayru",
+   "event": 98,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_Demo_NotLookatObjectEntry",
+   "also": [
+    "Dm_FairyFountain_Nayru event 4 queries GameData 'IsGet.Item_NayruLove': true -> 7 RecoverSequence (heal only), false -> 6 VisitedNoAbility (offer again). With a randomized gift the flag stays false and the fairy would sell the gift again on every visit: patch the query (e.g. to HavePlayedEvent/GreatFairy flag) or the GameDataName.",
+    "TriForcePoint events 13-18 (entry Check_Complete) and Dm_FairyFountain_Din, Npc_Gerudo_012, Enemy_Scrub_Business_Seed also query IsGet.Item_NayruLove (completion count, hints).",
+    "Offer/pay: Dm_FairyFountain_Nayru event 9 HasRuppe 300, event 13 Dm_FairyFountain_Din:Pay {Value -300}; event 11 DontPay2 {SpecialAbility 5}. TriForcePoint entry Demo_FairyFountain_Nayru calls Sub_PlayOcarinaSequence_FairyFountain {SpecialAbility 5} (FairyFountainSelectSpecialAbility).",
+    "Cutscene text (e.g. Dm_FairyFountain_Frore_0004_01) explains the spell."
+   ],
+   "trigger": "Play Zelda's Lullaby on the Triforce mark in the fountain (TriForcePoint -> EventTransition Dm_FairyFountain_Nayru), then OFFER 300 rupees when asked. MapIconFacilityAnchor 5577914011754875380 (DesertColossus_Adult_Dynamic) / 9172008990674192103 (Child_Dynamic) at (-49.06,100.4,-32.94) opens on HavePlayedEvent.Dm_FairyFountain_Nayru.",
+   "logic_note": "Differs from SoH: the remake Great Fairy asks for a rupee offering of 300 before granting the spell (SoH: Zelda's Lullaby only). 300 needs a wallet holding 300 (Giant's Wallet if remake capacities match N64's 99/200/500). Both ages (fountain present in child and adult maps).",
+   "risk": "High: repeat-gift via IsGet.Item_NayruLove query; wallet requirement must be added to logic.",
+   "confidence": "high",
+   "evidence": "Dm_FairyFountain_Nayru entries; event 98 is the only give of Item_NayruLove; fountain located by MapIconFacilityAnchor (MapIconFacilityIsOpen HavePlayedEvent.Dm_FairyFountain_Nayru) in the DesertColossus maps."
+  }
+ ],
+ "remake_only": [
+  {
+   "soh_region_guess": "RR_ZORAS_DOMAIN",
+   "remake_vanilla_item": "Obj_Armor_Zora",
+   "kind": "flow_param",
+   "flow": "Npc_Zora_011_Shop_Adult",
+   "event": 64,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_Mask",
+   "trigger": "Adult: talk to King Zora after the thaw while NOT owning Armor_Adult_Zora (Npc_Zora_KingZora_adult 139 -> 140 sets Npc_Zora_011_Shop_Adult_CanGetZoraArmor), then talk to the Zora shopkeeper (Npc_Zora_011_Shop_Adult, both adult ZD map variants, at (-29.53,104.88,20.03)).",
+   "logic_note": "Not a separate SoH check: a fallback copy of King Zora's gift. In vanilla it never fires because the thaw event already gave the tunic; in a randomizer it WILL fire. Treat as part of RC_ZD_KING_ZORA_THAWED (give the same item or disable).",
+   "risk": "Duplicate gift if left unchanged.",
+   "confidence": "high",
+   "evidence": "Shop 57 IsGameDataBool CanGetZoraArmor true -> 59/60/67 -> 56 Talk_23 ('King Zora sent word that we should give this to you') -> 64 -> 58 clears the flag."
+  },
+  {
+   "soh_region_guess": "RR_LAKE_HYLIA",
+   "remake_vanilla_item": "Obj_DekuNut",
+   "kind": "world_item",
+   "map": [
+    "Banc/HyruleField/HyruleField_Child_Static.bcett.byml.zs"
+   ],
+   "hash": "9807262312429560898",
+   "gyaml": "Obj_DekuNut",
+   "position": [
+    -148.43,
+    124.95,
+    458.95
+   ],
+   "appears": "Always there, child map, underwater next to Ruto's letter.",
+   "trigger": "Dive and pick up.",
+   "logic_note": "Freestanding consumable with no SoH counterpart (N64 has none there). Minor; usable as an extra freestanding spot.",
+   "risk": "Low.",
+   "confidence": "medium",
+   "evidence": "world_items.json; 2.7 m from Obj_Bottle_Letter at the same depth."
+  },
+  {
+   "soh_region_guess": "RR_LAKE_HYLIA",
+   "remake_vanilla_item": "Obj_DekuStick",
+   "kind": "world_item",
+   "map": [
+    "Banc/HyruleField/HyruleField_Child_Static.bcett.byml.zs"
+   ],
+   "hash": "8980892284071798868",
+   "gyaml": "Obj_DekuStick",
+   "position": [
+    -151.73,
+    124.94,
+    458.73
+   ],
+   "appears": "Always there, child map, underwater next to Ruto's letter.",
+   "trigger": "Dive and pick up.",
+   "logic_note": "Freestanding consumable with no SoH counterpart. Minor.",
+   "risk": "Low.",
+   "confidence": "medium",
+   "evidence": "world_items.json; 2.3 m from Obj_Bottle_Letter."
+  }
+ ],
+ "related_not_in_list": [
+  "Frogs song rewards (SoH RC_ZR_FROGS_ZELDAS_LULLABY/EPONAS_SONG/SARIAS_SONG/SUNS_SONG/SONG_OF_TIME, purple rupees in SoH): the remake pays rupees with PouchSystemActor.EventTriggerIncreaseRupee {Value argument GetRupee} (MiniGame_FrogTenors entry GetRupy_FrogsTenors, event 238; amounts 5/10/15/20/30 chosen by the order count MiniGame_FrogTenors_GetCount, events 233-243), not by an item actor, so they cannot be redirected by an ActorName rewrite (would need a new GetInEvent call). Per-song flags MiniGame_FrogTenors_<Song>.",
+  "Gerudo Valley cow (SoH RC_GV_COW, cowsanity): Animal_Cow_GerudoValley hash 9796879244811108931 at (-7.85,47.2,-15.23), only in GerudoValley_Child_Static; milk via Animal_Cow flow (Item_Bottle_Milk, events 6/45/107 GetInEventInBottle) - shared by all cows.",
+  "Gerudo Valley running man race (Npc_Hylia_RunningMan_Adult, GerudoValley_Adult_Static at (-40.66,101.24,-19.68)): remake-only minigame, prizes Obj_Rupee_Purple (event 189) / Obj_Rupee_Red (event 190) by result; repeatable rupees, so not listed as a check.",
+  "Remake chests in these areas (ZD torch chest PoH, GV big-chest PoH replacing the crate PoH, GF rooftop PoH, grottos) are already in mapping/overworld.json."
+ ],
+ "notes": [
+  "Event switch convention (verified on several flows): IsGameDataBool / IsExistInPouch case 0 = true, case 1 = false; IsGameDataInt case 0 = below Value, 1 = equal, 2 = above.",
+  "Many flows query GameData 'IsGet.<ActorName>' (set automatically on obtaining that pouch actor) to decide repeats or text: Great Fairies, scrubs, sages. A randomized gift leaves the vanilla item's IsGet flag false.",
+  "gift_events.json misses gifts whose actor names start with Obj_Armor_ (Zora/Goron tunic: SageOfWater 252, Npc_Zora_011_Shop_Adult 64, SageOfFire 177), Shop_ (Shop_BombchuBundle_01), Obj_Shield_, Obj_MiniGame_SmallKey; world_items.json misses Obj_GerudoValley_Heart_Piece.",
+  "NpcCommon_HandOver_NpcToPlayer_* passes ReveiveItem (typo kept by the game) / ReceiveItem straight to Dm_SY_GetInEvent:GetInEvent_NotTurn, so rewriting that string is equivalent to rewriting a GetInEvent ActorName.",
+  "Minigame Heart Pieces carry a HeartPieceAnchor map marker whose HeartPieceAnchor_GameDataPath names the flag that records the prize (MiniGame_Fishing_GetHeartPiece, Npc_Hylia_045_HasDived, MiniGame_FrogTenors_StormSong, MiniGame_FrogTenors_InsectRepellent, MiniGame_HorsebackArchery_GotaHeart).",
+  "Adult trade items are chained by the ChallengeSystem quest SubEvent_GetSwordBigGoron (StepNN + spoil timers) and started by presenting the item (ShowItem/AssignableItem), with Retry entries that re-issue the gift."
+ ],
+ "open_questions_for_in_game_check": [
+  "Thieves' Hideout: which carpenter room is the '1 torch', 'steep slope', 'dead end' and 'double cell' one? (Carpenters Npc_Hylia_013 lowest room y~102.5, Npc_Hylia_014 highest y~120.5 with one door, Npc_Hylia_015 room with two cells, Npc_Hylia_016 room at y~110 next to a window). Count the torches in each cell room.",
+  "Thieves' Hideout: after beating a Gerudo thief, does a key appear at the thief (warped event copy) and is there ever a second key in the same room (the un-named logic copy)?",
+  "Gerudo Fortress: do guards become friendly because of the cutscene/flags or because the card is in the inventory (test: card event plays, check guards)?",
+  "Lab dive: which scale (Silver or Gold) is needed to reach the 9 m mark, and can child do it (the remake has a child entry)? Do Iron Boots really not count?",
+  "Lake Hylia: which scale lets child reach Ruto's letter on the lake bed (y~125)?",
+  "Sheik at Colossus: does the Requiem cutscene play when arriving as child (trigger actor exists in the child map without Sheik's anchors)?",
+  "Great Fairies: confirm Farore (Zora's Fountain) asks for 100 rupees and Nayru (Colossus) 300 rupees, and what the max wallet sizes are in the remake.",
+  "Great Fairy repeat: after the spell is given, does revisiting the fountain only heal (IsGet flag true)? (needed to know if the IsGet query must be patched).",
+  "Horseback archery: is the Gerudo Membership Card needed to reach/play the range, and are the thresholds really 750 / 1400 points?",
+  "Bean salesman / carpet merchant: buying more than once - confirm both are repeatable (beans up to 10 at rising price; bombchus every visit).",
+  "Fire Arrows: what makes them appear (read the tablet, then shoot the sun?) and is the Water Temple required first?",
+  "Hyrule Loach: when does it appear, and is the purple rupee given on every loach hand-in?",
+  "Zora's River: confirm which Heart Piece is on the pillar near the open grotto (-4,111,-34) and which is on the ledge by the domain waterfall (99,120,-62)."
+ ]
+}

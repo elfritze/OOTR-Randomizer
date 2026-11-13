@@ -1,0 +1,484 @@
+{
+ "group": "shadow_spirit",
+ "chests": [
+  {
+   "hash": "13528903653876646082",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Map",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_SHADOW_TEMPLE_MAP_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_WHISPERING_WALLS_SIDE_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName ShadowTemple_GetMap. Room 3 = prefab ShadowTemple_Level_Room_B1F_C, a B1F side room off the whispering-walls hall (shutter at (2.6,90.4,-17.1) from room 2). Its AiGroup holds Enemy_ReDead x1, Enemy_Keese x2, Obj_EnemyCounter_A_01 and an EventRequestActor that spawns the chest (pedestal + PushAirWall_Box), so the chest appears once the ReDead and Keese are dead. That matches SoH: CanKillEnemy(RE_REDEAD) && CanKillEnemy(RE_KEESE) && CanOpenLargeChest. N64 params 0x1821 = type 1 (room-clear big chest), same behaviour."
+  },
+  {
+   "hash": "14535080241831873137",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_HoverBoot",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_SHADOW_TEMPLE_HOVER_BOOTS_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_DEAD_HAND",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName SageOfShdawo_GetHoverBoots (SageOfShadow challenge flow -> Dm_SY_Treasurebox). Room 4 = prefab B1F_D, whose AiGroup holds Enemy_DeadHand, 6 Enemy_DeadHand_Hand, an EnemyCounter and a spawning EventRequestActor. The chest appears after Dead Hand dies = SoH CanKillEnemy(RE_DEAD_HAND) && CanOpenLargeChest. N64 0x15E7 = type 1 room-clear."
+  },
+  {
+   "hash": "1733372171176975157",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Compass",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_SHADOW_TEMPLE_COMPASS_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_COMPASS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName ShadowTemple_GetCompass. Room 7 = prefab B2F_B, off room 5 (the first-Beamos room, Enemy_Beamos at (83.9,87.2,1.4)). AiGroup holds Enemy_Gibdo x2, an EnemyCounter and a spawning EventRequestActor = SoH CanKillEnemy(RE_GIBDO) && CanOpenLargeChest."
+  },
+  {
+   "hash": "1111717451118505545",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_SHADOW_TEMPLE_EARLY_SILVER_RUPEE_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_SPINNING_BLADES",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "DefaultDungeonRoomIndex is the remake's own numbering, not N64's (Shadow uses 0-31 for a 23-room N64 scene, Spirit 0-33 for 29 N64 rooms; Spirit's index = prefab Room_NN minus 1). Small key chest in room 6 = prefab B2F_C (B2F, south of the Beamos room), with Obj_ShadowTemple_RotateBlade_A_01 (spinning blade) and a 5-silver-rupee group (Obj_silverRupeeCounter_04 4.7 m away; module B2F_C_1484 'SilverToken ... OpenPath') = the N64/SoH spinning-blades room, where SoH needs RG_SHADOW_SILVER_BLADES. Key 1 of 5 (4 chests + Obj_Dungeon_SmallKey in room 13, the skull-jar room)."
+  },
+  {
+   "hash": "5781953901224064730",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_SHADOW_TEMPLE_FALLING_SPIKES_SWITCH_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_STONE_UMBRELLA_UPPER",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Room 11 = prefab B3FB4F_C, the falling-spikes room: 2 Obj_ShadowTemple_FallingCeiling_A_01, an Obj_MovableBox_A_05 pushed onto Obj_Gimmick_AnswerPos anchors, and a GS at (33.4,73.8,86.2) = SoH GS Falling Spikes Room. This chest is 7.1 m above the room floor (y 63.5 vs 56.4), on the upper ledge next to 2 pots (= SoH's 2 upper pots FALLING_SPIKES_POT_3/4 in STONE_UMBRELLA_UPPER). N64 has two chests up there (upper: blue rupee; switch: small key); the remake has only this one, a plain chest (no SpawnType, no switch link). Mapped to the switch chest because the N64 switch chest holds the key. Upper vs switch cannot be told apart from the data, but both are in the same SoH region with the same rule, so the choice does not change logic. Key 2 of 5."
+  },
+  {
+   "hash": "8858270325665149688",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_SHADOW_TEMPLE_FALLING_SPIKES_LOWER_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_STONE_UMBRELLA",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "In room 11 (falling-spikes room, DefaultDungeonRoomIndex 11), on the room floor (y 56.4 = DungeonRoomCenterAnchor y), 9 m from the block puzzle: the lower chest. The room's only other chest is the key chest on the upper ledge. The N64 lower chest held arrows; the remake has a red rupee."
+  },
+  {
+   "hash": "10344372963276519235",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_SHADOW_TEMPLE_INVISIBLE_BLADES_VISIBLE_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_INVISIBLE_SPINNING_BLADES",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 31 = a small side room (prefab B3FB4F_D_3985) off room 10 (B3FB4F_D_3462: Enemy_LikeLike, 3 Enemy_Keese_Fire and Obj_ShadowTemple_RotateBlade_GlassTruth_A_01 = the invisible-scythe room). The side room's shutter (Obj_ShadowTemple_SwitchShutter_A_03 at (170.4,60.9,96.5)) is opened by event ShadowTemple_10_EnemyAnnihilation_Clear, an EnemyCounter on the Like Like and keese = SoH CanKillEnemy(RE_LIKE_LIKE) && CanKillEnemy(RE_KEESE) (CanKillEnemy treats fire keese the same as keese). This visible chest stands 3.4 m from the GlassTruth chest. The Enemy_Skulltula_Gold here = SoH GS Like Like Room."
+  },
+  {
+   "hash": "3718790579351798247",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_GlassTruth_A_01",
+   "soh_rc": "RC_SHADOW_TEMPLE_INVISIBLE_BLADES_INVISIBLE_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_INVISIBLE_SPINNING_BLADES",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Invisible (GlassTruth) chest beside the visible one in room 31, behind the invisible-blades room's enemy-clear shutter (see 10344372963276519235). SoH's rule already needs Lens. N64 0x6976 = type 6, invisible small chest."
+  },
+  {
+   "hash": "12345747231768877602",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_GlassTruth_A_01",
+   "soh_rc": "RC_SHADOW_TEMPLE_WIND_HINT_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_WIND_TUNNEL_HINT_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Invisible chest in room 15 = prefab B3FB4F_H, a dead-end room entered from room 14 (the fan/wind-tunnel room) through the shutter at (118.4,52.0,6.4). 2 Enemy_ReDead and an EnemyCounter lock the room until they die (= SoH's WIND_TUNNEL_HINT_ROOM exit, which needs CanKillEnemy(RE_REDEAD)). Obj_Well_Monument_A_04 (hint monument) is 4.6 m away. The N64 wind hint chest is also invisible (0x6955, type 6). SoH asks no Lens here; left unchanged, since Lens is already needed to reach this part."
+  },
+  {
+   "hash": "5681107746948738726",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Green",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_SHADOW_TEMPLE_AFTER_WIND_ENEMY_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_ROOM_TO_BOAT",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 16 = prefab B3FB4F_I, the room after the wind tunnel and before the locked door to the boat dock at (109.0,52.0,-27.1). It holds Enemy_Gibdo x2, and module ff08 'Gimmick_TreasureBoxAppear_Any_Magic ... DefeatRedead' with an EventRequestActor and pedestal makes the chest appear when both Gibdos die = SoH CanKillEnemy(RE_GIBDO, ED_CLOSE, true, 2)."
+  },
+  {
+   "hash": "169081039115821925",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_GlassTruth_A_01",
+   "soh_rc": "RC_SHADOW_TEMPLE_AFTER_WIND_HIDDEN_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_ROOM_TO_BOAT",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Invisible key chest in room 16 (same room as the Gibdo chest), 0.6 m from a WallCrack (bombable wall) = SoH Lens && HasExplosives. Key 4 of 5, used on the dock door in the same room, as in N64."
+  },
+  {
+   "hash": "9852624243105848451",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Tbox_MagicJar_Large",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_SHADOW_TEMPLE_SPIKE_WALLS_LEFT_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_WOODEN_SPIKES",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 19 = prefab B3FB4F_M, the boss key room. It has two Obj_ShadowTemple_SpikeBoard_A_01 at x -186.7 and -176.7: this chest is behind the x -186.7 board and the boss key chest behind the other (module dd4b 'Room_19_SpikeBoardBreak'). It is the only non-boss-key chest of the N64 wooden-spike-walls room, so it is the Spike Walls Left Chest; SoH needs Din's Fire. The remake holds Tbox_MagicJar_Large (N64: blue rupee). Room access changed (small-key lock + ReDead lock-in): see divergences."
+  },
+  {
+   "hash": "9221365632831348137",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_BossKey",
+   "gyaml": "Obj_TBox_A_03",
+   "soh_rc": "RC_SHADOW_TEMPLE_BOSS_KEY_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_WOODEN_SPIKES",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Boss key chest (A_03) in room 19, behind the second spike board (see 9852624243105848451). GetEventName ForesetTemple_GetBossKey (the generic boss-key Navi flow). SoH: Din's Fire && CanOpenLargeChest. Region access changed: see divergences."
+  },
+  {
+   "hash": "17902550525792072472",
+   "map": "ShadowTemple",
+   "files": [
+    "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_SHADOW_TEMPLE_INVISIBLE_FLOORMASTER_CHEST",
+   "soh_region": "RR_SHADOW_TEMPLE_X_CROSS",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 21 = prefab B3FB4F_L, north of room 18 (the maze hub beyond the boat). Enemy_Floormaster_Truth (invisible Floormaster) is 3.1 m away, and module 96ae 'TreasureBoxAppear_Any_Magic ... DefeatFloormaster_Truth' makes the chest appear when it dies = SoH Lens && CanKillEnemy(RE_FLOORMASTER). N64 0x784D = type 7 room-clear. Key 5 of 5; in the remake it opens the boss-key room door (see divergences)."
+  },
+  {
+   "hash": "5309180490719879013",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Shield_Deku",
+   "gyaml": "Obj_TBox_A_06",
+   "soh_rc": "RC_SPIRIT_TEMPLE_CHILD_BRIDGE_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_SWITCH_BRIDGE_NORTH",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "CHILD ONLY. DefaultDungeonRoomIndex is the remake's own numbering, not N64's (Shadow uses 0-31 for a 23-room N64 scene, Spirit 0-33 for 29 N64 rooms; Spirit's index = prefab Room_NN minus 1). Room 2 = prefab SpiritTemple_Level_Room_03 (child side, west of the child hub, room 1). It has 2 Enemy_Bubble_Green, Obj_SwitchHit_A_03 and Obj_SpiritTemple_FallNet_B_04 (module 'Room03_BoardNet_On': the switch drops the net/bridge) = SoH's switch-bridge room. The chest is at the far end (z -67.6), next to the door to room 3 (Anubis room = SoH 1F_ANUBIS). It gives a Deku Shield as in N64 (Drop__DropActor_Substitute TBox_Rupee_Red if one is already owned)."
+  },
+  {
+   "hash": "5703423643219134246",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_SPIRIT_TEMPLE_CHILD_EARLY_TORCHES_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_RUPEE_BRIDGE_NORTH",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "CHILD ONLY. Room 4 = prefab Room_05 (child side) with 5 silver rupees, Obj_SpiritTemple_FallNet_B_01 and Obj_silverRupeeCounter_06. The chest has SpawnType 1, and module b035 'BurnControl Obj_CandleStick_A_02 x2 -> TreasureBoxAppear_Fall' drops it when both torches burn = SoH LOGIC_SPIRIT_SILVER_RUPEE_BRIDGE_TORCHES. First child-side key; it opens the room 5 -> room 6 lock (= SoH CHILD_BOXES -> SUN_ON_FLOOR_1F, SmallKeys 1)."
+  },
+  {
+   "hash": "1501288453962537671",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_BombchuBundle_Small",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_SPIRIT_TEMPLE_CHILD_CLIMB_NORTH_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_SUN_ON_FLOOR_2F",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "CHILD side (SoH SpiritShared: child normally, adult only through the statue room). Room 6 = prefab Room_07, the room behind the child-side small-key door (lock pair at (-33.6,106,-55.3) from room 5 = SoH CHILD_BOXES -> SUN_ON_FLOOR_1F). The chest is on the room's upper floor (y 119.2), SpawnType 1, and falls when Obj_SwitchHit_A_05, 4.3 m above that floor, is hit (module 30f0 'TreasureBoxAppear_Fall', event SpritTemple_Room07_AppearTreasure) = SoH CanHitSwitch(ED_BOMB_THROW). The room also has Obj_SolarSwitch_A_01 on the floor ('sun on floor'), 2 Lizalfos and Skullwalltulas. N64 has two chests here (north: bombchus, east: deku shield); the remake has one. Chosen as North because it holds bombchus. Both have the same SoH rule and region, so the choice only affects the name."
+  },
+  {
+   "hash": "13852283723126411131",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Map",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_SPIRIT_TEMPLE_MAP_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_STATUE_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "EITHER age (SpiritShared). Big chest in room 7 = prefab Room_08 (statue room), on the statue-room floor (y 114.15) at the statue's base. Module 12d6 'BurnControl Obj_CandleStick_A_02 -> TreasureBoxAppear_Magic' makes it appear when the unlit torch at (4.0,114.2,-57.8) is lit = SoH's fire-source rule (HasFireSource, or HasFireSourceWithTorch from the child ledge). No GetEventName."
+  },
+  {
+   "hash": "2203243501006528435",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_SPIRIT_TEMPLE_STATUE_ROOM_HAND_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_INNER_LEFT_HAND",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "EITHER age (SpiritShared). In room 7 (statue room) at y 124.8 on the west (child-side, -x) hand. SpawnType 1, linked through an EventProxyRequestActor from Obj_TriForcePoint_A_08 at the mirror-image spot (10.9,124.8,-60.5) on the east hand (module 3008 'TreasureBoxAppear_Fall_Ocarina'). Playing Zelda's Lullaby on the east (left) hand makes the chest fall on the west hand, exactly SoH's INNER_LEFT_HAND rule (ZL + a way to the other hand). The remake drops N64's second chest for this event (Statue Room Northeast)."
+  },
+  {
+   "hash": "17407066694905911064",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_SPIRIT_TEMPLE_SUN_BLOCK_ROOM_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_SUN_BLOCK_CHEST_LEDGE",
+   "condition": "SpiritShared(RR_SPIRIT_TEMPLE_SUN_BLOCK_CHEST_LEDGE, []{return logic->HasItem(RG_POWER_BRACELET) || logic->SunlightArrows();}) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "EITHER age (SpiritShared). Room 9 = prefab Room_10_01, the sun block room: 5 Obj_SpiritTemple_MovableBox_A_01 sun blocks, 2 Obj_SolarSwitch_A_01, a RayShaft_A_02 light, 3 Enemy_Beamos_For_High_Place and 5 silver rupees. The chest is on the west ledge, 2.8 m above the floor (= SoH SUN_BLOCK_CHEST_LEDGE). Its identity is certain, but SoH's rule does not fit. Module 13bc's strings are ActorLogicMovableBox + ActorLogicSolarSwitch 'IsInAnswerPosition', 'LightHit', OperateAND -> Gimmick_TreasureBoxAppear_Magic (event SpiritTemple_Level_Room_10_SwitchOn_01 -> TreasureBoxAppear.Act_TBoxAppear_Magic_0): the key chest appears when the sun blocks are placed so that light hits both solar switches. Room 9 has no torch (all of Spirit's CandleSticks are in rooms 4 and 7), so SoH's rule (HasFireSource, or silver rupees + Sticks) has nothing to work on. The new condition uses SoH's block-moving ability (RG_POWER_BRACELET = RAND_INF_CAN_GRAB) and its usual sun-switch alternative (SunlightArrows, off with vanilla settings). Only the module's string table was read, not its node graph."
+  },
+  {
+   "hash": "15633505270333176438",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Compass",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_SPIRIT_TEMPLE_COMPASS_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_SAND_PIT",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "ADULT ONLY. GetEventName SpiritTemple_GetCompass. Room 14 = prefab Room_15 (adult side 1F, off the adult hub, room 13). Obj_TriForcePoint_A_07 is linked to the chest through an EventProxyRequestActor (play Zelda's Lullaby -> chest), with an Obj_HookShotTarget_A_01 1.9 m behind the chest and an Enemy_Wolfos = SoH ZL && CanOpenLargeChest && (Hookshot || ...)."
+  },
+  {
+   "hash": "4277978357934400600",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_SPIRIT_TEMPLE_EARLY_ADULT_RIGHT_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_PAST_BOULDERS",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "ADULT ONLY. Room 16 = prefab Room_17 (adult 1F, y 100.3), the dead-end room behind room 15. Room 15 (prefab Room_16) has 3 Obj_SpiritTemple_RollingRock_A_01 boulders, 5 silver rupees, Song of Time blocks and a GS = SoH's boulder room. Module Room_16_b7fb 'Obj_SilverToken_GroupLargeDoor ... Room16_Unlocked' opens the door to room 16 = SoH PAST_BOULDERS, which needs RG_SPIRIT_SILVER_BOULDERS. Plain chest (module 7580, no appear condition). An Enemy_LikeLike (Dynamic) stands 3.5 m from it; SoH asks nothing for it and it is not needed to open the chest. First adult-side key."
+  },
+  {
+   "hash": "12909857529499414969",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_BombBundle_Small",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_SPIRIT_TEMPLE_FIRST_MIRROR_RIGHT_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_2F_MIRROR_ROOM",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "ADULT side (SoH's spirit data gives no child access). Room 18 = prefab Room_19, the 2F above room 17, reached through the adult-side small-key door at (33.6,104.8,-39.5) (= SoH ADULT_SIDE_HUB -> 1F_MIRROR_ROOM). It has an Obj_SpiritTemple_CapstanMirror_A_01 and 3 Obj_SolarSwitch_A_02. The chest has SpawnType 1 and falls by event SpiritTemple_Level_Room_19_SwitchOn_01 (switch at (45.8,121.5,-47.5)) once the turnable mirror sends light onto it = SoH POWER_BRACELET || SunlightArrows. The room's other N64 chest is now Obj_TBox_A_04 876108895472176682, with no Drop__DropActor and opened through 'TrapTreasureBoxOpen' (Dm_SY_TreasureboxSmall TrapOpen): a trap chest, matching N64's ice-trap Left chest. So this item chest is the Right one (N64 recovery heart -> remake bombs). The region and rule are the same either way."
+  },
+  {
+   "hash": "12042193296697281461",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_SPIRIT_TEMPLE_NEAR_FOUR_ARMOS_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_4_ARMOS_SIDE_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "ADULT ONLY. Room 26 = prefab Room_27 (adult 3F, y 130.9), a side room south of room 22 (prefab Room_23: Obj_Stepswitch_A_03_Amos + 3 Enemy_Amos_AlwaysRespawn = SoH's 4 Armos room). Its shutter opens from Obj_SolarSwitch_A_02, 7 m up at (55.8,137.3,-41.1) (module Room_23_1701 'LightHit -> Room23_Unlocked_02') = SoH CanUse(RG_MIRROR_SHIELD) || SunlightArrows. Plain chest. Fifth key overall, found before the room 21 -> 27 lock (= SoH BEAMOS_PITS -> BIG_WALL_BASE, SmallKeys 5)."
+  },
+  {
+   "hash": "9143177002861777924",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_GlassTruth_A_01",
+   "soh_rc": "RC_SPIRIT_TEMPLE_HALLWAY_RIGHT_INVISIBLE_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_CHEST_STAIRS",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "ADULT ONLY. Room 23 = prefab Room_24, the hall between the 4 Armos room (room 22) and the adult Iron Knuckle throne (rooms 24/25, Enemy_IronKnuckle_Silver). Its two invisible chests, 4.3 m apart, = SoH CHEST_STAIRS (Lens). This is the west one (x 53.66), on the right when walking from the Armos room toward the throne. Remake axes are +x east, -z north, confirmed by which hand holds the statue-hand chest and which holds its triforce. Left/right is a guess; the rule is the same for both."
+  },
+  {
+   "hash": "14040210993541550542",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_GlassTruth_A_01",
+   "soh_rc": "RC_SPIRIT_TEMPLE_HALLWAY_LEFT_INVISIBLE_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_CHEST_STAIRS",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "ADULT ONLY. The east one (x 57.96) of the two GlassTruth chests in room 23 (see 9143177002861777924). Left/right is a guess; the logic is the same."
+  },
+  {
+   "hash": "16272168033146555902",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_BossKey",
+   "gyaml": "Obj_TBox_A_03",
+   "soh_rc": "RC_SPIRIT_TEMPLE_BOSS_KEY_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_FAKE_DOORS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "ADULT ONLY. Boss key chest (A_03) in room 29 = prefab Room_30, which has 6 Enemy_TrickyDoor_SpiritTemple (fake doors), 4 Enemy_TorchSlug, Obj_EyeSwitch_A_03 + FallNet_B_02, and Obj_StepSwitch_A_01 and Obj_FireWall_A_02 around the chest (module ca21), plus Obj_HookShotTarget_A_01 at (19.8,159,-72.1) = SoH's fake-doors room (eye target + hookshot past the fire). GetEventName ForesetTemple_GetBossKey (generic)."
+  },
+  {
+   "hash": "13828480906010430010",
+   "map": "SpiritTemple",
+   "files": [
+    "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_BombBundle_Small",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_SPIRIT_TEMPLE_TOPMOST_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_BIG_MIRROR_CAVE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "ADULT (SoH: adult Mirror Shield, or Sunlight Arrows). The highest chest in the temple (y 158.2), in room 31 = prefab Room_32, behind Obj_SpiritTemple_CrackWall_A_02 (bomb wall = SoH BIG_MIRROR_CAVE, which needs explosives). The room has 2 Obj_SpiritTemple_CapstanMirror_A_01, 2 Dinolfos and 3 White Bubbles; the chest appears from Obj_SolarSwitch_A_02 (module a8f7 'LightHit -> TreasureBoxAppear_Magic'). N64 held 20 bombs; the remake a small bomb bundle. The data does not show whether the remake needs the Mirror Shield or only the turnable mirrors; SoH's rule is the stricter of the two, so it is kept."
+  }
+ ],
+ "soh_chests_without_remake_counterpart": [
+  {
+   "rc": "RC_SHADOW_TEMPLE_FALLING_SPIKES_UPPER_CHEST",
+   "evidence": "The falling-spikes room (remake room 11, prefab B3FB4F_C) has exactly two chests: the small-key chest on the upper ledge (used for FALLING_SPIKES_SWITCH_CHEST) and a red-rupee chest on the floor (LOWER). N64's second upper chest (blue rupee) has no remake chest."
+  },
+  {
+   "rc": "RC_SHADOW_TEMPLE_INVISIBLE_SPIKES_CHEST",
+   "evidence": "The floor-spikes room (remake room 12, prefab B3FB4F_E: 5 silver rupees, 2 ReDeads, GlassTruth platforms, locked doors to rooms 9 and 14) has no chest at all (no Obj_TBox in the room or in its AiGroups)."
+  },
+  {
+   "rc": "RC_SPIRIT_TEMPLE_CHILD_CLIMB_EAST_CHEST",
+   "evidence": "Remake room 6 (child climb room) has only one chest (bombchus), used for CHILD_CLIMB_NORTH_CHEST."
+  },
+  {
+   "rc": "RC_SPIRIT_TEMPLE_FIRST_MIRROR_LEFT_CHEST",
+   "evidence": "N64's ice-trap chest. In remake room 18 its place is taken by Obj_TBox_A_04 876108895472176682, which falls from the SolarSwitch at (28.0,121.5,-40.1) via SpiritTemple_Level_Room_19_SwitchOn_01 and is opened through TrapTreasureBoxOpen: a trap chest. It has no Drop__DropActor, so it is not an item chest the randomizer can fill."
+  },
+  {
+   "rc": "RC_SPIRIT_TEMPLE_STATUE_ROOM_NORTHEAST_CHEST",
+   "evidence": "The statue room (remake room 7) has only the map chest and the hand key chest. N64's NE chest (which falls on the same Zelda's Lullaby flag as the hand chest) is gone."
+  }
+ ],
+ "divergences": [
+  {
+   "what": "Shadow: the door from the upper huge-pit ledge into the invisible-blades room has no small-key lock in the remake",
+   "evidence": "Door Obj_ShadowTemple_Door_A_01 8739297614831154496 at (126.2,61.4,96.0) (room 10) links only to its PushAirWall_DoorFront, the RotateBlade_GlassTruth and a MoveFloor; no Obj_DoorChainLock. All 9 Obj_DoorChainLock_A_01 sit on 5 doors: rooms 5->8 (pair, behind CrackWall_A_03 = SoH key 1 + explosives), 9->12 (pair = SoH key 2, floor spikes), 12->14 upper (pair = key 3, wind tunnel), 16->dock (pair = key 4), and a single lock on room 19 (boss-key room). That is 5 locked doors for 5 keys (4 chests + Obj_Dungeon_SmallKey). Obj_DoorChainLock_A_02 is the boss-key lock (room 22).",
+   "proposed_rule": "Replace EXIT rule RR_SHADOW_TEMPLE_UPPER_HUGE_PIT_DOOR_LEDGE -> RR_SHADOW_TEMPLE_INVISIBLE_SPINNING_BLADES: `true` (was logic->SmallKeys(SCENE_SHADOW_TEMPLE, 2)).",
+   "affects": [
+    "RC_SHADOW_TEMPLE_INVISIBLE_BLADES_VISIBLE_CHEST",
+    "RC_SHADOW_TEMPLE_INVISIBLE_BLADES_INVISIBLE_CHEST",
+    "RC_SHADOW_TEMPLE_GS_LIKE_LIKE_ROOM"
+   ]
+  },
+  {
+   "what": "Shadow: the door into the pre-boss room (after the boat / chasm) is not small-key locked in the remake",
+   "evidence": "Door Obj_ShadowTemple_Door_A_01 2192367679636495971 at (-137.8,42.0,-7.9) leads into room 22 (prefab B3FB4F_O, the pre-boss room with the boss lock Obj_DoorChainLock_A_02 at (-138.5,42.0,19.1) and the GlassTruth_A_17..21 invisible floor). It links only to its PushAirWall_DoorFront; there is no chain lock near it.",
+   "proposed_rule": "Replace EXIT rules RR_SHADOW_TEMPLE_ACROSS_CHASM -> RR_SHADOW_TEMPLE_PRE_BOSS_ROOM and RR_SHADOW_TEMPLE_PRE_BOSS_ROOM -> RR_SHADOW_TEMPLE_ACROSS_CHASM: `true` (both were logic->SmallKeys(SCENE_SHADOW_TEMPLE, 5)).",
+   "affects": [
+    "RC_SHADOW_TEMPLE_BONGO_BONGO_HEART",
+    "boss access (RR_SHADOW_TEMPLE_BOSS_DOOR)"
+   ]
+  },
+  {
+   "what": "Shadow: the boss-key (wooden spike walls) room is behind the 5th small-key door instead",
+   "evidence": "Room 19's door, Obj_ShadowTemple_SwitchShutter_A_04 7859741725793759796 at (-181.8,41.3,-61.8), references Obj_DoorChainLock_A_01 15182601213658853510 (OpenChainShutterEvent Common_Dungeon_OpenDoorChainLockMoveToPlusZ_ThenLocked) and is entered from room 18 (the maze hub). The last key (invisible Floormaster chest, room 21) is found before it, just as SoH's key 5 came before the pre-boss door.",
+   "proposed_rule": "Replace EXIT rule RR_SHADOW_TEMPLE_MAZE -> RR_SHADOW_TEMPLE_WOODEN_SPIKES: `logic->SmallKeys(SCENE_SHADOW_TEMPLE, 5)` (was true).",
+   "affects": [
+    "RC_SHADOW_TEMPLE_SPIKE_WALLS_LEFT_CHEST",
+    "RC_SHADOW_TEMPLE_BOSS_KEY_CHEST"
+   ]
+  },
+  {
+   "what": "Shadow: the boss-key room locks behind you until its 2 ReDeads die",
+   "evidence": "The '..._ThenLocked' shutter above; the inner Obj_SwitchShutter_A_02 1595487963292405653 is opened by EventRequestActor ShadowTemple_19_EnemyAnnihilation_Clear, and module B3FB4F_M_dd4b holds Enemy_ReDead x2 (at (-173.7/-190.0,41.3,-64.5)). SoH lets you walk out freely.",
+   "proposed_rule": "Replace EXIT rule RR_SHADOW_TEMPLE_WOODEN_SPIKES -> RR_SHADOW_TEMPLE_MAZE: `AnyAgeTime([]{return logic->CanKillEnemy(RE_REDEAD, ED_CLOSE, true, 2);})` (was true).",
+   "affects": [
+    "only the way back out of room 19 (the chests in room 19 are unaffected)"
+   ]
+  },
+  {
+   "what": "Spirit: the sun-block-room key chest appears from the sun blocks + solar switches, not from torches",
+   "evidence": "Room 9 module SpiritTemple_Level_Room_10_01_Prefab_13bc: ActorLogicMovableBox (3 Obj_SpiritTemple_MovableBox_A_01, IsInAnswerPosition) + 2 ActorLogicSolarSwitch (LightHit, isLightMax) -> OperateAND -> Gimmick_TreasureBoxAppear_Magic on Obj_TBox_A_01_NoBake 17407066694905911064. There is no CandleStick in the room.",
+   "proposed_rule": "Replace LOCATION rule RC_SPIRIT_TEMPLE_SUN_BLOCK_ROOM_CHEST: SpiritShared(RR_SPIRIT_TEMPLE_SUN_BLOCK_CHEST_LEDGE, []{return logic->HasItem(RG_POWER_BRACELET) || logic->SunlightArrows();}) && logic->HasItem(RG_OPEN_CHEST)",
+   "affects": [
+    "RC_SPIRIT_TEMPLE_SUN_BLOCK_ROOM_CHEST"
+   ]
+  },
+  {
+   "what": "Spirit (low-medium confidence): the sun block room's exits open from the 5 silver rupees, not from the sun blocks. These are the exit to the empty stairs / statue room and the exit to the Skulltula stairs toward the child Iron Knuckle.",
+   "evidence": "Module Room_10_01_Prefab_b242 = Obj_SilverToken_GroupLargeDoor (AllTokenAcquired -> OpenPath), wired to both room-9 shutters: Obj_SpiritTemple_SwitchShutter_A_01 at (-55.8,130.0,-8.0) (to room 10, the Skulltula stairs, then the child IK lock) and at (-29.1,130.0,-28.3) (to room 8, the stairs to the statue room). SoH puts these exits on POWER_BRACELET || SunlightArrows and the silver rupees on the chest. Only the modules' string tables were read, so it is not proven that the room actually shuts you in.",
+   "proposed_rule": "Replace EXIT rules RR_SPIRIT_TEMPLE_SUN_BLOCK_ROOM -> RR_SPIRIT_TEMPLE_SKULLTULA_STAIRS and RR_SPIRIT_TEMPLE_SUN_BLOCK_ROOM -> RR_SPIRIT_TEMPLE_EMPTY_STAIRS: `logic->HasItem(RG_SPIRIT_SILVER_SUN)` (were logic->HasItem(RG_POWER_BRACELET) || logic->SunlightArrows()). Keep the LOGIC_SPIRIT_SILVER_SUN event.",
+   "affects": [
+    "RC_SPIRIT_TEMPLE_SILVER_GAUNTLETS_CHEST (child route)",
+    "child-side key logic toward the child Iron Knuckle door"
+   ]
+  }
+ ],
+ "open_questions_for_in_game_check": [
+  "Shadow falling-spikes room: is there only one chest on top (the small key) and one on the floor, and is the top one there from the start (no switch)?",
+  "Shadow: is the door from the huge pit's upper ledge into the invisible-scythe (Like Like) room unlocked? Is the door into the room before Bongo Bongo's door (after the boat) unlocked too?",
+  "Shadow: does the door into the boss-key room (wooden spike walls, off the invisible-maze hub) need a small key, and does it lock you in until the 2 ReDeads are dead?",
+  "Shadow wind hint room (2 ReDeads after the fan tunnel): can the invisible chest be opened without Lens of Truth? (SoH asks no Lens.)",
+  "Spirit sun block room (child 2F): does the key chest appear by pushing the sun blocks into the light, with no torch to light? Do the doors out (to the Skulltula stairs and to the stairs back to the statue room) open only after the 5 silver rupees?",
+  "Spirit topmost chest (behind the bombable wall near the big mirror): does it need the Mirror Shield, or only turning the two mirrors?",
+  "Spirit: confirm the child climb room has one chest (bombchus), and that the 2F mirror room's second chest is a trap with no item.",
+  "Desert Colossus Silver Gauntlets chest (overworld group): if its item is changed, chests.event_for drops SageOfSpirit_NaboorIsTakenAway (the Nabooru kidnapping cutscene Dm_DesertColossus_0030 and challenge step 07). Does the kidnapping still happen? SoH's LOGIC_SPIRIT_NABOORU_KIDNAPPED event depends on it: it lets a child without Gerudo speech into Spirit's child crawlspace."
+ ]
+}

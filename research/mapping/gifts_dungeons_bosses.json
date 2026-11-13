@@ -1,0 +1,562 @@
+{
+ "group": "dungeons_bosses",
+ "systematic_findings": [
+  "Boss Heart Containers are ordinary Obj_Heart_Container pickups (Obj_Item_Base, NoRespawn) placed in the dungeon's own Static map (boss rooms are rooms of the dungeon map, not separate scenes). Each is spawned by its boss room's logic module (AiGroup referencing the HC hash): ActorLogicSimpleActor.Logic_Create is fed by the same 'boss defeated' flag/BoolExp that feeds the boss prefab's Create_WarpPrefab input. Decoded from the .ainb node graphs (AINB v0x408; same layout as TotK). The warp never depends on the HC being picked up.",
+  "Only the Deku Tree module uses the HC's Dead output: it sets InsideTheDekuTree_Heart_Container_Obtained, which feeds the HC's own Logic_Delete. No other module consumes an HC's Dead output.",
+  "Each boss's after-fight timeline Dm_<Dungeon>_BossOut (Dm_Deku_BossOut, Dm_DodongoCave_BossOut, Dm_InsideJabu_Jabu_BossOut, Dm_ForestTemple_BossOut, Dm_FireTemple_BossOut, Dm_WaterTemple_BossOut, Dm_SpiritTemple_BossOut, Dm_ShadowTemple_BossOut) casts an 'Obj_Heart_Container' with its own event model (Work/Model/Event/Dm_X_BossOut/Dm_X_BossOut_Obj_Heart_Container). Only the timeline's string table was read. The cutscene probably still shows a heart descending whatever the map actor becomes. Whether it binds to the real actor (IsBindNearestActor / EventMemberCreateMethod are in its string table) is unknown.",
+  "Dungeon rewards are not given in the boss room. The blue warp's EventRequestActor runs an entry of Dm_SY_BancChange_EscapeDungeon. That entry (or the BootEventName of the area it loads) EventTransitions to the reward cutscene, and the cutscene gives the item with call GetPouchContent:GetPouchContentByActorName {ActorName}. Story progress is done separately, by ChallengeSystemActor.EventExecuteProgressChallengeStep in Dm_SY_BancChange_EscapeDungeon (e.g. Get_StoneOfForest Complete, DoorOfTime_CheckStoneNum). No logic module or flow query checks the stone/medallion in the pouch (searched every flow switch and Logic/*.ainb).",
+  "Event/EventFlow/EventFlowFileEntry.Product.110.byml.zs is {'Versions': {flow: '110'}} for 13 flows: Dm_Awake_Fire/Forest/Shadow/Spirit/Water_Get, Dm_DodongoCave_0010, Dm_FinalBattle_BossOut, Dm_Goron_0040, Dm_HrlCastle_0020, Dm_InsideJabu_Jabu_0030, DreamBossStage, MiniGame_HorseRace, Npc_Hylia_Dampe_001. So for those flows the game most likely loads '<flow>.110.bfevfl.zs', not the base file. rando.events.Events.flow() reads the base file. Patch both. (For the 5 medallion flows and Jabu_0030, the base and .110 dumps are identical.)"
+ ],
+ "checks": [
+  {
+   "rc": "RC_SHEIK_IN_ICE_CAVERN",
+   "remake_vanilla_item": "Item_Melody_WaterSerenade",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Water",
+   "event": 120,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName {ActorName: Item_Melody_WaterSerenade} (entry C15)",
+   "also": [
+    "No .110 twin (Dm_MelodyGet_Water is not in EventFlowFileEntry.Product.110).",
+    "Trigger chain: Iron Boots chest 6859289214373847284 (IceCavern_Static, Obj_TBox_A_02_NoBake, room 10) GetEventName SageOfWater_MelodyGet_Water -> flow SageOfWater entry IceCavern_WaterSerenade (event 19). Event 18 EventTransition Dm_SY_Treasurebox (gives the chest's own item). Then two branches on GameData SageOfWater_KingZora_adult_Talk_Event198 / pouch Armor_Adult_Zora. Each does EventTransition Dm_MelodyGet_Water (events 273 and 275), SetGameDataBool SageOfWater_GetWaterSerenade (276/277) and ChallengeStep SageOfWater Step04/Step05 (274/272). These are story steps, not the item; leave them.",
+    "Dm_MelodyGet_Water events 116 (call Dm_SY_Ocarina:LearningOcarinaPlayExample MelodyType 8) and 257 (LearningOcarinaFollowExample MelodyType 8) play the Serenade lesson. They add nothing to the pouch (walked them), so the lesson plays even if event 120 gives another item. Event 163 is a dialogue switch on Armor_Adult_Zora. The flow ends with call SageOfWater:Dm_MelodyGet_WaterAfter.",
+    "GameData IsGet.Item_Melody_WaterSerenade is queried by AllSage event 72 (Sheik's Prelude of Light dialogue variant), which is cosmetic.",
+    "chests.STORY_EVENTS already keeps SageOfWater_MelodyGet_Water on the Iron Boots chest whatever it holds, so the Sheik scene and this gift survive a chest change."
+   ],
+   "trigger": "Open the Iron Boots chest in the last room (it appears after the White Wolfos, TreasureBoxAppear_Room04). Opening it starts Sheik's Serenade scene right after the chest's get-item.",
+   "logic_note": "Same as SoH: RR_ICE_CAVERN_FINAL_ROOM, CanKillEnemy(RE_WOLFOS) && HasItem(RG_OPEN_CHEST). SoH also ties the song to opening the chest.",
+   "risk": "Low. It is the same NPC/cutscene mechanism as the other song gifts (in game, songs show Sheik's harp). The song lesson (events 116/257) still teaches the Serenade's notes even if the item changes; that is cosmetic.",
+   "confidence": "high",
+   "evidence": "research/gift_events.json: Dm_MelodyGet_Water event 120 (entry C15). SageOfWater dump: IceCavern_WaterSerenade=19, events 18/273/275/276/277. Chest Dynamic GetEventName SageOfWater_MelodyGet_Water (mapping/child_dungeons.json)."
+  },
+  {
+   "rc": "RC_DODONGOS_CAVERN_DEKU_SCRUB_LOBBY",
+   "remake_vanilla_item": null,
+   "kind": "none",
+   "replaced_by": "The remake's DC lobby (room 1: Beamos, MoveFloors, stone tablets, gossip stone) has no Business Scrub. The dungeon's only one, Enemy_Scrub_Business 7388739057158296701 (+ Leaf 7432645216948676479), is in room 7 at (62.75,100.4,-94.0): a nook behind a WallCrack (14949303250999372259 at 63.0,100.5,-83.5) off room 6. Room 6 is the passage between the lower Lizalfos room 5 (shutter 9415944883117694992) and the Dodongo room 8; bomb flowers stand at 60.8,-72.7 (room 6) and 55.4,-67.8 (room 8). That is SoH's RC_DODONGOS_CAVERN_DEKU_SCRUB_SIDE_ROOM_NEAR_DODONGOS (RR_DODONGOS_CAVERN_NEAR_DODONGO_ROOM, behind a mud wall off the Dodongo room), not the lobby scrub. It sells nothing fixed: no ScrubBusiness_ShopItemActorName (the Blackboard default is empty), and TalkEventName/AttackedEventName Enemy_Scrub_Business_Item -> Enemy_Scrub_Business_Common:Enemy_Scrub_Business_Item builds a variable, repeatable stock from what Link has (Scrub_Business_TempItemName_00..03: potions, bombs, seeds, arrows, Deku shield 40, sticks, nuts, hearts, Item_ScrubBusinessSeed ...).",
+   "trigger": null,
+   "logic_note": "No remake location for the lobby scrub; drop it from the pool, or reuse it as the room-7 scrub (see remake_only). A one-time scrub could perhaps be made by giving this scrub ScrubBusiness_ShopItemActorName0 and a one-time TalkEventName like the Heart Piece scrubs (HF: Enemy_Scrub_Business_Heart_01). That is untested.",
+   "risk": "n/a",
+   "confidence": "high",
+   "evidence": "All Enemy_Scrub_Business in DodongoCavern maps: only 7388739057158296701 (room 7). Room extents from DefaultDungeonRoomIndex (room 6: x61-73, z-82..-61; room 5: x64-115; room 8: x32-55). AiGroup Enemy_Scrub_Business_Set_01_d7f2 (plain create/delete). SoH dodongos_cavern.cpp lines 25-127."
+  },
+  {
+   "rc": "RC_SHADOW_TEMPLE_FREESTANDING_KEY",
+   "remake_vanilla_item": "Obj_Dungeon_SmallKey",
+   "kind": "world_item",
+   "map": [
+    "Banc/ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "hash": "12562389953863361839",
+   "gyaml": "Obj_Dungeon_SmallKey",
+   "pos": [
+    28.15,
+    52.87,
+    33.07
+   ],
+   "rotate": "as placed",
+   "dynamic": {
+    "DefaultDungeonRoomIndex": 13
+   },
+   "appears": "Inside the giant skull jar Obj_ShadowTemple_SkullPot_A_01 17129333705548042871 (0.1 m away). Module ShadowTemple_Level_Room_B3FB4F_F_Prefab_6cf3, decoded: KeySmall_e812.Logic_Create <- AND(SkullPot Dead, NOT ShadowTemple_Level_Room_13_GetKey). Key Dead -> SetGameDataBool ShadowTemple_Level_Room_13_GetKey. AND(GetKey, ShadowTemple_RoomB3FB4FF_DefeatKeith) -> TriggerDungeonRoomStepClear (autosave). When the jar breaks, EventRequestActor 8582480585789402014 (ShadowTemple_Gimmick_Focus_LargeJar_Key) points the camera at the key: it References the key hash and two DestinationAnchors.",
+   "trigger": "Break the skull jar. Its AI is BrokenBombPot and it takes damage from one damage type only, so bombs (bombchus probably too). The room's 4 keese (2 fire) are counted for the door.",
+   "logic_note": "Same as SoH region RR_SHADOW_TEMPLE_SKULL_JAR (room 13: keese, EnemyCounter, sign, skull jar). In this remake CanUse(bomb bag) already requires the Goron's Bracelet. SoH's 'HasItem(RG_GORONS_BRACELET)' alone branch has no bomb flower behind it in room 13: the only nearby sources are two Obj_Pot_A_07_Respawn with DropTable_Obj_Bomb (12 m), so it is unclear whether bracelet-only works (see questions).",
+   "risk": "Medium-low as a chest. The chest is created only once the jar is broken, and since GetKey is never set it is re-created on every visit while the jar stays broken; the chest's own opened state should hold. The room's TriggerDungeonRoomStepClear (map 'cleared' mark + autosave) needs GetKey, so it never fires; that looks cosmetic. The door/EnemyCounter logic does not read GetKey. A small key counts for the dungeon it is picked up in, so another dungeon's key from this chest needs the usual key handling.",
+   "confidence": "high",
+   "evidence": "world_items.json; boss.py near-scan; AiGroup 13772315372431787476 (DungeonRoomID 13); decoded ainb graph of ShadowTemple_Level_Room_B3FB4F_F_Prefab_6cf3; SkullPot pack AI/AIInfo BrokenBombPot."
+  },
+  {
+   "rc": "RC_BOTTOM_OF_THE_WELL_FREESTANDING_KEY",
+   "remake_vanilla_item": "Obj_Dungeon_SmallKey",
+   "kind": "world_item",
+   "map": [
+    "Banc/BottomOfTheWell/BottomOfTheWell_Static.bcett.byml.zs"
+   ],
+   "hash": "17649154319341333603",
+   "gyaml": "Obj_Dungeon_SmallKey",
+   "pos": [
+    -62.33,
+    100.89,
+    -18.49
+   ],
+   "rotate": "as placed",
+   "dynamic": {
+    "DefaultDungeonRoomIndex": 3
+   },
+   "appears": "Always created (module BottomOfTheWell_Level_Room_03Prefab_25d7: Obj_Dungeon_SmallKey_db9c.Logic_Create = const true; Logic_Delete <- GameData BottomOfTheWell_Level_Room_03_Get_SmallKey). It lies inside a 'casket' at the west end of the crypt (room 3): Obj_Well_CandleStick_A_03 10206509490298419683 (0.6 m; a wooden, burnable object, ChemicalMaterial Obj_WoodPlate, Destruction effect Fire_Broken_WellCandleStick, LifeParam Obj_SpiderWeb_DamageBomb), boxed by 5 AirWallEnemy_NavMeshCut around (-62.4,~102,-18.5). Module 431f: CandleStick d248 Dead -> SetGameDataBool BottomOfTheWell_Level_Room_03_Coffin_Open + Room_02_BurnedAny, autosave, and PrefabAllDelete of BottomOfTheWell_Level_Room_03_CasketAirWall_c36d (deletes those 5 air walls). Key Dead -> sets Room_03_Get_SmallKey and Room_03_Get_Key + TriggerDungeonRoomStepClear.",
+   "trigger": "Burn (or perhaps bomb) the coffin/candle object at the crypt's west end, then take the key. Two Obj_CandleStick_A_01 torches flank it (-62.6,-16.6 / -20.4).",
+   "logic_note": "Same as SoH (RR_BOTW_CRYPT: HasFireSourceWithTorch || Bow, i.e. fire), assuming the casket blocks the key until burnt. The bomb damage parameters suggest bombs might also open it (see questions).",
+   "risk": "Medium-low as a chest. The chest is always present, but stands inside the casket's collision/air walls until the casket burns, so check it can be opened afterwards and does not clip through. Get_Key / Get_SmallKey are never set without the key's Dead, so the key-delete and RoomStepClear never happen. In module 431f, Get_Key only feeds a TriggerGeneralStartReadRiddle (a riddle-BGM cue), which is cosmetic.",
+   "confidence": "high",
+   "evidence": "world_items.json; decoded graphs of BottomOfTheWell_Level_Room_03Prefab_25d7, _431f, _03_CasketAirWall_c36d; Obj_Well_CandleStick_A_03 pack. Matches child_dungeons.json divergence (crypt key = this check)."
+  },
+  {
+   "rc": "RC_ICE_CAVERN_FREESTANDING_POH",
+   "remake_vanilla_item": null,
+   "kind": "none",
+   "replaced_by": "The remake's Ice Cavern has no Heart Piece. There is no Obj_Heart_Piece actor, no Drop__DropActor naming a heart piece, no HeartPieceAnchor in IceCavern_Static/_Dynamic, and no 'Heart'/'Piece' string in any of the 57 Ice Cavern logic modules; its 4 chests hold Map, Compass, Iron Boots and a red rupee. SoH's spot is the compass room (RR_ICE_CAVERN_COMPASS_ROOM, PoH frozen in red ice). The remake's compass room (room 6) has instead Obj_RedIce_A_06 5982607659326270053 (79.85,103.02,-1.72) freezing two pots (FrozenInIce links) that drop Obj_Rupee_Blue: 15011057361189787608 (80.31,102.97,-1.40) and 17314383705983097019 (79.59,102.97,-1.37).",
+   "trigger": null,
+   "logic_note": "Drop the check, or make the remake's spot a location. Suggestion: turn pot 17314383705983097019 into a chest (FrozenInIce link kept, the way the map chest 11498802739257120175 is frozen by Obj_RedIce_A_01). It would then need BlueFire to melt the red ice, as SoH's PoH does: same region and the same rule minus the stalagmite part (SoH also asks CanClearStalagmite or a clip).",
+   "risk": "n/a (a frozen pot turned into a chest is untested; a frozen chest itself is vanilla, e.g. the map chest).",
+   "confidence": "high",
+   "evidence": "Full Gyaml census of IceCavern maps; heart-related search over all map Dynamics; Ice Cavern logic-module string scan; room 6 actor list."
+  },
+  {
+   "rc": "RC_DEKU_TREE_QUEEN_GOHMA_HEART",
+   "remake_vanilla_item": "Obj_Heart_Container",
+   "kind": "world_item",
+   "map": [
+    "Banc/InsideTheDekuTree/InsideTheDekuTree_Static.bcett.byml.zs"
+   ],
+   "hash": "17948245526767051747",
+   "gyaml": "Obj_Heart_Container",
+   "pos": [
+    17.31,
+    47.0,
+    67.63
+   ],
+   "rotate": [
+    0.0,
+    -1.561,
+    0.0
+   ],
+   "dynamic": {
+    "DefaultDungeonRoomIndex": 10
+   },
+   "appears": "Created by the boss room's logic module InsideTheDekuTree_Level_Room_L_Common_865f (AiGroup reference to this hash): Logic_Create <- HoldGameDataGetBoolSimple Gohma_DefeatBoss, the same node that drives the boss prefab's Create_WarpPrefab. Not present before the boss dies, and not linked from any actor.",
+   "warp_relation": "Obj_WarpPoint_A_01 18328422019320660370 at (21.03,47.13,67.59), 3.7 m east, same floor. EventRequestActor 3809348875533380634 InsideTheDekuTree_BossArea_Warp above it. A chest at the HC spot should not block the warp; StartPos 'DefeatBoss' is 5.9 m west.",
+   "trigger": "Defeat the boss; the container appears next to the blue warp (same flag as the warp).",
+   "logic_note": "Same as SoH (boss room, after the boss). The boss room is a room of the dungeon map, not a separate boss scene. Nothing else in the room depends on the container being taken. Only this module also deletes the HC once GameData InsideTheDekuTree_Heart_Container_Obtained is set (set by AND(HC Dead, ...)). A chest never sets it, so the chest stays, which is harmless.",
+   "risk": "Low for turning it into a chest: the chest is spawned by the same Logic_Create and the warp does not depend on it. Because a chest never 'dies', it stays (opened) on later visits. Pickup refills hearts; a chest does not, which does not matter for logic. Unknown: the Dm_*_BossOut timeline casts an Obj_Heart_Container (own event model); check in game that the cutscene still plays and does not spawn an extra container.",
+   "confidence": "high",
+   "evidence": "Hash 17948245526767051747 in InsideTheDekuTree_Static, room 10; boss Enemy_DungeonBoss_Gohma 15302759724049838417; module strings and decoded graph: Logic_Create <- HoldGameDataGetBoolSimple Gohma_DefeatBoss; Create_WarpPrefab <- same node. Logic_Delete <- InsideTheDekuTree_Heart_Container_Obtained."
+  },
+  {
+   "rc": "RC_DODONGOS_CAVERN_KING_DODONGO_HEART",
+   "remake_vanilla_item": "Obj_Heart_Container",
+   "kind": "world_item",
+   "map": [
+    "Banc/DodongoCavern/DodongoCavern_Static.bcett.byml.zs"
+   ],
+   "hash": "5936534468710061389",
+   "gyaml": "Obj_Heart_Container",
+   "pos": [
+    24.0,
+    73.25,
+    -66.5
+   ],
+   "rotate": [
+    3.1416,
+    0.0,
+    3.1416
+   ],
+   "dynamic": {
+    "DefaultDungeonRoomIndex": 22
+   },
+   "appears": "Created by the boss room's logic module Gimmick_DodongoCavern_BossBattle_75a7 (AiGroup reference to this hash): Logic_Create <- HoldGameDataGetBoolSimple DodongoCavern_BossGroundChange, the same node that drives the boss prefab's Create_WarpPrefab. Not present before the boss dies, and not linked from any actor.",
+   "warp_relation": "Obj_WarpPoint_A_01 13216581863777340373 at (24.0,73.24,-63.05), 3.5 m north. EventRequestActor 8340727814145270359 Get_StoneOfFire_EscapeDungeon.",
+   "trigger": "Defeat the boss; the container appears next to the blue warp (same flag as the warp).",
+   "logic_note": "Same as SoH (boss room, after the boss). The boss room is a room of the dungeon map, not a separate boss scene. Nothing else in the room depends on the container being taken.",
+   "risk": "Low for turning it into a chest: the chest is spawned by the same Logic_Create and the warp does not depend on it. Because a chest never 'dies', it stays (opened) on later visits. Pickup refills hearts; a chest does not, which does not matter for logic. Unknown: the Dm_*_BossOut timeline casts an Obj_Heart_Container (own event model); check in game that the cutscene still plays and does not spawn an extra container.",
+   "confidence": "high",
+   "evidence": "Hash 5936534468710061389 in DodongoCavern_Static, room 22; boss Enemy_DungeonBoss_Dodongo 14111865264241563730 (room 22 of DodongoCavern; no separate boss map); module strings and decoded graph: Logic_Create <- HoldGameDataGetBoolSimple DodongoCavern_BossGroundChange; Create_WarpPrefab <- same node. "
+  },
+  {
+   "rc": "RC_JABU_JABUS_BELLY_BARINADE_HEART",
+   "remake_vanilla_item": "Obj_Heart_Container",
+   "kind": "world_item",
+   "map": [
+    "Banc/InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs"
+   ],
+   "hash": "17608884438514432711",
+   "gyaml": "Obj_Heart_Container",
+   "pos": [
+    42.4,
+    102.01,
+    -108.17
+   ],
+   "rotate": null,
+   "dynamic": {
+    "DefaultDungeonRoomIndex": 15
+   },
+   "appears": "Created by the boss room's logic module InsideJabuJabuBelly_Level_Room_15_Prefab_39e3 (AiGroup reference to this hash): Logic_Create <- HoldGameDataGetBoolExpSimple Get_StoneOfWater_IsAfter_Step13_01_Exp, the same node that drives the boss prefab's Create_WarpPrefab. Not present before the boss dies, and not linked from any actor.",
+   "warp_relation": "Obj_WarpPoint_A_01 9190184471319613614 at (42.27,102.02,-112.10), 3.9 m. EventRequestActor 12912991593800763246 Getout_JabJab. Npc_Zora_Ruto_Child_002 5790793887350608610 stands 7 m away, past the warp (Ruto is in the same module).",
+   "trigger": "Defeat the boss; the container appears next to the blue warp (same flag as the warp).",
+   "logic_note": "Same as SoH (boss room, after the boss). The boss room is a room of the dungeon map, not a separate boss scene. Nothing else in the room depends on the container being taken.",
+   "risk": "Low for turning it into a chest: the chest is spawned by the same Logic_Create and the warp does not depend on it. Because a chest never 'dies', it stays (opened) on later visits. Pickup refills hearts; a chest does not, which does not matter for logic. Unknown: the Dm_*_BossOut timeline casts an Obj_Heart_Container (own event model); check in game that the cutscene still plays and does not spawn an extra container. Rotate is absent, so a chest gets the default heading.",
+   "confidence": "high",
+   "evidence": "Hash 17608884438514432711 in InsideJabuJabuBelly_Static, room 15; boss Enemy_DungeonBoss_Barinade 5378347645760126735; module strings and decoded graph: Logic_Create <- HoldGameDataGetBoolExpSimple Get_StoneOfWater_IsAfter_Step13_01_Exp; Create_WarpPrefab <- same node. "
+  },
+  {
+   "rc": "RC_FOREST_TEMPLE_PHANTOM_GANON_HEART",
+   "remake_vanilla_item": "Obj_Heart_Container",
+   "kind": "world_item",
+   "map": [
+    "Banc/ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "hash": "18379569660496940670",
+   "gyaml": "Obj_Heart_Container",
+   "pos": [
+    -3.24,
+    74.73,
+    -64.43
+   ],
+   "rotate": null,
+   "dynamic": {
+    "DefaultDungeonRoomIndex": 29
+   },
+   "appears": "Created by the boss room's logic module ForestTemple_Level_Room_22_Prefab_c724 (AiGroup reference to this hash): Logic_Create <- HoldGameDataGetBoolExpSimple SageOfForest_IsAfter_Step08_Exp, the same node that drives the boss prefab's Create_WarpPrefab. Not present before the boss dies, and not linked from any actor.",
+   "warp_relation": "Obj_WarpPoint_A_01 7322827475260825437 at (0.02,74.66,-62.55), 3.8 m. EventRequestActor 673842516961034075 ForestTemple_SageOfForest_EscapeFromTemple. StartPos_SageOfForest is 3.2 m from the HC spot (a chest might stand close to that spawn).",
+   "trigger": "Defeat the boss; the container appears next to the blue warp (same flag as the warp).",
+   "logic_note": "Same as SoH (boss room, after the boss). The boss room is a room of the dungeon map, not a separate boss scene. Nothing else in the room depends on the container being taken.",
+   "risk": "Low for turning it into a chest: the chest is spawned by the same Logic_Create and the warp does not depend on it. Because a chest never 'dies', it stays (opened) on later visits. Pickup refills hearts; a chest does not, which does not matter for logic. Unknown: the Dm_*_BossOut timeline casts an Obj_Heart_Container (own event model); check in game that the cutscene still plays and does not spawn an extra container. Rotate is absent, so a chest gets the default heading.",
+   "confidence": "high",
+   "evidence": "Hash 18379569660496940670 in ForestTemple_Static, room 29; boss Enemy_DungeonBoss_PhantomGanon 576026214364883467; module strings and decoded graph: Logic_Create <- HoldGameDataGetBoolExpSimple SageOfForest_IsAfter_Step08_Exp; Create_WarpPrefab <- same node. "
+  },
+  {
+   "rc": "RC_FIRE_TEMPLE_VOLVAGIA_HEART",
+   "remake_vanilla_item": "Obj_Heart_Container",
+   "kind": "world_item",
+   "map": [
+    "Banc/FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "hash": "9478330070473364248",
+   "gyaml": "Obj_Heart_Container",
+   "pos": [
+    -76.37,
+    102.5,
+    0.0
+   ],
+   "rotate": [
+    -3.1416,
+    1.2915,
+    -3.1416
+   ],
+   "dynamic": null,
+   "appears": "Created by the boss room's logic module FireTemple_Level_Room_26_Prefab_80f5 (AiGroup reference to this hash): Logic_Create <- HoldGameDataGetBoolSimple FireTemple_BossGroundChange, the same node that drives the boss prefab's Create_WarpPrefab. Not present before the boss dies, and not linked from any actor.",
+   "warp_relation": "Obj_WarpPoint_A_01 14585775662663687502 at (-80.25,102.46,0.08), 3.9 m. EventRequestActor 11000625479657431154 Demo_SageOfFire_ClearEvent. StartPos 'BossDefeat' is 5.1 m away.",
+   "trigger": "Defeat the boss; the container appears next to the blue warp (same flag as the warp).",
+   "logic_note": "Same as SoH (boss room, after the boss). The boss room is a room of the dungeon map, not a separate boss scene. Nothing else in the room depends on the container being taken. The HC actor has no Dynamic (no DefaultDungeonRoomIndex), unlike the others; the module's AiGroup has DungeonRoomID 33.",
+   "risk": "Low for turning it into a chest: the chest is spawned by the same Logic_Create and the warp does not depend on it. Because a chest never 'dies', it stays (opened) on later visits. Pickup refills hearts; a chest does not, which does not matter for logic. Unknown: the Dm_*_BossOut timeline casts an Obj_Heart_Container (own event model); check in game that the cutscene still plays and does not spawn an extra container.",
+   "confidence": "high",
+   "evidence": "Hash 9478330070473364248 in FireTemple_Static, room None; boss Enemy_DungeonBoss_Volvagia 2161486807533192031 (room 33); module strings and decoded graph: Logic_Create <- HoldGameDataGetBoolSimple FireTemple_BossGroundChange; Create_WarpPrefab <- same node. "
+  },
+  {
+   "rc": "RC_WATER_TEMPLE_MORPHA_HEART",
+   "remake_vanilla_item": "Obj_Heart_Container",
+   "kind": "world_item",
+   "map": [
+    "Banc/WaterTemple/WaterTemple_Static.bcett.byml.zs"
+   ],
+   "hash": "14426685265732353862",
+   "gyaml": "Obj_Heart_Container",
+   "pos": [
+    -4.5,
+    124.36,
+    -88.05
+   ],
+   "rotate": [
+    3.1416,
+    -1.559,
+    -3.1416
+   ],
+   "dynamic": {
+    "DefaultDungeonRoomIndex": 23
+   },
+   "appears": "Created by the boss room's logic module WaterTemple_Level_Room_23_Prefab_eb85 (AiGroup reference to this hash): Logic_Create <- HoldChallengeCurrentStepCheckOrder SageOfWater Step07_2 (output 0), the same node that drives the boss prefab's Create_WarpPrefab. Not present before the boss dies, and not linked from any actor.",
+   "warp_relation": "Obj_WarpPoint_A_01 9109272685779005276 at (-4.51,124.46,-91.81), 3.8 m. EventRequestActor 13018952176328453408 Demo_SageOfWater_ClearEvent.",
+   "trigger": "Defeat the boss; the container appears next to the blue warp (same flag as the warp).",
+   "logic_note": "Same as SoH (boss room, after the boss). The boss room is a room of the dungeon map, not a separate boss scene. Nothing else in the room depends on the container being taken.",
+   "risk": "Low for turning it into a chest: the chest is spawned by the same Logic_Create and the warp does not depend on it. Because a chest never 'dies', it stays (opened) on later visits. Pickup refills hearts; a chest does not, which does not matter for logic. Unknown: the Dm_*_BossOut timeline casts an Obj_Heart_Container (own event model); check in game that the cutscene still plays and does not spawn an extra container.",
+   "confidence": "high",
+   "evidence": "Hash 14426685265732353862 in WaterTemple_Static, room 23; boss Enemy_DungeonBoss_Morpha 18432514281933120131; module strings and decoded graph: Logic_Create <- HoldChallengeCurrentStepCheckOrder SageOfWater Step07_2 (output 0); Create_WarpPrefab <- same node. "
+  },
+  {
+   "rc": "RC_SPIRIT_TEMPLE_TWINROVA_HEART",
+   "remake_vanilla_item": "Obj_Heart_Container",
+   "kind": "world_item",
+   "map": [
+    "Banc/SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+   ],
+   "hash": "4720088048159616469",
+   "gyaml": "Obj_Heart_Container",
+   "pos": [
+    -2.7,
+    142.25,
+    -160.58
+   ],
+   "rotate": [
+    3.1416,
+    0.7854,
+    3.1416
+   ],
+   "dynamic": {
+    "DefaultDungeonRoomIndex": 33
+   },
+   "appears": "Created by the boss room's logic module SpiritTemple_Level_Room_34_Prefab_90de (AiGroup reference to this hash): Logic_Create <- HoldGameDataGetBoolExpSimple SageOfSpirit_IsAfter_Step09_01_Exp, the same node that drives the boss prefab's Create_WarpPrefab. Not present before the boss dies, and not linked from any actor.",
+   "warp_relation": "Obj_WarpPoint_A_01 11243501154977749945 at (0.01,142.17,-157.86), 3.8 m. EventRequestActor 15371894430350639735 SageOfSpirit_Clear.",
+   "trigger": "Defeat the boss; the container appears next to the blue warp (same flag as the warp).",
+   "logic_note": "Same as SoH (boss room, after the boss). The boss room is a room of the dungeon map, not a separate boss scene. Nothing else in the room depends on the container being taken.",
+   "risk": "Low for turning it into a chest: the chest is spawned by the same Logic_Create and the warp does not depend on it. Because a chest never 'dies', it stays (opened) on later visits. Pickup refills hearts; a chest does not, which does not matter for logic. Unknown: the Dm_*_BossOut timeline casts an Obj_Heart_Container (own event model); check in game that the cutscene still plays and does not spawn an extra container.",
+   "confidence": "high",
+   "evidence": "Hash 4720088048159616469 in SpiritTemple_Static, room 33; boss Enemy_DungeonBoss_Twinrova 18108843817355996044 (+ Koume/Kotake); module strings and decoded graph: Logic_Create <- HoldGameDataGetBoolExpSimple SageOfSpirit_IsAfter_Step09_01_Exp; Create_WarpPrefab <- same node. "
+  },
+  {
+   "rc": "RC_SHADOW_TEMPLE_BONGO_BONGO_HEART",
+   "remake_vanilla_item": "Obj_Heart_Container",
+   "kind": "world_item",
+   "map": [
+    "Banc/ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+   ],
+   "hash": "17599164808183510748",
+   "gyaml": "Obj_Heart_Container",
+   "pos": [
+    -138.33,
+    -11.46,
+    26.01
+   ],
+   "rotate": null,
+   "dynamic": {
+    "DefaultDungeonRoomIndex": 24
+   },
+   "appears": "Created by the boss room's logic module ShadowTemple_Level_Room_B3FB4F_Q_Prefab_f38f (AiGroup reference to this hash): Logic_Create <- HoldGameDataGetBoolExpSimple SageOfShadow_IsAfter_DefeatBoss_Exp, the same node that drives the boss prefab's Create_WarpPrefab. Not present before the boss dies, and not linked from any actor.",
+   "warp_relation": "Obj_WarpPoint_A_01 15240382889320952895 at (-138.33,-11.46,30.05), 4.0 m north. StartPos_SageOfShadow is 4.0 m south (both Static and Dynamic copies). EventRequestActor 14929031821664330109 ShadowTemple_BossArea_Warp.",
+   "trigger": "Defeat the boss; the container appears next to the blue warp (same flag as the warp).",
+   "logic_note": "Same as SoH (boss room, after the boss). The boss room is a room of the dungeon map, not a separate boss scene. Nothing else in the room depends on the container being taken.",
+   "risk": "Low for turning it into a chest: the chest is spawned by the same Logic_Create and the warp does not depend on it. Because a chest never 'dies', it stays (opened) on later visits. Pickup refills hearts; a chest does not, which does not matter for logic. Unknown: the Dm_*_BossOut timeline casts an Obj_Heart_Container (own event model); check in game that the cutscene still plays and does not spawn an extra container. Rotate is absent, so a chest gets the default heading.",
+   "confidence": "high",
+   "evidence": "Hash 17599164808183510748 in ShadowTemple_Static, room 24; boss Enemy_DungeonBoss_BongoBongo 13112551109176772166; module strings and decoded graph: Logic_Create <- HoldGameDataGetBoolExpSimple SageOfShadow_IsAfter_DefeatBoss_Exp; Create_WarpPrefab <- same node. "
+  },
+  {
+   "rc": "RC_QUEEN_GOHMA",
+   "remake_vanilla_item": "Item_Stone_Forest",
+   "kind": "flow_param",
+   "flow": "Dm_Kokiri_0130",
+   "event": 0,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName {ActorName: Item_Stone_Forest} (entry C08)",
+   "also": [
+    "No .110 twin (not in EventFlowFileEntry.Product.110).",
+    "Flow actor 'Item_Stone_Forest' (the model shown in the cutscene: ModelBind/PlayAS/XLink/SetModelLod events) keeps showing the vanilla reward; it is an actor-table name, not a parameter.",
+    "Event 153 GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot TargetID=Item_Stone_Forest: a cosmetic 'get_item' notes entry."
+   ],
+   "trigger": "Blue warp: EventRequestActor 3809348875533380634 InsideTheDekuTree_BossArea_Warp -> Dm_SY_BancChange_EscapeDungeon:BossArea_WarpIn -> BancChange KokiriForest_Child with BootEventName KokiriForest_WarpFromInsideTheDekuTree (event 23) -> entry Warp_Kokiri -> event 19 EventTransition Dm_Kokiri_0130 (the Great Deku Tree's death scene, which gives the Emerald).",
+   "logic_note": "Same as SoH (LOGIC_*_CLEAR = boss beaten). In the remake the item comes in the cutscene after taking the blue warp, not in the boss room. The warp is created by the same flag as the boss heart.",
+   "risk": "HIGH for the first version: keep vanilla. What a change would touch: only the pouch content (GetPouchContent adds ActorName to the pouch). Story progress is separate. Entry Warp_Kokiri also runs ChallengeStep Get_StoneOfForest Complete and Goto_HyruleCastle Step01, which do not depend on the item. The reward cutscene still shows the vanilla stone/medallion model. A stone or medallion placed elsewhere and found earlier would also be given by its own actor; whether the game copes with that (duplicate, order) is untested.",
+   "confidence": "high",
+   "evidence": "research/gift_events.json (Dm_Kokiri_0130 event 0); Dm_SY_BancChange_EscapeDungeon reachability by entry; EventSetting rows."
+  },
+  {
+   "rc": "RC_KING_DODONGO",
+   "remake_vanilla_item": "Item_Stone_Fire",
+   "kind": "flow_param",
+   "flow": "Dm_DeathMtTrail_0025",
+   "event": 9,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName {ActorName: Item_Stone_Fire} (entry C01-07)",
+   "also": [
+    "No .110 twin (not in EventFlowFileEntry.Product.110).",
+    "Flow actor 'Item_Stone_Fire' (the model shown in the cutscene: ModelBind/PlayAS/XLink/SetModelLod events) keeps showing the vanilla reward; it is an actor-table name, not a parameter.",
+    "Event 210 GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot TargetID=Item_Stone_Fire: a cosmetic 'get_item' notes entry."
+   ],
+   "trigger": "Blue warp: EventRequestActor 8340727814145270359 Get_StoneOfFire_EscapeDungeon -> BancChange DeathMountainTrail_Child/Adult with BootEventName Get_StoneOfFire_Complete (events 36/39) -> entry Get_StoneOfFire_Complete -> event 42 EventTransition Dm_DeathMtTrail_0025 (Darunia gives the Ruby).",
+   "logic_note": "Same as SoH (LOGIC_*_CLEAR = boss beaten). In the remake the item comes in the cutscene after taking the blue warp, not in the boss room. The warp is created by the same flag as the boss heart.",
+   "risk": "HIGH for the first version: keep vanilla. What a change would touch: only the pouch content (GetPouchContent adds ActorName to the pouch). Same entry runs ChallengeStep Get_StoneOfFire Complete and call DoorOfTime:DoorOfTime_CheckStoneNum, which counts stones by challenge state (sets DoorOfTime_GetStoneCount / DoorOfTime steps), not by the pouch. The reward cutscene still shows the vanilla stone/medallion model. A stone or medallion placed elsewhere and found earlier would also be given by its own actor; whether the game copes with that (duplicate, order) is untested. GetPouchContent's OpenGetWindow_Stone_Fire/Stone_Water branches pick the get-text by the item name; another item takes the default text.",
+   "confidence": "high",
+   "evidence": "research/gift_events.json (Dm_DeathMtTrail_0025 event 9); Dm_SY_BancChange_EscapeDungeon reachability by entry; EventSetting rows."
+  },
+  {
+   "rc": "RC_BARINADE",
+   "remake_vanilla_item": "Item_Stone_Water",
+   "kind": "flow_param",
+   "flow": "Dm_ZoraFountain_0030",
+   "event": 0,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName {ActorName: Item_Stone_Water} (entry C03)",
+   "also": [
+    "No .110 twin (not in EventFlowFileEntry.Product.110).",
+    "Flow actor 'Item_Stone_Water' (the model shown in the cutscene: ModelBind/PlayAS/XLink/SetModelLod events) keeps showing the vanilla reward; it is an actor-table name, not a parameter.",
+    "Event 152 GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot TargetID=Item_Stone_Water: a cosmetic 'get_item' notes entry."
+   ],
+   "trigger": "Blue warp: EventRequestActor 12912991593800763246 Getout_JabJab -> Dm_SY_BancChange_EscapeDungeon:Get_StoneOfWater_LeaveFromJabuJabuBelly -> Dm_InsideJabu_Jabu_0050 BancChange ZoraFountain_Child with BootEventName Get_StoneOfWater_Complete (its events 133/153) -> entry Get_StoneOfWater_Clear -> event 58 EventTransition Dm_ZoraFountain_0030 (Ruto gives the Sapphire).",
+   "logic_note": "Same as SoH (LOGIC_*_CLEAR = boss beaten). In the remake the item comes in the cutscene after taking the blue warp, not in the boss room. The warp is created by the same flag as the boss heart.",
+   "risk": "HIGH for the first version: keep vanilla. What a change would touch: only the pouch content (GetPouchContent adds ActorName to the pouch). Same entry runs ChallengeStep Get_StoneOfWater Complete and DoorOfTime_CheckStoneNum. The reward cutscene still shows the vanilla stone/medallion model. A stone or medallion placed elsewhere and found earlier would also be given by its own actor; whether the game copes with that (duplicate, order) is untested. Not to be confused with Dm_InsideJabu_Jabu_0030(.110) event 79 call GetPouchContent:DisplayRutoGetByActorName {Item_Stone_Water}: that only opens Ruto's 'got the stone' window (no AddOrRemovePouchContent), so it gives Link nothing and is not this check.",
+   "confidence": "high",
+   "evidence": "research/gift_events.json (Dm_ZoraFountain_0030 event 0); Dm_SY_BancChange_EscapeDungeon reachability by entry; EventSetting rows."
+  },
+  {
+   "rc": "RC_PHANTOM_GANON",
+   "remake_vanilla_item": "Item_Medal_Forest",
+   "kind": "flow_param",
+   "flow": "Dm_Awake_Forest_Get",
+   "event": 22,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName {ActorName: Item_Medal_Forest} (entry EntryPoint0)",
+   "also": [
+    "TWIN: Dm_Awake_Forest_Get.110 has the same event 22 (dumps identical). EventFlowFileEntry.Product.110 lists Dm_Awake_Forest_Get under 'Versions': '110', so the game most likely runs the .110 file. Patch both.",
+    "Flow actor 'Item_Medal_Forest' (the model shown in the cutscene: ModelBind/PlayAS/XLink/SetModelLod events) keeps showing the vanilla reward; it is an actor-table name, not a parameter.",
+    "Event 47 GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot TargetID=Item_Medal_Forest: a cosmetic 'get_item' notes entry."
+   ],
+   "trigger": "Blue warp: EventRequestActor 673842516961034075 ForestTemple_SageOfForest_EscapeFromTemple -> Dm_SY_BancChange_EscapeDungeon BancChange SageRoom with BootEventName (its event 10) -> entry ForestTemple_SageOfForest_SageRoom -> EventTransition Dm_Awake_<Sage> (awakening timeline) then event 13 EventTransition Dm_Awake_Forest_Get (gives the medallion in the Chamber of Sages); then BancChange back to the overworld.",
+   "logic_note": "Same as SoH (LOGIC_*_CLEAR = boss beaten). In the remake the item comes in the cutscene after taking the blue warp, not in the boss room. The warp is created by the same flag as the boss heart.",
+   "risk": "HIGH for the first version: keep vanilla. What a change would touch: only the pouch content (GetPouchContent adds ActorName to the pouch). Sage awakening/challenge completion is done by the EscapeDungeon flow and the sage timelines, not by the item. Dm_Awake_Forest_Get also sets GameData AllSage_AwakeSage_Fire_Or_Forest (keep). Rainbow bridge / Light Arrows conditions were not found to query the pouch (no Item_Medal_* in any flow switch or Logic ainb); they likely use the Sage* challenge BoolExps. The reward cutscene still shows the vanilla stone/medallion model. A stone or medallion placed elsewhere and found earlier would also be given by its own actor; whether the game copes with that (duplicate, order) is untested.",
+   "confidence": "high",
+   "evidence": "research/gift_events.json (Dm_Awake_Forest_Get event 22); Dm_SY_BancChange_EscapeDungeon reachability by entry; EventSetting rows."
+  },
+  {
+   "rc": "RC_VOLVAGIA",
+   "remake_vanilla_item": "Item_Medal_Fire",
+   "kind": "flow_param",
+   "flow": "Dm_Awake_Fire_Get",
+   "event": 22,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName {ActorName: Item_Medal_Fire} (entry EntryPoint0)",
+   "also": [
+    "TWIN: Dm_Awake_Fire_Get.110 has the same event 22 (dumps identical). EventFlowFileEntry.Product.110 lists Dm_Awake_Fire_Get under 'Versions': '110', so the game most likely runs the .110 file. Patch both.",
+    "Flow actor 'Item_Medal_Fire' (the model shown in the cutscene: ModelBind/PlayAS/XLink/SetModelLod events) keeps showing the vanilla reward; it is an actor-table name, not a parameter.",
+    "Event 46 GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot TargetID=Item_Medal_Fire: a cosmetic 'get_item' notes entry."
+   ],
+   "trigger": "Blue warp: EventRequestActor 11000625479657431154 Demo_SageOfFire_ClearEvent -> Dm_SY_BancChange_EscapeDungeon BancChange SageRoom with BootEventName (its event 73) -> entry FireTemple_SageOfFire_SageRoom -> EventTransition Dm_Awake_<Sage> (awakening timeline) then event 70 EventTransition Dm_Awake_Fire_Get (gives the medallion in the Chamber of Sages); then BancChange back to the overworld.",
+   "logic_note": "Same as SoH (LOGIC_*_CLEAR = boss beaten). In the remake the item comes in the cutscene after taking the blue warp, not in the boss room. The warp is created by the same flag as the boss heart.",
+   "risk": "HIGH for the first version: keep vanilla. What a change would touch: only the pouch content (GetPouchContent adds ActorName to the pouch). Sage awakening/challenge completion is done by the EscapeDungeon flow and the sage timelines, not by the item. Dm_Awake_Forest_Get also sets GameData AllSage_AwakeSage_Fire_Or_Forest (keep). Rainbow bridge / Light Arrows conditions were not found to query the pouch (no Item_Medal_* in any flow switch or Logic ainb); they likely use the Sage* challenge BoolExps. The reward cutscene still shows the vanilla stone/medallion model. A stone or medallion placed elsewhere and found earlier would also be given by its own actor; whether the game copes with that (duplicate, order) is untested.",
+   "confidence": "high",
+   "evidence": "research/gift_events.json (Dm_Awake_Fire_Get event 22); Dm_SY_BancChange_EscapeDungeon reachability by entry; EventSetting rows."
+  },
+  {
+   "rc": "RC_MORPHA",
+   "remake_vanilla_item": "Item_Medal_Water",
+   "kind": "flow_param",
+   "flow": "Dm_Awake_Water_Get",
+   "event": 22,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName {ActorName: Item_Medal_Water} (entry EntryPoint0)",
+   "also": [
+    "TWIN: Dm_Awake_Water_Get.110 has the same event 22 (dumps identical). EventFlowFileEntry.Product.110 lists Dm_Awake_Water_Get under 'Versions': '110', so the game most likely runs the .110 file. Patch both.",
+    "Flow actor 'Item_Medal_Water' (the model shown in the cutscene: ModelBind/PlayAS/XLink/SetModelLod events) keeps showing the vanilla reward; it is an actor-table name, not a parameter.",
+    "Event 45 GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot TargetID=Item_Medal_Water: a cosmetic 'get_item' notes entry."
+   ],
+   "trigger": "Blue warp: EventRequestActor 13018952176328453408 Demo_SageOfWater_ClearEvent -> Dm_SY_BancChange_EscapeDungeon BancChange SageRoom with BootEventName (its event 89) -> entry SageOfWater_SageRoom -> EventTransition Dm_Awake_<Sage> (awakening timeline) then event 91 EventTransition Dm_Awake_Water_Get (gives the medallion in the Chamber of Sages); then BancChange back to the overworld.",
+   "logic_note": "Same as SoH (LOGIC_*_CLEAR = boss beaten). In the remake the item comes in the cutscene after taking the blue warp, not in the boss room. The warp is created by the same flag as the boss heart.",
+   "risk": "HIGH for the first version: keep vanilla. What a change would touch: only the pouch content (GetPouchContent adds ActorName to the pouch). Sage awakening/challenge completion is done by the EscapeDungeon flow and the sage timelines, not by the item. Dm_Awake_Forest_Get also sets GameData AllSage_AwakeSage_Fire_Or_Forest (keep). Rainbow bridge / Light Arrows conditions were not found to query the pouch (no Item_Medal_* in any flow switch or Logic ainb); they likely use the Sage* challenge BoolExps. The reward cutscene still shows the vanilla stone/medallion model. A stone or medallion placed elsewhere and found earlier would also be given by its own actor; whether the game copes with that (duplicate, order) is untested.",
+   "confidence": "high",
+   "evidence": "research/gift_events.json (Dm_Awake_Water_Get event 22); Dm_SY_BancChange_EscapeDungeon reachability by entry; EventSetting rows."
+  },
+  {
+   "rc": "RC_TWINROVA",
+   "remake_vanilla_item": "Item_Medal_Spirit",
+   "kind": "flow_param",
+   "flow": "Dm_Awake_Spirit_Get",
+   "event": 22,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName {ActorName: Item_Medal_Spirit} (entry EntryPoint0)",
+   "also": [
+    "TWIN: Dm_Awake_Spirit_Get.110 has the same event 22 (dumps identical). EventFlowFileEntry.Product.110 lists Dm_Awake_Spirit_Get under 'Versions': '110', so the game most likely runs the .110 file. Patch both.",
+    "Flow actor 'Item_Medal_Spirit' (the model shown in the cutscene: ModelBind/PlayAS/XLink/SetModelLod events) keeps showing the vanilla reward; it is an actor-table name, not a parameter.",
+    "Event 47 GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot TargetID=Item_Medal_Spirit: a cosmetic 'get_item' notes entry."
+   ],
+   "trigger": "Blue warp: EventRequestActor 15371894430350639735 SageOfSpirit_Clear -> Dm_SY_BancChange_EscapeDungeon BancChange SageRoom with BootEventName (its event 114) -> entry SpiritTemple_SageOfSpirit_SageRoom -> EventTransition Dm_Awake_<Sage> (awakening timeline) then event 119 EventTransition Dm_Awake_Spirit_Get (gives the medallion in the Chamber of Sages); then BancChange back to the overworld.",
+   "logic_note": "Same as SoH (LOGIC_*_CLEAR = boss beaten). In the remake the item comes in the cutscene after taking the blue warp, not in the boss room. The warp is created by the same flag as the boss heart.",
+   "risk": "HIGH for the first version: keep vanilla. What a change would touch: only the pouch content (GetPouchContent adds ActorName to the pouch). Sage awakening/challenge completion is done by the EscapeDungeon flow and the sage timelines, not by the item. Dm_Awake_Forest_Get also sets GameData AllSage_AwakeSage_Fire_Or_Forest (keep). Rainbow bridge / Light Arrows conditions were not found to query the pouch (no Item_Medal_* in any flow switch or Logic ainb); they likely use the Sage* challenge BoolExps. The reward cutscene still shows the vanilla stone/medallion model. A stone or medallion placed elsewhere and found earlier would also be given by its own actor; whether the game copes with that (duplicate, order) is untested.",
+   "confidence": "high",
+   "evidence": "research/gift_events.json (Dm_Awake_Spirit_Get event 22); Dm_SY_BancChange_EscapeDungeon reachability by entry; EventSetting rows."
+  },
+  {
+   "rc": "RC_BONGO_BONGO",
+   "remake_vanilla_item": "Item_Medal_Shadow",
+   "kind": "flow_param",
+   "flow": "Dm_Awake_Shadow_Get",
+   "event": 22,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName {ActorName: Item_Medal_Shadow} (entry EntryPoint0)",
+   "also": [
+    "TWIN: Dm_Awake_Shadow_Get.110 has the same event 22 (dumps identical). EventFlowFileEntry.Product.110 lists Dm_Awake_Shadow_Get under 'Versions': '110', so the game most likely runs the .110 file. Patch both.",
+    "Flow actor 'Item_Medal_Shadow' (the model shown in the cutscene: ModelBind/PlayAS/XLink/SetModelLod events) keeps showing the vanilla reward; it is an actor-table name, not a parameter.",
+    "Event 45 GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot TargetID=Item_Medal_Shadow: a cosmetic 'get_item' notes entry."
+   ],
+   "trigger": "Blue warp: EventRequestActor 14929031821664330109 ShadowTemple_BossArea_Warp -> Dm_SY_BancChange_EscapeDungeon BancChange SageRoom with BootEventName (its event 104) -> entry ShadowTemple_Warp_ChamberOfSages -> EventTransition Dm_Awake_<Sage> (awakening timeline) then event 105 EventTransition Dm_Awake_Shadow_Get (gives the medallion in the Chamber of Sages); then BancChange back to the overworld.",
+   "logic_note": "Same as SoH (LOGIC_*_CLEAR = boss beaten). In the remake the item comes in the cutscene after taking the blue warp, not in the boss room. The warp is created by the same flag as the boss heart.",
+   "risk": "HIGH for the first version: keep vanilla. What a change would touch: only the pouch content (GetPouchContent adds ActorName to the pouch). Sage awakening/challenge completion is done by the EscapeDungeon flow and the sage timelines, not by the item. Dm_Awake_Forest_Get also sets GameData AllSage_AwakeSage_Fire_Or_Forest (keep). Rainbow bridge / Light Arrows conditions were not found to query the pouch (no Item_Medal_* in any flow switch or Logic ainb); they likely use the Sage* challenge BoolExps. The reward cutscene still shows the vanilla stone/medallion model. A stone or medallion placed elsewhere and found earlier would also be given by its own actor; whether the game copes with that (duplicate, order) is untested.",
+   "confidence": "high",
+   "evidence": "research/gift_events.json (Dm_Awake_Shadow_Get event 22); Dm_SY_BancChange_EscapeDungeon reachability by entry; EventSetting rows."
+  },
+  {
+   "rc": "RC_GANON",
+   "remake_vanilla_item": null,
+   "kind": "none",
+   "replaced_by": "No item. Ganon's defeat (Defeat_Ganon / Dm_FinalBattle_BossOut(.110)) only re-creates the Master Sword equipment for the fight (EventTriggerEquipmentUserRequestCreateStaticEquipment / ...CreateDynamicEquipmentNoRelationPouch Weapon_Sword_Master) and then the ending. There is no Triforce actor or gift.",
+   "trigger": null,
+   "logic_note": "SoH's RG_TRIFORCE at RC_GANON is the win condition (game beaten), not a shuffled item. Treat beating Ganon as the goal and do not place anything there.",
+   "risk": "n/a",
+   "confidence": "high",
+   "evidence": "research/event_gives.txt (Defeat_Ganon, Dm_FinalBattle_BossOut rows: Weapon_Sword_Master only); no Triforce actor in the gift/world indexes."
+  }
+ ],
+ "remake_only": [
+  {
+   "what": "Dodongo's Cavern Business Scrub (variable, repeatable stock)",
+   "map": "Banc/DodongoCavern/DodongoCavern_Static.bcett.byml.zs",
+   "hash": "7388739057158296701",
+   "gyaml": "Enemy_Scrub_Business",
+   "pos": [
+    62.75,
+    100.4,
+    -94.0
+   ],
+   "soh_region_guess": "RR_DODONGOS_CAVERN_NEAR_DODONGO_ROOM (= RC_DODONGOS_CAVERN_DEKU_SCRUB_SIDE_ROOM_NEAR_DODONGOS, not in this group's list)",
+   "note": "Room 7, behind WallCrack 14949303250999372259 off room 6 (between lower Lizalfos room 5 and Dodongo room 8, bomb flowers nearby). TalkEventName Enemy_Scrub_Business_Item: a shop whose stock depends on Link's items, not a one-time check. Rule if used: (CanBreakMudWalls || Goron bracelet for the flower) && CanStunDeku && Speak Deku && price."
+  },
+  {
+   "what": "Jabu-Jabu Business Scrub (variable stock)",
+   "map": "Banc/InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs",
+   "hash": "9496373148524757782",
+   "gyaml": "Enemy_Scrub_Business",
+   "pos": [
+    -27.67,
+    74.11,
+    -42.52
+   ],
+   "soh_region_guess": "SoH RC_JABU_JABUS_BELLY_DEKU_SCRUB's region (room 18 at y~74, the lower level); not verified",
+   "note": "Same TalkEventName Enemy_Scrub_Business_Item as the DC one: not a fixed-item check."
+  },
+  {
+   "what": "Bottom of the Well Business Scrub (Green Potion / magic jar / scrub seed)",
+   "map": "Banc/BottomOfTheWell/BottomOfTheWell_Static.bcett.byml.zs",
+   "hash": "15945446340598299551",
+   "gyaml": "Enemy_Scrub_Business",
+   "pos": [
+    -32.6,
+    101.0,
+    0.52
+   ],
+   "soh_region_guess": "RR_BOTW_PERIMETER area (room 1); no SoH counterpart",
+   "note": "ShopItemActorName0..2 = Item_Bottle_GreenPotion, Obj_MagicJar_Small, Item_ScrubBusinessSeed; TalkEventName Enemy_Scrub_Business_GreenPotion_01. A shop, not a one-time item."
+  },
+  {
+   "what": "Shadow Temple Business Scrub (Green Potion / magic jar / scrub seed)",
+   "map": "Banc/ShadowTemple/ShadowTemple_Static.bcett.byml.zs",
+   "hash": "8721287453021850502",
+   "gyaml": "Enemy_Scrub_Business",
+   "pos": [
+    119.01,
+    61.4,
+    85.64
+   ],
+   "soh_region_guess": "room 9 of the remake's Shadow Temple; no SoH counterpart",
+   "note": "Same stock as the BotW scrub."
+  },
+  {
+   "what": "No remake-only Heart Pieces, Heart Containers or freestanding keys in dungeons",
+   "soh_region_guess": null,
+   "note": "Item actors in all dungeon maps are only the 8 boss Obj_Heart_Container, the 2 Obj_Dungeon_SmallKey (BotW, Shadow), silver rupees, fairies, rupees and recovery hearts. GTG/Ganon's Castle have no freestanding key (see data/locations.json)."
+  }
+ ],
+ "open_questions_for_in_game_check": [
+  "After beating any boss (e.g. Gohma), does the heart container appear on the floor next to the blue warp, and is the warp there before you pick it up? (The data says the warp does not wait for the heart.)",
+  "With a test mod turning a boss heart container into a small chest (rando/freestanding.py): does the after-boss cutscene still show a heart descending, and does a real heart container appear anyway?",
+  "Shadow Temple skull-jar room (keese + giant skull jar): does the jar break only with bombs/bombchus? Can it be broken with the Goron's Bracelet alone, e.g. by throwing a bomb from the pots nearby?",
+  "Bottom of the Well crypt: is the small key shut inside a wooden coffin/candle stand at the west end that must be burnt (Deku stick from a torch, Din's, fire arrows)? Do bombs also open it?",
+  "Ice Cavern compass room: confirm there is no Piece of Heart, and that the red ice there freezes two pots with blue rupees.",
+  "Dodongo's Cavern: confirm there is no Business Scrub in the lobby, and that the only scrub is behind a bombable wall in the small side room between the lower Lizalfos room and the Dodongo room. What does it sell?",
+  "Fire Temple: after Volvagia, does the blue warp go to the Chamber of Sages (medallion) the first time, or does it offer Kakariko?"
+ ]
+}

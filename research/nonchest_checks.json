@@ -1,0 +1,1688 @@
+{
+ "forest_field_castle": [
+  {
+   "rc": "RC_SHEIK_IN_FOREST",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_MINUET_OF_FOREST",
+   "scene": "SCENE_SACRED_FOREST_MEADOW",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_SACRED_FOREST_MEADOW",
+     "rule": "logic->IsAdult"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SHEIK_AT_TEMPLE",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_PRELUDE_OF_LIGHT",
+   "scene": "SCENE_TEMPLE_OF_TIME",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_TOT_BEYOND_DOOR_OF_TIME",
+     "rule": "logic->IsAdult && logic->HasItem(RG_FOREST_MEDALLION)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SONG_FROM_IMPA",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_ZELDAS_LULLABY",
+   "scene": "SCENE_ID_MAX",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ROOT",
+     "rule": "ctx->GetOption(RSK_STARTING_ZELDAS_LETTER) && !ctx->GetOption(RSK_SHUFFLE_ZELDAS_LETTER)"
+    },
+    {
+     "region": "RR_HC_GARDEN",
+     "rule": "logic->Get(LOGIC_MET_ZELDA)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SONG_FROM_MALON",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_EPONAS_SONG",
+   "scene": "SCENE_LON_LON_RANCH",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LON_LON_RANCH",
+     "rule": "logic->IsChild && logic->Get(LOGIC_MALON_RETURNED_FROM_CASTLE) && logic->HasItem(RG_SPEAK_HYLIAN) && logic->HasItem(RG_FAIRY_OCARINA) && logic->AtDay"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SONG_FROM_SARIA",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_SARIAS_SONG",
+   "scene": "SCENE_SACRED_FOREST_MEADOW",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_SACRED_FOREST_MEADOW",
+     "rule": "logic->IsChild && logic->Get(LOGIC_MET_ZELDA)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SONG_FROM_OCARINA_OF_TIME",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_SONG_OF_TIME",
+   "scene": "SCENE_HYRULE_FIELD",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_HYRULE_FIELD",
+     "rule": "logic->IsChild && logic->StoneCount() == 3 && logic->HasItem(RG_BRONZE_SCALE)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LW_SKULL_KID",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_LOST_WOODS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_THE_LOST_WOODS",
+     "rule": "logic->IsChild && logic->CanUse(RG_SARIAS_SONG)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LW_TRADE_COJIRO",
+   "soh_type": "RCTYPE_ADULT_TRADE",
+   "soh_vanilla_item": "RG_ODD_MUSHROOM",
+   "scene": "SCENE_LOST_WOODS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_THE_LOST_WOODS",
+     "rule": "logic->IsAdult && logic->CanUse(RG_COJIRO)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LW_TRADE_ODD_POTION",
+   "soh_type": "RCTYPE_ADULT_TRADE",
+   "soh_vanilla_item": "RG_POACHERS_SAW",
+   "scene": "SCENE_LOST_WOODS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_THE_LOST_WOODS",
+     "rule": "logic->IsAdult && logic->CanUse(RG_ODD_POTION)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LW_OCARINA_MEMORY_GAME",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_LOST_WOODS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_THE_LOST_WOODS",
+     "rule": "logic->IsChild && logic->HasItem(RG_FAIRY_OCARINA) && logic->OcarinaButtons() >= 5"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LW_TARGET_IN_WOODS",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_SLINGSHOT",
+   "scene": "SCENE_LOST_WOODS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_THE_LOST_WOODS",
+     "rule": "logic->IsChild && logic->CanUse(RG_FAIRY_SLINGSHOT)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LW_DEKU_SCRUB_NEAR_BRIDGE",
+   "soh_type": "RCTYPE_SCRUB",
+   "soh_vanilla_item": "RG_PROGRESSIVE_STICK_UPGRADE",
+   "scene": "SCENE_LOST_WOODS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LW_UNDER_BRIDGE",
+     "rule": "logic->IsChild && logic->CanStunDeku() && logic->HasItem(RG_SPEAK_DEKU) && GetCheckPrice() <= GetWalletCapacity()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LW_DEKU_SCRUB_GROTTO_FRONT",
+   "soh_type": "RCTYPE_SCRUB",
+   "soh_vanilla_item": "RG_PROGRESSIVE_NUT_UPGRADE",
+   "scene": "SCENE_GROTTOS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LW_SCRUBS_GROTTO",
+     "rule": "logic->CanStunDeku() && logic->HasItem(RG_SPEAK_DEKU) && GetCheckPrice() <= GetWalletCapacity()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DEKU_THEATER_SKULL_MASK",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_STICK_UPGRADE",
+   "scene": "SCENE_GROTTOS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DEKU_THEATER",
+     "rule": "logic->CanUse(RG_SKULL_MASK)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DEKU_THEATER_MASK_OF_TRUTH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_NUT_UPGRADE",
+   "scene": "SCENE_GROTTOS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DEKU_THEATER",
+     "rule": "logic->CanUse(RG_MASK_OF_TRUTH) && logic->HasItem(RG_SPEAK_DEKU)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_HF_OCARINA_OF_TIME_ITEM",
+   "soh_type": "RCTYPE_OCARINA",
+   "soh_vanilla_item": "RG_PROGRESSIVE_OCARINA",
+   "scene": "SCENE_HYRULE_FIELD",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_HYRULE_FIELD",
+     "rule": "logic->IsChild && logic->StoneCount() == 3 && logic->HasItem(RG_BRONZE_SCALE)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_HF_TEKTITE_GROTTO_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_GROTTOS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_HF_TEKTITE_GROTTO",
+     "rule": "logic->HasItem(RG_GOLDEN_SCALE) || logic->CanUse(RG_IRON_BOOTS)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_HF_DEKU_SCRUB_GROTTO",
+   "soh_type": "RCTYPE_SCRUB",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_GROTTOS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_HF_INSIDE_FENCE_GROTTO",
+     "rule": "logic->CanStunDeku() && logic->HasItem(RG_SPEAK_DEKU) && GetCheckPrice() <= GetWalletCapacity()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_MARKET_BOMBCHU_BOWLING_FIRST_PRIZE",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_BOMB_BAG",
+   "scene": "SCENE_BOMBCHU_BOWLING_ALLEY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_MARKET_BOMBCHU_BOWLING",
+     "rule": "logic->Get(LOGIC_COULD_PLAY_BOWLING) && logic->BombchusEnabled()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_MARKET_BOMBCHU_BOWLING_SECOND_PRIZE",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_BOMBCHU_BOWLING_ALLEY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_MARKET_BOMBCHU_BOWLING",
+     "rule": "logic->Get(LOGIC_COULD_PLAY_BOWLING) && logic->BombchusEnabled()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_MARKET_LOST_DOG",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_DOG_LADY_HOUSE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_MARKET_DOG_LADY_HOUSE",
+     "rule": "logic->IsChild && logic->AtNight && logic->HasItem(RG_SPEAK_HYLIAN)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_MARKET_SHOOTING_GALLERY_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_SLINGSHOT",
+   "scene": "SCENE_SHOOTING_GALLERY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_MARKET_SHOOTING_GALLERY",
+     "rule": "logic->IsChild && logic->HasItem(RG_CHILD_WALLET) && logic->HasItem(RG_SPEAK_HYLIAN)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_MARKET_10_BIG_POES",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_EMPTY_BOTTLE",
+   "scene": "SCENE_MARKET_GUARD_HOUSE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_MARKET_GUARD_HOUSE",
+     "rule": "logic->IsAdult && logic->HasItem(RG_SPEAK_HYLIAN) && (logic->Get(LOGIC_BIG_POE_KILL) || logic->BigPoes >= ctx->GetOption(RSK_BIG_POE_COUNT).Get())"
+    }
+   ]
+  },
+  {
+   "rc": "RC_HC_MALON_EGG",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_WEIRD_EGG",
+   "scene": "SCENE_HYRULE_CASTLE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ROOT",
+     "rule": "ctx->GetOption(RSK_SHUFFLE_WEIRD_EGG).Is(RO_WEIRD_EGG_SKIP_TALON)"
+    },
+    {
+     "region": "RR_HC_GATE",
+     "rule": "logic->HasItem(RG_SPEAK_HYLIAN)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_HC_ZELDAS_LETTER",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_ZELDAS_LETTER",
+   "scene": "SCENE_CASTLE_COURTYARD_ZELDA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ROOT",
+     "rule": "ctx->GetOption(RSK_STARTING_ZELDAS_LETTER) && !ctx->GetOption(RSK_SHUFFLE_ZELDAS_LETTER)"
+    },
+    {
+     "region": "RR_HC_GARDEN",
+     "rule": "logic->Get(LOGIC_MET_ZELDA)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LLR_TALONS_CHICKENS",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_BOTTLE_WITH_MILK",
+   "scene": "SCENE_LON_LON_BUILDINGS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LLR_TALONS_HOUSE",
+     "rule": "logic->HasItem(RG_CHILD_WALLET) && logic->HasItem(RG_SPEAK_HYLIAN) && logic->IsChild && logic->AtDay && logic->Get(LOGIC_TALON_RETURNED_FROM_CASTLE) && logic->HasItem(RG_POWER_BRACELET)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LLR_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_LON_LON_BUILDINGS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LLR_TOWER",
+     "rule": "logic->IsChild && logic->HasItem(RG_POWER_BRACELET) && logic->HasItem(RG_CRAWL)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GIFT_FROM_RAURU",
+   "soh_type": "RCTYPE_DUNGEON_REWARD",
+   "soh_vanilla_item": "RG_LIGHT_MEDALLION",
+   "scene": "SCENE_ID_MAX",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_TOT_BEYOND_DOOR_OF_TIME",
+     "rule": "logic->IsAdult"
+    }
+   ]
+  },
+  {
+   "rc": "RC_TOT_MASTER_SWORD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_MASTER_SWORD",
+   "scene": "SCENE_TEMPLE_OF_TIME",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ROOT",
+     "rule": "(bool)ctx->GetOption(RSK_SELECTED_STARTING_AGE).Is(RO_AGE_ADULT)"
+    },
+    {
+     "region": "RR_TOT_BEYOND_DOOR_OF_TIME",
+     "rule": "logic->IsAdult"
+    }
+   ]
+  },
+  {
+   "rc": "RC_TOT_LIGHT_ARROWS_CUTSCENE",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_LIGHT_ARROWS",
+   "scene": "SCENE_TEMPLE_OF_TIME",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_TEMPLE_OF_TIME",
+     "rule": "logic->IsAdult && logic->HasItem(RG_SHADOW_MEDALLION) && logic->HasItem(RG_SPIRIT_MEDALLION)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LW_GIFT_FROM_SARIA",
+   "soh_type": "RCTYPE_OCARINA",
+   "soh_vanilla_item": "RG_PROGRESSIVE_OCARINA",
+   "scene": "SCENE_LOST_WOODS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LW_BRIDGE_FROM_FOREST",
+     "rule": "true"
+    }
+   ]
+  },
+  {
+   "rc": "RC_HC_GREAT_FAIRY_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_DINS_FIRE",
+   "scene": "SCENE_GREAT_FAIRYS_FOUNTAIN_SPELLS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_HC_GREAT_FAIRY_FOUNTAIN",
+     "rule": "logic->CanUse(RG_ZELDAS_LULLABY)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_OGC_GREAT_FAIRY_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_DOUBLE_DEFENSE",
+   "scene": "SCENE_GREAT_FAIRYS_FOUNTAIN_MAGIC",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_OGC_GREAT_FAIRY_FOUNTAIN",
+     "rule": "logic->CanUse(RG_ZELDAS_LULLABY)"
+    }
+   ]
+  }
+ ],
+ "kakariko_mountain": [
+  {
+   "rc": "RC_SHEIK_IN_CRATER",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_BOLERO_OF_FIRE",
+   "scene": "SCENE_DEATH_MOUNTAIN_CRATER",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DMC_CENTRAL",
+     "rule": "logic->IsAdult"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SHEIK_IN_KAKARIKO",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_NOCTURNE_OF_SHADOW",
+   "scene": "SCENE_KAKARIKO_VILLAGE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAKARIKO_VILLAGE",
+     "rule": "logic->IsAdult && logic->HasItem(RG_FOREST_MEDALLION) && logic->HasItem(RG_FIRE_MEDALLION) && logic->HasItem(RG_WATER_MEDALLION)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SONG_FROM_ROYAL_FAMILYS_TOMB",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_SUNS_SONG",
+   "scene": "SCENE_ROYAL_FAMILYS_TOMB",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GRAVEYARD_COMPOSERS_GRAVE",
+     "rule": "logic->CanUseProjectile() || logic->CanJumpslash()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SONG_FROM_WINDMILL",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_SONG_OF_STORMS",
+   "scene": "SCENE_WINDMILL_AND_DAMPES_GRAVE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_WINDMILL_LOWER",
+     "rule": "logic->IsAdult && logic->CanUse(RG_FAIRY_OCARINA)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_10_GOLD_SKULLTULA_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_WALLET",
+   "scene": "SCENE_HOUSE_OF_SKULLTULA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_HOUSE_OF_SKULLTULA",
+     "rule": "logic->HasItem(RG_SPEAK_HYLIAN) && logic->GetGSCount() >= 10"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_20_GOLD_SKULLTULA_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_STONE_OF_AGONY",
+   "scene": "SCENE_HOUSE_OF_SKULLTULA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_HOUSE_OF_SKULLTULA",
+     "rule": "logic->HasItem(RG_SPEAK_HYLIAN) && logic->GetGSCount() >= 20"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_30_GOLD_SKULLTULA_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_WALLET",
+   "scene": "SCENE_HOUSE_OF_SKULLTULA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_HOUSE_OF_SKULLTULA",
+     "rule": "logic->HasItem(RG_SPEAK_HYLIAN) && logic->GetGSCount() >= 30"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_40_GOLD_SKULLTULA_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_BOMBCHU_10",
+   "scene": "SCENE_HOUSE_OF_SKULLTULA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_HOUSE_OF_SKULLTULA",
+     "rule": "logic->HasItem(RG_SPEAK_HYLIAN) && logic->GetGSCount() >= 40"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_50_GOLD_SKULLTULA_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_HOUSE_OF_SKULLTULA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_HOUSE_OF_SKULLTULA",
+     "rule": "logic->HasItem(RG_SPEAK_HYLIAN) && logic->GetGSCount() >= 50"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_100_GOLD_SKULLTULA_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_HUGE_RUPEE",
+   "scene": "SCENE_HOUSE_OF_SKULLTULA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_HOUSE_OF_SKULLTULA",
+     "rule": "logic->HasItem(RG_SPEAK_HYLIAN) && logic->GetGSCount() >= 100"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_MAN_ON_ROOF",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_KAKARIKO_VILLAGE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_ROOFTOP",
+     "rule": "logic->HasItem(RG_SPEAK_HYLIAN)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_SHOOTING_GALLERY_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_BOW",
+   "scene": "SCENE_SHOOTING_GALLERY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_SHOOTING_GALLERY",
+     "rule": "logic->IsAdult && logic->HasItem(RG_CHILD_WALLET) && logic->HasItem(RG_SPEAK_HYLIAN) && logic->HasItem(RG_FAIRY_BOW)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_TRADE_ODD_MUSHROOM",
+   "soh_type": "RCTYPE_ADULT_TRADE",
+   "soh_vanilla_item": "RG_ODD_POTION",
+   "scene": "SCENE_POTION_SHOP_GRANNY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_ODD_POTION_BUILDING",
+     "rule": "logic->IsAdult && logic->CanUse(RG_ODD_MUSHROOM)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_GRANNYS_SHOP",
+   "soh_type": "RCTYPE_MERCHANT",
+   "soh_vanilla_item": "RG_BUY_BLUE_POTION",
+   "scene": "SCENE_POTION_SHOP_GRANNY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_ODD_POTION_BUILDING",
+     "rule": "logic->IsAdult && logic->HasItem(RG_SPEAK_HYLIAN) && (logic->CanUse(RG_ODD_MUSHROOM) || (ctx->GetOption(RSK_SHUFFLE_ADULT_TRADE).Is(RO_GENERIC_OFF) && (logic->HasItem(RG_CLAIM_CHECK) || ctx->GetOption(RSK_EARLY_GRANNYS_SHOP))) && GetCheckPrice() <= GetWalletCapacity())"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_ANJU_AS_ADULT",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_CLAIM_CHECK",
+   "scene": "SCENE_KAKARIKO_VILLAGE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAKARIKO_VILLAGE",
+     "rule": "logic->IsAdult && logic->AtDay && logic->HasItem(RG_SPEAK_HYLIAN)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_ANJU_AS_CHILD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_EMPTY_BOTTLE",
+   "scene": "SCENE_KAKARIKO_VILLAGE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_HILL",
+     "rule": "logic->IsChild && logic->AtDay && logic->HasItem(RG_POWER_BRACELET) && logic->CanBreakCrates() && logic->HasItem(RG_SPEAK_HYLIAN)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_TRADE_POCKET_CUCCO",
+   "soh_type": "RCTYPE_ADULT_TRADE",
+   "soh_vanilla_item": "RG_COJIRO",
+   "scene": "SCENE_KAKARIKO_VILLAGE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAKARIKO_VILLAGE",
+     "rule": "logic->IsAdult && logic->AtDay && (logic->CanUse(RG_POCKET_EGG) && logic->Get(LOGIC_WAKE_UP_ADULT_TALON))"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_IMPAS_HOUSE_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_IMPAS_HOUSE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_IMPAS_HOUSE_BACK",
+     "rule": "true"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KAK_WINDMILL_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_WINDMILL_AND_DAMPES_GRAVE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_KAK_WINDMILL_LOWER",
+     "rule": "logic->CanUse(RG_BOOMERANG)"
+    },
+    {
+     "region": "RR_KAK_WINDMILL_UPPER",
+     "rule": "true"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GRAVEYARD_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_GRAVEYARD",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_THE_GRAVEYARD",
+     "rule": "(((logic->IsAdult && logic->BeanPlanted(LOGIC_PLANT_GRAVEYARD_BEAN)) || logic->CanUse(RG_LONGSHOT)) && logic->CanBreakCrates()) || (ctx->GetTrickOption(RT_GY_POH) && logic->CanUse(RG_BOOMERANG))"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GRAVEYARD_DAMPE_GRAVEDIGGING_TOUR",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_GRAVEYARD",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_THE_GRAVEYARD",
+     "rule": "logic->HasItem(RG_CHILD_WALLET) && logic->HasItem(RG_SPEAK_HYLIAN) && logic->IsChild && logic->AtNight"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DMT_TRADE_BROKEN_SWORD",
+   "soh_type": "RCTYPE_ADULT_TRADE",
+   "soh_vanilla_item": "RG_PRESCRIPTION",
+   "scene": "SCENE_DEATH_MOUNTAIN_TRAIL",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DEATH_MOUNTAIN_SUMMIT",
+     "rule": "logic->IsAdult && logic->CanUse(RG_BROKEN_SWORD)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DMT_TRADE_EYEDROPS",
+   "soh_type": "RCTYPE_ADULT_TRADE",
+   "soh_vanilla_item": "RG_CLAIM_CHECK",
+   "scene": "SCENE_DEATH_MOUNTAIN_TRAIL",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DEATH_MOUNTAIN_SUMMIT",
+     "rule": "logic->IsAdult && logic->CanUse(RG_EYEDROPS)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DMT_TRADE_CLAIM_CHECK",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_BIGGORON_SWORD",
+   "scene": "SCENE_DEATH_MOUNTAIN_TRAIL",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DEATH_MOUNTAIN_SUMMIT",
+     "rule": "logic->IsAdult && logic->CanUse(RG_CLAIM_CHECK)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DMT_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_DEATH_MOUNTAIN_TRAIL",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DEATH_MOUNTAIN_TRAIL",
+     "rule": "logic->IsAdult || logic->TakeDamage() || logic->CanUse(RG_HOVER_BOOTS) || logic->BunnyHood()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GC_ROLLING_GORON_AS_CHILD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_BOMB_BAG",
+   "scene": "SCENE_GORON_CITY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GORON_CITY",
+     "rule": "logic->IsChild && logic->HasItem(RG_SPEAK_GORON) && (logic->HasExplosives() || (logic->HasItem(RG_GORONS_BRACELET) && ctx->GetTrickOption(RT_GC_ROLLING_STRENGTH)))"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GC_ROLLING_GORON_AS_ADULT",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_GORON_TUNIC",
+   "scene": "SCENE_GORON_CITY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GORON_CITY",
+     "rule": "logic->Get(LOGIC_GORON_CITY_STOP_ROLLING_GORON_AS_ADULT)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GC_DARUNIAS_JOY",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_STRENGTH",
+   "scene": "SCENE_GORON_CITY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GC_DARUNIAS_CHAMBER",
+     "rule": "logic->IsChild && logic->CanUse(RG_SARIAS_SONG)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GC_POT_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_GORON_CITY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GORON_CITY",
+     "rule": "logic->IsChild && logic->Get(LOGIC_GORON_CITY_CHILD_FIRE) && (logic->CanUse(RG_BOMB_BAG) || (logic->HasItem(RG_GORONS_BRACELET) && ctx->GetTrickOption(RT_GC_POT_STRENGTH)) || (logic->CanUse(RG_BOMBCHU_5) && ctx->GetTrickOption(RT_GC_POT)))"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GC_MEDIGORON",
+   "soh_type": "RCTYPE_MERCHANT",
+   "soh_vanilla_item": "RG_GIANTS_KNIFE",
+   "scene": "SCENE_GORON_CITY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GC_MEDIGORON",
+     "rule": "logic->IsAdult && logic->HasItem(RG_SPEAK_GORON) && GetCheckPrice() <= GetWalletCapacity()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DMC_WALL_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_DEATH_MOUNTAIN_CRATER",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DMC_UPPER_ENTRY",
+     "rule": "((logic->FireTimer() >= 16 || logic->Health() >= 3 * 16) && (logic->HasItem(RG_CLIMB) || (ctx->GetTrickOption(RT_UNINTUITIVE_JUMPS) && logic->CanJumpslash()))) || (logic->IsAdult && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN) && (((logic->FireTimer() >= 72 || logic->Health() >= 14 * 16) && logic->DMCUpperToPots() && logic->DMCPotsToPad()) || ((logic->FireTimer() >= 48 || logic->Health() >= 9 * 16) && logic->DMCUpperToPad())))"
+    },
+    {
+     "region": "RR_DMC_ROCKS_GROTTO_ENTRY",
+     "rule": "((logic->FireTimer() >= 8 || logic->Health() >= 2 * 16) && (logic->HasItem(RG_CLIMB) || (ctx->GetTrickOption(RT_UNINTUITIVE_JUMPS) && logic->CanJumpslash()))) || (logic->IsAdult && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN) && (((logic->FireTimer() >= 72 || logic->Health() >= 14 * 16) && logic->DMCUpperToPots() && logic->DMCPotsToPad()) || ((logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->DMCUpperToPad())))"
+    },
+    {
+     "region": "RR_DMC_BLOCKED_ENTRY",
+     "rule": "((logic->FireTimer() >= 24 || logic->Health() >= 5 * 16) && logic->CanClimbLadder() && (logic->HasItem(RG_CLIMB) || (ctx->GetTrickOption(RT_UNINTUITIVE_JUMPS) && logic->CanJumpslash()))) || (logic->IsAdult && (logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->DMCPotsToPad() && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN)) || ((logic->FireTimer() >= 24 || logic->Health() >= 5 * 16) && logic->DMCHoverToPoH() && logic->CanUse(RG_LONGSHOT))"
+    },
+    {
+     "region": "RR_DMC_POTS_ENTRY",
+     "rule": "((logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->CanClimbLadder() && (logic->HasItem(RG_CLIMB) || (ctx->GetTrickOption(RT_UNINTUITIVE_JUMPS) && logic->CanJumpslash()))) || (logic->IsAdult && (logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->DMCPotsToPad() && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN)) || ((logic->FireTimer() >= 24 || logic->Health() >= 5 * 16) && logic->DMCHoverToPoH() && logic->CanUse(RG_LONGSHOT))"
+    },
+    {
+     "region": "RR_DMC_POT_GROTTO_ENTRY",
+     "rule": "((logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->CanClimbLadder() && (logic->HasItem(RG_CLIMB) || (ctx->GetTrickOption(RT_UNINTUITIVE_JUMPS) && logic->CanJumpslash()))) || (logic->IsAdult && (logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->DMCPotsToPad() && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN)) || ((logic->FireTimer() >= 24 || logic->Health() >= 5 * 16) && logic->DMCHoverToPoH() && logic->CanUse(RG_LONGSHOT) && (logic->HasItem(RG_CLIMB) || (ctx->GetTrickOption(RT_UNINTUITIVE_JUMPS) && logic->CanJumpslash())))"
+    },
+    {
+     "region": "RR_DMC_PAD_ENTRY",
+     "rule": "((logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->CanClimbLadder() && logic->DMCPadToPots() && (logic->HasItem(RG_CLIMB) || (ctx->GetTrickOption(RT_UNINTUITIVE_JUMPS) && logic->CanJumpslash()))) || ((logic->FireTimer() >= 32 || logic->Health() >= 6 * 16) && logic->DMCHoverToPoH() && logic->CanUse(RG_LONGSHOT) && (logic->HasItem(RG_CLIMB) || (ctx->GetTrickOption(RT_UNINTUITIVE_JUMPS) && logic->CanJumpslash()))) || (logic->IsAdult && (logic->FireTimer() >= 16 || logic->Health() >= 3 * 16) && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN))"
+    },
+    {
+     "region": "RR_DMC_TEMPLE_ENTRY",
+     "rule": "logic->HasItem(RG_CLIMB) && (((logic->FireTimer() >= 72 || logic->Health() >= 14 * 16) && logic->DMCPadToPots()) || ((logic->FireTimer() >= 64 || logic->Health() >= 12 * 16) && logic->DMCHoverToPoH() && logic->CanUse(RG_LONGSHOT)) || (logic->IsAdult && (logic->FireTimer() >= 48 || logic->Health() >= 9 * 16) && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN)))"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DMC_VOLCANO_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_DEATH_MOUNTAIN_CRATER",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DMC_UPPER_ENTRY",
+     "rule": "((logic->FireTimer() >= 24 || logic->Health() >= 5 * 16) && logic->DMCHoverToPoH()) || (logic->IsAdult && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN) && (((logic->FireTimer() >= 56 || logic->Health() >= 11 * 16) && logic->DMCUpperToPots() && logic->DMCPotsToPad()) || ((logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->DMCUpperToPad())))"
+    },
+    {
+     "region": "RR_DMC_ROCKS_GROTTO_ENTRY",
+     "rule": "((logic->FireTimer() >= 24 || logic->Health() >= 5 * 16) && logic->DMCHoverToPoH()) || (logic->IsAdult && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN) && (((logic->FireTimer() >= 64 || logic->Health() >= 12 * 16) && logic->DMCUpperToPots() && logic->DMCPotsToPad()) || ((logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->DMCUpperToPad())))"
+    },
+    {
+     "region": "RR_DMC_BLOCKED_ENTRY",
+     "rule": "((logic->FireTimer() >= 16 || logic->Health() >= 3 * 16) && logic->DMCHoverToPoH()) || (logic->IsAdult && (logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->DMCPotsToPad() && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN))"
+    },
+    {
+     "region": "RR_DMC_POTS_ENTRY",
+     "rule": "((logic->FireTimer() >= 8 || logic->Health() >= 2 * 16) && logic->DMCHoverToPoH()) || (logic->IsAdult && (logic->FireTimer() >= 32 || logic->Health() >= 6 * 16) && logic->DMCPotsToPad() && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN))"
+    },
+    {
+     "region": "RR_DMC_POT_GROTTO_ENTRY",
+     "rule": "(logic->FireTimer() >= 16 || logic->Health() >= 3 * 16) && logic->DMCHoverToPoH() || (logic->IsAdult && (logic->FireTimer() >= 32 || logic->Health() >= 6 * 16) && logic->DMCPotsToPad() && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN))"
+    },
+    {
+     "region": "RR_DMC_PAD_ENTRY",
+     "rule": "(logic->FireTimer() >= 24 || logic->Health() >= 5 * 16) && logic->DMCHoverToPoH() && logic->DMCPadToPots() || (logic->IsAdult && (logic->FireTimer() >= 8 || logic->Health() >= 2 * 16) && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN))"
+    },
+    {
+     "region": "RR_DMC_TEMPLE_ENTRY",
+     "rule": "logic->HasItem(RG_CLIMB) && ((logic->FireTimer() >= 56 || logic->Health() >= 11 * 16) && logic->DMCHoverToPoH() && logic->DMCPadToPots() || (logic->IsAdult && (logic->FireTimer() >= 40 || logic->Health() >= 8 * 16) && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_CRATER_BEAN)))"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DMT_GREAT_FAIRY_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_MAGIC_METER",
+   "scene": "SCENE_GREAT_FAIRYS_FOUNTAIN_MAGIC",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DMT_GREAT_FAIRY_FOUNTAIN",
+     "rule": "logic->CanUse(RG_ZELDAS_LULLABY)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DMC_GREAT_FAIRY_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_MAGIC_METER",
+   "scene": "SCENE_GREAT_FAIRYS_FOUNTAIN_MAGIC",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DMC_GREAT_FAIRY_FOUNTAIN",
+     "rule": "logic->CanUse(RG_ZELDAS_LULLABY)"
+    }
+   ]
+  }
+ ],
+ "dungeons_bosses": [
+  {
+   "rc": "RC_SHEIK_IN_ICE_CAVERN",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_SERENADE_OF_WATER",
+   "scene": "SCENE_ICE_CAVERN",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ICE_CAVERN_FINAL_ROOM",
+     "rule": "AnyAgeTime([]{return logic->CanKillEnemy(RE_WOLFOS);}) && logic->HasItem(RG_OPEN_CHEST)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DODONGOS_CAVERN_DEKU_SCRUB_LOBBY",
+   "soh_type": "RCTYPE_SCRUB",
+   "soh_vanilla_item": "RG_BUY_DEKU_SHIELD",
+   "scene": "SCENE_DODONGOS_CAVERN",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DODONGOS_CAVERN_LOBBY",
+     "rule": "(logic->CanStunDeku() || logic->HasItem(RG_GORONS_BRACELET)) && logic->HasItem(RG_SPEAK_DEKU) && GetCheckPrice() <= GetWalletCapacity()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SHADOW_TEMPLE_FREESTANDING_KEY",
+   "soh_type": "RCTYPE_SMALL_KEY",
+   "soh_vanilla_item": "RG_SHADOW_TEMPLE_SMALL_KEY",
+   "scene": "SCENE_SHADOW_TEMPLE",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_SHADOW_TEMPLE_SKULL_JAR",
+     "rule": "logic->CanUse(RG_BOMB_BAG) || logic->HasItem(RG_GORONS_BRACELET) || (ctx->GetTrickOption(RT_SHADOW_FREESTANDING_KEY) && logic->CanUse(RG_BOMBCHU_5))"
+    }
+   ]
+  },
+  {
+   "rc": "RC_BOTTOM_OF_THE_WELL_FREESTANDING_KEY",
+   "soh_type": "RCTYPE_SMALL_KEY",
+   "soh_vanilla_item": "RG_BOTTOM_OF_THE_WELL_SMALL_KEY",
+   "scene": "SCENE_BOTTOM_OF_THE_WELL",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_BOTW_CRYPT",
+     "rule": "logic->HasFireSourceWithTorch() || logic->CanUse(RG_FAIRY_BOW)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ICE_CAVERN_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_ICE_CAVERN",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ICE_CAVERN_COMPASS_ROOM",
+     "rule": "(logic->CanClearStalagmite() || ctx->GetTrickOption(RT_ICE_STALAGMITE_CLIP)) && logic->BlueFire()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_QUEEN_GOHMA",
+   "soh_type": "RCTYPE_DUNGEON_REWARD",
+   "soh_vanilla_item": "RG_KOKIRI_EMERALD",
+   "scene": "SCENE_DEKU_TREE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DEKU_TREE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_DEKU_TREE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_KING_DODONGO",
+   "soh_type": "RCTYPE_DUNGEON_REWARD",
+   "soh_vanilla_item": "RG_GORON_RUBY",
+   "scene": "SCENE_DODONGOS_CAVERN_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DODONGOS_CAVERN_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_DODONGOS_CAVERN_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_BARINADE",
+   "soh_type": "RCTYPE_DUNGEON_REWARD",
+   "soh_vanilla_item": "RG_ZORA_SAPPHIRE",
+   "scene": "SCENE_JABU_JABU_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_JABU_JABUS_BELLY_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_JABU_JABUS_BELLY_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_PHANTOM_GANON",
+   "soh_type": "RCTYPE_DUNGEON_REWARD",
+   "soh_vanilla_item": "RG_FOREST_MEDALLION",
+   "scene": "SCENE_FOREST_TEMPLE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_FOREST_TEMPLE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_FOREST_TEMPLE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_VOLVAGIA",
+   "soh_type": "RCTYPE_DUNGEON_REWARD",
+   "soh_vanilla_item": "RG_FIRE_MEDALLION",
+   "scene": "SCENE_FIRE_TEMPLE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_FIRE_TEMPLE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_FIRE_TEMPLE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_MORPHA",
+   "soh_type": "RCTYPE_DUNGEON_REWARD",
+   "soh_vanilla_item": "RG_WATER_MEDALLION",
+   "scene": "SCENE_WATER_TEMPLE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_WATER_TEMPLE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_WATER_TEMPLE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_TWINROVA",
+   "soh_type": "RCTYPE_DUNGEON_REWARD",
+   "soh_vanilla_item": "RG_SPIRIT_MEDALLION",
+   "scene": "SCENE_SPIRIT_TEMPLE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_SPIRIT_TEMPLE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_SPIRIT_TEMPLE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_BONGO_BONGO",
+   "soh_type": "RCTYPE_DUNGEON_REWARD",
+   "soh_vanilla_item": "RG_SHADOW_MEDALLION",
+   "scene": "SCENE_SHADOW_TEMPLE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_SHADOW_TEMPLE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_SHADOW_TEMPLE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GANON",
+   "soh_type": "RCTYPE_DUNGEON_REWARD",
+   "soh_vanilla_item": "RG_TRIFORCE",
+   "scene": "SCENE_GANON_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GANONS_CASTLE_GANON_ARENA",
+     "rule": "logic->CanKillEnemy(RE_GANON)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DEKU_TREE_QUEEN_GOHMA_HEART",
+   "soh_type": "RCTYPE_BOSS_HEART_OR_OTHER_REWARD",
+   "soh_vanilla_item": "RG_HEART_CONTAINER",
+   "scene": "SCENE_DEKU_TREE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DEKU_TREE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_DEKU_TREE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_DODONGOS_CAVERN_KING_DODONGO_HEART",
+   "soh_type": "RCTYPE_BOSS_HEART_OR_OTHER_REWARD",
+   "soh_vanilla_item": "RG_HEART_CONTAINER",
+   "scene": "SCENE_DODONGOS_CAVERN_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DODONGOS_CAVERN_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_DODONGOS_CAVERN_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_JABU_JABUS_BELLY_BARINADE_HEART",
+   "soh_type": "RCTYPE_BOSS_HEART_OR_OTHER_REWARD",
+   "soh_vanilla_item": "RG_HEART_CONTAINER",
+   "scene": "SCENE_JABU_JABU_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_JABU_JABUS_BELLY_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_JABU_JABUS_BELLY_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_FOREST_TEMPLE_PHANTOM_GANON_HEART",
+   "soh_type": "RCTYPE_BOSS_HEART_OR_OTHER_REWARD",
+   "soh_vanilla_item": "RG_HEART_CONTAINER",
+   "scene": "SCENE_FOREST_TEMPLE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_FOREST_TEMPLE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_FOREST_TEMPLE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_FIRE_TEMPLE_VOLVAGIA_HEART",
+   "soh_type": "RCTYPE_BOSS_HEART_OR_OTHER_REWARD",
+   "soh_vanilla_item": "RG_HEART_CONTAINER",
+   "scene": "SCENE_FIRE_TEMPLE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_FIRE_TEMPLE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_FIRE_TEMPLE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_WATER_TEMPLE_MORPHA_HEART",
+   "soh_type": "RCTYPE_BOSS_HEART_OR_OTHER_REWARD",
+   "soh_vanilla_item": "RG_HEART_CONTAINER",
+   "scene": "SCENE_WATER_TEMPLE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_WATER_TEMPLE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_WATER_TEMPLE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SPIRIT_TEMPLE_TWINROVA_HEART",
+   "soh_type": "RCTYPE_BOSS_HEART_OR_OTHER_REWARD",
+   "soh_vanilla_item": "RG_HEART_CONTAINER",
+   "scene": "SCENE_SPIRIT_TEMPLE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_SPIRIT_TEMPLE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_SPIRIT_TEMPLE_CLEAR)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_SHADOW_TEMPLE_BONGO_BONGO_HEART",
+   "soh_type": "RCTYPE_BOSS_HEART_OR_OTHER_REWARD",
+   "soh_vanilla_item": "RG_HEART_CONTAINER",
+   "scene": "SCENE_SHADOW_TEMPLE_BOSS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_SHADOW_TEMPLE_BOSS_ROOM",
+     "rule": "logic->Get(LOGIC_SHADOW_TEMPLE_CLEAR)"
+    }
+   ]
+  }
+ ],
+ "water_desert": [
+  {
+   "rc": "RC_SHEIK_AT_COLOSSUS",
+   "soh_type": "RCTYPE_SONG_LOCATION",
+   "soh_vanilla_item": "RG_REQUIEM_OF_SPIRIT",
+   "scene": "SCENE_DESERT_COLOSSUS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DESERT_COLOSSUS_OUTSIDE_TEMPLE",
+     "rule": "true"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LH_CHILD_FISHING",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_FISHING_POND",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LH_FISHING_POND",
+     "rule": "logic->CanUse(RG_FISHING_POLE) && logic->HasItem(RG_SPEAK_HYLIAN) && logic->IsChild"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LH_ADULT_FISHING",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_SCALE",
+   "scene": "SCENE_FISHING_POND",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LH_FISHING_POND",
+     "rule": "logic->CanUse(RG_FISHING_POLE) && logic->HasItem(RG_SPEAK_HYLIAN) && logic->IsAdult"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LH_HYRULE_LOACH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PURPLE_RUPEE",
+   "scene": "SCENE_FISHING_POND",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LH_FISHING_POND",
+     "rule": "logic->CanUse(RG_FISHING_POLE) && logic->HasItem(RG_SPEAK_HYLIAN)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LH_LAB_DIVE",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_LAKESIDE_LABORATORY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LH_LAB",
+     "rule": "logic->HasItem(RG_GOLDEN_SCALE) && logic->HasItem(RG_SPEAK_HYLIAN)"
+    },
+    {
+     "region": "RR_LH_LAB_UNDERWATER",
+     "rule": "(ctx->GetTrickOption(RT_LH_LAB_DIVING) && logic->CanUse(RG_HOOKSHOT) && logic->HasItem(RG_BRONZE_SCALE)) && logic->HasItem(RG_SPEAK_HYLIAN)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LH_TRADE_FROG",
+   "soh_type": "RCTYPE_ADULT_TRADE",
+   "soh_vanilla_item": "RG_EYEDROPS",
+   "scene": "SCENE_LAKESIDE_LABORATORY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LH_LAB",
+     "rule": "logic->IsAdult && logic->CanUse(RG_EYEBALL_FROG)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LH_UNDERWATER_ITEM",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_RUTOS_LETTER",
+   "scene": "SCENE_LAKE_HYLIA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LAKE_HYLIA",
+     "rule": "logic->IsChild && logic->HasItem(RG_SILVER_SCALE)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LH_SCARECROWS_SONG",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_SCARECROWS_SONG",
+   "scene": "SCENE_LAKE_HYLIA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LAKE_HYLIA",
+     "rule": "logic->Get(LOGIC_CHILD_SCARECROW) && logic->Get(LOGIC_ADULT_SCARECROW)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LH_SUN",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_FIRE_ARROWS",
+   "scene": "SCENE_LAKE_HYLIA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LAKE_HYLIA",
+     "rule": "logic->IsAdult && ((logic->Get(LOGIC_WATER_TEMPLE_CLEAR) && logic->HasItem(RG_BRONZE_SCALE)) || logic->ReachDistantScarecrow()) && logic->CanUse(RG_FAIRY_BOW)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_LH_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_LAKE_HYLIA",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_LAKE_HYLIA",
+     "rule": "logic->IsAdult && (logic->ReachScarecrow() || logic->BeanPlanted(LOGIC_PLANT_LAKE_HYLIA_BEAN)) && logic->CanAvoidEnemy(RE_GUAY, ED_CLOSE, false) && logic->HasItem(RG_CLIMB)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GV_TRADE_SAW",
+   "soh_type": "RCTYPE_ADULT_TRADE",
+   "soh_vanilla_item": "RG_BROKEN_SWORD",
+   "scene": "SCENE_GERUDO_VALLEY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GV_FORTRESS_SIDE",
+     "rule": "logic->IsAdult && logic->CanUse(RG_POACHERS_SAW)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GV_WATERFALL_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_GERUDO_VALLEY",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GV_WATERFALL_ALCOVE",
+     "rule": "true"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GF_HBA_1000_POINTS",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_GERUDOS_FORTRESS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GF_HBA_RANGE",
+     "rule": "logic->IsAdult && logic->HasItem(RG_CHILD_WALLET) && logic->HasItem(RG_SPEAK_GERUDO) && logic->HasItem(RG_GERUDO_MEMBERSHIP_CARD) && logic->SummonEpona() && logic->CanUse(RG_FAIRY_BOW) && logic->AtDay"
+    }
+   ]
+  },
+  {
+   "rc": "RC_GF_HBA_1500_POINTS",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_BOW",
+   "scene": "SCENE_GERUDOS_FORTRESS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_GF_HBA_RANGE",
+     "rule": "logic->IsAdult && logic->HasItem(RG_CHILD_WALLET) && logic->HasItem(RG_SPEAK_GERUDO) && logic->HasItem(RG_GERUDO_MEMBERSHIP_CARD) && logic->SummonEpona() && logic->CanUse(RG_FAIRY_BOW) && logic->AtDay"
+    }
+   ]
+  },
+  {
+   "rc": "RC_TH_FREED_CARPENTERS",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_GERUDO_MEMBERSHIP_CARD",
+   "scene": "SCENE_THIEVES_HIDEOUT",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_TH_1_TORCH_CELL",
+     "rule": "logic->Get(LOGIC_TH_RESCUED_ALL_CARPENTERS)"
+    },
+    {
+     "region": "RR_TH_DOUBLE_CELL",
+     "rule": "logic->Get(LOGIC_TH_RESCUED_ALL_CARPENTERS)"
+    },
+    {
+     "region": "RR_TH_DEAD_END_CELL",
+     "rule": "logic->Get(LOGIC_TH_RESCUED_ALL_CARPENTERS)"
+    },
+    {
+     "region": "RR_TH_STEEP_SLOPE_CELL",
+     "rule": "logic->Get(LOGIC_TH_RESCUED_ALL_CARPENTERS)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_TH_1_TORCH_CARPENTER",
+   "soh_type": "RCTYPE_GF_KEY",
+   "soh_vanilla_item": "RG_GERUDO_FORTRESS_SMALL_KEY",
+   "scene": "SCENE_THIEVES_HIDEOUT",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_TH_1_TORCH_CELL",
+     "rule": "logic->Get(LOGIC_TH_COULD_FREE_1_TORCH_CARPENTER)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_TH_DEAD_END_CARPENTER",
+   "soh_type": "RCTYPE_GF_KEY",
+   "soh_vanilla_item": "RG_GERUDO_FORTRESS_SMALL_KEY",
+   "scene": "SCENE_THIEVES_HIDEOUT",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_TH_DEAD_END_CELL",
+     "rule": "logic->Get(LOGIC_TH_COULD_FREE_DEAD_END_CARPENTER)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_TH_DOUBLE_CELL_CARPENTER",
+   "soh_type": "RCTYPE_GF_KEY",
+   "soh_vanilla_item": "RG_GERUDO_FORTRESS_SMALL_KEY",
+   "scene": "SCENE_THIEVES_HIDEOUT",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_TH_DOUBLE_CELL",
+     "rule": "logic->Get(LOGIC_TH_COULD_FREE_DOUBLE_CELL_CARPENTER)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_TH_STEEP_SLOPE_CARPENTER",
+   "soh_type": "RCTYPE_GF_KEY",
+   "soh_vanilla_item": "RG_GERUDO_FORTRESS_SMALL_KEY",
+   "scene": "SCENE_THIEVES_HIDEOUT",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_TH_STEEP_SLOPE_CELL",
+     "rule": "logic->Get(LOGIC_TH_COULD_FREE_SLOPE_CARPENTER)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_WASTELAND_BOMBCHU_SALESMAN",
+   "soh_type": "RCTYPE_MERCHANT",
+   "soh_vanilla_item": "RG_BUY_BOMBCHUS_10",
+   "scene": "SCENE_HAUNTED_WASTELAND",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_HAUNTED_WASTELAND",
+     "rule": "(logic->CanJumpslash() || logic->CanUse(RG_HOVER_BOOTS)) && logic->HasItem(RG_SPEAK_HYLIAN) && GetCheckPrice() <= GetWalletCapacity()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_COLOSSUS_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_DESERT_COLOSSUS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_DESERT_COLOSSUS_ARCH",
+     "rule": "true"
+    },
+    {
+     "region": "RR_DESERT_COLOSSUS_ARCH_FROM_SPIRIT",
+     "rule": "SpiritShared(RR_DESERT_COLOSSUS_ARCH_FROM_SPIRIT, []{return true;})"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZR_MAGIC_BEAN_SALESMAN",
+   "soh_type": "RCTYPE_MERCHANT",
+   "soh_vanilla_item": "RG_MAGIC_BEAN",
+   "scene": "SCENE_ZORAS_RIVER",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZORAS_RIVER",
+     "rule": "logic->IsChild && logic->HasItem(RG_SPEAK_HYLIAN) && GetCheckPrice() <= GetWalletCapacity()"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZR_FROGS_IN_THE_RAIN",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_ZORAS_RIVER",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZORAS_RIVER",
+     "rule": "logic->IsChild && logic->CanUse(RG_SONG_OF_STORMS)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZR_FROGS_OCARINA_GAME",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_ZORAS_RIVER",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZORAS_RIVER",
+     "rule": "logic->IsChild && logic->CanUse(RG_ZELDAS_LULLABY) && logic->CanUse(RG_SARIAS_SONG) && logic->CanUse(RG_SUNS_SONG) && logic->CanUse(RG_EPONAS_SONG) && logic->CanUse(RG_SONG_OF_TIME) && logic->CanUse(RG_SONG_OF_STORMS)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZR_NEAR_OPEN_GROTTO_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_ZORAS_RIVER",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZORAS_RIVER",
+     "rule": "logic->CanUse(RG_BOOMERANG)"
+    },
+    {
+     "region": "RR_ZR_PILLAR",
+     "rule": "true"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZR_NEAR_DOMAIN_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_ZORAS_RIVER",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZORAS_RIVER",
+     "rule": "(logic->IsChild && logic->HasItem(RG_POWER_BRACELET)) || logic->CanUse(RG_BOOMERANG) || logic->CanUse(RG_HOVER_BOOTS) || logic->BunnyHood() || (logic->IsAdult && ctx->GetTrickOption(RT_ZR_UPPER))"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZD_DIVING_MINIGAME",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PROGRESSIVE_SCALE",
+   "scene": "SCENE_ZORAS_DOMAIN",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZORAS_DOMAIN",
+     "rule": "logic->HasItem(RG_BRONZE_SCALE) && logic->HasItem(RG_CHILD_WALLET) && logic->HasItem(RG_SPEAK_ZORA) && logic->IsChild"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZD_KING_ZORA_THAWED",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_ZORA_TUNIC",
+   "scene": "SCENE_ZORAS_DOMAIN",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZORAS_DOMAIN",
+     "rule": "logic->IsAdult && logic->Get(LOGIC_KING_ZORA_THAWED) && logic->HasItem(RG_SPEAK_ZORA)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZD_TRADE_PRESCRIPTION",
+   "soh_type": "RCTYPE_ADULT_TRADE",
+   "soh_vanilla_item": "RG_EYEBALL_FROG",
+   "scene": "SCENE_ZORAS_DOMAIN",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZORAS_DOMAIN",
+     "rule": "logic->IsAdult && logic->Get(LOGIC_KING_ZORA_THAWED) && logic->CanUse(RG_PRESCRIPTION)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZF_ICEBERG_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_ZORAS_FOUNTAIN",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZF_ICEBERGS",
+     "rule": "logic->IsAdult"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZF_BOTTOM_FREESTANDING_POH",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_PIECE_OF_HEART",
+   "scene": "SCENE_ZORAS_FOUNTAIN",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZF_LAKEBED",
+     "rule": "logic->IsAdult && logic->CanUse(RG_IRON_BOOTS) && logic->WaterTimer() >= 16"
+    }
+   ]
+  },
+  {
+   "rc": "RC_ZF_GREAT_FAIRY_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_FARORES_WIND",
+   "scene": "SCENE_GREAT_FAIRYS_FOUNTAIN_SPELLS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_ZF_GREAT_FAIRY_FOUNTAIN",
+     "rule": "logic->CanUse(RG_ZELDAS_LULLABY)"
+    }
+   ]
+  },
+  {
+   "rc": "RC_COLOSSUS_GREAT_FAIRY_REWARD",
+   "soh_type": "RCTYPE_STANDARD",
+   "soh_vanilla_item": "RG_NAYRUS_LOVE",
+   "scene": "SCENE_GREAT_FAIRYS_FOUNTAIN_SPELLS",
+   "name": null,
+   "soh_regions": [
+    {
+     "region": "RR_COLOSSUS_GREAT_FAIRY_FOUNTAIN",
+     "rule": "logic->CanUse(RG_ZELDAS_LULLABY)"
+    }
+   ]
+  }
+ ]
+}

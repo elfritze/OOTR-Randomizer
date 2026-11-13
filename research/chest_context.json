@@ -1,0 +1,10362 @@
+{
+ "631709185320708287": {
+  "hash": 631709185320708287,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   11.97,
+   100.0,
+   -11.06
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    4.0,
+    "Obj_Pot_A_08"
+   ],
+   [
+    6.7,
+    "Obj_TBox_A_01"
+   ],
+   [
+    6.8,
+    "Obj_Well_GlassTruth_A_03"
+   ],
+   [
+    7.7,
+    "Obj_Well_GlassTruth_A_34"
+   ],
+   [
+    11.1,
+    "Obj_TBox_A_01"
+   ],
+   [
+    12.9,
+    "Obj_Well_GlassTruth_A_02"
+   ]
+  ]
+ },
+ "14911602953212243797": {
+  "hash": 14911602953212243797,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Compass",
+  "event": "BottomOfTheWell_GetCompass",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -12.39,
+   100.12,
+   -10.96
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.6,
+    "Obj_Well_GlassTruth_A_12"
+   ],
+   [
+    5.7,
+    "Obj_TBox_A_01"
+   ],
+   [
+    5.7,
+    "Obj_Well_GlassTruth_A_11"
+   ],
+   [
+    7.6,
+    "Obj_Well_GlassTruth_A_07"
+   ],
+   [
+    9.0,
+    "Obj_Well_GlassTruth_A_09"
+   ],
+   [
+    9.4,
+    "Obj_Pot_A_08"
+   ]
+  ]
+ },
+ "8397646530660039355": {
+  "hash": 8397646530660039355,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   10.57,
+   99.98,
+   -4.5
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    3.4,
+    "Obj_Well_GlassTruth_A_03"
+   ],
+   [
+    6.7,
+    "Obj_TBox_A_01"
+   ],
+   [
+    9.5,
+    "Obj_Pot_A_08"
+   ],
+   [
+    10.7,
+    "Obj_Well_GlassTruth_A_02"
+   ],
+   [
+    11.4,
+    "Obj_TBox_A_01"
+   ],
+   [
+    13.7,
+    "Obj_Common_Fragment_BrokenRock_A_00"
+   ]
+  ]
+ },
+ "8975637636514249074": {
+  "hash": 8975637636514249074,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -11.0,
+   99.98,
+   -5.43
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    3.4,
+    "Obj_Well_GlassTruth_A_09"
+   ],
+   [
+    5.7,
+    "Obj_TBox_A_02"
+   ],
+   [
+    6.5,
+    "CrawlAnchor"
+   ],
+   [
+    6.9,
+    "Obj_Well_GlassTruth_A_12"
+   ],
+   [
+    6.9,
+    "Obj_Pot_A_08"
+   ],
+   [
+    7.0,
+    "Obj_Well_GlassTruth_A_11"
+   ]
+  ]
+ },
+ "10905582354954996284": {
+  "hash": 10905582354954996284,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -29.59,
+   100.0,
+   -36.98
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    3.0,
+    "Obj_Well_GlassTruth_A_08"
+   ],
+   [
+    6.1,
+    "Obj_Well_GlassTruth_A_06"
+   ],
+   [
+    12.1,
+    "Enemy_Skulltula"
+   ],
+   [
+    21.1,
+    "DestinationAnchor"
+   ],
+   [
+    22.1,
+    "DestinationAnchor"
+   ],
+   [
+    22.7,
+    "Obj_CandleStick_A_01"
+   ]
+  ]
+ },
+ "5429815628949128345": {
+  "hash": 5429815628949128345,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -0.2,
+   96.19,
+   -5.0
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    4.0,
+    "Obj_Well_GlassTruth_A_02"
+   ],
+   [
+    5.5,
+    "CrawlAnchor"
+   ],
+   [
+    6.1,
+    "CrawlAnchor"
+   ],
+   [
+    9.5,
+    "Obj_Well_GlassTruth_A_11"
+   ],
+   [
+    10.0,
+    "Obj_Common_Fragment_BrokenRock_A_01"
+   ],
+   [
+    10.7,
+    "Obj_Common_Fragment_BrokenRock_A_01"
+   ]
+  ]
+ },
+ "12988877782812797760": {
+  "hash": 12988877782812797760,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   19.86,
+   97.81,
+   -18.57
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    6.3,
+    "Obj_Well_GlassTruth_A_34"
+   ],
+   [
+    8.0,
+    "Obj_Pot_A_08"
+   ],
+   [
+    8.2,
+    "Obj_Pot_A_08"
+   ],
+   [
+    9.6,
+    "Enemy_Keese_Fire"
+   ],
+   [
+    9.6,
+    "Obj_Well_GlassTruth_A_15"
+   ],
+   [
+    10.4,
+    "Enemy_LikeLike"
+   ]
+  ]
+ },
+ "11718708984125260282": {
+  "hash": 11718708984125260282,
+  "gyaml": "Obj_TBox_GlassTruth_A_01",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 2
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   0.02,
+   105.78,
+   -77.05
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    4.2,
+    "SupplyItemResetSystemActor"
+   ],
+   [
+    5.4,
+    "Enemy_Skulltula"
+   ],
+   [
+    7.0,
+    "Obj_Well_GlassTruth_A_31"
+   ],
+   [
+    11.0,
+    "Obj_Well_GlassTruth_A_32"
+   ],
+   [
+    15.7,
+    "CrawlAnchor"
+   ],
+   [
+    15.8,
+    "Obj_Well_GlassTruth_A_33"
+   ]
+  ]
+ },
+ "9466613428674883506": {
+  "hash": 9466613428674883506,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Map",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 9
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   18.32,
+   87.45,
+   1.15
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.8,
+    "Obj_WaterPlaneDirty_A_04"
+   ],
+   [
+    5.2,
+    "Enemy_ReDead"
+   ],
+   [
+    10.2,
+    "Obj_Common_Fragment_BrokenRock_A_00"
+   ],
+   [
+    10.3,
+    "Obj_Common_Fragment_BrokenRock_A_00"
+   ],
+   [
+    11.6,
+    "Obj_Common_Fragment_BrokenRock_A_01"
+   ],
+   [
+    11.6,
+    "Obj_Common_Fragment_BrokenRock_A_00"
+   ]
+  ]
+ },
+ "6064359710907908886": {
+  "hash": 6064359710907908886,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 11
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   0.01,
+   102.17,
+   -100.47
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.9,
+    "Obj_Well_GlassTruth_A_30"
+   ],
+   [
+    7.5,
+    "StartPos"
+   ],
+   [
+    10.9,
+    "StartPos"
+   ],
+   [
+    16.5,
+    "Obj_Well_GlassTruth_A_17"
+   ],
+   [
+    19.5,
+    "Enemy_Skulltula"
+   ],
+   [
+    21.3,
+    "Obj_Well_GlassTruth_A_33"
+   ]
+  ]
+ },
+ "874970148260328653": {
+  "hash": 874970148260328653,
+  "gyaml": "Obj_TBox_A_06",
+  "drop": "TBox_Shield_Deku",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 6,
+   "Drop__CheckActor": "TBox_Shield_Deku",
+   "Drop__DropActor_Substitute": "Item_BombBundle_Small"
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   33.85,
+   100.0,
+   -22.54
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BottomOfTheWell_Level_Room_02_Prefab_1d0a"
+  ],
+  "near": [
+   [
+    8.1,
+    "DungeonRoomArea"
+   ],
+   [
+    8.9,
+    "PlayerAbilityChangeArea"
+   ],
+   [
+    9.2,
+    "Enemy_Skulltula_Gold"
+   ],
+   [
+    9.3,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    9.8,
+    "DungeonRoomArea"
+   ],
+   [
+    9.8,
+    "Obj_SwitchShutter_A_02"
+   ]
+  ]
+ },
+ "16654774376625985726": {
+  "hash": 16654774376625985726,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_GlassTruth",
+  "event": "BottomOfTheWell_GetGlassTruth",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "BottomOfTheWell/BottomOfTheWell_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -0.05,
+   92.42,
+   -110.27
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "BottomOfTheWell_Level_Room_06_Prefab_9f8c"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.1,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    1.5,
+    "DestinationAnchor"
+   ],
+   [
+    1.8,
+    "Enemy_DeadHand_Hand"
+   ]
+  ]
+ },
+ "1158729434763801603": {
+  "hash": 1158729434763801603,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "DeathMountainCrater/DeathMountainCrater_Adult_Dynamic.bcett.byml.zs",
+   "DeathMountainCrater/DeathMountainCrater_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -27.03,
+   67.63,
+   65.21
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.1,
+    "Obj_LiftRock_A_01"
+   ],
+   [
+    3.3,
+    "Obj_LiftRock_A_01"
+   ],
+   [
+    5.4,
+    "Obj_LiftRock_A_01"
+   ],
+   [
+    11.6,
+    "Obj_LiftRock_A_01"
+   ],
+   [
+    13.3,
+    "Obj_LiftRock_A_01"
+   ],
+   [
+    19.2,
+    "AbilityChangeAreaForSceneChange"
+   ]
+  ]
+ },
+ "9128916506605227251": {
+  "hash": 9128916506605227251,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "DeathMountainCrater/DeathMountainCrater_Adult_Static.bcett.byml.zs",
+   "DeathMountainCrater/DeathMountainCrater_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -66.76,
+   70.39,
+   4.67
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "HidingHole_Level_Hole_25_Prefab_784f"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.6,
+    "DestinationAnchor"
+   ],
+   [
+    0.8,
+    "DestinationAnchor"
+   ],
+   [
+    1.1,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "9809508929088891725": {
+  "hash": 9809508929088891725,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "DeathMountainTrail/DeathMountainTrail_Adult_Dynamic.bcett.byml.zs",
+   "DeathMountainTrail/DeathMountainTrail_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -29.84,
+   120.25,
+   45.61
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.3,
+    "Obj_Common_Fragment_BrokenRock_B_01"
+   ],
+   [
+    3.1,
+    "Obj_Common_Fragment_BrokenRock_B_01"
+   ],
+   [
+    4.3,
+    "Obj_Common_Fragment_BrokenRock_B_02"
+   ],
+   [
+    4.3,
+    "Obj_Common_Fragment_BrokenRock_B_01"
+   ],
+   [
+    4.9,
+    "Obj_Common_Fragment_BrokenRock_B_02"
+   ],
+   [
+    4.9,
+    "Obj_Common_Fragment_BrokenRock_B_01"
+   ]
+  ]
+ },
+ "2490063409521505179": {
+  "hash": 2490063409521505179,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Gauntlet_Silver",
+  "event": "SageOfSpirit_NaboorIsTakenAway",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "DesertColossus/DesertColossus_Adult_Static.bcett.byml.zs",
+   "DesertColossus/DesertColossus_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -168.64,
+   113.25,
+   29.55
+  ],
+  "links_out": [
+   [
+    "DestinationAnchor",
+    "Reference"
+   ],
+   [
+    "MapIconOffsetAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    0.0,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    5.1,
+    "DestinationAnchor"
+   ],
+   [
+    10.7,
+    "ForbiddenCreateDropArea"
+   ],
+   [
+    11.0,
+    "FieldAndDungeonEntranceEventRequestActor"
+   ],
+   [
+    12.9,
+    "VolumeFogArea"
+   ],
+   [
+    16.3,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "10012167258643363548": {
+  "hash": 10012167258643363548,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Shield_Mirror",
+  "event": "SageOfSpirit_GetShield",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "DesertColossus/DesertColossus_Adult_Static.bcett.byml.zs",
+   "DesertColossus/DesertColossus_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -168.63,
+   113.25,
+   -8.63
+  ],
+  "links_out": [
+   [
+    "MapIconOffsetAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "DesertColossus_Common_7e8d"
+  ],
+  "near": [
+   [
+    0.0,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    0.1,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    0.9,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ],
+   [
+    5.2,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "1186167733408299582": {
+  "hash": 1186167733408299582,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "DesertColossus/DesertColossus_Adult_Static.bcett.byml.zs",
+   "DesertColossus/DesertColossus_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -129.54,
+   76.99,
+   -36.54
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "HidingHole_Level_Hole_34_Prefab_05de"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Enemy_Beamos"
+   ],
+   [
+    0.6,
+    "DestinationAnchor"
+   ],
+   [
+    1.1,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "8291119063305855945": {
+  "hash": 8291119063305855945,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Map",
+  "event": "DodongoCavern_GetMap",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1
+  },
+  "name": null,
+  "files": [
+   "DodongoCavern/DodongoCavern_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -26.5,
+   100.25,
+   -38.0
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    13.8,
+    "Obj_BombFlower_A_03"
+   ],
+   [
+    14.3,
+    "Obj_TBox_A_06"
+   ],
+   [
+    14.4,
+    "Obj_Common_Fragment_BrokenRock_B_01"
+   ],
+   [
+    14.5,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ],
+   [
+    14.5,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ],
+   [
+    14.8,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ]
+  ]
+ },
+ "7524527082521156886": {
+  "hash": 7524527082521156886,
+  "gyaml": "Obj_TBox_A_06",
+  "drop": "TBox_Shield_Deku",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1,
+   "Drop__CheckActor": "TBox_Shield_Deku",
+   "Drop__DropActor_Substitute": "TBox_Rupee_Blue"
+  },
+  "name": null,
+  "files": [
+   "DodongoCavern/DodongoCavern_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -20.75,
+   113.28,
+   -36.5
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    0.9,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ],
+   [
+    1.2,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ],
+   [
+    1.3,
+    "Obj_Common_Fragment_BrokenRock_B_01"
+   ],
+   [
+    1.6,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ],
+   [
+    14.3,
+    "Obj_TBox_A_02"
+   ],
+   [
+    16.1,
+    "Obj_BombFlower_A_03"
+   ]
+  ]
+ },
+ "8607798771661947511": {
+  "hash": 8607798771661947511,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1
+  },
+  "name": null,
+  "files": [
+   "DodongoCavern/DodongoCavern_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -30.13,
+   100.0,
+   -8.0
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    6.5,
+    "Obj_Common_Fragment_BrokenRock_B_02"
+   ],
+   [
+    6.7,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ],
+   [
+    6.8,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ],
+   [
+    9.8,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ],
+   [
+    9.8,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ],
+   [
+    15.0,
+    "Enemy_Beamos"
+   ]
+  ]
+ },
+ "12253889300578348965": {
+  "hash": 12253889300578348965,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 10
+  },
+  "name": null,
+  "files": [
+   "DodongoCavern/DodongoCavern_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -48.98,
+   116.01,
+   -63.93
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.5,
+    "Obj_Common_Fragment_BrokenRock_B_01"
+   ],
+   [
+    2.7,
+    "Obj_Common_Fragment_BrokenRock_B_02"
+   ],
+   [
+    18.9,
+    "Obj_DodongoCave_MeatRock_A_01"
+   ],
+   [
+    23.8,
+    "Enemy_Skullwalltula"
+   ],
+   [
+    30.2,
+    "Obj_BombFlower_A_03"
+   ],
+   [
+    37.8,
+    "Obj_TBox_A_02"
+   ]
+  ]
+ },
+ "11582649900854566065": {
+  "hash": 11582649900854566065,
+  "gyaml": "Obj_TBox_A_06",
+  "drop": "TBox_Shield_Deku",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 13,
+   "Drop__CheckActor": "TBox_Shield_Deku",
+   "Drop__DropActor_Substitute": "TBox_DekuSeedBundle"
+  },
+  "name": null,
+  "files": [
+   "DodongoCavern/DodongoCavern_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   43.04,
+   113.16,
+   -8.75
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    6.9,
+    "Obj_BombFlower_A_03"
+   ],
+   [
+    11.0,
+    "Obj_Common_Fragment_BrokenRock_B_00"
+   ],
+   [
+    12.1,
+    "Obj_Pot_A_03"
+   ],
+   [
+    13.1,
+    "Obj_Pot_A_03"
+   ],
+   [
+    15.3,
+    "Enemy_BabyDodongo"
+   ],
+   [
+    16.4,
+    "Obj_Common_Fragment_BrokenRock_B_01"
+   ]
+  ]
+ },
+ "7764016096998075927": {
+  "hash": 7764016096998075927,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 5
+  },
+  "name": null,
+  "files": [
+   "DodongoCavern/DodongoCavern_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   82.99,
+   100.6,
+   -55.62
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "Gimmick_DodongoCavern_MiddleBoss01_2807"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.3,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ],
+   [
+    2.3,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "17531994809974271603": {
+  "hash": 17531994809974271603,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Compass",
+  "event": "DodongoCavern_GetCompass",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 11
+  },
+  "name": null,
+  "files": [
+   "DodongoCavern/DodongoCavern_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -49.0,
+   103.62,
+   7.5
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "DodongoCavern_Level_Room_11_Prefab_4eff"
+  ],
+  "near": [
+   [
+    6.2,
+    "ForbidMovableBoxAccessAreaBox"
+   ],
+   [
+    6.3,
+    "ForbidMovableBoxAccessAreaBox"
+   ],
+   [
+    11.5,
+    "Obj_AmosStatue_A_01"
+   ],
+   [
+    11.5,
+    "Obj_AmosStatue_A_01"
+   ],
+   [
+    12.5,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    14.0,
+    "ForbidMovableBoxAccessAreaBox"
+   ]
+  ]
+ },
+ "12161709650443144121": {
+  "hash": 12161709650443144121,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_BombBag_Small",
+  "event": "Get_StoneOfFire_GetBombBag",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 13
+  },
+  "name": null,
+  "files": [
+   "DodongoCavern/DodongoCavern_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   39.0,
+   115.72,
+   -23.0
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "DodongoCavern_Level_Room_13_Prefab_e23f"
+  ],
+  "near": [
+   [
+    7.3,
+    "DungeonRoomArea"
+   ],
+   [
+    8.2,
+    "DungeonRoomArea"
+   ],
+   [
+    8.8,
+    "WallCrack"
+   ],
+   [
+    9.3,
+    "DungeonRoomArea"
+   ],
+   [
+    9.3,
+    "VolumeFogArea"
+   ],
+   [
+    10.0,
+    "Obj_Pot_A_03"
+   ]
+  ]
+ },
+ "850464708089653824": {
+  "hash": 850464708089653824,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 16
+  },
+  "name": null,
+  "files": [
+   "DodongoCavern/DodongoCavern_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   92.5,
+   114.97,
+   -50.25
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "DodongoCavern_Level_Room_16_Prefab_e9f3"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ],
+   [
+    2.4,
+    "DestinationAnchor"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "7589985979641292928": {
+  "hash": 7589985979641292928,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Gold",
+  "event": null,
+  "dynamic": {
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   0.21,
+   -6.45
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BossRushIntervalRoom_50e3"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "7234638808238324101": {
+  "hash": 7234638808238324101,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Gold",
+  "event": null,
+  "dynamic": {
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   0.21,
+   -6.45
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BossRushIntervalRoom_50e3"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "15858708076894317041": {
+  "hash": 15858708076894317041,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Gold",
+  "event": null,
+  "dynamic": {
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   0.21,
+   -6.45
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BossRushIntervalRoom_50e3"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "4529748032854378492": {
+  "hash": 4529748032854378492,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Gold",
+  "event": null,
+  "dynamic": {
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   0.21,
+   -6.45
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BossRushIntervalRoom_ce6b"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "566103236844767323": {
+  "hash": 566103236844767323,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Gold",
+  "event": null,
+  "dynamic": {
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   0.21,
+   -6.45
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BossRushIntervalRoom_ce6b"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "3522439980243161940": {
+  "hash": 3522439980243161940,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Gold",
+  "event": null,
+  "dynamic": {
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   0.21,
+   -6.45
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BossRushIntervalRoom_ce6b"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "7346745174625046398": {
+  "hash": 7346745174625046398,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Gold",
+  "event": null,
+  "dynamic": {
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   0.21,
+   -6.45
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BossRushIntervalRoom_c990"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "7458365564915336038": {
+  "hash": 7458365564915336038,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Gold",
+  "event": null,
+  "dynamic": {
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   0.21,
+   -6.45
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BossRushIntervalRoom_c990"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "2854211238375368215": {
+  "hash": 2854211238375368215,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Gold",
+  "event": null,
+  "dynamic": {
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   0.21,
+   -6.45
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BossRushIntervalRoom_c990"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "9947351236862205040": {
+  "hash": 9947351236862205040,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Gold",
+  "event": null,
+  "dynamic": {
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   0.21,
+   -6.45
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "BossRushIntervalRoom_c990"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    0.0,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "3688520809244472975": {
+  "hash": 3688520809244472975,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Map",
+  "event": "FireTemple_GetCompass",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 5
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   58.23,
+   147.08,
+   40.55
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    14.2,
+    "Obj_FireTemple_CandleStick_A_03"
+   ],
+   [
+    14.2,
+    "Obj_FireTemple_CandleStick_A_03"
+   ],
+   [
+    15.2,
+    "Obj_FireTemple_CandleStick_A_03"
+   ],
+   [
+    17.7,
+    "Obj_FireTemple_CandleStick_A_03"
+   ],
+   [
+    19.4,
+    "Enemy_TorchSlug"
+   ],
+   [
+    32.5,
+    "Enemy_TorchSlug"
+   ]
+  ]
+ },
+ "12945617941305968586": {
+  "hash": 12945617941305968586,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 10
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -17.11,
+   146.98,
+   -31.07
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_10_Prefab_b3bc"
+  ],
+  "near": [
+   [
+    0.7,
+    "AnchorAction1"
+   ],
+   [
+    1.0,
+    "AnchorAction1"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "Npc_Goron_004_Adult_FireTemple"
+   ],
+   [
+    2.7,
+    "DestinationAnchor"
+   ],
+   [
+    2.7,
+    "Obj_FireTemple_PrisonCage_A_01"
+   ]
+  ]
+ },
+ "8757492004108970488": {
+  "hash": 8757492004108970488,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 3,
+   "SpawnType": 1
+  },
+  "name": "TBox",
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -6.98,
+   102.01,
+   -33.27
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "FireTemple_Level_Room_03_Prefab_df07"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "Obj_FireWall_A_03"
+   ],
+   [
+    0.1,
+    "Enemy_MiddleBoss_FlareDancer"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "EventRequestActor"
+   ],
+   [
+    2.3,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "16785682308850448108": {
+  "hash": 16785682308850448108,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 4
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   77.43,
+   141.13,
+   0.19
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_04_Prefab_d826"
+  ],
+  "near": [
+   [
+    0.6,
+    "DestinationAnchor"
+   ],
+   [
+    0.6,
+    "DestinationAnchor"
+   ],
+   [
+    0.7,
+    "AnchorAction1"
+   ],
+   [
+    1.7,
+    "Npc_Goron_002_Adult_FireTemple"
+   ],
+   [
+    2.7,
+    "Obj_FireTemple_PrisonCage_A_01"
+   ],
+   [
+    2.8,
+    "Obj_FireTemple_PrisonCage_A_01"
+   ]
+  ]
+ },
+ "5634724236470386190": {
+  "hash": 5634724236470386190,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 2
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -39.16,
+   104.99,
+   24.64
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_02_Prefab_3004"
+  ],
+  "near": [
+   [
+    0.6,
+    "DestinationAnchor"
+   ],
+   [
+    0.7,
+    "AnchorAction1"
+   ],
+   [
+    1.1,
+    "ShowToCameraPoint"
+   ],
+   [
+    1.4,
+    "Npc_Goron_005_Adult_FireTemple"
+   ],
+   [
+    2.2,
+    "Obj_FireTemple_PrisonCage_A_01"
+   ],
+   [
+    2.7,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "3949488292768750868": {
+  "hash": 3949488292768750868,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   34.22,
+   105.3,
+   -46.46
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_20_Prefab_7421"
+  ],
+  "near": [
+   [
+    0.7,
+    "AnchorAction1"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ],
+   [
+    2.1,
+    "Npc_Goron_001_Adult_FireTemple"
+   ],
+   [
+    2.2,
+    "Obj_FireTemple_PrisonCage_A_01"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    3.3,
+    "ForbidAutoPlacementAreaBox"
+   ]
+  ]
+ },
+ "10521366928524045067": {
+  "hash": 10521366928524045067,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 11
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -37.83,
+   145.23,
+   -0.55
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_11_Prefab_c20f"
+  ],
+  "near": [
+   [
+    0.7,
+    "AnchorAction1"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    1.4,
+    "Npc_Goron_009_Adult_FireTemple"
+   ],
+   [
+    2.4,
+    "DungeonRoomArea"
+   ],
+   [
+    2.8,
+    "Obj_FireTemple_PrisonCage_A_01"
+   ],
+   [
+    3.0,
+    "DungeonRoomArea"
+   ]
+  ]
+ },
+ "16713240760352215634": {
+  "hash": 16713240760352215634,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Compass",
+  "event": "FireTemple_GetMap",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 16
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   34.14,
+   147.07,
+   -5.75
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_16_Prefab_c89f"
+  ],
+  "near": [
+   [
+    5.9,
+    "Obj_SwitchShutter_A_02"
+   ],
+   [
+    5.9,
+    "DestinationAnchor"
+   ],
+   [
+    5.9,
+    "Obj_FireTemple_SwitchShutter_A_01"
+   ],
+   [
+    5.9,
+    "PushAirWall_DoorFront"
+   ],
+   [
+    6.0,
+    "Obj_SwitchShutter_A_02"
+   ],
+   [
+    6.0,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "14060099092170010696": {
+  "hash": 14060099092170010696,
+  "gyaml": "Obj_TBox_A_03",
+  "drop": "Item_Dungeon_BossKey",
+  "event": "ForesetTemple_GetBossKey",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 17
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -5.06,
+   100.9,
+   -8.7
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_17_Prefab_a4ce"
+  ],
+  "near": [
+   [
+    1.1,
+    "AnchorAction1"
+   ],
+   [
+    1.3,
+    "DestinationAnchor"
+   ],
+   [
+    1.4,
+    "DestinationAnchor"
+   ],
+   [
+    1.7,
+    "Npc_Goron_010_Adult_FireTemple"
+   ],
+   [
+    2.6,
+    "ForbidAutoPlacementAreaBox"
+   ],
+   [
+    3.0,
+    "DungeonRoomCenterAnchor"
+   ]
+  ]
+ },
+ "862385681502746018": {
+  "hash": 862385681502746018,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   31.4,
+   194.35,
+   -10.19
+  ],
+  "links_out": [
+   [
+    "MapIconOffsetAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_08_Prefab_eaab"
+  ],
+  "near": [
+   [
+    1.2,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    1.7,
+    "Obj_TBox_A_01"
+   ],
+   [
+    1.7,
+    "Obj_TBox_A_01"
+   ],
+   [
+    4.3,
+    "Obj_FireTemple_HookShotTarget_A_01"
+   ],
+   [
+    4.5,
+    "Obj_HookShotTarget_A_01"
+   ],
+   [
+    4.7,
+    "MapIconOffsetAnchor"
+   ]
+  ]
+ },
+ "17001858340376096722": {
+  "hash": 17001858340376096722,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   33.11,
+   194.35,
+   -9.92
+  ],
+  "links_out": [
+   [
+    "MapIconOffsetAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_08_Prefab_eaab"
+  ],
+  "near": [
+   [
+    1.7,
+    "Obj_TBox_A_01"
+   ],
+   [
+    2.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    2.6,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    3.2,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    4.5,
+    "Obj_FireTemple_HookShotTarget_A_01"
+   ],
+   [
+    4.8,
+    "Obj_HookShotTarget_A_01"
+   ]
+  ]
+ },
+ "15073195886628236505": {
+  "hash": 15073195886628236505,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   31.7,
+   194.35,
+   -8.49
+  ],
+  "links_out": [
+   [
+    "MapIconOffsetAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_08_Prefab_eaab"
+  ],
+  "near": [
+   [
+    1.7,
+    "Obj_TBox_A_01"
+   ],
+   [
+    2.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    2.7,
+    "Obj_FireTemple_HookShotTarget_A_01"
+   ],
+   [
+    2.8,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    2.9,
+    "Obj_HookShotTarget_A_01"
+   ],
+   [
+    3.1,
+    "MapIconOffsetAnchor"
+   ]
+  ]
+ },
+ "1705064956286753527": {
+  "hash": 1705064956286753527,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 22
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   39.45,
+   105.29,
+   51.25
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_22_Prefab_e0c9"
+  ],
+  "near": [
+   [
+    0.7,
+    "Npc_Goron_003_Adult_FireTemple"
+   ],
+   [
+    0.7,
+    "AnchorAction1"
+   ],
+   [
+    0.8,
+    "DestinationAnchor"
+   ],
+   [
+    3.0,
+    "Obj_FireTemple_PrisonCage_A_01"
+   ],
+   [
+    3.7,
+    "DestinationAnchor"
+   ],
+   [
+    3.8,
+    "DungeonRoomCenterAnchor"
+   ]
+  ]
+ },
+ "9634924691849556346": {
+  "hash": 9634924691849556346,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 5
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   46.55,
+   150.5,
+   33.42
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_05_Prefab_5b8f"
+  ],
+  "near": [
+   [
+    0.7,
+    "AnchorAction1"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.9,
+    "Npc_Goron_008_Adult_FireTemple"
+   ],
+   [
+    3.0,
+    "Obj_FireTemple_PrisonCage_A_01"
+   ],
+   [
+    4.2,
+    "ForbidAutoPlacementAreaBox"
+   ],
+   [
+    4.9,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "12567412825200613393": {
+  "hash": 12567412825200613393,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 5
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   48.5,
+   147.0,
+   -43.39
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_23_Prefab_efdf"
+  ],
+  "near": [
+   [
+    0.7,
+    "AnchorAction1"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    1.3,
+    "Npc_Goron_007_Adult_FireTemple"
+   ],
+   [
+    2.7,
+    "Obj_FireTemple_PrisonCage_A_01"
+   ],
+   [
+    3.2,
+    "DestinationAnchor"
+   ],
+   [
+    3.6,
+    "ForbidAutoPlacementAreaBox"
+   ]
+  ]
+ },
+ "12083259659219538030": {
+  "hash": 12083259659219538030,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Hammer",
+  "event": "FireTemple_GetHammer",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 13
+  },
+  "name": null,
+  "files": [
+   "FireTemple/FireTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -31.77,
+   196.1,
+   -12.71
+  ],
+  "links_out": [
+   [
+    "Obj_FireTemple_SpiralStaircase_A_01",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [
+   "FireTemple_Level_Room_13_Prefab_a00f"
+  ],
+  "near": [
+   [
+    10.7,
+    "Obj_FireWallPlane_A_09"
+   ],
+   [
+    15.2,
+    "GroundControlActor_ResidentMoveTo"
+   ],
+   [
+    15.8,
+    "GroundControlActor_ResidentMoveTo"
+   ],
+   [
+    16.8,
+    "VolumeFogArea"
+   ],
+   [
+    17.3,
+    "GroundControlActor_ResidentMoveTo"
+   ],
+   [
+    18.6,
+    "DungeonRoomCenterAnchor"
+   ]
+  ]
+ },
+ "9038700938965170329": {
+  "hash": 9038700938965170329,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_ArrowBundle_Large",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 27
+  },
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -16.26,
+   60.71,
+   12.6
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    11.9,
+    "DestinationAnchor"
+   ],
+   [
+    17.4,
+    "Enemy_Skulltula"
+   ],
+   [
+    46.1,
+    "StartPos"
+   ],
+   [
+    46.8,
+    "NaviAnchorAction1"
+   ],
+   [
+    46.8,
+    "NaviAnchorAction1"
+   ],
+   [
+    47.2,
+    "NaviAnchorAction1"
+   ]
+  ]
+ },
+ "7535137041266964235": {
+  "hash": 7535137041266964235,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 22
+  },
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -70.23,
+   107.1,
+   -26.49
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ForestTemple_Level_Room_18_Prefab_d8e6"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.2,
+    "Enemy_Floormaster"
+   ],
+   [
+    0.7,
+    "DestinationAnchor"
+   ],
+   [
+    1.9,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "6948525240950728236": {
+  "hash": 6948525240950728236,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Dungeon_Compass",
+  "event": "ForesetTemple_GetCompass",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 18
+  },
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   17.08,
+   114.82,
+   -63.62
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ForestTemple_Level_Room_13_Prefab_48cb"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    1.5,
+    "DestinationAnchor"
+   ],
+   [
+    1.5,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "11082303891540711688": {
+  "hash": 11082303891540711688,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Range_Bow",
+  "event": "ForestTemple_GetBow",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 17
+  },
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.2,
+   114.76,
+   -68.5
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ForestTemple_Level_Room_06_Prefab_6b8c"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    1.5,
+    "NaviAnchorAction1"
+   ],
+   [
+    1.8,
+    "DestinationAnchor"
+   ],
+   [
+    1.9,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "14776684749746592758": {
+  "hash": 14776684749746592758,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 4
+  },
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.01,
+   105.79,
+   -62.75
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ForestTemple_Level_Room_06_Prefab_61dc"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.3,
+    "DestinationAnchor"
+   ],
+   [
+    0.4,
+    "DestinationAnchor"
+   ],
+   [
+    1.3,
+    "NaviAnchorAction1"
+   ],
+   [
+    1.3,
+    "NaviAnchorAction1"
+   ]
+  ]
+ },
+ "3433400840978782007": {
+  "hash": 3433400840978782007,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 16
+  },
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -17.09,
+   114.82,
+   -63.64
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ForestTemple_Level_Room_12_Prefab_5266"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    1.1,
+    "DestinationAnchor"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    1.4,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "6449977980406424425": {
+  "hash": 6449977980406424425,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 15
+  },
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   16.44,
+   88.03,
+   -42.56
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "ForestTemple_Level_Room_09_Prefab_cdee"
+  ],
+  "near": [
+   [
+    4.0,
+    "Obj_Pot_A_02"
+   ],
+   [
+    4.6,
+    "VolumeFogArea"
+   ],
+   [
+    6.6,
+    "DungeonRoomArea"
+   ],
+   [
+    7.9,
+    "DungeonRoomArea"
+   ],
+   [
+    13.4,
+    "Obj_ForestTemple_PhantomGanonPainting_A_01"
+   ],
+   [
+    17.6,
+    "Obj_ForestTemple_PhantomGanonPainting_A_01"
+   ]
+  ]
+ },
+ "1171460703078800858": {
+  "hash": 1171460703078800858,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 0
+  },
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -9.85,
+   117.51,
+   64.37
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "ForestTemple_Level_Room_00_Prefab_64af"
+  ],
+  "near": [
+   [
+    10.3,
+    "EventRequestActor"
+   ],
+   [
+    15.4,
+    "VolumeFogArea"
+   ],
+   [
+    17.8,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    18.0,
+    "Enemy_Wolfos"
+   ],
+   [
+    18.9,
+    "VolumeFogArea"
+   ],
+   [
+    19.1,
+    "FieldAndDungeonEntranceEventRequestActor"
+   ]
+  ]
+ },
+ "3174893090599461927": {
+  "hash": 3174893090599461927,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Map",
+  "event": "ForesetTemple_GetMap",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 14
+  },
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   38.75,
+   101.41,
+   -35.75
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "ForestTemple_Level_Room_07_Prefab_6b66"
+  ],
+  "near": [
+   [
+    6.9,
+    "DungeonRoomArea"
+   ],
+   [
+    6.9,
+    "Obj_ForestTemple_Door_A_01"
+   ],
+   [
+    7.3,
+    "PushAirWall_DoorFront"
+   ],
+   [
+    7.9,
+    "DungeonRoomArea"
+   ],
+   [
+    8.2,
+    "Obj_MovableBox_A_05"
+   ],
+   [
+    8.9,
+    "Obj_Gimmick_AnswerPosAnchor"
+   ]
+  ]
+ },
+ "5306318520835485827": {
+  "hash": 5306318520835485827,
+  "gyaml": "Obj_TBox_A_03_NoBake",
+  "drop": "Item_Dungeon_BossKey",
+  "event": "ForesetTemple_GetBossKey",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -49.46,
+   129.5,
+   -63.71
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ForestTemple_Level_Room_23_Prefab_da46"
+  ],
+  "near": [
+   [
+    6.8,
+    "Enemy_Wallmaster"
+   ],
+   [
+    7.0,
+    "DungeonRoomArea"
+   ],
+   [
+    7.4,
+    "PushAirWall_DoorFront"
+   ],
+   [
+    7.9,
+    "Obj_ForestTemple_Door_A_01"
+   ],
+   [
+    8.1,
+    "DungeonRoomArea"
+   ],
+   [
+    8.7,
+    "DungeonRoomCenterAnchor"
+   ]
+  ]
+ },
+ "15920957434854338961": {
+  "hash": 15920957434854338961,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -52.83,
+   115.0,
+   4.23
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ForestTemple_Level_Room_11_Prefab_599e"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    1.8,
+    "DungeonRoomArea"
+   ],
+   [
+    2.0,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "16619432200060282313": {
+  "hash": 16619432200060282313,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GerudoFortress/GerudoFortress_Adult_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   14.97,
+   89.15,
+   -67.69
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.0,
+    "Obj_Pot_A_05"
+   ],
+   [
+    2.0,
+    "Enemy_FlyingPot_SpiritTemple"
+   ],
+   [
+    3.6,
+    "Enemy_FlyingPot_SpiritTemple"
+   ],
+   [
+    3.7,
+    "Enemy_FlyingPot_SpiritTemple"
+   ],
+   [
+    9.7,
+    "ForbidHorseToEnterAreaBox"
+   ],
+   [
+    11.6,
+    "Enemy_Skulltula"
+   ]
+  ]
+ },
+ "12343753510713797715": {
+  "hash": 12343753510713797715,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Obj_Heart_Piece",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GerudoFortress/GerudoFortress_Adult_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   28.98,
+   131.5,
+   -93.67
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "HeartPieceAnchor",
+    "Reference"
+   ]
+  ],
+  "groups": [],
+  "near": [
+   [
+    0.0,
+    "HeartPieceAnchor"
+   ],
+   [
+    11.7,
+    "Obj_Gerudo_SwitchShutter_A_05"
+   ],
+   [
+    12.8,
+    "IndoorAreaOutCameraBox"
+   ],
+   [
+    17.4,
+    "IndoorAreaOutCameraBox"
+   ],
+   [
+    17.8,
+    "EventRequestActor"
+   ],
+   [
+    20.3,
+    "IndoorAreaOutCameraBox"
+   ]
+  ]
+ },
+ "1883068192328530224": {
+  "hash": 1883068192328530224,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   22.82,
+   98.03,
+   -45.62
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    25.8,
+    "Obj_HookShotTarget_A_01"
+   ],
+   [
+    26.9,
+    "NaviAnchorAction1"
+   ],
+   [
+    29.0,
+    "Enemy_Bubble_Red"
+   ],
+   [
+    29.6,
+    "Obj_HookShotTarget_A_01"
+   ],
+   [
+    32.6,
+    "DungeonRoomArea"
+   ],
+   [
+    32.7,
+    "Obj_Gerudo_GlassTruth_A_01"
+   ]
+  ]
+ },
+ "4519534997122863169": {
+  "hash": 4519534997122863169,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 3,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -55.13,
+   104.02,
+   -90.29
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_03_Prefab_9aa9"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.7,
+    "DestinationAnchor"
+   ],
+   [
+    1.7,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "EventRequestActor"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    5.5,
+    "Enemy_Wolfos_White"
+   ]
+  ]
+ },
+ "11563468890171962383": {
+  "hash": 11563468890171962383,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 4,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -2.34,
+   96.27,
+   -77.33
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_04_Prefab_5b81"
+  ],
+  "near": [
+   [
+    1.3,
+    "DestinationAnchor"
+   ],
+   [
+    4.8,
+    "DestinationAnchor"
+   ],
+   [
+    5.2,
+    "Obj_Gerudo_RotateFloor_A_01"
+   ],
+   [
+    5.8,
+    "DestinationAnchor"
+   ],
+   [
+    6.6,
+    "Obj_Gerudo_StoneStatue_B_01"
+   ],
+   [
+    8.9,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "3717705376223508790": {
+  "hash": 3717705376223508790,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 9,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   78.51,
+   94.03,
+   -43.9
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_09_Prefab_8640"
+  ],
+  "near": [
+   [
+    2.0,
+    "Obj_silverRupeeCounter"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    3.2,
+    "NaviAnchorAction1"
+   ],
+   [
+    3.3,
+    "NaviAnchorAction1"
+   ],
+   [
+    7.1,
+    "DestinationAnchor"
+   ],
+   [
+    8.7,
+    "Obj_SongOfTimeBlock_A_01"
+   ]
+  ]
+ },
+ "2436665354602612279": {
+  "hash": 2436665354602612279,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 0,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   4.06,
+   99.47,
+   -11.43
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_00_Prefab_9aac"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.7,
+    "DestinationAnchor"
+   ],
+   [
+    1.4,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "EventRequestActor"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    3.3,
+    "Obj_SignBoard_A_01"
+   ]
+  ]
+ },
+ "5329807728555596183": {
+  "hash": 5329807728555596183,
+  "gyaml": "Obj_TBox_GlassTruth_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 10
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -42.1,
+   104.21,
+   -137.67
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_10_Prefab_8aa0"
+  ],
+  "near": [
+   [
+    2.0,
+    "DestinationAnchor"
+   ],
+   [
+    5.4,
+    "Enemy_LikeLike"
+   ],
+   [
+    5.9,
+    "EventRequestActor"
+   ],
+   [
+    7.4,
+    "Obj_TBox_A_01"
+   ],
+   [
+    8.2,
+    "VolumeFogArea"
+   ],
+   [
+    8.7,
+    "Enemy_LikeLike"
+   ]
+  ]
+ },
+ "3750231902048775592": {
+  "hash": 3750231902048775592,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_BombBundle_Small",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 10
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -39.46,
+   103.52,
+   -130.77
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_10_Prefab_8aa0"
+  ],
+  "near": [
+   [
+    5.0,
+    "Enemy_LikeLike"
+   ],
+   [
+    7.4,
+    "Obj_TBox_GlassTruth_A_01"
+   ],
+   [
+    7.6,
+    "DestinationAnchor"
+   ],
+   [
+    7.7,
+    "EventRequestActor"
+   ],
+   [
+    7.7,
+    "Obj_TBox_A_01_NoBake"
+   ],
+   [
+    7.7,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "6897789835137994741": {
+  "hash": 6897789835137994741,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 10,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -42.24,
+   104.21,
+   -123.62
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_10_Prefab_8aa0"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    5.7,
+    "Enemy_LikeLike"
+   ],
+   [
+    5.9,
+    "DungeonRoomCenterAnchor"
+   ]
+  ]
+ },
+ "11754783663699171680": {
+  "hash": 11754783663699171680,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 10,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -53.66,
+   103.52,
+   -131.8
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_10_Prefab_8aa0"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.6,
+    "DestinationAnchor"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "EventRequestActor"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    4.4,
+    "Enemy_LikeLike"
+   ]
+  ]
+ },
+ "4709724720801091788": {
+  "hash": 4709724720801091788,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 7,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   44.44,
+   98.65,
+   -5.4
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_07_Prefab_13f4"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "Enemy_Beamos"
+   ],
+   [
+    0.1,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    1.9,
+    "DestinationAnchor"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    4.4,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "4372363658229299619": {
+  "hash": 4372363658229299619,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 5
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   43.29,
+   98.44,
+   -82.44
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_05_Prefab_0136"
+  ],
+  "near": [
+   [
+    0.1,
+    "Obj_FireWall_A_01"
+   ],
+   [
+    0.1,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    0.7,
+    "DestinationAnchor"
+   ],
+   [
+    1.9,
+    "DestinationAnchor"
+   ],
+   [
+    5.8,
+    "Enemy_TorchSlug"
+   ],
+   [
+    5.9,
+    "Enemy_TorchSlug"
+   ]
+  ]
+ },
+ "4320448574091221496": {
+  "hash": 4320448574091221496,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -1.75,
+   105.03,
+   -37.88
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_08_Prefab_cd90"
+  ],
+  "near": [
+   [
+    7.2,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    7.9,
+    "DestinationAnchor"
+   ],
+   [
+    8.4,
+    "DungeonRoomArea"
+   ],
+   [
+    8.5,
+    "EventRequestActor"
+   ],
+   [
+    8.6,
+    "Obj_Gerudo_SwitchShutter_A_04"
+   ],
+   [
+    8.6,
+    "PushAirWall_DoorFront"
+   ]
+  ]
+ },
+ "8186301369655588602": {
+  "hash": 8186301369655588602,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -13.25,
+   98.03,
+   -60.5
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_08_Prefab_cd90"
+  ],
+  "near": [
+   [
+    4.3,
+    "Obj_TBox_A_06"
+   ],
+   [
+    6.1,
+    "Obj_DoorChainLock_A_01"
+   ],
+   [
+    6.1,
+    "Obj_Gerudo_SwitchShutter_A_06"
+   ],
+   [
+    6.1,
+    "Obj_DoorChainLock_A_01"
+   ],
+   [
+    8.4,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    10.3,
+    "DungeonRoomIdAnchor"
+   ]
+  ]
+ },
+ "1941083939696166170": {
+  "hash": 1941083939696166170,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Arrow_Ice",
+  "event": "SubEvent_GetIceArrow_OpenTBox",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -1.86,
+   98.03,
+   -48.0
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_08_Prefab_cd90"
+  ],
+  "near": [
+   [
+    0.4,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    2.5,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    2.9,
+    "Obj_StepSwitch_A_01"
+   ],
+   [
+    4.7,
+    "DestinationAnchor"
+   ],
+   [
+    4.9,
+    "Obj_SpiritTemple_FallNet_B_03"
+   ],
+   [
+    5.0,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "196331300747102419": {
+  "hash": 196331300747102419,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_BombchuBundle_Small",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   5.5,
+   98.03,
+   -45.5
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_08_Prefab_cd90"
+  ],
+  "near": [
+   [
+    4.7,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    5.3,
+    "Obj_DoorChainLock_A_01"
+   ],
+   [
+    5.3,
+    "Obj_Gerudo_SwitchShutter_A_06"
+   ],
+   [
+    5.3,
+    "Obj_DoorChainLock_A_01"
+   ],
+   [
+    5.5,
+    "Obj_DoorChainLock_A_01"
+   ],
+   [
+    5.5,
+    "Obj_Gerudo_SwitchShutter_A_06"
+   ]
+  ]
+ },
+ "11683433230229591151": {
+  "hash": 11683433230229591151,
+  "gyaml": "Obj_TBox_A_06",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8,
+   "Drop__CheckActor": "Item_Range_Bow",
+   "Drop__DropActor_Substitute": "TBox_ArrowBundle_Small"
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   10.25,
+   98.03,
+   -50.5
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_08_Prefab_cd90"
+  ],
+  "near": [
+   [
+    4.6,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    5.2,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    6.9,
+    "Obj_TBox_A_01"
+   ],
+   [
+    7.3,
+    "Obj_DoorChainLock_A_01"
+   ],
+   [
+    7.3,
+    "Obj_Gerudo_SwitchShutter_A_06"
+   ],
+   [
+    7.3,
+    "Obj_DoorChainLock_A_01"
+   ]
+  ]
+ },
+ "10743352138513225188": {
+  "hash": 10743352138513225188,
+  "gyaml": "Obj_TBox_A_06",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "Drop__CheckActor": "Item_Range_Bow",
+   "Drop__DropActor_Substitute": "TBox_ArrowBundle_Small"
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -9.0,
+   98.03,
+   -60.0
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_08_Prefab_cd90"
+  ],
+  "near": [
+   [
+    4.3,
+    "Obj_TBox_A_01"
+   ],
+   [
+    5.4,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    8.6,
+    "DestinationAnchor"
+   ],
+   [
+    8.7,
+    "Obj_DoorChainLock_A_01"
+   ],
+   [
+    8.7,
+    "Obj_Gerudo_SwitchShutter_A_06"
+   ],
+   [
+    8.7,
+    "Obj_DoorChainLock_A_01"
+   ]
+  ]
+ },
+ "10696620323243142689": {
+  "hash": 10696620323243142689,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -19.25,
+   98.03,
+   -46.25
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_08_Prefab_cd90"
+  ],
+  "near": [
+   [
+    5.1,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    5.7,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    9.6,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    10.4,
+    "Obj_DoorChainLock_A_01"
+   ],
+   [
+    10.4,
+    "Obj_Gerudo_SwitchShutter_A_06"
+   ],
+   [
+    10.4,
+    "Obj_DoorChainLock_A_01"
+   ]
+  ]
+ },
+ "9911316961118170383": {
+  "hash": 9911316961118170383,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -1.48,
+   105.0,
+   -48.05
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_08_Prefab_cd90"
+  ],
+  "near": [
+   [
+    4.9,
+    "VolumeFogArea"
+   ],
+   [
+    5.4,
+    "EventRequestActor"
+   ],
+   [
+    7.0,
+    "Obj_TBox_A_02"
+   ],
+   [
+    7.0,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    7.1,
+    "DestinationAnchor"
+   ],
+   [
+    7.6,
+    "DungeonRoomIdAnchor"
+   ]
+  ]
+ },
+ "13501407288943710656": {
+  "hash": 13501407288943710656,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 1,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -50.25,
+   98.13,
+   -15.59
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "GerudoTrainingGround_Level_Room_01_Prefab_dd8b"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    2.0,
+    "DestinationAnchor"
+   ],
+   [
+    2.4,
+    "EventRequestActor"
+   ],
+   [
+    2.4,
+    "DestinationAnchor"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    3.0,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "6463521162691873710": {
+  "hash": 6463521162691873710,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GerudoValley/GerudoValley_Adult_Dynamic.bcett.byml.zs",
+   "GerudoValley/GerudoValley_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   31.19,
+   -22.6,
+   37.02
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    25.1,
+    "AbilityChangeAreaForSceneChange"
+   ],
+   [
+    48.5,
+    "StartPos"
+   ],
+   [
+    51.4,
+    "StartPos"
+   ],
+   [
+    55.6,
+    "MapIconEntranceAnchor"
+   ],
+   [
+    95.5,
+    "InterestSpotActor"
+   ],
+   [
+    114.6,
+    "Obj_Common_Fragment_BrokenIronRock_B_00"
+   ]
+  ]
+ },
+ "17750686910716887133": {
+  "hash": 17750686910716887133,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Green",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GerudoValley/GerudoValley_Adult_Dynamic.bcett.byml.zs",
+   "GerudoValley/GerudoValley_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -47.27,
+   84.04,
+   -46.03
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    0.8,
+    "Obj_Pot_A_05"
+   ],
+   [
+    0.8,
+    "Obj_Pot_A_05"
+   ],
+   [
+    3.2,
+    "Obj_Pot_A_05"
+   ],
+   [
+    4.0,
+    "Obj_TBox_GlassTruth_A_01"
+   ],
+   [
+    4.8,
+    "Obj_Pot_A_05"
+   ],
+   [
+    20.1,
+    "AbilityChangeAreaForSceneChange"
+   ]
+  ]
+ },
+ "18413589940135955604": {
+  "hash": 18413589940135955604,
+  "gyaml": "Obj_TBox_GlassTruth_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GerudoValley/GerudoValley_Adult_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -43.27,
+   84.04,
+   -46.03
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    0.8,
+    "Obj_Pot_A_05"
+   ],
+   [
+    0.8,
+    "Obj_Pot_A_05"
+   ],
+   [
+    3.2,
+    "Obj_Pot_A_05"
+   ],
+   [
+    4.0,
+    "Obj_TBox_A_01_NoBake"
+   ],
+   [
+    4.8,
+    "Obj_Pot_A_05"
+   ],
+   [
+    20.1,
+    "AbilityChangeAreaForSceneChange"
+   ]
+  ]
+ },
+ "13612880783193811229": {
+  "hash": 13612880783193811229,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GerudoValley/GerudoValley_Adult_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -33.71,
+   102.19,
+   22.06
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.0,
+    "Obj_Common_Fragment_BrokenIronRock_A_02"
+   ],
+   [
+    1.4,
+    "Obj_Common_Fragment_BrokenIronRock_A_02"
+   ],
+   [
+    2.9,
+    "Obj_Common_Fragment_BrokenIronRock_A_02"
+   ],
+   [
+    3.4,
+    "Obj_Common_Fragment_BrokenIronRock_A_02"
+   ],
+   [
+    3.4,
+    "Obj_Common_Fragment_BrokenIronRock_A_00"
+   ],
+   [
+    3.7,
+    "Obj_Common_Fragment_BrokenIronRock_A_02"
+   ]
+  ]
+ },
+ "15856256242099990922": {
+  "hash": 15856256242099990922,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Obj_Heart_Piece",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GerudoValley/GerudoValley_Adult_Static.bcett.byml.zs",
+   "GerudoValley/GerudoValley_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -9.46,
+   90.45,
+   34.98
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "HeartPieceAnchor",
+    "Reference"
+   ]
+  ],
+  "groups": [],
+  "near": [
+   [
+    0.3,
+    "HeartPieceAnchor"
+   ],
+   [
+    5.8,
+    "ForbidHorseToEnterAreaBox"
+   ],
+   [
+    5.9,
+    "AnchorAction1"
+   ],
+   [
+    8.5,
+    "Animal_Cucco_GerudoValley"
+   ],
+   [
+    15.4,
+    "DestinationAnchor"
+   ],
+   [
+    19.5,
+    "ForbidHorseToEnterAreaBox"
+   ]
+  ]
+ },
+ "6205043616869463865": {
+  "hash": 6205043616869463865,
+  "gyaml": "Obj_TBox_GlassTruth_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GerudoValley/GerudoValley_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -43.27,
+   84.04,
+   -46.03
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    0.8,
+    "Obj_Pot_A_05"
+   ],
+   [
+    0.8,
+    "Obj_Pot_A_05"
+   ],
+   [
+    3.2,
+    "Obj_Pot_A_05"
+   ],
+   [
+    4.0,
+    "Obj_TBox_A_01_NoBake"
+   ],
+   [
+    4.8,
+    "Obj_Pot_A_05"
+   ],
+   [
+    20.1,
+    "AbilityChangeAreaForSceneChange"
+   ]
+  ]
+ },
+ "4402942101476009858": {
+  "hash": 4402942101476009858,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GoronCity/GoronCity_Adult_Dynamic.bcett.byml.zs",
+   "GoronCity/GoronCity_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -48.41,
+   113.68,
+   1.99
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.1,
+    "Obj_Common_Fragment_BrokenIronRock_A_02"
+   ],
+   [
+    2.2,
+    "Obj_LiftRock_B_01"
+   ],
+   [
+    2.5,
+    "Obj_Common_Fragment_BrokenIronRock_A_01"
+   ],
+   [
+    3.1,
+    "Obj_LiftRock_B_01"
+   ],
+   [
+    3.2,
+    "Obj_BrokenRock_A_02"
+   ],
+   [
+    3.7,
+    "Obj_Common_Fragment_BrokenIronRock_A_00"
+   ]
+  ]
+ },
+ "1176975953041865014": {
+  "hash": 1176975953041865014,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GoronCity/GoronCity_Adult_Dynamic.bcett.byml.zs",
+   "GoronCity/GoronCity_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -47.35,
+   113.68,
+   -2.35
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.1,
+    "Obj_Common_Fragment_BrokenIronRock_A_00"
+   ],
+   [
+    1.8,
+    "Obj_Common_Fragment_BrokenIronRock_A_00"
+   ],
+   [
+    2.4,
+    "Obj_LiftRock_B_01"
+   ],
+   [
+    2.4,
+    "Obj_LiftRock_B_01"
+   ],
+   [
+    2.5,
+    "Obj_Common_Fragment_BrokenIronRock_A_02"
+   ],
+   [
+    2.8,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "14647422914070455120": {
+  "hash": 14647422914070455120,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GoronCity/GoronCity_Adult_Dynamic.bcett.byml.zs",
+   "GoronCity/GoronCity_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -47.35,
+   113.68,
+   -5.15
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.8,
+    "Obj_LiftRock_A_03"
+   ],
+   [
+    2.1,
+    "Obj_Common_Fragment_BrokenIronRock_A_02"
+   ],
+   [
+    2.1,
+    "Obj_Common_Fragment_BrokenIronRock_A_01"
+   ],
+   [
+    2.8,
+    "Obj_TBox_A_01"
+   ],
+   [
+    2.9,
+    "Obj_LiftRock_B_01"
+   ],
+   [
+    3.4,
+    "Obj_LiftRock_B_01"
+   ]
+  ]
+ },
+ "3870071239709713434": {
+  "hash": 3870071239709713434,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GoronCity/GoronCity_Adult_Dynamic.bcett.byml.zs",
+   "GoronCity/GoronCity_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -43.24,
+   113.68,
+   -8.37
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.3,
+    "Obj_LiftRock_B_01"
+   ],
+   [
+    2.3,
+    "Obj_LiftRock_B_01"
+   ],
+   [
+    2.6,
+    "Obj_LiftRock_B_01"
+   ],
+   [
+    3.1,
+    "Obj_Common_Fragment_BrokenRock_A_00"
+   ],
+   [
+    3.6,
+    "Obj_LiftRock_B_01"
+   ],
+   [
+    3.6,
+    "Obj_Common_Fragment_BrokenIronRock_A_02"
+   ]
+  ]
+ },
+ "9159710900681116662": {
+  "hash": 9159710900681116662,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Green",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GoronCity/GoronCity_Adult_Static.bcett.byml.zs",
+   "GoronCity/GoronCity_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -52.17,
+   94.8,
+   31.99
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "HidingHole_Level_Hole_17_Prefab_e58a"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.6,
+    "DestinationAnchor"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.1,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "10944569637726152230": {
+  "hash": 10944569637726152230,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "GoronCity/GoronCity_Adult_Static.bcett.byml.zs",
+   "GoronCity/GoronCity_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -52.17,
+   94.8,
+   26.31
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "HidingHole_Level_Hole_17_Prefab_e58a"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.6,
+    "DestinationAnchor"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "16912540161937823130": {
+  "hash": 16912540161937823130,
+  "gyaml": "Obj_TBox_A_06",
+  "drop": "TBox_Shield_Hylian",
+  "event": null,
+  "dynamic": {
+   "Drop__CheckActor": "TBox_Shield_Hylian",
+   "Drop__DropActor_Substitute": "TBox_Rupee_Red"
+  },
+  "name": null,
+  "files": [
+   "Graveyard/Graveyard_Adult_Dynamic.bcett.byml.zs",
+   "Graveyard/Graveyard_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   38.33,
+   86.29,
+   11.23
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.8,
+    "Enemy_ReDead"
+   ],
+   [
+    19.9,
+    "AbilityChangeAreaForSceneChange"
+   ],
+   [
+    20.8,
+    "Obj_TriForcePoint_A_11"
+   ],
+   [
+    21.5,
+    "EnvironmentalAnimal_Bird_Swarm_Ground"
+   ],
+   [
+    23.0,
+    "AbilityChangeAreaForSceneChange"
+   ],
+   [
+    23.7,
+    "LookAttentionActor_HidingHoleEntrance"
+   ]
+  ]
+ },
+ "9622128545943056087": {
+  "hash": 9622128545943056087,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Obj_Heart_Piece",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "Graveyard/Graveyard_Adult_Static.bcett.byml.zs",
+   "Graveyard/Graveyard_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   21.41,
+   85.81,
+   39.33
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "HeartPieceAnchor",
+    "Reference"
+   ]
+  ],
+  "groups": [],
+  "near": [
+   [
+    14.4,
+    "DestinationAnchor"
+   ],
+   [
+    16.3,
+    "DestinationAnchor"
+   ],
+   [
+    16.9,
+    "DestinationAnchor"
+   ],
+   [
+    17.6,
+    "VolumeFogArea"
+   ],
+   [
+    17.9,
+    "EventRequestActor"
+   ],
+   [
+    21.5,
+    "WallCrack"
+   ]
+  ]
+ },
+ "16041366920820397198": {
+  "hash": 16041366920820397198,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Hookshot",
+  "event": "MiniGame_DampeRace_OpenGoalTBox",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "Graveyard/Graveyard_Adult_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -6.03,
+   82.54,
+   77.66
+  ],
+  "links_out": [
+   [
+    "Npc_Hylia_Dampe_002",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Npc_Hylia_Dampe_002",
+    "Reference"
+   ],
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "UnderTheGrave_Prefab_6971"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_02_NoBake"
+   ],
+   [
+    0.1,
+    "Obj_TBox_A_01_NoBake"
+   ],
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    0.1,
+    "Obj_TBox_A_01_NoBake"
+   ],
+   [
+    1.4,
+    "DestinationAnchor"
+   ],
+   [
+    2.9,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "5534919361313859554": {
+  "hash": 5534919361313859554,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Obj_Heart_Piece",
+  "event": "MiniGame_DampeRace_OpenGoalTBox",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "Graveyard/Graveyard_Adult_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -6.03,
+   82.53,
+   77.66
+  ],
+  "links_out": [
+   [
+    "Npc_Hylia_Dampe_002",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Npc_Hylia_Dampe_002",
+    "Reference"
+   ],
+   [
+    "EventRequestActor",
+    "Reference"
+   ],
+   [
+    "HeartPieceAnchor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "UnderTheGrave_Prefab_6971"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_02_NoBake"
+   ],
+   [
+    0.1,
+    "Obj_TBox_A_01_NoBake"
+   ],
+   [
+    0.1,
+    "Obj_TBox_A_01_NoBake"
+   ],
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    1.4,
+    "DestinationAnchor"
+   ],
+   [
+    3.0,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "234006393181394602": {
+  "hash": 234006393181394602,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Red",
+  "event": "MiniGame_DampeRace_OpenGoalTBox",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "Graveyard/Graveyard_Adult_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -5.99,
+   82.53,
+   77.63
+  ],
+  "links_out": [
+   [
+    "Npc_Hylia_Dampe_002",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Npc_Hylia_Dampe_002",
+    "Reference"
+   ],
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "UnderTheGrave_Prefab_6971"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01_NoBake"
+   ],
+   [
+    0.1,
+    "Obj_TBox_A_02_NoBake"
+   ],
+   [
+    0.1,
+    "Obj_TBox_A_02_NoBake"
+   ],
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    1.3,
+    "DestinationAnchor"
+   ],
+   [
+    2.9,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "4322670163630771947": {
+  "hash": 4322670163630771947,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Blue",
+  "event": "MiniGame_DampeRace_OpenGoalTBox",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "Graveyard/Graveyard_Adult_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -5.99,
+   82.53,
+   77.62
+  ],
+  "links_out": [
+   [
+    "Npc_Hylia_Dampe_002",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Npc_Hylia_Dampe_002",
+    "Reference"
+   ],
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "UnderTheGrave_Prefab_6971"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_TBox_A_01_NoBake"
+   ],
+   [
+    0.1,
+    "Obj_TBox_A_02_NoBake"
+   ],
+   [
+    0.1,
+    "Obj_TBox_A_02_NoBake"
+   ],
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    1.3,
+    "DestinationAnchor"
+   ],
+   [
+    2.9,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "8825521833684392638": {
+  "hash": 8825521833684392638,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "HountedWasteland/HountedWasteland_Adult_Static.bcett.byml.zs",
+   "HountedWasteland/HountedWasteland_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   16.01,
+   87.66,
+   -98.35
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "HountedWasteland_Level_House_9aa0"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.7,
+    "DestinationAnchor"
+   ],
+   [
+    1.3,
+    "DestinationAnchor"
+   ],
+   [
+    1.9,
+    "Enemy_Skulltula_Gold"
+   ],
+   [
+    2.2,
+    "EventRequestActor"
+   ],
+   [
+    3.4,
+    "Obj_CandleStick_A_02"
+   ]
+  ]
+ },
+ "17445672702269453589": {
+  "hash": 17445672702269453589,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs",
+   "HyruleField/HyruleField_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -151.87,
+   162.03,
+   265.29
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    8.4,
+    "IndoorAreaBox"
+   ],
+   [
+    11.4,
+    "CrawlAnchor"
+   ],
+   [
+    11.5,
+    "CrawlAnchor"
+   ],
+   [
+    17.1,
+    "ForbidStalchildDivingArea"
+   ],
+   [
+    17.7,
+    "ForbidStalchildDivingArea"
+   ],
+   [
+    18.4,
+    "ForbidStalchildDivingArea"
+   ]
+  ]
+ },
+ "2967378296224661060": {
+  "hash": 2967378296224661060,
+  "gyaml": "Obj_TBox_A_01_memo11",
+  "drop": "Obj_Heart_Piece",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs",
+   "HyruleField/HyruleField_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -213.3,
+   133.47,
+   138.69
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "HeartPieceAnchor",
+    "Reference"
+   ]
+  ],
+  "groups": [],
+  "near": [
+   [
+    0.3,
+    "HeartPieceAnchor"
+   ],
+   [
+    13.4,
+    "ForbidStalchildDivingArea"
+   ],
+   [
+    13.8,
+    "Obj_HorseJumpDetectArea"
+   ],
+   [
+    14.5,
+    "ForbidStalchildDivingArea"
+   ],
+   [
+    15.6,
+    "ForbidStalchildDivingArea"
+   ],
+   [
+    15.8,
+    "Obj_HorseJumpDetectArea"
+   ]
+  ]
+ },
+ "9891111455604007674": {
+  "hash": 9891111455604007674,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   84.4,
+   152.64,
+   45.36
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    3.1,
+    "Enemy_Poe"
+   ],
+   [
+    11.7,
+    "EnvironmentalAnimal_Bird_Swarm_Tree"
+   ],
+   [
+    12.9,
+    "Obj_Tree_A_01"
+   ],
+   [
+    29.9,
+    "EnvironmentalAnimal_Bird_Single"
+   ],
+   [
+    39.5,
+    "EnvironmentalAnimal_Bird_Single"
+   ],
+   [
+    48.5,
+    "ForbidStalchildDivingArea"
+   ]
+  ]
+ },
+ "1163740567397714729": {
+  "hash": 1163740567397714729,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -5.73,
+   146.19,
+   406.86
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.2,
+    "Enemy_Poe"
+   ],
+   [
+    15.3,
+    "EnvironmentalAnimal_Bird_Swarm_Tree"
+   ],
+   [
+    43.2,
+    "Enemy_Tektite_Blue"
+   ],
+   [
+    65.7,
+    "Enemy_Tektite_Blue"
+   ],
+   [
+    76.9,
+    "Enemy_Tektite_Blue"
+   ],
+   [
+    79.1,
+    "ForbidStalchildDivingArea"
+   ]
+  ]
+ },
+ "17023457248274633121": {
+  "hash": 17023457248274633121,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -297.44,
+   131.29,
+   558.11
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.0,
+    "Enemy_Poe"
+   ],
+   [
+    25.2,
+    "Obj_Tree_A_01"
+   ],
+   [
+    33.8,
+    "CrawlAnchor"
+   ],
+   [
+    34.5,
+    "CrawlAnchor"
+   ],
+   [
+    47.7,
+    "EnvironmentalAnimal_Bird_Swarm_Water"
+   ],
+   [
+    59.2,
+    "Obj_Tree_A_01"
+   ]
+  ]
+ },
+ "5755485285664292988": {
+  "hash": 5755485285664292988,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "HyruleField/HyruleField_Adult_Static.bcett.byml.zs",
+   "HyruleField/HyruleField_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   152.23,
+   136.02,
+   16.73
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "HidingHole_Level_Hole_05_Prefab_2926"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    3.0,
+    "Enemy_ReDead_AlwaysRespawn"
+   ],
+   [
+    3.6,
+    "Enemy_ReDead_AlwaysRespawn"
+   ]
+  ]
+ },
+ "6900843020594897860": {
+  "hash": 6900843020594897860,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "HyruleField/HyruleField_Adult_Static.bcett.byml.zs",
+   "HyruleField/HyruleField_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -214.9,
+   98.02,
+   449.12
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "HidingHole_Level_Hole_30_Prefab_9583"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    5.9,
+    "ForbidHorseToEnterAreaBox"
+   ]
+  ]
+ },
+ "4128092231168513176": {
+  "hash": 4128092231168513176,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "IceCavern/IceCavern_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -53.11,
+   107.19,
+   -34.2
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.8,
+    "Obj_BrokenIcePillar_A_02"
+   ],
+   [
+    4.1,
+    "Obj_BrokenIcePillar_A_02"
+   ],
+   [
+    13.7,
+    "Obj_BlueFirePedestal_A_01"
+   ],
+   [
+    15.3,
+    "Enemy_Keese_Ice"
+   ],
+   [
+    21.7,
+    "Enemy_Keese_Ice"
+   ],
+   [
+    24.8,
+    "Enemy_Keese_Ice"
+   ]
+  ]
+ },
+ "11498802739257120175": {
+  "hash": 11498802739257120175,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Map",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 5
+  },
+  "name": null,
+  "files": [
+   "IceCavern/IceCavern_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   3.38,
+   113.71,
+   -80.2
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "Obj_RedIce_A_01",
+    "FrozenInIce"
+   ]
+  ],
+  "groups": [
+   "IceCavern_Level_Room_07_Prefab_fcb8"
+  ],
+  "near": [
+   [
+    0.2,
+    "Obj_RedIce_A_01"
+   ],
+   [
+    11.6,
+    "VolumeFogArea"
+   ],
+   [
+    14.3,
+    "Enemy_Freezard"
+   ],
+   [
+    18.9,
+    "EventRequestActor"
+   ],
+   [
+    20.7,
+    "DestinationAnchor"
+   ],
+   [
+    21.7,
+    "Obj_RedIce_A_07"
+   ]
+  ]
+ },
+ "13542013937093159888": {
+  "hash": 13542013937093159888,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Compass",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 6
+  },
+  "name": null,
+  "files": [
+   "IceCavern/IceCavern_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   90.22,
+   104.51,
+   2.92
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "IceCavern_Level_Room_10_Prefab_1427"
+  ],
+  "near": [
+   [
+    3.9,
+    "Enemy_Keese"
+   ],
+   [
+    4.3,
+    "Enemy_Keese"
+   ],
+   [
+    6.0,
+    "Obj_BrokenIcePillar_A_02"
+   ],
+   [
+    6.5,
+    "Obj_BrokenIcePillar_A_01"
+   ],
+   [
+    6.5,
+    "Obj_BrokenIcePillar_A_02"
+   ],
+   [
+    6.6,
+    "Obj_BrokenIcePillar_A_01"
+   ]
+  ]
+ },
+ "6859289214373847284": {
+  "hash": 6859289214373847284,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_HeavyBoot",
+  "event": "SageOfWater_MelodyGet_Water",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 10
+  },
+  "name": null,
+  "files": [
+   "IceCavern/IceCavern_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -46.22,
+   109.71,
+   42.53
+  ],
+  "links_out": [
+   [
+    "DestinationAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "IceCavern_Level_Room_04_Prefab_2b51"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    2.5,
+    "Enemy_Wolfos_White"
+   ],
+   [
+    2.9,
+    "DestinationAnchor"
+   ],
+   [
+    3.3,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "18277713685010400796": {
+  "hash": 18277713685010400796,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_ArrowBundle_Medium",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   12.58,
+   103.9,
+   -65.89
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.0,
+    "CameraChangeAreaBox"
+   ],
+   [
+    3.1,
+    "AutoPlaceLayerSoundSettingActor"
+   ],
+   [
+    15.2,
+    "Obj_CandleStick_A_01"
+   ],
+   [
+    16.3,
+    "Enemy_Bubble_Green"
+   ],
+   [
+    16.6,
+    "Obj_HookShotTarget_A_01"
+   ],
+   [
+    20.8,
+    "Enemy_Bubble_Green"
+   ]
+  ]
+ },
+ "14404733996390762670": {
+  "hash": 14404733996390762670,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_BombchuBundle_Small",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 5
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   56.39,
+   99.5,
+   -15.18
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.3,
+    "Obj_BrokenIcePillar_A_01"
+   ],
+   [
+    2.3,
+    "Obj_BrokenIcePillar_A_01"
+   ],
+   [
+    6.5,
+    "Obj_BrokenIcePillar_A_01"
+   ],
+   [
+    6.5,
+    "Obj_BrokenIcePillar_A_02"
+   ],
+   [
+    6.8,
+    "Obj_BrokenIcePillar_A_02"
+   ],
+   [
+    6.9,
+    "Obj_BrokenIcePillar_A_01"
+   ]
+  ]
+ },
+ "1029712040059298120": {
+  "hash": 1029712040059298120,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 12
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -36.03,
+   99.75,
+   -16.49
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    9.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    11.8,
+    "Obj_TBox_A_01"
+   ],
+   [
+    16.2,
+    "Obj_TBox_GlassTruth_A_01"
+   ],
+   [
+    29.2,
+    "Obj_InsideGanonCastle_CandleStand_A_01"
+   ],
+   [
+    30.4,
+    "Obj_InsideGanonCastle_CandleStand_A_06"
+   ],
+   [
+    31.0,
+    "Obj_InsideGanonCastle_CandleStand_A_01"
+   ]
+  ]
+ },
+ "14046623154429024571": {
+  "hash": 14046623154429024571,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 12
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -40.56,
+   99.75,
+   -27.34
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    11.6,
+    "Obj_TBox_A_01"
+   ],
+   [
+    11.8,
+    "Obj_TBox_A_01"
+   ],
+   [
+    15.9,
+    "Obj_TBox_GlassTruth_A_01"
+   ],
+   [
+    29.0,
+    "Obj_HookShotTarget_A_12"
+   ],
+   [
+    33.6,
+    "Obj_InsideGanonCastle_CandleStand_A_01"
+   ],
+   [
+    34.4,
+    "Obj_HookShotTarget_A_01"
+   ]
+  ]
+ },
+ "7461796063704896255": {
+  "hash": 7461796063704896255,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 12
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -45.06,
+   99.75,
+   -16.61
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    7.1,
+    "Obj_TBox_GlassTruth_A_01"
+   ],
+   [
+    9.0,
+    "Obj_TBox_A_01"
+   ],
+   [
+    11.6,
+    "Obj_TBox_A_01"
+   ],
+   [
+    24.4,
+    "Obj_HookShotTarget_A_12"
+   ],
+   [
+    28.1,
+    "Obj_InsideGanonCastle_CandleStand_A_06"
+   ],
+   [
+    30.8,
+    "Obj_InsideGanonCastle_CandleStand_A_06"
+   ]
+  ]
+ },
+ "15320975652699461295": {
+  "hash": 15320975652699461295,
+  "gyaml": "Obj_TBox_GlassTruth_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 13
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -52.19,
+   100.0,
+   -16.51
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    7.1,
+    "Obj_TBox_A_01"
+   ],
+   [
+    15.9,
+    "Obj_TBox_A_01"
+   ],
+   [
+    16.2,
+    "Obj_TBox_A_01"
+   ],
+   [
+    18.0,
+    "Obj_HookShotTarget_A_12"
+   ],
+   [
+    28.0,
+    "Obj_InsideGanonCastle_CandleStand_A_06"
+   ],
+   [
+    30.3,
+    "Obj_InsideGanonCastle_CandleStand_A_06"
+   ]
+  ]
+ },
+ "17657623307936361670": {
+  "hash": 17657623307936361670,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Gauntlet_Gold",
+  "event": "InsideGanonCastle_Get_Gauntlet_Gold",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   48.29,
+   104.01,
+   -105.3
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "InsideGanonCastle_Level_Room_08_Prefab_2137"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ],
+   [
+    2.4,
+    "DestinationAnchor"
+   ],
+   [
+    2.4,
+    "DestinationAnchor"
+   ],
+   [
+    3.8,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "16913531450403950487": {
+  "hash": 16913531450403950487,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_ArrowBundle_Medium",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 2
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   25.26,
+   103.0,
+   23.69
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "InsideGanonCastle_Level_Room_02_Prefab_f5b3"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    1.1,
+    "DestinationAnchor"
+   ],
+   [
+    1.3,
+    "DestinationAnchor"
+   ],
+   [
+    2.5,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "14962432460641118089": {
+  "hash": 14962432460641118089,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 12
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -40.45,
+   99.86,
+   -21.0
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "InsideGanonCastle_Level_Room_12_Prefab_6f15"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "4733634471038136588": {
+  "hash": 4733634471038136588,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Green",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 13
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -52.19,
+   100.0,
+   -25.49
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventProxyRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "InsideGanonCastle_Level_Room_13_Prefab_4fb1"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ],
+   [
+    3.1,
+    "Obj_TriForcePoint_A_12"
+   ],
+   [
+    3.7,
+    "DestinationAnchor"
+   ],
+   [
+    4.4,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    5.0,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "7899179288432849355": {
+  "hash": 7899179288432849355,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 17
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -38.03,
+   104.0,
+   13.32
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "InsideGanonCastle_Level_Room_17_Prefab_94b3"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "17092385671602176550": {
+  "hash": 17092385671602176550,
+  "gyaml": "Obj_TBox_A_03_NoBake",
+  "drop": "Item_Dungeon_BossKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 24
+  },
+  "name": null,
+  "files": [
+   "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.07,
+   149.65,
+   -24.69
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "InsideGanonCastle_Level_Room_24_Prefab_6066"
+  ],
+  "near": [
+   [
+    0.7,
+    "DestinationAnchor"
+   ],
+   [
+    1.5,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    1.8,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "EventRequestActor"
+   ],
+   [
+    2.5,
+    "DestinationAnchor"
+   ],
+   [
+    2.5,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "5527401621172639818": {
+  "hash": 5527401621172639818,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Boomerang",
+  "event": "InsideJabuJabuBelly_TreasureBoxWithRuto09",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 9
+  },
+  "name": null,
+  "files": [
+   "InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -31.3,
+   92.39,
+   -131.91
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "InsideJabuJabuBelly_Level_Room_09_Prefab_32ab"
+  ],
+  "near": [
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    0.1,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    1.1,
+    "DestinationAnchor"
+   ],
+   [
+    1.6,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "3510516276638146208": {
+  "hash": 3510516276638146208,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Dungeon_Compass",
+  "event": "InsideJabuJabuBelly_TreasureBoxWithRuto12",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 12
+  },
+  "name": null,
+  "files": [
+   "InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   25.52,
+   92.29,
+   -175.93
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "InsideJabuJabuBelly_Level_Room_12_Prefab_1d03"
+  ],
+  "near": [
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    0.1,
+    "PushAirWall_Box"
+   ],
+   [
+    0.2,
+    "DestinationAnchor"
+   ],
+   [
+    1.1,
+    "DestinationAnchor"
+   ],
+   [
+    1.5,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    2.2,
+    "Enemy_Shabom_AlwaysRespawn"
+   ]
+  ]
+ },
+ "3609242017501283521": {
+  "hash": 3609242017501283521,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 13
+  },
+  "name": null,
+  "files": [
+   "InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -34.18,
+   82.47,
+   -51.98
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "InsideJabuJabuBelly_Level_Room_13_Prefab_8e32"
+  ],
+  "near": [
+   [
+    6.8,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    12.6,
+    "Obj_WaterPlane_A_01"
+   ],
+   [
+    14.2,
+    "Enemy_Scrub_Business"
+   ],
+   [
+    14.2,
+    "Enemy_Scrub_Business_Leaf"
+   ],
+   [
+    16.0,
+    "DestinationAnchor"
+   ],
+   [
+    17.5,
+    "DungeonRoomIdAnchor"
+   ]
+  ]
+ },
+ "14933854942830098290": {
+  "hash": 14933854942830098290,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Map",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 14
+  },
+  "name": null,
+  "files": [
+   "InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   37.7,
+   77.55,
+   -57.12
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "InsideJabuJabuBelly_Level_Room_14_Prefab_2296"
+  ],
+  "near": [
+   [
+    8.9,
+    "DestinationAnchor"
+   ],
+   [
+    9.1,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    9.4,
+    "Obj_InsideJabu_Jabu_StepSwitch_A_04"
+   ],
+   [
+    10.2,
+    "GroundControlActor_ResidentMoveTo"
+   ],
+   [
+    10.7,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    10.9,
+    "Obj_WaterPlaneDynamic_A_01"
+   ]
+  ]
+ },
+ "11368028582977069031": {
+  "hash": 11368028582977069031,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_DekuNutBundle",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 3
+  },
+  "name": null,
+  "files": [
+   "InsideTheDekuTree/InsideTheDekuTree_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -65.24,
+   125.63,
+   0.02
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    9.1,
+    "CrawlAnchor"
+   ],
+   [
+    13.6,
+    "CrawlAnchor"
+   ],
+   [
+    17.4,
+    "NaviAnchorAction1"
+   ],
+   [
+    26.5,
+    "Enemy_Dekubaba"
+   ],
+   [
+    26.8,
+    "Enemy_Skullwalltula"
+   ],
+   [
+    28.2,
+    "Obj_InsideTheDekuTree_FallingFloor_A_03"
+   ]
+  ]
+ },
+ "12889104996486369065": {
+  "hash": 12889104996486369065,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_DekuStickBundle_Small",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 4
+  },
+  "name": null,
+  "files": [
+   "InsideTheDekuTree/InsideTheDekuTree_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -10.4,
+   79.38,
+   -12.56
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    14.8,
+    "Obj_InsideTheDekuTree_WaterPlane_A_01"
+   ],
+   [
+    16.4,
+    "Enemy_Dekubaba"
+   ],
+   [
+    21.8,
+    "Enemy_Dekubaba"
+   ],
+   [
+    23.6,
+    "Enemy_Dekubaba"
+   ],
+   [
+    25.0,
+    "NaviAnchorAction1"
+   ],
+   [
+    25.3,
+    "Enemy_Dekubaba"
+   ]
+  ]
+ },
+ "9284193025315608699": {
+  "hash": 9284193025315608699,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Compass",
+  "event": "InsideTheDekuTree_GetCompass",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 3
+  },
+  "name": null,
+  "files": [
+   "InsideTheDekuTree/InsideTheDekuTree_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -48.29,
+   120.37,
+   0.0
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "InsideTheDekuTree_Level_Room_D_Prefab_b6c3"
+  ],
+  "near": [
+   [
+    7.2,
+    "SupplyItemResetSystemActor"
+   ],
+   [
+    10.4,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    10.7,
+    "VolumeFogArea"
+   ],
+   [
+    13.5,
+    "EventProxyRequestActor"
+   ],
+   [
+    16.0,
+    "Obj_TBox_A_02"
+   ],
+   [
+    16.2,
+    "DungeonRoomCenterAnchor"
+   ]
+  ]
+ },
+ "8579518566955184384": {
+  "hash": 8579518566955184384,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Map",
+  "event": "InsideTheDekuTree_GetMap",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 0
+  },
+  "name": null,
+  "files": [
+   "InsideTheDekuTree/InsideTheDekuTree_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   6.51,
+   108.4,
+   7.25
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "InsideTheDekuTree_Level_Room_A_Prefab_66a2"
+  ],
+  "near": [
+   [
+    5.4,
+    "Enemy_Skullwalltula"
+   ],
+   [
+    5.7,
+    "Enemy_Skullwalltula"
+   ],
+   [
+    6.1,
+    "NaviAnchorAction1"
+   ],
+   [
+    7.5,
+    "NaviAreaHintEventActor"
+   ],
+   [
+    10.0,
+    "NaviAnchorAction1"
+   ],
+   [
+    10.3,
+    "ChangeBancBeforehandAnchor"
+   ]
+  ]
+ },
+ "13027331340815880287": {
+  "hash": 13027331340815880287,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_DekuNutBundle",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 2
+  },
+  "name": null,
+  "files": [
+   "InsideTheDekuTree/InsideTheDekuTree_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -42.92,
+   116.2,
+   19.35
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "InsideTheDekuTree_Level_Room_C_Prefab_efa7"
+  ],
+  "near": [
+   [
+    8.0,
+    "EventProxyRequestActor"
+   ],
+   [
+    8.9,
+    "EventRequestActor"
+   ],
+   [
+    9.2,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    10.2,
+    "DestinationAnchor"
+   ],
+   [
+    10.2,
+    "NaviAnchorAction1"
+   ],
+   [
+    10.3,
+    "Obj_InsideTheDekuTree_FallingFloor_A_02"
+   ]
+  ]
+ },
+ "821372075822700622": {
+  "hash": 821372075822700622,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Range_SlingShot",
+  "event": "InsideTheDekuTree_GetSlingShot",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 2
+  },
+  "name": null,
+  "files": [
+   "InsideTheDekuTree/InsideTheDekuTree_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -54.39,
+   111.96,
+   12.21
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "InsideTheDekuTree_Level_Room_C_Prefab_efa7"
+  ],
+  "near": [
+   [
+    1.0,
+    "ForbidUseScrubBusinessSead"
+   ],
+   [
+    11.8,
+    "Obj_InsideTheDekuTree_FallingFloor_A_02"
+   ],
+   [
+    12.7,
+    "DestinationAnchor"
+   ],
+   [
+    13.2,
+    "EventProxyRequestActor"
+   ],
+   [
+    14.0,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    14.2,
+    "Obj_TBox_A_01"
+   ]
+  ]
+ },
+ "12902291359202819102": {
+  "hash": 12902291359202819102,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "KakarikoVillage/KakarikoVillage_Adult_Alternative_Dynamic.bcett.byml.zs",
+   "KakarikoVillage/KakarikoVillage_Adult_Dynamic.bcett.byml.zs",
+   "KakarikoVillage/KakarikoVillage_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -41.69,
+   79.72,
+   11.4
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    19.8,
+    "AbilityChangeAreaForSceneChange"
+   ],
+   [
+    25.2,
+    "LookAttentionActor_HidingHoleEntrance"
+   ],
+   [
+    27.1,
+    "DestinationAnchor"
+   ],
+   [
+    29.8,
+    "Obj_Kakariko_CookingPot_A_01"
+   ],
+   [
+    30.1,
+    "Obj_Kakariko_Bed_A_01"
+   ],
+   [
+    30.3,
+    "Obj_Kakariko_CookingPot_A_02"
+   ]
+  ]
+ },
+ "13080955777249750889": {
+  "hash": 13080955777249750889,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "KakarikoVillage/KakarikoVillage_Adult_Alternative_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   5.56,
+   130.17,
+   41.43
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    23.5,
+    "StartPos"
+   ],
+   [
+    23.5,
+    "StartPos"
+   ],
+   [
+    23.8,
+    "BGM_WindmillHouse_Adult"
+   ],
+   [
+    38.4,
+    "InterestSpotActor"
+   ],
+   [
+    39.7,
+    "LookAttentionActor_Cauldron"
+   ],
+   [
+    40.3,
+    "StartPos"
+   ]
+  ]
+ },
+ "11929552275106311978": {
+  "hash": 11929552275106311978,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "KakarikoVillage/KakarikoVillage_Adult_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   5.56,
+   130.17,
+   41.43
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    23.5,
+    "StartPos"
+   ],
+   [
+    23.5,
+    "StartPos"
+   ],
+   [
+    38.4,
+    "InterestSpotActor"
+   ],
+   [
+    39.7,
+    "LookAttentionActor_Cauldron"
+   ],
+   [
+    40.3,
+    "StartPos"
+   ],
+   [
+    40.3,
+    "StartPos"
+   ]
+  ]
+ },
+ "4349272251343787229": {
+  "hash": 4349272251343787229,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+   "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -132.18,
+   123.89,
+   -16.01
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    23.9,
+    "MapIconEntranceAnchor"
+   ],
+   [
+    24.0,
+    "AbilityChangeAreaForSceneChange"
+   ],
+   [
+    24.8,
+    "StartPos"
+   ],
+   [
+    24.8,
+    "StartPos"
+   ],
+   [
+    27.0,
+    "Animal_Kokiri_Insect_A"
+   ],
+   [
+    27.6,
+    "Animal_Kokiri_Insect_B"
+   ]
+  ]
+ },
+ "10831981390482426294": {
+  "hash": 10831981390482426294,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Green",
+  "event": "KokiriForest_TreasureBox_NaviChatOff",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+   "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -50.29,
+   112.26,
+   -42.03
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.5,
+    "Obj_TBox_A_01"
+   ],
+   [
+    2.9,
+    "Obj_TBox_A_01"
+   ],
+   [
+    3.6,
+    "Obj_Kokiri_MessageBoard_A_02"
+   ],
+   [
+    4.1,
+    "Obj_TBox_A_01"
+   ],
+   [
+    7.8,
+    "EnvironmentalAnimal_Squirrel"
+   ],
+   [
+    8.3,
+    "Obj_Kokiri_Door_A_02"
+   ]
+  ]
+ },
+ "4555665598794293658": {
+  "hash": 4555665598794293658,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": "KokiriForest_TreasureBox_NaviChatOff",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+   "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -54.21,
+   112.26,
+   -40.88
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.6,
+    "Obj_TBox_A_01"
+   ],
+   [
+    4.1,
+    "Obj_TBox_A_01"
+   ],
+   [
+    4.9,
+    "Obj_TBox_A_01"
+   ],
+   [
+    5.5,
+    "Obj_Kokiri_MessageBoard_A_02"
+   ],
+   [
+    7.4,
+    "EnvironmentalAnimal_Squirrel"
+   ],
+   [
+    7.8,
+    "CameraPassThroughUnderAreaBox"
+   ]
+  ]
+ },
+ "9725242744547055868": {
+  "hash": 9725242744547055868,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": "KokiriForest_TreasureBox_NaviChatOff",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+   "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -49.32,
+   112.26,
+   -40.89
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.5,
+    "Obj_TBox_A_01"
+   ],
+   [
+    2.4,
+    "Obj_Kokiri_MessageBoard_A_02"
+   ],
+   [
+    4.1,
+    "Obj_TBox_A_01"
+   ],
+   [
+    4.9,
+    "Obj_TBox_A_01"
+   ],
+   [
+    7.3,
+    "Obj_Kokiri_Door_A_02"
+   ],
+   [
+    7.4,
+    "Obj_Kokiri_DoorPillar_A_01"
+   ]
+  ]
+ },
+ "12786193094758345086": {
+  "hash": 12786193094758345086,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": "KokiriForest_TreasureBox_NaviChatOff",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+   "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -53.2,
+   112.26,
+   -42.1
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.6,
+    "Obj_TBox_A_01"
+   ],
+   [
+    2.9,
+    "Obj_TBox_A_01"
+   ],
+   [
+    4.1,
+    "Obj_TBox_A_01"
+   ],
+   [
+    5.3,
+    "Obj_Kokiri_MessageBoard_A_02"
+   ],
+   [
+    7.8,
+    "EnvironmentalAnimal_Squirrel"
+   ],
+   [
+    8.6,
+    "Obj_Kokiri_Door_A_02"
+   ]
+  ]
+ },
+ "16757992849254467386": {
+  "hash": 16757992849254467386,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Sword_Kokiri",
+  "event": "Get_StoneOfForest_GetSword",
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+   "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -82.62,
+   122.26,
+   32.95
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.8,
+    "Animal_Kokiri_Insect_C"
+   ],
+   [
+    1.9,
+    "Animal_Kokiri_Insect_D"
+   ],
+   [
+    2.0,
+    "Animal_Kokiri_Insect_B"
+   ],
+   [
+    2.3,
+    "Animal_Kokiri_Insect_A"
+   ],
+   [
+    12.2,
+    "Obj_Rupee_Blue"
+   ],
+   [
+    14.7,
+    "Obj_Rupee_Blue"
+   ]
+  ]
+ },
+ "14818888396401495482": {
+  "hash": 14818888396401495482,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Green",
+  "event": null,
+  "dynamic": {},
+  "name": "DekuTree_T",
+  "files": [
+   "KokiriForest/KokiriForest_Adult_Static.bcett.byml.zs",
+   "KokiriForest/KokiriForest_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -70.84,
+   103.58,
+   -63.39
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "Enemy_Scrub_Deku_Brothers",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "HidingHole_Level_Hole_01_Prefab_8f2e"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.1,
+    "DestinationAnchor"
+   ],
+   [
+    2.1,
+    "Enemy_Scrub_Deku_Brothers"
+   ],
+   [
+    2.1,
+    "Enemy_Scrub_Deku_Leaf"
+   ],
+   [
+    6.0,
+    "Enemy_Scrub_Deku_Brothers"
+   ],
+   [
+    6.0,
+    "Enemy_Scrub_Deku_Leaf"
+   ]
+  ]
+ },
+ "17479747339356189279": {
+  "hash": 17479747339356189279,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "LostWood/LostWood_Adult_Dynamic.bcett.byml.zs",
+   "LostWood/LostWood_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -49.4,
+   104.53,
+   71.85
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    27.1,
+    "Animal_Kokiri_Insect_A"
+   ],
+   [
+    27.7,
+    "Animal_Kokiri_Insect_B"
+   ],
+   [
+    27.7,
+    "Animal_Kokiri_Insect_C"
+   ],
+   [
+    27.8,
+    "Animal_Kokiri_Insect_D"
+   ],
+   [
+    28.6,
+    "Animal_Kokiri_Insect_A"
+   ],
+   [
+    28.6,
+    "Animal_Kokiri_Insect_B"
+   ]
+  ]
+ },
+ "7390716194495618474": {
+  "hash": 7390716194495618474,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+  "drop": "TBox_Rupee_Green",
+  "event": "MiniGame_ChoiceTreasure_OpenMissTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_OrnamentalRupee_Green_MiniGame",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -74.92,
+   97.88,
+   15.65
+  ],
+  "links_out": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ],
+   [
+    "StartPos",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    6.0,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.5,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    6.5,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.6,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ]
+  ]
+ },
+ "1775586642693927992": {
+  "hash": 1775586642693927992,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+  "drop": "Obj_MiniGame_SmallKey",
+  "event": "MiniGame_ChoiceTreasure_OpenHitTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_MiniGame_SmallKey",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -74.92,
+   97.88,
+   9.66
+  ],
+  "links_out": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    5.7,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    5.7,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    5.9,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    5.9,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.0,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ]
+  ]
+ },
+ "12114077686306649660": {
+  "hash": 12114077686306649660,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+  "drop": "TBox_Rupee_Green",
+  "event": "MiniGame_ChoiceTreasure_OpenMissTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_OrnamentalRupee_Green_MiniGame",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -85.92,
+   97.88,
+   15.65
+  ],
+  "links_out": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ],
+   [
+    "StartPos",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    6.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.6,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    6.6,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.8,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ]
+  ]
+ },
+ "5350594583391365806": {
+  "hash": 5350594583391365806,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+  "drop": "Obj_MiniGame_SmallKey",
+  "event": "MiniGame_ChoiceTreasure_OpenHitTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_MiniGame_SmallKey",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -85.92,
+   97.88,
+   9.66
+  ],
+  "links_out": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    5.9,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    5.9,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    6.1,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    6.1,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ]
+  ]
+ },
+ "9591654059707200528": {
+  "hash": 9591654059707200528,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+  "drop": "TBox_Rupee_Green",
+  "event": "MiniGame_ChoiceTreasure_OpenMissTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_OrnamentalRupee_Green_MiniGame",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -96.92,
+   97.88,
+   15.65
+  ],
+  "links_out": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ],
+   [
+    "StartPos",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    6.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.6,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    6.6,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.8,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ]
+  ]
+ },
+ "12763522142548402103": {
+  "hash": 12763522142548402103,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+  "drop": "Obj_MiniGame_SmallKey",
+  "event": "MiniGame_ChoiceTreasure_OpenHitTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_MiniGame_SmallKey",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -96.92,
+   97.88,
+   9.66
+  ],
+  "links_out": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    5.9,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    5.9,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    6.1,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    6.1,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ]
+  ]
+ },
+ "13633455645485504369": {
+  "hash": 13633455645485504369,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": "MiniGame_ChoiceTreasure_OpenMissTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_OrnamentalRupee_Blue_MiniGame",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -107.92,
+   97.88,
+   15.65
+  ],
+  "links_out": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ],
+   [
+    "StartPos",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    6.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.6,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    6.6,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.8,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ]
+  ]
+ },
+ "6478285350658826847": {
+  "hash": 6478285350658826847,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+  "drop": "Obj_MiniGame_SmallKey",
+  "event": "MiniGame_ChoiceTreasure_OpenHitTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_MiniGame_SmallKey",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -107.92,
+   97.88,
+   9.66
+  ],
+  "links_out": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    5.9,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    5.9,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    6.1,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    6.1,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ]
+  ]
+ },
+ "15659683110284072977": {
+  "hash": 15659683110284072977,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+  "drop": "TBox_Rupee_Blue",
+  "event": "MiniGame_ChoiceTreasure_OpenMissTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_OrnamentalRupee_Blue_MiniGame",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -118.92,
+   97.88,
+   15.65
+  ],
+  "links_out": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ],
+   [
+    "StartPos",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    6.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    6.6,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    6.6,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.8,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ]
+  ]
+ },
+ "18239509117326156183": {
+  "hash": 18239509117326156183,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+  "drop": "Obj_MiniGame_SmallKey",
+  "event": "MiniGame_ChoiceTreasure_OpenLastHitTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_MiniGame_SmallKey",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -118.92,
+   97.88,
+   9.66
+  ],
+  "links_out": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "links_in": [
+   [
+    "Obj_HrlCity_Shop_TBox_A_01",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    5.9,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    5.9,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    6.1,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    6.1,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    6.3,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ]
+  ]
+ },
+ "16881481538337649070": {
+  "hash": 16881481538337649070,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_02",
+  "drop": "Obj_Heart_Piece",
+  "event": "MiniGame_ChoiceTreasure_OpenClearTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_Heart_Piece_MiniGame",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -131.58,
+   97.89,
+   12.67
+  ],
+  "links_out": [
+   [
+    "StartPos",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_HrlCity_Shop_TBox_A_02"
+   ],
+   [
+    7.2,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    7.3,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    7.3,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    13.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    13.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ]
+  ]
+ },
+ "6781536951709667179": {
+  "hash": 6781536951709667179,
+  "gyaml": "Obj_HrlCity_Shop_TBox_A_02",
+  "drop": "TBox_Rupee_Red",
+  "event": "MiniGame_ChoiceTreasure_OpenClearTreasureBox",
+  "dynamic": {
+   "DropViewActor": "Obj_OrnamentalRupee_Red_MiniGame",
+   "IsEnableRepeatOpen": true
+  },
+  "name": null,
+  "files": [
+   "Market/Market_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -131.58,
+   97.89,
+   12.67
+  ],
+  "links_out": [
+   [
+    "StartPos",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [
+   "MiniGame_SequentialChoiceTreasure_cbde"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_HrlCity_Shop_TBox_A_02"
+   ],
+   [
+    7.2,
+    "Obj_HrlCity_Shop_DoorChainLock_A_01"
+   ],
+   [
+    7.3,
+    "Obj_HrlCity_Shop_Door_A_01"
+   ],
+   [
+    7.3,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    13.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ],
+   [
+    13.0,
+    "Obj_HrlCity_Shop_TBox_A_01"
+   ]
+  ]
+ },
+ "1764383515296652106": {
+  "hash": 1764383515296652106,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "SacredForestMeadow/SacredForestMeadow_Adult_Dynamic.bcett.byml.zs",
+   "SacredForestMeadow/SacredForestMeadow_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   12.1,
+   95.98,
+   -73.77
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    19.2,
+    "AbilityChangeAreaForSceneChange"
+   ],
+   [
+    24.3,
+    "LookAttentionActor_HidingHoleEntrance"
+   ],
+   [
+    33.2,
+    "Animal_Kokiri_Insect_A"
+   ],
+   [
+    33.3,
+    "Animal_Kokiri_Insect_C"
+   ],
+   [
+    33.5,
+    "Animal_Kokiri_Insect_D"
+   ],
+   [
+    33.6,
+    "Animal_Kokiri_Insect_B"
+   ]
+  ]
+ },
+ "7995233962349162969": {
+  "hash": 7995233962349162969,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "SacredForestMeadow/SacredForestMeadow_Adult_Static.bcett.byml.zs",
+   "SacredForestMeadow/SacredForestMeadow_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -3.7,
+   82.28,
+   67.23
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "HidingHole_Level_Hole_21_Prefab_6c91"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.7,
+    "DestinationAnchor"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ],
+   [
+    1.2,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "8858270325665149688": {
+  "hash": 8858270325665149688,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 11
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   21.13,
+   56.4,
+   98.36
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    10.4,
+    "NaviAnchorAction1"
+   ],
+   [
+    11.5,
+    "Obj_ShadowTemple_GlassTruth_A_08"
+   ],
+   [
+    11.9,
+    "Obj_Well_Monument_A_05"
+   ],
+   [
+    16.4,
+    "Obj_ShadowTemple_CandleStick_A_04"
+   ],
+   [
+    18.2,
+    "Obj_ShadowTemple_CandleStick_A_04"
+   ],
+   [
+    39.3,
+    "Enemy_Beamos"
+   ]
+  ]
+ },
+ "12345747231768877602": {
+  "hash": 12345747231768877602,
+  "gyaml": "Obj_TBox_GlassTruth_A_01",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 15
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   128.02,
+   51.98,
+   10.49
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    4.6,
+    "Obj_Well_Monument_A_04"
+   ],
+   [
+    4.8,
+    "NaviAnchorAction1"
+   ],
+   [
+    19.3,
+    "Obj_HookShotTarget_A_01"
+   ],
+   [
+    19.3,
+    "Obj_ShadowTemple_HookShotDecoration_A_02"
+   ],
+   [
+    22.0,
+    "Obj_ShadowTemple_GlassTruth_A_09"
+   ],
+   [
+    24.1,
+    "Obj_Pot_A_07"
+   ]
+  ]
+ },
+ "9852624243105848451": {
+  "hash": 9852624243105848451,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Tbox_MagicJar_Large",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 19
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -190.06,
+   41.29,
+   -69.43
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    16.3,
+    "NaviAnchorAction1"
+   ],
+   [
+    24.7,
+    "Obj_ShadowTemple_GlassTruth_A_10"
+   ],
+   [
+    27.0,
+    "Obj_Door_Hinge_A_01"
+   ],
+   [
+    31.7,
+    "Obj_Well_Monument_A_02"
+   ],
+   [
+    33.7,
+    "Enemy_Floormaster"
+   ],
+   [
+    36.1,
+    "Enemy_Floormaster"
+   ]
+  ]
+ },
+ "13528903653876646082": {
+  "hash": 13528903653876646082,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Dungeon_Map",
+  "event": "ShadowTemple_GetMap",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 3
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   2.63,
+   90.54,
+   -26.21
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ShadowTemple_Level_Room_B1F_C_Prefab_95d1"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.6,
+    "DestinationAnchor"
+   ],
+   [
+    1.5,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "14535080241831873137": {
+  "hash": 14535080241831873137,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_HoverBoot",
+  "event": "SageOfShdawo_GetHoverBoots",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 4
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -72.62,
+   90.52,
+   -10.15
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ShadowTemple_Level_Room_B1F_D_Prefab_8ce8"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.3,
+    "DestinationAnchor"
+   ],
+   [
+    0.4,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    1.0,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "1733372171176975157": {
+  "hash": 1733372171176975157,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Dungeon_Compass",
+  "event": "ShadowTemple_GetCompass",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 7
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   84.08,
+   87.31,
+   22.88
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ShadowTemple_Level_Room_B2F_B_Prefab_3238"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.8,
+    "DestinationAnchor"
+   ],
+   [
+    1.5,
+    "DestinationAnchor"
+   ],
+   [
+    1.9,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "1111717451118505545": {
+  "hash": 1111717451118505545,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 6
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   98.9,
+   87.19,
+   -25.66
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "ShadowTemple_Level_Room_B2F_C_Prefab_d86c"
+  ],
+  "near": [
+   [
+    2.9,
+    "Obj_Pot_A_07"
+   ],
+   [
+    3.0,
+    "Obj_Pot_A_07"
+   ],
+   [
+    3.5,
+    "SupplyItemResetSystemActor"
+   ],
+   [
+    4.7,
+    "Obj_silverRupeeCounter_04"
+   ],
+   [
+    5.5,
+    "DestinationAnchor"
+   ],
+   [
+    8.8,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "5781953901224064730": {
+  "hash": 5781953901224064730,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 11
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -1.47,
+   63.5,
+   98.65
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "ShadowTemple_Level_Room_B3FB4F_C_Prefab_a272"
+  ],
+  "near": [
+   [
+    1.0,
+    "SupplyItemResetSystemActor"
+   ],
+   [
+    1.9,
+    "Obj_Pot_A_07"
+   ],
+   [
+    1.9,
+    "Obj_Pot_A_07"
+   ],
+   [
+    11.6,
+    "Obj_Gimmick_AnswerPosAnchor"
+   ],
+   [
+    14.6,
+    "Obj_Gimmick_AnswerPosAnchor"
+   ],
+   [
+    18.3,
+    "Obj_ShadowTemple_FallingCeiling_A_01"
+   ]
+  ]
+ },
+ "10344372963276519235": {
+  "hash": 10344372963276519235,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 31
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   177.76,
+   60.9,
+   95.24
+  ],
+  "links_out": [
+   [
+    "MapIconOffsetAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.7,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    3.0,
+    "Enemy_Skulltula_Gold"
+   ],
+   [
+    3.4,
+    "Obj_TBox_GlassTruth_A_01"
+   ],
+   [
+    3.6,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    4.8,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    5.7,
+    "MapIconOffsetAnchor"
+   ]
+  ]
+ },
+ "3718790579351798247": {
+  "hash": 3718790579351798247,
+  "gyaml": "Obj_TBox_GlassTruth_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 31
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   177.76,
+   60.9,
+   98.61
+  ],
+  "links_out": [
+   [
+    "MapIconOffsetAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    2.8,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    2.8,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    3.1,
+    "Enemy_Skulltula_Gold"
+   ],
+   [
+    3.4,
+    "Obj_TBox_A_01"
+   ],
+   [
+    4.8,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    6.4,
+    "DungeonRoomArea"
+   ]
+  ]
+ },
+ "169081039115821925": {
+  "hash": 169081039115821925,
+  "gyaml": "Obj_TBox_GlassTruth_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 16
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   118.39,
+   52.14,
+   -17.67
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "ShadowTemple_Level_Room_B3FB4F_I_Prefab_ff08"
+  ],
+  "near": [
+   [
+    0.6,
+    "WallCrack"
+   ],
+   [
+    4.4,
+    "Enemy_Gibdo"
+   ],
+   [
+    7.6,
+    "Obj_MoveSpike_A_01"
+   ],
+   [
+    8.8,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    10.2,
+    "VolumeFogArea"
+   ],
+   [
+    10.4,
+    "Obj_Pot_A_07"
+   ]
+  ]
+ },
+ "5681107746948738726": {
+  "hash": 5681107746948738726,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "TBox_Rupee_Green",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 16
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   101.19,
+   52.1,
+   -17.6
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ShadowTemple_Level_Room_B3FB4F_I_Prefab_ff08"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.7,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ],
+   [
+    2.5,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "17902550525792072472": {
+  "hash": 17902550525792072472,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 21
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -181.86,
+   41.39,
+   -12.58
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ShadowTemple_Level_Room_B3FB4F_L_Prefab_96ae"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.6,
+    "DestinationAnchor"
+   ],
+   [
+    1.5,
+    "DestinationAnchor"
+   ],
+   [
+    3.1,
+    "Enemy_Floormaster_Truth"
+   ]
+  ]
+ },
+ "9221365632831348137": {
+  "hash": 9221365632831348137,
+  "gyaml": "Obj_TBox_A_03",
+  "drop": "Item_Dungeon_BossKey",
+  "event": "ForesetTemple_GetBossKey",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 19
+  },
+  "name": null,
+  "files": [
+   "ShadowTemple/ShadowTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -173.23,
+   41.41,
+   -69.1
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "ShadowTemple_Level_Room_B3FB4F_M_Prefab_beed"
+  ],
+  "near": [
+   [
+    4.2,
+    "Obj_ShadowTemple_SpikeBoard_A_01"
+   ],
+   [
+    4.6,
+    "Enemy_ReDead"
+   ],
+   [
+    7.6,
+    "DestinationAnchor"
+   ],
+   [
+    8.8,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    10.0,
+    "DestinationAnchor"
+   ],
+   [
+    10.1,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "5309180490719879013": {
+  "hash": 5309180490719879013,
+  "gyaml": "Obj_TBox_A_06",
+  "drop": "TBox_Shield_Deku",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 2,
+   "Drop__CheckActor": "TBox_Shield_Deku",
+   "Drop__DropActor_Substitute": "TBox_Rupee_Red"
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -56.03,
+   104.75,
+   -67.57
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    1.8,
+    "Enemy_FlyingPot_SpiritTemple"
+   ],
+   [
+    2.1,
+    "Enemy_FlyingPot_SpiritTemple"
+   ],
+   [
+    8.1,
+    "CrawlAnchor"
+   ],
+   [
+    9.4,
+    "ShowToCameraPoint"
+   ],
+   [
+    12.7,
+    "CrawlAnchor"
+   ],
+   [
+    12.7,
+    "NaviAnchorAction1"
+   ]
+  ]
+ },
+ "5703423643219134246": {
+  "hash": 5703423643219134246,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 4,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -15.32,
+   104.74,
+   -60.24
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "SpiritTemple_Level_Room_05_Prefab_b035"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.3,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "EventRequestActor"
+   ],
+   [
+    3.7,
+    "Obj_silverRupeeCounter_06"
+   ],
+   [
+    4.0,
+    "Obj_RupeeToken_Silver"
+   ],
+   [
+    4.0,
+    "Obj_SpiritTemple_FallNet_B_01"
+   ]
+  ]
+ },
+ "1501288453962537671": {
+  "hash": 1501288453962537671,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_BombchuBundle_Small",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 6,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -39.25,
+   119.15,
+   -39.62
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "SpiritTemple_Level_Room_07_Prefab_30f0"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    1.3,
+    "DestinationAnchor"
+   ],
+   [
+    1.4,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "EventRequestActor"
+   ],
+   [
+    6.2,
+    "Obj_SwitchHit_A_05"
+   ],
+   [
+    7.0,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "13852283723126411131": {
+  "hash": 13852283723126411131,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Dungeon_Map",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 7
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   0.0,
+   114.15,
+   -57.58
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "SpiritTemple_Level_Room_08_Prefab_12d6"
+  ],
+  "near": [
+   [
+    0.1,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    0.5,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ],
+   [
+    2.4,
+    "DestinationAnchor"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "2203243501006528435": {
+  "hash": 2203243501006528435,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 7,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -10.9,
+   124.76,
+   -60.57
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "Obj_TriForcePoint_A_08",
+    "Reference"
+   ],
+   [
+    "EventProxyRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "SpiritTemple_Level_Room_08_Prefab_3008"
+  ],
+  "near": [
+   [
+    0.7,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "EventProxyRequestActor"
+   ],
+   [
+    10.6,
+    "Obj_ScarecrowMarker_B_00"
+   ],
+   [
+    10.6,
+    "Npc_Pierre_CallOcarina"
+   ],
+   [
+    11.3,
+    "SupplyItemResetSystemActor"
+   ],
+   [
+    11.7,
+    "DungeonRoomCenterAnchor"
+   ]
+  ]
+ },
+ "17407066694905911064": {
+  "hash": 17407066694905911064,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 9
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -61.22,
+   132.75,
+   -27.68
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "SpiritTemple_Level_Room_10_01_Prefab_13bc"
+  ],
+  "near": [
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    0.1,
+    "PushAirWall_Box"
+   ],
+   [
+    2.2,
+    "DestinationAnchor"
+   ],
+   [
+    2.2,
+    "EventRequestActor"
+   ],
+   [
+    4.9,
+    "Obj_SolarSwitch_A_01"
+   ],
+   [
+    5.5,
+    "Obj_SpiritTemple_MovableBox_A_01"
+   ]
+  ]
+ },
+ "15633505270333176438": {
+  "hash": 15633505270333176438,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Item_Dungeon_Compass",
+  "event": "SpiritTemple_GetCompass",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 14
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   13.0,
+   104.76,
+   -63.74
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventProxyRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "SpiritTemple_Level_Room_15_Prefab_54dc"
+  ],
+  "near": [
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    0.9,
+    "DestinationAnchor"
+   ],
+   [
+    9.2,
+    "CameraChangeAreaBox"
+   ],
+   [
+    11.7,
+    "Enemy_Skulltula_Gold"
+   ],
+   [
+    14.3,
+    "Obj_CandleStick_A_02"
+   ],
+   [
+    15.4,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "4277978357934400600": {
+  "hash": 4277978357934400600,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 16
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   48.89,
+   100.28,
+   -77.98
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "SpiritTemple_Level_Room_17_Prefab_7580"
+  ],
+  "near": [
+   [
+    0.2,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    6.0,
+    "DestinationAnchor"
+   ],
+   [
+    6.9,
+    "DungeonRoomArea"
+   ],
+   [
+    7.0,
+    "DestinationAnchor"
+   ],
+   [
+    7.6,
+    "Obj_SwitchShutter_A_06"
+   ],
+   [
+    8.0,
+    "Obj_SpiritTemple_SwitchShutter_A_01"
+   ]
+  ]
+ },
+ "12909857529499414969": {
+  "hash": 12909857529499414969,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_BombBundle_Small",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 18,
+   "SpawnType": 1
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   43.4,
+   119.15,
+   -47.54
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "SpiritTemple_Level_Room_19_Prefab_c32c"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    2.5,
+    "EventRequestActor"
+   ],
+   [
+    3.3,
+    "Obj_SolarSwitch_A_02"
+   ],
+   [
+    6.2,
+    "DestinationAnchor"
+   ],
+   [
+    6.2,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "14040210993541550542": {
+  "hash": 14040210993541550542,
+  "gyaml": "Obj_TBox_GlassTruth_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 23
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   57.96,
+   132.1,
+   4.74
+  ],
+  "links_out": [
+   [
+    "MapIconOffsetAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    0.8,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    2.8,
+    "DestinationAnchor"
+   ],
+   [
+    3.2,
+    "DungeonRoomArea"
+   ],
+   [
+    3.6,
+    "DestinationAnchor"
+   ],
+   [
+    4.0,
+    "Obj_SwitchShutter_A_06"
+   ],
+   [
+    4.3,
+    "Obj_TBox_GlassTruth_A_01"
+   ]
+  ]
+ },
+ "9143177002861777924": {
+  "hash": 9143177002861777924,
+  "gyaml": "Obj_TBox_GlassTruth_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 23
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   53.66,
+   132.1,
+   4.74
+  ],
+  "links_out": [
+   [
+    "MapIconOffsetAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    0.7,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    2.7,
+    "DestinationAnchor"
+   ],
+   [
+    3.2,
+    "DungeonRoomArea"
+   ],
+   [
+    3.6,
+    "DestinationAnchor"
+   ],
+   [
+    4.0,
+    "Obj_SwitchShutter_A_06"
+   ],
+   [
+    4.3,
+    "PushAirWall_DoorFront"
+   ]
+  ]
+ },
+ "12042193296697281461": {
+  "hash": 12042193296697281461,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 26
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   55.8,
+   130.89,
+   -50.03
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "SpiritTemple_Level_Room_27_Prefab_5487"
+  ],
+  "near": [
+   [
+    2.9,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    6.6,
+    "DestinationAnchor"
+   ],
+   [
+    7.3,
+    "DungeonRoomArea"
+   ],
+   [
+    7.5,
+    "DestinationAnchor"
+   ],
+   [
+    8.2,
+    "Obj_SwitchShutter_A_06"
+   ],
+   [
+    8.6,
+    "Obj_SpiritTemple_SwitchShutter_A_01"
+   ]
+  ]
+ },
+ "16272168033146555902": {
+  "hash": 16272168033146555902,
+  "gyaml": "Obj_TBox_A_03",
+  "drop": "Item_Dungeon_BossKey",
+  "event": "ForesetTemple_GetBossKey",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 29
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   19.8,
+   151.02,
+   -65.09
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "SpiritTemple_Level_Room_30_Prefab_ca21"
+  ],
+  "near": [
+   [
+    0.0,
+    "Obj_FireWall_A_02"
+   ],
+   [
+    1.1,
+    "DestinationAnchor"
+   ],
+   [
+    1.9,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    2.2,
+    "Enemy_TorchSlug"
+   ],
+   [
+    2.2,
+    "Enemy_TorchSlug"
+   ],
+   [
+    2.2,
+    "Enemy_TorchSlug"
+   ]
+  ]
+ },
+ "13828480906010430010": {
+  "hash": 13828480906010430010,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_BombBundle_Small",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 31
+  },
+  "name": null,
+  "files": [
+   "SpiritTemple/SpiritTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -25.43,
+   158.21,
+   -51.29
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "SpiritTemple_Level_Room_32_Prefab_a8f7"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.9,
+    "DestinationAnchor"
+   ],
+   [
+    2.8,
+    "EventRequestActor"
+   ],
+   [
+    13.0,
+    "Obj_SolarSwitch_A_02"
+   ],
+   [
+    16.6,
+    "DestinationAnchor"
+   ]
+  ]
+ },
+ "16384925224245172970": {
+  "hash": 16384925224245172970,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Map",
+  "event": "WaterTemple_GetMap",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 17
+  },
+  "name": null,
+  "files": [
+   "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   36.75,
+   119.51,
+   -4.49
+  ],
+  "links_out": [
+   [
+    "MapIconOffsetAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [
+   "WaterTemple_Level_Room_17_Prefab_d945"
+  ],
+  "near": [
+   [
+    2.9,
+    "MapIconOffsetAnchor"
+   ],
+   [
+    3.5,
+    "Obj_WaterTemple_StoneTablet_A_01"
+   ],
+   [
+    6.0,
+    "NaviAnchorAction1"
+   ],
+   [
+    6.0,
+    "DestinationAnchor"
+   ],
+   [
+    6.0,
+    "CheckAttentionActor_WaterTemple_Triforce"
+   ],
+   [
+    6.8,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "18099019250896853049": {
+  "hash": 18099019250896853049,
+  "gyaml": "Obj_TBox_A_01_NoBake",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 18
+  },
+  "name": null,
+  "files": [
+   "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   43.75,
+   99.98,
+   -4.5
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "WaterTemple_Level_Room_18_Prefab_944d"
+  ],
+  "near": [
+   [
+    0.1,
+    "DestinationAnchor"
+   ],
+   [
+    0.1,
+    "PushAirWall_Box"
+   ],
+   [
+    0.5,
+    "Obj_WaterTemple_WaterPlane_A_01"
+   ],
+   [
+    0.8,
+    "DestinationAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ],
+   [
+    3.4,
+    "Enemy_Spike"
+   ]
+  ]
+ },
+ "16490222392193949581": {
+  "hash": 16490222392193949581,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 4,
+   "FloorNumber": 1,
+   "IsForceMapIconFloor": true
+  },
+  "name": null,
+  "files": [
+   "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   56.87,
+   118.39,
+   -28.12
+  ],
+  "links_out": [
+   [
+    "DungeonRoomCenterAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [
+   "WaterTemple_Level_Room_04_Prefab_d71f"
+  ],
+  "near": [
+   [
+    8.7,
+    "Obj_WaterTemple_WaterPlane_A_01"
+   ],
+   [
+    10.6,
+    "DestinationAnchor"
+   ],
+   [
+    10.8,
+    "Obj_SwitchHit_A_06"
+   ],
+   [
+    12.0,
+    "Obj_WaterTemple_Fountain_A_01"
+   ],
+   [
+    12.4,
+    "ForbidAutoPlacementAreaBox"
+   ],
+   [
+    12.8,
+    "EventRequestActor"
+   ]
+  ]
+ },
+ "3693930347660122883": {
+  "hash": 3693930347660122883,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 20
+  },
+  "name": null,
+  "files": [
+   "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -1.21,
+   112.0,
+   -51.85
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "WaterTemple_Level_Room_20_Prefab_91fd"
+  ],
+  "near": [
+   [
+    7.5,
+    "Obj_MovableBox_A_05"
+   ],
+   [
+    7.5,
+    "Obj_Gimmick_AnswerPosAnchor"
+   ],
+   [
+    8.0,
+    "Obj_WaterTemple_WaterPlane_A_01"
+   ],
+   [
+    9.7,
+    "Obj_Gimmick_AnswerPosAnchor"
+   ],
+   [
+    9.8,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    10.3,
+    "Obj_Gimmick_AnswerPosAnchor"
+   ]
+  ]
+ },
+ "16424266294822218796": {
+  "hash": 16424266294822218796,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Dungeon_Compass",
+  "event": "WaterTemple_GetCompass",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 3
+  },
+  "name": null,
+  "files": [
+   "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -68.26,
+   104.26,
+   20.15
+  ],
+  "links_out": [
+   [
+    "DungeonRoomIdAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [
+   "WaterTemple_Level_Room_03_Prefab_d37d"
+  ],
+  "near": [
+   [
+    2.0,
+    "Obj_Pot_A_04"
+   ],
+   [
+    2.0,
+    "Obj_Pot_A_04"
+   ],
+   [
+    3.9,
+    "SupplyItemResetSystemActor"
+   ],
+   [
+    18.4,
+    "Obj_WaterTemple_WaterPlane_A_01"
+   ],
+   [
+    18.5,
+    "Enemy_Tektite_Blue"
+   ],
+   [
+    18.5,
+    "Enemy_Tektite_Blue"
+   ]
+  ]
+ },
+ "11682974908842171598": {
+  "hash": 11682974908842171598,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Red",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 2
+  },
+  "name": null,
+  "files": [
+   "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   12.0,
+   92.71,
+   -4.5
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "WaterTemple_Level_Room_02_Prefab_b51d"
+  ],
+  "near": [
+   [
+    6.3,
+    "Obj_WaterTemple_SwitchShutter_A_03"
+   ],
+   [
+    6.3,
+    "Obj_WaterTemple_SwitchShutter_A_03"
+   ],
+   [
+    6.5,
+    "Enemy_ShellBlade"
+   ],
+   [
+    6.8,
+    "Obj_WaterTemple_WaterPlane_A_01"
+   ],
+   [
+    7.8,
+    "DungeonRoomArea"
+   ],
+   [
+    8.3,
+    "Enemy_Spike"
+   ]
+  ]
+ },
+ "18059711820131847165": {
+  "hash": 18059711820131847165,
+  "gyaml": "Obj_TBox_A_02",
+  "drop": "Item_Longshot",
+  "event": "WaterTemple_Room07_LongHook_FocusOnGimmick",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 7
+  },
+  "name": null,
+  "files": [
+   "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -77.9,
+   126.6,
+   -99.17
+  ],
+  "links_out": [
+   [
+    "DestinationAnchor",
+    "Reference"
+   ],
+   [
+    "DestinationAnchor",
+    "Reference"
+   ]
+  ],
+  "links_in": [],
+  "groups": [
+   "WaterTemple_Level_Room_07_Prefab_aa21"
+  ],
+  "near": [
+   [
+    4.4,
+    "DestinationAnchor"
+   ],
+   [
+    6.8,
+    "DestinationAnchor"
+   ],
+   [
+    8.5,
+    "CameraChangeAreaBox"
+   ],
+   [
+    10.0,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    10.0,
+    "DestinationAnchor"
+   ],
+   [
+    10.5,
+    "DungeonRoomArea"
+   ]
+  ]
+ },
+ "2503861086004941173": {
+  "hash": 2503861086004941173,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_Dungeon_SmallKey",
+  "event": null,
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 8
+  },
+  "name": null,
+  "files": [
+   "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   -44.0,
+   102.3,
+   -19.5
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "WaterTemple_Level_Room_08_Prefab_f8c3"
+  ],
+  "near": [
+   [
+    2.4,
+    "Obj_WaterTemple_WaterPlane_A_01"
+   ],
+   [
+    6.5,
+    "Obj_WaterTemple_WaterPlane_A_01"
+   ],
+   [
+    8.3,
+    "EventRequestActor"
+   ],
+   [
+    8.3,
+    "DungeonRoomCenterAnchor"
+   ],
+   [
+    8.3,
+    "Obj_WaterTemple_SwitchShutter_A_07"
+   ],
+   [
+    8.3,
+    "Obj_WaterTemple_SwitchShutter_A_07"
+   ]
+  ]
+ },
+ "10378828369334876242": {
+  "hash": 10378828369334876242,
+  "gyaml": "Obj_TBox_A_03",
+  "drop": "Item_Dungeon_BossKey",
+  "event": "ForesetTemple_GetBossKey",
+  "dynamic": {
+   "DefaultDungeonRoomIndex": 15
+  },
+  "name": null,
+  "files": [
+   "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   33.12,
+   103.66,
+   -81.49
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [
+   "WaterTemple_Level_Room_15_Prefab_5cf6"
+  ],
+  "near": [
+   [
+    1.2,
+    "Obj_WaterTemple_WaterPlane_A_01"
+   ],
+   [
+    8.2,
+    "DungeonRoomIdAnchor"
+   ],
+   [
+    9.1,
+    "DungeonRoomArea"
+   ],
+   [
+    9.3,
+    "Obj_WaterTemple_SwitchShutter_A_01"
+   ],
+   [
+    9.3,
+    "PushAirWall_DoorFront"
+   ],
+   [
+    9.6,
+    "DungeonRoomArea"
+   ]
+  ]
+ },
+ "3130048366421939233": {
+  "hash": 3130048366421939233,
+  "gyaml": "Obj_TBox_A_02_NoBake",
+  "drop": "Obj_Heart_Piece",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "ZoraDomain/ZoraDomain_Child_Static.bcett.byml.zs"
+  ],
+  "pos": [
+   28.8,
+   100.39,
+   -4.88
+  ],
+  "links_out": [],
+  "links_in": [
+   [
+    "HeartPieceAnchor",
+    "Reference"
+   ],
+   [
+    "EventRequestActor",
+    "Reference"
+   ]
+  ],
+  "groups": [
+   "ZoraDomain_Child_Prefab_2151"
+  ],
+  "near": [
+   [
+    0.0,
+    "DestinationAnchor"
+   ],
+   [
+    0.0,
+    "PushAirWall_Box"
+   ],
+   [
+    0.1,
+    "Obj_TBoxPedestal_A_01"
+   ],
+   [
+    0.1,
+    "HeartPieceAnchor"
+   ],
+   [
+    2.3,
+    "EventRequestActor"
+   ],
+   [
+    2.8,
+    "Obj_CandleStick_TimeExtinguish_A_01"
+   ]
+  ]
+ },
+ "15055117029957340138": {
+  "hash": 15055117029957340138,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "TBox_Rupee_Purple",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "ZoraFountain/ZoraFountain_Adult_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   33.01,
+   108.49,
+   1.7
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    6.5,
+    "EnvironmentalAnimal_Bird_Single"
+   ],
+   [
+    10.0,
+    "EnvironmentalAnimal_Bird_Swarm_Few"
+   ],
+   [
+    21.0,
+    "EnvironmentalAnimal_Bird_Single"
+   ],
+   [
+    30.9,
+    "Enemy_Octorok"
+   ],
+   [
+    33.5,
+    "Enemy_Octorok"
+   ],
+   [
+    34.4,
+    "EnvironmentalAnimal_Bird_Single"
+   ]
+  ]
+ },
+ "8838426083116998768": {
+  "hash": 8838426083116998768,
+  "gyaml": "Obj_TBox_A_01",
+  "drop": "Item_ScrubBusinessSeed",
+  "event": null,
+  "dynamic": {},
+  "name": null,
+  "files": [
+   "ZoraRiver/ZoraRiver_Adult_Dynamic.bcett.byml.zs",
+   "ZoraRiver/ZoraRiver_Child_Dynamic.bcett.byml.zs"
+  ],
+  "pos": [
+   -16.72,
+   74.93,
+   29.73
+  ],
+  "links_out": [],
+  "links_in": [],
+  "groups": [],
+  "near": [
+   [
+    20.0,
+    "AbilityChangeAreaForSceneChange"
+   ],
+   [
+    34.2,
+    "Obj_Rupee_Blue"
+   ],
+   [
+    34.3,
+    "Obj_Rupee_Blue"
+   ],
+   [
+    34.5,
+    "Obj_Rupee_Blue"
+   ],
+   [
+    35.6,
+    "Obj_Rupee_Green"
+   ],
+   [
+    39.2,
+    "Obj_Rupee_Green"
+   ]
+  ]
+ }
+}

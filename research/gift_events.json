@@ -1,0 +1,9662 @@
+[
+{
+"flow": "ActionGuide",
+"event": 21,
+"what": "switch",
+"param": "GameData",
+"value": "Shop_SelectItemName",
+"entries": [
+"ActionGuideForShop"
+]
+},
+{
+"flow": "ActionGuide",
+"event": 26,
+"what": "switch",
+"param": "GameData",
+"value": "Shop_SelectItemName",
+"entries": [
+"ActionGuideForShop"
+]
+},
+{
+"flow": "ActionGuide",
+"event": 31,
+"what": "switch",
+"param": "GameData",
+"value": "Shop_SelectItemName",
+"entries": [
+"ActionGuideForShop"
+]
+},
+{
+"flow": "ActionGuide",
+"event": 39,
+"what": "switch",
+"param": "GameData",
+"value": "Shop_SelectItemName",
+"entries": [
+"ActionGuideForShop"
+]
+},
+{
+"flow": "AllSage",
+"event": 131,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"GetArrowLight_OcarinaBackTimeTemple",
+"Market_Adult_Field_GetArrowLight"
+]
+},
+{
+"flow": "Animal_Cow",
+"event": 6,
+"what": "call Dm_SY_GetInEvent:GetInEventInBottle",
+"param": "ActorName",
+"value": "Item_Bottle_Milk",
+"entries": [
+"PushToBottleMilk"
+]
+},
+{
+"flow": "Animal_Cow",
+"event": 45,
+"what": "call Dm_SY_GetInEvent:GetInEventInBottle",
+"param": "ActorName",
+"value": "Item_Bottle_Milk",
+"entries": [
+"PushToBottleMilk_LinkHouse"
+]
+},
+{
+"flow": "Animal_Cow",
+"event": 107,
+"what": "call Dm_SY_GetInEvent:GetInEventInBottle",
+"param": "ActorName",
+"value": "Item_Bottle_Milk",
+"entries": [
+"PushToBottleMilk_LinkHouse0"
+]
+},
+{
+"flow": "Defeat_Ganon",
+"event": 103,
+"what": "PouchSystemActor.EventTriggerRemoveWeaponKeepSheath",
+"param": "Actor",
+"value": "Weapon_Sword_Master",
+"entries": [
+"InsideGanonCastle_Dungeon_BossAppear_2"
+]
+},
+{
+"flow": "Defeat_Ganon",
+"event": 104,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"InsideGanonCastle_Dungeon_BossAppear_2"
+]
+},
+{
+"flow": "Defeat_Ganon",
+"event": 410,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"InsideGanonCastle_Dungeon_BossDie_1"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 6,
+"what": "switch",
+"param": "GameDataForActorName",
+"value": "Shop_SelectItemName",
+"entries": [
+"NormalFlow"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 82,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"Outofstock_SelectCloth"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 82,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Adult_Zora",
+"entries": [
+"Outofstock_SelectCloth"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 83,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"Outofstock_SelectCloth"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 83,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Adult_Goron",
+"entries": [
+"Outofstock_SelectCloth"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 92,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 92,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Child_Mask_Keaton",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 95,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 95,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Child_Mask_Skull",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 96,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 96,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Child_Mask_Spooky",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 99,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Spooky",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 100,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Skull",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 101,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Keaton",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 102,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Bunny",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 103,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Gerudo",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 104,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Zora",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 105,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Goron",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 106,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Truth",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 110,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Spooky",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 111,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Skull",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 112,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Keaton",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 113,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Bunny",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 114,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Gerudo",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 115,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Zora",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 116,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Goron",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 117,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Truth",
+"entries": [
+"MaskSoldCheck"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 170,
+"what": "switch",
+"param": "GameDataForActorName",
+"value": "Shop_SelectItemName",
+"entries": [
+"SelectItem_CheckAvailable"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 221,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Buy_Start"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 222,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Buy_End"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 223,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Buy_End_ForHappyMaskShop"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 225,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"NormalFlow"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 225,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Shield_Deku",
+"entries": [
+"NormalFlow"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 230,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"CheckShopSelectItemName_PouchMax"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 230,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Shield_Deku",
+"entries": [
+"CheckShopSelectItemName_PouchMax"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 236,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"CheckShopSelectItemName_PouchMax"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 236,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"CheckShopSelectItemName_PouchMax"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 238,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"CheckShopSelectItemName_PouchMax"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 238,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Adult_Goron",
+"entries": [
+"CheckShopSelectItemName_PouchMax"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 240,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"CheckShopSelectItemName_PouchMax"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 240,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Adult_Zora",
+"entries": [
+"CheckShopSelectItemName_PouchMax"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 382,
+"what": "switch",
+"param": "ActorName",
+"value": "Shop_SelectItemName",
+"entries": [
+"HappyMaskShop_ReturnStart",
+"HappyMaskShop_ReturnStart_NoDofReset",
+"Root_HappyMaskShop"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 390,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Spooky",
+"entries": [
+"InformPrice"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 391,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Skull",
+"entries": [
+"InformPrice"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 392,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Keaton",
+"entries": [
+"InformPrice"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 393,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Bunny",
+"entries": [
+"InformPrice"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 402,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Spooky",
+"entries": [
+"InformPrice"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 403,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Skull",
+"entries": [
+"InformPrice"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 404,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Keaton",
+"entries": [
+"InformPrice"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 405,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Bunny",
+"entries": [
+"InformPrice"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 406,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"Outofstock_SelectBottle_BlueFire"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 406,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_BlueFire",
+"entries": [
+"Outofstock_SelectBottle_BlueFire"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 410,
+"what": "call DisplayShop:OutOfStock_Talk",
+"param": "GameDataName",
+"value": "Shop_SelectBottle_BlueFire",
+"entries": [
+"Outofstock_SelectBottle_BlueFire"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 421,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"NormalFlow"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 421,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_Fish",
+"entries": [
+"NormalFlow"
+]
+},
+{
+"flow": "DisplayShop",
+"event": 462,
+"what": "call Dm_SY_Get:CheckHeart_Shop",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"NormalFlow"
+]
+},
+{
+"flow": "Dm_Awake_Fire_Get",
+"event": 22,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Fire",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Fire_Get",
+"event": 46,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Fire",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Fire_Get.110",
+"event": 22,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Fire",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Fire_Get.110",
+"event": 46,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Fire",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Forest_Get",
+"event": 22,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Forest",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Forest_Get",
+"event": 47,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Forest",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Forest_Get.110",
+"event": 22,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Forest",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Forest_Get.110",
+"event": 47,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Forest",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Shadow_Get",
+"event": 22,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Shadow",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Shadow_Get",
+"event": 45,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Shadow",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Shadow_Get.110",
+"event": 22,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Shadow",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Shadow_Get.110",
+"event": 45,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Shadow",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Spirit_Get",
+"event": 22,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Spirit",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Spirit_Get",
+"event": 47,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Spirit",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Spirit_Get.110",
+"event": 22,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Spirit",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Spirit_Get.110",
+"event": 47,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Spirit",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Water_Get",
+"event": 22,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Water",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Water_Get",
+"event": 45,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Water",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Water_Get.110",
+"event": 22,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Water",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Awake_Water_Get.110",
+"event": 45,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Water",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0006",
+"event": 6,
+"what": "switch",
+"param": "Actor",
+"value": "Item_BrokenSword",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0006",
+"event": 12,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Prescription",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0006",
+"event": 15,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeballFrog",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0006",
+"event": 17,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeDrop",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0007",
+"event": 6,
+"what": "switch",
+"param": "Actor",
+"value": "Item_BrokenSword",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0007",
+"event": 12,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Prescription",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0007",
+"event": 15,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeballFrog",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0007",
+"event": 17,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeDrop",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0025",
+"event": 9,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Stone_Fire",
+"entries": [
+"C01-07"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0025",
+"event": 210,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Stone_Fire",
+"entries": [
+"C01-07"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0050",
+"event": 5,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotLookatObjectTurnOff",
+"param": "ActorName",
+"value": "Item_ClaimCheck",
+"entries": [
+"C08"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0050",
+"event": 14,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_EyeDrop",
+"entries": [
+"C08"
+]
+},
+{
+"flow": "Dm_DeathMtTrail_0050",
+"event": 91,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeDrop",
+"entries": [
+"C08"
+]
+},
+{
+"flow": "Dm_FairyFountain_Courage",
+"event": 75,
+"what": "call Dm_SY_GetInEvent:GetInEvent_GreatFairyCourge",
+"param": "ActorName",
+"value": "Item_FairyBless_DefenseDouble",
+"entries": [
+"C15-01"
+]
+},
+{
+"flow": "Dm_FairyFountain_Din",
+"event": 308,
+"what": "call Dm_SY_GetInEvent:GetInEvent_GreatFairyDin",
+"param": "ActorName",
+"value": "Item_DinFire",
+"entries": [
+"C15-01"
+]
+},
+{
+"flow": "Dm_FairyFountain_Frore",
+"event": 107,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Demo_NotLookatObjectEntry",
+"param": "ActorName",
+"value": "Item_FaroreWind",
+"entries": [
+"C15-01"
+]
+},
+{
+"flow": "Dm_FairyFountain_Nayru",
+"event": 98,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Demo_NotLookatObjectEntry",
+"param": "ActorName",
+"value": "Item_NayruLove",
+"entries": [
+"C15-01"
+]
+},
+{
+"flow": "Dm_FairyFountain_Power",
+"event": 108,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Demo_NotLookatObjectEntry",
+"param": "ActorName",
+"value": "Item_FairyBless_MP",
+"entries": [
+"C15-01"
+]
+},
+{
+"flow": "Dm_FairyFountain_Wisdom",
+"event": 72,
+"what": "call Dm_SY_GetInEvent:GetInEvent_GreatFairyWisdom",
+"param": "ActorName",
+"value": "Item_FairyBless_MPDouble",
+"entries": [
+"C15-01"
+]
+},
+{
+"flow": "Dm_FinalBattle_0010",
+"event": 43,
+"what": "Weapon_Sword_Master.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"C11"
+]
+},
+{
+"flow": "Dm_FinalBattle_0010",
+"event": 60,
+"what": "Weapon_Sword_Master.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"C10"
+]
+},
+{
+"flow": "Dm_FinalBattle_0010",
+"event": 80,
+"what": "Weapon_Sword_Master.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"C15"
+]
+},
+{
+"flow": "Dm_FinalBattle_0010",
+"event": 112,
+"what": "Weapon_Sword_Master.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"C08"
+]
+},
+{
+"flow": "Dm_FinalBattle_0010",
+"event": 132,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Weapon_Sword_Master",
+"entries": [
+"PlayerAddPouchAndEquip"
+]
+},
+{
+"flow": "Dm_FinalBattle_0010",
+"event": 134,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"PlayerAddPouchAndEquip"
+]
+},
+{
+"flow": "Dm_FinalBattle_0030",
+"event": 73,
+"what": "EventEffectEmitter.EventEffectAddELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_FinalBattle_0030",
+"event": 77,
+"what": "EventEffectEmitter.EventEffectDeleteELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"C02"
+]
+},
+{
+"flow": "Dm_FinalBattle_BossOut",
+"event": 41,
+"what": "Player_Event.EventTriggerPlayerRequestCreateDynamicEquipmentNoRelationPouch",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_FinalBattle_BossOut",
+"event": 100,
+"what": "EventEffectEmitter.EventEffectAddELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"C05-1"
+]
+},
+{
+"flow": "Dm_FinalBattle_BossOut",
+"event": 149,
+"what": "Weapon_Sword_Master.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_FinalBattle_BossOut.110",
+"event": 41,
+"what": "Player_Event.EventTriggerPlayerRequestCreateDynamicEquipmentNoRelationPouch",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_FinalBattle_BossOut.110",
+"event": 100,
+"what": "EventEffectEmitter.EventEffectAddELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"C05-1"
+]
+},
+{
+"flow": "Dm_FinalBattle_BossOut.110",
+"event": 149,
+"what": "Weapon_Sword_Master.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_ForestTemple_0010",
+"event": 95,
+"what": "Dm_Weapon_PoeSisters_Meg_Torch.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_R",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_ForestTemple_0010",
+"event": 96,
+"what": "Dm_Weapon_PoeSisters_Joelle_Torch.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_R",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_ForestTemple_0010",
+"event": 97,
+"what": "Dm_Weapon_PoeSisters_Beth_Torch.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_R",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_ForestTemple_0010",
+"event": 98,
+"what": "Dm_Weapon_PoeSisters_Amy_Torch.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_R",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_ForestTemple_0011",
+"event": 48,
+"what": "EventEffectEmitter.EventEffectDeleteELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_PoeSisters_Beth_Torch",
+"entries": [
+"C02"
+]
+},
+{
+"flow": "Dm_ForestTemple_0011",
+"event": 57,
+"what": "EventEffectEmitter.EventEffectAddELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_PoeSisters_Beth_Torch",
+"entries": [
+"C02"
+]
+},
+{
+"flow": "Dm_ForestTemple_0012",
+"event": 58,
+"what": "EventEffectEmitter.EventEffectAddELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_PoeSisters_Joelle_Torch",
+"entries": [
+"C02"
+]
+},
+{
+"flow": "Dm_ForestTemple_0012",
+"event": 60,
+"what": "EventEffectEmitter.EventEffectDeleteELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_PoeSisters_Joelle_Torch",
+"entries": [
+"C02"
+]
+},
+{
+"flow": "Dm_ForestTemple_0013",
+"event": 136,
+"what": "EventEffectEmitter.EventEffectAddELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_PoeSisters_Amy_Torch",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_ForestTemple_0015",
+"event": 40,
+"what": "EventEffectEmitter.EventEffectAddELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_PoeSisters_Meg_Torch",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_ForestTemple_0021",
+"event": 73,
+"what": "EventEffectEmitter.EventEffectAddELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_PoeSisters_Beth_Torch",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_ForestTemple_0031",
+"event": 73,
+"what": "EventEffectEmitter.EventEffectAddELinkHiddenSetting",
+"param": "ActorName",
+"value": "Weapon_PoeSisters_Joelle_Torch",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_Gerudo_0025",
+"event": 120,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotLookatObjectTurnOff",
+"param": "ActorName",
+"value": "Item_Token_Gerudo",
+"entries": [
+"C05"
+]
+},
+{
+"flow": "Dm_Goron_0030",
+"event": 36,
+"what": "Item_Gauntlet_Goron.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_R",
+"entries": [
+"C09"
+]
+},
+{
+"flow": "Dm_Goron_0030",
+"event": 128,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Goron",
+"param": "ActorName",
+"value": "Item_Gauntlet_Goron",
+"entries": [
+"C10"
+]
+},
+{
+"flow": "Dm_Goron_0045",
+"event": 7,
+"what": "EventEffectEmitter.EventEffectAddELinkHiddenSetting",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_Goron_0045",
+"event": 8,
+"what": "EventEffectEmitter.EventEffectDeleteELinkHiddenSetting",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_HrlCastle_0020",
+"event": 137,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_AlarmCucco",
+"entries": [
+"C07"
+]
+},
+{
+"flow": "Dm_HrlCastle_0020.110",
+"event": 137,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_AlarmCucco",
+"entries": [
+"C07"
+]
+},
+{
+"flow": "Dm_HrlCastle_0050",
+"event": 238,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Zeldaletter",
+"param": "ActorName",
+"value": "Item_ZeldaLetter",
+"entries": [
+"C15"
+]
+},
+{
+"flow": "Dm_InsideJabu_Jabu_0030",
+"event": 79,
+"what": "call GetPouchContent:DisplayRutoGetByActorName",
+"param": "ActorName",
+"value": "Item_Stone_Water",
+"entries": [
+"C02"
+]
+},
+{
+"flow": "Dm_InsideJabu_Jabu_0030",
+"event": 256,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Stone_Water_Ruto",
+"entries": [
+"C02"
+]
+},
+{
+"flow": "Dm_InsideJabu_Jabu_0030.110",
+"event": 79,
+"what": "call GetPouchContent:DisplayRutoGetByActorName",
+"param": "ActorName",
+"value": "Item_Stone_Water",
+"entries": [
+"C02"
+]
+},
+{
+"flow": "Dm_InsideJabu_Jabu_0030.110",
+"event": 256,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Stone_Water_Ruto",
+"entries": [
+"C02"
+]
+},
+{
+"flow": "Dm_Kakariko_0010",
+"event": 76,
+"what": "Item_ZeldaLetter.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_Kokiri_0063",
+"event": 8,
+"what": "Player_Event.EventTriggerPlayerRequestCreateDynamicEquipmentNoRelationPouch",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Kokiri",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_Kokiri_0130",
+"event": 0,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Stone_Forest",
+"entries": [
+"C08"
+]
+},
+{
+"flow": "Dm_Kokiri_0130",
+"event": 153,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Stone_Forest",
+"entries": [
+"C08"
+]
+},
+{
+"flow": "Dm_Kokiri_0155",
+"event": 51,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Ocarina_Fairy",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_Kokiri_0155",
+"event": 52,
+"what": "call GetPouchContent:DisplayGetByActorName",
+"param": "ActorName",
+"value": "Item_Ocarina_Fairy",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_Kokiri_0155",
+"event": 55,
+"what": "Dm_Item_Ocarina_Fairy_Saria.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_R",
+"entries": [
+"ready"
+]
+},
+{
+"flow": "Dm_Kokiri_0155",
+"event": 65,
+"what": "Item_Ocarina_Fairy.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"ready"
+]
+},
+{
+"flow": "Dm_Kokiri_0155",
+"event": 90,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Ocarina_Fairy",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_LostWood_0040",
+"event": 15,
+"what": "switch",
+"param": "Actor",
+"value": "Item_BulletBag_Medium",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_LostWood_0040",
+"event": 49,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Wallet_Medium",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_LostWood_0040",
+"event": 50,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Wallet_Large",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_LostWood_0040",
+"event": 84,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotLookatObjectTurnOff",
+"param": "ActorName",
+"value": "Item_BulletBag_Large",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_LostWood_0040",
+"event": 85,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotLookatObjectTurnOff",
+"param": "ActorName",
+"value": "Item_BulletBag_Medium",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_LostWood_0040",
+"event": 86,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotLookatObjectTurnOff",
+"param": "ActorName",
+"value": "TBox_Rupee_Green",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_MelodyGet_Epona",
+"event": 50,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_EponaSong",
+"entries": [
+"C04"
+]
+},
+{
+"flow": "Dm_MelodyGet_Fire",
+"event": 183,
+"what": "Dm_Item_Sheik_Harp.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"C05"
+]
+},
+{
+"flow": "Dm_MelodyGet_Fire",
+"event": 207,
+"what": "Npc_Navi.EventNaviLookAtObject",
+"param": "ActorName",
+"value": "Item_Ocarina_Time",
+"entries": [
+"C05"
+]
+},
+{
+"flow": "Dm_MelodyGet_Fire",
+"event": 208,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_FireBolero",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_MelodyGet_Forest",
+"event": 11,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_ForestMinuet",
+"entries": [
+"Learn_melody_C07-13"
+]
+},
+{
+"flow": "Dm_MelodyGet_Forest",
+"event": 235,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"C14"
+]
+},
+{
+"flow": "Dm_MelodyGet_Saria",
+"event": 20,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_SariaSong",
+"entries": [
+"C12"
+]
+},
+{
+"flow": "Dm_MelodyGet_Shadow",
+"event": 15,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_ShadowNocturne",
+"entries": [
+"C13"
+]
+},
+{
+"flow": "Dm_MelodyGet_Shadow",
+"event": 132,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"C14"
+]
+},
+{
+"flow": "Dm_MelodyGet_Shadow",
+"event": 133,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"C15"
+]
+},
+{
+"flow": "Dm_MelodyGet_Shine",
+"event": 249,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_LightPrelude",
+"entries": [
+"C14_Learn_melody"
+]
+},
+{
+"flow": "Dm_MelodyGet_Shine",
+"event": 336,
+"what": "Npc_Navi.EventNaviLookAtObject",
+"param": "ActorName",
+"value": "Item_Ocarina_Time",
+"entries": [
+"C09_Learn_melody"
+]
+},
+{
+"flow": "Dm_MelodyGet_Shine",
+"event": 345,
+"what": "Npc_Navi.EventNaviLookAtObject",
+"param": "ActorName",
+"value": "Item_Ocarina_Time",
+"entries": [
+"C11_C13_Learn_melody"
+]
+},
+{
+"flow": "Dm_MelodyGet_Spilit",
+"event": 11,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_SpiritRequiem",
+"entries": [
+"Learn_melody"
+]
+},
+{
+"flow": "Dm_MelodyGet_Spilit",
+"event": 309,
+"what": "Dm_Item_Sheik_Harp.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"C05"
+]
+},
+{
+"flow": "Dm_MelodyGet_Storm",
+"event": 21,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_StormSong",
+"entries": [
+"C05"
+]
+},
+{
+"flow": "Dm_MelodyGet_Sun_03",
+"event": 30,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_SunSong",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_MelodyGet_Time",
+"event": 93,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_TimeSong",
+"entries": [
+"C10"
+]
+},
+{
+"flow": "Dm_MelodyGet_Time",
+"event": 106,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Ocarina_Time",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Dm_MelodyGet_Time",
+"event": 155,
+"what": "Dm_Item_Ocarina_Time.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"C05"
+]
+},
+{
+"flow": "Dm_MelodyGet_Time",
+"event": 255,
+"what": "call GetPouchContent:DisplayGetByActorName",
+"param": "ActorName",
+"value": "Item_Ocarina_Time",
+"entries": [
+"C03"
+]
+},
+{
+"flow": "Dm_MelodyGet_Time",
+"event": 279,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Ocarina_Time",
+"entries": [
+"C03"
+]
+},
+{
+"flow": "Dm_MelodyGet_Water",
+"event": 120,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_WaterSerenade",
+"entries": [
+"C15"
+]
+},
+{
+"flow": "Dm_MelodyGet_Water",
+"event": 163,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Zora",
+"entries": [
+"C16"
+]
+},
+{
+"flow": "Dm_MelodyGet_Zelda",
+"event": 66,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_ZeldaLullaby",
+"entries": [
+"C10"
+]
+},
+{
+"flow": "Dm_SY_BancChangeArrive",
+"event": 132,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"Arrive_ShadowTemple"
+]
+},
+{
+"flow": "Dm_SY_BancChangeArrive",
+"event": 312,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"KakarikoVillage_MelodyGet_Shadow"
+]
+},
+{
+"flow": "Dm_SY_BancChangeArrive",
+"event": 385,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"KakarikoVillage_Arrive"
+]
+},
+{
+"flow": "Dm_SY_BancChangeArrive",
+"event": 492,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Goron",
+"entries": [
+"DeathMountainCrater_Arrive"
+]
+},
+{
+"flow": "Dm_SY_BancChangeArrive",
+"event": 525,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Armor_GlassTruth",
+"entries": [
+"DreamWorldBossAreaArrive"
+]
+},
+{
+"flow": "Dm_SY_Get",
+"event": 131,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Amiibo1",
+"entries": [
+"MaskNaviReaction"
+]
+},
+{
+"flow": "Dm_SY_Get",
+"event": 132,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Amiibo0",
+"entries": [
+"MaskNaviReaction"
+]
+},
+{
+"flow": "Dm_SY_InsertBottle",
+"event": 51,
+"what": "EventSystemActor.EventTransition",
+"param": "EventName",
+"value": "Item_Bottle_TutorialEvent_Animal_Insect_GetEvent",
+"entries": [
+"Market_Item_Bottle_TutorialEvent_ClearFlow"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 26,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_ZeldaLullaby",
+"entries": [
+"LearningOcarinaPlayAuto"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 27,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_EponaSong",
+"entries": [
+"LearningOcarinaPlayAuto"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 28,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_SariaSong",
+"entries": [
+"LearningOcarinaPlayAuto"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 29,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_SunSong",
+"entries": [
+"LearningOcarinaPlayAuto"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 30,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_TimeSong",
+"entries": [
+"LearningOcarinaPlayAuto"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 31,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_StormSong",
+"entries": [
+"LearningOcarinaPlayAuto"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 32,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_ForestMinuet",
+"entries": [
+"LearningOcarinaPlayAutoForSeek"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 34,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_FireBolero",
+"entries": [
+"LearningOcarinaPlayAutoForSeek"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 35,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_WaterSerenade",
+"entries": [
+"LearningOcarinaPlayAutoForSeek"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 36,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_SpiritRequiem",
+"entries": [
+"LearningOcarinaPlayAutoForSeek"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 37,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_ShadowNocturne",
+"entries": [
+"LearningOcarinaPlayAutoForSeek"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 38,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_LightPrelude",
+"entries": [
+"LearningOcarinaPlayAutoForSeek"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 77,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Melody_ScarecrowSong",
+"entries": [
+"LearningOcarinaPlayAuto"
+]
+},
+{
+"flow": "Dm_SY_Ocarina",
+"event": 199,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_ZeldaLullaby",
+"entries": [
+"PlayOcarinaFree"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 63,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story_HaveRead",
+"entries": [
+"Check_int"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 70,
+"what": "GameDataActor.EventTriggerSetGameDataInt",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story_Step",
+"entries": [
+"Check_int"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 76,
+"what": "switch",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story_Step",
+"entries": [
+"Check_int"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 77,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story_HaveRead",
+"entries": [
+"Check_int"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 82,
+"what": "switch",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story",
+"entries": [
+"Story_Check"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 83,
+"what": "switch",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Place",
+"entries": [
+"Story_Check"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 84,
+"what": "switch",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Time",
+"entries": [
+"Story_Check"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 85,
+"what": "switch",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 86,
+"what": "switch",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Place",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 87,
+"what": "switch",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Time",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 88,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Time",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 89,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Place",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 90,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 91,
+"what": "switch",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story_HaveRead",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 119,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 120,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Place",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 121,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Place",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 125,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Time",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 126,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 130,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Place",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 149,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 150,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Time",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 152,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 163,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 164,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Place",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 170,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Story",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_Ocarina_SariaSong",
+"event": 171,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Item_Melody_SariaSong_Place",
+"entries": [
+"Return"
+]
+},
+{
+"flow": "Dm_SY_ShopGet",
+"event": 8,
+"what": "SoundSystemActor.EventTriggerSoundStartFanfare",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"ShopGet_Common"
+]
+},
+{
+"flow": "Dm_SY_ShopGet",
+"event": 14,
+"what": "GameDataActor.EventTriggerCopyGameDataString64",
+"param": "SrcGameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"ShopGet_Common"
+]
+},
+{
+"flow": "Dm_SY_ShopGet",
+"event": 18,
+"what": "EventEffectEmitter.EventEffectStartGetItem",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"ShopGet_Common"
+]
+},
+{
+"flow": "Dm_SY_ShopGet",
+"event": 34,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"ShopGet_Common"
+]
+},
+{
+"flow": "Dm_SY_ShopGet",
+"event": 36,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"ShopGet_Common"
+]
+},
+{
+"flow": "Dm_SY_ShopGet",
+"event": 40,
+"what": "switch",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"ShopGet_Common"
+]
+},
+{
+"flow": "Dm_SY_ShopGet",
+"event": 51,
+"what": "EventEffectEmitter.EventEffectStartGetItem",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"ShopGet_Common"
+]
+},
+{
+"flow": "Dm_SY_ShopGet",
+"event": 71,
+"what": "SoundSystemActor.EventTriggerSoundStartFanfare",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"ShopGet_Common"
+]
+},
+{
+"flow": "Dm_SageRoom_0005",
+"event": 152,
+"what": "Item_Medal_Light.EventTriggerModelBind",
+"param": "InstanceName",
+"value": "Item_Medal_Light",
+"entries": [
+"Ready"
+]
+},
+{
+"flow": "Dm_SageRoom_0005",
+"event": 182,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Medal_Light",
+"entries": [
+"Shine_Get_C18"
+]
+},
+{
+"flow": "Dm_SageRoom_0005",
+"event": 431,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Medal_Light",
+"entries": [
+"Shine_Get_C18"
+]
+},
+{
+"flow": "Dm_TimeTemple_0030",
+"event": 60,
+"what": "call GetPouchContent:DisplayGetByActorName",
+"param": "ActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"C08"
+]
+},
+{
+"flow": "Dm_TimeTemple_0030",
+"event": 209,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Weapon_Sword_Master",
+"entries": [
+"C08"
+]
+},
+{
+"flow": "Dm_TimeTemple_0070",
+"event": 11,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"other"
+]
+},
+{
+"flow": "Dm_TimeTemple_0085",
+"event": 6,
+"what": "Player_Event.EventTriggerPlayerRequestCreateDynamicEquipmentNoRelationPouch",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"other"
+]
+},
+{
+"flow": "Dm_TimeTemple_0088",
+"event": 26,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Weapon_Sword_Master",
+"entries": [
+"other"
+]
+},
+{
+"flow": "Dm_TimeTemple_0130",
+"event": 8,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Arrow_Light",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_TimeTemple_0130",
+"event": 14,
+"what": "SoundSystemActor.EventTriggerSoundStartFanfare",
+"param": "ActorName",
+"value": "Item_Arrow_Light",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_TimeTemple_0130",
+"event": 25,
+"what": "EventEffectEmitter.EventEffectStartGetItem",
+"param": "ActorName",
+"value": "Item_Arrow_Light",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "Dm_ZoraFountain_0030",
+"event": 0,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Stone_Water",
+"entries": [
+"C03"
+]
+},
+{
+"flow": "Dm_ZoraFountain_0030",
+"event": 152,
+"what": "GameSystemActor.EventTriggerZeldaNotesRequestSendDailyScreenShot",
+"param": "TargetID",
+"value": "Item_Stone_Water",
+"entries": [
+"C03"
+]
+},
+{
+"flow": "Dm_Zora_0010",
+"event": 90,
+"what": "Dm_Item_RutoLetter.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_R",
+"entries": [
+"C02"
+]
+},
+{
+"flow": "Dm_Zora_0010",
+"event": 144,
+"what": "Item_Bottle_Letter.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_Root",
+"entries": [
+"C01"
+]
+},
+{
+"flow": "DoorOfTime",
+"event": 57,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Weapon_Sword_Master",
+"entries": [
+"SageRoom_MeetGanondorf"
+]
+},
+{
+"flow": "DreamBossStage",
+"event": 476,
+"what": "PouchSystemActor.EventTriggerRemoveWeaponKeepSheath",
+"param": "Actor",
+"value": "Weapon_Sword_Master",
+"entries": [
+"Rematch_Ganon_Start"
+]
+},
+{
+"flow": "DreamBossStage.110",
+"event": 476,
+"what": "PouchSystemActor.EventTriggerRemoveWeaponKeepSheath",
+"param": "Actor",
+"value": "Weapon_Sword_Master",
+"entries": [
+"Rematch_Ganon_Start"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 28,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuSeedBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 28,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BulletBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 30,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Bottle",
+"param": "DisplayActor",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 31,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 32,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Bottle",
+"param": "DisplayActor",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 33,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Bottle",
+"param": "DisplayActor",
+"value": "Item_Bottle_Bug",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 34,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 35,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_Bug",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 36,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuSeedBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 37,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuSeedBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 38,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 39,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BulletBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 39,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuSeedBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 40,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 40,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 41,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuStick",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 42,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 42,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuStick",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 43,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 44,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 45,
+"what": "switch",
+"param": "Value",
+"value": "Shop_ArrowBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 46,
+"what": "switch",
+"param": "Value",
+"value": "Shop_ArrowBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 47,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Item_BombBundle_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 47,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BombBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 48,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BombBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 48,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_BombBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 49,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_ArrowBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 49,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Quiver_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 50,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Quiver_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 50,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_ArrowBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 51,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 52,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 52,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_Heart",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 53,
+"what": "switch",
+"param": "Value",
+"value": "Shop_Heart_Bundle",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 54,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 54,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_Weapon_Shield_Deku",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 55,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 55,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_Heart_Bundle",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 56,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Shield_Deku",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 57,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombchuBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 58,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BombBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 58,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_BombchuBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 59,
+"what": "switch",
+"param": "Value",
+"value": "Item_ScrubBusinessSeed",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 60,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_MagicJar_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 60,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_DinFire",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 61,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 87,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuSeedBundle_01",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 88,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuSeedBundle_02",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 89,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 90,
+"what": "switch",
+"param": "Value",
+"value": "Obj_MagicJar_Small",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 94,
+"what": "switch",
+"param": "Value",
+"value": "Shop_ArrowBundle_01",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 95,
+"what": "switch",
+"param": "Value",
+"value": "Shop_ArrowBundle_02",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 105,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 106,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 107,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_Bug",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 114,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuStickBundle_Medium",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 115,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 115,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuStickBundle_Medium",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 155,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 162,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart_Piece",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 163,
+"what": "switch",
+"param": "Value",
+"value": "Item_StickBag_Medium",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 164,
+"what": "switch",
+"param": "Value",
+"value": "Item_NutBag_Medium",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 165,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_StickBag_Large",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 166,
+"what": "switch",
+"param": "Actor",
+"value": "Item_StickBag_Medium",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 167,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_StickBag_Medium",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 168,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_NutBag_Large",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 169,
+"what": "switch",
+"param": "Actor",
+"value": "Item_NutBag_Medium",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 170,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_NutBag_Medium",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 179,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_DlyingUp",
+"Enemy_Scrub_Business_Seed",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 180,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_DlyingUp",
+"Enemy_Scrub_Business_Seed",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 181,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_DlyingUp",
+"Enemy_Scrub_Business_Seed",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 182,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_DlyingUp",
+"Enemy_Scrub_Business_Seed",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 183,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_DlyingUp",
+"Enemy_Scrub_Business_Seed"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 184,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 189,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Item_ScrubBusinessSeed",
+"entries": [
+"Enemy_Scrub_Business_DlyingUp"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 199,
+"what": "switch",
+"param": "Value",
+"value": "Item_ScrubBusinessSeed",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 217,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 218,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 219,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_Bug",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 223,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuSeedBundle_01",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 224,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuSeedBundle_02",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 225,
+"what": "switch",
+"param": "Actor",
+"value": "Item_DekuSeed",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 228,
+"what": "switch",
+"param": "Actor",
+"value": "Item_DekuStick",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 231,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 232,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuStick",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 233,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuStickBundle_Medium",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 234,
+"what": "switch",
+"param": "Actor",
+"value": "Item_DekuNut",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 237,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombBundle_01",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 238,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombBundle_02",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 239,
+"what": "switch",
+"param": "Value",
+"value": "Shop_ArrowBundle_01",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 240,
+"what": "switch",
+"param": "Value",
+"value": "Shop_ArrowBundle_02",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 241,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Bomb",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 243,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Arrow_Normal",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 247,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 248,
+"what": "switch",
+"param": "Value",
+"value": "Shop_Heart_Bundle",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 249,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Shield_Deku",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 250,
+"what": "switch",
+"param": "Actor",
+"value": "Obj_Heart",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 253,
+"what": "switch",
+"param": "Actor",
+"value": "Shop_Weapon_Shield_Deku",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 256,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombchuBundle_01",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 257,
+"what": "switch",
+"param": "Value",
+"value": "Item_ScrubBusinessSeed",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 258,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Bombchu",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 261,
+"what": "switch",
+"param": "Actor",
+"value": "Item_ScrubBusinessSeed",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 264,
+"what": "switch",
+"param": "Actor",
+"value": "Shop_MagicJar_Small",
+"entries": [
+"CanBuy_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 284,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Obj_Heart",
+"entries": [
+"Bottle_Replace"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 285,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"Bottle_Replace"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 286,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"Bottle_Replace"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 287,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Obj_MagicJar_Small",
+"entries": [
+"Bottle_Replace"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 292,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Shop_Heart_Bundle",
+"entries": [
+"Bottle_Replace"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 321,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart_Container",
+"entries": [
+"SimpleShopSub_Scrub_Business_Seed_Consume"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 322,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart_Container",
+"entries": [
+"SimpleShopSub_Scrub_Business_Seed_Consume"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 325,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_StickBag_Medium",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 341,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Obj_Heart",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 344,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Shop_Heart_Bundle",
+"entries": [
+"Unopened_Check"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 364,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Obj_Heart_Piece",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 364,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"SimpleShopRoot_Enemy_Scrub_Business_Pouch"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 386,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"Secret"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 394,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Obj_Heart_Piece",
+"entries": [
+"Secret"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 394,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "GameDataName",
+"value": "Shop_SelectItemName",
+"entries": [
+"Secret"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Common",
+"event": 444,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_2DShop",
+"param": "ActorName",
+"value": "Item_Bottle",
+"entries": [
+"Enemy_Scrub_Business_Seed"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 0,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuSeedBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 0,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BulletBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 1,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 2,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Bottle",
+"param": "DisplayActor",
+"value": "Item_Bottle_Bug",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 3,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 4,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_Bug",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 5,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuSeedBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 6,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuSeedBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 7,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 8,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BulletBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 8,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuSeedBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 9,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 9,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 10,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuStick",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 11,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 11,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuStick",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 12,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 13,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 14,
+"what": "switch",
+"param": "Value",
+"value": "Shop_ArrowBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 15,
+"what": "switch",
+"param": "Value",
+"value": "Shop_ArrowBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 16,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Item_BombBundle_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 16,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BombBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 17,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BombBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 17,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_BombBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 18,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_ArrowBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 18,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Quiver_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 19,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Quiver_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 19,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_ArrowBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 20,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 21,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 21,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_Heart",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 22,
+"what": "switch",
+"param": "Value",
+"value": "Shop_Heart_Bundle",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 23,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 23,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_Weapon_Shield_Deku",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 24,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 24,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_Heart_Bundle",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 25,
+"what": "switch",
+"param": "Value",
+"value": "Shop_Weapon_Shield_Deku",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 26,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombchuBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 27,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BombBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 27,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_BombchuBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 28,
+"what": "switch",
+"param": "Value",
+"value": "Item_ScrubBusinessSeed",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 29,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_MagicJar_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 29,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_DinFire",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 30,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 31,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuStickBundle_Medium",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 32,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 32,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuStickBundle_Medium",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 33,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart_Container",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 34,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombBundle_01",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 35,
+"what": "switch",
+"param": "Value",
+"value": "Item_Longshot",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 36,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 37,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_Longshot",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 38,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Sword_Giant",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 39,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Sword_Biggoron",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 40,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Shop_Sword_Giant",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 41,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_Sword_Biggoron",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 42,
+"what": "switch",
+"param": "Value",
+"value": "Item_Arrow_Fire",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 43,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_Arrow_Fire",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 44,
+"what": "switch",
+"param": "Value",
+"value": "Item_Arrow_Ice",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 45,
+"what": "switch",
+"param": "Value",
+"value": "Item_DinFire",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 46,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_Arrow_Ice",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 47,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_DinFire",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 48,
+"what": "switch",
+"param": "Value",
+"value": "Armor_GlassTruth",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 49,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_GlassTruth",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 50,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 50,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_Weapon_Shield_Hylian",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 51,
+"what": "switch",
+"param": "Value",
+"value": "Shop_Weapon_Shield_Hylian",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 52,
+"what": "switch",
+"param": "Value",
+"value": "Item_NayruLove",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 53,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_NayruLove",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 54,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Adult_HoverBoot",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 55,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_HoverBoot",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 56,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_BluePotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 58,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart_Container",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 60,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Adult__HeavyBoot",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 61,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_OneTime",
+"param": "ActorName",
+"value": "Item_HeavyBoot",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 64,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"HeartContainer"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 64,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Obj_Heart_Container",
+"entries": [
+"HeartContainer"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 65,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"HeartContainer"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 65,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Obj_Heart_Container",
+"entries": [
+"HeartContainer"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 66,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"HeartContainer"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 66,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Obj_Heart_Container",
+"entries": [
+"HeartContainer"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 67,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"HeartContainer"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 67,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Obj_Heart_Container",
+"entries": [
+"HeartContainer"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 90,
+"what": "call Enemy_Scrub_Business_Dream:Shop_Scrub_Dream_Bottle",
+"param": "DisplayActor",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 91,
+"what": "call Enemy_Scrub_Business_Dream:Shop_Scrub_Dream_Bottle",
+"param": "DisplayActor",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 133,
+"what": "call Enemy_Scrub_Business_Dream:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Item_BombBundle_Small",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 133,
+"what": "call Enemy_Scrub_Business_Dream:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BombBag_Small",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 134,
+"what": "call Enemy_Scrub_Business_Dream:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_NutBag_Small",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 134,
+"what": "call Enemy_Scrub_Business_Dream:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"Variable_OneTime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 137,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 138,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Bottle_Shop"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 139,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Bottle_Shop",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 140,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Bottle_Shop",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 141,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Bottle_Shop",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 142,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Bottle_Shop",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 188,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"ReturnItemSelect_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 189,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Onetime_Shop"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 190,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Onetime_Shop",
+"ReturnItemSelect_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 191,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Onetime_Shop",
+"ReturnItemSelect_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 192,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Onetime_Shop",
+"ReturnItemSelect_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 193,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Onetime_Shop",
+"ReturnItemSelect_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 226,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart_Container",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 227,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombBundle_01",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 228,
+"what": "switch",
+"param": "Value",
+"value": "Item_Longshot",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 229,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 230,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Sword_Giant",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 231,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Sword_Biggoron",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 232,
+"what": "switch",
+"param": "Value",
+"value": "Item_Arrow_Fire",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 233,
+"what": "switch",
+"param": "Value",
+"value": "Item_Arrow_Ice",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 234,
+"what": "switch",
+"param": "Value",
+"value": "Item_DinFire",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 235,
+"what": "switch",
+"param": "Value",
+"value": "Armor_GlassTruth",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 236,
+"what": "switch",
+"param": "Value",
+"value": "Item_NayruLove",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 237,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Adult_HoverBoot",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 238,
+"what": "switch",
+"param": "Value",
+"value": "Armor_Adult__HeavyBoot",
+"entries": [
+"Iteem_Check_Onetime"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 250,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart_Container",
+"entries": [
+"Onetime_Shop"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 252,
+"what": "call Enemy_Scrub_Business_Dream:Shop_Scrub_Dream_Bottle",
+"param": "DisplayActor",
+"value": "Item_Bottle_BluePotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 254,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart_Container",
+"entries": [
+"Onetime_NoItemCheck"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 291,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_2DShop",
+"param": "ActorName",
+"value": "Item_Bottle",
+"entries": [
+"Bottle_Shop"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 293,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"HeartContainer"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Dream",
+"event": 293,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Obj_Heart_Container",
+"entries": [
+"HeartContainer"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 6,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 7,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 8,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuStickBundle_Medium",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 9,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuSeedBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 11,
+"what": "switch",
+"param": "Value",
+"value": "Shop_ArrowBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 22,
+"what": "switch",
+"param": "Value",
+"value": "Shop_BombchuBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 23,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Shield_Deku",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 28,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Item_BombBundle_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 28,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BombBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 29,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 29,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuStickBundle_Medium",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 30,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 30,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 31,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BulletBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 31,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_DekuSeedBundle_02",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 32,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_ArrowBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 32,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Quiver_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 33,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_BombBag_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 33,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_BombchuBundle_01",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 34,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 34,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_Weapon_Shield_Deku",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 35,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Bottle",
+"param": "DisplayActor",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 36,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Bottle",
+"param": "DisplayActor",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 37,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_ScrubBusinessSeed",
+"entries": [
+"CloseShop",
+"Enemy_Scrub_Business_Seed_01",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 41,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"Enemy_Scrub_Business_Seed_01"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 46,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"Enemy_Scrub_Business_Seed_01"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 49,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"SetFourth"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 53,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"SetFourth"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 54,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Shop_DekuStickBundle_Medium",
+"entries": [
+"SetFourth"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 55,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Shop_DekuNutBundle_01",
+"entries": [
+"SetThird"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 57,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Item_Bottle_Bug",
+"entries": [
+"SetFourth"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 63,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 64,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_Seed_01"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 65,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_Seed_01"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 70,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_Seed_01",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 71,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_Seed_01",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 72,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_Seed_01",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 73,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_Seed_01",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 74,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Enemy_Scrub_Business_Seed_01",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 84,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 85,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_GreenPotion",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 86,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Bottle",
+"param": "DisplayActor",
+"value": "Item_Bottle_Bug",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 87,
+"what": "switch",
+"param": "Value",
+"value": "Item_Bottle_Bug",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 88,
+"what": "switch",
+"param": "Value",
+"value": "Obj_Heart",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 89,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_MagicJar_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 89,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_DinFire",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 90,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 90,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_Heart",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 91,
+"what": "switch",
+"param": "Value",
+"value": "Shop_Heart_Bundle",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 92,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "NecessaryActor",
+"value": "Item_Wallet_Small",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 92,
+"what": "call Enemy_Scrub_Business_Common:SimpleShopSub_Scrub_Business_Seed_Consume",
+"param": "Actor",
+"value": "Shop_Heart_Bundle",
+"entries": [
+"Variable"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 128,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_ScrubBusinessSeed",
+"entries": [
+"CloseShop",
+"Enemy_Scrub_Business_Seed_01",
+"ReturnItemSelect"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 130,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_ScrubBusinessSeed",
+"entries": [
+"Enemy_Scrub_Business_Seed_01"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 150,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Shop_Heart_Bundle",
+"entries": [
+"MagicCheck"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 182,
+"what": "switch",
+"param": "Value",
+"value": "Shop_DekuStickBundle_Medium",
+"entries": [
+"SetFourth"
+]
+},
+{
+"flow": "Enemy_Scrub_Business_Seed",
+"event": 184,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Shop_DekuStickBundle_Medium",
+"entries": [
+"SetFourth"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 10,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 31,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 36,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 39,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 40,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 43,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 44,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 47,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 48,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 51,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 54,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 67,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti",
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 75,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti",
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 78,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti",
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 80,
+"what": "Player_Event.EventTriggerPlayerLookAtObject",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti",
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 81,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 89,
+"what": "switch",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 90,
+"what": "switch",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 91,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 93,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 94,
+"what": "switch",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 95,
+"what": "switch",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 96,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 97,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 101,
+"what": "switch",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 102,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 107,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti",
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 109,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti",
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 118,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 123,
+"what": "switch",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 124,
+"what": "switch",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 125,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 127,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 128,
+"what": "switch",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 129,
+"what": "switch",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 130,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 131,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 135,
+"what": "switch",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 136,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 139,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti",
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 140,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti",
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 141,
+"what": "Player_Event.EventTriggerPlayerLookAtObject",
+"param": "ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti",
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 156,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "FairySpirit_AppearPoint",
+"event": 163,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"PopFairySpirit_Graffiti",
+"PopFairySpirit_Graffiti1"
+]
+},
+{
+"flow": "Field_PlantMagicBean",
+"event": 12,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_MagicBean",
+"entries": [
+"PlantMagicBean"
+]
+},
+{
+"flow": "Field_PlantMagicBean",
+"event": 34,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_MagicBean",
+"entries": [
+"PlantMagicBean_ZoraRiver_Changed"
+]
+},
+{
+"flow": "GatheringTokenGold",
+"event": 245,
+"what": "call GatheringTokenGold:TakenReward_Common_Event",
+"param": "TakenRewardActor",
+"value": "Item_Wallet_Medium",
+"entries": [
+"TokenCheck_Reward"
+]
+},
+{
+"flow": "GatheringTokenGold",
+"event": 246,
+"what": "call GatheringTokenGold:TakenReward_Common_Event",
+"param": "TakenRewardActor",
+"value": "Item_AgonyStone",
+"entries": [
+"TokenCheck_AfterReward10",
+"TokenCheck_Reward"
+]
+},
+{
+"flow": "GatheringTokenGold",
+"event": 247,
+"what": "call GatheringTokenGold:TakenReward_Common_Event",
+"param": "TakenRewardActor",
+"value": "Item_Wallet_Large",
+"entries": [
+"TokenCheck_AfterReward10",
+"TokenCheck_AfterReward20",
+"TokenCheck_Reward"
+]
+},
+{
+"flow": "GatheringTokenGold",
+"event": 248,
+"what": "call GatheringTokenGold:TakenReward_Common_Event",
+"param": "TakenRewardActor",
+"value": "Item_BombchuBundle_Large",
+"entries": [
+"TokenCheck_AfterReward10",
+"TokenCheck_AfterReward20",
+"TokenCheck_AfterReward30",
+"TokenCheck_Reward"
+]
+},
+{
+"flow": "GatheringTokenGold",
+"event": 249,
+"what": "call GatheringTokenGold:TakenReward_Common_Event",
+"param": "TakenRewardActor",
+"value": "Obj_Heart_Piece",
+"entries": [
+"TokenCheck_AfterReward10",
+"TokenCheck_AfterReward20",
+"TokenCheck_AfterReward30",
+"TokenCheck_AfterReward40",
+"TokenCheck_Reward"
+]
+},
+{
+"flow": "GatheringTokenGold",
+"event": 250,
+"what": "call GatheringTokenGold:TakenReward_Common_Event_200Rupee",
+"param": "TakenRewardActor",
+"value": "Obj_Rupee_Gold",
+"entries": [
+"TokenCheck_AfterReward10",
+"TokenCheck_AfterReward20",
+"TokenCheck_AfterReward30",
+"TokenCheck_AfterReward40",
+"TokenCheck_Reward"
+]
+},
+{
+"flow": "GatheringTokenGold",
+"event": 573,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Obj_Rupee_Gold",
+"entries": [
+"FinishTalk_SkullDad"
+]
+},
+{
+"flow": "Get_StoneOfForest",
+"event": 61,
+"what": "switch",
+"param": "Actor",
+"value": "Shop_Heart",
+"entries": [
+"Disappear"
+]
+},
+{
+"flow": "Get_StoneOfForest",
+"event": 63,
+"what": "call Get_StoneOfForest:Disappear",
+"param": "Obj_Heart.actor",
+"value": "Obj_Heart",
+"entries": [
+"Talk_Deku_01",
+"Talk_Deku_01_Attacked"
+]
+},
+{
+"flow": "Get_StoneOfForest",
+"event": 63,
+"what": "call Get_StoneOfForest:Disappear",
+"param": "Obj_Rupee_Green.actor",
+"value": "Obj_Rupee_Green",
+"entries": [
+"Talk_Deku_01",
+"Talk_Deku_01_Attacked"
+]
+},
+{
+"flow": "Get_StoneOfForest",
+"event": 64,
+"what": "call Get_StoneOfForest:Disappear",
+"param": "Obj_Heart.actor",
+"value": "Obj_Heart",
+"entries": [
+"Talk_Deku_02",
+"Talk_Deku_02_Attacked"
+]
+},
+{
+"flow": "Get_StoneOfForest",
+"event": 64,
+"what": "call Get_StoneOfForest:Disappear",
+"param": "Obj_Rupee_Green.actor",
+"value": "Obj_Rupee_Green",
+"entries": [
+"Talk_Deku_02",
+"Talk_Deku_02_Attacked"
+]
+},
+{
+"flow": "Get_StoneOfForest",
+"event": 65,
+"what": "call Get_StoneOfForest:Disappear",
+"param": "Obj_Heart.actor",
+"value": "Obj_Heart",
+"entries": [
+"Talk_Deku_03",
+"Talk_Deku_03_Attacked"
+]
+},
+{
+"flow": "Get_StoneOfForest",
+"event": 65,
+"what": "call Get_StoneOfForest:Disappear",
+"param": "Obj_Rupee_Green.actor",
+"value": "Obj_Rupee_Green",
+"entries": [
+"Talk_Deku_03",
+"Talk_Deku_03_Attacked"
+]
+},
+{
+"flow": "GossipStone",
+"event": 100,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Truth",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "GossipStone",
+"event": 134,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"BlewOcarinaByPlayer"
+]
+},
+{
+"flow": "GossipStone",
+"event": 137,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"BlewOcarinaByPlayer"
+]
+},
+{
+"flow": "GossipStone",
+"event": 138,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"BlewOcarinaByPlayer"
+]
+},
+{
+"flow": "GossipStone",
+"event": 140,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"BlewOcarinaByPlayer"
+]
+},
+{
+"flow": "GossipStone",
+"event": 142,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"BlewOcarinaByPlayer"
+]
+},
+{
+"flow": "GossipStone",
+"event": 144,
+"what": "EventCamera.EventMoveToTargetPosCamera",
+"param": "Actor2ActorName",
+"value": "Obj_FairySpirit",
+"entries": [
+"BlewOcarinaByPlayer"
+]
+},
+{
+"flow": "Goto_HyruleCastle",
+"event": 24,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_WeirdEgg",
+"entries": [
+"EggHatch"
+]
+},
+{
+"flow": "Goto_HyruleCastle",
+"event": 41,
+"what": "switch",
+"param": "Actor",
+"value": "Item_AlarmCucco",
+"entries": [
+"Goto_HyruleCastle_AfterMalonAppear"
+]
+},
+{
+"flow": "Goto_HyruleCastle",
+"event": 149,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Item_WeirdEgg",
+"entries": [
+"Goto_HyruleCastle_AfterMalonAppear"
+]
+},
+{
+"flow": "Goto_HyruleCastle",
+"event": 198,
+"what": "call GetInEvent_EggHatche:GetInEvent_EggHatche",
+"param": "ActorName",
+"value": "Item_AlarmCucco",
+"entries": [
+"EggHatch"
+]
+},
+{
+"flow": "LostWood_ScrubForestStageElder_SkullMaskFirst",
+"event": 15,
+"what": "switch",
+"param": "Actor",
+"value": "Item_StickBag_Medium",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "LostWood_ScrubForestStageElder_SkullMaskFirst",
+"event": 28,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Item_StickBag_Medium",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "LostWood_ScrubForestStageElder_SkullMaskFirst",
+"event": 29,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Item_StickBag_Large",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "LostWood_ScrubForestStageElder_TrueMaskFirst",
+"event": 15,
+"what": "switch",
+"param": "Actor",
+"value": "Item_NutBag_Medium",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "LostWood_ScrubForestStageElder_TrueMaskFirst",
+"event": 28,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Item_NutBag_Medium",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "LostWood_ScrubForestStageElder_TrueMaskFirst",
+"event": 29,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Item_NutBag_Large",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "Market_Child_Field_ChildToAdult",
+"event": 4,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Gauntlet_Silver",
+"entries": [
+"Market_Child_Field_ChildToAdult"
+]
+},
+{
+"flow": "MelodyGet_Sun_SubEvent",
+"event": 241,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"NoGetMelodySun_Sharp"
+]
+},
+{
+"flow": "MelodyGet_Sun_SubEvent",
+"event": 242,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"NoGetMelodySun_Flat"
+]
+},
+{
+"flow": "MiniGame_BombchuBowling",
+"event": 43,
+"what": "switch",
+"param": "Actor",
+"value": "Item_BombBag_Medium",
+"entries": [
+"MiniGame_BombchuBowling_GetPrise"
+]
+},
+{
+"flow": "MiniGame_BombchuBowling",
+"event": 241,
+"what": "switch",
+"param": "Actor",
+"value": "Item_BombBag_Medium",
+"entries": [
+"AfterWakeUp"
+]
+},
+{
+"flow": "MiniGame_BombchuBowling",
+"event": 293,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Obj_Rupee_Red",
+"entries": [
+"MiniGame_BombchuBowling_GetPrise"
+]
+},
+{
+"flow": "MiniGame_BombchuBowling",
+"event": 296,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Obj_Heart_Piece",
+"entries": [
+"MiniGame_BombchuBowling_GetPrise"
+]
+},
+{
+"flow": "MiniGame_BombchuBowling",
+"event": 297,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_BombBag_Medium",
+"entries": [
+"MiniGame_BombchuBowling_GetPrise"
+]
+},
+{
+"flow": "MiniGame_BombchuBowling",
+"event": 298,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_BombBag_Large",
+"entries": [
+"MiniGame_BombchuBowling_GetPrise"
+]
+},
+{
+"flow": "MiniGame_BombchuBowling",
+"event": 299,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_BombchuBundle_Medium",
+"entries": [
+"MiniGame_BombchuBowling_GetPrise"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 39,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"Ready_Npc_Hylia_Dampe_002_Talk"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 74,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"Ready_Npc_Hylia_Dampe_002_Talk"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 75,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Longshot",
+"entries": [
+"Ready_Npc_Hylia_Dampe_002_Talk"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 90,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Hookshot",
+"entries": [
+"MiniGame_DampeRace_Start"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 95,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Hookshot",
+"entries": [
+"MiniGame_DampeRace_Goal"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 108,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Hookshot",
+"entries": [
+"MiniGame_DampeRace_End"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 165,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"Ready_Npc_Hylia_Dampe_002_Near"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 167,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Longshot",
+"entries": [
+"Ready_Npc_Hylia_Dampe_002_Near"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 422,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"Finish_Npc_Hylia_Dampe_002_StepStart"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 423,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"TreasureBox_Appearance"
+]
+},
+{
+"flow": "MiniGame_DampeRace",
+"event": 424,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"Ready_Npc_Hylia_Dampe_002_Talk"
+]
+},
+{
+"flow": "MiniGame_Diving",
+"event": 315,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+"param": "ActorName",
+"value": "Obj_Rupee_Red",
+"entries": [
+"SecondClear"
+]
+},
+{
+"flow": "MiniGame_Diving",
+"event": 316,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+"param": "ActorName",
+"value": "Item_Scale_Silver",
+"entries": [
+"FirstClear"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 191,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_FishingOnly",
+"param": "ReceiveItem",
+"value": "Item_FishingRod",
+"entries": [
+"PaymentCheck"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 477,
+"what": "call NpcCommon:DisplayItemSet",
+"param": "DisplayItemActor.actor",
+"value": "Item_Scale_Gold",
+"entries": [
+"HideItem"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 478,
+"what": "call NpcCommon:DisplayItemSet",
+"param": "DisplayItemActor.actor",
+"value": "Obj_Heart_Piece",
+"entries": [
+"HideItem"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 482,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Obj_Heart_Piece",
+"entries": [
+"GiveReward"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 483,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_Scale_Gold",
+"entries": [
+"GiveReward"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 489,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"GiveReward"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 490,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Item_Scale_Gold",
+"entries": [
+"GiveReward"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 655,
+"what": "call Dm_SY_GetInEvent:GetInEvent",
+"param": "ActorName",
+"value": "Obj_Rupee_Purple",
+"entries": [
+"GiveReward"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 656,
+"what": "call Dm_SY_GetInEvent:GetInEvent",
+"param": "ActorName",
+"value": "Obj_Rupee_Purple",
+"entries": [
+"GiveReward"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 657,
+"what": "call Dm_SY_GetInEvent:GetInEvent",
+"param": "ActorName",
+"value": "Obj_Rupee_Blue",
+"entries": [
+"GiveReward"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 658,
+"what": "call Dm_SY_GetInEvent:GetInEvent",
+"param": "ActorName",
+"value": "Obj_Rupee_Red",
+"entries": [
+"GiveReward"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 659,
+"what": "call Dm_SY_GetInEvent:GetInEvent",
+"param": "ActorName",
+"value": "Obj_Rupee_Red",
+"entries": [
+"GiveReward"
+]
+},
+{
+"flow": "MiniGame_Fishing",
+"event": 660,
+"what": "call Dm_SY_GetInEvent:GetInEvent",
+"param": "ActorName",
+"value": "Obj_Rupee_Purple",
+"entries": [
+"GiveReward"
+]
+},
+{
+"flow": "MiniGame_Fishing_Sub",
+"event": 267,
+"what": "Player_Event.EventCreateShowItemFromActorFileName",
+"param": "Actor",
+"value": "Item_Hat_FishingPondOwner",
+"entries": [
+"Talk_TakeOffHat"
+]
+},
+{
+"flow": "MiniGame_FrogTenors",
+"event": 71,
+"what": "call MiniGame_FrogTenors:MushiToriGame",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"FrogMiniGame_Insectrepellent"
+]
+},
+{
+"flow": "MiniGame_FrogTenors",
+"event": 72,
+"what": "call MiniGame_FrogTenors:MushiToriGame",
+"param": "ActorName",
+"value": "Obj_Rupee_Blue",
+"entries": [
+"FrogMiniGame_Insectrepellent"
+]
+},
+{
+"flow": "MiniGame_FrogTenors",
+"event": 91,
+"what": "call MiniGame_FrogTenors:MushiToriGame",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"FrogMiniGame_RetryFlow"
+]
+},
+{
+"flow": "MiniGame_FrogTenors",
+"event": 92,
+"what": "call MiniGame_FrogTenors:MushiToriGame",
+"param": "ActorName",
+"value": "Obj_Rupee_Blue",
+"entries": [
+"FrogMiniGame_RetryFlow"
+]
+},
+{
+"flow": "MiniGame_FrogTenors",
+"event": 247,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"PlayOcarinaForFrogMiniGame_Melody"
+]
+},
+{
+"flow": "MiniGame_HitTarget",
+"event": 39,
+"what": "switch",
+"param": "Actor",
+"value": "Item_BulletBag_Medium",
+"entries": [
+"Child_Reward"
+]
+},
+{
+"flow": "MiniGame_HitTarget",
+"event": 100,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Quiver_Medium",
+"entries": [
+"Adult_Reward"
+]
+},
+{
+"flow": "MiniGame_HitTarget",
+"event": 227,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Range_Bow",
+"entries": [
+"Ready_Adult_Talk",
+"Ready_Child_Talk"
+]
+},
+{
+"flow": "MiniGame_HitTarget",
+"event": 290,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Obj_Rupee_Red",
+"entries": [
+"Child_Reward"
+]
+},
+{
+"flow": "MiniGame_HitTarget",
+"event": 291,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_BulletBag_Large",
+"entries": [
+"Child_Reward"
+]
+},
+{
+"flow": "MiniGame_HitTarget",
+"event": 292,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_BulletBag_Medium",
+"entries": [
+"Child_Reward"
+]
+},
+{
+"flow": "MiniGame_HitTarget",
+"event": 293,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_Quiver_Large",
+"entries": [
+"Adult_Reward"
+]
+},
+{
+"flow": "MiniGame_HitTarget",
+"event": 294,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_Quiver_Medium",
+"entries": [
+"Adult_Reward"
+]
+},
+{
+"flow": "MiniGame_HitTarget",
+"event": 295,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Obj_Rupee_Purple",
+"entries": [
+"Adult_Reward"
+]
+},
+{
+"flow": "MiniGame_HorseRace",
+"event": 327,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Obj_Rupee_Red",
+"entries": [
+"MiniGame_HorseRace_After"
+]
+},
+{
+"flow": "MiniGame_HorseRace.110",
+"event": 327,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Obj_Rupee_Red",
+"entries": [
+"MiniGame_HorseRace_After"
+]
+},
+{
+"flow": "MiniGame_SequentialChoiceTreasure",
+"event": 126,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_GlassTruth",
+"entries": [
+"MiniGame_SequentialChoiceTreasure_OpenClearTreasureBox"
+]
+},
+{
+"flow": "MiniGame_SequentialChoiceTreasure",
+"event": 207,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_DisplayGet_NoDisplay",
+"param": "ReceiveItem",
+"value": "Obj_MiniGame_SmallKey",
+"entries": [
+"PassOnKey"
+]
+},
+{
+"flow": "Minigame_CatchCucco",
+"event": 124,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_Bottle",
+"entries": [
+"RewardFlow"
+]
+},
+{
+"flow": "Minigame_CatchCucco",
+"event": 125,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Obj_Rupee_Red",
+"entries": [
+"RewardFlow"
+]
+},
+{
+"flow": "Minigame_FindOutCucco",
+"event": 190,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_EmptyBottle",
+"param": "ReceiveItem",
+"value": "Item_Bottle_Milk",
+"entries": [
+"Finish_Npc_Hylia_Talon_Child_StepStart"
+]
+},
+{
+"flow": "Minigame_FindOutCucco",
+"event": 233,
+"what": "call NpcCommon:SuggestCamera_Start_NPCLookOnly",
+"param": "TurnTargetActorName",
+"value": "Item_OrnamentalBottle_Milk",
+"entries": [
+"Ready_Npc_Hylia_Talon_Child_Talk"
+]
+},
+{
+"flow": "Minigame_FindOutCucco",
+"event": 261,
+"what": "call Dm_SY_GetInEvent:GetInEventInBottle",
+"param": "ActorName",
+"value": "Item_Bottle_Milk",
+"entries": [
+"Ready_Npc_Hylia_Talon_Child_Talk"
+]
+},
+{
+"flow": "Minigame_FindOutCucco",
+"event": 262,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_Bottle_Milk",
+"entries": [
+"Finish_Npc_Hylia_Talon_Child_StepStart"
+]
+},
+{
+"flow": "Minigame_HorsebackArchery",
+"event": 40,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Quiver_Medium",
+"entries": [
+"HourseBackArchery_MakeQuiverLarger",
+"HourseBackArchery_MakeQuiverLarger_DoubleGet"
+]
+},
+{
+"flow": "Minigame_HorsebackArchery",
+"event": 147,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Range_Bow",
+"entries": [
+"CheckBow"
+]
+},
+{
+"flow": "Minigame_HorsebackArchery",
+"event": 149,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Range_Bow",
+"entries": [
+"Ready_Npc_Gerudo_008_Talk"
+]
+},
+{
+"flow": "Minigame_HorsebackArchery",
+"event": 310,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera",
+"param": "ActorName",
+"value": "Obj_Rupee_Purple",
+"entries": [
+"HourseBackArchery_MakeQuiverLarger"
+]
+},
+{
+"flow": "Minigame_HorsebackArchery",
+"event": 311,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera",
+"param": "ActorName",
+"value": "Item_Quiver_Large",
+"entries": [
+"HourseBackArchery_MakeQuiverLarger",
+"HourseBackArchery_MakeQuiverLarger_DoubleGet"
+]
+},
+{
+"flow": "Minigame_HorsebackArchery",
+"event": 312,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera",
+"param": "ActorName",
+"value": "Item_Quiver_Medium",
+"entries": [
+"HourseBackArchery_MakeQuiverLarger",
+"HourseBackArchery_MakeQuiverLarger_DoubleGet"
+]
+},
+{
+"flow": "Minigame_HorsebackArchery",
+"event": 313,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"HourseBackArchery_HeartGet"
+]
+},
+{
+"flow": "NaviTips",
+"event": 0,
+"what": "switch",
+"param": "ActorName",
+"value": "Armor_Adult_Gauntlet_Silver",
+"entries": [
+"Gauntlet_01"
+]
+},
+{
+"flow": "NaviTips",
+"event": 1,
+"what": "switch",
+"param": "ActorName",
+"value": "Armor_Adult_Gauntlet_Silver",
+"entries": [
+"Gauntlet_03"
+]
+},
+{
+"flow": "Npc_Bonooru",
+"event": 145,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_Melody_ScarecrowSong",
+"entries": [
+"BlewOcarinaByPlayer_Adult"
+]
+},
+{
+"flow": "Npc_Gerudo_004",
+"event": 142,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Hammer",
+"entries": [
+"PayTalk"
+]
+},
+{
+"flow": "Npc_Gerudo_004",
+"event": 143,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Longshot",
+"entries": [
+"PayTalk"
+]
+},
+{
+"flow": "Npc_Gerudo_004",
+"event": 144,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Range_Bow",
+"entries": [
+"PayTalk"
+]
+},
+{
+"flow": "Npc_Gerudo_004",
+"event": 145,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Gauntlet_Silver",
+"entries": [
+"PayTalk"
+]
+},
+{
+"flow": "Npc_Gerudo_004",
+"event": 146,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_HeavyBoot",
+"entries": [
+"PayTalk"
+]
+},
+{
+"flow": "Npc_Gerudo_004",
+"event": 206,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"PayTalk"
+]
+},
+{
+"flow": "Npc_Gerudo_009",
+"event": 9,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Hammer",
+"entries": [
+"ItemCheck_ForTrainingGround"
+]
+},
+{
+"flow": "Npc_Gerudo_009",
+"event": 10,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Longshot",
+"entries": [
+"ItemCheck_ForTrainingGround"
+]
+},
+{
+"flow": "Npc_Gerudo_009",
+"event": 11,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Range_Bow",
+"entries": [
+"ItemCheck_ForTrainingGround"
+]
+},
+{
+"flow": "Npc_Gerudo_009",
+"event": 12,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Gauntlet_Silver",
+"entries": [
+"ItemCheck_ForTrainingGround"
+]
+},
+{
+"flow": "Npc_Gerudo_009",
+"event": 13,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_HeavyBoot",
+"entries": [
+"ItemCheck_ForTrainingGround"
+]
+},
+{
+"flow": "Npc_Gerudo_009",
+"event": 50,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Goron",
+"entries": [
+"ItemCheck_ForTrainingGround"
+]
+},
+{
+"flow": "Npc_Gerudo_009",
+"event": 52,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Zora",
+"entries": [
+"ItemCheck_ForTrainingGround"
+]
+},
+{
+"flow": "Npc_Goron_004_Child",
+"event": 77,
+"what": "Npc_EventStarter.EventTriggerLookAtObject",
+"param": "ActorName",
+"value": "Obj_DekuStick",
+"entries": [
+"InitTalk_OnEvent_Goron"
+]
+},
+{
+"flow": "Npc_Goron_004_Child",
+"event": 89,
+"what": "EventCamera.EventBasedOnLookAtCamera",
+"param": "TargetActorName",
+"value": "Obj_DekuStick",
+"entries": [
+"DekuStick_Stolen"
+]
+},
+{
+"flow": "Npc_Goron_004_Child",
+"event": 94,
+"what": "Player_Event.EventPlayerTurnAndLook",
+"param": "ActorName",
+"value": "Obj_DekuStick",
+"entries": [
+"DekuStick_Stolen"
+]
+},
+{
+"flow": "Npc_Goron_004_Child",
+"event": 98,
+"what": "EventCamera.EventBasedOnLookAtCamera",
+"param": "TargetActorName",
+"value": "Obj_DekuStick",
+"entries": [
+"DekuStick_Stolen"
+]
+},
+{
+"flow": "Npc_Goron_006_Child",
+"event": 3,
+"what": "switch",
+"param": "Actor",
+"value": "Item_BombBag_Small",
+"entries": [
+"BombHits_Talk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Goron_006_Child",
+"event": 4,
+"what": "switch",
+"param": "Actor",
+"value": "Item_BombBag_Medium",
+"entries": [
+"BombHits_Talk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Goron_006_Child",
+"event": 72,
+"what": "call Npc_Goron_006_Child:NpcCommon_HandOver_NpcToPlayer_NoDisplay_BombBag",
+"param": "ReveiveItem",
+"value": "Item_BombBag_Medium",
+"entries": [
+"BombHits_Talk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Goron_006_Child",
+"event": 73,
+"what": "call Npc_Goron_006_Child:NpcCommon_HandOver_NpcToPlayer_NoDisplay_BombBag",
+"param": "ReveiveItem",
+"value": "Item_BombBag_Large",
+"entries": [
+"BombHits_Talk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Goron_011_Shop_Child",
+"event": 0,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Gauntlet_Goron",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Goron_011_Shop_Child",
+"event": 74,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Gauntlet_Goron",
+"entries": [
+"FlavorTalkFlow"
+]
+},
+{
+"flow": "Npc_Goron_012_Child",
+"event": 30,
+"what": "switch",
+"param": "Actor",
+"value": "Item_BombBag_Medium",
+"entries": [
+"aboutBombchu"
+]
+},
+{
+"flow": "Npc_Goron_012_Child",
+"event": 31,
+"what": "switch",
+"param": "Actor",
+"value": "Item_BombBag_Large",
+"entries": [
+"aboutBombchu"
+]
+},
+{
+"flow": "Npc_Goron_Biggoron_Adult",
+"event": 9,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_BrokenSword",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step07"
+]
+},
+{
+"flow": "Npc_Goron_Biggoron_Adult",
+"event": 57,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Sword_Giant",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step11"
+]
+},
+{
+"flow": "Npc_Goron_Biggoron_Adult",
+"event": 58,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Sword_BrokenGiant",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step11"
+]
+},
+{
+"flow": "Npc_Goron_Biggoron_Adult",
+"event": 95,
+"what": "call Dm_SY_GetInEvent:GetInEventItemSwordBiggoron",
+"param": "ActorName",
+"value": "Item_Sword_Biggoron",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step11"
+]
+},
+{
+"flow": "Npc_Goron_Biggoron_Adult",
+"event": 112,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Weapon_Sword_Giant",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step11"
+]
+},
+{
+"flow": "Npc_Goron_Biggoron_Adult",
+"event": 119,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Weapon_Sword_BrokenGiant",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step11"
+]
+},
+{
+"flow": "Npc_Goron_Biggoron_Adult",
+"event": 169,
+"what": "Item_Sword_Giant.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"ItemGiantSword_Receive"
+]
+},
+{
+"flow": "Npc_Goron_Biggoron_Adult",
+"event": 173,
+"what": "Item_Sword_BrokenGiant.EventTriggerModelBind",
+"param": "BoneName",
+"value": "Weapon_L",
+"entries": [
+"ItemBrokenGiantSword_Receive"
+]
+},
+{
+"flow": "Npc_Goron_Biggoron_Adult",
+"event": 266,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurnForPosCamera_BigGoron",
+"param": "ActorName",
+"value": "Item_Prescription",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step07"
+]
+},
+{
+"flow": "Npc_Goron_Medigoron_Adult",
+"event": 2,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Sword_Giant",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Goron_Medigoron_Adult",
+"event": 3,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Sword_BrokenGiant",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Goron_Medigoron_Adult",
+"event": 6,
+"what": "call SimpleShop:SimpleShopRoot_Npc_Goron_Medigoron_Adult",
+"param": "ActorName",
+"value": "Shop_Sword_Giant",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Goron_Medigoron_Adult",
+"event": 6,
+"what": "call SimpleShop:SimpleShopRoot_Npc_Goron_Medigoron_Adult",
+"param": "DisplayItemActor.actor",
+"value": "Item_Sword_Giant",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Goron_Medigoron_Adult",
+"event": 17,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Sword_Biggoron",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_001_Adult",
+"event": 14,
+"what": "call Dm_SY_GetInEvent:GetInEvent",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"Get_HeartPiece",
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_002_Adult",
+"event": 84,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"NearActorsTalk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_003_Adult",
+"event": 87,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"NearActorsTalk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_005_Adult",
+"event": 179,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"Burned_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_005_Adult",
+"event": 187,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"Before_StartSubEvent_Near",
+"Near"
+]
+},
+{
+"flow": "Npc_Hylia_005_Adult",
+"event": 188,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"Raining_Near"
+]
+},
+{
+"flow": "Npc_Hylia_005_Adult",
+"event": 189,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"Act1_Move_AfterBurned",
+"Act1_Talk_AfterBurned",
+"Act3_Move_AfterBurned",
+"Act3_Talk_AfterBurned",
+"Act4_Talk_AfterBurned",
+"Act5_Move_AfterBurned",
+"Act5_Talk_AfterBurned",
+"Act6_Move_AfterBurned",
+"Act6_Talk_AfterBurned",
+"Act7_Talk_AfterBurned",
+"Burned_Talk",
+"Wander_AfterBurned"
+]
+},
+{
+"flow": "Npc_Hylia_007_Adult",
+"event": 169,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_StormSong",
+"entries": [
+"SoloTalk",
+"Talk",
+"Talk_AfterBurned"
+]
+},
+{
+"flow": "Npc_Hylia_007_Adult",
+"event": 172,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_StormSong",
+"entries": [
+"HigeWellTalk"
+]
+},
+{
+"flow": "Npc_Hylia_007_Adult",
+"event": 175,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_StormSong",
+"entries": [
+"HigeWellTalk"
+]
+},
+{
+"flow": "Npc_Hylia_009_Child",
+"event": 18,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_StormSong",
+"entries": [
+"PlayStormSong"
+]
+},
+{
+"flow": "Npc_Hylia_009_Child",
+"event": 102,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_StormSong",
+"entries": [
+"PlayStormSong_Back_Child"
+]
+},
+{
+"flow": "Npc_Hylia_010_Adult",
+"event": 170,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"AfterKakarikoBurned_Near"
+]
+},
+{
+"flow": "Npc_Hylia_010_Child",
+"event": 268,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_GlassTruth",
+"entries": [
+"NearActorsTalk",
+"SuggestWell_NearActorsTalk",
+"With_Obasan"
+]
+},
+{
+"flow": "Npc_Hylia_012_Adult",
+"event": 16,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_PoacherSaw",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step06"
+]
+},
+{
+"flow": "Npc_Hylia_012_Adult",
+"event": 113,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_BrokenSword",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step06"
+]
+},
+{
+"flow": "Npc_Hylia_012_Adult",
+"event": 127,
+"what": "switch",
+"param": "Actor",
+"value": "Item_PoacherSaw",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_012_Adult",
+"event": 128,
+"what": "switch",
+"param": "Actor",
+"value": "Item_PoacherSaw",
+"entries": [
+"Mask_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_012_Adult",
+"event": 190,
+"what": "switch",
+"param": "Actor",
+"value": "Item_PoacherSaw",
+"entries": [
+"Near"
+]
+},
+{
+"flow": "Npc_Hylia_017_Adult",
+"event": 17,
+"what": "switch",
+"param": "Actor",
+"value": "Item_OddMushroom",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_017_Adult",
+"event": 19,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_CojiroCucco",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step03"
+]
+},
+{
+"flow": "Npc_Hylia_017_Adult",
+"event": 38,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_OddMushroom",
+"entries": [
+"Giveup"
+]
+},
+{
+"flow": "Npc_Hylia_017_Adult",
+"event": 72,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_OddMushroom",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step03"
+]
+},
+{
+"flow": "Npc_Hylia_017_Adult",
+"event": 83,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_OddMushroom",
+"entries": [
+"Giveup",
+"SubEvent_GetSwordBigGoron_Step04Retry"
+]
+},
+{
+"flow": "Npc_Hylia_020_Shop_Child",
+"event": 138,
+"what": "call Dm_SY_GetInEvent:GetInEventInEquipedBottle",
+"param": "ActorName",
+"value": "Item_Bottle_RedPotion",
+"entries": [
+"Item_Bottle_TutorialEvent_Animal_Insect_GetEvent"
+]
+},
+{
+"flow": "Npc_Hylia_020_Shop_Child",
+"event": 138,
+"what": "call Dm_SY_GetInEvent:GetInEventInEquipedBottle",
+"param": "LookAtTargetActor",
+"value": "Weapon_Bottle_RedPotion",
+"entries": [
+"Item_Bottle_TutorialEvent_Animal_Insect_GetEvent"
+]
+},
+{
+"flow": "Npc_Hylia_020_Shop_Child",
+"event": 162,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_FixedCamera_WarpLink",
+"param": "ActorName",
+"value": "Item_Bottle",
+"entries": [
+"Item_Bottle_TutorialEvent_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_023_Shop_Child",
+"event": 58,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Spooky",
+"entries": [
+"TalkWithoutMask"
+]
+},
+{
+"flow": "Npc_Hylia_023_Shop_Child",
+"event": 59,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Skull",
+"entries": [
+"TalkWithoutMask"
+]
+},
+{
+"flow": "Npc_Hylia_023_Shop_Child",
+"event": 60,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Keaton",
+"entries": [
+"TalkWithoutMask"
+]
+},
+{
+"flow": "Npc_Hylia_023_Shop_Child",
+"event": 92,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Mask",
+"param": "ActorName",
+"value": "Item_Mask_Truth",
+"entries": [
+"Pay_usagi"
+]
+},
+{
+"flow": "Npc_Hylia_023_Shop_Child",
+"event": 100,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Gerudo",
+"entries": [
+"NaviRequest"
+]
+},
+{
+"flow": "Npc_Hylia_023_Shop_Child",
+"event": 101,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Zora",
+"entries": [
+"NaviRequest"
+]
+},
+{
+"flow": "Npc_Hylia_023_Shop_Child",
+"event": 102,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Goron",
+"entries": [
+"NaviRequest"
+]
+},
+{
+"flow": "Npc_Hylia_023_Shop_Child",
+"event": 231,
+"what": "GameDataActor.EventTriggerSetGameDataInt",
+"param": "GameDataName",
+"value": "Shop_SelectItemIndex",
+"entries": [
+"Pay_usagi"
+]
+},
+{
+"flow": "Npc_Hylia_030_Child",
+"event": 177,
+"what": "call NpcCommon:SellMask",
+"param": "ReceiveItem",
+"value": "Armor_Child_Mask_Spooky",
+"entries": [
+"Sell_MaskOfSpooky",
+"Sell_MaskOfSpooky_1",
+"Sell_MaskOfSpooky_FullMoney"
+]
+},
+{
+"flow": "Npc_Hylia_044_Adult",
+"event": 0,
+"what": "call SimpleShop:SimpleShopRoot",
+"param": "ActorName",
+"value": "Shop_BombchuBundle_01",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_045_Adult",
+"event": 7,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_EyeballFrog",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step09"
+]
+},
+{
+"flow": "Npc_Hylia_045_Adult",
+"event": 10,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeDrop",
+"entries": [
+"CarryMedicine"
+]
+},
+{
+"flow": "Npc_Hylia_045_Adult",
+"event": 54,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_EyeDrop",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step09Retry"
+]
+},
+{
+"flow": "Npc_Hylia_045_Adult",
+"event": 96,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeballFrog",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_045_Adult",
+"event": 172,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeballFrog",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step09"
+]
+},
+{
+"flow": "Npc_Hylia_045_Adult",
+"event": 182,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_EyeDrop",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step09"
+]
+},
+{
+"flow": "Npc_Hylia_045_Adult",
+"event": 183,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_EyeDrop",
+"entries": [
+"CarryMedicine"
+]
+},
+{
+"flow": "Npc_Hylia_045_Adult",
+"event": 184,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_EyeDrop",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step09Retry"
+]
+},
+{
+"flow": "Npc_Hylia_045_Child",
+"event": 38,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Scale_Silver",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_045_Child",
+"event": 55,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Obj_Heart_Piece",
+"entries": [
+"DivingChallenge_Common"
+]
+},
+{
+"flow": "Npc_Hylia_045_Child",
+"event": 152,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Scale_Gold",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_045_Child",
+"event": 156,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Scale_Silver",
+"entries": [
+"DivingChallenge_Common"
+]
+},
+{
+"flow": "Npc_Hylia_045_Child",
+"event": 159,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Scale_Gold",
+"entries": [
+"DivingChallenge_Common"
+]
+},
+{
+"flow": "Npc_Hylia_046_BottleShop_Child",
+"event": 64,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"FirstTalk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_046_BottleShop_Child",
+"event": 65,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"FirstTalk",
+"Sell_InputReturn",
+"Sell_InputReturn_AfterSell",
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_046_BottleShop_Child",
+"event": 66,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"FirstTalk",
+"Sell_InputReturn",
+"Sell_InputReturn_AfterSell",
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_046_BottleShop_Child",
+"event": 67,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"FirstTalk",
+"Sell_InputReturn",
+"Sell_InputReturn_AfterSell",
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_046_BottleShop_Child",
+"event": 68,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"DontSell"
+]
+},
+{
+"flow": "Npc_Hylia_046_BottleShop_Child",
+"event": 69,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Sell_InputReturn_AfterSell"
+]
+},
+{
+"flow": "Npc_Hylia_046_BottleShop_Child",
+"event": 108,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Sell_InputReturn"
+]
+},
+{
+"flow": "Npc_Hylia_046_BottleShop_Child",
+"event": 143,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"FirstTalk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_047_Child",
+"event": 0,
+"what": "call SimpleShop:SimpleShopRoot_3Choices",
+"param": "ActorName",
+"value": "Item_MagicBean",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_047_Child",
+"event": 24,
+"what": "call SimpleShop:SimpleShopRoot_3Choices",
+"param": "ActorName",
+"value": "Item_MagicBean",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_047_Child",
+"event": 25,
+"what": "call SimpleShop:SimpleShopRoot_3Choices",
+"param": "ActorName",
+"value": "Item_MagicBean",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_047_Child",
+"event": 26,
+"what": "call SimpleShop:SimpleShopRoot_3Choices",
+"param": "ActorName",
+"value": "Item_MagicBean",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_047_Child",
+"event": 27,
+"what": "call SimpleShop:SimpleShopRoot_3Choices",
+"param": "ActorName",
+"value": "Item_MagicBean",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_047_Child",
+"event": 28,
+"what": "call SimpleShop:SimpleShopRoot_3Choices",
+"param": "ActorName",
+"value": "Item_MagicBean",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_047_Child",
+"event": 51,
+"what": "call SimpleShop:SimpleShopRoot_3Choices",
+"param": "ActorName",
+"value": "Item_MagicBean",
+"entries": [
+"AfterPaymentTalk_Random"
+]
+},
+{
+"flow": "Npc_Hylia_047_Child",
+"event": 52,
+"what": "call SimpleShop:SimpleShopRoot_3Choices",
+"param": "ActorName",
+"value": "Item_MagicBean",
+"entries": [
+"AfterPaymentTalk_Random"
+]
+},
+{
+"flow": "Npc_Hylia_048_BottleShop",
+"event": 92,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Sell_InputReturn2"
+]
+},
+{
+"flow": "Npc_Hylia_048_BottleShop",
+"event": 95,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Sell_InputReturn2"
+]
+},
+{
+"flow": "Npc_Hylia_048_BottleShop",
+"event": 96,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Sell",
+"Sell_InputReturn",
+"Sell_InputReturn2"
+]
+},
+{
+"flow": "Npc_Hylia_048_BottleShop",
+"event": 97,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Sell",
+"Sell_InputReturn",
+"Sell_InputReturn2"
+]
+},
+{
+"flow": "Npc_Hylia_048_BottleShop",
+"event": 99,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Sell_InputReturn"
+]
+},
+{
+"flow": "Npc_Hylia_048_BottleShop",
+"event": 144,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Sell"
+]
+},
+{
+"flow": "Npc_Hylia_048_BottleShop",
+"event": 150,
+"what": "GameDataActor.EventTriggerSetGameDataBool",
+"param": "GameDataName",
+"value": "Shop_IsUpdatableStockNumDisplay",
+"entries": [
+"Sell",
+"Sell_InputReturn"
+]
+},
+{
+"flow": "Npc_Hylia_048_BottleShop",
+"event": 319,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Poeshop",
+"param": "ActorName",
+"value": "Item_Bottle",
+"entries": [
+"Sell_AfterCheckingLoseMoney"
+]
+},
+{
+"flow": "Npc_Hylia_048_BottleShop",
+"event": 320,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Poeshop",
+"param": "ActorName",
+"value": "Obj_Rupee_Gold",
+"entries": [
+"Sell_AfterCheckingLoseMoney_900"
+]
+},
+{
+"flow": "Npc_Hylia_049_Adult",
+"event": 36,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_PocketCucco",
+"entries": [
+"SubEvent_GetSwordBigGoron_UntilStep03_ShowItemTalk",
+"SubEvent_GetSwordBigGoron_UntilStep03_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_049_Adult",
+"event": 194,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_CojiroCucco",
+"entries": [
+"SubEvent_GetSwordBigGoron_UntilStep03_ShowItemTalk",
+"SubEvent_GetSwordBigGoron_UntilStep03_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_049_Adult",
+"event": 223,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_PocketEgg",
+"entries": [
+"Before_StartSubEvent_Talk",
+"SubEvent_GetSwordBigGoron_Start",
+"Talk_WithNPC"
+]
+},
+{
+"flow": "Npc_Hylia_053_Adult",
+"event": 36,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_OddMushroom",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step04"
+]
+},
+{
+"flow": "Npc_Hylia_053_Adult",
+"event": 104,
+"what": "switch",
+"param": "Actor",
+"value": "Item_OddMushroom",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step04"
+]
+},
+{
+"flow": "Npc_Hylia_053_Adult",
+"event": 127,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_OddPowder",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step04"
+]
+},
+{
+"flow": "Npc_Hylia_053_Adult",
+"event": 152,
+"what": "call Dm_SY_GetInEvent:GetInEventInBottle_BlueBottleShop",
+"param": "ActorName",
+"value": "Item_Bottle_BluePotion",
+"entries": [
+"Buy_BluePotion"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001",
+"event": 105,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Rupee_Green",
+"entries": [
+"DiggingHoleTour_Drop_HeartPiece",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001",
+"event": 106,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Rupee_Blue",
+"entries": [
+"DiggingHoleTour_Drop_HeartPiece",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001",
+"event": 107,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Rupee_Red",
+"entries": [
+"DiggingHoleTour_Drop_HeartPiece",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001",
+"event": 148,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Rupee_Purple",
+"entries": [
+"DiggingHoleTour_Drop_HeartPiece",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001",
+"event": 150,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Rupee_Gold",
+"entries": [
+"DiggingHoleTour_Drop_HeartPiece",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001",
+"event": 179,
+"what": "call Npc_Hylia_Dampe_001:DiggingHoleTour_Demo",
+"param": "DropActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"BigHitChance_ShortCut1",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001",
+"event": 224,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"BigHitChance_ShortCut1",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001",
+"event": 602,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc_Dampe",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"BigHitChance_ShortCut1",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001.110",
+"event": 105,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Rupee_Green",
+"entries": [
+"DiggingHoleTour_Drop_HeartPiece",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001.110",
+"event": 106,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Rupee_Blue",
+"entries": [
+"DiggingHoleTour_Drop_HeartPiece",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001.110",
+"event": 107,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Rupee_Red",
+"entries": [
+"DiggingHoleTour_Drop_HeartPiece",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001.110",
+"event": 148,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Rupee_Purple",
+"entries": [
+"DiggingHoleTour_Drop_HeartPiece",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001.110",
+"event": 150,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Rupee_Gold",
+"entries": [
+"DiggingHoleTour_Drop_HeartPiece",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001.110",
+"event": 179,
+"what": "call Npc_Hylia_Dampe_001.110:DiggingHoleTour_Demo",
+"param": "DropActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"BigHitChance_ShortCut1",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001.110",
+"event": 224,
+"what": "Npc_Hylia_Dampe_001.EventMiniGameDiggingHoleAdventActor",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"BigHitChance_ShortCut1",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Dampe_001.110",
+"event": 602,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc_Dampe",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"BigHitChance_ShortCut1",
+"MiniGame_AskWantToDig",
+"MiniGame_Check",
+"MiniGame_Talk"
+]
+},
+{
+"flow": "Npc_Hylia_ImperialSoldier_001_Child",
+"event": 4,
+"what": "Npc_Hylia_ImperialSoldier_001_Child.EventShootToPlayer",
+"param": "TrackBoneName",
+"value": "Weapon_L",
+"entries": [
+"Retaliation"
+]
+},
+{
+"flow": "Npc_Hylia_ImperialSoldier_001_Child",
+"event": 54,
+"what": "Npc_Hylia_ImperialSoldier_001_Child.EventShootToAnchor",
+"param": "TrackBoneName",
+"value": "Weapon_L",
+"entries": [
+"Retaliation"
+]
+},
+{
+"flow": "Npc_Hylia_RunningMan_Adult",
+"event": 189,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurnForPosCamera",
+"param": "ActorName",
+"value": "Obj_Rupee_Purple",
+"entries": [
+"RunningRace_Clear"
+]
+},
+{
+"flow": "Npc_Hylia_RunningMan_Adult",
+"event": 190,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurnForPosCamera",
+"param": "ActorName",
+"value": "Obj_Rupee_Red",
+"entries": [
+"RunningRace_Clear"
+]
+},
+{
+"flow": "Npc_Hylia_Soldier_003",
+"event": 10,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"ShowItem_ZeldaLetter"
+]
+},
+{
+"flow": "Npc_Hylia_Soldier_003",
+"event": 22,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_ZeldaLetter",
+"entries": [
+"ShowItem_ZeldaLetter"
+]
+},
+{
+"flow": "Npc_Hylia_Soldier_003",
+"event": 30,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"GateOpened_Talk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Soldier_003",
+"event": 31,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"GateOpened_Talk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Hylia_Soldier_003",
+"event": 111,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Child_Mask_Keaton",
+"entries": [
+"Near"
+]
+},
+{
+"flow": "Npc_Kokiri_001_Shop_Child",
+"event": 4,
+"what": "switch",
+"param": "ActorName",
+"value": "Weapon_Shield_Deku",
+"entries": [
+"ReTurnTalk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Kokiri_001_Shop_Child",
+"event": 109,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Mask",
+"param": "ActorName",
+"value": "Obj_Shield_Deku",
+"entries": [
+"present_DekuSheld"
+]
+},
+{
+"flow": "Npc_Kokiri_001_Shop_Child",
+"event": 110,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Mask",
+"param": "ActorName",
+"value": "Obj_Shield_Deku",
+"entries": [
+"present_DekuSheld"
+]
+},
+{
+"flow": "Npc_Kokiri_005_Child",
+"event": 43,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Ocarina_Fairy",
+"entries": [
+"Near"
+]
+},
+{
+"flow": "Npc_Kokiri_005_Child",
+"event": 50,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Ocarina_Fairy",
+"entries": [
+"Get_StoneOfForest_IsCompleted_Talk"
+]
+},
+{
+"flow": "Npc_Kokiri_005_Child",
+"event": 97,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Ocarina_Fairy",
+"entries": [
+"Get_StoneOfForest_IsCompleted_Talk"
+]
+},
+{
+"flow": "Npc_Kokiri_005_Child",
+"event": 122,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Obj_Rupee_Blue",
+"entries": [
+"Npc_Kokiri_005_GetInEvent"
+]
+},
+{
+"flow": "Npc_Kokiri_006_Child",
+"event": 12,
+"what": "switch",
+"param": "ActorName",
+"value": "Weapon_Sword_Kokiri",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Kokiri_006_Child",
+"event": 90,
+"what": "switch",
+"param": "ActorName",
+"value": "Weapon_Sword_Kokiri",
+"entries": [
+"KokiriForest_Kokiri_006_Backflip_00"
+]
+},
+{
+"flow": "Npc_Kokiri_007_Child",
+"event": 40,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Ocarina_Fairy",
+"entries": [
+"KokiriForest_Npc_Kokiri_007_Child_BlockEnd_Talk"
+]
+},
+{
+"flow": "Npc_Kokiri_008_Child",
+"event": 218,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Obj_Rupee_Blue",
+"entries": [
+"LiftRock_AllBroken_Talk",
+"LiftRock_AllBroken_TalkAndStand"
+]
+},
+{
+"flow": "Npc_Kokiri_009_Child",
+"event": 22,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_SariaSong",
+"entries": [
+"GetZeldaLullaby"
+]
+},
+{
+"flow": "Npc_Kokiri_010_Child",
+"event": 7,
+"what": "switch",
+"param": "ActorName",
+"value": "Weapon_Shield_Deku",
+"entries": [
+"BeforeDekuClear"
+]
+},
+{
+"flow": "Npc_Kokiri_011_Child",
+"event": 21,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_SariaSong",
+"entries": [
+"Get_ZeldaLullaby"
+]
+},
+{
+"flow": "Npc_Kokiri_012_Child",
+"event": 40,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_SariaSong",
+"entries": [
+"Goto_HyruleCastle_IsCompleted_Talk"
+]
+},
+{
+"flow": "Npc_Kokiri_013_Child",
+"event": 26,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_SariaSong",
+"entries": [
+"Get_StoneOfForest_IsCompleted_Talk"
+]
+},
+{
+"flow": "Npc_Kokiri_013_Child",
+"event": 45,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_SariaSong",
+"entries": [
+"Get_StoneOfForest_IsCompleted_Talk"
+]
+},
+{
+"flow": "Npc_Kokiri_Fado_Adult",
+"event": 48,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_OddPowder",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step05"
+]
+},
+{
+"flow": "Npc_Kokiri_Fado_Adult",
+"event": 122,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_Fado",
+"param": "ActorName",
+"value": "Item_PoacherSaw",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step05"
+]
+},
+{
+"flow": "Npc_Kokiri_Mido_Child",
+"event": 126,
+"what": "switch",
+"param": "ActorName",
+"value": "Item_Melody_SariaSong",
+"entries": [
+"DoorOfTime_IsAfter_Step01_Exp_Talk"
+]
+},
+{
+"flow": "Npc_SkullKid_Child",
+"event": 62,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"Npc_SkullKid_Child_PlayOcarinaSequence"
+]
+},
+{
+"flow": "Npc_SkullKid_Child_02",
+"event": 201,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+"param": "ActorName",
+"value": "Obj_Rupee_Blue",
+"entries": [
+"SessionStart"
+]
+},
+{
+"flow": "Npc_SkullKid_Child_02",
+"event": 202,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+"param": "ActorName",
+"value": "Obj_Rupee_Red",
+"entries": [
+"SessionStart"
+]
+},
+{
+"flow": "Npc_SkullKid_Child_02",
+"event": 203,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+"param": "ActorName",
+"value": "Obj_Heart_Piece",
+"entries": [
+"SessionStart"
+]
+},
+{
+"flow": "Npc_SkullKid_Child_02",
+"event": 204,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+"param": "ActorName",
+"value": "Obj_Rupee_Blue",
+"entries": [
+"SessionStart"
+]
+},
+{
+"flow": "Npc_Zora_002",
+"event": 2,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Scale_Silver",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Zora_002",
+"event": 6,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Scale_Silver",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Zora_002_Adult",
+"event": 23,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Scale_Gold",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Zora_009",
+"event": 9,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Scale_Silver",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Zora_009",
+"event": 17,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Scale_Silver",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Zora_011_Shop_Adult",
+"event": 64,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Mask",
+"param": "ActorName",
+"value": "Obj_Armor_Zora",
+"entries": [
+"Talk"
+]
+},
+{
+"flow": "Npc_Zora_KingZora_adult",
+"event": 20,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Prescription",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step08"
+]
+},
+{
+"flow": "Npc_Zora_KingZora_adult",
+"event": 59,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_EyeballFrog",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step09Retry"
+]
+},
+{
+"flow": "Npc_Zora_KingZora_adult",
+"event": 79,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeballFrog",
+"entries": [
+"EyeballFrogFailed"
+]
+},
+{
+"flow": "Npc_Zora_KingZora_adult",
+"event": 81,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeballFrog",
+"entries": [
+"IrregularTalk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Zora_KingZora_adult",
+"event": 139,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Zora",
+"entries": [
+"IrregularTalk",
+"Talk"
+]
+},
+{
+"flow": "Npc_Zora_KingZora_adult",
+"event": 174,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera",
+"param": "ActorName",
+"value": "Item_EyeballFrog",
+"entries": [
+"SubEvent_GetSwordBigGoron_Step08"
+]
+},
+{
+"flow": "Npc_Zora_KingZora_adult",
+"event": 175,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera",
+"param": "ActorName",
+"value": "Item_EyeballFrog",
+"entries": [
+"EyeballFrogFailed",
+"SubEvent_GetSwordBigGoron_Step09Retry"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 5,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Weapon_Sword_Master",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 9,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Weapon_Sword_Kokiri",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 11,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 12,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 15,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Shield_Deku",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 16,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Shield_Deku",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 17,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 19,
+"what": "switch",
+"param": "Value",
+"value": "Weapon_Shield_Mirror",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 20,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 21,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Shield_Mirror",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 23,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "ReplaceEquipmentForEraChange",
+"event": 24,
+"what": "GameDataActor.EventTriggerSetGameDataString64",
+"param": "Value",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"ReplaceEquipmentForEraChange"
+]
+},
+{
+"flow": "SageOfFire",
+"event": 80,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Goron",
+"entries": [
+"SageOfFire_NaviScorching"
+]
+},
+{
+"flow": "SageOfFire",
+"event": 177,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+"param": "ActorName",
+"value": "Obj_Armor_Goron",
+"entries": [
+"Step02_DaruniaJr_FirstTalk",
+"Step02_Npc_Goron_DaruniaJr_Adult_Talk"
+]
+},
+{
+"flow": "SageOfShadow",
+"event": 62,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Armor_GlassTruth",
+"entries": [
+"Boss_Appear"
+]
+},
+{
+"flow": "SageOfSpirit_FocusOnGimmick",
+"event": 45,
+"what": "GameSystemActor.EventWaitForActorPresence",
+"param": "ActorName",
+"value": "Obj_Fairy",
+"entries": [
+"DessertColossus_IsStormSongPlayed"
+]
+},
+{
+"flow": "SageOfSpirit_FocusOnGimmick",
+"event": 52,
+"what": "GameSystemActor.EventWaitForActorPresence",
+"param": "ActorName",
+"value": "Obj_Fairy",
+"entries": [
+"DessertColossus_IsStormSongPlayed"
+]
+},
+{
+"flow": "SageOfSpirit_FocusOnGimmick",
+"event": 53,
+"what": "GameSystemActor.EventWaitForActorPresence",
+"param": "ActorName",
+"value": "Obj_Fairy",
+"entries": [
+"DessertColossus_IsStormSongPlayed"
+]
+},
+{
+"flow": "SageOfSpirit_FocusOnGimmick",
+"event": 54,
+"what": "GameSystemActor.EventWaitForActorPresence",
+"param": "ActorName",
+"value": "Obj_Fairy",
+"entries": [
+"DessertColossus_IsStormSongPlayed"
+]
+},
+{
+"flow": "SageOfSpirit_FocusOnGimmick",
+"event": 55,
+"what": "GameSystemActor.EventWaitForActorPresence",
+"param": "ActorName",
+"value": "Obj_Fairy",
+"entries": [
+"DessertColossus_IsStormSongPlayed"
+]
+},
+{
+"flow": "SageOfSpirit_FocusOnGimmick",
+"event": 56,
+"what": "GameSystemActor.EventWaitForActorPresence",
+"param": "ActorName",
+"value": "Obj_Fairy",
+"entries": [
+"DessertColossus_IsStormSongPlayed"
+]
+},
+{
+"flow": "SageOfSpirit_FocusOnGimmick",
+"event": 57,
+"what": "GameSystemActor.EventWaitForActorPresence",
+"param": "ActorName",
+"value": "Obj_Fairy",
+"entries": [
+"DessertColossus_IsStormSongPlayed"
+]
+},
+{
+"flow": "SageOfSpirit_RescueCarpenter",
+"event": 94,
+"what": "call SageOfSpirit_RescueCarpenter:GerudoThiefDropKey",
+"param": "Obj_SmallKey.actor",
+"value": "Obj_Dungeon_SmallKey_GerudoFortress_01",
+"entries": [
+"GerudoFortress_DestroyGerudoThief01"
+]
+},
+{
+"flow": "SageOfSpirit_RescueCarpenter",
+"event": 95,
+"what": "call SageOfSpirit_RescueCarpenter:GerudoThiefDropKey",
+"param": "Obj_SmallKey.actor",
+"value": "Obj_Dungeon_SmallKey_GerudoFortress_02",
+"entries": [
+"GerudoFortress_DestroyGerudoThief02"
+]
+},
+{
+"flow": "SageOfSpirit_RescueCarpenter",
+"event": 96,
+"what": "call SageOfSpirit_RescueCarpenter:GerudoThiefDropKey",
+"param": "Obj_SmallKey.actor",
+"value": "Obj_Dungeon_SmallKey_GerudoFortress_03",
+"entries": [
+"GerudoFortress_DestroyGerudoThief03"
+]
+},
+{
+"flow": "SageOfSpirit_RescueCarpenter",
+"event": 97,
+"what": "call SageOfSpirit_RescueCarpenter:GerudoThiefDropKey",
+"param": "Obj_SmallKey.actor",
+"value": "Obj_Dungeon_SmallKey_GerudoFortress_04",
+"entries": [
+"GerudoFortress_DestroyGerudoThief04"
+]
+},
+{
+"flow": "SageOfWater",
+"event": 55,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Zora",
+"entries": [
+"Dm_MelodyGet_WaterAfter"
+]
+},
+{
+"flow": "SageOfWater",
+"event": 56,
+"what": "switch",
+"param": "Actor",
+"value": "Armor_Adult_Zora",
+"entries": [
+"IceCavern_WaterSerenade"
+]
+},
+{
+"flow": "SageOfWater",
+"event": 252,
+"what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_PosCamera",
+"param": "ActorName",
+"value": "Obj_Armor_Zora",
+"entries": [
+"KingZora_IsMelted_Ice",
+"Safety_Entry"
+]
+},
+{
+"flow": "SharpFlatSpiritTalk_EraseObject",
+"event": 128,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"SharpTalk"
+]
+},
+{
+"flow": "SharpFlatSpiritTalk_EraseObject",
+"event": 148,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Hookshot",
+"entries": [
+"FlatTalk"
+]
+},
+{
+"flow": "ShowItem",
+"event": 32,
+"what": "switch",
+"param": "Actor",
+"value": "Item_EyeDrop",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "ShowItem",
+"event": 33,
+"what": "switch",
+"param": "Actor",
+"value": "Item_Prescription",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "ShowItem",
+"event": 41,
+"what": "switch",
+"param": "Actor",
+"value": "Item_OddPowder",
+"entries": [
+"EntryPoint0"
+]
+},
+{
+"flow": "SimpleShop",
+"event": 36,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Sword_BrokenGiant",
+"entries": [
+"SimpleShopRoot_Npc_Goron_Medigoron_Adult"
+]
+},
+{
+"flow": "SimpleShop",
+"event": 37,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Weapon_Sword_BrokenGiant",
+"entries": [
+"SimpleShopRoot_Npc_Goron_Medigoron_Adult"
+]
+},
+{
+"flow": "SimpleShop",
+"event": 63,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Item_MagicBean",
+"entries": [
+"Sub_SimpleShop_Buy_MagicBean"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 79,
+"what": "Player_Event.EventCreateShowItemFromActorFileName",
+"param": "Actor",
+"value": "Item_Arrow_Light",
+"entries": [
+"NaviRematchFirst"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 80,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_Arrow_Light",
+"entries": [
+"NaviRematchFirst"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 81,
+"what": "call Dm_SY_GetInEvent:Item_Position",
+"param": "ActorName",
+"value": "Item_Arrow_Light",
+"entries": [
+"NaviRematchFirst"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 83,
+"what": "PouchSystemActor.EventTriggerSetForGetWindow",
+"param": "Actor",
+"value": "Item_Arrow_Light",
+"entries": [
+"NaviRematchFirst"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 97,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Weapon_Shield_Mirror",
+"entries": [
+"BossRushBossStageExitSuccessBongoBongo"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 100,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Armor_Adult_Zora",
+"entries": [
+"BossRushBossStageExitSuccessVolvagia"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 102,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Armor_Adult_Goron",
+"entries": [
+"BossRushBossStageExitSuccessPhantomGanon"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 109,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Armor_Adult_Normal",
+"entries": [
+"BossRushBossStageExitSuccessMorpha"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 177,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Weapon_Shield_Mirror",
+"entries": [
+"BossRushBossStageExitSuccessBongoBongo"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 178,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Weapon_Boomerang",
+"entries": [
+"BossRushBossStageExitSuccessDodongo"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 179,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Weapon_Hammer",
+"entries": [
+"BossRushBossStageExitSuccessPhantomGanon"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 191,
+"what": "call Dm_SY_GetInEvent:GetInEvent_SetLocator",
+"param": "ActorName",
+"value": "Item_Arrow_Light",
+"entries": [
+"NaviRematchFirst"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 192,
+"what": "call Dm_SY_GetInEvent:GetInEvent_Animation",
+"param": "ActorName",
+"value": "Item_Arrow_Light",
+"entries": [
+"NaviRematchFirst"
+]
+},
+{
+"flow": "SubEvent_AllBossBattle",
+"event": 288,
+"what": "Player_Event.EventTriggerEquipmentUserRequestCreateStaticEquipment",
+"param": "EquipmentActorName",
+"value": "Armor_GlassTruth",
+"entries": [
+"BossRushBossStageExitSuccessMorpha"
+]
+},
+{
+"flow": "SubEvent_FindRichard",
+"event": 34,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Obj_Rupee_Blue",
+"entries": [
+"SubEvent_FindRichard_ClearEvent"
+]
+},
+{
+"flow": "SubEvent_FindRichard",
+"event": 35,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Obj_Heart_Piece",
+"entries": [
+"SubEvent_FindRichard_ClearEvent"
+]
+},
+{
+"flow": "SubEvent_GetSwordBigGoron",
+"event": 0,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_PocketEgg",
+"entries": [
+"EggHatch_PocketEgg"
+]
+},
+{
+"flow": "SubEvent_GetSwordBigGoron",
+"event": 54,
+"what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent",
+"param": "Actor",
+"value": "Item_PocketEgg",
+"entries": [
+"EggHatch_PocketEgg"
+]
+},
+{
+"flow": "SubEvent_GetSwordBigGoron",
+"event": 55,
+"what": "call GetPouchContent:GetPouchContentByActorName",
+"param": "ActorName",
+"value": "Item_PocketCucco",
+"entries": [
+"EggHatch_PocketEgg"
+]
+},
+{
+"flow": "SubEvent_GetSwordBigGoron",
+"event": 132,
+"what": "call GetInEvent_EggHatche:GetInEvent_EggHatche",
+"param": "ActorName",
+"value": "Item_PocketCucco",
+"entries": [
+"EggHatch_PocketEgg"
+]
+},
+{
+"flow": "SubEvent_MaskSalesman",
+"event": 99,
+"what": "call NpcCommon:SellMask",
+"param": "ReceiveItem",
+"value": "Armor_Child_Mask_Keaton",
+"entries": [
+"Sell_MaskOfKeaton",
+"Sell_MaskOfKeaton_FullMoney"
+]
+},
+{
+"flow": "SubEvent_MaskSalesman",
+"event": 103,
+"what": "call NpcCommon:SellMask",
+"param": "ReceiveItem",
+"value": "Armor_Child_Mask_Skull",
+"entries": [
+"Sell_MaskOfSkull",
+"Sell_MaskOfSkull_1",
+"Sell_MaskOfSkull_FullMoney"
+]
+},
+{
+"flow": "SubEvent_MaskSalesman",
+"event": 111,
+"what": "call NpcCommon:SellMask",
+"param": "ReceiveItem",
+"value": "Armor_Child_Mask_Bunny",
+"entries": [
+"Sell_MaskOfBunny",
+"Sell_MaskOfBunny_FullMoney"
+]
+},
+{
+"flow": "SubEvent_MaskSalesman",
+"event": 120,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"Step01_Npc_Hylia_Soldier_003_Talk"
+]
+},
+{
+"flow": "SubEvent_MaskSalesman",
+"event": 122,
+"what": "switch",
+"param": "Actor",
+"value": "Weapon_Shield_Hylian",
+"entries": [
+"Step01_Npc_Hylia_Soldier_003_Talk"
+]
+},
+{
+"flow": "SubEvent_MaskSalesman",
+"event": 281,
+"what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+"param": "ReveiveItem",
+"value": "Obj_Rupee_Gold",
+"entries": [
+"AddMoney_RunningMan"
+]
+}
+]

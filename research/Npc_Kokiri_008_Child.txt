@@ -1,0 +1,240 @@
+entries: {'Get_StoneOfForest_IsCompleted_Talk': 45, 'GameStarted_Talk': 13, 'Goto_HyruleCastle_IsCompleted_Talk': 223, 'Talk': 5, 'Near': 10, 'GameStarted_ChoiceTalk_First': 50, 'GameStarted_ChoiceTalk_2nd': 47, 'Camera_ForPracticeArea': 52, 'AboutSheld': 209, 'AboutSword': 210, 'Farewell': 93, 'Show_Shield': 32, 'Talk_SwordAndShield': 160, 'Show_Sword': 21, 'Mask_All': 215, 'Mask_Talk': 114, 'PlayAct_Stand_To_Lift_Rock': 206, 'PlayAct_Lift_Rock_To_Stand': 130, 'Before_TalkingMido': 1, 'AlreadyPaid_Check': 152, 'LiftRock_AllBroken_Talk': 145, 'SwordAndReward_Choices': 187, 'SwordOnly_Choice': 188, 'ShieldOnly_Choice': 189, 'ShieldAndReward_Choices': 192, 'LiftRock_AllBroken_TalkAndStand': 228, 'Checking_LinkPositioning': 231}
+actors: [(0, 'Npc_EventStarter', '', ['EventTalk', 'EventTriggerBalloonMessage', 'EventNPCTurnToTarget', 'EventTriggerLookAtObject', 'EventTriggerKokiriRequestComeCloserFairy', 'EventTriggerChangeEmotion'], ['EventQueryIsOnRecentTalkFlag', 'EventQueryAvoidDuplicationRandomChoice2', 'EventNPCQueryCheckFrontToTarget']), (1, 'GameDataActor', '', ['EventTriggerSetGameDataBool', 'EventTriggerAddOrSubGameDataInt'], ['EventQueryIsGameDataBool', 'EventQueryIsGameDataBoolExp', 'EventQueryCompareGameDataInt']), (2, 'Player_Event', '', ['EventPlayerPlayASForFlowchart', 'EventPlayerTurnAndLook'], ['EventQueryCheckIsEquippedDynamicEquipment', 'EventQueryPlayerIsEquipArmor']), (3, 'GameSystemActor', '', ['EventTriggerSendErrorToEventResource'], ['EventQueryTalkChoice3', 'EventQueryTalkChoice2', 'EventQueryRandomChoice2', 'EventQueryTalkChoice4']), (4, 'Npc_Kokiri_008_Child', '', ['EventTriggerAIScheduleSetForceCancelEventContinueArrivalAS', 'EventPlayAS', 'EventTalk', 'EventNPCTurnToTarget'], []), (5, 'EventCamera', '', ['EventTriggerCameraSavePoint', 'EventSendEventTalkMessageToPlayerCamera'], []), (6, 'EventSystemActor', '', ['EventWait'], []), (7, 'EventSystemActor', 'EmoteReset', ['EventWait'], [])]
+  0 Npc_EventStarter.EventTriggerBalloonMessage -> None {"IsChallenge": false, "DisplayFrame": 180, "IsIgnoreDisplayKeepDepth": false, "IsDisplayInTerror": false, "NotOverriddenByInterestBalloon": false, "MessageID": "EventFlowMsg/Npc_Kokiri_008_Child:Near_01"}
+  1 ?Npc_EventStarter.EventQueryIsOnRecentTalkFlag cases {0: 136, 1: 56} 
+  2 Npc_EventStarter.EventTalk -> 224 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+  3 ?Npc_EventStarter.EventQueryIsOnRecentTalkFlag cases {0: 69, 1: 68} 
+  4 Npc_EventStarter.EventTalk -> 72 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+  5 ?GameDataActor.EventQueryIsGameDataBoolExp cases {0: 9, 1: 6} {"GameDataName": "Goto_HyruleCastle_IsCompleted_Exp"}
+  6 ?GameDataActor.EventQueryIsGameDataBoolExp cases {0: 237, 1: 235} {"GameDataName": "Get_StoneOfForest_IsCompleted_Exp"}
+  7 call (self):GameStarted_Talk -> None 
+  8 call (self):Get_StoneOfForest_IsCompleted_Talk -> None 
+  9 call (self):Goto_HyruleCastle_IsCompleted_Talk -> None 
+ 10 ?GameDataActor.EventQueryIsGameDataBoolExp cases {0: 125, 1: 78} {"GameDataName": "Get_StoneOfForest_IsCompleted_Exp"}
+ 11 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, 
+ 12 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, 
+ 13 ?GameDataActor.EventQueryIsGameDataBool cases {0: 82, 1: 139} {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_Talk_Event44", "Index": -1}
+ 14 call (self):GameStarted_ChoiceTalk_First -> 120 
+ 15 call (self):GameStarted_ChoiceTalk_2nd -> 119 
+ 16 ?Player_Event.EventQueryCheckIsEquippedDynamicEquipment cases {0: 108, 1: 17} {"DynamicEquipmentSlot": 0}
+ 17 ?Player_Event.EventQueryCheckIsEquippedDynamicEquipment cases {0: 18, 1: 107} {"DynamicEquipmentSlot": 4}
+ 18 Npc_EventStarter.EventTalk -> 106 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 19 ?GameDataActor.EventQueryIsGameDataBool cases {0: 199, 1: 81} {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_ChoiceTalk_Event87", "Index": -1}
+ 20 ?Player_Event.EventQueryCheckIsEquippedDynamicEquipment cases {0: 21, 1: 22} {"DynamicEquipmentSlot": 0}
+ 21 ?Player_Event.EventQueryCheckIsEquippedDynamicEquipment cases {0: 27, 1: 24} {"DynamicEquipmentSlot": 4}
+ 22 ?Player_Event.EventQueryCheckIsEquippedDynamicEquipment cases {0: 33, 1: 74} {"DynamicEquipmentSlot": 4}
+ 23 GameDataActor.EventTriggerSetGameDataBool -> 128 {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_Talk_Event44", "Value": true, "Index": -1}
+ 24 ?GameDataActor.EventQueryIsGameDataBool cases {0: 186, 1: 26} {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_ChoiceTalk_First_Event79", "Index": -1}
+ 25 Npc_EventStarter.EventTalk -> 186 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": false, "NotPlayLipSyncAnim":
+ 26 GameDataActor.EventTriggerSetGameDataBool -> 25 {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_ChoiceTalk_First_Event79", "Value": true, "Index": -1}
+ 27 ?GameDataActor.EventQueryIsGameDataBool cases {0: 34, 1: 29} {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_ChoiceTalk_First_Event79", "Index": -1}
+ 28 Npc_EventStarter.EventTalk -> 30 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": false, "NotPlayLipSyncAnim":
+ 29 GameDataActor.EventTriggerSetGameDataBool -> 28 {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_ChoiceTalk_First_Event79", "Value": true, "Index": -1}
+ 30 Npc_EventStarter.EventTalk -> 35 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 31 Npc_EventStarter.EventTalk -> 184 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": false, "NotPlayLipSyncAnim":
+ 32 GameDataActor.EventTriggerSetGameDataBool -> 31 {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_ChoiceTalk_Event89", "Value": true, "Index": -1}
+ 33 ?GameDataActor.EventQueryIsGameDataBool cases {0: 184, 1: 32} {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_ChoiceTalk_Event89", "Index": -1}
+ 34 ?GameDataActor.EventQueryIsGameDataBool cases {0: 38, 1: 36} {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_ChoiceTalk_Event89", "Index": -1}
+ 35 GameDataActor.EventTriggerSetGameDataBool -> 37 {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_ChoiceTalk_Event89", "Value": true, "Index": -1}
+ 36 Npc_EventStarter.EventTalk -> 39 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": false, "NotPlayLipSyncAnim":
+ 37 GameDataActor.EventTriggerSetGameDataBool -> 194 {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_GameStarted_ChoiceTalk_Event87", "Value": true, "Index": -1}
+ 38 GameSystemActor.EventTriggerSendErrorToEventResource -> None {"Title": "剣も盾も持っている時に想定外のフローに流れた"}
+ 39 Npc_EventStarter.EventTalk -> 35 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 40 ?Npc_EventStarter.EventQueryIsOnRecentTalkFlag cases {0: 67, 1: 70} 
+ 41 GameDataActor.EventTriggerSetGameDataBool -> 159 {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_Goto_HyruleCastle_IsCompleted_Talk_Event5", "Value": true, "Index": -1}
+ 42 ?GameDataActor.EventQueryIsGameDataBool cases {0: 3, 1: 41} {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_Goto_HyruleCastle_IsCompleted_Talk_Event5", "Index": -1}
+ 43 ?GameDataActor.EventQueryCompareGameDataInt cases {0: 46, 1: 44} {"GameDataA": "KokiriForest_Get_StoneOfForest_IsCompleted_NumberOfTalkedNpc", "GameDataB": "KokiriForest_Get_StoneOfForest_IsCompleted_MaxNumberOfTalkedNpc", "Operator": 2}
+ 44 GameDataActor.EventTriggerAddOrSubGameDataInt -> 46 {"GameDataName": "KokiriForest_Get_StoneOfForest_IsCompleted_NumberOfTalkedNpc", "Value": 1, "Index": -1}
+ 45 ?GameDataActor.EventQueryIsGameDataBool cases {0: 40, 1: 43} {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_Get_StoneOfForest_IsCompleted_Talk_Event22", "Index": -1}
+ 46 GameDataActor.EventTriggerSetGameDataBool -> 2 {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_Get_StoneOfForest_IsCompleted_Talk_Event22", "Value": true, "Index": -1}
+ 47 Npc_Kokiri_008_Child.EventTriggerAIScheduleSetForceCancelEventContinueArrivalAS -> 20 {"Value": true}
+ 48 Npc_Kokiri_008_Child.EventTriggerAIScheduleSetForceCancelEventContinueArrivalAS -> None {"Value": false}
+ 49 Npc_Kokiri_008_Child.EventTriggerAIScheduleSetForceCancelEventContinueArrivalAS -> None {"Value": false}
+ 50 Npc_Kokiri_008_Child.EventTriggerAIScheduleSetForceCancelEventContinueArrivalAS -> 129 {"Value": true}
+ 51 Npc_EventStarter.EventTalk -> 91 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 52 EventCamera.EventTriggerCameraSavePoint -> 116 
+ 53 Npc_EventStarter.EventTalk -> 62 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 54 Npc_EventStarter.EventTriggerLookAtObject -> 55 {"Target": 2, "ActorName": "", "InstanceName": "", "WorldPos": [0.0, 0.0, 0.0], "PosOffset": [0.0, 0.0, 0.0], "Direction": 0.0, "OffsetBase": 0, "ResetArriveTransformFixed": false}
+ 55 Player_Event.EventPlayerTurnAndLook -> 222 {"Target": 1, "IsWaitEnd": true, "TurnFaceControlType": 1, "ActorName": "", "InstanceName": "", "WorldPos": [0.0, 0.0, 0.0], "PosOffset": [0.0, 0.0, 0.0], "Direction": 0.0, "KeepTalkWait": true, "OffsetBase": 0, "UpperAS
+ 56 Npc_EventStarter.EventTalk -> 11 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo":
+ 57 ?Npc_EventStarter.EventQueryAvoidDuplicationRandomChoice2 cases {0: 58, 1: 59} 
+ 58 Npc_EventStarter.EventTalk -> 15 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo":
+ 59 Npc_EventStarter.EventTalk -> 15 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo":
+ 60 Npc_EventStarter.EventTalk -> 83 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 61 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 62 Npc_EventStarter.EventTalk -> 117 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 63 Npc_EventStarter.EventTalk -> 64 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+ 64 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+ 65 ?Npc_EventStarter.EventQueryAvoidDuplicationRandomChoice2 cases {0: 66, 1: 71} 
+ 66 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+ 67 Npc_EventStarter.EventTalk -> 65 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+ 68 Npc_EventStarter.EventTalk -> 69 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+ 69 ?Npc_EventStarter.EventQueryAvoidDuplicationRandomChoice2 cases {0: 73, 1: 138} 
+ 70 Npc_EventStarter.EventTalk -> 67 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+ 71 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+ 72 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+ 73 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+ 74 ?GameDataActor.EventQueryIsGameDataBool cases {0: 160, 1: 75} {"Index": -1, "GameDataName": "Npc_Kokiri_008_Child_HaveNoItems"}
+ 75 GameDataActor.EventTriggerSetGameDataBool -> 76 {"Value": true, "Index": -1, "GameDataName": "Npc_Kokiri_008_Child_HaveNoItems"}
+ 76 Npc_EventStarter.EventTalk -> 77 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": false, "NotPlayLipSyncAnim":
+ 77 Npc_EventStarter.EventTalk -> 160 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 78 ?GameSystemActor.EventQueryRandomChoice2 cases {0: 0, 1: 79} 
+ 79 Npc_EventStarter.EventTriggerBalloonMessage -> None {"IsChallenge": false, "DisplayFrame": 180, "IsIgnoreDisplayKeepDepth": false, "IsDisplayInTerror": false, "NotOverriddenByInterestBalloon": false, "MessageID": "EventFlowMsg/Npc_Kokiri_008_Child:Near_03"}
+ 80 Npc_EventStarter.EventTalk -> 123 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo":
+ 81 ?Npc_EventStarter.EventQueryIsOnRecentTalkFlag cases {0: 15, 1: 57} 
+ 82 Npc_Kokiri_008_Child.EventTriggerAIScheduleSetForceCancelEventContinueArrivalAS -> 121 {"Value": true}
+ 83 GameDataActor.EventTriggerSetGameDataBool -> None {"GameDataName": "KokiriForest_AfterShieldTalk_Npc_Kokiri_008_Child", "Index": -1, "Value": true}
+ 84 ?GameDataActor.EventQueryIsGameDataBool cases {0: 61, 1: 60} {"GameDataName": "KokiriForest_AfterShieldTalk_Npc_Kokiri_008_Child", "Index": -1}
+ 85 Npc_EventStarter.EventTalk -> 90 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 86 call (self):Camera_ForPracticeArea -> None 
+ 87 ?GameDataActor.EventQueryIsGameDataBool cases {0: 89, 1: 88} {"Index": -1, "GameDataName": "Npc_Kokiri_008_Child_Sword"}
+ 88 GameDataActor.EventTriggerSetGameDataBool -> 85 {"Value": true, "Index": -1, "GameDataName": "Npc_Kokiri_008_Child_Sword"}
+ 89 Npc_EventStarter.EventTalk -> 86 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 90 Npc_EventStarter.EventTalk -> 86 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 91 ?GameSystemActor.EventQueryTalkChoice3 cases {0: 95, 1: 96, 2: 176} 
+ 92 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 93 ?GameSystemActor.EventQueryRandomChoice2 cases {0: 92, 1: 94} 
+ 94 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+ 95 call (self):AboutSword -> 103 
+ 96 call (self):AboutSheld -> 99 
+ 97 call (self):Farewell -> None 
+ 98 ?GameSystemActor.EventQueryTalkChoice2 cases {0: 100, 1: 101} 
+ 99 Npc_EventStarter.EventTalk -> 98 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+100 call (self):AboutSword -> 105 
+101 call (self):Farewell -> None 
+102 ?GameSystemActor.EventQueryTalkChoice2 cases {0: 104, 1: 101} 
+103 Npc_EventStarter.EventTalk -> 102 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+104 call (self):AboutSheld -> 105 
+105 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+106 call (self):Show_Shield -> None 
+107 call (self):Talk_SwordAndShield -> None 
+108 call (self):Show_Sword -> None 
+109 call (self):Mask_Talk -> {4151362380: 111} 
+110 Npc_EventStarter.EventTalk -> None {"IsWaitEnd": true, "IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4":
+111 Npc_EventStarter.EventNPCTurnToTarget -> 208 {"Target": 2, "IsConfront": false, "IsWaitEnd": true, "FaceControlType": 1, "ActorName": "", "InstanceName": "", "WorldPos": [0.0, 0.0, 0.0], "PosOffset": [0.0, 0.0, 0.0], "Direction": 0.0, "OffsetBase": 0, "LookingContr
+112 return 0xf770c34c 
+113 return 0xa6da0479 
+114 call NpcCommon:Mask_Talk_Common_With_InitTalk_KokiriOnly -> {4205900657: 112, 4155567800: 113} {"Arg_Turn_For_IgnoreMaskTalk": 4, "Arg_Turn_For_MaskTalk": 4, "Mask_Keaton_Talk": "EventFlowMsg/Npc_Kokiri_008_Child:Mask_01", "Mask_Skull_Talk": "EventFlowMsg/Npc_Kokiri_008_Child:Mask_02", "Mask_Spooky_Talk": "EventFl
+115 call (self):Mask_All -> 42 
+116 call NpcCommon:SuggestCamera_Start_90 -> 53 {"TurnTarget": 5, "TurnTargetActorName": "DestinationAnchor", "TurnTargetInstanceName": "ForPracticeArea", "CameraTargetActorName": "DestinationAnchor", "MoveTotargetPosType": 1, "CameraTargetInstanceName": "ForPracticeA
+117 EventCamera.EventSendEventTalkMessageToPlayerCamera -> 54 {"EventTalkCameraType": 2, "IsWaitEnd": false}
+118 Npc_Kokiri_008_Child.EventPlayAS -> None {"IsAnimeDriven": true, "Partial": "", "IsAllSlot": false, "ForceFadeInFrame": -1.0, "ASName": "Act_Lift_Rock_To_Crouch", "IsWaitEnd": false}
+119 call (self):PlayAct_Stand_To_Lift_Rock -> 49 
+120 call (self):PlayAct_Stand_To_Lift_Rock -> 48 
+121 call (self):PlayAct_Lift_Rock_To_Stand -> 19 
+122 Npc_Kokiri_008_Child.EventPlayAS -> None {"IsAnimeDriven": true, "Partial": "", "IsAllSlot": false, "ForceFadeInFrame": -1.0, "ASName": "Act_Lift_Rock_To_Stand", "IsWaitEnd": false}
+123 Npc_Kokiri_008_Child.EventTalk -> 119 {"IsCloseDialog": true, "EndDialogOption": 0, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBeco
+124 Npc_Kokiri_008_Child.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBeco
+125 ?GameDataActor.EventQueryIsGameDataBoolExp cases {1: 126} {"GameDataName": "Goto_HyruleCastle_IsCompleted_Exp"}
+126 Npc_EventStarter.EventTriggerBalloonMessage -> None {"IsChallenge": false, "DisplayFrame": 180, "IsIgnoreDisplayKeepDepth": false, "IsDisplayInTerror": false, "NotOverriddenByInterestBalloon": false, "MessageID": "EventFlowMsg/Npc_Kokiri_008_Child:Near_02"}
+127 Npc_EventStarter.EventTalk -> 16 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": false, "NotPlayLipSyncAnim":
+128 Player_Event.EventPlayerPlayASForFlowchart -> 14 {"IsWaitEnd": true, "UseAnmDriven": false, "IsAllSlot": false, "KeepOneTimeAnm": false, "ForceFadeFrame": -1.0, "ASCommand": "EvtTalkingL", "ClothWarpMode": 0}
+129 Npc_EventStarter.EventTalk -> 127 {"IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": false, "NotPlayLipSyncAnim": false, "IsOverrideStyle": false, "OverrideStyle": 0, "IsNo
+130 fork [122, 131] join 132 
+131 EventSystemActor.EventWait -> None {"Frames": 60, "IsWaitEnd": true}
+132 join -> None 
+133 fork [118, 134] join 135 
+134 EventSystemActor.EventWait -> None {"Frames": 60, "IsWaitEnd": true}
+135 join -> None 
+136 ?Npc_EventStarter.EventQueryAvoidDuplicationRandomChoice2 cases {0: 12, 1: 137} 
+137 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, 
+138 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultN
+139 ?GameDataActor.EventQueryIsGameDataBoolExp cases {0: 141, 1: 156} {"GameDataName": "Meet_DekuTree_IsAfter_Step01_Exp"}
+140 call (self):Before_TalkingMido -> None {"ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0}
+141 call (self):Before_TalkingMido -> 23 {"ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0}
+142 call (self):Before_TalkingMido -> 143 {"ChoiceNumber": 2, "ChoiceLabel2": 0, "ChoiceLabel1": 3}
+143 ?GameSystemActor.EventQueryTalkChoice2 cases {0: 157, 1: 144} 
+144 Npc_EventStarter.EventTalk -> None {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo":
+145 Npc_EventStarter.EventTalk -> 230 {"IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": false, "NotPlayLipSyncAnim": false, "IsOverrideStyle": false, "OverrideStyle": 0, "IsNo
+146 Npc_EventStarter.EventNPCTurnToTarget -> 147 {"IsWaitEnd": true, "WorldPos": [0.0, 0.0, 0.0], "PosOffset": [0.0, 0.0, 0.0], "IsConfront": true, "OffsetBase": 0, "LookingControllerName": "", "LookIKParameterVariationName": "", "IsReleaseThreaten": false, "EnableAuto
+147 Npc_EventStarter.EventTalk -> 148 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo":
+148 Npc_EventStarter.EventNPCTurnToTarget -> 149 {"IsWaitEnd": true, "Target": 2, "FaceControlType": 1, "ActorName": "", "InstanceName": "", "WorldPos": [0.0, 0.0, 0.0], "PosOffset": [0.0, 0.0, 0.0], "Direction": 0.0, "IsConfront": true, "OffsetBase": 0, "LookingContro
+149 Npc_EventStarter.EventTalk -> 205 {"IsCloseDialog": true, "EndDialogOption": 0, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBeco
+150 Npc_EventStarter.EventTriggerChangeEmotion -> None {"EmotionType": 0, "IsActFaceOnly": false}
+151 Npc_EventStarter.EventTalk -> 158 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo":
+152 ?GameDataActor.EventQueryIsGameDataBool cases {0: 153, 1: 154} {"Index": -1, "GameDataName": "KokiriForest_Npc_Kokiri_008_Child_LiftRock_AllBroken"}
+153 ?GameDataActor.EventQueryIsGameDataBool cases {0: 154, 1: 155} {"Index": -1, "GameDataName": "KokiriForest_Npc_Kokiri_008_Child_AlreadyPaid"}
+154 return 0xe067de49 
+155 return 0x7224bb63 
+156 call (self):AlreadyPaid_Check -> {3764903497: 140, 1915009891: 142} 
+157 call (self):LiftRock_AllBroken_TalkAndStand -> 204 {"ASName": "Act_Lift_Rock_To_Stand"}
+158 GameDataActor.EventTriggerSetGameDataBool -> None {"GameDataName": "KokiriForest_Npc_Kokiri_008_Child_AlreadyPaid", "Index": -1, "Value": true}
+159 EventSystemActor.EventWait -> 211 {"Frames": 2, "IsWaitEnd": true}
+160 call (self):AlreadyPaid_Check -> {3764903497: 51, 1915009891: 161} 
+161 Npc_EventStarter.EventTalk -> 162 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": false, "NotPlayLipSyncA
+162 ?GameSystemActor.EventQueryTalkChoice4 cases {0: 163, 1: 165, 2: 166, 3: 97} 
+163 call (self):LiftRock_AllBroken_Talk -> 164 {"ASName": ""}
+164 Npc_EventStarter.EventTalk -> 91 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+165 call (self):AboutSword -> 168 
+166 call (self):AboutSheld -> 167 
+167 Npc_EventStarter.EventTalk -> 169 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+168 Npc_EventStarter.EventTalk -> 170 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+169 ?GameSystemActor.EventQueryTalkChoice3 cases {0: 172, 1: 177, 2: 171} 
+170 ?GameSystemActor.EventQueryTalkChoice3 cases {0: 173, 1: 178, 2: 171} 
+171 call (self):Farewell -> None 
+172 call (self):LiftRock_AllBroken_Talk -> 174 {"ASName": ""}
+173 call (self):LiftRock_AllBroken_Talk -> 175 {"ASName": ""}
+174 Npc_EventStarter.EventTalk -> 98 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+175 Npc_EventStarter.EventTalk -> 102 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+176 call (self):Farewell -> None 
+177 call (self):AboutSword -> 180 
+178 call (self):AboutSheld -> 179 
+179 Npc_EventStarter.EventTalk -> 182 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+180 Npc_EventStarter.EventTalk -> 182 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+181 call (self):LiftRock_AllBroken_Talk -> None {"ASName": ""}
+182 ?GameSystemActor.EventQueryTalkChoice2 cases {0: 181, 1: 183} 
+183 call (self):Farewell -> None 
+184 call (self):AlreadyPaid_Check -> {3764903497: 191, 1915009891: 185} 
+185 call (self):SwordAndReward_Choices -> None 
+186 call (self):AlreadyPaid_Check -> {3764903497: 190, 1915009891: 193} 
+187 Npc_EventStarter.EventTalk -> 169 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+188 Npc_EventStarter.EventTalk -> 98 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+189 Npc_EventStarter.EventTalk -> 102 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+190 call (self):ShieldOnly_Choice -> None 
+191 call (self):SwordOnly_Choice -> None 
+192 Npc_EventStarter.EventTalk -> 170 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+193 call (self):ShieldAndReward_Choices -> None 
+194 call (self):AlreadyPaid_Check -> {3764903497: 124, 1915009891: 195} 
+195 Npc_Kokiri_008_Child.EventTalk -> 196 {"IsCloseDialog": true, "EndDialogOption": 0, "IsPlayASAllSlot": false, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": fals
+196 ?GameSystemActor.EventQueryTalkChoice2 cases {0: 197, 1: 198} 
+197 call (self):LiftRock_AllBroken_Talk -> None {"ASName": ""}
+198 call (self):Farewell -> None 
+199 call (self):AlreadyPaid_Check -> {3764903497: 80, 1915009891: 200} 
+200 Npc_EventStarter.EventTalk -> 201 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAn
+201 ?GameSystemActor.EventQueryTalkChoice2 cases {0: 202, 1: 123} 
+202 call (self):LiftRock_AllBroken_Talk -> 119 {"ASName": ""}
+203 Npc_Kokiri_008_Child.EventNPCTurnToTarget -> 207 {"FaceControlType": 0, "Target": 5, "EnableAutomaticallyPlayWaitASAfterTurn": false, "WorldPos": [0.0, 0.0, 0.0], "PosOffset": [0.0, 0.0, 0.0], "Direction": 0.0, "IsConfront": true, "OffsetBase": 0, "LookingControllerNam
+204 call (self):PlayAct_Stand_To_Lift_Rock -> None 
+205 GameDataActor.EventTriggerSetGameDataBool -> 219 {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_LiftRock_AllBroken_Talk_Event166", "Value": true, "Index": -1}
+206 ?GameDataActor.EventQueryIsGameDataBool cases {0: 203, 1: 133} {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_LiftRock_AllBroken_Talk_Event166", "Index": -1}
+207 GameDataActor.EventTriggerSetGameDataBool -> 133 {"GameDataName": "HaveTalked_Special.Npc_Kokiri_008_Child_LiftRock_AllBroken_Talk_Event166", "Value": false, "Index": -1}
+208 Npc_EventStarter.EventTriggerKokiriRequestComeCloserFairy -> 110 
+209 Player_Event.EventPlayerPlayASForFlowchart -> 84 {"ASCommand": "EvtTalkWonder", "IsWaitEnd": true, "UseAnmDriven": false, "IsAllSlot": false, "KeepOneTimeAnm": false, "ForceFadeFrame": -1.0, "ClothWarpMode": 0}
+210 Player_Event.EventPlayerPlayASForFlowchart -> 87 {"ASCommand": "EvtTalkWonder", "IsWaitEnd": true, "UseAnmDriven": false, "IsAllSlot": false, "KeepOneTimeAnm": false, "ForceFadeFrame": -1.0, "ClothWarpMode": 0}
+211 call NpcCommon:CheckAlreadyMaskTalked -> {1307241100: 4, 803420549: 72} 
+212 ?GameDataActor.EventQueryIsGameDataBool cases {1: 213} {"Index": -1, "GameDataName": "Npc_Kokiri_008_Child_GlassTruth"}
+213 GameDataActor.EventTriggerSetGameDataBool -> 216 {"Index": -1, "Value": true, "GameDataName": "Npc_Kokiri_008_Child_GlassTruth"}
+214 call InitTalk:InitTalk_KokiriOnly -> 212 {"Arg_Greeting": 4, "Arg_Turn": 4, "NpcFairy_MovingFlag": true}
+215 ?Player_Event.EventQueryPlayerIsEquipArmor cases {0: 214, 1: 109} {"ArmorSlot": 0, "ArmorName": "Armor_Child_GlassTruth"}
+216 Npc_EventStarter.EventTalk -> 217 {"IsWaitEnd": true, "IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4":
+217 Npc_EventStarter.EventTalk -> None {"IsWaitEnd": true, "IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsAnimeDriven": false, "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4":
+218 call Dm_SY_GetInEvent:GetInEvent_NotTurn -> None {"Target": 3, "NpcInstanceName": "", "ASName": "Wait", "Npc_EventStarter": {"actor": "Npc_EventStarter", "sub": ""}, "ActorName": "Obj_Rupee_Blue", "NpcActorName": "Npc_EventStarter"}
+219 fork [218, 221] join 220 
+220 join -> 151 
+221 EventSystemActor.EventWait -> 150 {"IsWaitEnd": true, "Frames": 5}
+222 call NaviEventCommon:Navi_ActorWatch -> None {"Target": 1, "ActorName": "Npc_EventStarter", "InstanceName": ""}
+223 Npc_EventStarter.EventTriggerChangeEmotion -> 115 {"EmotionType": 0, "IsActFaceOnly": false}
+224 call NpcCommon:NpcCommon_PlayerEvtTalking_NpcWait -> 63 {"Player_IsWaitEnd": true, "Player_AS": "EvtTalkingL", "Npc_ActorName": {"actor": "Npc_Kokiri_008_Child", "sub": ""}}
+225 Npc_EventStarter.EventNPCTurnToTarget -> 226 {"IsWaitEnd": true, "WorldPos": [0.0, 0.0, 0.0], "PosOffset": [0.0, 0.0, 0.0], "IsConfront": true, "OffsetBase": 0, "LookingControllerName": "", "LookIKParameterVariationName": "", "IsReleaseThreaten": false, "EnableAuto
+226 Npc_EventStarter.EventTalk -> 227 {"IsCloseDialog": true, "EndDialogOption": 0, "ASName": "", "IsPlayASAllSlot": false, "ChoiceNumber": 0, "ChoiceLabel1": 0, "ChoiceLabel2": 0, "ChoiceLabel3": 0, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo":
+227 Npc_EventStarter.EventNPCTurnToTarget -> 229 {"IsWaitEnd": true, "InstanceName": "", "WorldPos": [0.0, 0.0, 0.0], "PosOffset": [0.0, 0.0, 0.0], "Direction": 0.0, "IsConfront": true, "OffsetBase": 0, "LookingControllerName": "", "LookIKParameterVariationName": "", "
+228 Npc_EventStarter.EventTalk -> 230 {"IsPlayASAllSlot": false, "ChoiceLabel4": 0, "ChoiceDefaultNo": 0, "ChoiceCancelNo": 0, "IsNotBecomeSpeaker": false, "IsAnonymous": false, "NotPlayLipSyncAnim": false, "IsOverrideStyle": false, "OverrideStyle": 0, "IsNo
+229 Npc_EventStarter.EventTriggerLookAtObject -> 149 {"InstanceName": "", "WorldPos": [0.0, 0.0, 0.0], "PosOffset": [0.0, 0.0, 0.0], "Direction": 0.0, "OffsetBase": 0, "Target": 5, "ActorName": "AnchorAction1", "ResetArriveTransformFixed": false}
+230 ?GameDataActor.EventQueryIsGameDataBool cases {0: 225, 1: 146} {"GameDataName": "KokiriForest_Npc_Kokiri_008_Child_TalkedInFront", "Index": -1}
+231 ?Npc_EventStarter.EventNPCQueryCheckFrontToTarget cases {0: 232, 1: 233} {"Target": 2, "ActorName": "", "InstanceName": "", "AngleThreshold": 6.0}
+232 GameDataActor.EventTriggerSetGameDataBool -> None {"GameDataName": "KokiriForest_Npc_Kokiri_008_Child_TalkedInFront", "Index": -1, "Value": true}
+233 GameDataActor.EventTriggerSetGameDataBool -> None {"GameDataName": "KokiriForest_Npc_Kokiri_008_Child_TalkedInFront", "Value": false, "Index": -1}
+234 call (self):Checking_LinkPositioning -> 7 
+235 call InitTalk:InitTalk_KokiriOnly -> 234 {"Arg_Turn": 4, "Arg_Greeting": 4, "NpcFairy_MovingFlag": true}
+236 call InitTalk:InitTalk_KokiriOnly -> 8 {"Arg_Turn": 4, "Arg_Greeting": 4, "NpcFairy_MovingFlag": true}
+237 Npc_EventStarter.EventTriggerChangeEmotion -> 236 {"EmotionType": 3, "IsActFaceOnly": true}

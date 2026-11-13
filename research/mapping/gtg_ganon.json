@@ -1,0 +1,579 @@
+{
+ "group": "gtg_ganon",
+ "chests": [
+  {
+   "hash": "2436665354602612279",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_LOBBY_RIGHT_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_LOBBY",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Lobby (room 0). NoBake chest with SpawnType 1 at x=+4.1. It falls when the one Obj_EyeSwitch_A_02 above the entrance (y=109.8) is hit: EventRequestActor GerudoTrainingGround_00_FallTreasureBox references both. Link enters walking -z from the fortress (StartPos z=+11.9), so +x is his right (the Stalfos door at x=-28.4 is the left door, as in N64). The same left/right convention reproduces the N64 ice-trap pattern of the Light-trial room exactly, so it is trusted. The other lobby chest (x=-7.6) is an invisible GlassTruth chest without a Drop__DropActor (not in this list): see RC_GERUDO_TRAINING_GROUND_LOBBY_LEFT_CHEST. Contents swapped versus N64 (left blue rupee, right 10 arrows), consistent with arrows becoming rupees; SoH's CanHitEyeTargets rule still fits this chest."
+  },
+  {
+   "hash": "13501407288943710656",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_STALFOS_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_SAND_ROOM",
+   "condition": "logic->CanKillEnemy(RE_STALFOS, ED_CLOSE, true, 4, true) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "high",
+   "evidence": "Room 1 (Stalfos room, west of the lobby). Only chest there, a small key, NoBake + SpawnType 1, appearing via Gimmick_TreasureBoxAppear_Any_Fall (event GerudoTrainingGround_01_AppearTreasureBox_From00, with the room's Obj_EnemyCounter). The prefab holds 4 Enemy_Stalfos (two pairs at the same spots = waves) instead of N64's 2, hence quantity 4 (SoH's quantity is a placeholder, so this is functionally the same rule)."
+  },
+  {
+   "hash": "4519534997122863169",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_BEFORE_HEAVY_BLOCK_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_ROOM",
+   "condition": "logic->CanKillEnemy(RE_WOLFOS, ED_CLOSE, true, 4, true) && logic->CanKillEnemy(RE_WHITE_WOLFOS, ED_CLOSE, true, 4, true) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "high",
+   "evidence": "Room 3 (Wolfos room with the silver block Obj_MovableBox_A_04 at z=-97.3). Only item chest there, at (-55.1,104,-90.3), i.e. on the near side of the block. NoBake + SpawnType 1; GerudoTrainingGround_03_AppaerTreasureBox via Gimmick_TreasureBoxAppear_GerudoTrainingGround in the prefab that also holds 4 Enemy_Wolfos and 4 Enemy_Wolfos_White (pairs at identical spots = waves). N64 had Wolfos only, so the rule adds the White Wolfos. Contents 30 arrows -> blue rupee."
+  },
+  {
+   "hash": "11563468890171962383",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_EYE_STATUE_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_EYE_STATUE_LOWER",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 4 (Obj_Gerudo_StoneStatue_B_01 + Obj_Gerudo_RotateFloor_A_01, lower floor y=96.3). Small key, SpawnType 1. Event GerudoTrainingGround_Room04_StoneGimmick makes it appear and opens the shutter (-2.3,106,-59.4) to the maze's upper floor; the room's Obj_EyeSwitch_A_05 is in that gimmick group. That is SoH's LOGIC_GTG_CLEARED_EYE_STATUE (bow) giving both the chest and RR_..._ABOVE_MAZE."
+  },
+  {
+   "hash": "4372363658229299619",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_HAMMER_ROOM_SWITCH_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_HAMMER_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 5 (hammer room: Obj_FireTemple_HammerSlipPillar, torch slugs, fire keese). Small key sitting inside Obj_FireWall_A_01 (same position); Obj_StepSwitch_A_04 -> GerudoTrainingGround_05_DisappearFire removes the fire. Same as N64 (hammer the switch)."
+  },
+  {
+   "hash": "4709724720801091788",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_BEAMOS_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_DINALFOS",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 7 (east of the lobby): Enemy_Beamos + 2 Enemy_Dinolfos in the same prefab as this key chest (NoBake, SpawnType 1, on the beamos' spot, Gimmick_TreasureBoxAppear_Any_Fall, GerudoTrainingGround_Room07_TreasureAppear). Matches SoH's rule exactly."
+  },
+  {
+   "hash": "3717705376223508790",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_UNDERWATER_SILVER_RUPEE_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_UNDERWATER",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 9 (5 Obj_RupeeToken_Silver, Obj_silverRupeeCounter 2 m away, Song of Time blocks, Enemy_ShellBlade, y down to 76). Small key, NoBake, SpawnType 1 (appears on the silver-rupee count). Same as N64."
+  },
+  {
+   "hash": "5329807728555596183",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_GlassTruth_A_01",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_THIRD_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_LIKE_LIKE_ROOM",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Room 10 (3 Enemy_LikeLike, behind the silver block). Invisible Obj_TBox_GlassTruth_A_01 holding a small key = N64's type-6 invisible key chest (the only key in that room in both games). Identity is solid; kept SoH's rule (lens + pass the Like Likes). Caveat: an EventRequestActor running GerudoTrainingGround_10_AppearTreasureBox also references it, so it might only appear after the room is cleared (it has no SpawnType)."
+  },
+  {
+   "hash": "6897789835137994741",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_FIRST_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_LIKE_LIKE_ROOM",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Room 10. NoBake, SpawnType 1, appears through GerudoTrainingGround_10_AppearTreasureBox (Gimmick_TreasureBoxAppear_GerudoTrainingGround in the prefab with the 3 Like Likes) = a room-clear chest like N64's First and Second (both type 7). It is the only room-clear chest left, so it is First or Second; First chosen (huge rupee -> red rupee, the most valuable). Both have the same SoH rule, so the choice has no logic effect."
+  },
+  {
+   "hash": "3750231902048775592",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_BombBundle_Small",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_SECOND_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_LIKE_LIKE_ROOM",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Room 10. Plain Obj_TBox_A_01 (bombs), no SpawnType, no links: present from the start, so it no longer needs the Like Likes killed (SoH's rule for Second). Room 10 has 5 chests against N64's 4: the GlassTruth key (Third), the A_04 trap chest (Fourth, the N64 ice trap), one room-clear chest, this one and an eye-switch chest with a Scrub Business Seed. This one is taken as N64's other room-clear chest and the seed chest as remake-new (seed chests elsewhere are mostly remake additions), but the two could be the other way round."
+  },
+  {
+   "hash": "11754783663699171680",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_LIKE_LIKE_ROOM",
+   "condition": "logic->CanHitEyeTargets() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new (probably). Room 10. NoBake, SpawnType 1, Scrub Business Seed. It falls when the Obj_EyeSwitch_A_02 right above it (-54.2,109.1,-131.7) is hit: EventRequestActor GerudoTrainingGround_10_FallTreasureBox references both. N64 has no eye-switch chest in this room. See the Second-chest entry for the possible swap."
+  },
+  {
+   "hash": "1883068192328530224",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE_RIGHT",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "high",
+   "evidence": "Remake-new chest that replaces N64's freestanding key (RC_GERUDO_TRAINING_GROUND_FREESTANDING_KEY, not a chest so it is not in soh_chests.json). Small key in the maze's east region (22.8,98,-45.6), the corridor to the lava-room door (29.3,-45.6), the same region as the Maze Right chests. Neither GTG nor Ganon's Castle has any freestanding key actor left, and GTG has 9 key chests for 9 locked doors (N64: 8 chests + this freestanding key). Room 8 maze topology rebuilt from the wall/iron-bar meshes (Land_GerudoTraining_RoomWall_A_08 + IronBars_A_02 + WireMesh_A_01) and the 9 chain-locked doors (Obj_Gerudo_SwitchShutter_A_06 + 2 Obj_DoorChainLock_A_01 each): entrance cell -D2(-6.6,-40.8)- NW cell -D1(-16.2,-36)- west strip -D5(-9,-48)- west-lower -D8(-18.6,-57.6)- SW -D7(-1.8,-55.2)- south -D9(5.4,-57.6)- east-inner column -D6(3,-50.4)- centre; second branch entrance -D3(3,-40.9)- NE cell -D4(15,-38.4)- east region (lava-room door at 29.3,-45.6). Worst case (both side-branch doors wasted) gives exactly SoH's counts."
+  },
+  {
+   "hash": "4320448574091221496",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_HIDDEN_CEILING_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key at y=105 on top of the maze's ceiling slab above the entrance cell (carpet at the same spot). It is reached from the NW cell (behind door D2): an invisible Obj_Gerudo_GlassTruth_A_01 platform at (-7.8,103.2,-35.5) below a hole in the slab, FldObj_AirWall_ClimbPlayer walls around it, and the Navi hints NaviHelp_08_01_A (in the NW cell) and NaviHelp_08_01_B (on the chest). So: 1 key door + 2 doors possibly wasted on the other branch = SoH's SmallKeys(3), lens, hookshot or climb. The iron bars at z=-43 cut it off from the upper floor above the centre. Room 8 maze topology rebuilt from the wall/iron-bar meshes (Land_GerudoTraining_RoomWall_A_08 + IronBars_A_02 + WireMesh_A_01) and the 9 chain-locked doors (Obj_Gerudo_SwitchShutter_A_06 + 2 Obj_DoorChainLock_A_01 each): entrance cell -D2(-6.6,-40.8)- NW cell -D1(-16.2,-36)- west strip -D5(-9,-48)- west-lower -D8(-18.6,-57.6)- SW -D7(-1.8,-55.2)- south -D9(5.4,-57.6)- east-inner column -D6(3,-50.4)- centre; second branch entrance -D3(3,-40.9)- NE cell -D4(15,-38.4)- east region (lava-room door at 29.3,-45.6). Worst case (both side-branch doors wasted) gives exactly SoH's counts."
+  },
+  {
+   "hash": "9911316961118170383",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_NEAR_SCARECROW_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_ABOVE_MAZE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key at y=105 on the iron grating (IronBars_A_02 horizontal at y~105) over the maze centre, right above the ice-arrow chest. It is reached from the upper walkway and stairs (Stair_A_02) behind the room-8/room-4 shutter at (-2.3,106,-58.9), which the eye-statue gimmick opens; Pierre's Obj_ScarecrowMarker_B_00 is just past that door (1.5,106,-63.1). That is SoH's Above Maze region (from Eye Statue Upper after clearing the statue)."
+  },
+  {
+   "hash": "10696620323243142689",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_FIRST_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Purple rupee (same as N64) at (-19.2,98,-46.2) in the west strip, 2 doors in (D2, D1): 2 + 2 possibly wasted = SoH's SmallKeys(4). Room 8 maze topology rebuilt from the wall/iron-bar meshes (Land_GerudoTraining_RoomWall_A_08 + IronBars_A_02 + WireMesh_A_01) and the 9 chain-locked doors (Obj_Gerudo_SwitchShutter_A_06 + 2 Obj_DoorChainLock_A_01 each): entrance cell -D2(-6.6,-40.8)- NW cell -D1(-16.2,-36)- west strip -D5(-9,-48)- west-lower -D8(-18.6,-57.6)- SW -D7(-1.8,-55.2)- south -D9(5.4,-57.6)- east-inner column -D6(3,-50.4)- centre; second branch entrance -D3(3,-40.9)- NE cell -D4(15,-38.4)- east region (lava-room door at 29.3,-45.6). Worst case (both side-branch doors wasted) gives exactly SoH's counts."
+  },
+  {
+   "hash": "8186301369655588602",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_SECOND_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Red rupee (same as N64) at (-13.2,98,-60.5) in the SW cell, 4 doors in (D2, D1, D5, D8): 4 + 2 = SoH's SmallKeys(6)."
+  },
+  {
+   "hash": "10743352138513225188",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_06",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_THIRD_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Obj_TBox_A_06 (Drop__CheckActor Item_Range_Bow, DropActor red rupee, Substitute small arrows = N64's 30 arrows) at (-9,98,-60) in the south cell, 5 doors in (... D7): 5 + 2 = SoH's SmallKeys(7). The only room-8 chest without DefaultDungeonRoomIndex, but it is in the room-8 prefab (Room_08_Prefab_cd90). Note the bow check when writing an item into it (see divergences)."
+  },
+  {
+   "hash": "1941083939696166170",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Arrow_Ice",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_FINAL_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, Item_Arrow_Ice with SubEvent_GetIceArrow_OpenTBox, at the maze centre (-1.9,98,-48), 7 doors in (... D9, D6): 7 + 2 = SoH's SmallKeys(9). A one-way fence (Obj_SpiritTemple_FallNet_B_03, GerudoTrainingGround_08_FenceFallDown from the step switch inside) opens a shortcut back to the entrance."
+  },
+  {
+   "hash": "196331300747102419",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_BombchuBundle_Small",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_MAZE_RIGHT_CENTRAL_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE_RIGHT",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Bombchus (same as N64) at (5.5,98,-45.5) in the east region, which joins the lava-room door (so SoH's free access from the lava room holds) and is 2 doors from the entrance (D3, D4): 2 + 7 possibly wasted = SoH's SmallKeys(9). Room 8 maze topology rebuilt from the wall/iron-bar meshes (Land_GerudoTraining_RoomWall_A_08 + IronBars_A_02 + WireMesh_A_01) and the 9 chain-locked doors (Obj_Gerudo_SwitchShutter_A_06 + 2 Obj_DoorChainLock_A_01 each): entrance cell -D2(-6.6,-40.8)- NW cell -D1(-16.2,-36)- west strip -D5(-9,-48)- west-lower -D8(-18.6,-57.6)- SW -D7(-1.8,-55.2)- south -D9(5.4,-57.6)- east-inner column -D6(3,-50.4)- centre; second branch entrance -D3(3,-40.9)- NE cell -D4(15,-38.4)- east region (lava-room door at 29.3,-45.6). Worst case (both side-branch doors wasted) gives exactly SoH's counts."
+  },
+  {
+   "hash": "11683433230229591151",
+   "map": "GerudoTrainingGround",
+   "files": [
+    "GerudoTrainingGround/GerudoTrainingGround_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_06",
+   "soh_rc": "RC_GERUDO_TRAINING_GROUND_MAZE_RIGHT_SIDE_CHEST",
+   "soh_region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE_RIGHT",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Obj_TBox_A_06 (bow check; red rupee, Substitute small arrows = N64's 30 arrows) at (10.2,98,-50.5) in the same east region as the bombchu chest."
+  },
+  {
+   "hash": "16913531450403950487",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_ArrowBundle_Medium",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_GANONS_CASTLE_FOREST_TRIAL_CHEST",
+   "soh_region": "RR_GANONS_CASTLE_FOREST_TRIAL_WOLFOS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 2 (forest trial's first room, 2 Enemy_Wolfos, timed candles that open the next shutter). The only chest of the forest trial, on a pedestal, appearing via Gimmick_TreasureBoxAppear_Magic grouped with the Wolfos (InsideGanonCastle_Dungeon_AppaerTreasureBox_02). Blue rupee -> arrows."
+  },
+  {
+   "hash": "14404733996390762670",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_BombchuBundle_Small",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GANONS_CASTLE_WATER_TRIAL_RIGHT_CHEST",
+   "soh_region": "RR_GANONS_CASTLE_WATER_TRIAL_BLUE_FIRE_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 5 (ice pillars, icicles, Freezards, red ice: the blue-fire room). Entered from the hall walking +x, so +z is right: this chest is at z=-15.2 (right), and the Obj_TBox_A_04 trap chest at z=-26.8 (left) = N64's Water Trial Left ice trap. Recovery heart -> bombchus."
+  },
+  {
+   "hash": "18277713685010400796",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_ArrowBundle_Medium",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GANONS_CASTLE_SHADOW_TRIAL_FRONT_CHEST",
+   "soh_region": "RR_GANONS_CASTLE_SHADOW_TRIAL_START",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 8 (shadow trial: Obj_InsideGanonCastle_GlassTruth_A_05 x13, Like Like, the golden-gauntlets chest). Small chest near the trial's entrance (12.6,103.9,-65.9), the room's only other chest. Blue rupee -> arrows."
+  },
+  {
+   "hash": "17657623307936361670",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Gauntlet_Gold",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_GANONS_CASTLE_SHADOW_TRIAL_GOLDEN_GAUNTLETS_CHEST",
+   "soh_region": "RR_GANONS_CASTLE_SHADOW_TRIAL_CHEST_PLATFORM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, Item_Gauntlet_Gold, GetEventName InsideGanonCastle_Get_Gauntlet_Gold. NoBake; appears through Gimmick_TreasureBoxAppear_Magic_03 grouped with Obj_StepSwitch_A_01 (63.6,102.9,-110.3) = SoH's lower switch (LOGIC_SHADOW_TRIAL_LATE_CHEST)."
+  },
+  {
+   "hash": "7899179288432849355",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_GANONS_CASTLE_SPIRIT_TRIAL_CRYSTAL_SWITCH_CHEST",
+   "soh_region": "RR_GANONS_CASTLE_SPIRIT_TRIAL_BEFORE_SWITCH",
+   "condition": "logic->CanKillEnemy(RE_TORCH_SLUG, ED_CLOSE, true, 2) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Room 17 = the spirit trial's second room (after beamos/silver-rupee room 16; crystal switch Obj_SwitchHit_A_02, spider web, light shaft, sun switches, Wallmasters, Floormasters). The trial's only chest, on a pedestal at its entrance end, before the shutter the crystal switch opens: the place of N64's Crystal Switch Chest. It now appears when the 2 Enemy_TorchSlug of its prefab die (Gimmick_TreasureBoxAppear_Magic, InsideGanonCastle_Dungeon_AppaerTreasureBox), not from the switch. Bombchus -> Scrub Business Seed. N64's invisible chest has no counterpart."
+  },
+  {
+   "hash": "1029712040059298120",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_FIRST_LEFT_CHEST",
+   "soh_region": "RR_GANONS_CASTLE_LIGHT_TRIAL_CHESTS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 12 (light trial chest room; entered from the hall at x=-33 walking -x, so z>-21 is left, larger x is nearer). Its 6 wall chests are 3 Obj_TBox_A_01 and 3 Obj_TBox_A_04 trap chests, and the traps sit exactly where N64's 3 ice traps are (Second Left, First Right, Third Right). This is the left chest nearest the door (-36.0,-16.5). Blue rupee as in N64."
+  },
+  {
+   "hash": "7461796063704896255",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_THIRD_LEFT_CHEST",
+   "soh_region": "RR_GANONS_CASTLE_LIGHT_TRIAL_CHESTS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 12, left side, farthest from the door (-45.1,-16.6). Recovery heart -> blue rupee. See the First Left entry for the layout."
+  },
+  {
+   "hash": "14046623154429024571",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_SECOND_RIGHT_CHEST",
+   "soh_region": "RR_GANONS_CASTLE_LIGHT_TRIAL_CHESTS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 12, right side, middle (-40.6,-27.3), between two A_04 traps. 30 arrows -> blue rupee."
+  },
+  {
+   "hash": "14962432460641118089",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_INVISIBLE_ENEMIES_CHEST",
+   "soh_region": "RR_GANONS_CASTLE_LIGHT_TRIAL_CHESTS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 12 centre pedestal (-40.4,99.9,-21). NoBake, appears via Gimmick_TreasureBoxAppear_Any_Magic grouped with Enemy_Skulltula_Truth + 3 Enemy_Keese_Truth (invisible enemies) and the room's 2 Obj_EnemyCounter. Same rule as SoH; but it holds a red rupee now, not N64's small key."
+  },
+  {
+   "hash": "4733634471038136588",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Green",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_LULLABY_CHEST",
+   "soh_region": "RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 13 (triforce room). NoBake chest linked from an EventProxyRequestActor whose EventProxyRequestLink is Obj_TriForcePoint_A_12 (the Zelda's Lullaby triforce mark, 3 m away). Holds a green rupee now, not N64's small key."
+  },
+  {
+   "hash": "15320975652699461295",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_GlassTruth_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM",
+   "condition": "(ctx->GetTrickOption(RT_LENS_GANON) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "high",
+   "evidence": "Remake-new. Invisible Obj_TBox_GlassTruth_A_01 in room 13 (-52.2,100,-16.5; DefaultDungeonRoomIndex 13, 9 m from the Lullaby chest), no links, no SpawnType: always there, needs the lens. It holds Ganon's Castle's only small key; the castle's only key door is the next one, triforce room -> boulder room (Obj_DoorChainLock_A_01 pair at -56.5,99.7,-21)."
+  },
+  {
+   "hash": "17092385671602176550",
+   "map": "InsideGanonCastle",
+   "files": [
+    "InsideGanonCastle/InsideGanonCastle_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_BossKey",
+   "gyaml": "Obj_TBox_A_03_NoBake",
+   "soh_rc": "RC_GANONS_TOWER_BOSS_KEY_CHEST",
+   "soh_region": "RR_GANONS_TOWER_FLOOR_3",
+   "condition": "logic->CanKillEnemy(RE_IRON_KNUCKLE, ED_CLOSE, true, 2) && logic->CanOpenLargeChest()",
+   "confidence": "high",
+   "evidence": "Ganon's Tower is part of the InsideGanonCastle map (rooms 19-26, y 133-213; the separate GanonCastle map has no chests). This ornate boss-key chest (Obj_TBox_A_03_NoBake, Item_Dungeon_BossKey) is in room 24 at y=149.65 with Enemy_IronKnuckle_Black + _White, and appears through InsideGanonCastle_DefeatEnemy_03 (flow entry DefeatIronKnuckle -> TBoxAppear). The Stalfos floor (room 22, 2 Enemy_Stalfos, InsideGanonCastle_DefeatEnemy_02) has no chest. So it moved from SoH's floor 2 (Stalfos) to floor 3 (Iron Knuckles)."
+  }
+ ],
+ "soh_chests_without_remake_counterpart": [
+  {
+   "rc": "RC_GERUDO_TRAINING_GROUND_LOBBY_LEFT_CHEST",
+   "evidence": "Its remake counterpart is the invisible Obj_TBox_GlassTruth_A_01 11182647876438515984 (GerudoTrainingGround_Dynamic, lobby left side -7.6,99.5,-11.4), which has no Drop__DropActor (it gives from the generic TBox drop table, DropActorName '' with MostDepletedResource), so it is not one of the 32 writable chests. If the mod adds a Drop__DropActor to it, its rule becomes (ctx->GetTrickOption(RT_LENS_GTG) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST) (no eye target any more)."
+  },
+  {
+   "rc": "RC_GERUDO_TRAINING_GROUND_HAMMER_ROOM_CLEAR_CHEST",
+   "evidence": "Its remake counterpart is Obj_TBox_A_06_NoBake 4961588221597286817 (room 5, 43.5,98,-90.9, SpawnType 1, appears through Gimmick_TreasureBoxAppear_Any_Fall on the room's torch slugs and fire keese, event GerudoTrainingGround_05_AppaerTreasureBox): Drop__CheckActor Item_Range_Bow and Substitute medium arrows but no Drop__DropActor, so it is not one of the 32. SoH's rule (CanAttack) still fits it if the mod gives it a DropActor."
+  },
+  {
+   "rc": "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_FOURTH_CHEST",
+   "evidence": "N64 ice trap; the remake has a trap chest there: Obj_TBox_A_04 7881496104962067240 (room 10, -45.6,104.7,-145.9), no drop, EventRequestActor TrapTreasureBoxOpen. Not an item chest."
+  },
+  {
+   "rc": "RC_GANONS_CASTLE_WATER_TRIAL_LEFT_CHEST",
+   "evidence": "N64 ice trap; remake Obj_TBox_A_04 trap chest 3253191540272036329 (room 5, 56.3,99.5,-26.8, the left side). Not an item chest."
+  },
+  {
+   "rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_SECOND_LEFT_CHEST",
+   "evidence": "N64 ice trap; remake Obj_TBox_A_04 trap chest 17726220643880970879 (room 12, -40.6,99.75,-14.6). Not an item chest."
+  },
+  {
+   "rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_FIRST_RIGHT_CHEST",
+   "evidence": "N64 ice trap; remake Obj_TBox_A_04 trap chest 5732331492537302993 (room 12, -35.8,99.74,-25.5). Not an item chest."
+  },
+  {
+   "rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_THIRD_RIGHT_CHEST",
+   "evidence": "N64 ice trap; remake Obj_TBox_A_04 trap chest 11406545451127340703 (room 12, -45.1,99.75,-25.5). Not an item chest."
+  },
+  {
+   "rc": "RC_GANONS_CASTLE_SPIRIT_TRIAL_INVISIBLE_CHEST",
+   "evidence": "No counterpart: the spirit trial (rooms 16-18) has a single chest (the torch-slug chest mapped to the Crystal Switch Chest) and Ganon's Castle's only invisible chest is the small-key chest in the light trial's triforce room."
+  }
+ ],
+ "divergences": [
+  {
+   "what": "Ganon's Castle has 1 small key and 1 locked door (N64/SoH: 2 and 2). The light trial's first door (chest room -> triforce room) is no longer locked: it is a shutter held by the room's enemy counters, opening once the invisible enemies are dead. The only key is in a new invisible chest in the triforce room; the Invisible Enemies and Lullaby chests (N64's two keys) now hold rupees.",
+   "evidence": "Obj_DoorChainLock_A_01 exists only as the pair at (-56.46,99.73,-21) on Obj_InsideGanonCastle_SwitchShutter_A_01 2559901135200913892 'SwitchShutterWithChainLock' (room 13 -> 14). The room 12 -> 13 door (17308395020688077841, x=-48) has no lock; it is in a DungeonSwitchShutterWithLockSet with Obj_EnemyCounter_A_01 290374327542697828, in the prefab with Enemy_Skulltula_Truth + 3 Enemy_Keese_Truth. The only key item in the map is the GlassTruth chest 15320975652699461295 (room 13). Obj_DoorChainLock_A_02 (room 63, 0.08,171,-7) is the boss lock on Ganondorf's door (boss key), as in SoH.",
+   "proposed_rule": "dungeon.cpp: GANONS_CASTLE vanillaKeyCount 2 -> 1. Exit overrides: RR_GANONS_CASTLE_LIGHT_TRIAL_CHESTS_ROOM -> RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM replaces logic->SmallKeys(SCENE_INSIDE_GANONS_CASTLE, 1) with (ctx->GetTrickOption(RT_LENS_GANON) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->CanKillEnemy(RE_BIG_SKULLTULA) && logic->CanKillEnemy(RE_KEESE, ED_CLOSE, true, 3); RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM -> RR_GANONS_CASTLE_LIGHT_TRIAL_BOULDER_ROOM and RR_GANONS_CASTLE_LIGHT_TRIAL_BOULDER_ROOM -> RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM replace logic->SmallKeys(SCENE_INSIDE_GANONS_CASTLE, 2) with logic->SmallKeys(SCENE_INSIDE_GANONS_CASTLE, 1). New location (remake chest 15320975652699461295) in RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM: (ctx->GetTrickOption(RT_LENS_GANON) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST). Without these, SoH would expect a second key that does not exist.",
+   "affects": [
+    "RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM",
+    "RR_GANONS_CASTLE_LIGHT_TRIAL_BOULDER_ROOM",
+    "RR_GANONS_CASTLE_LIGHT_TRIAL_FINAL_ROOM",
+    "LOGIC_LIGHT_TRIAL_CLEAR",
+    "RC_GANONS_CASTLE_LIGHT_TRIAL_LULLABY_CHEST",
+    "RR_GANONS_TOWER_ENTRYWAY"
+   ]
+  },
+  {
+   "what": "Ganon's Tower boss-key chest moved from the Stalfos floor to the Iron Knuckle floor, and the tower is part of the InsideGanonCastle map (not a separate scene).",
+   "evidence": "Chest 17092385671602176550 is in room 24 (y=149.65) with Enemy_IronKnuckle_Black/White; its EventRequestActor runs InsideGanonCastle_DefeatEnemy_03 = flow entry DefeatIronKnuckle with TBoxAppear. Room 22 (2 Enemy_Stalfos, DefeatEnemy_02) has only shutters and enemy counters. Rooms 19-26 (Dinolfos 20, Stalfos 22, Iron Knuckles 24, Ganondorf 26/63) are in InsideGanonCastle_Static; GanonCastle has no chests.",
+   "proposed_rule": "Location override: RC_GANONS_TOWER_BOSS_KEY_CHEST moves from RR_GANONS_TOWER_FLOOR_2 to RR_GANONS_TOWER_FLOOR_3 with logic->CanKillEnemy(RE_IRON_KNUCKLE, ED_CLOSE, true, 2) && logic->CanOpenLargeChest() (replaces the Stalfos rule). Anything that maps SCENE_GANONS_TOWER flags/actors must use the InsideGanonCastle map.",
+   "affects": [
+    "RC_GANONS_TOWER_BOSS_KEY_CHEST",
+    "RR_GANONS_TOWER_FLOOR_2",
+    "RR_GANONS_TOWER_FLOOR_3"
+   ]
+  },
+  {
+   "what": "GTG: N64's freestanding key is a chest in the remake; key count and key logic unchanged.",
+   "evidence": "No freestanding key actor anywhere in GerudoTrainingGround; 9 small-key chests, 9 chain-locked doors in the maze (18 Obj_DoorChainLock_A_01 = 2 per Obj_Gerudo_SwitchShutter_A_06, one on each face). The maze topology (rebuilt from the wall and iron-bar meshes) is N64's, so SmallKeys 3/4/6/7/9 for Hidden Ceiling, Path First/Second/Third/Final and 9 for Central Maze Right are all still right.",
+   "proposed_rule": "No rule change. The rando should give RC_GERUDO_TRAINING_GROUND_FREESTANDING_KEY's slot (RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE_RIGHT) to chest 1883068192328530224 (rule logic->HasItem(RG_OPEN_CHEST)) instead of a freestanding item. dungeon.cpp GERUDO_TRAINING_GROUND vanillaKeyCount stays 9.",
+   "affects": [
+    "RC_GERUDO_TRAINING_GROUND_FREESTANDING_KEY"
+   ]
+  },
+  {
+   "what": "Spirit trial: the Crystal Switch Chest now appears after killing 2 Torch Slugs; there is no invisible chest.",
+   "evidence": "Chest 7899179288432849355 (room 17) is in a prefab with 2 Enemy_TorchSlug and Gimmick_TreasureBoxAppear_Magic; the crystal switch Obj_SwitchHit_A_02 (-48.1,105.1,12.5) only drives InsideGanonCastle_Dungeon_ShutterOpen_17_01 (a door). No GlassTruth chest in rooms 16-18.",
+   "proposed_rule": "Location overrides for RC_GANONS_CASTLE_SPIRIT_TRIAL_CRYSTAL_SWITCH_CHEST: in RR_GANONS_CASTLE_SPIRIT_TRIAL_BEFORE_SWITCH replace (CanJumpslash || HasExplosives || Giant's Knife) with logic->CanKillEnemy(RE_TORCH_SLUG, ED_CLOSE, true, 2) && logic->HasItem(RG_OPEN_CHEST); drop its RR_GANONS_CASTLE_SPIRIT_TRIAL_AFTER_SWITCH entry (or give it the same rule). RC_GANONS_CASTLE_SPIRIT_TRIAL_INVISIBLE_CHEST has no remake location.",
+   "affects": [
+    "RC_GANONS_CASTLE_SPIRIT_TRIAL_CRYSTAL_SWITCH_CHEST",
+    "RC_GANONS_CASTLE_SPIRIT_TRIAL_INVISIBLE_CHEST"
+   ]
+  },
+  {
+   "what": "All five N64 ice-trap chests of this group are trap chests in the remake (Obj_TBox_A_04: TrapTreasureBoxOpen event, no Drop__DropActor), not item chests.",
+   "evidence": "A_04 positions match N64's ice traps one for one: GTG Heavy Block Fourth (7881496104962067240), Water Trial Left (3253191540272036329), Light Trial Second Left / First Right / Third Right (17726220643880970879, 5732331492537302993, 11406545451127340703).",
+   "proposed_rule": "Exclude these RCs from the shuffled pool (or convert the actors into item chests): RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_FOURTH_CHEST, RC_GANONS_CASTLE_WATER_TRIAL_LEFT_CHEST, RC_GANONS_CASTLE_LIGHT_TRIAL_SECOND_LEFT_CHEST, RC_GANONS_CASTLE_LIGHT_TRIAL_FIRST_RIGHT_CHEST, RC_GANONS_CASTLE_LIGHT_TRIAL_THIRD_RIGHT_CHEST. Their SoH rules would be unchanged (all plain logic->HasItem(RG_OPEN_CHEST)).",
+   "affects": [
+    "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_FOURTH_CHEST",
+    "RC_GANONS_CASTLE_WATER_TRIAL_LEFT_CHEST",
+    "RC_GANONS_CASTLE_LIGHT_TRIAL_SECOND_LEFT_CHEST",
+    "RC_GANONS_CASTLE_LIGHT_TRIAL_FIRST_RIGHT_CHEST",
+    "RC_GANONS_CASTLE_LIGHT_TRIAL_THIRD_RIGHT_CHEST"
+   ]
+  },
+  {
+   "what": "GTG has two real chests with no Drop__DropActor (so outside the 32): the lobby's left chest is now invisible, and the hammer-room clear chest has only a bow check.",
+   "evidence": "Obj_TBox_GlassTruth_A_01 11182647876438515984 (lobby, Dynamic file, no links) and Obj_TBox_A_06_NoBake 4961588221597286817 (room 5). Without DropActor both give from the actor's TBox drop table (DropActorName '', MostDepletedResource).",
+   "proposed_rule": "If the mod writes a Drop__DropActor into them: RC_GERUDO_TRAINING_GROUND_LOBBY_LEFT_CHEST location rule replaces logic->CanHitEyeTargets() with (ctx->GetTrickOption(RT_LENS_GTG) || logic->CanUse(RG_LENS_OF_TRUTH)) (&& logic->HasItem(RG_OPEN_CHEST)); RC_GERUDO_TRAINING_GROUND_HAMMER_ROOM_CLEAR_CHEST keeps SoH's rule.",
+   "affects": [
+    "RC_GERUDO_TRAINING_GROUND_LOBBY_LEFT_CHEST",
+    "RC_GERUDO_TRAINING_GROUND_HAMMER_ROOM_CLEAR_CHEST"
+   ]
+  },
+  {
+   "what": "Bow-check chests (Obj_TBox_A_06): GTG Maze Path Third, Maze Right Side (and the hammer-room clear chest) carry Drop__CheckActor Item_Range_Bow and Drop__DropActor_Substitute arrows.",
+   "evidence": "Dynamic of 10743352138513225188 and 11683433230229591151: DropActor TBox_Rupee_Red, Substitute TBox_ArrowBundle_Small (N64 had arrows there); blackboard Drop_TreasureBox_A_06 adds Drop__CheckCondition (default true), Drop__CheckActor and Drop__DropActor_Substitute.",
+   "proposed_rule": "Not a logic rule: when the mod writes a randomized item into these chests it should remove Drop__CheckActor / Drop__DropActor_Substitute (or swap Gyaml to the plain A_01 variant), or the game may hand out the substitute instead depending on the bow. To check in game.",
+   "affects": [
+    "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_THIRD_CHEST",
+    "RC_GERUDO_TRAINING_GROUND_MAZE_RIGHT_SIDE_CHEST",
+    "RC_GERUDO_TRAINING_GROUND_HAMMER_ROOM_CLEAR_CHEST"
+   ]
+  },
+  {
+   "what": "GTG enemy rooms changed size: Stalfos room 4 Stalfos (N64 2); Wolfos room 4 Wolfos + 4 White Wolfos; Like-Like room has an extra eye-switch chest and one of its N64 room-clear chests is now always there.",
+   "evidence": "Prefabs Room_01_dd8b (4 Enemy_Stalfos), Room_03_9aa9 (4 Enemy_Wolfos + 4 Enemy_Wolfos_White), Room_10_8aa0 (3 Like Likes; chests as listed).",
+   "proposed_rule": "Location rule replacements as given in the chest entries: RC_GERUDO_TRAINING_GROUND_STALFOS_CHEST, RC_GERUDO_TRAINING_GROUND_BEFORE_HEAVY_BLOCK_CHEST, RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_SECOND_CHEST; new location in RR_GERUDO_TRAINING_GROUND_LIKE_LIKE_ROOM: logic->CanHitEyeTargets() && logic->HasItem(RG_OPEN_CHEST).",
+   "affects": [
+    "RC_GERUDO_TRAINING_GROUND_STALFOS_CHEST",
+    "RC_GERUDO_TRAINING_GROUND_BEFORE_HEAVY_BLOCK_CHEST",
+    "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_SECOND_CHEST"
+   ]
+  }
+ ],
+ "open_questions_for_in_game_check": [
+  "GTG lobby: the eye switch above the entrance drops the RIGHT chest (blue rupee) and the LEFT one is an invisible lens chest; confirm that left/right (from the entrance) is right, and what the invisible one gives.",
+  "GTG Like-Like room (behind the silver block): is the invisible key chest there before the Like Likes are killed? Is the bomb chest there from the start? (If the key chest only appears on clear, its rule needs logic->CanKillEnemy(RE_LIKE_LIKE).)",
+  "GTG Like-Like room: of the red-rupee (appears on clear), bomb (always there) and seed (eye switch) chests, which two are the N64 ones? Only matters for naming.",
+  "GTG Maze Path Third / Maze Right Side (Obj_TBox_A_06): with a bow in the inventory, does the chest give the red rupee or the arrows? Does writing a different Drop__DropActor still get replaced by arrows?",
+  "Ganon's Castle light trial: does the door from the 6-chest room into the triforce room open only after killing the invisible Skulltula + Keese (no key)?",
+  "Ganon's Castle spirit trial: does the seed chest in the second room appear when the 2 torch slugs die, and can the crystal switch that opens the next door be hit without bombchus?",
+  "GTG heavy-block room: the door behind the silver block is opened by an invisible eye switch (Obj_EyeSwitch_GlassTruth_A_02 above it). Can it be shot from the near side, and is there still N64's way to open it from the upper ledge? (affects RR_GERUDO_TRAINING_GROUND_BEHIND_HEAVY_BLOCK -> LIKE_LIKE_ROOM)"
+ ]
+}

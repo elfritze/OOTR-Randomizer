@@ -1,0 +1,633 @@
+{
+ "group": "forest_fire_water",
+ "chests": [
+  {
+   "hash": "1171460703078800858",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FOREST_TEMPLE_FIRST_ROOM_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_TREES",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key chest in remake room 0 (AiGroup ForestTemple_Level_Room_00 = entrance courtyard with 4 Wolfos at y=101.5) at y=117.5, 14 m above the floor: the chest up on the tree of the first room. Gold Skulltula 11 m away (RC_FOREST_TEMPLE_GS_FIRST_ROOM). N64 has a small key here too."
+  },
+  {
+   "hash": "14776684749746592758",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_FOREST_TEMPLE_FIRST_STALFOS_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_LOWER_STALFOS",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key, NoBake, appears by EventRequestActor 'ForestTemple_Room04_OpenDoor_AppearTBox' linked to the Obj_EnemyCounter_A_01 of the 2 Enemy_Stalfos_Weak of remake room 4 (prefab Room_06), north of the lobby through the north hallway. SoH also needs 2 Stalfos (LOGIC_FOREST_CLEAR_BETWEEN_JOELLE_AND_BETH)."
+  },
+  {
+   "hash": "3174893090599461927",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Map",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_FOREST_TEMPLE_RAISED_ISLAND_COURTYARD_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_NE_COURTYARD_ISLAND",
+   "condition": "logic->CanOpenLargeChest()",
+   "confidence": "medium",
+   "evidence": "Big chest (Obj_TBox_A_02, the dungeon map) in remake room 14 = the east (+x) courtyard (AiGroup Room_07; doorways to the lobby, the well and the falling-ceiling room only) at y=101.4, 3 m above the courtyard water (Obj_ForestTemple_WaterPlane_A_01 at y=98.5), on a stone-pillar island with an Obj_HookShotTarget_A_01 7 m away and Pierre (AreaCanCallPierre) on the ledge above: N64's raised-island chest spot (SoH: island by hookshot, scarecrow ledge above). N64's map room (the Blue Bubble room linking both courtyards' upper levels) is not in the remake (no room with such doorways; DungeonRoomID 13 and 28 and prefab Room_10 absent), so the map moved here. The condition only changes the chest size (small in SoH, big here)."
+  },
+  {
+   "hash": "6449977980406424425",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FOREST_TEMPLE_WELL_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_SEWER",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key in remake room 15 (prefab Room_09) at y=88, under Obj_WaterPlane_Field_A_01 (y=87.6) between the two courtyards' well openings (doorways at x -34..-30 and 14..21, y 94-96): the well. The drain switch moved (see divergences), which changes RR_FOREST_TEMPLE_DRAINED_SEWER access, not this rule."
+  },
+  {
+   "hash": "15920957434854338961",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_FOREST_TEMPLE_EYE_SWITCH_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_MIDDLE_BLOCK_PUSH_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Purple rupee (N64: 30 arrows), NoBake, SpawnType 1, appears by EventRequestActor 'ForestTemple_Room11_TBoxAppear' linked to Obj_EyeSwitch_A_02 (isHitHookShot false: arrow or slingshot) 4 m above it, in remake room 8 = 2nd floor (y=115) of the block-push room (AiGroups Room_11 for rooms 6-9). Same as SoH (CanHitEyeTargets in the middle block push room)."
+  },
+  {
+   "hash": "5306318520835485827",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_BossKey",
+   "gyaml": "Obj_TBox_A_03_NoBake",
+   "soh_rc": "RC_FOREST_TEMPLE_BOSS_KEY_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_NW_HALLWAY_STRAIGHTENED",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Boss key chest (A_03) in the west twisted corridor (AiGroup Room_23), referenced by EventRequestActor 'ForestTemple_Room11_RoomSpin' together with Obj_EyeSwitch_A_01 and Obj_ForestTemple_TwistedCorridor_A_01: shoot the eye to straighten the corridor, as in N64."
+  },
+  {
+   "hash": "7535137041266964235",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_FOREST_TEMPLE_FLOORMASTER_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_FLOORMASTER_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key, NoBake on Obj_TBoxPedestal_A_01, appears by 'ForestTemple_Room22_ShutterOpen_TBoxAppear' linked to the Obj_EnemyCounter_A_01 of the room's Enemy_Floormaster; room 22 (prefab Room_18) opens off the NW courtyard's upper level."
+  },
+  {
+   "hash": "11082303891540711688",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Range_Bow",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_FOREST_TEMPLE_BOW_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_UPPER_STALFOS",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest with the Fairy Bow (GetEventName ForestTemple_GetBow) in room 17 above the first Stalfos room (prefab Room_06), appears by 'ForestTemple_Room17_BigTBoxAppear'; the room has 3 Enemy_Stalfos_Weak (SoH: 3 Stalfos)."
+  },
+  {
+   "hash": "3433400840978782007",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_FOREST_TEMPLE_RED_POE_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_RED_POE_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key, NoBake, in room 16 (prefab Room_12; SoH's own GameInteractor code treats Forest rooms 12/13/16 as the Poe rooms) with Enemy_Poe_Joelle and 3 Obj_ForestTemple_GhostPicture_A_01; appears by 'ForestTemple_Room17_TBoxAppear_CandleLight' (Joelle's candle). Mirror of Beth's room at x=+17."
+  },
+  {
+   "hash": "6948525240950728236",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Compass",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_FOREST_TEMPLE_BLUE_POE_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_BLUE_POE_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest with the compass (ForesetTemple_GetCompass) in room 18 (prefab Room_13) with Enemy_Poe_Beth; appears by 'ForestTemple_Room17_TBoxAppear_CandleLight_ShutterOpen' linked to the Obj_EnemyCounter_A_01 of Beth."
+  },
+  {
+   "hash": "9038700938965170329",
+   "map": "ForestTemple",
+   "files": [
+    "ForestTemple/ForestTemple_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_ArrowBundle_Large",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FOREST_TEMPLE_BASEMENT_CHEST",
+   "soh_region": "RR_FOREST_TEMPLE_BASEMENT",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Large arrow bundle (N64: 5 arrows) in remake room 27 (prefab Room_17, y=60.7) = the basement under the lobby elevator (Obj_ForestTemple_PivotedFloor_A_01, boss-key shutter to the boss corridor). Its mechanics changed (pivoted floor driven by 'ForestTemple_Room27_CandleLight', an Obj_EyeSwitch_A_02 frozen in Obj_Ice_A_01 opens the shutter), so SoH's HasItem(RG_POWER_BRACELET) may not be what reaches it any more."
+  },
+  {
+   "hash": "5634724236470386190",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FIRE_TEMPLE_NEAR_BOSS_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_NEAR_BOSS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key in the cell of Npc_Goron_005 (Obj_FireTemple_PrisonCage_A_01, opened by the Obj_StepSwitch_A_01 4 m away) in remake room 2, the room west of the foyer holding Darunia and the boss door (Obj_FireTemple_SwitchShutter_A_02 with Dm_Obj_DoorChainLock_A_01 and '..._Boss' events)."
+  },
+  {
+   "hash": "3949488292768750868",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FIRE_TEMPLE_BIG_LAVA_ROOM_LOWER_OPEN_DOOR_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_1F_CURVED_CAGE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key in the cell of Npc_Goron_001 in remake room 1 = big lava room (behind the foyer's locked door; sinking/moving floors, Song of Time blocks up to the 8-tile room 19); its AiGroup is the separate prefab Room_20, a side cage room like the boulder maze's side cage (prefab Room_23)."
+  },
+  {
+   "hash": "1705064956286753527",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FIRE_TEMPLE_BIG_LAVA_ROOM_BLOCKED_DOOR_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_STRAIGHTFORWARD_CAGE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key in the cell of Npc_Goron_003 in remake room 22, whose only doorway is to the big lava room (x 38-40, z 36-37) and which has an Obj_FireTemple_CrackWall_A_01 between them (the bombable wall; SoH: HasExplosives)."
+  },
+  {
+   "hash": "12083259659219538030",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Hammer",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_FIRE_TEMPLE_MEGATON_HAMMER_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_NARROW_STAIRS",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest with the Megaton Hammer (FireTemple_GetHammer) in room 13 at the top (y=196), linked to the hammerable Obj_FireTemple_SpiralStaircase_A_01."
+  },
+  {
+   "hash": "8757492004108970488",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_FIRE_TEMPLE_FLARE_DANCER_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_LOOP_FLARE_DANCER",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Red rupee (N64: 10 bombs), NoBake, SpawnType 1, on the Enemy_MiddleBoss_FlareDancer spot of room 3; appears by 'FocusOnGimmick_FireTemple_FlareDancer02' linked to the Flare Dancer's Obj_EnemyCounter_A_01. Room 3 is in the boss-key loop: foyer -> locked door -> room 15 (6 Torch Slugs) -> room 18 (Like Like, 5 Enemy_CrazyFloorTile) -> room 3 -> room 17 -> foyer."
+  },
+  {
+   "hash": "14060099092170010696",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_BossKey",
+   "gyaml": "Obj_TBox_A_03",
+   "soh_rc": "RC_FIRE_TEMPLE_BOSS_KEY_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_LOOP_GORON_CAGE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Boss key chest in the cell of Npc_Goron_010 in room 17 at the end of the boss-key loop; an Obj_HammerSwitch_A_01 opens the cage (SoH: LOGIC_FIRE_LOOP_SWITCH by hammer); its door leads back to the foyer."
+  },
+  {
+   "hash": "16785682308850448108",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FIRE_TEMPLE_BOULDER_MAZE_SHORTCUT_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_SHORTCUT_CLIMB",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Small key in the cell of Npc_Goron_002 (two cage doors at x 74.7 and 80.2) at the top (y=141) of remake room 4. Room 4 is entered from the lava-geyser room through the hole above the fire pillar (Land_FireTemple_21_Hole_A_01, doorway y 127-129) and has SoH's shortcut-room block and switch (Obj_FireTemple_MovableBox_A_02, Obj_SwitchHit_A_04). The boulder maze's Obj_FireTemple_CrackFloor_A_01 at (63.4, 151.1, 0) is right above the room 4/5 doorway (x 62-64) next to this cell: bomb the upper maze's floor and drop to it, as for N64's shortcut chest."
+  },
+  {
+   "hash": "9634924691849556346",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FIRE_TEMPLE_BOULDER_MAZE_UPPER_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_BOULDER_MAZE_UPPER",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Small key in the cell of Npc_Goron_008 in remake room 5 = boulder maze (6 Obj_Firetemple_RollingRock_A_01) on its upper level y=150.5, the level of the doorway from the fire-wall room 16 (y 150-152, SoH's fire wall upper door) and of the crack floor; the lower level (door to the narrow-path room 6) is y=147."
+  },
+  {
+   "hash": "12567412825200613393",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FIRE_TEMPLE_BOULDER_MAZE_SIDE_ROOM_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_3F_CURVED_CAGE",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Small key in the cell of Npc_Goron_007 off the boulder maze's lower level (y=147, doorway x 48-49, z -31..-29). Its AiGroup is the separate prefab Room_23, like the big lava room's side cage (prefab Room_20 = 1F curved cage): the 3F curved cage."
+  },
+  {
+   "hash": "3688520809244472975",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Map",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_FIRE_TEMPLE_BOULDER_MAZE_LOWER_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_BOULDER_MAZE_LOWER",
+   "condition": "logic->CanOpenLargeChest()",
+   "confidence": "low",
+   "evidence": "Big chest (contents: the map; event FireTemple_GetCompass) in a side room off the boulder maze's LOWER level (y=147.1, doorway x 58-59, z 26-28, remake room 5). The remake's maze keeps only one Goron cell in the maze proper (upper level) and gains this big chest, while the flame maze gains a Goron key cell (see the compass chest): the lower-maze check became this big chest. Location-based match only."
+  },
+  {
+   "hash": "16713240760352215634",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Compass",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_FIRE_TEMPLE_MAP_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_FIRE_WALL_CAGE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest (contents: the compass; event FireTemple_GetMap) in room 16 (fire wall chase: MoveFireWallSpawnActor) right behind the Obj_FireTemple_SwitchShutter_A_01 that 'FireTemple_06_EyeSwitch' opens from room 6 (the narrow-path room) with Obj_EyeSwitch_A_02: SoH's fire wall cage, reached from the narrow path with CanHitEyeTargets."
+  },
+  {
+   "hash": "12945617941305968586",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FIRE_TEMPLE_COMPASS_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_CAGELESS_CHEST_ROOM",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Small key in the cell of Npc_Goron_004 (opened by the Obj_StepSwitch_A_01 4 m away) in remake room 10 = the flame maze (40 Obj_FireTemple_FireWallTrap_A_01, 3 Enemy_TrickyDoor, doors to the SoT cage room 11 and the Flare Dancer room 24). N64's flame maze has the cageless compass room and no other chest; the remake has 9 Goron cells with chests like N64 but two in the flame maze and three around the boulder maze. Matched by location to the flame maze's own chest; small chest now."
+  },
+  {
+   "hash": "10521366928524045067",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FIRE_TEMPLE_HIGHEST_GORON_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_SOT_CAGE_SWITCH",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small key in the cell of Npc_Goron_009 (two cage doors) in room 11, behind the flame maze's locked door, with Obj_SongOfTimeBlock_A_01 and Obj_HammerSwitch_A_01: SoH's Song of Time + hammer cage."
+  },
+  {
+   "hash": "862385681502746018",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_FIRE_TEMPLE_SCARECROW_CHEST",
+   "soh_region": "RR_FIRE_TEMPLE_5F_RUINS",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Purple rupee (N64: huge rupee), one of 3 chests on one pedestal (Land_FireTemple_TBoxPedestal_A_02) at y=194.4 in room 8 at the top of the climb above the boulder maze (Pierre and Obj_ScarecrowMarker_B_00 in room 5, room 7 stairs, Gold Skulltula in rooms 7 and 8). The purple is the most valuable of the three, so taken as N64's scarecrow chest. It needs the hookshot (targets moved by the timed Obj_StepSwitch_A_02, 'Dm_FireTemple_0026'); SoH's region already needs it (ReachScarecrow includes CanUse(RG_HOOKSHOT))."
+  },
+  {
+   "hash": "17001858340376096722",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_FIRE_TEMPLE_5F_RUINS",
+   "condition": "logic->CanUse(RG_HOOKSHOT) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new: red rupee, second of the 3 chests on the room-8 pedestal, 1.7 m from the scarecrow chest; same access (timed switch, hookshot targets)."
+  },
+  {
+   "hash": "15073195886628236505",
+   "map": "FireTemple",
+   "files": [
+    "FireTemple/FireTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_FIRE_TEMPLE_5F_RUINS",
+   "condition": "logic->CanUse(RG_HOOKSHOT) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new: red rupee, third of the 3 chests on the room-8 pedestal next to the scarecrow chest; same access."
+  },
+  {
+   "hash": "16384925224245172970",
+   "map": "WaterTemple",
+   "files": [
+    "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Map",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_WATER_TEMPLE_MAP_CHEST",
+   "soh_region": "RR_WATER_TEMPLE_LOW_EMBLEM",
+   "condition": "logic->CanOpenLargeChest()",
+   "confidence": "medium",
+   "evidence": "Big chest (map) in remake room 17 = east side tower (Ruto's 'Demo_WaterTemple_MeetAgainRutoEvent', timed torches Obj_CandleStick_TimeExtinguish_A_01, cracked wall) at its top (y=119.5), 3.5 m from Obj_WaterTemple_StoneTablet_A_01 and CheckAttentionActor_WaterTemple_Triforce, the low-water Zelda's Lullaby spot (room 17's logic modules use WaterTemple_WaterLevelChange01/02). In N64 the map is in the 4-spike room off this emblem; the remake has no such room up here (its spikes are in the torch room), so the map sits at the emblem."
+  },
+  {
+   "hash": "18099019250896853049",
+   "map": "WaterTemple",
+   "files": [
+    "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_WATER_TEMPLE_TORCHES_CHEST",
+   "soh_region": "RR_WATER_TEMPLE_TORCH_ROOM",
+   "condition": "AnyAgeTime([]{return logic->WaterLevel(WL_LOW) && logic->CanKillEnemy(RE_SPIKE, ED_CLOSE, true, 3);}) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Small key, NoBake, appears by 'WaterTemple_FocusGimmick_Room18' linked to the Obj_EnemyCounter_A_01 of the room's Enemy_Spike, in room 18 entered at the tower floor (y=100) through the shutter that the two timed torches of room 17 open: SoH's torch room (fire source or bow, low water). The enemies are 3 Spikes, not 3 Shell Blades (the Shell Blades are in the cracked-wall room 25)."
+  },
+  {
+   "hash": "16490222392193949581",
+   "map": "WaterTemple",
+   "files": [
+    "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_WATER_TEMPLE_COMPASS_CHEST",
+   "soh_region": "RR_WATER_TEMPLE_JET_CHEST_ROOM",
+   "condition": "logic->CanUseProjectile() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Small key (N64: compass in a big chest) in remake room 4, entered from the central lake's east wall at the 2F height (doorway x=16, y 110-112), with a water jet (Obj_WaterTemple_Fountain_A_01), an Obj_SwitchHit_A_06 to hit, 4 underwater Stingers and a hookshot target; chest at the top (y=118.4). Matches SoH's jet chest room (CanUseProjectile). Small chest now."
+  },
+  {
+   "hash": "3693930347660122883",
+   "map": "WaterTemple",
+   "files": [
+    "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_WATER_TEMPLE_CENTRAL_BOW_TARGET_CHEST",
+   "soh_region": "RR_WATER_TEMPLE_BLOCK_LOOP_BACK",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Small key in remake room 20 north of the central pillar (y=112), behind the shutters (Obj_WaterTemple_SwitchShutter_A_02 at y=113.5) opened by the timed Obj_EyeSwitch_A_05 above them ('WaterTemple_EyeSwitch_Focus'), with a block puzzle (Obj_MovableBox_A_05 and answer anchors): SoH's central bow target / block loop (CanHitEyeTargets)."
+  },
+  {
+   "hash": "11682974908842171598",
+   "map": "WaterTemple",
+   "files": [
+    "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_WATER_TEMPLE_CENTRAL_PILLAR_CHEST",
+   "soh_region": "RR_WATER_TEMPLE_PILLAR_B1",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Red rupee (N64: small key) in remake room 2 (y=92.7), the basement of the central pillar (room 1 above holds Obj_WaterTemple_StoneTablet_A_03, the middle-water emblem), behind Obj_WaterTemple_SwitchShutter_A_03 opened by 'WaterTemple_FocusonGimmick_02' (a Shell Blade and 3 Spikes) and an Obj_SwitchHit_A_02. The remake's logic still reads a flag WaterTemple_Room02_GetSmallKey: the key became a rupee."
+  },
+  {
+   "hash": "18059711820131847165",
+   "map": "WaterTemple",
+   "files": [
+    "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Longshot",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_WATER_TEMPLE_LONGSHOT_CHEST",
+   "soh_region": "RR_WATER_TEMPLE_SOT_PIT_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest with the Longshot in room 7, right after the Dark Link room 22 (shutters 'WaterTemple_DarkLink_DoorMovement')."
+  },
+  {
+   "hash": "2503861086004941173",
+   "map": "WaterTemple",
+   "files": [
+    "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_WATER_TEMPLE_DRAGON_CHEST",
+   "soh_region": "RR_WATER_TEMPLE_DRAGON_ROOM",
+   "condition": null,
+   "confidence": "low",
+   "evidence": "Small key in remake room 8 (west, y=102.3), the room the river (room 21, after the Longshot room) drops into (doorway y 110-111) and which also opens to the central lake at the bottom (doorway y 97-98, SoH's block U-bend side): SoH's dragon room / above-dragon area. An underwater Obj_SwitchHit_A_02 opens Obj_WaterTemple_SwitchShutter_A_07 ('WaterTempleRoom08HitSwitch'); a hookshot target is 3 m from the chest. One chest where SoH has the dragon and river chests; matched to the dragon chest (the room's own check)."
+  },
+  {
+   "hash": "10378828369334876242",
+   "map": "WaterTemple",
+   "files": [
+    "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_BossKey",
+   "gyaml": "Obj_TBox_A_03",
+   "soh_rc": "RC_WATER_TEMPLE_BOSS_KEY_CHEST",
+   "soh_region": "RR_WATER_TEMPLE_BOSS_KEY_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Boss key chest in room 15, north-east past the boulder rooms 12, 14 and 24 (Obj_RollingRock_A_05; room 24's Gold Skulltula = GS near boss key chest)."
+  },
+  {
+   "hash": "16424266294822218796",
+   "map": "WaterTemple",
+   "files": [
+    "WaterTemple/WaterTemple_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Compass",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": null,
+   "soh_region": "RR_WATER_TEMPLE_MAIN",
+   "condition": "logic->WaterLevel(WL_LOW) && logic->CanUse(RG_HOOKSHOT) && logic->CanOpenLargeChest()",
+   "confidence": "low",
+   "evidence": "Remake-new: big chest with the compass (WaterTemple_GetCompass) in remake room 3, south-west of the central pillar at the lake floor (chest y=104.3; the water plane here is at y=106.5, and at y=99.5 only with WaterTemple_WaterLevelChange01 = low water), reached over hookshot targets raised by the floor switch at (-27, 100, 20) ('WaterTemple_Waterlevelrise_FocusOnGimmick'); the room also has a Like Like, a Shell Blade and Tektites. No N64 chest is in this part of the lake (SoH's compass chest is the jet room, matched above)."
+  }
+ ],
+ "soh_chests_without_remake_counterpart": [
+  {
+   "rc": "RC_FOREST_TEMPLE_MAP_CHEST",
+   "evidence": "SoH's map room (the Blue Bubble room between the NW courtyard's upper alcove and the NE courtyard's upper level) is not in the remake: the NE courtyard (room 14) has doorways only to the lobby, the well and the falling-ceiling room, and the NW courtyard's alcove holds the Blue Bubble and the well's drain switch instead. The dungeon map is in the raised-island big chest."
+  },
+  {
+   "rc": "RC_FOREST_TEMPLE_FALLING_CEILING_ROOM_CHEST",
+   "evidence": "The falling-ceiling room (remake room 24: Obj_ForestTemple_FallingCeiling_A_01, 3 Skulltulas) has an Obj_TBox_A_01 (hash 15117164073907033527, ForestTemple_Dynamic, at 56.0, 104.0, -22.8) with no Drop__DropActor, so it is not one of the remake's 36 item chests (rando.chests.is_chest and chest_context.json skip it). It is the N64 chest's spot; see open questions (it may give nothing, or a default item; a Drop__DropActor could perhaps be added)."
+  },
+  {
+   "rc": "RC_WATER_TEMPLE_CRACKED_WALL_CHEST",
+   "evidence": "The room behind the east tower's Obj_WaterTemple_CrackWall_A_01 (34.7, 111.5, -4.5) is remake room 25 (prefab Room_17_18e2): 3 Shell Blades, 2 pots, a Gold Skulltula, no chest."
+  },
+  {
+   "rc": "RC_WATER_TEMPLE_RIVER_CHEST",
+   "evidence": "The river room (remake room 21: 22 BeltConveyor_Hole, RiverRail_WaterTemple, timed Obj_EyeSwitch_A_05, Gold Skulltula) between the Longshot room 7 and room 8 has no chest; room 8 has a single chest, matched to the dragon chest."
+  }
+ ],
+ "divergences": [
+  {
+   "what": "Forest Temple small keys: the remake has 5 keys and 5 locked doors. Obj_DoorChainLock_A_01 is one lock actor per side of a locked door (10 = 5 doors x 2; every locked Obj_ForestTemple_Door_A_01 links exactly two of them); Obj_DoorChainLock_A_02 is the boss-key lock of the basement's boss shutter Obj_ForestTemple_SwitchShutter_A_04. Three doors are N64's; new locked doors are entrance room -> first hallway and bow room -> Beth's room, while N64's locked doors twisted hallway -> Joelle's room and Beth's room -> NE corridor are now a plain door and a shutter.",
+   "evidence": "Locked doors: 84964 (0.7,103,44.5) entrance room 0 / hallway room 1; 17869 (-26,103.5,-0.7) lobby / west hallway room 5; 49409 (-55.8,124.5,-11.4) block-push room top (room 9) / west twisted corridor (room 10); 48563 (14.5,114.5,-58.8) bow room 17 / Beth's room 18; 40959 (57.2,124.5,-11.5) east twisted corridor room 20 / frozen-eye room 23. Door 38597 (west corridor room 11 / Joelle's room 16) has no lock. Beth's room exit to the east corridor (room 19) is Obj_ForestTemple_SwitchShutter_A_03 67814, linked to Beth's ghost pictures and opened by 'ForestTemple_Room17_TBoxAppear_CandleLight_ShutterOpen' with the Obj_EnemyCounter_A_01 of Enemy_Poe_Beth. Key chests: first room, first Stalfos, well, Floormaster, Joelle (same five as N64). The first room's key is the only key in front of the new entrance door.",
+   "proposed_rule": "Exit rules (replace): RR_FOREST_TEMPLE_TREES -> RR_FOREST_TEMPLE_OVERGROWN_HALLWAY_LOWER: logic->SmallKeys(SCENE_FOREST_TEMPLE, 1) [was true], and RR_FOREST_TEMPLE_OVERGROWN_HALLWAY_LOWER -> RR_FOREST_TEMPLE_TREES: logic->SmallKeys(SCENE_FOREST_TEMPLE, 1) [was true]; RR_FOREST_TEMPLE_LOBBY <-> RR_FOREST_TEMPLE_RED_DOORMAT_HALLWAY: logic->SmallKeys(SCENE_FOREST_TEMPLE, 2) [was 1]; RR_FOREST_TEMPLE_BLOCK_PUSH_ROOM_TOP -> RR_FOREST_TEMPLE_NW_HALLWAY_TWISTED: logic->SmallKeys(SCENE_FOREST_TEMPLE, 3), RR_FOREST_TEMPLE_BLOCK_PUSH_ROOM_TOP -> RR_FOREST_TEMPLE_NW_HALLWAY_STRAIGHTENED: logic->CanHitEyeTargets() && logic->SmallKeys(SCENE_FOREST_TEMPLE, 3), RR_FOREST_TEMPLE_NW_HALLWAY_TWISTED / RR_FOREST_TEMPLE_NW_HALLWAY_STRAIGHTENED -> RR_FOREST_TEMPLE_BLOCK_PUSH_ROOM_TOP: logic->SmallKeys(SCENE_FOREST_TEMPLE, 3) [were 2]; RR_FOREST_TEMPLE_NW_HALLWAY_TWISTED <-> RR_FOREST_TEMPLE_RED_POE_ROOM: true [was 3]; RR_FOREST_TEMPLE_UPPER_STALFOS -> RR_FOREST_TEMPLE_BLUE_POE_ROOM: logic->Get(LOGIC_FOREST_CLEAR_BETWEEN_JOELLE_AND_BETH) && logic->CanKillEnemy(RE_STALFOS, ED_CLOSE, true, 3) && logic->SmallKeys(SCENE_FOREST_TEMPLE, 4), RR_FOREST_TEMPLE_BLUE_POE_ROOM -> RR_FOREST_TEMPLE_UPPER_STALFOS: logic->SmallKeys(SCENE_FOREST_TEMPLE, 4) [were without key]; RR_FOREST_TEMPLE_BLUE_POE_ROOM <-> RR_FOREST_TEMPLE_NE_HALLWAY_STRAIGHTENED: logic->Get(LOGIC_FOREST_BETH) [was SmallKeys 4]; the frozen-eye room doors keep logic->SmallKeys(SCENE_FOREST_TEMPLE, 5) (reachable early from the falling room, so they keep needing every key).",
+   "affects": [
+    "RC_FOREST_TEMPLE_FIRST_STALFOS_CHEST",
+    "RC_FOREST_TEMPLE_WELL_CHEST",
+    "RC_FOREST_TEMPLE_FLOORMASTER_CHEST",
+    "RC_FOREST_TEMPLE_EYE_SWITCH_CHEST",
+    "RC_FOREST_TEMPLE_BOSS_KEY_CHEST",
+    "RC_FOREST_TEMPLE_RED_POE_CHEST",
+    "RC_FOREST_TEMPLE_BOW_CHEST",
+    "RC_FOREST_TEMPLE_BLUE_POE_CHEST",
+    "RC_FOREST_TEMPLE_BASEMENT_CHEST",
+    "RC_FOREST_TEMPLE_RAISED_ISLAND_COURTYARD_CHEST",
+    "every Forest Temple location past the entrance room"
+   ]
+  },
+  {
+   "what": "Forest Temple: the map room is gone, and the well's drain switch moved from the NE courtyard to the NW courtyard's upper alcove (where the map room's Blue Bubble now is).",
+   "evidence": "Remake room 12 (NW courtyard, prefab Room_08) has Obj_StepSwitch_A_01 25067 at (-31.9,113.9,-50.7) on its north ledge next to an Enemy_Bubble_Blue, linked by EventRequestActor 'ForestTemple_Room12_WaterLevelDrop' (and logic module ForestTemple_Level_Room_08_Prefab_d5d5) to a GroundControlActor; the dynamic water plane (Obj_ForestTemple_WaterPlaneDynamic_A_01) is in this courtyard. The NE courtyard (room 14) has no switch, and its DungeonRoomArea doorways are only the lobby (21,100,-22), the well (15,95,-41) and the falling-ceiling room (43,105,-39); no remake room joins the two courtyards' upper levels.",
+   "proposed_rule": "Event rules: remove EVENT_ACCESS(LOGIC_FOREST_DRAINED_WELL, true) from RR_FOREST_TEMPLE_NE_COURTYARD_SWITCH and add EVENT_ACCESS(LOGIC_FOREST_DRAINED_WELL, true) to RR_FOREST_TEMPLE_NW_COURTYARD_UPPER_ALCOVE (a floor switch; the Blue Bubble next to it can be avoided). Exit rules: RR_FOREST_TEMPLE_NW_COURTYARD_UPPER_ALCOVE -> RR_FOREST_TEMPLE_MAP_ROOM: false; RR_FOREST_TEMPLE_NE_COURTYARD_UPPER -> RR_FOREST_TEMPLE_MAP_ROOM: false (the map room no longer exists).",
+   "affects": [
+    "RC_FOREST_TEMPLE_WELL_CHEST",
+    "RC_FOREST_TEMPLE_RAISED_ISLAND_COURTYARD_CHEST",
+    "RC_FOREST_TEMPLE_MAP_CHEST"
+   ]
+  },
+  {
+   "what": "Forest Temple: the lobby's east door to the NE courtyard is a one-way shortcut opened by a floor switch on the courtyard side, not by shooting an eye switch from the lobby.",
+   "evidence": "Obj_ForestTemple_SwitchShutter_A_02 9009 at (16.2,99.9,-16.2) in front of door 8527 (21,100,-20); logic module ForestTemple_Level_Room_02_Prefab_f080 ties it to Obj_StepSwitch_A_01 77219 at (17.1,100.0,-17.2), which is on the door side of the shutter (1.4 m past it, towards the courtyard). The lobby (room 2) has no eye switch.",
+   "proposed_rule": "Exit rule (replace): RR_FOREST_TEMPLE_LOBBY -> RR_FOREST_TEMPLE_NE_COURTYARD_LOWER: false [was logic->CanUse(RG_FAIRY_BOW) || logic->CanUse(RG_FAIRY_SLINGSHOT)]; RR_FOREST_TEMPLE_NE_COURTYARD_LOWER -> RR_FOREST_TEMPLE_LOBBY stays true. The NE courtyard is then reached through the well (RR_FOREST_TEMPLE_SEWER / RR_FOREST_TEMPLE_DRAINED_SEWER exits) or from the falling room side.",
+   "affects": [
+    "RC_FOREST_TEMPLE_RAISED_ISLAND_COURTYARD_CHEST",
+    "RC_FOREST_TEMPLE_WELL_CHEST"
+   ]
+  },
+  {
+   "what": "Fire Temple small keys: the remake has 8 keys and 8 locked doors: 7 doors with a pair of Obj_DoorChainLock_A_04 (one per side) and one locked shutter (Obj_FireTemple_SwitchShutter_A_01 with a single Obj_DoorChainLock_A_01); Dm_Obj_DoorChainLock_A_01 is the boss-key lock. Five are N64's doors (foyer->big lava room, foyer->boss-key loop, big lava room->lava geyser room, boulder maze->narrow path, flame maze->SoT cage) and one is moved (fire wall room->flame maze is SoH's side door->corridor). N64's locked doors lava geyser 2F->shortcut room and narrow path->fire wall chase are open; a locked door now sits inside the lava geyser room, and the flame maze's way to the 3F Flare Dancer is a locked shutter instead of a bombable wall.",
+   "evidence": "Locked: 4174 foyer / big lava room 1; 17955 foyer / boss-key loop room 15 (hammer pillar Obj_FireTemple_HammerSlipPillar in front); 79290 big lava room / lava geyser room 21; 90487 (111.8,107.6) on the lava geyser room's far wall at bridge level, with no room behind it in the map data (the room's upper ledge with the fire-pillar block Obj_FireTemple_MovableBox_A_01 is at y 116.6 beyond that wall); 67313 boulder maze room 5 / narrow path room 6; 50496 (5.2,150.6) fire wall room 16 / flame maze room 10; 35070 flame maze / SoT cage room 11; shutter 67001 (-64,148,-6.5) flame maze / Flare Dancer room 24 (lock 99073, 'OpenChainShutterEvent'; no crack wall in room 10). Open: door 63202 between rooms 6 and 16; room 4 (SoH shortcut room) is entered through the hole over the fire pillar, no door.",
+   "proposed_rule": "Exit rules: keep RR_FIRE_TEMPLE_FOYER -> RR_FIRE_TEMPLE_BIG_LAVA_ROOM logic->SmallKeys(SCENE_FIRE_TEMPLE, 2), RR_FIRE_TEMPLE_BIG_LAVA_ROOM <-> RR_FIRE_TEMPLE_LAVA_GEYSER_1F SmallKeys 3, the loop-door rule (SmallKeys 8 || !IsFireLoopLocked()), RR_FIRE_TEMPLE_BOULDER_MAZE_LOWER <-> RR_FIRE_TEMPLE_NARROW_PATH_ROOM SmallKeys 5 and RR_FIRE_TEMPLE_FIRE_MAZE_MAIN <-> RR_FIRE_TEMPLE_SOT_CAGE_LOWER SmallKeys 8. Replace: RR_FIRE_TEMPLE_LAVA_GEYSER_1F -> RR_FIRE_TEMPLE_LAVA_GEYSER_GRATE: logic->SmallKeys(SCENE_FIRE_TEMPLE, 4) && logic->FireTimer() >= 40 && (logic->HasItem(RG_CLIMB) || logic->CanUse(RG_HOOKSHOT)); RR_FIRE_TEMPLE_LAVA_GEYSER_1F -> RR_FIRE_TEMPLE_LAVA_GEYSER_TORCH: logic->SmallKeys(SCENE_FIRE_TEMPLE, 4) && logic->CanUse(RG_LONGSHOT) && logic->FireTimer() >= 40; RR_FIRE_TEMPLE_LAVA_GEYSER_2F <-> RR_FIRE_TEMPLE_SHORTCUT_ROOM: true [was 4]; RR_FIRE_TEMPLE_NARROW_PATH_ROOM -> RR_FIRE_TEMPLE_FIRE_WALL_CHASE: true and RR_FIRE_TEMPLE_FIRE_WALL_CHASE -> RR_FIRE_TEMPLE_NARROW_PATH_ROOM: logic->FireTimer() >= 24 [were SmallKeys 6]; RR_FIRE_TEMPLE_FIRE_WALL_SIDE_DOOR <-> RR_FIRE_TEMPLE_CORRIDOR: logic->SmallKeys(SCENE_FIRE_TEMPLE, 6) [was 7]; RR_FIRE_TEMPLE_FIRE_MAZE_PAST_WALL -> RR_FIRE_TEMPLE_3F_FLARE_DANCER: logic->SmallKeys(SCENE_FIRE_TEMPLE, 8) [was logic->HasExplosives()] (it and the SoT cage door both open off the flame maze in either order, so both need 8).",
+   "affects": [
+    "RC_FIRE_TEMPLE_BOULDER_MAZE_SHORTCUT_CHEST",
+    "RC_FIRE_TEMPLE_BOULDER_MAZE_LOWER_CHEST",
+    "RC_FIRE_TEMPLE_BOULDER_MAZE_UPPER_CHEST",
+    "RC_FIRE_TEMPLE_BOULDER_MAZE_SIDE_ROOM_CHEST",
+    "RC_FIRE_TEMPLE_MAP_CHEST",
+    "RC_FIRE_TEMPLE_SCARECROW_CHEST",
+    "RC_FIRE_TEMPLE_COMPASS_CHEST",
+    "RC_FIRE_TEMPLE_HIGHEST_GORON_CHEST",
+    "RC_FIRE_TEMPLE_MEGATON_HAMMER_CHEST",
+    "the two remake-new 5F chests"
+   ]
+  },
+  {
+   "what": "Fire Temple: Goron cells moved between rooms (the flame maze gains a key cell; the boulder maze's lower cell is replaced by a big chest), and the map and compass contents are swapped against their chests' events.",
+   "evidence": "The remake has 9 Goron cells with chests (Npc_Goron_001..010 at Obj_FireTemple_PrisonCage_A_01, 8 small keys + the boss key) like N64; flame maze room 10 holds Goron_004's cell and room 11 Goron_009's; boulder maze room 5 holds Goron_008's cell (upper level) and Goron_007's side cell. Big chest 3688520809244472975 holds the map with event FireTemple_GetCompass; 16713240760352215634 holds the compass with FireTemple_GetMap.",
+   "proposed_rule": "Location rules (replace): RC_FIRE_TEMPLE_COMPASS_CHEST: logic->HasItem(RG_OPEN_CHEST) [was logic->CanOpenLargeChest()]; RC_FIRE_TEMPLE_BOULDER_MAZE_LOWER_CHEST: logic->CanOpenLargeChest() [was logic->HasItem(RG_OPEN_CHEST)]; plus the two remake-new chests in RR_FIRE_TEMPLE_5F_RUINS: logic->CanUse(RG_HOOKSHOT) && logic->HasItem(RG_OPEN_CHEST).",
+   "affects": [
+    "RC_FIRE_TEMPLE_COMPASS_CHEST",
+    "RC_FIRE_TEMPLE_BOULDER_MAZE_LOWER_CHEST"
+   ]
+  },
+  {
+   "what": "Water Temple small keys: the remake has 4 keys and 4 locked doors (8 Obj_DoorChainLock_A_01, a pair on each of 4 Obj_WaterTemple_SwitchShutter_A_01; the single Obj_DoorChainLock_A_02 is the boss-key lock on Obj_WaterTemple_SwitchShutter_A_04). All four doors open off the central lake and all four are N64 locked doors, including the door to the high-water emblem that SoH treats as unlocked; N64's locked doors to the boss key room and to the toggle-switch room are unlocked shutters. Two N64 keys are gone: the central pillar chest is a red rupee, and the cracked-wall and river rooms have no chest.",
+   "evidence": "Locked shutters, all in the central lake (room 0): 47544 (-9.6,100.8,-4.5) to the central pillar room 1; 40401 (-20.8,111.4,-4.5) to room 10 (Obj_WaterTemple_StoneTablet_A_02 = high-water emblem, water jets); 66033 (-20.8,119.3,-4.5) to room 5 (the 3F west route: hookshot floating platforms -> room 6 -> Dark Link room 22); 74095 (-4.5,100,-54.4) to room 12 (north: rolling rock and current, towards the boss key room). Unlocked: shutter 39422 room 24 / boss key room 15, shutter 84296 room 5 / room 6. The key chests (torch room 18, jet room 4, block room 20, room 8) are none behind a locked door. Logic module WaterTemple_Level_Room_00_Prefab_5b80 still reads flags WaterTemple_Room02/08/16/17/18/20_GetSmallKey (6 key spots in the original design).",
+   "proposed_rule": "Exit rules: RR_WATER_TEMPLE_MAIN <-> RR_WATER_TEMPLE_PILLAR_1F: logic->WaterLevel(WL_LOW) && logic->SmallKeys(SCENE_WATER_TEMPLE, 4) [was 5]; RR_WATER_TEMPLE_OUTSIDE_WATERFALL <-> RR_WATER_TEMPLE_WATERFALL keep logic->SmallKeys(SCENE_WATER_TEMPLE, 4); RR_WATER_TEMPLE_BEHIND_SPIKE_MOAT <-> RR_WATER_TEMPLE_BOULDERS_SOUTH keep logic->SmallKeys(SCENE_WATER_TEMPLE, 4); RR_WATER_TEMPLE_OUTSIDE_JET_LIFT_2F -> RR_WATER_TEMPLE_JET_LIFT_2F: logic->WaterLevel(WL_MID) && logic->SmallKeys(SCENE_WATER_TEMPLE, 4) [was without key]; RR_WATER_TEMPLE_BEHIND_CANAL <-> RR_WATER_TEMPLE_BOSS_KEY_ROOM: true [was 5]; RR_WATER_TEMPLE_WATERFALL_TOP <-> RR_WATER_TEMPLE_TOGGLE_SWITCH: true [was 5]. Event rule: in RR_WATER_TEMPLE_MAIN, LOGIC_WATER_COULD_MIDDLE's alternative (logic->CanUse(RG_HOOKSHOT) && logic->SmallKeys(SCENE_WATER_TEMPLE, 5)) becomes SmallKeys(SCENE_WATER_TEMPLE, 4). Every door needs all 4 keys: all four are hub doors that can be opened in any order and all four key chests are in front of them.",
+   "affects": [
+    "RC_WATER_TEMPLE_CENTRAL_PILLAR_CHEST",
+    "RC_WATER_TEMPLE_BOSS_KEY_CHEST",
+    "RC_WATER_TEMPLE_LONGSHOT_CHEST",
+    "RC_WATER_TEMPLE_DRAGON_CHEST",
+    "every location needing the middle or high water level"
+   ]
+  },
+  {
+   "what": "Water Temple water levels: no divergence found in the level model. The remake has the same three levels and the same three Zelda's Lullaby spots.",
+   "evidence": "GameData int WaterTemple_Room00_WaterLevel is set to 0/1/2 by Dm_WaterTemple_0020/0021/0022 (flags WaterTemple_WaterLevelChange01/02/03; setting one clears the other two), each from SageOfWater's WaterTemple_WaterLevelChange0X entry after Dm_SY_Ocarina PlayOcarinaSequence with the recommended melody. Three triforce tablets: Obj_WaterTemple_StoneTablet_A_01 in the east tower room 17 (low), A_03 in the central pillar room 1 (middle), A_02 in room 10 behind the locked west 2F shutter (high). Water planes switch with the flags (e.g. (-4.5,106.5,23.9) -> (-4.5,99.5,23.9) at low).",
+   "proposed_rule": "None for the level model: keep SoH's WaterLevel(...) and LOGIC_WATER_LOW / LOGIC_WATER_MIDDLE / LOGIC_WATER_HIGH events; only the high-emblem door's key (above) changes.",
+   "affects": []
+  },
+  {
+   "what": "Water Temple: torch-room enemies, map position, compass room.",
+   "evidence": "Torch room 18 has 3 Enemy_Spike (counter-linked) instead of Shell Blades; the map is a big chest at the low emblem; the compass is a big chest in a new south-west room (room 3); the jet room's chest is a small key.",
+   "proposed_rule": "Location rules (replace): RC_WATER_TEMPLE_TORCHES_CHEST: AnyAgeTime([]{return logic->WaterLevel(WL_LOW) && logic->CanKillEnemy(RE_SPIKE, ED_CLOSE, true, 3);}) && logic->HasItem(RG_OPEN_CHEST); RC_WATER_TEMPLE_MAP_CHEST: moved to RR_WATER_TEMPLE_LOW_EMBLEM with logic->CanOpenLargeChest(); RC_WATER_TEMPLE_COMPASS_CHEST: logic->CanUseProjectile() && logic->HasItem(RG_OPEN_CHEST); remake-new chest in RR_WATER_TEMPLE_MAIN: logic->WaterLevel(WL_LOW) && logic->CanUse(RG_HOOKSHOT) && logic->CanOpenLargeChest().",
+   "affects": [
+    "RC_WATER_TEMPLE_TORCHES_CHEST",
+    "RC_WATER_TEMPLE_MAP_CHEST",
+    "RC_WATER_TEMPLE_COMPASS_CHEST"
+   ]
+  }
+ ],
+ "open_questions_for_in_game_check": [
+  "Fire Temple lava-geyser room (past the big lava room's second locked door): is there another locked door on the far wall at bridge level, and does it lead up to the ledge where you push the block onto the fire pillar? (decides the key-4 rule)",
+  "Fire Temple boulder maze: is the big chest (map) in a side room off the maze's lower floor, and the Goron cell with a key on the raised upper part? (Boulder Maze Lower vs Upper)",
+  "Fire Temple flame maze: is there a Goron cell with a small key (opened by a floor switch) inside the flame maze itself, where N64 had the compass room?",
+  "Fire Temple top room with three chests on one pedestal: are they reached by stepping on the timed switch and hookshotting, and is Pierre still needed to get up there from the boulder maze?",
+  "Forest Temple east courtyard: is the big map chest on the raised island in the pond (hookshot target nearby), and is N64's Blue Bubble map room between the courtyards' upper levels really gone?",
+  "Forest Temple west courtyard: does the floor switch on the high ledge next to the Blue Bubble drain the well? Can the lobby's east door be opened from the lobby, or only by the floor switch on the courtyard side?",
+  "Forest Temple falling-ceiling room: what does its chest give (no item is set for it in the map data)?",
+  "Forest Temple basement: what reaches the arrow chest and opens the boss corridor now (pivoting floor, frozen eye switch): still the bracelet?",
+  "Water Temple south-west room with the big compass chest: at what water level is it reachable, and are the hookshot targets raised by the floor switch needed?",
+  "Water Temple: is there any chest in the river room, and is the small key in the room the river drops into (underwater switch, gate)?",
+  "Water Temple: is the room behind the east tower's cracked wall chest-less (3 Shell Blades)?"
+ ]
+}

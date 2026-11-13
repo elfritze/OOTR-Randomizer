@@ -1,0 +1,615 @@
+{
+ "group": "child_dungeons",
+ "chests": [
+  {
+   "hash": "8579518566955184384",
+   "map": "InsideTheDekuTree",
+   "files": [
+    "InsideTheDekuTree/InsideTheDekuTree_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Map",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_DEKU_TREE_MAP_CHEST",
+   "soh_region": "RR_DEKU_TREE_LOBBY_2F",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName InsideTheDekuTree_GetMap, DefaultDungeonRoomIndex 0 (remake room 0 = main lobby, prefab Room_A with the floor web and wall Skulltulas), y=108.4, one floor above the lobby floor (~100): the 2F ledge, as on N64."
+  },
+  {
+   "hash": "9284193025315608699",
+   "map": "InsideTheDekuTree",
+   "files": [
+    "InsideTheDekuTree/InsideTheDekuTree_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Compass",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_DEKU_TREE_COMPASS_CHEST",
+   "soh_region": "RR_DEKU_TREE_COMPASS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName InsideTheDekuTree_GetCompass, room 3 (prefab Room_D_b6c3, the highest room y~120 with Deku Babas, big Skulltula and a GS). Top floor of the tree, as the N64 3F compass room."
+  },
+  {
+   "hash": "11368028582977069031",
+   "map": "InsideTheDekuTree",
+   "files": [
+    "InsideTheDekuTree/InsideTheDekuTree_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_DekuNutBundle",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_DEKU_TREE_COMPASS_ROOM_SIDE_CHEST",
+   "soh_region": "RR_DEKU_TREE_COMPASS_ROOM",
+   "condition": "logic->CanUse(RG_CRAWL) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Only small chest in room 3 (same room index as the compass chest). It sits 17 m west of and 5 m above the compass chest (-65.2,125.6,0), and the way there passes a crawlspace (CrawlAnchor pair at x=-52.8/-57.8, y=120.3, right behind the compass chest). The identity is sure; the crawl requirement is new versus SoH (it only matters with crawl shuffle). Contents changed (recovery heart -> TBox_DekuNutBundle)."
+  },
+  {
+   "hash": "821372075822700622",
+   "map": "InsideTheDekuTree",
+   "files": [
+    "InsideTheDekuTree/InsideTheDekuTree_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Range_SlingShot",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_DEKU_TREE_SLINGSHOT_CHEST",
+   "soh_region": "RR_DEKU_TREE_SLINGSHOT_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName InsideTheDekuTree_GetSlingShot, room 2 (prefab Room_C_efa7)."
+  },
+  {
+   "hash": "13027331340815880287",
+   "map": "InsideTheDekuTree",
+   "files": [
+    "InsideTheDekuTree/InsideTheDekuTree_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_DekuNutBundle",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_DEKU_TREE_SLINGSHOT_ROOM_SIDE_CHEST",
+   "soh_region": "RR_DEKU_TREE_SLINGSHOT_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Only small chest in room 2 (same AiGroup Room_C_efa7 as the slingshot chest), on the upper ledge at y=116.2: 4 m above the slingshot chest (112.0) and ~11 m above the pit grass (104.9). A Skullwalltula (they sit on vine walls) is 5 m away at y=114.5, which fits SoH's climb rule. The remake also adds a FallingLadder (event InsideTheDekuTree_Gimmick_FallingLadder) that an eye switch drops next to that ledge, an alternative route (CanHitEyeTargets). SoH's rule stays sufficient if the vines are there (see open questions). Contents changed (heart -> TBox_DekuNutBundle)."
+  },
+  {
+   "hash": "12889104996486369065",
+   "map": "InsideTheDekuTree",
+   "files": [
+    "InsideTheDekuTree/InsideTheDekuTree_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_DekuStickBundle_Small",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_DEKU_TREE_BASEMENT_CHEST",
+   "soh_region": "RR_DEKU_TREE_BASEMENT_LOWER",
+   "condition": "(logic->HasFireSourceWithTorch() || logic->CanUse(RG_FAIRY_BOW)) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Only chest in room 4, the lowest regular room (y=79.4, water plane, Deku Babas, basement GSs at y 78.7/86.9) = N64 B1. The identity is high. In the remake it sits 1.9 m behind a wall web (Obj_InsideTheDekuTree_SpiderWeb_A_02), next to a switch candle (Obj_SwitchCandleStick_A_02) and a step switch, all driven by the event InsideTheDekuTree_Gimmick_CandleAndSpiderWeb: the candle burns the web. It is unknown whether the step switch lights the candle by itself, so the condition conservatively asks for a way to light it (SoH's usual torch helper). SoH: OPEN_CHEST only. Contents changed (heart -> Item_DekuStickBundle_Small)."
+  },
+  {
+   "hash": "8291119063305855945",
+   "map": "DodongoCavern",
+   "files": [
+    "DodongoCavern/DodongoCavern_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Map",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_DODONGOS_CAVERN_MAP_CHEST",
+   "soh_region": "RR_DODONGOS_CAVERN_LOBBY",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName DodongoCavern_GetMap, room 1 (remake room 1 = the big lobby: 3 Beamos, the lift MoveFloor, stone tablets), at floor level y=100.25, right behind a bombable wall (WallCrack at -23.25,99.75,-38, 3 m away). A lobby bomb flower is 12 m away (the Goron bracelet route, as in SoH)."
+  },
+  {
+   "hash": "17531994809974271603",
+   "map": "DodongoCavern",
+   "files": [
+    "DodongoCavern/DodongoCavern_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Compass",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_DODONGOS_CAVERN_COMPASS_CHEST",
+   "soh_region": "RR_DODONGOS_CAVERN_COMPASS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName DodongoCavern_GetCompass, room 11 (Armos statues + an Amos), entered from the stairs room (room 10) through the bombable wall at (-49,101.7,-14): the N64 compass room off the lower stairs."
+  },
+  {
+   "hash": "12161709650443144121",
+   "map": "DodongoCavern",
+   "files": [
+    "DodongoCavern/DodongoCavern_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_BombBag_Small",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_DODONGOS_CAVERN_BOMB_BAG_CHEST",
+   "soh_region": "RR_DODONGOS_CAVERN_BOMB_ROOM_UPPER",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName Get_StoneOfFire_GetBombBag, room 13 (the moving-spike room), on its upper ledge at y=115.7."
+  },
+  {
+   "hash": "11582649900854566065",
+   "map": "DodongoCavern",
+   "files": [
+    "DodongoCavern/DodongoCavern_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Shield_Deku",
+   "gyaml": "Obj_TBox_A_06",
+   "soh_rc": "RC_DODONGOS_CAVERN_BOMB_FLOWER_PLATFORM_CHEST",
+   "soh_region": "RR_DODONGOS_CAVERN_BOMB_ROOM_LOWER",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "The other chest of room 13 (the bomb bag room): small (A_06), 2.4 m above the room floor (MoveSpike blades at y=110.8) on a platform, with a bomb flower 6.9 m away (49.25,113.95,-11.75): the N64 bomb flower platform. Contents changed (red rupee -> Deku Shield, or Deku seeds as substitute)."
+  },
+  {
+   "hash": "7524527082521156886",
+   "map": "DodongoCavern",
+   "files": [
+    "DodongoCavern/DodongoCavern_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Shield_Deku",
+   "gyaml": "Obj_TBox_A_06",
+   "soh_rc": "RC_DODONGOS_CAVERN_END_OF_BRIDGE_CHEST",
+   "soh_region": "RR_DODONGOS_CAVERN_FAR_BRIDGE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "In room 1 (lobby) but at y=113.3, the lobby's top floor, right behind a bombable wall (WallCrack at -19.75,113.28,-36.5, 1 m). It is 21 m from the top-floor stone tablet Obj_DodongoCave_StoneTablet_A_02 (0,116.25,-33.7), the spot of RC_DODONGOS_CAVERN_TOP_FLOOR_PEDESTAL. It holds a Deku Shield, like N64's end-of-bridge chest."
+  },
+  {
+   "hash": "8607798771661947511",
+   "map": "DodongoCavern",
+   "files": [
+    "DodongoCavern/DodongoCavern_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_DODONGOS_CAVERN_LOBBY",
+   "condition": "logic->CanBreakMudWalls() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "high",
+   "evidence": "Remake-new. Small chest on the lobby floor (room 1, y=100) behind a bombable wall (WallCrack at -22.75,99.75,-8, 7 m, with a Room_01 wall piece in between), the mirror of the map-chest alcove. N64's lobby has only the map chest. The rule mirrors the map chest's without its Goron-bracelet branch, which is conservative: the nearest lobby bomb flower is 21 m away. A Beamos with IsHeadShootingToTargetOnDie stands 9 m away and may also break the wall."
+  },
+  {
+   "hash": "12253889300578348965",
+   "map": "DodongoCavern",
+   "files": [
+    "DodongoCavern/DodongoCavern_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_DODONGOS_CAVERN_STAIRS_LOWER",
+   "condition": "logic->CanClimbLadder() && logic->CanBreakMudWalls() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Room 10 = the stairs room (16 bomb flowers + BrokenStair, the door to Armos room 12 at the top, the compass-room wall at the bottom, the vines GS). The chest is at the far south end at y=116, behind a bombable wall (WallCrack at -49,115.83,-63.97), at the top of a ladder (Land_DodongoCave_Ladder_A_04 centred at y=108.2, so it likely runs from the floor ~100.4 up to ~116). No bomb flower is near that ledge. The region and the ladder are inferred from the ladder's centre height."
+  },
+  {
+   "hash": "7764016096998075927",
+   "map": "DodongoCavern",
+   "files": [
+    "DodongoCavern/DodongoCavern_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_DODONGOS_CAVERN_LOWER_LIZALFOS",
+   "condition": "logic->Get(LOGIC_DC_KILLED_LOWER_LIZALFOS) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "high",
+   "evidence": "Remake-new. NoBake chest on a pedestal (Obj_TBoxPedestal_A_01, PushAirWall_Box) in room 5 (two Enemy_MiddleBoss_Lizalfos, y~100). EventRequestActor DodongoCavern_Gimmick_DefeatLizalfos01 in AiGroup Gimmick_DodongoCavern_MiddleBoss01 references it, so it appears when the lower Lizalfos pair is beaten. N64 has no chest there."
+  },
+  {
+   "hash": "850464708089653824",
+   "map": "DodongoCavern",
+   "files": [
+    "DodongoCavern/DodongoCavern_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_DODONGOS_CAVERN_UPPER_LIZALFOS",
+   "condition": "logic->CanKillEnemy(RE_LIZALFOS, ED_CLOSE, true, 2) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "high",
+   "evidence": "Remake-new. NoBake chest on a pedestal in room 16 (y~115, the second Enemy_MiddleBoss_Lizalfos pair, between slingshot rooms 14/15 and 17). EventRequestActor DodongoCavern_Gimmick_DefeatLizalfos02 references it, so it appears when the upper Lizalfos fight is won. In the remake the two Lizalfos fights are separate rooms (5 lower, 16 upper)."
+  },
+  {
+   "hash": "5527401621172639818",
+   "map": "InsideJabuJabuBelly",
+   "files": [
+    "InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Boomerang",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_JABU_JABUS_BELLY_BOOMERANG_CHEST",
+   "soh_region": "RR_JABU_JABUS_BELLY_FORK_EAST",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big NoBake chest, Item_Boomerang, GetEventName InsideJabuJabuBelly_TreasureBoxWithRuto09, in room 9, whose AiGroup has exactly 4 Enemy_Stinger. EventRequestActor InsideJabuJabuBelly_TreasureBoxAppear makes it appear when they die: SoH's 'kill 4 Stingers (or Ruto)' rule."
+  },
+  {
+   "hash": "3510516276638146208",
+   "map": "InsideJabuJabuBelly",
+   "files": [
+    "InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Compass",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_JABU_JABUS_BELLY_COMPASS_CHEST",
+   "soh_region": "RR_JABU_JABUS_BELLY_FORK_NORTH_WEST",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big NoBake chest, Item_Dungeon_Compass, GetEventName InsideJabuJabuBelly_TreasureBoxWithRuto12, in room 12, whose AiGroup has exactly 9 Enemy_Shabom_AlwaysRespawn and an enemy counter. It appears on InsideJabuJabuBelly_Room12_TreasureBoxAppear: SoH's 'kill 9 Shabom' rule."
+  },
+  {
+   "hash": "14933854942830098290",
+   "map": "InsideJabuJabuBelly",
+   "files": [
+    "InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Map",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_JABU_JABUS_BELLY_MAP_CHEST",
+   "soh_region": "RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_SOUTH",
+   "condition": "logic->CanOpenLargeChest()",
+   "confidence": "medium",
+   "evidence": "The dungeon map, but MOVED. On N64/SoH it is in the west fork room, behind a tentacle; the remake's tentacle rooms (8 green, 10 red, 11 blue) hold only the tentacle. This one is an ordinary always-present big chest (no links, no event) in room 14 = the water-switch room (a pit with the underwater StepSwitch_A_04 and WaterPlaneDynamic, the wall GS above the pots ledge, a hit-switch above the door). It is at main-floor height y=77.55 on the side of the door to room 18 (the lift room's lower level). Matched as the map chest by item and chest type; its location rule is replaced."
+  },
+  {
+   "hash": "3609242017501283521",
+   "map": "InsideJabuJabuBelly",
+   "files": [
+    "InsideJabuJabuBelly/InsideJabuJabuBelly_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_JABU_JABUS_BELLY_B1_JIGGLY_POTS",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new. Small chest in room 13 = the B1 'jiggly' room (entered from holes basement room 3; water at y=81.5, Obj_InsideJabu_Jabu_SwayingFloor_A_01 at 78.95, 2 Octoroks). It is on the far ledge (y=82.47), 1-2 m from the room's 4 pots: SoH's 'B1 Jiggly Pots' region. The entry ledge with climbable ivy is across the water. SoH reaches that ledge only with hovers, megajump or bomb recoil; a chest placed there suggests the remake has a normal route, so this rule is likely too strict (but safe)."
+  },
+  {
+   "hash": "8975637636514249074",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_BOTTOM_OF_THE_WELL_FRONT_LEFT_FAKE_WALL_CHEST",
+   "soh_region": "RR_BOTW_PERIMETER",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Main room (room 1, y=100), at x=-11 (left of the entrance axis; the entrance is at +z) on the front side, 3.4 m behind fake wall Obj_Well_GlassTruth_A_09 (-11,100,-2.03; GlassTruthDisappearObj), which faces the front corridor. It mirrors the key chest behind A_03 on the right. N64 has a small key here; the remake has a red rupee (the remake has 2 keys, not 3)."
+  },
+  {
+   "hash": "8397646530660039355",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_SmallKey",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_BOTTOM_OF_THE_WELL_RIGHT_BOTTOM_FAKE_WALL_CHEST",
+   "soh_region": "RR_BOTW_PERIMETER",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Main room, right side (x=10.6), 3.4 m behind fake wall Obj_Well_GlassTruth_A_03 (14,100,-4.53, turned to face the east corridor). It holds the remake's only small key in a chest; N64's right fake-wall chest also holds a key. 'Bottom' (south on the map) does not quite fit: the alcove is in the front half."
+  },
+  {
+   "hash": "5429815628949128345",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_BOTTOM_OF_THE_WELL_UNDERWATER_FRONT_CHEST",
+   "soh_region": "RR_BOTW_PERIMETER",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Main room front-centre (-0.2, y=96.19, -5.0), 3.4 m below water planes Obj_WaterPlane_A_01 (y 99.64/97.83). Their Presence is negated by the flag BottomOfTheWell_Room_01_Blow_Ocarina, which the event BottomOfTheWell_Gimmick:WaterLevel_Down sets after Zelda's Lullaby at Obj_TriForcePoint_A_10: SoH's LOGIC_BOTW_LOWERED_WATER. It is the remake's only underwater chest."
+  },
+  {
+   "hash": "10905582354954996284",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_BOTTOM_OF_THE_WELL_BACK_LEFT_BOMBABLE_CHEST",
+   "soh_region": "RR_BOTW_PERIMETER",
+   "condition": "(ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Main room back-left corner (-29.6,100,-37.0), at the end of a corridor (room-1 Area at -25.5,100,-37) closed by two fake walls in a row (Obj_Well_GlassTruth_A_06/A_08), under a hanging Skulltula. The remake BotW has no bombable walls at all (no WallCrack/CrackWall on B1), so the explosives part of SoH's rule is dropped and the lens part kept."
+  },
+  {
+   "hash": "631709185320708287",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_BOTTOM_OF_THE_WELL_CENTER_SKULLTULA_CHEST",
+   "soh_region": "RR_BOTW_MIDDLE",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Inside the central block (x=12, z=-11), on one line with the big hanging Skulltula (4.5,103.8,-11.0, 7.5 m away) and the compass pedestal. The room-1 Area at (-0.6,100,-10.9), scale 14x4, spans the compass, the Skulltula and this chest: SoH's Middle with the centre Skulltula. Contents changed (nuts -> blue rupee)."
+  },
+  {
+   "hash": "14911602953212243797",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Compass",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_BOTTOM_OF_THE_WELL_COMPASS_CHEST",
+   "soh_region": "RR_BOTW_PIT_CAGE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName BottomOfTheWell_GetCompass, on a pedestal in the central block between fake walls GlassTruth_A_12 (2.6 m) and A_11 (5.7 m), above an area of pits into B3 (a room-9 DungeonRoomArea lies under it)."
+  },
+  {
+   "hash": "12988877782812797760",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_BOTW_PERIMETER",
+   "condition": "logic->CanClimbLadder() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new, or possibly the Like-Like chest moved. Small chest in a sunken trench on the main room's east side (y=97.81; trench pots at y=97.35; Land_Well_Ladder_A_06 4 m away to climb back out), just outside the bars of the Like-Like cage (room 7's strips at x=20.9-22; the LikeLike is 10 m away). Room 7 itself (Like Like + GS) has no chest in the remake. This chest is not behind a fake wall."
+  },
+  {
+   "hash": "11718708984125260282",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_GlassTruth_A_01",
+   "soh_rc": "RC_BOTTOM_OF_THE_WELL_INVISIBLE_CHEST",
+   "soh_region": "RR_BOTW_NEAR_BOSS_UPPER",
+   "condition": "(ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "The only invisible chest (Obj_TBox_GlassTruth_A_01), but MOVED. SoH puts it in the Dead Hand room; here it is in room 2, reached by the crawlspace behind the waterfalls (CrawlAnchor 0,98.8,-60) that leads on to the Dead Hand room, on an upper ledge at y=105.8 by fake wall GlassTruth_A_31. Same lens rule as SoH; only the region changes."
+  },
+  {
+   "hash": "6064359710907908886",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_BOTW_NEAR_BOSS_UPPER",
+   "condition": "(ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Room 11, a balcony above the Dead Hand room (y=102.2 vs 92.3), entered from room 2 through a door at (0,102.17,-89). The chest is at its end, behind fake wall Obj_Well_GlassTruth_A_30 (-97.56, 2.9 m away). N64 has nothing like it."
+  },
+  {
+   "hash": "9466613428674883506",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Map",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_BOTTOM_OF_THE_WELL_MAP_CHEST",
+   "soh_region": "RR_BOTW_B3_CHEST_AREA",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Only big chest of room 9 (the B3 basement, y~87: dirty water, 3 ReDeads, 8 Obj_BrokenRock_A_01 boulders, 5 silver rupees). The B3 map chest behind boulders, as in SoH."
+  },
+  {
+   "hash": "874970148260328653",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Shield_Deku",
+   "gyaml": "Obj_TBox_A_06",
+   "soh_rc": "RC_BOTTOM_OF_THE_WELL_FIRE_KEESE_CHEST",
+   "soh_region": "RR_BOTW_HIDDEN_PITS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 6 (3 Enemy_Keese_Fire, a Beamos, fake floors GlassTruth_A_14/15/16), the room before Like-Like cage room 7. It holds a Deku Shield (A_06), as on N64."
+  },
+  {
+   "hash": "16654774376625985726",
+   "map": "BottomOfTheWell",
+   "files": [
+    "BottomOfTheWell/BottomOfTheWell_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_GlassTruth",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_BOTTOM_OF_THE_WELL_LENS_OF_TRUTH_CHEST",
+   "soh_region": "RR_BOTW_DEAD_HAND_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big NoBake chest, Item_GlassTruth, GetEventName BottomOfTheWell_GetGlassTruth, in room 8 with Enemy_DeadHand + 4 hands. It appears on BottomOfTheWell_08_Enemy_WipedOut."
+  },
+  {
+   "hash": "11498802739257120175",
+   "map": "IceCavern",
+   "files": [
+    "IceCavern/IceCavern_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Map",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_ICE_CAVERN_MAP_CHEST",
+   "soh_region": "RR_ICE_CAVERN_MAP_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, Item_Dungeon_Map, frozen in red ice (Obj_RedIce_A_01 links FrozenInIce to it): SoH's blue-fire map chest."
+  },
+  {
+   "hash": "13542013937093159888",
+   "map": "IceCavern",
+   "files": [
+    "IceCavern/IceCavern_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Dungeon_Compass",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_ICE_CAVERN_COMPASS_CHEST",
+   "soh_region": "RR_ICE_CAVERN_COMPASS_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest, Item_Dungeon_Compass, in room 6 (GS, Sun's Song fairy, a red ice block freezing two pots). Unlike on N64 it is NOT frozen (no FrozenInIce link to it), so SoH's BlueFire on the chest is redundant here. That is harmless: SoH's way into the room already needs blue fire."
+  },
+  {
+   "hash": "6859289214373847284",
+   "map": "IceCavern",
+   "files": [
+    "IceCavern/IceCavern_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_HeavyBoot",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_ICE_CAVERN_IRON_BOOTS_CHEST",
+   "soh_region": "RR_ICE_CAVERN_FINAL_ROOM",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big NoBake chest, Item_HeavyBoot, GetEventName SageOfWater_MelodyGet_Water (the Serenade of Water scene with Sheik). It appears on TreasureBoxAppear_Room04 after the Enemy_Wolfos_White in its AiGroup."
+  },
+  {
+   "hash": "4128092231168513176",
+   "map": "IceCavern",
+   "files": [
+    "IceCavern/IceCavern_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_ICE_CAVERN_FIRE_NOOK",
+   "condition": "logic->CanUse(RG_SONG_OF_TIME) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Room 8 = the push-block room (Obj_SliderBox, 5 silver rupees, a door locked by the rupee counter). The chest at (-53.1,107.2,-34.2) is 13 m from the blue-fire pedestal (-54.0,103.9,-20.9, SoH's Fire Nook), at the end of 3 Obj_SongOfTimeBlock_A_01 laid in a line between them. They are controlled by Obj_SongOfTimeSign_A_01 with isDefaultActive=false, so the blocks appear only with the Song of Time. This SoH tree already gives the Fire Nook's rupees a Song of Time rule."
+  }
+ ],
+ "soh_chests_without_remake_counterpart": [
+  {
+   "rc": "RC_DODONGOS_CAVERN_BOSS_ROOM_CHEST",
+   "evidence": "The remake keeps King Dodongo inside the DodongoCavern map (room 22: Enemy_DungeonBoss_Dodongo, heart container, warp; room 21 before it has the crack floor). Neither of those rooms nor any other DC room has a chest left over: all 9 DC chests are matched or explained (4 are remake-new)."
+  },
+  {
+   "rc": "RC_BOTTOM_OF_THE_WELL_FRONT_CENTER_BOMBABLE_CHEST",
+   "evidence": "There is no bombable wall anywhere on B1 of the remake (no WallCrack/CrackWall/BrokenRock actors above y=93), and the front-centre spot is the drained pool that holds the underwater-front chest. All 7 small chests of room 1 are assigned."
+  },
+  {
+   "rc": "RC_BOTTOM_OF_THE_WELL_UNDERWATER_LEFT_CHEST",
+   "evidence": "Only one chest in the remake BotW is under water (the front pool). The west moat by the crypt door (Obj_WaterPlaneDynamic_A_01 at -32.2,99.9,-18.4) has no chest near it."
+  },
+  {
+   "rc": "RC_BOTTOM_OF_THE_WELL_LIKE_LIKE_CHEST",
+   "evidence": "Room 7 (Enemy_LikeLike + its GS, behind the door from fire-keese room 6) has no chest. The nearest chest (12988877782812797760, in the east trench just outside the cage bars) is kept as remake-new; it may be meant as the replacement (see open questions)."
+  }
+ ],
+ "divergences": [
+  {
+   "what": "Bottom of the Well has 2 small keys and 2 locked doors (N64/SoH: 3 and 3).",
+   "evidence": "Keys: one in a chest (8397646530660039355, the right fake-wall alcove) and one Obj_Dungeon_SmallKey in the crypt (room 3, -62.3,100.9,-18.5 = RC_BOTTOM_OF_THE_WELL_FREESTANDING_KEY). Locked doors (Obj_DoorChainLock_A_01, two lock pieces per door, both referenced by the door's Obj_Well_SwitchShutter_A_01): (-10.22,100,-22.52) into room 5 (Deku Baba + GS = Skull Wall Room, the west inner room) and (11.26,100,-22.49) into room 4 (Keese + GS = Invisible Path, the east inner room). Neither inner room holds a key, so both keys can be reached before any lock.",
+   "proposed_rule": "dungeon.cpp: BOTTOM_OF_THE_WELL vanillaKeyCount 3 -> 2. Exit overrides, each replacing SmallKeys(SCENE_BOTTOM_OF_THE_WELL, 3): RR_BOTW_MIDDLE->RR_BOTW_SKULL_WALL_ROOM, RR_BOTW_MIDDLE->RR_BOTW_INVISIBLE_PATH, RR_BOTW_SKULL_WALL_ROOM->RR_BOTW_MIDDLE, RR_BOTW_INVISIBLE_PATH->RR_BOTW_MIDDLE: logic->SmallKeys(SCENE_BOTTOM_OF_THE_WELL, 2)",
+   "affects": [
+    "RR_BOTW_SKULL_WALL_ROOM",
+    "RR_BOTW_INVISIBLE_PATH",
+    "RC_BOTTOM_OF_THE_WELL_GS_WEST_INNER_ROOM",
+    "RC_BOTTOM_OF_THE_WELL_GS_EAST_INNER_ROOM"
+   ]
+  },
+  {
+   "what": "Bottom of the Well: the hidden-pits (fire keese) room is no longer behind a locked door, and there is no crawlspace in front of it.",
+   "evidence": "Room 6's door from the main room (Obj_Well_SwitchShutter_A_01 at 21.39,100,-37.05) links only a PushAirWall_DoorFront: no Obj_DoorChainLock. The way to it from the SE corner passes fake wall Obj_Well_GlassTruth_A_04 (15.08,100,-37.97). The remake has only two crawlspaces (behind the waterfalls, and in the front pool), neither at that corner.",
+   "proposed_rule": "Exit overrides: RR_BOTW_CORNER_CRAWLSPACE->RR_BOTW_HIDDEN_PITS_ROOM: ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH) (was SmallKeys(...,3)); RR_BOTW_HIDDEN_PITS_ROOM->RR_BOTW_CORNER_CRAWLSPACE: ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH) (was SmallKeys(...,3) && lens). Optionally RR_BOTW_PERIMETER->RR_BOTW_CORNER_CRAWLSPACE: true (was CanUse(RG_CRAWL); this only matters with crawl shuffle).",
+   "affects": [
+    "RR_BOTW_HIDDEN_PITS_ROOM",
+    "RR_BOTW_LOCKED_CAGE",
+    "RC_BOTTOM_OF_THE_WELL_FIRE_KEESE_CHEST",
+    "RC_BOTTOM_OF_THE_WELL_GS_LIKE_LIKE_CAGE"
+   ]
+  },
+  {
+   "what": "Bottom of the Well key placement: the vanilla keys are now in the right fake-wall chest and the crypt; the front-left fake-wall chest holds a red rupee.",
+   "evidence": "8975637636514249074 (front-left fake wall) drops TBox_Rupee_Red; 8397646530660039355 (right fake wall) drops Item_Dungeon_SmallKey; the crypt has Obj_Dungeon_SmallKey.",
+   "proposed_rule": "No logic change. For vanilla or own-dungeon key placement, RC_BOTTOM_OF_THE_WELL_FRONT_LEFT_FAKE_WALL_CHEST's vanilla item becomes a red rupee (one RG_BOTTOM_OF_THE_WELL_SMALL_KEY fewer in the pool).",
+   "affects": [
+    "RC_BOTTOM_OF_THE_WELL_FRONT_LEFT_FAKE_WALL_CHEST",
+    "RC_BOTTOM_OF_THE_WELL_RIGHT_BOTTOM_FAKE_WALL_CHEST"
+   ]
+  },
+  {
+   "what": "The Bottom of the Well back-left chest is behind fake walls only (no bombable wall).",
+   "evidence": "Two Disappear-type GlassTruth walls (A_06, A_08) close its corridor, and there is no bombable-wall actor anywhere on B1.",
+   "proposed_rule": "Location rule (replaces): RC_BOTTOM_OF_THE_WELL_BACK_LEFT_BOMBABLE_CHEST: (ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "affects": [
+    "RC_BOTTOM_OF_THE_WELL_BACK_LEFT_BOMBABLE_CHEST"
+   ]
+  },
+  {
+   "what": "The Bottom of the Well invisible chest moved out of the Dead Hand room into the room before it.",
+   "evidence": "Obj_TBox_GlassTruth_A_01 is in room 2 (on the y=105.8 ledge), between the waterfall crawlspace and the Dead Hand room; room 8 (Dead Hand) holds only the lens chest.",
+   "proposed_rule": "Move location RC_BOTTOM_OF_THE_WELL_INVISIBLE_CHEST from RR_BOTW_DEAD_HAND_ROOM to RR_BOTW_NEAR_BOSS_UPPER, with rule (ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "affects": [
+    "RC_BOTTOM_OF_THE_WELL_INVISIBLE_CHEST"
+   ]
+  },
+  {
+   "what": "The Jabu-Jabu map chest moved to the water-switch room and no longer needs a tentacle.",
+   "evidence": "14933854942830098290 is an ordinary big chest in room 14 (the water-switch room); tentacle rooms 8/10/11 contain only Enemy_Tentacle_* and its fuse.",
+   "proposed_rule": "Move location RC_JABU_JABUS_BELLY_MAP_CHEST from RR_JABU_JABUS_BELLY_FORK_WEST (rule LOGIC_JABU_WEST_TENTACLE && CanOpenLargeChest) to RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_SOUTH, with rule logic->CanOpenLargeChest()",
+   "affects": [
+    "RC_JABU_JABUS_BELLY_MAP_CHEST"
+   ]
+  },
+  {
+   "what": "The Deku Tree basement chest is behind a web that a switch candle burns.",
+   "evidence": "Obj_InsideTheDekuTree_SpiderWeb_A_02 is 1.9 m from the chest, with Obj_SwitchCandleStick_A_02 and Obj_StepSwitch_A_05 beside it, all referenced by EventRequestActor InsideTheDekuTree_Gimmick_CandleAndSpiderWeb.",
+   "proposed_rule": "Location rule (replaces): RC_DEKU_TREE_BASEMENT_CHEST: (logic->HasFireSourceWithTorch() || logic->CanUse(RG_FAIRY_BOW)) && logic->HasItem(RG_OPEN_CHEST). This is conservative; it goes back to logic->HasItem(RG_OPEN_CHEST) if the step switch lights the candle by itself.",
+   "affects": [
+    "RC_DEKU_TREE_BASEMENT_CHEST"
+   ]
+  },
+  {
+   "what": "The Deku Tree compass-room side chest is past a crawlspace.",
+   "evidence": "A CrawlAnchor pair at (-52.75/-57.8, 120.34, 0) lies between the compass chest (x=-48.3) and the side chest (x=-65.2).",
+   "proposed_rule": "Location rule (replaces): RC_DEKU_TREE_COMPASS_ROOM_SIDE_CHEST: logic->CanUse(RG_CRAWL) && logic->HasItem(RG_OPEN_CHEST) (no effect unless crawl is shuffled)",
+   "affects": [
+    "RC_DEKU_TREE_COMPASS_ROOM_SIDE_CHEST"
+   ]
+  },
+  {
+   "what": "Dodongo's Cavern: two new chests appear after the Lizalfos fights, two more new ones sit behind bombable walls, and King Dodongo's room has no chest.",
+   "evidence": "EventRequestActors DodongoCavern_Gimmick_DefeatLizalfos01/02 reference NoBake chests on pedestals in rooms 5 and 16; chests behind WallCracks sit in the lobby (room 1) and the stairs room (room 10); the boss rooms 21/22 have no chest.",
+   "proposed_rule": "New locations: the lobby chest in RR_DODONGOS_CAVERN_LOBBY: logic->CanBreakMudWalls() && logic->HasItem(RG_OPEN_CHEST); the stairs chest in RR_DODONGOS_CAVERN_STAIRS_LOWER: logic->CanClimbLadder() && logic->CanBreakMudWalls() && logic->HasItem(RG_OPEN_CHEST); the lower Lizalfos chest in RR_DODONGOS_CAVERN_LOWER_LIZALFOS: logic->Get(LOGIC_DC_KILLED_LOWER_LIZALFOS) && logic->HasItem(RG_OPEN_CHEST); the upper Lizalfos chest in RR_DODONGOS_CAVERN_UPPER_LIZALFOS: logic->CanKillEnemy(RE_LIZALFOS, ED_CLOSE, true, 2) && logic->HasItem(RG_OPEN_CHEST). Remove RC_DODONGOS_CAVERN_BOSS_ROOM_CHEST from the pool.",
+   "affects": [
+    "RR_DODONGOS_CAVERN_LOBBY",
+    "RR_DODONGOS_CAVERN_STAIRS_LOWER",
+    "RR_DODONGOS_CAVERN_LOWER_LIZALFOS",
+    "RR_DODONGOS_CAVERN_UPPER_LIZALFOS",
+    "RC_DODONGOS_CAVERN_BOSS_ROOM_CHEST"
+   ]
+  },
+  {
+   "what": "The Ice Cavern compass chest is not frozen in red ice.",
+   "evidence": "No Obj_RedIce links FrozenInIce to 13542013937093159888 (the map chest's red ice does link to the map chest); room 6's red ice (A_06) freezes two pots instead.",
+   "proposed_rule": "Optional location rule (replaces): RC_ICE_CAVERN_COMPASS_CHEST: (logic->IsChild || logic->CanClearStalagmite() || ctx->GetTrickOption(RT_ICE_STALAGMITE_CLIP)) && logic->CanOpenLargeChest(). No practical change while RR_ICE_CAVERN_HUB->RR_ICE_CAVERN_COMPASS_ROOM needs BlueFire().",
+   "affects": [
+    "RC_ICE_CAVERN_COMPASS_CHEST"
+   ]
+  }
+ ],
+ "open_questions_for_in_game_check": [
+  "Jabu B1 jiggly room (room 13, Octoroks + swaying floor): can a child reach the pots ledge with the small chest (red rupee) without hover boots? If yes, its rule can be relaxed (and SoH's B1_JIGGLY->B1_JIGGLY_POTS exit too).",
+  "Bottom of the Well, east trench chest (blue rupee, below floor level just outside the Like-Like cage bars): can it be reached from the main room without the lens, and is it clearly the Like-Like chest's replacement?",
+  "Bottom of the Well: is the key chest the one through the fake wall on the right side near the front (N64 calls it 'right bottom'), and the rupee chest the front-left one?",
+  "Deku Tree basement: does stepping on the floor switch by the webbed chest light the candle and burn the web by itself, or must Link bring fire?",
+  "Deku Tree slingshot room: can the side-chest ledge be climbed by vines, or only by the ladder dropped by shooting the eye switch?",
+  "Dodongo's Cavern stairs room: can the ladder to the new chest (south end, y~116) be climbed from the room floor before the stairs fall?",
+  "Bottom of the Well room 11 (the balcony above Dead Hand): does its chest really need the lens (fake wall), and is it reached from the room before Dead Hand without climbing?"
+ ]
+}

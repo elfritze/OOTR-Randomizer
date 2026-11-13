@@ -1,0 +1,66 @@
+"""A RomFS mod being written: changed game files compressed as the game's own were, and the resource size table shipped with
+the mod when a file grew past what the game sets aside for it."""
+import os
+
+from .formats import restbl
+
+RSTB = "System/Resource/ResourceSizeTable.Product.111.Nin_Ounce_NVN2.rsizetable.zs"
+
+
+def align32(n):
+    return (n + 31) & ~31
+
+
+def entry_for(size, original_size, original_entry):
+    """the table entry a file of this decompressed size needs: the game's entries are the size rounded up to 32 plus a margin
+    per kind of file (264 for every map and the RSDB tables, 312 for actor packs), so the original's own margin is kept"""
+    margin = original_entry - align32(original_size)
+    if margin < 0:
+        raise ValueError("an entry below its file's size")
+    return align32(size) + margin
+
+
+class Mod:
+    def __init__(self, romfs, codec, out_romfs):
+        self.romfs, self.codec, self.out = romfs, codec, out_romfs
+        raw = codec.read(os.path.join(romfs, *RSTB.split("/")))
+        self.table = restbl.Table(raw)
+        self.original = restbl.Table(raw)   # (the game's own entries, for each kind of file's margin)
+        self.grown = []
+
+    def original_entry(self, rel):
+        return self.original.get(rel)
+
+    def write(self, rel, data):
+        """rel: the romfs path ("Banc/X/Y.bcett.byml.zs"); data: its new decompressed contents"""
+        original = open(os.path.join(self.romfs, *rel.split("/")), "rb").read()
+        name = os.path.basename(rel)
+        packed = self.codec.compress_like(data, original)
+        if self.codec.decompress(packed, name) != data:
+            raise ValueError("%s: does not decompress back" % rel)
+        entry = self.table.get(rel)
+        if entry is None:
+            raise ValueError("%s: not in the resource size table" % rel)
+        need = entry_for(len(data), len(self.codec.decompress(original, name)), self.original_entry(rel))
+        if need > entry:
+            self.table.set(rel, need)
+            self.grown.append((rel, entry, need))
+        dst = os.path.join(self.out, *rel.split("/"))
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        with open(dst, "wb") as f:
+            f.write(packed)
+
+    def finish(self):
+        """the table, when a file grew past its entry (the game's own table otherwise stays the one used)"""
+        dst = os.path.join(self.out, *RSTB.split("/"))
+        if not self.grown:
+            if os.path.exists(dst):
+                os.remove(dst)
+            return
+        data = self.table.write()
+        packed = self.codec.compress_like(data, open(os.path.join(self.romfs, *RSTB.split("/")), "rb").read())
+        if restbl.Table(self.codec.decompress(packed)).write() != data:
+            raise ValueError("the size table does not read back")
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        with open(dst, "wb") as f:
+            f.write(packed)

@@ -1,0 +1,1272 @@
+{
+ "group": "overworld",
+ "chests": [
+  {
+   "hash": "4349272251343787229",
+   "map": "KokiriForest",
+   "files": [
+    "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+    "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_LW_UNDER_BRIDGE",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new. Purple-rupee small chest in KokiriForest Child+Adult Dynamic at (-132.2,123.9,-16.0), 9.3 m above the Business Scrub selling Item_StickBag_Medium (SoH RC_LW_DEKU_SCRUB_NEAR_BRIDGE) and next to GOSSIP_LOST_WOOD_02 (SoH RC_LW_GOSSIP_STONE). Both of those are in SoH region LW Under the Bridge, near the KF->HF bridge end (LostWoodBridge_FrontOfHyruleField). It is the SAME physical chest as LostWood hash 17479747339356189279: the LostWood map holds an identical scrub/gossip/chest set with exactly the same relative offsets (-4.16,+9.3,-0.7 from the scrub), so the area is drawn in both maps. The two placements have different hashes, so give both the same item or treat them as one check. How the 9 m ledge is reached is not known from the data."
+  },
+  {
+   "hash": "10831981390482426294",
+   "map": "KokiriForest",
+   "files": [
+    "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+    "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Green",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_KF_MIDOS_BOTTOM_LEFT_CHEST",
+   "soh_region": "RR_KF_MIDOS_HOUSE",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "One of the 4 small chests clustered at y=112.26 inside Mido's house (Land_Kokiri_House_Inside_E_*, door Obj_Kokiri_Door_A_02 at z=-33.8, sign KokiriForest_021), event KokiriForest_TreasureBox_NaviChatOff. Back-wall chest on the +x side (-50.29,-42.03). Holds the green rupee as N64's bottom-left chest does; the 4 chests form two corner pairs. Which corner SoH calls top/bottom/left/right cannot be read from the data; all four share the same SoH rule, so logic is unaffected."
+  },
+  {
+   "hash": "4555665598794293658",
+   "map": "KokiriForest",
+   "files": [
+    "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+    "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_KF_MIDOS_TOP_RIGHT_CHEST",
+   "soh_region": "RR_KF_MIDOS_HOUSE",
+   "condition": null,
+   "confidence": "low",
+   "evidence": "Mido's house cluster: side chest of the -x corner pair (-54.21,-40.88), blue rupee (N64 top-right = blue). Corner naming inferred; logic identical."
+  },
+  {
+   "hash": "9725242744547055868",
+   "map": "KokiriForest",
+   "files": [
+    "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+    "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_KF_MIDOS_TOP_LEFT_CHEST",
+   "soh_region": "RR_KF_MIDOS_HOUSE",
+   "condition": null,
+   "confidence": "low",
+   "evidence": "Mido's house cluster: side chest of the +x corner pair (-49.32,-40.89), blue rupee (N64 top-left = blue). Corner naming inferred (see bottom-right); logic identical."
+  },
+  {
+   "hash": "12786193094758345086",
+   "map": "KokiriForest",
+   "files": [
+    "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+    "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_KF_MIDOS_BOTTOM_RIGHT_CHEST",
+   "soh_region": "RR_KF_MIDOS_HOUSE",
+   "condition": null,
+   "confidence": "low",
+   "evidence": "Mido's house cluster (see bottom-left). Back-wall chest on the -x side (-53.2,-42.1), so the same row as the green chest. Remake blue rupee (the N64 recovery heart became a rupee). The assignment assumes the view that puts green at bottom-left, i.e. the room seen from the back wall; the alternative reading would swap this chest with top-left. Logic is identical for all four."
+  },
+  {
+   "hash": "16757992849254467386",
+   "map": "KokiriForest",
+   "files": [
+    "KokiriForest/KokiriForest_Adult_Dynamic.bcett.byml.zs",
+    "KokiriForest/KokiriForest_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Sword_Kokiri",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_KF_KOKIRI_SWORD_CHEST",
+   "soh_region": "RR_KF_BOULDER_LOOP",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest Obj_TBox_A_02 holding Item_Sword_Kokiri with GetEventName Get_StoneOfForest_GetSword (the sword cutscene); KokiriForest Child+Adult Dynamic at (-82.6,122.3,33.0); the only big chest in the forest. Only one Kokiri Sword chest exists in N64/SoH."
+  },
+  {
+   "hash": "14818888396401495482",
+   "map": "KokiriForest",
+   "files": [
+    "KokiriForest/KokiriForest_Adult_Static.bcett.byml.zs",
+    "KokiriForest/KokiriForest_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Green",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_KF_STORMS_GROTTO_CHEST",
+   "soh_region": "RR_KF_STORMS_GROTTO",
+   "condition": "logic->CanReflectNuts() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "high",
+   "evidence": "The only grotto in Kokiri Forest: hole HidingHole_Entry_01 at (-50.6,122.4,-60.5) next to GOSSIP_KOKIRI_FOREST_01 (SoH's KF Outside Lost Woods stone), covered by Land_Kokiri_HidingHoleCover_A_01, which derives from Land_HidingHoleCover_DisappearSrom_Base (Song of Storms), with a HidingHoleCoverDisappearStrom_SafePosition anchor. That makes it the KF Storms Grotto. Interior (AiGroup HidingHole_Level_Hole_01) has a gossip stone + fairy spirit, as SoH's KF storms grotto does. The remake changed the interior: the chest (named DekuTree_T) is linked from the Deku Scrub brother 'One' (DefeatedOrder 3) of a Scrub_Deku_Brothers_Manager trio (the Deku Tree 2-3-1 puzzle). So the chest needs the scrub brothers beaten, modelled with the SoH helper SoH already uses for that puzzle (CanReflectNuts)."
+  },
+  {
+   "hash": "17479747339356189279",
+   "map": "LostWood",
+   "files": [
+    "LostWood/LostWood_Adult_Dynamic.bcett.byml.zs",
+    "LostWood/LostWood_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_LW_UNDER_BRIDGE",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new. LostWood Child+Adult Dynamic at (-49.4,104.5,71.9), 9.3 m above the stick-upgrade Business Scrub (-45.2,95.2,72.6) and next to GOSSIP_LOST_WOOD_02. That makes it SoH's LW Under the Bridge, reached from the first Lost Woods area through a dark transition (VolumeFog LostWood_BlackNoFade). Duplicate placement of KokiriForest chest 4349272251343787229 (same relative layout); the remake renders this area from both maps. Ledge access is unknown."
+  },
+  {
+   "hash": "1764383515296652106",
+   "map": "SacredForestMeadow",
+   "files": [
+    "SacredForestMeadow/SacredForestMeadow_Adult_Dynamic.bcett.byml.zs",
+    "SacredForestMeadow/SacredForestMeadow_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_SFM_STORMS_GROTTO",
+   "condition": "logic->CanUse(RG_SONG_OF_TIME) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Small chest (Dynamic both ages, Business Scrub seed) inside the grotto in the upper meadow by Saria (hole at (0.6,115.2,-82.8), AiGroup HidingHole_Level_Hole_23). That is where SoH's SFM Storms Grotto entrance is (in RR_SACRED_FOREST_MEADOW). The remake interior has no Business Scrubs; it holds a gossip stone (GOSSIP_KOKIRI_FOREST_02), shallow water, a Song of Time sign and 4 Obj_SongOfTimeBlock_A_01 (2x2 stack) standing on the line from the arrival point (1.3,-85.5) to the chest (12.1,-73.8). So the chest is taken to need Song of Time. Divergence: the hole cover is Land_SacredForest_HidingHoleCover_A_02, which derives from Land_HidingHoleCover_BrokenBomb_Base (bombable), not Song of Storms."
+  },
+  {
+   "hash": "7995233962349162969",
+   "map": "SacredForestMeadow",
+   "files": [
+    "SacredForestMeadow/SacredForestMeadow_Adult_Static.bcett.byml.zs",
+    "SacredForestMeadow/SacredForestMeadow_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_SFM_WOLFOS_GROTTO_CHEST",
+   "soh_region": "RR_SFM_WOLFOS_GROTTO",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Grotto at the meadow entryway, z=+54.9 (the south end, where SoH's SFM Entryway / Wolfos grotto is). Interior AiGroup HidingHole_Level_Hole_21 holds Enemy_Wolfos x2 per age, and the chest (Static, pedestal) is linked from an EventRequestActor (SacredForestMeadow_Gimmick_TreasureChestAppears), so it appears after the wolfos. Same content as N64, including the purple rupee. Divergence: the hole cover is Land_Kokiri_HidingHoleCover_A_01 (Song of Storms), not a bomb cover."
+  },
+  {
+   "hash": "17445672702269453589",
+   "map": "HyruleField",
+   "files": [
+    "HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs",
+    "HyruleField/HyruleField_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_LLR_TOWER",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new. Small chest (Business Scrub seed), Child+Adult Dynamic at (-151.9,162.0,265.3), inside a small LocationArea 'LonLonRanch' box and IndoorAreaBoxes. On the floor 11 m below (y=150.9) are the Lon Lon tower freestanding Heart Piece (SoH RC_LLR_FREESTANDING_POH), Obj_LonLonRanch_MovableBox_A_01 crates, CrawlAnchors and a Field_TunnelTooSmall event for adults: this is the LLR Tower. The chest sits on an upper floor near a nocturnal Gold Skulltula and HrlField_Note_15 (Sun's Song fairy). How the upper floor is reached (age, ladder or crates) is not known."
+  },
+  {
+   "hash": "2967378296224661060",
+   "map": "HyruleField",
+   "files": [
+    "HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs",
+    "HyruleField/HyruleField_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_Heart_Piece",
+   "gyaml": "Obj_TBox_A_01_memo11",
+   "soh_rc": null,
+   "soh_region": "RR_HYRULE_FIELD",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new Piece of Heart chest (Obj_TBox_A_01_memo11, HeartPieceAnchor linked to it). HyruleField Child_Static and Adult_Dynamic (both ages) at (-213.3,133.5,138.7), west Hyrule Field toward Gerudo Valley, about 9 m below the field surface. Next to it is the fairy note HrlField_Note_11 ('take what's in this treasure chest... the shiny, sparkling heart inside'). N64's Hyrule Field has no such Heart Piece, so this is an extra PoH."
+  },
+  {
+   "hash": "9891111455604007674",
+   "map": "HyruleField",
+   "files": [
+    "HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_HYRULE_FIELD",
+   "condition": "logic->IsAdult && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Red-rupee small chest in HyruleField Adult_Dynamic only, at (84.4,152.6,45.4) east of the Market entrance, guarded by an Enemy_Poe 3 m away. Child's file has fairy note HrlField_Note_04 at the same spot instead. Adult only, with no spawn condition."
+  },
+  {
+   "hash": "1163740567397714729",
+   "map": "HyruleField",
+   "files": [
+    "HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_HYRULE_FIELD",
+   "condition": "logic->IsAdult && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Red-rupee small chest in HyruleField Adult_Dynamic only, at (-5.7,146.2,406.9) in south Hyrule Field, east of the Lake Hylia map icon at x=-93. Enemy_Poe 2 m away; child's file has HrlField_Note_08 there. Adult only."
+  },
+  {
+   "hash": "17023457248274633121",
+   "map": "HyruleField",
+   "files": [
+    "HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_LAKE_HYLIA",
+   "condition": "logic->IsAdult && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Red-rupee small chest in HyruleField Adult_Dynamic only, at (-297.4,131.3,558.1), among the Lake Hylia gossip stones (GOSSIP_LAKE_HYLIA_01/02/03 at (-192,522), (-330,501), (-235,579)), so on the Lake Hylia shore that is part of the HyruleField map. Enemy_Poe 2 m away; child's file has pots and HrlField_Note_06 there. Adult only."
+  },
+  {
+   "hash": "5755485285664292988",
+   "map": "HyruleField",
+   "files": [
+    "HyruleField/HyruleField_Adult_Static.bcett.byml.zs",
+    "HyruleField/HyruleField_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_KAK_REDEAD_GROTTO_CHEST",
+   "soh_region": "RR_KAK_REDEAD_GROTTO",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Grotto chest (Static, pedestal, AiGroup HidingHole_Level_Hole_05) behind 2 Enemy_ReDead_AlwaysRespawn. It is spawned by an EventRequestActor whose event is named KakarikoVillage_TreasureBoxAppear. That matches SoH's Kak Redead Grotto (kill 2 ReDeads, then the chest) by content and event name. However, the hole is in the HyruleField map at (165.4,155.4,36.3), 40 m from the HF->Kakariko transition, under a Song of Storms cover (Land_Kokiri_HidingHoleCover_A_01 + Strom anchor). The Kakariko map's own bomb-covered hole (-20,66) holds only a gossip stone, beehives and water. N64 contents changed (huge rupee -> purple). SoH's location rule fits; the entrance does not (see divergences)."
+  },
+  {
+   "hash": "6900843020594897860",
+   "map": "HyruleField",
+   "files": [
+    "HyruleField/HyruleField_Adult_Static.bcett.byml.zs",
+    "HyruleField/HyruleField_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_LH_GROTTO",
+   "condition": "logic->HasFireSourceWithTorch() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. The only Lake Hylia grotto: an uncovered hole with Land_LakeHyrl_HidingHoleJoint_A_01 at (-203.5,137.7,458.4), AiGroup HidingHole_Level_Hole_30. That position is SoH's LH Grotto (deku scrubs under a liftable rock in N64). The interior has 4 Obj_CandleStick_TimeExtinguish_A_01 and a pedestal chest (red rupee) spawned by an EventRequestActor (TreasureBoxAppear_Magic), so the chest needs the timed candles lit. ZD's identical candles are lit with Deku sticks in SoH, hence HasFireSourceWithTorch. No scrubs were found in the interior."
+  },
+  {
+   "hash": "7390716194495618474",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Green",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_ITEM_1",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Treasure chest game (Obj_HrlCity_Shop_TBox, AiGroup MiniGame_SequentialChoiceTreasure). Rooms go along -x toward the final big chests at x=-131.6. The key chest of the 5th room uses OpenLastHitTreasureBox. So room 1 = x=-74.9; this is its miss chest (z=15.65, event OpenMissTreasureBox, green rupee)."
+  },
+  {
+   "hash": "1775586642693927992",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_MiniGame_SmallKey",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_KEY_1",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 1 (x=-74.9) hit chest: Obj_MiniGame_SmallKey, OpenHitTreasureBox."
+  },
+  {
+   "hash": "12114077686306649660",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Green",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_ITEM_2",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 2 (x=-85.9) miss chest, green rupee."
+  },
+  {
+   "hash": "5350594583391365806",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_MiniGame_SmallKey",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_KEY_2",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 2 (x=-85.9) key chest."
+  },
+  {
+   "hash": "9591654059707200528",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Green",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_ITEM_3",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 3 (x=-96.9) miss chest, green rupee (N64 blue)."
+  },
+  {
+   "hash": "12763522142548402103",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_MiniGame_SmallKey",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_KEY_3",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 3 (x=-96.9) key chest."
+  },
+  {
+   "hash": "13633455645485504369",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_ITEM_4",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 4 (x=-107.9) miss chest, blue rupee."
+  },
+  {
+   "hash": "6478285350658826847",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_MiniGame_SmallKey",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_KEY_4",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 4 (x=-107.9) key chest."
+  },
+  {
+   "hash": "15659683110284072977",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_ITEM_5",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 5 (x=-118.9) miss chest, blue rupee (N64 red)."
+  },
+  {
+   "hash": "18239509117326156183",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_MiniGame_SmallKey",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_01",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_KEY_5",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Room 5 (x=-118.9) key chest, event OpenLastHitTreasureBox (the last key)."
+  },
+  {
+   "hash": "16881481538337649070",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_Heart_Piece",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_02",
+   "soh_rc": "RC_MARKET_TREASURE_CHEST_GAME_REWARD",
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Final-room big chest Obj_HrlCity_Shop_TBox_A_02 with Obj_Heart_Piece (DropViewActor Obj_Heart_Piece_MiniGame), event OpenClearTreasureBox. HeartPieceAnchor MiniGame_ChoiceTreasure_IsClear."
+  },
+  {
+   "hash": "6781536951709667179",
+   "map": "Market",
+   "files": [
+    "Market/Market_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_HrlCity_Shop_TBox_A_02",
+   "soh_rc": null,
+   "soh_region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": "logic->CanOpenLargeChest() && (ctx->GetOption(RSK_SHUFFLE_CHEST_MINIGAME) ? logic->SmallKeys(SCENE_TREASURE_BOX_SHOP, 6) : (logic->HasItem(RG_CHILD_WALLET) && logic->HasItem(RG_SPEAK_HYLIAN) && logic->CanUse(RG_LENS_OF_TRUTH)))",
+   "confidence": "medium",
+   "evidence": "Remake-new. A second final-room big chest at the exact position of the Heart Piece chest (-131.58,97.89,12.67), holding a red rupee, event OpenClearTreasureBox. This is the prize for clearing the game again after the Heart Piece is taken. Uses SoH's reward rule, i.e. reaching the last room."
+  },
+  {
+   "hash": "12902291359202819102",
+   "map": "KakarikoVillage",
+   "files": [
+    "KakarikoVillage/KakarikoVillage_Adult_Alternative_Dynamic.bcett.byml.zs",
+    "KakarikoVillage/KakarikoVillage_Adult_Dynamic.bcett.byml.zs",
+    "KakarikoVillage/KakarikoVillage_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_KAK_OPEN_GROTTO_CHEST",
+   "soh_region": "RR_KAK_OPEN_GROTTO",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Kakariko's uncovered grotto (no cover actor) at (-25.4,100.8,14.8), north side of the village. Its generic interior holds GOSSIP_KAKARIKO_VILLAGE_01, a fairy spirit and this chest (Dynamic, all three Kakariko states). SoH's Kak Open Grotto is the village's only open grotto (generic, chest + gossip); the other Kakariko hole is bomb-covered. N64 red rupee -> remake blue."
+  },
+  {
+   "hash": "13080955777249750889",
+   "map": "KakarikoVillage",
+   "files": [
+    "KakarikoVillage/KakarikoVillage_Adult_Alternative_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_KAK_WINDMILL_LOWER",
+   "condition": "logic->IsAdult && logic->CanClimbLadder() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new. Purple-rupee chest high in the windmill: KakarikoVillage_Adult_Alternative_Dynamic at (5.56,130.17,41.43), 21 m above the windmill Heart Piece (1.48,108.9,37.52), next to BGM_WindmillHouse_Adult, lamps, a Land_Kakariko_Ladder_A_06 and an AnchorAction1 at the same height. Twin of hash 11929552275106311978 (same position, Adult_Dynamic): one copy per adult Kakariko state, so a player meets only one of them at a time. Give both the same item or treat them as one check. Adult only; the route up is unknown."
+  },
+  {
+   "hash": "11929552275106311978",
+   "map": "KakarikoVillage",
+   "files": [
+    "KakarikoVillage/KakarikoVillage_Adult_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_KAK_WINDMILL_LOWER",
+   "condition": "logic->IsAdult && logic->CanClimbLadder() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new. Adult_Dynamic copy of the windmill-top chest (see 13080955777249750889); same position, separate hash."
+  },
+  {
+   "hash": "16912540161937823130",
+   "map": "Graveyard",
+   "files": [
+    "Graveyard/Graveyard_Adult_Dynamic.bcett.byml.zs",
+    "Graveyard/Graveyard_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Shield_Hylian",
+   "gyaml": "Obj_TBox_A_06",
+   "soh_rc": "RC_GRAVEYARD_SHIELD_GRAVE_CHEST",
+   "soh_region": "RR_GRAVEYARD_SHIELD_GRAVE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Obj_TBox_A_06 with Drop TBox_Shield_Hylian (CheckActor/Substitute red rupee if already owned) in the grave reached through hole (20.1,103.9,8.8). The room also holds a WallCrack (the fairy-fountain back room). Remake adds an Enemy_ReDead 1.8 m from the chest; SoH's CanAvoidEnemy(RE_REDEAD) is already true, so SoH's rule stands."
+  },
+  {
+   "hash": "9622128545943056087",
+   "map": "Graveyard",
+   "files": [
+    "Graveyard/Graveyard_Adult_Static.bcett.byml.zs",
+    "Graveyard/Graveyard_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_Heart_Piece",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_GRAVEYARD_HEART_PIECE_GRAVE_CHEST",
+   "soh_region": "RR_GRAVEYARD_HEART_PIECE_GRAVE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest with Obj_Heart_Piece in the grave reached through hole (20.0,103.9,20.8). That hole's HeartPieceAnchor (21.39,105.05,23.15) is linked to this chest. Note: no Sun's Song trigger or spawn link to the chest was found (it is a plain Static actor), so the remake may not hide it. SoH's stricter rule (Sun's Song) is kept; see divergences."
+  },
+  {
+   "hash": "16041366920820397198",
+   "map": "Graveyard",
+   "files": [
+    "Graveyard/Graveyard_Adult_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Hookshot",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_GRAVEYARD_HOOKSHOT_CHEST",
+   "soh_region": "RR_GRAVEYARD_DAMPES_GRAVE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Dampe race goal big chest (Graveyard_Adult_Static, UnderTheGrave_Prefab, linked to/from Npc_Hylia_Dampe_002), Item_Hookshot, event MiniGame_DampeRace_OpenGoalTBox (state AppearHookShot)."
+  },
+  {
+   "hash": "5534919361313859554",
+   "map": "Graveyard",
+   "files": [
+    "Graveyard/Graveyard_Adult_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_Heart_Piece",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_GRAVEYARD_DAMPES_GRAVE",
+   "condition": "(logic->IsAdult || logic->BunnyHood()) && logic->HasItem(RG_SPEAK_HYLIAN) && logic->CanOpenLargeChest()",
+   "confidence": "high",
+   "evidence": "Dampe race goal big chest #2 at the same spot (state AppearHeartPiece), Obj_Heart_Piece, HeartPieceAnchor linked. This is SoH's RC_GRAVEYARD_DAMPE_RACE_FREESTANDING_POH, a freestanding item in N64/SoH and not a chest RC, so soh_rc is null. Its rule is SoH's freestanding-PoH rule plus opening a big chest. The mod should treat it as that check (see divergences)."
+  },
+  {
+   "hash": "234006393181394602",
+   "map": "Graveyard",
+   "files": [
+    "Graveyard/Graveyard_Adult_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_GRAVEYARD_DAMPES_GRAVE",
+   "condition": "logic->IsAdult && logic->HasItem(RG_SPEAK_HYLIAN) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Dampe race goal small chest #3 (red rupee) at the same spot, state AppearRupee: the consolation prize for later races."
+  },
+  {
+   "hash": "4322670163630771947",
+   "map": "Graveyard",
+   "files": [
+    "Graveyard/Graveyard_Adult_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_GRAVEYARD_DAMPES_GRAVE",
+   "condition": "logic->IsAdult && logic->HasItem(RG_SPEAK_HYLIAN) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Dampe race goal small chest #4 (blue rupee) at the same spot; the flow sets OpenedRupeeLow for the lower rupee prize (slower time)."
+  },
+  {
+   "hash": "9809508929088891725",
+   "map": "DeathMountainTrail",
+   "files": [
+    "DeathMountainTrail/DeathMountainTrail_Adult_Dynamic.bcett.byml.zs",
+    "DeathMountainTrail/DeathMountainTrail_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_DMT_CHEST",
+   "soh_region": "RR_DEATH_MOUNTAIN_TRAIL",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Small chest 1.4 m behind a WallCrack (bombable wall) at the bottom of the trail (-29.8,120.3,45.6), near MountainTrail_KakarikoSide. This is N64's DMT chest behind the breakable wall; contents changed (purple -> Business Scrub seed)."
+  },
+  {
+   "hash": "1158729434763801603",
+   "map": "DeathMountainCrater",
+   "files": [
+    "DeathMountainCrater/DeathMountainCrater_Adult_Dynamic.bcett.byml.zs",
+    "DeathMountainCrater/DeathMountainCrater_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_DMC_UPPER_GROTTO_CHEST",
+   "soh_region": "RR_DMC_UPPER_GROTTO",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Generic grotto (GOSSIP_DEATH_MOUNTAIN_CRATER_02 + fairy spirit + chest) under an Obj_BrokenRock_A_01 boulder at the upper crater (-14.7,125.9,52.8). This is the DMC Upper Grotto (BlastOrSmash). Five Obj_LiftRock_A_01 stand around the chest. Contents changed (bombs -> scrub seed)."
+  },
+  {
+   "hash": "9128916506605227251",
+   "map": "DeathMountainCrater",
+   "files": [
+    "DeathMountainCrater/DeathMountainCrater_Adult_Static.bcett.byml.zs",
+    "DeathMountainCrater/DeathMountainCrater_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_DMC_SCRUB_GROTTO",
+   "condition": "logic->CanKillEnemy(RE_DINOLFOS, ED_CLOSE, true, 2) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Second crater grotto, lower (hole (-48.9,118.1,1.7)), under Obj_BrokenRock_A_02, which has BrokenIronRock fragments, i.e. the hammer boulder of SoH's DMC hammer/scrub grotto. AiGroup HidingHole_Level_Hole_25 holds 2 Enemy_Dinolfos and this pedestal chest (purple rupee), spawned by DeathMountainCrater_SecretHole_AppearTreasureBox. No scrubs were found."
+  },
+  {
+   "hash": "4402942101476009858",
+   "map": "GoronCity",
+   "files": [
+    "GoronCity/GoronCity_Adult_Dynamic.bcett.byml.zs",
+    "GoronCity/GoronCity_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GC_MAZE_LEFT_CHEST",
+   "soh_region": "RR_GORON_CITY",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Boulder-maze chest at the far west end (-48.4,113.7,2.0), red rupee. The approach along z~2 is blocked by Obj_BrokenRock_A_02 hammer rocks (-45.2,2.0) and (-41.8,2.4) as well as silver rocks, matching SoH's left chest (hammer or silver gauntlets). It is the leftmost of the 4 chests from either maze approach."
+  },
+  {
+   "hash": "1176975953041865014",
+   "map": "GoronCity",
+   "files": [
+    "GoronCity/GoronCity_Adult_Dynamic.bcett.byml.zs",
+    "GoronCity/GoronCity_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GC_MAZE_CENTER_CHEST",
+   "soh_region": "RR_GORON_CITY",
+   "condition": null,
+   "confidence": "low",
+   "evidence": "Maze chest (-47.4,113.7,-2.35), blue rupee, behind bombable Obj_BrokenRock_A_01 (-42.8,-2.35) on the same line, matching SoH's center rule (BlastOrSmash or silver). It sits by GOSSIP_GORON_CITY_02. The remake maze has 4 chests (N64: 3); whether this or 14647422914070455120 is 'center' is a judgement call."
+  },
+  {
+   "hash": "14647422914070455120",
+   "map": "GoronCity",
+   "files": [
+    "GoronCity/GoronCity_Adult_Dynamic.bcett.byml.zs",
+    "GoronCity/GoronCity_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Blue",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_GORON_CITY",
+   "condition": "(logic->BlastOrSmash() || logic->CanUse(RG_SILVER_GAUNTLETS)) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new 4th maze chest (-47.4,113.7,-5.15), blue rupee, 2.8 m from the center chest and next to the gossip stone. Silver rocks (Obj_LiftRock_B_01) and one Obj_LiftRock_A_03 surround it. Given the center chest's rule as the most likely (same pocket)."
+  },
+  {
+   "hash": "3870071239709713434",
+   "map": "GoronCity",
+   "files": [
+    "GoronCity/GoronCity_Adult_Dynamic.bcett.byml.zs",
+    "GoronCity/GoronCity_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GC_MAZE_RIGHT_CHEST",
+   "soh_region": "RR_GORON_CITY",
+   "condition": null,
+   "confidence": "medium",
+   "evidence": "Maze chest (-43.2,113.7,-8.4), purple rupee (N64 right = purple), rightmost, behind bombable Obj_BrokenRock_A_01 (-38.9,-8.4) on the same line, matching SoH's right rule."
+  },
+  {
+   "hash": "9159710900681116662",
+   "map": "GoronCity",
+   "files": [
+    "GoronCity/GoronCity_Adult_Static.bcett.byml.zs",
+    "GoronCity/GoronCity_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Green",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_GC_SECRET_HOLE",
+   "condition": "logic->CanRead() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new. Uncovered hidden hole on the top floor south of the maze (hole (-39.8,113.5,27.9), AiGroup HidingHole_Level_Hole_17; no maze rocks within 14 m). Not N64's GC Grotto, which is on the lava-room platform. The interior has 6 Obj_SignBoard_A_01 (SignboardHole__00..05, event SignboardCheck_GoronCity_SecretHole_00) and 2 pedestal chests. This one (green rupee) is spawned by GoronCity_SecretHole_AppearTreasureBox with camPos_hazure (wrong-answer chest)."
+  },
+  {
+   "hash": "10944569637726152230",
+   "map": "GoronCity",
+   "files": [
+    "GoronCity/GoronCity_Adult_Static.bcett.byml.zs",
+    "GoronCity/GoronCity_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_GC_SECRET_HOLE",
+   "condition": "logic->CanRead() && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new. Same sign-puzzle hole; purple-rupee chest spawned by GoronCity_SecretHole_AppearTreasureBox2 with camPos_atari (right-answer chest)."
+  },
+  {
+   "hash": "8838426083116998768",
+   "map": "ZoraRiver",
+   "files": [
+    "ZoraRiver/ZoraRiver_Adult_Dynamic.bcett.byml.zs",
+    "ZoraRiver/ZoraRiver_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_ZR_OPEN_GROTTO_CHEST",
+   "soh_region": "RR_ZR_OPEN_GROTTO",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Uncovered hole (no cover actor) at (-18.1,116.1,16.2) on the upper river. Its generic interior holds GOSSIP_ZORA_RIVER_02, a fairy spirit and this chest. The other two river holes are a storm-covered gossip/butterfly-fairy grotto and a boulder-covered empty one. SoH's ZR Open Grotto is the open generic chest grotto. Contents changed (red rupee -> scrub seed)."
+  },
+  {
+   "hash": "3130048366421939233",
+   "map": "ZoraDomain",
+   "files": [
+    "ZoraDomain/ZoraDomain_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_Heart_Piece",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_ZD_CHEST",
+   "soh_region": "RR_ZORAS_DOMAIN",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Child-only big chest (ZoraDomain_Child_Static, pedestal) with Obj_Heart_Piece and HeartPieceAnchor, next to Obj_CandleStick_TimeExtinguish_A_01 torches, spawned by TreasureBoxAppear_Magic_Big_Distance. That is N64's ZD torch chest (light the torches with a Deku stick as child)."
+  },
+  {
+   "hash": "15055117029957340138",
+   "map": "ZoraFountain",
+   "files": [
+    "ZoraFountain/ZoraFountain_Adult_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_ZF_ROCK",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Adult-only small chest (ZoraFountain_Adult_Dynamic) at (33.0,108.5,1.7), 4.7 m from Npc_Pierre_CallOcarina SCARECROW_ZORA_FOUNTAIN_01 + Obj_ScarecrowMarker. An AreaCanCallPierre is 20 m below, so it is the scarecrow-hookshot perch. SoH already models this perch as RR_ZF_ROCK (entry IsAdult && ReachScarecrow), which has only a wonder item."
+  },
+  {
+   "hash": "6463521162691873710",
+   "map": "GerudoValley",
+   "files": [
+    "GerudoValley/GerudoValley_Adult_Dynamic.bcett.byml.zs",
+    "GerudoValley/GerudoValley_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_GV_OCTOROK_GROTTO",
+   "condition": "(logic->HasItem(RG_BRONZE_SCALE) || logic->CanUse(RG_IRON_BOOTS)) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new. Grotto under the silver boulder Obj_LiftRock_B_01 (hammer reflects off it) at the valley-floor ledge (13.8,6.4,35.1), i.e. the GV Octorok Grotto. Interior: 3 Enemy_Octorok in water (y=-21.1, flowing water plane) and this chest (scrub seed) at (31.2,-22.6,37.0), 1.5 m below the octoroks, past them. The water access requirement is modelled after SoH's octorok-grotto rupees."
+  },
+  {
+   "hash": "17750686910716887133",
+   "map": "GerudoValley",
+   "files": [
+    "GerudoValley/GerudoValley_Adult_Dynamic.bcett.byml.zs",
+    "GerudoValley/GerudoValley_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Green",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_GV_STORMS_GROTTO",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Grotto on the fortress side (hole (-47.9,101.2,-29.7), near GerudoValley_FromGerudoFortress, RunningRace_pos and the carpenter-tent bed) under Land_Gerudo_HidingHoleCover_A_02, which derives from the DisappearSrom base (Song of Storms), so the GV Storms Grotto. Interior: pots, this green-rupee chest (Dynamic, both ages) and an invisible chest 4 m away. No scrubs. Hole exists in both the Child and Adult files."
+  },
+  {
+   "hash": "18413589940135955604",
+   "map": "GerudoValley",
+   "files": [
+    "GerudoValley/GerudoValley_Adult_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_GlassTruth_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_GV_STORMS_GROTTO",
+   "condition": "logic->IsAdult && logic->CanUse(RG_LENS_OF_TRUTH) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Obj_TBox_GlassTruth_A_01 (invisible, needs Lens) red-rupee chest, GerudoValley_Adult_Dynamic, in the GV storms grotto at (-43.3,84.0,-46.0). Adult copy; child copy is 6205043616869463865 at the same position."
+  },
+  {
+   "hash": "13612880783193811229",
+   "map": "GerudoValley",
+   "files": [
+    "GerudoValley/GerudoValley_Adult_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": "RC_GV_CHEST",
+   "soh_region": "RR_GV_FORTRESS_SIDE",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Adult-only small chest (GerudoValley_Adult_Dynamic) at (-33.7,102.2,22.1) ringed by BrokenIronRock fragments (hammer boulders) on the fortress side. This is N64's GV chest behind the bronze boulders (hammer). Purple -> red rupee."
+  },
+  {
+   "hash": "15856256242099990922",
+   "map": "GerudoValley",
+   "files": [
+    "GerudoValley/GerudoValley_Adult_Static.bcett.byml.zs",
+    "GerudoValley/GerudoValley_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_Heart_Piece",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": null,
+   "soh_region": "RR_GV_CRATE_LEDGE",
+   "condition": "logic->CanOpenLargeChest()",
+   "confidence": "medium",
+   "evidence": "Big chest with Obj_Heart_Piece (HeartPieceAnchor linked), both ages Static, at (-9.5,90.5,35.0) on a ledge mid-valley near Animal_Cucco_GerudoValley (cucco-glide spot) and the bridge. The valley's other HeartPieceAnchor (4.9,59.2,-78.2) is at the waterfall. So this replaces N64's GV Crate Freestanding PoH (SoH RC_GV_CRATE_FREESTANDING_POH, region RR_GV_CRATE_LEDGE), which is not a chest RC; no crate is there."
+  },
+  {
+   "hash": "6205043616869463865",
+   "map": "GerudoValley",
+   "files": [
+    "GerudoValley/GerudoValley_Child_Dynamic.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_GlassTruth_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_GV_STORMS_GROTTO",
+   "condition": "logic->IsChild && logic->CanUse(RG_LENS_OF_TRUTH) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. Child copy (GerudoValley_Child_Dynamic) of the invisible lens chest in the GV storms grotto."
+  },
+  {
+   "hash": "16619432200060282313",
+   "map": "GerudoFortress",
+   "files": [
+    "GerudoFortress/GerudoFortress_Adult_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Red",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_GF_STORMS_GROTTO",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-new. The only Fortress grotto (hole (34.5,113.5,-65.4), Adult_Static only, no cover actor found). Interior: 3 Enemy_FlyingPot_SpiritTemple, a Skulltula, a pot and this red-rupee chest (Adult_Static) at (15.0,89.2,-67.7). SoH's only GF grotto is the GF Storms Grotto (a fairy fountain)."
+  },
+  {
+   "hash": "12343753510713797715",
+   "map": "GerudoFortress",
+   "files": [
+    "GerudoFortress/GerudoFortress_Adult_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Obj_Heart_Piece",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_GF_CHEST",
+   "soh_region": "RR_GF_NEAR_CHEST",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Adult-only big chest with Obj_Heart_Piece (HeartPieceAnchor) high on the fortress (28.98,131.5,-93.67), near Obj_Gerudo_SwitchShutter. This is N64's GF rooftop Piece of Heart chest."
+  },
+  {
+   "hash": "8825521833684392638",
+   "map": "HountedWasteland",
+   "files": [
+    "HountedWasteland/HountedWasteland_Adult_Static.bcett.byml.zs",
+    "HountedWasteland/HountedWasteland_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_ScrubBusinessSeed",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": "RC_WASTELAND_CHEST",
+   "soh_region": "RR_HAUNTED_WASTELAND",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Chest with SpawnType 1 (appears on a condition) in AiGroup HountedWasteland_Level_House (the wasteland ruin), spawned by HountedWasteland_Ruins_AppearTreasureBox next to Obj_CandleStick_A_02 torches and a Gold Skulltula. That is N64's wasteland structure chest (light torches). Purple -> scrub seed."
+  },
+  {
+   "hash": "2490063409521505179",
+   "map": "DesertColossus",
+   "files": [
+    "DesertColossus/DesertColossus_Adult_Static.bcett.byml.zs",
+    "DesertColossus/DesertColossus_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Gauntlet_Silver",
+   "gyaml": "Obj_TBox_A_02",
+   "soh_rc": "RC_SPIRIT_TEMPLE_SILVER_GAUNTLETS_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_OUTER_RIGHT_HAND",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest Item_Gauntlet_Silver with event SageOfSpirit_NaboorIsTakenAway on the colossus hand (DesertColossus Static both ages, (-168.6,113.3,29.6)). SoH lists this chest under SCENE_DESERT_COLOSSUS; the remake keeps it in the DesertColossus map."
+  },
+  {
+   "hash": "10012167258643363548",
+   "map": "DesertColossus",
+   "files": [
+    "DesertColossus/DesertColossus_Adult_Static.bcett.byml.zs",
+    "DesertColossus/DesertColossus_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "Item_Shield_Mirror",
+   "gyaml": "Obj_TBox_A_02_NoBake",
+   "soh_rc": "RC_SPIRIT_TEMPLE_MIRROR_SHIELD_CHEST",
+   "soh_region": "RR_SPIRIT_TEMPLE_OUTER_LEFT_HAND",
+   "condition": null,
+   "confidence": "high",
+   "evidence": "Big chest Item_Shield_Mirror with event SageOfSpirit_GetShield on the other colossus hand (-168.6,113.3,-8.6), spawned by DesertColossus_LeftHand_AppearTreasureBox. SoH puts the mirror shield on the left hand too."
+  },
+  {
+   "hash": "1186167733408299582",
+   "map": "DesertColossus",
+   "files": [
+    "DesertColossus/DesertColossus_Adult_Static.bcett.byml.zs",
+    "DesertColossus/DesertColossus_Child_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Purple",
+   "gyaml": "Obj_TBox_A_01_NoBake",
+   "soh_rc": null,
+   "soh_region": "RR_COLOSSUS_GROTTO",
+   "condition": "logic->CanKillEnemy(RE_BEAMOS) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "medium",
+   "evidence": "Remake-new. The only Colossus grotto, under the silver boulder Obj_LiftRock_B_01 at (-115.7,94.9,-24.0), i.e. SoH's Colossus Grotto (CanUse silver gauntlets). Interior AiGroup HidingHole_Level_Hole_34 holds an Enemy_Beamos, 5 Skullwalltulas and this pedestal chest (purple rupee), spawned by DesertColossus_SecretHole_AppearTreasureBox. The chest sits on the Beamos spot, so the Beamos is taken as the trigger. No scrubs were found."
+  },
+  {
+   "hash": "7589985979641292928",
+   "map": "DreamWorld",
+   "files": [
+    "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Gold",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_HALL_OF_FALLEN_FOES",
+   "condition": "logic->IsChild && logic->Get(LOGIC_DEKU_TREE_CLEAR) && logic->Get(LOGIC_DODONGOS_CAVERN_CLEAR) && logic->Get(LOGIC_JABU_JABUS_BELLY_CLEAR) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-only. Gold-rupee small chest (IsEnableRepeatOpen) in DreamWorld BossRushIntervalRoom_Static at (0,0.21,-6.45), the room shown between battles of the Hall of Fallen Foes rematch gauntlets. The Hall is reached by sleeping in a bed (flow LinkSleepInBed -> Banc EnemyMuseum) once DreamWorld_Open is set by Kaepora's cutscene Dm_HrlField_0080 at Hyrule Field's Kakariko exit. Boss statues exist only for bosses beaten in the world. Interval-room set whose AiGroup references the Gohma, King Dodongo and Barinade statues (the child bosses). Child-boss stage of the rematch gauntlet (SubEvent_AllBossBattle starts the child at Gohma). All 10 chests share one position; only the set active for the current gauntlet stage is present."
+  },
+  {
+   "hash": "7234638808238324101",
+   "map": "DreamWorld",
+   "files": [
+    "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Gold",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_HALL_OF_FALLEN_FOES",
+   "condition": "logic->IsChild && logic->Get(LOGIC_DEKU_TREE_CLEAR) && logic->Get(LOGIC_DODONGOS_CAVERN_CLEAR) && logic->Get(LOGIC_JABU_JABUS_BELLY_CLEAR) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-only. Gold-rupee small chest (IsEnableRepeatOpen) in DreamWorld BossRushIntervalRoom_Static at (0,0.21,-6.45), the room shown between battles of the Hall of Fallen Foes rematch gauntlets. The Hall is reached by sleeping in a bed (flow LinkSleepInBed -> Banc EnemyMuseum) once DreamWorld_Open is set by Kaepora's cutscene Dm_HrlField_0080 at Hyrule Field's Kakariko exit. Boss statues exist only for bosses beaten in the world. Interval-room set whose AiGroup references the Gohma, King Dodongo and Barinade statues (the child bosses). Child-boss stage of the rematch gauntlet (SubEvent_AllBossBattle starts the child at Gohma). All 10 chests share one position; only the set active for the current gauntlet stage is present."
+  },
+  {
+   "hash": "15858708076894317041",
+   "map": "DreamWorld",
+   "files": [
+    "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Gold",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_HALL_OF_FALLEN_FOES",
+   "condition": "logic->IsChild && logic->Get(LOGIC_DEKU_TREE_CLEAR) && logic->Get(LOGIC_DODONGOS_CAVERN_CLEAR) && logic->Get(LOGIC_JABU_JABUS_BELLY_CLEAR) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-only. Gold-rupee small chest (IsEnableRepeatOpen) in DreamWorld BossRushIntervalRoom_Static at (0,0.21,-6.45), the room shown between battles of the Hall of Fallen Foes rematch gauntlets. The Hall is reached by sleeping in a bed (flow LinkSleepInBed -> Banc EnemyMuseum) once DreamWorld_Open is set by Kaepora's cutscene Dm_HrlField_0080 at Hyrule Field's Kakariko exit. Boss statues exist only for bosses beaten in the world. Interval-room set whose AiGroup references the Gohma, King Dodongo and Barinade statues (the child bosses). Child-boss stage of the rematch gauntlet (SubEvent_AllBossBattle starts the child at Gohma). All 10 chests share one position; only the set active for the current gauntlet stage is present."
+  },
+  {
+   "hash": "4529748032854378492",
+   "map": "DreamWorld",
+   "files": [
+    "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Gold",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_HALL_OF_FALLEN_FOES",
+   "condition": "logic->IsAdult && logic->Get(LOGIC_FOREST_TEMPLE_CLEAR) && logic->Get(LOGIC_FIRE_TEMPLE_CLEAR) && logic->Get(LOGIC_WATER_TEMPLE_CLEAR) && logic->Get(LOGIC_SHADOW_TEMPLE_CLEAR) && logic->Get(LOGIC_SPIRIT_TEMPLE_CLEAR) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-only. Gold-rupee small chest (IsEnableRepeatOpen) in DreamWorld BossRushIntervalRoom_Static at (0,0.21,-6.45), the room shown between battles of the Hall of Fallen Foes rematch gauntlets. The Hall is reached by sleeping in a bed (flow LinkSleepInBed -> Banc EnemyMuseum) once DreamWorld_Open is set by Kaepora's cutscene Dm_HrlField_0080 at Hyrule Field's Kakariko exit. Boss statues exist only for bosses beaten in the world. Interval-room set whose AiGroup references the Phantom Ganon (+horse), Volvagia and Morpha statues: the adult gauntlet (adults start at Phantom Ganon). All 10 chests share one position; only the set active for the current gauntlet stage is present."
+  },
+  {
+   "hash": "566103236844767323",
+   "map": "DreamWorld",
+   "files": [
+    "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Gold",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_HALL_OF_FALLEN_FOES",
+   "condition": "logic->IsAdult && logic->Get(LOGIC_FOREST_TEMPLE_CLEAR) && logic->Get(LOGIC_FIRE_TEMPLE_CLEAR) && logic->Get(LOGIC_WATER_TEMPLE_CLEAR) && logic->Get(LOGIC_SHADOW_TEMPLE_CLEAR) && logic->Get(LOGIC_SPIRIT_TEMPLE_CLEAR) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-only. Gold-rupee small chest (IsEnableRepeatOpen) in DreamWorld BossRushIntervalRoom_Static at (0,0.21,-6.45), the room shown between battles of the Hall of Fallen Foes rematch gauntlets. The Hall is reached by sleeping in a bed (flow LinkSleepInBed -> Banc EnemyMuseum) once DreamWorld_Open is set by Kaepora's cutscene Dm_HrlField_0080 at Hyrule Field's Kakariko exit. Boss statues exist only for bosses beaten in the world. Interval-room set whose AiGroup references the Phantom Ganon (+horse), Volvagia and Morpha statues: the adult gauntlet (adults start at Phantom Ganon). All 10 chests share one position; only the set active for the current gauntlet stage is present."
+  },
+  {
+   "hash": "3522439980243161940",
+   "map": "DreamWorld",
+   "files": [
+    "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Gold",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_HALL_OF_FALLEN_FOES",
+   "condition": "logic->IsAdult && logic->Get(LOGIC_FOREST_TEMPLE_CLEAR) && logic->Get(LOGIC_FIRE_TEMPLE_CLEAR) && logic->Get(LOGIC_WATER_TEMPLE_CLEAR) && logic->Get(LOGIC_SHADOW_TEMPLE_CLEAR) && logic->Get(LOGIC_SPIRIT_TEMPLE_CLEAR) && logic->HasItem(RG_OPEN_CHEST)",
+   "confidence": "low",
+   "evidence": "Remake-only. Gold-rupee small chest (IsEnableRepeatOpen) in DreamWorld BossRushIntervalRoom_Static at (0,0.21,-6.45), the room shown between battles of the Hall of Fallen Foes rematch gauntlets. The Hall is reached by sleeping in a bed (flow LinkSleepInBed -> Banc EnemyMuseum) once DreamWorld_Open is set by Kaepora's cutscene Dm_HrlField_0080 at Hyrule Field's Kakariko exit. Boss statues exist only for bosses beaten in the world. Interval-room set whose AiGroup references the Phantom Ganon (+horse), Volvagia and Morpha statues: the adult gauntlet (adults start at Phantom Ganon). All 10 chests share one position; only the set active for the current gauntlet stage is present."
+  },
+  {
+   "hash": "7346745174625046398",
+   "map": "DreamWorld",
+   "files": [
+    "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Gold",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_HALL_OF_FALLEN_FOES",
+   "condition": "false",
+   "confidence": "low",
+   "evidence": "Remake-only. Gold-rupee small chest (IsEnableRepeatOpen) in DreamWorld BossRushIntervalRoom_Static at (0,0.21,-6.45), the room shown between battles of the Hall of Fallen Foes rematch gauntlets. The Hall is reached by sleeping in a bed (flow LinkSleepInBed -> Banc EnemyMuseum) once DreamWorld_Open is set by Kaepora's cutscene Dm_HrlField_0080 at Hyrule Field's Kakariko exit. Boss statues exist only for bosses beaten in the world. Interval-room set whose AiGroup references the Bongo Bongo, Twinrova, Ganondorf and Ganon statues. Some of these intervals belong to the 10-battle gauntlet, which needs the Ganondorf/Ganon statues, i.e. beating the game. The 4 hashes share one position and cannot be told apart, so all four are marked unreachable in logic. All 10 chests share one position; only the set active for the current gauntlet stage is present."
+  },
+  {
+   "hash": "7458365564915336038",
+   "map": "DreamWorld",
+   "files": [
+    "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Gold",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_HALL_OF_FALLEN_FOES",
+   "condition": "false",
+   "confidence": "low",
+   "evidence": "Remake-only. Gold-rupee small chest (IsEnableRepeatOpen) in DreamWorld BossRushIntervalRoom_Static at (0,0.21,-6.45), the room shown between battles of the Hall of Fallen Foes rematch gauntlets. The Hall is reached by sleeping in a bed (flow LinkSleepInBed -> Banc EnemyMuseum) once DreamWorld_Open is set by Kaepora's cutscene Dm_HrlField_0080 at Hyrule Field's Kakariko exit. Boss statues exist only for bosses beaten in the world. Interval-room set whose AiGroup references the Bongo Bongo, Twinrova, Ganondorf and Ganon statues. Some of these intervals belong to the 10-battle gauntlet, which needs the Ganondorf/Ganon statues, i.e. beating the game. The 4 hashes share one position and cannot be told apart, so all four are marked unreachable in logic. All 10 chests share one position; only the set active for the current gauntlet stage is present."
+  },
+  {
+   "hash": "2854211238375368215",
+   "map": "DreamWorld",
+   "files": [
+    "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Gold",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_HALL_OF_FALLEN_FOES",
+   "condition": "false",
+   "confidence": "low",
+   "evidence": "Remake-only. Gold-rupee small chest (IsEnableRepeatOpen) in DreamWorld BossRushIntervalRoom_Static at (0,0.21,-6.45), the room shown between battles of the Hall of Fallen Foes rematch gauntlets. The Hall is reached by sleeping in a bed (flow LinkSleepInBed -> Banc EnemyMuseum) once DreamWorld_Open is set by Kaepora's cutscene Dm_HrlField_0080 at Hyrule Field's Kakariko exit. Boss statues exist only for bosses beaten in the world. Interval-room set whose AiGroup references the Bongo Bongo, Twinrova, Ganondorf and Ganon statues. Some of these intervals belong to the 10-battle gauntlet, which needs the Ganondorf/Ganon statues, i.e. beating the game. The 4 hashes share one position and cannot be told apart, so all four are marked unreachable in logic. All 10 chests share one position; only the set active for the current gauntlet stage is present."
+  },
+  {
+   "hash": "9947351236862205040",
+   "map": "DreamWorld",
+   "files": [
+    "DreamWorld/BossRushIntervalRoom_Static.bcett.byml.zs"
+   ],
+   "remake_item": "TBox_Rupee_Gold",
+   "gyaml": "Obj_TBox_A_01",
+   "soh_rc": null,
+   "soh_region": "RR_REMAKE_HALL_OF_FALLEN_FOES",
+   "condition": "false",
+   "confidence": "low",
+   "evidence": "Remake-only. Gold-rupee small chest (IsEnableRepeatOpen) in DreamWorld BossRushIntervalRoom_Static at (0,0.21,-6.45), the room shown between battles of the Hall of Fallen Foes rematch gauntlets. The Hall is reached by sleeping in a bed (flow LinkSleepInBed -> Banc EnemyMuseum) once DreamWorld_Open is set by Kaepora's cutscene Dm_HrlField_0080 at Hyrule Field's Kakariko exit. Boss statues exist only for bosses beaten in the world. Interval-room set whose AiGroup references the Bongo Bongo, Twinrova, Ganondorf and Ganon statues. Some of these intervals belong to the 10-battle gauntlet, which needs the Ganondorf/Ganon statues, i.e. beating the game. The 4 hashes share one position and cannot be told apart, so all four are marked unreachable in logic. All 10 chests share one position; only the set active for the current gauntlet stage is present."
+  }
+ ],
+ "soh_chests_without_remake_counterpart": [
+  {
+   "rc": "RC_LW_NEAR_SHORTCUTS_GROTTO_CHEST",
+   "evidence": "LostWood's boulder-covered hole by the Goron City shortcut (Obj_BrokenRock_A_01 at (27.8,100,-28.3), AiGroup HidingHole_Level_Hole_18) is the LW Near Shortcuts Grotto. Its interior holds only 9 grass tufts, a bean leaf and a plain DropKeepAwayArea; the LostWood map has no chest besides the under-bridge one."
+  },
+  {
+   "rc": "RC_HF_NEAR_MARKET_GROTTO_CHEST",
+   "evidence": "The bomb-covered hole 43 m east of the Market entrance (39.9,148.3,26.6), HidingHole_Level_Hole_02, holds a single Business Scrub selling Obj_Heart_Piece (HeartPieceAnchor HyruleField_Enemy_Scrub_Business_HeartPiece_01), not a chest. The remake moved the HF Deku-scrub Heart Piece here."
+  },
+  {
+   "rc": "RC_HF_SOUTHEAST_GROTTO_CHEST",
+   "evidence": "The bomb-covered hole in south-east Hyrule Field (179.8,156.6,190.5), between the Zora's River and Lost Woods bridge exits, holds GOSSIP_HYRULE_FIELD_02 and a floating arrangement of 7 rupees (fairy note HrlField_Note_09 'rupee arrangements... inside holes'), but no chest."
+  },
+  {
+   "rc": "RC_HF_OPEN_GROTTO_CHEST",
+   "evidence": "No Hyrule Field hole is uncovered in the remake. The south generic-style hole (39.9,144.7,342.3), with GOSSIP_HYRULE_FIELD_03, a Gold Skulltula, a Skullwalltula and crates, is the best positional match, but it has no chest. None of the 8 Hyrule Field chests (5 remake-new on the surface or in Lon Lon/Lake, plus the moved Kak redead chest) is in a generic-grotto interior."
+  },
+  {
+   "rc": "RC_DMT_STORMS_GROTTO_CHEST",
+   "evidence": "The trail's storm-covered hole (0.3,121.0,-28.1), Land_Kokiri_HidingHoleCover_A_01 + Strom anchor, is the DMT Storms Grotto. Its interior holds 5 Baby Dodongos, 3 bomb flowers and loose rupees (blue x2, green x3, red), no chest. The DeathMountainTrail map's only chest is the wall-crack chest."
+  },
+  {
+   "rc": "RC_GRAVEYARD_ROYAL_FAMILYS_TOMB_CHEST",
+   "evidence": "The Graveyard map has RoyalFamilyTomb_Common logic modules, but no chest in the tomb. The map's 6 chests are the shield-grave chest, the heart-piece-grave chest and 4 Dampe-race goal chests. No chest with a bomb item exists outside dungeons."
+  }
+ ],
+ "divergences": [
+  {
+   "what": "SFM Wolfos Grotto opens with the Song of Storms, not explosives",
+   "evidence": "Cover at the entryway hole (-1.6,100,51.2) is Land_Kokiri_HidingHoleCover_A_01 (parent Land_HidingHoleCover_DisappearSrom_Base) with a HidingHoleCoverDisappearStrom_SafePosition anchor.",
+   "proposed_rule": "Replace exit rule RR_SFM_ENTRYWAY -> RR_SFM_WOLFOS_GROTTO with: logic->CanOpenStormsGrotto()",
+   "affects": [
+    "RC_SFM_WOLFOS_GROTTO_CHEST"
+   ]
+  },
+  {
+   "what": "SFM Storms Grotto (Saria's area) is a bombable hole and holds a Song-of-Time-blocked chest instead of 2 Business Scrubs",
+   "evidence": "Cover Land_SacredForest_HidingHoleCover_A_02 derives from Land_HidingHoleCover_BrokenBomb_Base (WallCrack life). The interior has 4 Obj_SongOfTimeBlock_A_01, a SongOfTime sign, a gossip stone and the chest; no Enemy_Scrub_Business.",
+   "proposed_rule": "Replace exit rule RR_SACRED_FOREST_MEADOW -> RR_SFM_STORMS_GROTTO with: logic->CanOpenBombGrotto(). New location (chest 1764383515296652106): logic->CanUse(RG_SONG_OF_TIME) && logic->HasItem(RG_OPEN_CHEST). RC_SFM_DEKU_SCRUB_GROTTO_FRONT/REAR have no remake counterpart there.",
+   "affects": [
+    "RC_SFM_DEKU_SCRUB_GROTTO_FRONT",
+    "RC_SFM_DEKU_SCRUB_GROTTO_REAR",
+    "1764383515296652106"
+   ]
+  },
+  {
+   "what": "KF Storms Grotto chest is the prize of a Deku Scrub brothers (2-3-1) fight",
+   "evidence": "Scrub_Deku_Brothers_Manager with 3 Enemy_Scrub_Deku_Brothers in the grotto; brother 'One' (DefeatedOrder 3) links to the chest DekuTree_T and to its Treasure_Pos anchor.",
+   "proposed_rule": "Replace location rule RC_KF_STORMS_GROTTO_CHEST with: logic->CanReflectNuts() && logic->HasItem(RG_OPEN_CHEST)",
+   "affects": [
+    "RC_KF_STORMS_GROTTO_CHEST"
+   ]
+  },
+  {
+   "what": "Kakariko Redead Grotto (2 ReDeads + chest) is entered from Hyrule Field outside Kakariko, with the Song of Storms",
+   "evidence": "HyruleField hole (165.4,155.4,36.3), 40 m from the HF->Kakariko transition, under Land_Kokiri_HidingHoleCover_A_01 (storms); interior 2 Enemy_ReDead_AlwaysRespawn and a chest spawned by event KakarikoVillage_TreasureBoxAppear. Kakariko's own bomb-covered hole (-20,102,66) has only a gossip stone, beehives and water.",
+   "proposed_rule": "Remove exit RR_KAKARIKO_VILLAGE -> RR_KAK_REDEAD_GROTTO; add exit RR_HYRULE_FIELD -> RR_KAK_REDEAD_GROTTO: logic->CanOpenStormsGrotto(); return exit RR_KAK_REDEAD_GROTTO -> RR_HYRULE_FIELD: true. (Location rule unchanged.)",
+   "affects": [
+    "RC_KAK_REDEAD_GROTTO_CHEST"
+   ]
+  },
+  {
+   "what": "Hyrule Field grotto interiors are reshuffled; three chest grottos have no chest",
+   "evidence": "Near-Market hole holds the Heart Piece Business Scrub (N64's HF Inside Fence/Deku Scrub grotto content). The south-east hole has loose rupees; the south hole has Gold Skulltula + gossip; the near-Kakariko hole has the redead chest; the tektite hole uses a storms cover. Fitting N64 grotto return positions (randomizer_grotto.c) to remake hole positions gives no consistent transform (residual about 100 m), so the remake did not keep the layout.",
+   "proposed_rule": "Remove locations RC_HF_NEAR_MARKET_GROTTO_CHEST, RC_HF_SOUTHEAST_GROTTO_CHEST, RC_HF_OPEN_GROTTO_CHEST from the chest pool (no remake chest). Exit RR_HYRULE_FIELD -> RR_HF_TEKTITE_GROTTO probably needs logic->CanOpenStormsGrotto() (hole (-98,146,17) with storms cover, tektites, water and fish).",
+   "affects": [
+    "RC_HF_NEAR_MARKET_GROTTO_CHEST",
+    "RC_HF_SOUTHEAST_GROTTO_CHEST",
+    "RC_HF_OPEN_GROTTO_CHEST",
+    "RC_HF_DEKU_SCRUB_GROTTO",
+    "RC_HF_TEKTITE_GROTTO_FREESTANDING_POH"
+   ]
+  },
+  {
+   "what": "Lake Hylia grotto is an open hole with a timed-candle chest (no scrubs, no rock)",
+   "evidence": "Hole (-203.5,137.7,458.4) with Land_LakeHyrl_HidingHoleJoint_A_01 and no cover; interior 4 Obj_CandleStick_TimeExtinguish_A_01 + chest via TreasureBoxAppear_Magic; no Enemy_Scrub_Business.",
+   "proposed_rule": "Replace exit rule RR_LAKE_HYLIA -> RR_LH_GROTTO with: true. New location (chest 6900843020594897860): logic->HasFireSourceWithTorch() && logic->HasItem(RG_OPEN_CHEST).",
+   "affects": [
+    "RC_LH_DEKU_SCRUB_GROTTO_LEFT",
+    "RC_LH_DEKU_SCRUB_GROTTO_RIGHT",
+    "RC_LH_DEKU_SCRUB_GROTTO_CENTER",
+    "6900843020594897860"
+   ]
+  },
+  {
+   "what": "GV Storms Grotto is open to child too and holds chests (one invisible per age) instead of scrubs",
+   "evidence": "The storm-covered hole (-47.9,101.2,-29.7) and its interior exist in both GerudoValley_Child_Static and _Adult_Static. Interior: a green chest (both ages), Obj_TBox_GlassTruth_A_01 per age, pots, no scrubs.",
+   "proposed_rule": "Replace exit rule RR_GV_FORTRESS_SIDE -> RR_GV_STORMS_GROTTO with: logic->CanOpenStormsGrotto()",
+   "affects": [
+    "RC_GV_DEKU_SCRUB_GROTTO_FRONT",
+    "RC_GV_DEKU_SCRUB_GROTTO_REAR",
+    "17750686910716887133",
+    "18413589940135955604",
+    "6205043616869463865"
+   ]
+  },
+  {
+   "what": "Gerudo Fortress grotto has no cover and holds enemies + a chest (N64: Song-of-Storms fairy fountain)",
+   "evidence": "GF hole (34.5,113.5,-65.4) Adult_Static, no cover actor; interior with flying pots, Skulltula and a chest.",
+   "proposed_rule": "Replace exit rule RR_GF_NEAR_GROTTO -> RR_GF_STORMS_GROTTO with: logic->IsAdult (unconfirmed: check in game that no song is needed)",
+   "affects": [
+    "16619432200060282313",
+    "RC_GF_FAIRY_GROTTO_FAIRY_1"
+   ]
+  },
+  {
+   "what": "Freestanding Pieces of Heart became chests",
+   "evidence": "Dampe race 2nd prize is an Obj_TBox_A_02_NoBake with Obj_Heart_Piece (state AppearHeartPiece); the GV crate ledge has an Obj_TBox_A_02 with Obj_Heart_Piece and no crate. SoH models them as RC_GRAVEYARD_DAMPE_RACE_FREESTANDING_POH and RC_GV_CRATE_FREESTANDING_POH (not chest RCs, so soh_rc is null in this file).",
+   "proposed_rule": "Location rules: RC_GRAVEYARD_DAMPE_RACE_FREESTANDING_POH: (logic->IsAdult || logic->BunnyHood()) && logic->HasItem(RG_SPEAK_HYLIAN) && logic->CanOpenLargeChest(); RC_GV_CRATE_FREESTANDING_POH: logic->CanOpenLargeChest() (replaces CanBreakCrates). The mod should fill chests 5534919361313859554 / 15856256242099990922 with those checks' items, or drop the freestanding RCs and use the chests as new checks.",
+   "affects": [
+    "RC_GRAVEYARD_DAMPE_RACE_FREESTANDING_POH",
+    "RC_GV_CRATE_FREESTANDING_POH",
+    "5534919361313859554",
+    "15856256242099990922"
+   ]
+  },
+  {
+   "what": "Extra Piece of Heart chest in Hyrule Field",
+   "evidence": "Obj_TBox_A_01_memo11 with Obj_Heart_Piece + HeartPieceAnchor at (-213.3,133.5,138.7), both ages, next to fairy note 11.",
+   "proposed_rule": "New location in RR_HYRULE_FIELD: logic->HasItem(RG_OPEN_CHEST)",
+   "affects": [
+    "2967378296224661060"
+   ]
+  },
+  {
+   "what": "Heart Piece grave chest may not need the Sun's Song",
+   "evidence": "The big chest 9622128545943056087 is a plain Static actor; no SpawnType, no EventRequestActor link and no Ocarina/Sun's Song gimmick module references it. The graveyard's only Ocarina_Appearance module is a Sun's Song fairy at (142,98,6).",
+   "proposed_rule": "Possible relaxation, NOT applied (SoH's stricter rule kept): location RC_GRAVEYARD_HEART_PIECE_GRAVE_CHEST: logic->CanOpenLargeChest()",
+   "affects": [
+    "RC_GRAVEYARD_HEART_PIECE_GRAVE_CHEST"
+   ]
+  },
+  {
+   "what": "Several grottos gained chests guarded by enemies instead of Business Scrubs",
+   "evidence": "DMC hammer grotto: 2 Dinolfos + chest (DeathMountainCrater_SecretHole_AppearTreasureBox). Colossus grotto: Beamos + Skullwalltulas + chest (DesertColossus_SecretHole_AppearTreasureBox). GV octorok grotto: chest past the octoroks. No Enemy_Scrub_Business in these interiors.",
+   "proposed_rule": "New locations: RR_DMC_SCRUB_GROTTO: logic->CanKillEnemy(RE_DINOLFOS, ED_CLOSE, true, 2) && logic->HasItem(RG_OPEN_CHEST); RR_COLOSSUS_GROTTO: logic->CanKillEnemy(RE_BEAMOS) && logic->HasItem(RG_OPEN_CHEST); RR_GV_OCTOROK_GROTTO: (logic->HasItem(RG_BRONZE_SCALE) || logic->CanUse(RG_IRON_BOOTS)) && logic->HasItem(RG_OPEN_CHEST). The SoH scrub locations of the DMC/Colossus grottos likely have no counterpart.",
+   "affects": [
+    "9128916506605227251",
+    "1186167733408299582",
+    "6463521162691873710",
+    "RC_DMC_DEKU_SCRUB_GROTTO_LEFT",
+    "RC_DMC_DEKU_SCRUB_GROTTO_RIGHT",
+    "RC_DMC_DEKU_SCRUB_GROTTO_CENTER",
+    "RC_COLOSSUS_DEKU_SCRUB_GROTTO_FRONT",
+    "RC_COLOSSUS_DEKU_SCRUB_GROTTO_REAR"
+   ]
+  },
+  {
+   "what": "New Goron City secret hole (sign puzzle with 2 chests); N64's GC Grotto (lava platform, 3 scrubs) was not found in the GoronCity map",
+   "evidence": "The GoronCity map has a single HidingHole (Hole_17) at the top floor (-39.8,113.5,27.9), uncovered, outside the boulder maze.",
+   "proposed_rule": "New region RR_REMAKE_GC_SECRET_HOLE; exit RR_GORON_CITY -> RR_REMAKE_GC_SECRET_HOLE: true; exit back: true. Locations: logic->CanRead() && logic->HasItem(RG_OPEN_CHEST) for both chests.",
+   "affects": [
+    "9159710900681116662",
+    "10944569637726152230",
+    "RC_GC_DEKU_SCRUB_GROTTO_LEFT",
+    "RC_GC_DEKU_SCRUB_GROTTO_RIGHT",
+    "RC_GC_DEKU_SCRUB_GROTTO_CENTER"
+   ]
+  },
+  {
+   "what": "Goron City boulder maze has 4 chests (N64: 3)",
+   "evidence": "Chests at z=2.0 (red), -2.35 (blue), -5.15 (blue), -8.37 (purple) along x=-43..-48 among BrokenRock_A_01 (bomb), BrokenRock_A_02 (hammer) and LiftRock_B_01 (silver) boulders.",
+   "proposed_rule": "New location in RR_GORON_CITY (chest 14647422914070455120): (logic->BlastOrSmash() || logic->CanUse(RG_SILVER_GAUNTLETS)) && logic->HasItem(RG_OPEN_CHEST)",
+   "affects": [
+    "14647422914070455120"
+   ]
+  },
+  {
+   "what": "Lost Woods under-bridge area may connect to the bridge at the same height",
+   "evidence": "In the KokiriForest map the bridge (Land_Kokiri_FieldProp_Bridge_A_01, y=114.75) and the under-bridge scrub/gossip stone (y=114.5-114.6) are at the same height, 23 m apart. SoH only allows LW Bridge <-> LW Under the Bridge with the Longshot. Unconfirmed: collision is not in the map data. If true, it opens a child route HF -> bridge -> under bridge -> Lost Woods -> Kokiri Forest past closed forest.",
+   "proposed_rule": "Only if confirmed in game: add exit RR_LW_BRIDGE -> RR_LW_UNDER_BRIDGE: true (and reconsider RR_LW_UNDER_BRIDGE -> RR_LW_BRIDGE)",
+   "affects": [
+    "RC_LW_DEKU_SCRUB_NEAR_BRIDGE",
+    "RC_LW_GOSSIP_STONE",
+    "4349272251343787229",
+    "17479747339356189279"
+   ]
+  },
+  {
+   "what": "Duplicate chest placements of one physical chest / state copies",
+   "evidence": "LW under-bridge chest exists in both the KokiriForest and LostWood maps (4349272251343787229, 17479747339356189279). The Kak windmill-top chest has an Adult and an Adult_Alternative copy (11929552275106311978, 13080955777249750889). The GV lens chest has a Child and an Adult copy (6205043616869463865, 18413589940135955604). Each copy has its own hash and probably its own opened flag.",
+   "proposed_rule": "No SoH rule change; the mod should treat each pair as one check (same item in both) or accept that a pair is two checks with the stated rules.",
+   "affects": [
+    "4349272251343787229",
+    "17479747339356189279",
+    "11929552275106311978",
+    "13080955777249750889",
+    "6205043616869463865",
+    "18413589940135955604"
+   ]
+  },
+  {
+   "what": "Remake-only area: Hall of Fallen Foes (Banc DreamWorld)",
+   "evidence": "Dm_HrlField_0080 (Kaepora, HF Child_Static at (188.6,165.6,18.6) by the Kakariko exit) sets DreamWorld_Open. Kaepora: 'find a place to sleep... lie down, and you will find your way to the Hall of Fallen Foes'. The precondition DreamWorld_ArriveFromKakarikoVillage is set on arriving in HF from Kakariko after HavePlayedEvent Dm_TimeTemple_0086. Beds (LinkSleepInBed / LinkSleepInBed_CommonBed in Link's house, Lon Lon, Lake, Kakariko lodge, GV tent) warp to Banc EnemyMuseum. Rematch gauntlets run through DreamWorld boss stages with a BossRushIntervalRoom holding 10 repeatable gold-rupee chests in 3 boss-tier sets.",
+   "proposed_rule": "New region RR_REMAKE_HALL_OF_FALLEN_FOES; exit RR_KF_LINKS_HOUSE -> RR_REMAKE_HALL_OF_FALLEN_FOES: logic->HasItem(RG_MASTER_SWORD) (approximation of 'Temple of Time cutscene Dm_TimeTemple_0086 seen, then child Kaepora talk at HF/Kakariko'). Exit back: true. Chest rules per tier as given in the chests list (child bosses / five adult temples / false for the Ganon tier).",
+   "affects": [
+    "7589985979641292928",
+    "7234638808238324101",
+    "15858708076894317041",
+    "4529748032854378492",
+    "566103236844767323",
+    "3522439980243161940",
+    "7346745174625046398",
+    "7458365564915336038",
+    "2854211238375368215",
+    "9947351236862205040"
+   ]
+  }
+ ],
+ "open_questions_for_in_game_check": [
+  "Mido's house: which corner pair holds the green-rupee chest as you enter, and what does SoH/N64 call each of the 4 corners? (Only names change; logic is the same.)",
+  "LW under the bridge: is the purple chest on the 9 m ledge above the stick-upgrade scrub reachable as child without items? Can you walk from the Kokiri bridge to that scrub without the Longshot?",
+  "LLR tower: how is the upper-floor chest (above the crawlspace Heart Piece) reached, and by which age?",
+  "Kakariko windmill: how is the chest near the top of the windmill (adult) reached: ladder, hookshot, or the rotating platform?",
+  "SFM upper grotto (bomb it open): does reaching the chest require playing the Song of Time at the 4 blocks?",
+  "Graveyard Heart Piece grave: is the big chest visible without playing the Sun's Song?",
+  "Hyrule Field tektite grotto (west of the Market) and Kak redead grotto (east field near Kakariko): confirm both open with the Song of Storms.",
+  "Gerudo Fortress grotto: is it an open hole for adult (no song)?",
+  "GV octorok grotto: is the chest underwater (iron boots) or wadable past the octoroks?",
+  "Goron City secret hole: what opens its two chests (reading/answering the 6 signs?), and can both be taken?",
+  "Goron City maze: confirm which of the two blue-rupee chests is reachable with bombs only, and whether the 4th needs the silver gauntlets.",
+  "Hall of Fallen Foes: which interval-room chest sets appear in the 3-, 5- and 10-battle gauntlets, and do they appear after a real boss win only once or every run?",
+  "Lake Hylia grotto: can the 4 timed candles be lit with Deku sticks?"
+ ]
+}

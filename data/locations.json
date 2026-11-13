@@ -1,0 +1,3242 @@
+{
+ "locations": [
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_CENTER_SKULLTULA_CHEST",
+   "hash": "631709185320708287",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": "RC_BOTTOM_OF_THE_WELL_CENTER_SKULLTULA_CHEST",
+   "region": "RR_BOTW_MIDDLE",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Center Skulltula Chest",
+   "area": "Bottom of the Well Middle",
+   "confidence": "medium",
+   "evidence": "Inside the central block (x=12, z=-11), on one line with the big hanging Skulltula (4.5,103.8,-11.0, 7.5 m away) and the compass pedestal. The room-1 Area at (-0.6,100,-10.9), scale 14x4, spans the compass, the Skulltula and this chest: SoH's Middle with the centre Skulltula. Contents changed (nuts -> blue rupee)."
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_FIRE_KEESE_CHEST",
+   "hash": "874970148260328653",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": "RC_BOTTOM_OF_THE_WELL_FIRE_KEESE_CHEST",
+   "region": "RR_BOTW_HIDDEN_PITS_ROOM",
+   "condition": null,
+   "vanilla": "TBox_Shield_Deku",
+   "name": "Fire Keese Chest",
+   "area": "Bottom of the Well Hidden Pits Room",
+   "confidence": "high",
+   "evidence": "Room 6 (3 Enemy_Keese_Fire, a Beamos, fake floors GlassTruth_A_14/15/16), the room before Like-Like cage room 7. It holds a Deku Shield (A_06), as on N64."
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_UNDERWATER_FRONT_CHEST",
+   "hash": "5429815628949128345",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": "RC_BOTTOM_OF_THE_WELL_UNDERWATER_FRONT_CHEST",
+   "region": "RR_BOTW_PERIMETER",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Underwater Front Chest",
+   "area": "Bottom of the Well Perimeter",
+   "confidence": "high",
+   "evidence": "Main room front-centre (-0.2, y=96.19, -5.0), 3.4 m below water planes Obj_WaterPlane_A_01 (y 99.64/97.83). Their Presence is negated by the flag BottomOfTheWell_Room_01_Blow_Ocarina, which the event BottomOfTheWell_Gimmick:WaterLevel_Down sets after Zelda's Lullaby at Obj_TriForcePoint_A_10: SoH's LOGIC_BOTW_LOWERED_WATER. It is the remake's only underwater chest."
+  },
+  {
+   "id": "CHEST_6064359710907908886",
+   "hash": "6064359710907908886",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": null,
+   "region": "RR_BOTW_NEAR_BOSS_UPPER",
+   "condition": "(ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Chest (remake only, Small)",
+   "area": "Bottom of the Well Near Boss Upper",
+   "confidence": "medium",
+   "evidence": "Remake-new. Room 11, a balcony above the Dead Hand room (y=102.2 vs 92.3), entered from room 2 through a door at (0,102.17,-89). The chest is at its end, behind fake wall Obj_Well_GlassTruth_A_30 (-97.56, 2.9 m away). N64 has nothing like it."
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_RIGHT_BOTTOM_FAKE_WALL_CHEST",
+   "hash": "8397646530660039355",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": "RC_BOTTOM_OF_THE_WELL_RIGHT_BOTTOM_FAKE_WALL_CHEST",
+   "region": "RR_BOTW_PERIMETER",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Right Bottom Fake Wall Chest",
+   "area": "Bottom of the Well Perimeter",
+   "confidence": "medium",
+   "evidence": "Main room, right side (x=10.6), 3.4 m behind fake wall Obj_Well_GlassTruth_A_03 (14,100,-4.53, turned to face the east corridor). It holds the remake's only small key in a chest; N64's right fake-wall chest also holds a key. 'Bottom' (south on the map) does not quite fit: the alcove is in the front half."
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_FRONT_LEFT_FAKE_WALL_CHEST",
+   "hash": "8975637636514249074",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": "RC_BOTTOM_OF_THE_WELL_FRONT_LEFT_FAKE_WALL_CHEST",
+   "region": "RR_BOTW_PERIMETER",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Front Left Fake Wall Chest",
+   "area": "Bottom of the Well Perimeter",
+   "confidence": "medium",
+   "evidence": "Main room (room 1, y=100), at x=-11 (left of the entrance axis; the entrance is at +z) on the front side, 3.4 m behind fake wall Obj_Well_GlassTruth_A_09 (-11,100,-2.03; GlassTruthDisappearObj), which faces the front corridor. It mirrors the key chest behind A_03 on the right. N64 has a small key here; the remake has a red rupee (the remake has 2 keys, not 3)."
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_MAP_CHEST",
+   "hash": "9466613428674883506",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": "RC_BOTTOM_OF_THE_WELL_MAP_CHEST",
+   "region": "RR_BOTW_B3_CHEST_AREA",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Map",
+   "name": "Map Chest",
+   "area": "Bottom of the Well B3 Chest Area",
+   "confidence": "high",
+   "evidence": "Only big chest of room 9 (the B3 basement, y~87: dirty water, 3 ReDeads, 8 Obj_BrokenRock_A_01 boulders, 5 silver rupees). The B3 map chest behind boulders, as in SoH."
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_BACK_LEFT_BOMBABLE_CHEST",
+   "hash": "10905582354954996284",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": "RC_BOTTOM_OF_THE_WELL_BACK_LEFT_BOMBABLE_CHEST",
+   "region": "RR_BOTW_PERIMETER",
+   "condition": "(ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Back Left Bombable Chest",
+   "area": "Bottom of the Well Perimeter",
+   "confidence": "medium",
+   "evidence": "Main room back-left corner (-29.6,100,-37.0), at the end of a corridor (room-1 Area at -25.5,100,-37) closed by two fake walls in a row (Obj_Well_GlassTruth_A_06/A_08), under a hanging Skulltula. The remake BotW has no bombable walls at all (no WallCrack/CrackWall on B1), so the explosives part of SoH's rule is dropped and the lens part kept."
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_INVISIBLE_CHEST",
+   "hash": "11718708984125260282",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": "RC_BOTTOM_OF_THE_WELL_INVISIBLE_CHEST",
+   "region": "RR_BOTW_NEAR_BOSS_UPPER",
+   "condition": "(ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Invisible Chest",
+   "area": "Bottom of the Well Near Boss Upper",
+   "confidence": "medium",
+   "evidence": "The only invisible chest (Obj_TBox_GlassTruth_A_01), but MOVED. SoH puts it in the Dead Hand room; here it is in room 2, reached by the crawlspace behind the waterfalls (CrawlAnchor 0,98.8,-60) that leads on to the Dead Hand room, on an upper ledge at y=105.8 by fake wall GlassTruth_A_31. Same lens rule as SoH; only the region changes."
+  },
+  {
+   "id": "CHEST_12988877782812797760",
+   "hash": "12988877782812797760",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": null,
+   "region": "RR_BOTW_PERIMETER",
+   "condition": "logic->CanClimbLadder() && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Chest (remake only, Small)",
+   "area": "Bottom of the Well Perimeter",
+   "confidence": "low",
+   "evidence": "Remake-new, or possibly the Like-Like chest moved. Small chest in a sunken trench on the main room's east side (y=97.81; trench pots at y=97.35; Land_Well_Ladder_A_06 4 m away to climb back out), just outside the bars of the Like-Like cage (room 7's strips at x=20.9-22; the LikeLike is 10 m away). Room 7 itself (Like Like + GS) has no chest in the remake. This chest is not behind a fake wall."
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_COMPASS_CHEST",
+   "hash": "14911602953212243797",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": "RC_BOTTOM_OF_THE_WELL_COMPASS_CHEST",
+   "region": "RR_BOTW_PIT_CAGE",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Compass",
+   "name": "Compass Chest",
+   "area": "Bottom of the Well Pit Cage",
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName BottomOfTheWell_GetCompass, on a pedestal in the central block between fake walls GlassTruth_A_12 (2.6 m) and A_11 (5.7 m), above an area of pits into B3 (a room-9 DungeonRoomArea lies under it)."
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_LENS_OF_TRUTH_CHEST",
+   "hash": "16654774376625985726",
+   "copies": [],
+   "map": "BottomOfTheWell",
+   "rc": "RC_BOTTOM_OF_THE_WELL_LENS_OF_TRUTH_CHEST",
+   "region": "RR_BOTW_DEAD_HAND_ROOM",
+   "condition": null,
+   "vanilla": "Item_GlassTruth",
+   "name": "Lens of Truth Chest",
+   "area": "Bottom of the Well Dead Hand Room",
+   "confidence": "high",
+   "evidence": "Big NoBake chest, Item_GlassTruth, GetEventName BottomOfTheWell_GetGlassTruth, in room 8 with Enemy_DeadHand + 4 hands. It appears on BottomOfTheWell_08_Enemy_WipedOut."
+  },
+  {
+   "id": "RC_DMC_UPPER_GROTTO_CHEST",
+   "hash": "1158729434763801603",
+   "copies": [],
+   "map": "DeathMountainCrater",
+   "rc": "RC_DMC_UPPER_GROTTO_CHEST",
+   "region": "RR_DMC_UPPER_GROTTO",
+   "condition": null,
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Upper Grotto Chest",
+   "area": "DMC Upper Grotto",
+   "confidence": "high",
+   "evidence": "Generic grotto (GOSSIP_DEATH_MOUNTAIN_CRATER_02 + fairy spirit + chest) under an Obj_BrokenRock_A_01 boulder at the upper crater (-14.7,125.9,52.8). This is the DMC Upper Grotto (BlastOrSmash). Five Obj_LiftRock_A_01 stand around the chest. Contents changed (bombs -> scrub seed)."
+  },
+  {
+   "id": "CHEST_9128916506605227251",
+   "hash": "9128916506605227251",
+   "copies": [],
+   "map": "DeathMountainCrater",
+   "rc": null,
+   "region": "RR_DMC_SCRUB_GROTTO",
+   "condition": "logic->CanKillEnemy(RE_DINOLFOS, ED_CLOSE, true, 2) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Chest (remake only, Small)",
+   "area": "DMC Scrub Grotto",
+   "confidence": "medium",
+   "evidence": "Remake-new. Second crater grotto, lower (hole (-48.9,118.1,1.7)), under Obj_BrokenRock_A_02, which has BrokenIronRock fragments, i.e. the hammer boulder of SoH's DMC hammer/scrub grotto. AiGroup HidingHole_Level_Hole_25 holds 2 Enemy_Dinolfos and this pedestal chest (purple rupee), spawned by DeathMountainCrater_SecretHole_AppearTreasureBox. No scrubs were found."
+  },
+  {
+   "id": "RC_DMT_CHEST",
+   "hash": "9809508929088891725",
+   "copies": [],
+   "map": "DeathMountainTrail",
+   "rc": "RC_DMT_CHEST",
+   "region": "RR_DEATH_MOUNTAIN_TRAIL",
+   "condition": null,
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Chest",
+   "area": "Death Mountain Trail",
+   "confidence": "high",
+   "evidence": "Small chest 1.4 m behind a WallCrack (bombable wall) at the bottom of the trail (-29.8,120.3,45.6), near MountainTrail_KakarikoSide. This is N64's DMT chest behind the breakable wall; contents changed (purple -> Business Scrub seed)."
+  },
+  {
+   "id": "CHEST_1186167733408299582",
+   "hash": "1186167733408299582",
+   "copies": [],
+   "map": "DesertColossus",
+   "rc": null,
+   "region": "RR_COLOSSUS_GROTTO",
+   "condition": "logic->CanKillEnemy(RE_BEAMOS) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Chest (remake only, Small)",
+   "area": "Colossus Grotto",
+   "confidence": "medium",
+   "evidence": "Remake-new. The only Colossus grotto, under the silver boulder Obj_LiftRock_B_01 at (-115.7,94.9,-24.0), i.e. SoH's Colossus Grotto (CanUse silver gauntlets). Interior AiGroup HidingHole_Level_Hole_34 holds an Enemy_Beamos, 5 Skullwalltulas and this pedestal chest (purple rupee), spawned by DesertColossus_SecretHole_AppearTreasureBox. The chest sits on the Beamos spot, so the Beamos is taken as the trigger. No scrubs were found."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_SILVER_GAUNTLETS_CHEST",
+   "hash": "2490063409521505179",
+   "copies": [],
+   "map": "DesertColossus",
+   "rc": "RC_SPIRIT_TEMPLE_SILVER_GAUNTLETS_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_OUTER_RIGHT_HAND",
+   "condition": null,
+   "vanilla": "Item_Gauntlet_Silver",
+   "name": "Silver Gauntlets Chest",
+   "area": "Spirit Temple Outer Right Hand",
+   "confidence": "high",
+   "evidence": "Big chest Item_Gauntlet_Silver with event SageOfSpirit_NaboorIsTakenAway on the colossus hand (DesertColossus Static both ages, (-168.6,113.3,29.6)). SoH lists this chest under SCENE_DESERT_COLOSSUS; the remake keeps it in the DesertColossus map."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_MIRROR_SHIELD_CHEST",
+   "hash": "10012167258643363548",
+   "copies": [],
+   "map": "DesertColossus",
+   "rc": "RC_SPIRIT_TEMPLE_MIRROR_SHIELD_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_OUTER_LEFT_HAND",
+   "condition": null,
+   "vanilla": "Item_Shield_Mirror",
+   "name": "Mirror Shield Chest",
+   "area": "Spirit Temple Outer Left Hand",
+   "confidence": "high",
+   "evidence": "Big chest Item_Shield_Mirror with event SageOfSpirit_GetShield on the other colossus hand (-168.6,113.3,-8.6), spawned by DesertColossus_LeftHand_AppearTreasureBox. SoH puts the mirror shield on the left hand too."
+  },
+  {
+   "id": "CHEST_850464708089653824",
+   "hash": "850464708089653824",
+   "copies": [],
+   "map": "DodongoCavern",
+   "rc": null,
+   "region": "RR_DODONGOS_CAVERN_UPPER_LIZALFOS",
+   "condition": "logic->CanKillEnemy(RE_LIZALFOS, ED_CLOSE, true, 2) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Chest (remake only, Small)",
+   "area": "Dodongos Cavern Upper Lizalfos",
+   "confidence": "high",
+   "evidence": "Remake-new. NoBake chest on a pedestal in room 16 (y~115, the second Enemy_MiddleBoss_Lizalfos pair, between slingshot rooms 14/15 and 17). EventRequestActor DodongoCavern_Gimmick_DefeatLizalfos02 references it, so it appears when the upper Lizalfos fight is won. In the remake the two Lizalfos fights are separate rooms (5 lower, 16 upper)."
+  },
+  {
+   "id": "RC_DODONGOS_CAVERN_END_OF_BRIDGE_CHEST",
+   "hash": "7524527082521156886",
+   "copies": [],
+   "map": "DodongoCavern",
+   "rc": "RC_DODONGOS_CAVERN_END_OF_BRIDGE_CHEST",
+   "region": "RR_DODONGOS_CAVERN_FAR_BRIDGE",
+   "condition": null,
+   "vanilla": "TBox_Shield_Deku",
+   "name": "End Of Bridge Chest",
+   "area": "Dodongos Cavern Far Bridge",
+   "confidence": "high",
+   "evidence": "In room 1 (lobby) but at y=113.3, the lobby's top floor, right behind a bombable wall (WallCrack at -19.75,113.28,-36.5, 1 m). It is 21 m from the top-floor stone tablet Obj_DodongoCave_StoneTablet_A_02 (0,116.25,-33.7), the spot of RC_DODONGOS_CAVERN_TOP_FLOOR_PEDESTAL. It holds a Deku Shield, like N64's end-of-bridge chest."
+  },
+  {
+   "id": "CHEST_7764016096998075927",
+   "hash": "7764016096998075927",
+   "copies": [],
+   "map": "DodongoCavern",
+   "rc": null,
+   "region": "RR_DODONGOS_CAVERN_LOWER_LIZALFOS",
+   "condition": "logic->Get(LOGIC_DC_KILLED_LOWER_LIZALFOS) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "Dodongos Cavern Lower Lizalfos",
+   "confidence": "high",
+   "evidence": "Remake-new. NoBake chest on a pedestal (Obj_TBoxPedestal_A_01, PushAirWall_Box) in room 5 (two Enemy_MiddleBoss_Lizalfos, y~100). EventRequestActor DodongoCavern_Gimmick_DefeatLizalfos01 in AiGroup Gimmick_DodongoCavern_MiddleBoss01 references it, so it appears when the lower Lizalfos pair is beaten. N64 has no chest there."
+  },
+  {
+   "id": "RC_DODONGOS_CAVERN_MAP_CHEST",
+   "hash": "8291119063305855945",
+   "copies": [],
+   "map": "DodongoCavern",
+   "rc": "RC_DODONGOS_CAVERN_MAP_CHEST",
+   "region": "RR_DODONGOS_CAVERN_LOBBY",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Map",
+   "name": "Map Chest",
+   "area": "Dodongos Cavern Lobby",
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName DodongoCavern_GetMap, room 1 (remake room 1 = the big lobby: 3 Beamos, the lift MoveFloor, stone tablets), at floor level y=100.25, right behind a bombable wall (WallCrack at -23.25,99.75,-38, 3 m away). A lobby bomb flower is 12 m away (the Goron bracelet route, as in SoH)."
+  },
+  {
+   "id": "CHEST_8607798771661947511",
+   "hash": "8607798771661947511",
+   "copies": [],
+   "map": "DodongoCavern",
+   "rc": null,
+   "region": "RR_DODONGOS_CAVERN_LOBBY",
+   "condition": "logic->CanBreakMudWalls() && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Chest (remake only, Small)",
+   "area": "Dodongos Cavern Lobby",
+   "confidence": "high",
+   "evidence": "Remake-new. Small chest on the lobby floor (room 1, y=100) behind a bombable wall (WallCrack at -22.75,99.75,-8, 7 m, with a Room_01 wall piece in between), the mirror of the map-chest alcove. N64's lobby has only the map chest. The rule mirrors the map chest's without its Goron-bracelet branch, which is conservative: the nearest lobby bomb flower is 21 m away. A Beamos with IsHeadShootingToTargetOnDie stands 9 m away and may also break the wall."
+  },
+  {
+   "id": "RC_DODONGOS_CAVERN_BOMB_FLOWER_PLATFORM_CHEST",
+   "hash": "11582649900854566065",
+   "copies": [],
+   "map": "DodongoCavern",
+   "rc": "RC_DODONGOS_CAVERN_BOMB_FLOWER_PLATFORM_CHEST",
+   "region": "RR_DODONGOS_CAVERN_BOMB_ROOM_LOWER",
+   "condition": null,
+   "vanilla": "TBox_Shield_Deku",
+   "name": "Bomb Flower Platform Chest",
+   "area": "Dodongos Cavern Bomb Room Lower",
+   "confidence": "high",
+   "evidence": "The other chest of room 13 (the bomb bag room): small (A_06), 2.4 m above the room floor (MoveSpike blades at y=110.8) on a platform, with a bomb flower 6.9 m away (49.25,113.95,-11.75): the N64 bomb flower platform. Contents changed (red rupee -> Deku Shield, or Deku seeds as substitute)."
+  },
+  {
+   "id": "RC_DODONGOS_CAVERN_BOMB_BAG_CHEST",
+   "hash": "12161709650443144121",
+   "copies": [],
+   "map": "DodongoCavern",
+   "rc": "RC_DODONGOS_CAVERN_BOMB_BAG_CHEST",
+   "region": "RR_DODONGOS_CAVERN_BOMB_ROOM_UPPER",
+   "condition": null,
+   "vanilla": "Item_BombBag_Small",
+   "name": "Bomb Bag Chest",
+   "area": "Dodongos Cavern Bomb Room Upper",
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName Get_StoneOfFire_GetBombBag, room 13 (the moving-spike room), on its upper ledge at y=115.7."
+  },
+  {
+   "id": "CHEST_12253889300578348965",
+   "hash": "12253889300578348965",
+   "copies": [],
+   "map": "DodongoCavern",
+   "rc": null,
+   "region": "RR_DODONGOS_CAVERN_STAIRS_LOWER",
+   "condition": "logic->CanClimbLadder() && logic->CanBreakMudWalls() && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Chest (remake only, Small)",
+   "area": "Dodongos Cavern Stairs Lower",
+   "confidence": "medium",
+   "evidence": "Remake-new. Room 10 = the stairs room (16 bomb flowers + BrokenStair, the door to Armos room 12 at the top, the compass-room wall at the bottom, the vines GS). The chest is at the far south end at y=116, behind a bombable wall (WallCrack at -49,115.83,-63.97), at the top of a ladder (Land_DodongoCave_Ladder_A_04 centred at y=108.2, so it likely runs from the floor ~100.4 up to ~116). No bomb flower is near that ledge. The region and the ladder are inferred from the ladder's centre height."
+  },
+  {
+   "id": "RC_DODONGOS_CAVERN_COMPASS_CHEST",
+   "hash": "17531994809974271603",
+   "copies": [],
+   "map": "DodongoCavern",
+   "rc": "RC_DODONGOS_CAVERN_COMPASS_CHEST",
+   "region": "RR_DODONGOS_CAVERN_COMPASS_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Compass",
+   "name": "Compass Chest",
+   "area": "Dodongos Cavern Compass Room",
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName DodongoCavern_GetCompass, room 11 (Armos statues + an Amos), entered from the stairs room (room 10) through the bombable wall at (-49,101.7,-14): the N64 compass room off the lower stairs."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_SCARECROW_CHEST",
+   "hash": "862385681502746018",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_SCARECROW_CHEST",
+   "region": "RR_FIRE_TEMPLE_5F_RUINS",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Scarecrow Chest",
+   "area": "Fire Temple 5F Ruins",
+   "confidence": "medium",
+   "evidence": "Purple rupee (N64: huge rupee), one of 3 chests on one pedestal (Land_FireTemple_TBoxPedestal_A_02) at y=194.4 in room 8 at the top of the climb above the boulder maze (Pierre and Obj_ScarecrowMarker_B_00 in room 5, room 7 stairs, Gold Skulltula in rooms 7 and 8). The purple is the most valuable of the three, so taken as N64's scarecrow chest. It needs the hookshot (targets moved by the timed Obj_StepSwitch_A_02, 'Dm_FireTemple_0026'); SoH's region already needs it (ReachScarecrow includes CanUse(RG_HOOKSHOT))."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_BIG_LAVA_ROOM_BLOCKED_DOOR_CHEST",
+   "hash": "1705064956286753527",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_BIG_LAVA_ROOM_BLOCKED_DOOR_CHEST",
+   "region": "RR_FIRE_TEMPLE_STRAIGHTFORWARD_CAGE",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Big Lava Room Blocked Door Chest",
+   "area": "Fire Temple Straightforward Cage",
+   "confidence": "high",
+   "evidence": "Small key in the cell of Npc_Goron_003 in remake room 22, whose only doorway is to the big lava room (x 38-40, z 36-37) and which has an Obj_FireTemple_CrackWall_A_01 between them (the bombable wall; SoH: HasExplosives)."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_BOULDER_MAZE_LOWER_CHEST",
+   "hash": "3688520809244472975",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_BOULDER_MAZE_LOWER_CHEST",
+   "region": "RR_FIRE_TEMPLE_BOULDER_MAZE_LOWER",
+   "condition": "logic->CanOpenLargeChest()",
+   "vanilla": "Item_Dungeon_Map",
+   "name": "Boulder Maze Lower Chest",
+   "area": "Fire Temple Boulder Maze Lower",
+   "confidence": "low",
+   "evidence": "Big chest (contents: the map; event FireTemple_GetCompass) in a side room off the boulder maze's LOWER level (y=147.1, doorway x 58-59, z 26-28, remake room 5). The remake's maze keeps only one Goron cell in the maze proper (upper level) and gains this big chest, while the flame maze gains a Goron key cell (see the compass chest): the lower-maze check became this big chest. Location-based match only."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_BIG_LAVA_ROOM_LOWER_OPEN_DOOR_CHEST",
+   "hash": "3949488292768750868",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_BIG_LAVA_ROOM_LOWER_OPEN_DOOR_CHEST",
+   "region": "RR_FIRE_TEMPLE_1F_CURVED_CAGE",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Big Lava Room Lower Open Door Chest",
+   "area": "Fire Temple 1F Curved Cage",
+   "confidence": "high",
+   "evidence": "Small key in the cell of Npc_Goron_001 in remake room 1 = big lava room (behind the foyer's locked door; sinking/moving floors, Song of Time blocks up to the 8-tile room 19); its AiGroup is the separate prefab Room_20, a side cage room like the boulder maze's side cage (prefab Room_23)."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_NEAR_BOSS_CHEST",
+   "hash": "5634724236470386190",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_NEAR_BOSS_CHEST",
+   "region": "RR_FIRE_TEMPLE_NEAR_BOSS_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Near Boss Chest",
+   "area": "Fire Temple Near Boss Room",
+   "confidence": "high",
+   "evidence": "Small key in the cell of Npc_Goron_005 (Obj_FireTemple_PrisonCage_A_01, opened by the Obj_StepSwitch_A_01 4 m away) in remake room 2, the room west of the foyer holding Darunia and the boss door (Obj_FireTemple_SwitchShutter_A_02 with Dm_Obj_DoorChainLock_A_01 and '..._Boss' events)."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_FLARE_DANCER_CHEST",
+   "hash": "8757492004108970488",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_FLARE_DANCER_CHEST",
+   "region": "RR_FIRE_TEMPLE_LOOP_FLARE_DANCER",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Flare Dancer Chest",
+   "area": "Fire Temple Loop Flare Dancer",
+   "confidence": "high",
+   "evidence": "Red rupee (N64: 10 bombs), NoBake, SpawnType 1, on the Enemy_MiddleBoss_FlareDancer spot of room 3; appears by 'FocusOnGimmick_FireTemple_FlareDancer02' linked to the Flare Dancer's Obj_EnemyCounter_A_01. Room 3 is in the boss-key loop: foyer -> locked door -> room 15 (6 Torch Slugs) -> room 18 (Like Like, 5 Enemy_CrazyFloorTile) -> room 3 -> room 17 -> foyer."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_BOULDER_MAZE_UPPER_CHEST",
+   "hash": "9634924691849556346",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_BOULDER_MAZE_UPPER_CHEST",
+   "region": "RR_FIRE_TEMPLE_BOULDER_MAZE_UPPER",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Boulder Maze Upper Chest",
+   "area": "Fire Temple Boulder Maze Upper",
+   "confidence": "medium",
+   "evidence": "Small key in the cell of Npc_Goron_008 in remake room 5 = boulder maze (6 Obj_Firetemple_RollingRock_A_01) on its upper level y=150.5, the level of the doorway from the fire-wall room 16 (y 150-152, SoH's fire wall upper door) and of the crack floor; the lower level (door to the narrow-path room 6) is y=147."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_HIGHEST_GORON_CHEST",
+   "hash": "10521366928524045067",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_HIGHEST_GORON_CHEST",
+   "region": "RR_FIRE_TEMPLE_SOT_CAGE_SWITCH",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Highest Goron Chest",
+   "area": "Fire Temple Sot Cage Switch",
+   "confidence": "high",
+   "evidence": "Small key in the cell of Npc_Goron_009 (two cage doors) in room 11, behind the flame maze's locked door, with Obj_SongOfTimeBlock_A_01 and Obj_HammerSwitch_A_01: SoH's Song of Time + hammer cage."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_MEGATON_HAMMER_CHEST",
+   "hash": "12083259659219538030",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_MEGATON_HAMMER_CHEST",
+   "region": "RR_FIRE_TEMPLE_NARROW_STAIRS",
+   "condition": null,
+   "vanilla": "Item_Hammer",
+   "name": "Megaton Hammer Chest",
+   "area": "Fire Temple Narrow Stairs",
+   "confidence": "high",
+   "evidence": "Big chest with the Megaton Hammer (FireTemple_GetHammer) in room 13 at the top (y=196), linked to the hammerable Obj_FireTemple_SpiralStaircase_A_01."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_BOULDER_MAZE_SIDE_ROOM_CHEST",
+   "hash": "12567412825200613393",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_BOULDER_MAZE_SIDE_ROOM_CHEST",
+   "region": "RR_FIRE_TEMPLE_3F_CURVED_CAGE",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Boulder Maze Side Room Chest",
+   "area": "Fire Temple 3F Curved Cage",
+   "confidence": "medium",
+   "evidence": "Small key in the cell of Npc_Goron_007 off the boulder maze's lower level (y=147, doorway x 48-49, z -31..-29). Its AiGroup is the separate prefab Room_23, like the big lava room's side cage (prefab Room_20 = 1F curved cage): the 3F curved cage."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_COMPASS_CHEST",
+   "hash": "12945617941305968586",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_COMPASS_CHEST",
+   "region": "RR_FIRE_TEMPLE_CAGELESS_CHEST_ROOM",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Compass Chest",
+   "area": "Fire Temple Cageless Chest Room",
+   "confidence": "low",
+   "evidence": "Small key in the cell of Npc_Goron_004 (opened by the Obj_StepSwitch_A_01 4 m away) in remake room 10 = the flame maze (40 Obj_FireTemple_FireWallTrap_A_01, 3 Enemy_TrickyDoor, doors to the SoT cage room 11 and the Flare Dancer room 24). N64's flame maze has the cageless compass room and no other chest; the remake has 9 Goron cells with chests like N64 but two in the flame maze and three around the boulder maze. Matched by location to the flame maze's own chest; small chest now."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_BOSS_KEY_CHEST",
+   "hash": "14060099092170010696",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_BOSS_KEY_CHEST",
+   "region": "RR_FIRE_TEMPLE_LOOP_GORON_CAGE",
+   "condition": null,
+   "vanilla": "Item_Dungeon_BossKey",
+   "name": "Boss Key Chest",
+   "area": "Fire Temple Loop Goron Cage",
+   "confidence": "high",
+   "evidence": "Boss key chest in the cell of Npc_Goron_010 in room 17 at the end of the boss-key loop; an Obj_HammerSwitch_A_01 opens the cage (SoH: LOGIC_FIRE_LOOP_SWITCH by hammer); its door leads back to the foyer."
+  },
+  {
+   "id": "CHEST_15073195886628236505",
+   "hash": "15073195886628236505",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": null,
+   "region": "RR_FIRE_TEMPLE_5F_RUINS",
+   "condition": "logic->CanUse(RG_HOOKSHOT) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "Fire Temple 5F Ruins",
+   "confidence": "medium",
+   "evidence": "Remake-new: red rupee, third of the 3 chests on the room-8 pedestal next to the scarecrow chest; same access."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_MAP_CHEST",
+   "hash": "16713240760352215634",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_MAP_CHEST",
+   "region": "RR_FIRE_TEMPLE_FIRE_WALL_CAGE",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Compass",
+   "name": "Map Chest",
+   "area": "Fire Temple Fire Wall Cage",
+   "confidence": "high",
+   "evidence": "Big chest (contents: the compass; event FireTemple_GetMap) in room 16 (fire wall chase: MoveFireWallSpawnActor) right behind the Obj_FireTemple_SwitchShutter_A_01 that 'FireTemple_06_EyeSwitch' opens from room 6 (the narrow-path room) with Obj_EyeSwitch_A_02: SoH's fire wall cage, reached from the narrow path with CanHitEyeTargets."
+  },
+  {
+   "id": "RC_FIRE_TEMPLE_BOULDER_MAZE_SHORTCUT_CHEST",
+   "hash": "16785682308850448108",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": "RC_FIRE_TEMPLE_BOULDER_MAZE_SHORTCUT_CHEST",
+   "region": "RR_FIRE_TEMPLE_SHORTCUT_CLIMB",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Boulder Maze Shortcut Chest",
+   "area": "Fire Temple Shortcut Climb",
+   "confidence": "medium",
+   "evidence": "Small key in the cell of Npc_Goron_002 (two cage doors at x 74.7 and 80.2) at the top (y=141) of remake room 4. Room 4 is entered from the lava-geyser room through the hole above the fire pillar (Land_FireTemple_21_Hole_A_01, doorway y 127-129) and has SoH's shortcut-room block and switch (Obj_FireTemple_MovableBox_A_02, Obj_SwitchHit_A_04). The boulder maze's Obj_FireTemple_CrackFloor_A_01 at (63.4, 151.1, 0) is right above the room 4/5 doorway (x 62-64) next to this cell: bomb the upper maze's floor and drop to it, as for N64's shortcut chest."
+  },
+  {
+   "id": "CHEST_17001858340376096722",
+   "hash": "17001858340376096722",
+   "copies": [],
+   "map": "FireTemple",
+   "rc": null,
+   "region": "RR_FIRE_TEMPLE_5F_RUINS",
+   "condition": "logic->CanUse(RG_HOOKSHOT) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "Fire Temple 5F Ruins",
+   "confidence": "medium",
+   "evidence": "Remake-new: red rupee, second of the 3 chests on the room-8 pedestal, 1.7 m from the scarecrow chest; same access (timed switch, hookshot targets)."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_FIRST_ROOM_CHEST",
+   "hash": "1171460703078800858",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_FIRST_ROOM_CHEST",
+   "region": "RR_FOREST_TEMPLE_TREES",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "First Room Chest",
+   "area": "Forest Temple Trees",
+   "confidence": "high",
+   "evidence": "Small key chest in remake room 0 (AiGroup ForestTemple_Level_Room_00 = entrance courtyard with 4 Wolfos at y=101.5) at y=117.5, 14 m above the floor: the chest up on the tree of the first room. Gold Skulltula 11 m away (RC_FOREST_TEMPLE_GS_FIRST_ROOM). N64 has a small key here too."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_RAISED_ISLAND_COURTYARD_CHEST",
+   "hash": "3174893090599461927",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_RAISED_ISLAND_COURTYARD_CHEST",
+   "region": "RR_FOREST_TEMPLE_NE_COURTYARD_ISLAND",
+   "condition": "logic->CanOpenLargeChest()",
+   "vanilla": "Item_Dungeon_Map",
+   "name": "Raised Island Courtyard Chest",
+   "area": "Forest Temple NE Courtyard Island",
+   "confidence": "medium",
+   "evidence": "Big chest (Obj_TBox_A_02, the dungeon map) in remake room 14 = the east (+x) courtyard (AiGroup Room_07; doorways to the lobby, the well and the falling-ceiling room only) at y=101.4, 3 m above the courtyard water (Obj_ForestTemple_WaterPlane_A_01 at y=98.5), on a stone-pillar island with an Obj_HookShotTarget_A_01 7 m away and Pierre (AreaCanCallPierre) on the ledge above: N64's raised-island chest spot (SoH: island by hookshot, scarecrow ledge above). N64's map room (the Blue Bubble room linking both courtyards' upper levels) is not in the remake (no room with such doorways; DungeonRoomID 13 and 28 and prefab Room_10 absent), so the map moved here. The condition only changes the chest size (small in SoH, big here)."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_RED_POE_CHEST",
+   "hash": "3433400840978782007",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_RED_POE_CHEST",
+   "region": "RR_FOREST_TEMPLE_RED_POE_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Red Poe Chest",
+   "area": "Forest Temple Red Poe Room",
+   "confidence": "high",
+   "evidence": "Small key, NoBake, in room 16 (prefab Room_12; SoH's own GameInteractor code treats Forest rooms 12/13/16 as the Poe rooms) with Enemy_Poe_Joelle and 3 Obj_ForestTemple_GhostPicture_A_01; appears by 'ForestTemple_Room17_TBoxAppear_CandleLight' (Joelle's candle). Mirror of Beth's room at x=+17."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_BOSS_KEY_CHEST",
+   "hash": "5306318520835485827",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_BOSS_KEY_CHEST",
+   "region": "RR_FOREST_TEMPLE_NW_HALLWAY_STRAIGHTENED",
+   "condition": null,
+   "vanilla": "Item_Dungeon_BossKey",
+   "name": "Boss Key Chest",
+   "area": "Forest Temple NW Hallway Straightened",
+   "confidence": "high",
+   "evidence": "Boss key chest (A_03) in the west twisted corridor (AiGroup Room_23), referenced by EventRequestActor 'ForestTemple_Room11_RoomSpin' together with Obj_EyeSwitch_A_01 and Obj_ForestTemple_TwistedCorridor_A_01: shoot the eye to straighten the corridor, as in N64."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_WELL_CHEST",
+   "hash": "6449977980406424425",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_WELL_CHEST",
+   "region": "RR_FOREST_TEMPLE_SEWER",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Well Chest",
+   "area": "Forest Temple Sewer",
+   "confidence": "high",
+   "evidence": "Small key in remake room 15 (prefab Room_09) at y=88, under Obj_WaterPlane_Field_A_01 (y=87.6) between the two courtyards' well openings (doorways at x -34..-30 and 14..21, y 94-96): the well. The drain switch moved (see divergences), which changes RR_FOREST_TEMPLE_DRAINED_SEWER access, not this rule."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_BLUE_POE_CHEST",
+   "hash": "6948525240950728236",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_BLUE_POE_CHEST",
+   "region": "RR_FOREST_TEMPLE_BLUE_POE_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Compass",
+   "name": "Blue Poe Chest",
+   "area": "Forest Temple Blue Poe Room",
+   "confidence": "high",
+   "evidence": "Big chest with the compass (ForesetTemple_GetCompass) in room 18 (prefab Room_13) with Enemy_Poe_Beth; appears by 'ForestTemple_Room17_TBoxAppear_CandleLight_ShutterOpen' linked to the Obj_EnemyCounter_A_01 of Beth."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_FLOORMASTER_CHEST",
+   "hash": "7535137041266964235",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_FLOORMASTER_CHEST",
+   "region": "RR_FOREST_TEMPLE_FLOORMASTER_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Floormaster Chest",
+   "area": "Forest Temple Floormaster Room",
+   "confidence": "high",
+   "evidence": "Small key, NoBake on Obj_TBoxPedestal_A_01, appears by 'ForestTemple_Room22_ShutterOpen_TBoxAppear' linked to the Obj_EnemyCounter_A_01 of the room's Enemy_Floormaster; room 22 (prefab Room_18) opens off the NW courtyard's upper level."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_BASEMENT_CHEST",
+   "hash": "9038700938965170329",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_BASEMENT_CHEST",
+   "region": "RR_FOREST_TEMPLE_BASEMENT",
+   "condition": null,
+   "vanilla": "TBox_ArrowBundle_Large",
+   "name": "Basement Chest",
+   "area": "Forest Temple Basement",
+   "confidence": "medium",
+   "evidence": "Large arrow bundle (N64: 5 arrows) in remake room 27 (prefab Room_17, y=60.7) = the basement under the lobby elevator (Obj_ForestTemple_PivotedFloor_A_01, boss-key shutter to the boss corridor). Its mechanics changed (pivoted floor driven by 'ForestTemple_Room27_CandleLight', an Obj_EyeSwitch_A_02 frozen in Obj_Ice_A_01 opens the shutter), so SoH's HasItem(RG_POWER_BRACELET) may not be what reaches it any more."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_BOW_CHEST",
+   "hash": "11082303891540711688",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_BOW_CHEST",
+   "region": "RR_FOREST_TEMPLE_UPPER_STALFOS",
+   "condition": null,
+   "vanilla": "Item_Range_Bow",
+   "name": "Bow Chest",
+   "area": "Forest Temple Upper Stalfos",
+   "confidence": "high",
+   "evidence": "Big chest with the Fairy Bow (GetEventName ForestTemple_GetBow) in room 17 above the first Stalfos room (prefab Room_06), appears by 'ForestTemple_Room17_BigTBoxAppear'; the room has 3 Enemy_Stalfos_Weak (SoH: 3 Stalfos)."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_FIRST_STALFOS_CHEST",
+   "hash": "14776684749746592758",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_FIRST_STALFOS_CHEST",
+   "region": "RR_FOREST_TEMPLE_LOWER_STALFOS",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "First Stalfos Chest",
+   "area": "Forest Temple Lower Stalfos",
+   "confidence": "high",
+   "evidence": "Small key, NoBake, appears by EventRequestActor 'ForestTemple_Room04_OpenDoor_AppearTBox' linked to the Obj_EnemyCounter_A_01 of the 2 Enemy_Stalfos_Weak of remake room 4 (prefab Room_06), north of the lobby through the north hallway. SoH also needs 2 Stalfos (LOGIC_FOREST_CLEAR_BETWEEN_JOELLE_AND_BETH)."
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_FALLING_CEILING_ROOM_CHEST",
+   "hash": "15117164073907033527",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_FALLING_CEILING_ROOM_CHEST",
+   "region": "RR_FOREST_TEMPLE_FALLING_ROOM",
+   "condition": null,
+   "vanilla": "TBox_ArrowBundle_Medium",
+   "name": "Falling Ceiling Room Chest",
+   "area": "Forest Temple Falling Room",
+   "confidence": "high",
+   "evidence": ""
+  },
+  {
+   "id": "RC_FOREST_TEMPLE_EYE_SWITCH_CHEST",
+   "hash": "15920957434854338961",
+   "copies": [],
+   "map": "ForestTemple",
+   "rc": "RC_FOREST_TEMPLE_EYE_SWITCH_CHEST",
+   "region": "RR_FOREST_TEMPLE_MIDDLE_BLOCK_PUSH_ROOM",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Eye Switch Chest",
+   "area": "Forest Temple Middle Block Push Room",
+   "confidence": "high",
+   "evidence": "Purple rupee (N64: 30 arrows), NoBake, SpawnType 1, appears by EventRequestActor 'ForestTemple_Room11_TBoxAppear' linked to Obj_EyeSwitch_A_02 (isHitHookShot false: arrow or slingshot) 4 m above it, in remake room 8 = 2nd floor (y=115) of the block-push room (AiGroups Room_11 for rooms 6-9). Same as SoH (CanHitEyeTargets in the middle block push room)."
+  },
+  {
+   "id": "RC_GF_CHEST",
+   "hash": "12343753510713797715",
+   "copies": [],
+   "map": "GerudoFortress",
+   "rc": "RC_GF_CHEST",
+   "region": "RR_GF_NEAR_CHEST",
+   "condition": null,
+   "vanilla": "Obj_Heart_Piece",
+   "name": "Chest",
+   "area": "GF Near Chest",
+   "confidence": "high",
+   "evidence": "Adult-only big chest with Obj_Heart_Piece (HeartPieceAnchor) high on the fortress (28.98,131.5,-93.67), near Obj_Gerudo_SwitchShutter. This is N64's GF rooftop Piece of Heart chest."
+  },
+  {
+   "id": "CHEST_16619432200060282313",
+   "hash": "16619432200060282313",
+   "copies": [],
+   "map": "GerudoFortress",
+   "rc": null,
+   "region": "RR_GF_STORMS_GROTTO",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "GF Storms Grotto",
+   "confidence": "low",
+   "evidence": "Remake-new. The only Fortress grotto (hole (34.5,113.5,-65.4), Adult_Static only, no cover actor found). Interior: 3 Enemy_FlyingPot_SpiritTemple, a Skulltula, a pot and this red-rupee chest (Adult_Static) at (15.0,89.2,-67.7). SoH's only GF grotto is the GF Storms Grotto (a fairy fountain)."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_MAZE_RIGHT_CENTRAL_CHEST",
+   "hash": "196331300747102419",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_MAZE_RIGHT_CENTRAL_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE_RIGHT",
+   "condition": null,
+   "vanilla": "Item_BombchuBundle_Small",
+   "name": "Maze Right Central Chest",
+   "area": "Gerudo Training Ground Central Maze Right",
+   "confidence": "high",
+   "evidence": "Bombchus (same as N64) at (5.5,98,-45.5) in the east region, which joins the lava-room door (so SoH's free access from the lava room holds) and is 2 doors from the entrance (D3, D4): 2 + 7 possibly wasted = SoH's SmallKeys(9). Room 8 maze topology rebuilt from the wall/iron-bar meshes (Land_GerudoTraining_RoomWall_A_08 + IronBars_A_02 + WireMesh_A_01) and the 9 chain-locked doors (Obj_Gerudo_SwitchShutter_A_06 + 2 Obj_DoorChainLock_A_01 each): entrance cell -D2(-6.6,-40.8)- NW cell -D1(-16.2,-36)- west strip -D5(-9,-48)- west-lower -D8(-18.6,-57.6)- SW -D7(-1.8,-55.2)- south -D9(5.4,-57.6)- east-inner column -D6(3,-50.4)- centre; second branch entrance -D3(3,-40.9)- NE cell -D4(15,-38.4)- east region (lava-room door at 29.3,-45.6). Worst case (both side-branch doors wasted) gives exactly SoH's counts."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_FREESTANDING_KEY",
+   "hash": "1883068192328530224",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_FREESTANDING_KEY",
+   "region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE_RIGHT",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Freestanding Key",
+   "area": "Gerudo Training Ground Central Maze Right",
+   "confidence": "high",
+   "evidence": "Remake-new chest that replaces N64's freestanding key (RC_GERUDO_TRAINING_GROUND_FREESTANDING_KEY, not a chest so it is not in soh_chests.json). Small key in the maze's east region (22.8,98,-45.6), the corridor to the lava-room door (29.3,-45.6), the same region as the Maze Right chests. Neither GTG nor Ganon's Castle has any freestanding key actor left, and GTG has 9 key chests for 9 locked doors (N64: 8 chests + this freestanding key). Room 8 maze topology rebuilt from the wall/iron-bar meshes (Land_GerudoTraining_RoomWall_A_08 + IronBars_A_02 + WireMesh_A_01) and the 9 chain-locked doors (Obj_Gerudo_SwitchShutter_A_06 + 2 Obj_DoorChainLock_A_01 each): entrance cell -D2(-6.6,-40.8)- NW cell -D1(-16.2,-36)- west strip -D5(-9,-48)- west-lower -D8(-18.6,-57.6)- SW -D7(-1.8,-55.2)- south -D9(5.4,-57.6)- east-inner column -D6(3,-50.4)- centre; second branch entrance -D3(3,-40.9)- NE cell -D4(15,-38.4)- east region (lava-room door at 29.3,-45.6). Worst case (both side-branch doors wasted) gives exactly SoH's counts."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_FINAL_CHEST",
+   "hash": "1941083939696166170",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_FINAL_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE",
+   "condition": null,
+   "vanilla": "Item_Arrow_Ice",
+   "name": "Maze Path Final Chest",
+   "area": "Gerudo Training Ground Central Maze",
+   "confidence": "high",
+   "evidence": "Big chest, Item_Arrow_Ice with SubEvent_GetIceArrow_OpenTBox, at the maze centre (-1.9,98,-48), 7 doors in (... D9, D6): 7 + 2 = SoH's SmallKeys(9). A one-way fence (Obj_SpiritTemple_FallNet_B_03, GerudoTrainingGround_08_FenceFallDown from the step switch inside) opens a shortcut back to the entrance."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_LOBBY_RIGHT_CHEST",
+   "hash": "2436665354602612279",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_LOBBY_RIGHT_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_LOBBY",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Lobby Right Chest",
+   "area": "Gerudo Training Ground Lobby",
+   "confidence": "medium",
+   "evidence": "Lobby (room 0). NoBake chest with SpawnType 1 at x=+4.1. It falls when the one Obj_EyeSwitch_A_02 above the entrance (y=109.8) is hit: EventRequestActor GerudoTrainingGround_00_FallTreasureBox references both. Link enters walking -z from the fortress (StartPos z=+11.9), so +x is his right (the Stalfos door at x=-28.4 is the left door, as in N64). The same left/right convention reproduces the N64 ice-trap pattern of the Light-trial room exactly, so it is trusted. The other lobby chest (x=-7.6) is an invisible GlassTruth chest without a Drop__DropActor (not in this list): see RC_GERUDO_TRAINING_GROUND_LOBBY_LEFT_CHEST. Contents swapped versus N64 (left blue rupee, right 10 arrows), consistent with arrows becoming rupees; SoH's CanHitEyeTargets rule still fits this chest."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_UNDERWATER_SILVER_RUPEE_CHEST",
+   "hash": "3717705376223508790",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_UNDERWATER_SILVER_RUPEE_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_UNDERWATER",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Underwater Silver Rupee Chest",
+   "area": "Gerudo Training Ground Underwater",
+   "confidence": "high",
+   "evidence": "Room 9 (5 Obj_RupeeToken_Silver, Obj_silverRupeeCounter 2 m away, Song of Time blocks, Enemy_ShellBlade, y down to 76). Small key, NoBake, SpawnType 1 (appears on the silver-rupee count). Same as N64."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_SECOND_CHEST",
+   "hash": "3750231902048775592",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_SECOND_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_LIKE_LIKE_ROOM",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_BombBundle_Small",
+   "name": "Heavy Block Second Chest",
+   "area": "Gerudo Training Ground Like Like Room",
+   "confidence": "low",
+   "evidence": "Room 10. Plain Obj_TBox_A_01 (bombs), no SpawnType, no links: present from the start, so it no longer needs the Like Likes killed (SoH's rule for Second). Room 10 has 5 chests against N64's 4: the GlassTruth key (Third), the A_04 trap chest (Fourth, the N64 ice trap), one room-clear chest, this one and an eye-switch chest with a Scrub Business Seed. This one is taken as N64's other room-clear chest and the seed chest as remake-new (seed chests elsewhere are mostly remake additions), but the two could be the other way round."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_HIDDEN_CEILING_CHEST",
+   "hash": "4320448574091221496",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_HIDDEN_CEILING_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Hidden Ceiling Chest",
+   "area": "Gerudo Training Ground Central Maze",
+   "confidence": "high",
+   "evidence": "Small key at y=105 on top of the maze's ceiling slab above the entrance cell (carpet at the same spot). It is reached from the NW cell (behind door D2): an invisible Obj_Gerudo_GlassTruth_A_01 platform at (-7.8,103.2,-35.5) below a hole in the slab, FldObj_AirWall_ClimbPlayer walls around it, and the Navi hints NaviHelp_08_01_A (in the NW cell) and NaviHelp_08_01_B (on the chest). So: 1 key door + 2 doors possibly wasted on the other branch = SoH's SmallKeys(3), lens, hookshot or climb. The iron bars at z=-43 cut it off from the upper floor above the centre. Room 8 maze topology rebuilt from the wall/iron-bar meshes (Land_GerudoTraining_RoomWall_A_08 + IronBars_A_02 + WireMesh_A_01) and the 9 chain-locked doors (Obj_Gerudo_SwitchShutter_A_06 + 2 Obj_DoorChainLock_A_01 each): entrance cell -D2(-6.6,-40.8)- NW cell -D1(-16.2,-36)- west strip -D5(-9,-48)- west-lower -D8(-18.6,-57.6)- SW -D7(-1.8,-55.2)- south -D9(5.4,-57.6)- east-inner column -D6(3,-50.4)- centre; second branch entrance -D3(3,-40.9)- NE cell -D4(15,-38.4)- east region (lava-room door at 29.3,-45.6). Worst case (both side-branch doors wasted) gives exactly SoH's counts."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_HAMMER_ROOM_SWITCH_CHEST",
+   "hash": "4372363658229299619",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_HAMMER_ROOM_SWITCH_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_HAMMER_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Hammer Room Switch Chest",
+   "area": "Gerudo Training Ground Hammer Room",
+   "confidence": "high",
+   "evidence": "Room 5 (hammer room: Obj_FireTemple_HammerSlipPillar, torch slugs, fire keese). Small key sitting inside Obj_FireWall_A_01 (same position); Obj_StepSwitch_A_04 -> GerudoTrainingGround_05_DisappearFire removes the fire. Same as N64 (hammer the switch)."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_BEFORE_HEAVY_BLOCK_CHEST",
+   "hash": "4519534997122863169",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_BEFORE_HEAVY_BLOCK_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_ROOM",
+   "condition": "logic->CanKillEnemy(RE_WOLFOS, ED_CLOSE, true, 4, true) && logic->CanKillEnemy(RE_WHITE_WOLFOS, ED_CLOSE, true, 4, true) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Before Heavy Block Chest",
+   "area": "Gerudo Training Ground Heavy Block Room",
+   "confidence": "high",
+   "evidence": "Room 3 (Wolfos room with the silver block Obj_MovableBox_A_04 at z=-97.3). Only item chest there, at (-55.1,104,-90.3), i.e. on the near side of the block. NoBake + SpawnType 1; GerudoTrainingGround_03_AppaerTreasureBox via Gimmick_TreasureBoxAppear_GerudoTrainingGround in the prefab that also holds 4 Enemy_Wolfos and 4 Enemy_Wolfos_White (pairs at identical spots = waves). N64 had Wolfos only, so the rule adds the White Wolfos. Contents 30 arrows -> blue rupee."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_BEAMOS_CHEST",
+   "hash": "4709724720801091788",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_BEAMOS_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_DINALFOS",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Beamos Chest",
+   "area": "Gerudo Training Dinalfos",
+   "confidence": "high",
+   "evidence": "Room 7 (east of the lobby): Enemy_Beamos + 2 Enemy_Dinolfos in the same prefab as this key chest (NoBake, SpawnType 1, on the beamos' spot, Gimmick_TreasureBoxAppear_Any_Fall, GerudoTrainingGround_Room07_TreasureAppear). Matches SoH's rule exactly."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_HAMMER_ROOM_CLEAR_CHEST",
+   "hash": "4961588221597286817",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_HAMMER_ROOM_CLEAR_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_HAMMER_ROOM",
+   "condition": null,
+   "vanilla": "TBox_ArrowBundle_Medium",
+   "name": "Hammer Room Clear Chest",
+   "area": "Gerudo Training Ground Hammer Room",
+   "confidence": "high",
+   "evidence": ""
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_THIRD_CHEST",
+   "hash": "5329807728555596183",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_THIRD_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_LIKE_LIKE_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Heavy Block Third Chest",
+   "area": "Gerudo Training Ground Like Like Room",
+   "confidence": "medium",
+   "evidence": "Room 10 (3 Enemy_LikeLike, behind the silver block). Invisible Obj_TBox_GlassTruth_A_01 holding a small key = N64's type-6 invisible key chest (the only key in that room in both games). Identity is solid; kept SoH's rule (lens + pass the Like Likes). Caveat: an EventRequestActor running GerudoTrainingGround_10_AppearTreasureBox also references it, so it might only appear after the room is cleared (it has no SpawnType)."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_FIRST_CHEST",
+   "hash": "6897789835137994741",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_FIRST_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_LIKE_LIKE_ROOM",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Heavy Block First Chest",
+   "area": "Gerudo Training Ground Like Like Room",
+   "confidence": "medium",
+   "evidence": "Room 10. NoBake, SpawnType 1, appears through GerudoTrainingGround_10_AppearTreasureBox (Gimmick_TreasureBoxAppear_GerudoTrainingGround in the prefab with the 3 Like Likes) = a room-clear chest like N64's First and Second (both type 7). It is the only room-clear chest left, so it is First or Second; First chosen (huge rupee -> red rupee, the most valuable). Both have the same SoH rule, so the choice has no logic effect."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_SECOND_CHEST",
+   "hash": "8186301369655588602",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_SECOND_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Maze Path Second Chest",
+   "area": "Gerudo Training Ground Central Maze",
+   "confidence": "high",
+   "evidence": "Red rupee (same as N64) at (-13.2,98,-60.5) in the SW cell, 4 doors in (D2, D1, D5, D8): 4 + 2 = SoH's SmallKeys(6)."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_NEAR_SCARECROW_CHEST",
+   "hash": "9911316961118170383",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_NEAR_SCARECROW_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_ABOVE_MAZE",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Near Scarecrow Chest",
+   "area": "Gerudo Training Ground Above Eye",
+   "confidence": "high",
+   "evidence": "Small key at y=105 on the iron grating (IronBars_A_02 horizontal at y~105) over the maze centre, right above the ice-arrow chest. It is reached from the upper walkway and stairs (Stair_A_02) behind the room-8/room-4 shutter at (-2.3,106,-58.9), which the eye-statue gimmick opens; Pierre's Obj_ScarecrowMarker_B_00 is just past that door (1.5,106,-63.1). That is SoH's Above Maze region (from Eye Statue Upper after clearing the statue)."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_FIRST_CHEST",
+   "hash": "10696620323243142689",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_FIRST_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Maze Path First Chest",
+   "area": "Gerudo Training Ground Central Maze",
+   "confidence": "high",
+   "evidence": "Purple rupee (same as N64) at (-19.2,98,-46.2) in the west strip, 2 doors in (D2, D1): 2 + 2 possibly wasted = SoH's SmallKeys(4). Room 8 maze topology rebuilt from the wall/iron-bar meshes (Land_GerudoTraining_RoomWall_A_08 + IronBars_A_02 + WireMesh_A_01) and the 9 chain-locked doors (Obj_Gerudo_SwitchShutter_A_06 + 2 Obj_DoorChainLock_A_01 each): entrance cell -D2(-6.6,-40.8)- NW cell -D1(-16.2,-36)- west strip -D5(-9,-48)- west-lower -D8(-18.6,-57.6)- SW -D7(-1.8,-55.2)- south -D9(5.4,-57.6)- east-inner column -D6(3,-50.4)- centre; second branch entrance -D3(3,-40.9)- NE cell -D4(15,-38.4)- east region (lava-room door at 29.3,-45.6). Worst case (both side-branch doors wasted) gives exactly SoH's counts."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_THIRD_CHEST",
+   "hash": "10743352138513225188",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_MAZE_PATH_THIRD_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Maze Path Third Chest",
+   "area": "Gerudo Training Ground Central Maze",
+   "confidence": "high",
+   "evidence": "Obj_TBox_A_06 (Drop__CheckActor Item_Range_Bow, DropActor red rupee, Substitute small arrows = N64's 30 arrows) at (-9,98,-60) in the south cell, 5 doors in (... D7): 5 + 2 = SoH's SmallKeys(7). The only room-8 chest without DefaultDungeonRoomIndex, but it is in the room-8 prefab (Room_08_Prefab_cd90). Note the bow check when writing an item into it (see divergences)."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_LOBBY_LEFT_CHEST",
+   "hash": "11182647876438515984",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_LOBBY_LEFT_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_LOBBY",
+   "condition": "(ctx->GetTrickOption(RT_LENS_GTG) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_ArrowBundle_Medium",
+   "name": "Lobby Left Chest",
+   "area": "Gerudo Training Ground Lobby",
+   "confidence": "high",
+   "evidence": ""
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_EYE_STATUE_CHEST",
+   "hash": "11563468890171962383",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_EYE_STATUE_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_EYE_STATUE_LOWER",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Eye Statue Chest",
+   "area": "Gerudo Training Ground Eye Statue Lower",
+   "confidence": "high",
+   "evidence": "Room 4 (Obj_Gerudo_StoneStatue_B_01 + Obj_Gerudo_RotateFloor_A_01, lower floor y=96.3). Small key, SpawnType 1. Event GerudoTrainingGround_Room04_StoneGimmick makes it appear and opens the shutter (-2.3,106,-59.4) to the maze's upper floor; the room's Obj_EyeSwitch_A_05 is in that gimmick group. That is SoH's LOGIC_GTG_CLEARED_EYE_STATUE (bow) giving both the chest and RR_..._ABOVE_MAZE."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_MAZE_RIGHT_SIDE_CHEST",
+   "hash": "11683433230229591151",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_MAZE_RIGHT_SIDE_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_CENTRAL_MAZE_RIGHT",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Maze Right Side Chest",
+   "area": "Gerudo Training Ground Central Maze Right",
+   "confidence": "high",
+   "evidence": "Obj_TBox_A_06 (bow check; red rupee, Substitute small arrows = N64's 30 arrows) at (10.2,98,-50.5) in the same east region as the bombchu chest."
+  },
+  {
+   "id": "CHEST_11754783663699171680",
+   "hash": "11754783663699171680",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": null,
+   "region": "RR_GERUDO_TRAINING_GROUND_LIKE_LIKE_ROOM",
+   "condition": "logic->CanHitEyeTargets() && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Chest (remake only, Small)",
+   "area": "Gerudo Training Ground Like Like Room",
+   "confidence": "low",
+   "evidence": "Remake-new (probably). Room 10. NoBake, SpawnType 1, Scrub Business Seed. It falls when the Obj_EyeSwitch_A_02 right above it (-54.2,109.1,-131.7) is hit: EventRequestActor GerudoTrainingGround_10_FallTreasureBox references both. N64 has no eye-switch chest in this room. See the Second-chest entry for the possible swap."
+  },
+  {
+   "id": "RC_GERUDO_TRAINING_GROUND_STALFOS_CHEST",
+   "hash": "13501407288943710656",
+   "copies": [],
+   "map": "GerudoTrainingGround",
+   "rc": "RC_GERUDO_TRAINING_GROUND_STALFOS_CHEST",
+   "region": "RR_GERUDO_TRAINING_GROUND_SAND_ROOM",
+   "condition": "logic->CanKillEnemy(RE_STALFOS, ED_CLOSE, true, 4, true) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Stalfos Chest",
+   "area": "Gerudo Training Ground Sand Room",
+   "confidence": "high",
+   "evidence": "Room 1 (Stalfos room, west of the lobby). Only chest there, a small key, NoBake + SpawnType 1, appearing via Gimmick_TreasureBoxAppear_Any_Fall (event GerudoTrainingGround_01_AppearTreasureBox_From00, with the room's Obj_EnemyCounter). The prefab holds 4 Enemy_Stalfos (two pairs at the same spots = waves) instead of N64's 2, hence quantity 4 (SoH's quantity is a placeholder, so this is functionally the same rule)."
+  },
+  {
+   "id": "CHEST_6463521162691873710",
+   "hash": "6463521162691873710",
+   "copies": [],
+   "map": "GerudoValley",
+   "rc": null,
+   "region": "RR_GV_OCTOROK_GROTTO",
+   "condition": "(logic->HasItem(RG_BRONZE_SCALE) || logic->CanUse(RG_IRON_BOOTS)) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Chest (remake only, Small)",
+   "area": "GV Octorok Grotto",
+   "confidence": "low",
+   "evidence": "Remake-new. Grotto under the silver boulder Obj_LiftRock_B_01 (hammer reflects off it) at the valley-floor ledge (13.8,6.4,35.1), i.e. the GV Octorok Grotto. Interior: 3 Enemy_Octorok in water (y=-21.1, flowing water plane) and this chest (scrub seed) at (31.2,-22.6,37.0), 1.5 m below the octoroks, past them. The water access requirement is modelled after SoH's octorok-grotto rupees."
+  },
+  {
+   "id": "RC_GV_CHEST",
+   "hash": "13612880783193811229",
+   "copies": [],
+   "map": "GerudoValley",
+   "rc": "RC_GV_CHEST",
+   "region": "RR_GV_FORTRESS_SIDE",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest",
+   "area": "GV Fortress Side",
+   "confidence": "high",
+   "evidence": "Adult-only small chest (GerudoValley_Adult_Dynamic) at (-33.7,102.2,22.1) ringed by BrokenIronRock fragments (hammer boulders) on the fortress side. This is N64's GV chest behind the bronze boulders (hammer). Purple -> red rupee."
+  },
+  {
+   "id": "RC_GV_CRATE_FREESTANDING_POH",
+   "hash": "15856256242099990922",
+   "copies": [],
+   "map": "GerudoValley",
+   "rc": "RC_GV_CRATE_FREESTANDING_POH",
+   "region": "RR_GV_CRATE_LEDGE",
+   "condition": "logic->CanOpenLargeChest()",
+   "vanilla": "Obj_Heart_Piece",
+   "name": "Crate Freestanding PoH",
+   "area": "GV Crate Ledge",
+   "confidence": "medium",
+   "evidence": "Big chest with Obj_Heart_Piece (HeartPieceAnchor linked), both ages Static, at (-9.5,90.5,35.0) on a ledge mid-valley near Animal_Cucco_GerudoValley (cucco-glide spot) and the bridge. The valley's other HeartPieceAnchor (4.9,59.2,-78.2) is at the waterfall. So this replaces N64's GV Crate Freestanding PoH (SoH RC_GV_CRATE_FREESTANDING_POH, region RR_GV_CRATE_LEDGE), which is not a chest RC; no crate is there."
+  },
+  {
+   "id": "CHEST_17750686910716887133",
+   "hash": "17750686910716887133",
+   "copies": [],
+   "map": "GerudoValley",
+   "rc": null,
+   "region": "RR_GV_STORMS_GROTTO",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Green",
+   "name": "Chest (remake only, Small)",
+   "area": "GV Storms Grotto",
+   "confidence": "medium",
+   "evidence": "Remake-new. Grotto on the fortress side (hole (-47.9,101.2,-29.7), near GerudoValley_FromGerudoFortress, RunningRace_pos and the carpenter-tent bed) under Land_Gerudo_HidingHoleCover_A_02, which derives from the DisappearSrom base (Song of Storms), so the GV Storms Grotto. Interior: pots, this green-rupee chest (Dynamic, both ages) and an invisible chest 4 m away. No scrubs. Hole exists in both the Child and Adult files."
+  },
+  {
+   "id": "CHEST_18413589940135955604",
+   "hash": "18413589940135955604",
+   "copies": [
+    "6205043616869463865"
+   ],
+   "map": "GerudoValley",
+   "rc": null,
+   "region": "RR_GV_STORMS_GROTTO",
+   "condition": "logic->IsAdult && logic->CanUse(RG_LENS_OF_TRUTH) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "GV Storms Grotto",
+   "confidence": "medium",
+   "evidence": "Remake-new. Obj_TBox_GlassTruth_A_01 (invisible, needs Lens) red-rupee chest, GerudoValley_Adult_Dynamic, in the GV storms grotto at (-43.3,84.0,-46.0). Adult copy; child copy is 6205043616869463865 at the same position."
+  },
+  {
+   "id": "RC_GC_MAZE_CENTER_CHEST",
+   "hash": "1176975953041865014",
+   "copies": [],
+   "map": "GoronCity",
+   "rc": "RC_GC_MAZE_CENTER_CHEST",
+   "region": "RR_GORON_CITY",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Maze Center Chest",
+   "area": "Goron City",
+   "confidence": "low",
+   "evidence": "Maze chest (-47.4,113.7,-2.35), blue rupee, behind bombable Obj_BrokenRock_A_01 (-42.8,-2.35) on the same line, matching SoH's center rule (BlastOrSmash or silver). It sits by GOSSIP_GORON_CITY_02. The remake maze has 4 chests (N64: 3); whether this or 14647422914070455120 is 'center' is a judgement call."
+  },
+  {
+   "id": "RC_GC_MAZE_RIGHT_CHEST",
+   "hash": "3870071239709713434",
+   "copies": [],
+   "map": "GoronCity",
+   "rc": "RC_GC_MAZE_RIGHT_CHEST",
+   "region": "RR_GORON_CITY",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Maze Right Chest",
+   "area": "Goron City",
+   "confidence": "medium",
+   "evidence": "Maze chest (-43.2,113.7,-8.4), purple rupee (N64 right = purple), rightmost, behind bombable Obj_BrokenRock_A_01 (-38.9,-8.4) on the same line, matching SoH's right rule."
+  },
+  {
+   "id": "RC_GC_MAZE_LEFT_CHEST",
+   "hash": "4402942101476009858",
+   "copies": [],
+   "map": "GoronCity",
+   "rc": "RC_GC_MAZE_LEFT_CHEST",
+   "region": "RR_GORON_CITY",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Maze Left Chest",
+   "area": "Goron City",
+   "confidence": "medium",
+   "evidence": "Boulder-maze chest at the far west end (-48.4,113.7,2.0), red rupee. The approach along z~2 is blocked by Obj_BrokenRock_A_02 hammer rocks (-45.2,2.0) and (-41.8,2.4) as well as silver rocks, matching SoH's left chest (hammer or silver gauntlets). It is the leftmost of the 4 chests from either maze approach."
+  },
+  {
+   "id": "CHEST_9159710900681116662",
+   "hash": "9159710900681116662",
+   "copies": [],
+   "map": "GoronCity",
+   "rc": null,
+   "region": "RR_REMAKE_GC_SECRET_HOLE",
+   "condition": "logic->CanRead() && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Green",
+   "name": "Chest (remake only, Small)",
+   "area": "Goron City Secret Hole",
+   "confidence": "low",
+   "evidence": "Remake-new. Uncovered hidden hole on the top floor south of the maze (hole (-39.8,113.5,27.9), AiGroup HidingHole_Level_Hole_17; no maze rocks within 14 m). Not N64's GC Grotto, which is on the lava-room platform. The interior has 6 Obj_SignBoard_A_01 (SignboardHole__00..05, event SignboardCheck_GoronCity_SecretHole_00) and 2 pedestal chests. This one (green rupee) is spawned by GoronCity_SecretHole_AppearTreasureBox with camPos_hazure (wrong-answer chest)."
+  },
+  {
+   "id": "CHEST_10944569637726152230",
+   "hash": "10944569637726152230",
+   "copies": [],
+   "map": "GoronCity",
+   "rc": null,
+   "region": "RR_REMAKE_GC_SECRET_HOLE",
+   "condition": "logic->CanRead() && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Chest (remake only, Small)",
+   "area": "Goron City Secret Hole",
+   "confidence": "low",
+   "evidence": "Remake-new. Same sign-puzzle hole; purple-rupee chest spawned by GoronCity_SecretHole_AppearTreasureBox2 with camPos_atari (right-answer chest)."
+  },
+  {
+   "id": "CHEST_14647422914070455120",
+   "hash": "14647422914070455120",
+   "copies": [],
+   "map": "GoronCity",
+   "rc": null,
+   "region": "RR_GORON_CITY",
+   "condition": "(logic->BlastOrSmash() || logic->CanUse(RG_SILVER_GAUNTLETS)) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Chest (remake only, Small)",
+   "area": "Goron City",
+   "confidence": "low",
+   "evidence": "Remake-new 4th maze chest (-47.4,113.7,-5.15), blue rupee, 2.8 m from the center chest and next to the gossip stone. Silver rocks (Obj_LiftRock_B_01) and one Obj_LiftRock_A_03 surround it. Given the center chest's rule as the most likely (same pocket)."
+  },
+  {
+   "id": "RC_GRAVEYARD_DAMPE_RACE_FREESTANDING_POH",
+   "hash": "5534919361313859554",
+   "copies": [],
+   "map": "Graveyard",
+   "rc": "RC_GRAVEYARD_DAMPE_RACE_FREESTANDING_POH",
+   "region": "RR_GRAVEYARD_DAMPES_GRAVE",
+   "condition": "(logic->IsAdult || logic->BunnyHood()) && logic->HasItem(RG_SPEAK_HYLIAN) && logic->CanOpenLargeChest()",
+   "vanilla": "Obj_Heart_Piece",
+   "name": "Dampe Race Freestanding PoH",
+   "area": "Graveyard Dampes Grave",
+   "confidence": "high",
+   "evidence": "Dampe race goal big chest #2 at the same spot (state AppearHeartPiece), Obj_Heart_Piece, HeartPieceAnchor linked. This is SoH's RC_GRAVEYARD_DAMPE_RACE_FREESTANDING_POH, a freestanding item in N64/SoH and not a chest RC, so soh_rc is null. Its rule is SoH's freestanding-PoH rule plus opening a big chest. The mod should treat it as that check (see divergences)."
+  },
+  {
+   "id": "RC_GRAVEYARD_HEART_PIECE_GRAVE_CHEST",
+   "hash": "9622128545943056087",
+   "copies": [],
+   "map": "Graveyard",
+   "rc": "RC_GRAVEYARD_HEART_PIECE_GRAVE_CHEST",
+   "region": "RR_GRAVEYARD_HEART_PIECE_GRAVE",
+   "condition": null,
+   "vanilla": "Obj_Heart_Piece",
+   "name": "Heart Piece Grave Chest",
+   "area": "Graveyard Heart Piece Grave",
+   "confidence": "high",
+   "evidence": "Big chest with Obj_Heart_Piece in the grave reached through hole (20.0,103.9,20.8). That hole's HeartPieceAnchor (21.39,105.05,23.15) is linked to this chest. Note: no Sun's Song trigger or spawn link to the chest was found (it is a plain Static actor), so the remake may not hide it. SoH's stricter rule (Sun's Song) is kept; see divergences."
+  },
+  {
+   "id": "RC_GRAVEYARD_HOOKSHOT_CHEST",
+   "hash": "16041366920820397198",
+   "copies": [],
+   "map": "Graveyard",
+   "rc": "RC_GRAVEYARD_HOOKSHOT_CHEST",
+   "region": "RR_GRAVEYARD_DAMPES_GRAVE",
+   "condition": null,
+   "vanilla": "Item_Hookshot",
+   "name": "Hookshot Chest",
+   "area": "Graveyard Dampes Grave",
+   "confidence": "high",
+   "evidence": "Dampe race goal big chest (Graveyard_Adult_Static, UnderTheGrave_Prefab, linked to/from Npc_Hylia_Dampe_002), Item_Hookshot, event MiniGame_DampeRace_OpenGoalTBox (state AppearHookShot)."
+  },
+  {
+   "id": "RC_GRAVEYARD_SHIELD_GRAVE_CHEST",
+   "hash": "16912540161937823130",
+   "copies": [],
+   "map": "Graveyard",
+   "rc": "RC_GRAVEYARD_SHIELD_GRAVE_CHEST",
+   "region": "RR_GRAVEYARD_SHIELD_GRAVE",
+   "condition": null,
+   "vanilla": "TBox_Shield_Hylian",
+   "name": "Shield Grave Chest",
+   "area": "Graveyard Shield Grave",
+   "confidence": "high",
+   "evidence": "Obj_TBox_A_06 with Drop TBox_Shield_Hylian (CheckActor/Substitute red rupee if already owned) in the grave reached through hole (20.1,103.9,8.8). The room also holds a WallCrack (the fairy-fountain back room). Remake adds an Enemy_ReDead 1.8 m from the chest; SoH's CanAvoidEnemy(RE_REDEAD) is already true, so SoH's rule stands."
+  },
+  {
+   "id": "RC_WASTELAND_CHEST",
+   "hash": "8825521833684392638",
+   "copies": [],
+   "map": "HountedWasteland",
+   "rc": "RC_WASTELAND_CHEST",
+   "region": "RR_HAUNTED_WASTELAND",
+   "condition": null,
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Chest",
+   "area": "Haunted Wasteland",
+   "confidence": "high",
+   "evidence": "Chest with SpawnType 1 (appears on a condition) in AiGroup HountedWasteland_Level_House (the wasteland ruin), spawned by HountedWasteland_Ruins_AppearTreasureBox next to Obj_CandleStick_A_02 torches and a Gold Skulltula. That is N64's wasteland structure chest (light torches). Purple -> scrub seed."
+  },
+  {
+   "id": "CHEST_1163740567397714729",
+   "hash": "1163740567397714729",
+   "copies": [],
+   "map": "HyruleField",
+   "rc": null,
+   "region": "RR_HYRULE_FIELD",
+   "condition": "logic->IsAdult && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "Hyrule Field",
+   "confidence": "medium",
+   "evidence": "Remake-new. Red-rupee small chest in HyruleField Adult_Dynamic only, at (-5.7,146.2,406.9) in south Hyrule Field, east of the Lake Hylia map icon at x=-93. Enemy_Poe 2 m away; child's file has HrlField_Note_08 there. Adult only."
+  },
+  {
+   "id": "CHEST_2967378296224661060",
+   "hash": "2967378296224661060",
+   "copies": [],
+   "map": "HyruleField",
+   "rc": null,
+   "region": "RR_HYRULE_FIELD",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Obj_Heart_Piece",
+   "name": "Chest (remake only, Small)",
+   "area": "Hyrule Field",
+   "confidence": "medium",
+   "evidence": "Remake-new Piece of Heart chest (Obj_TBox_A_01_memo11, HeartPieceAnchor linked to it). HyruleField Child_Static and Adult_Dynamic (both ages) at (-213.3,133.5,138.7), west Hyrule Field toward Gerudo Valley, about 9 m below the field surface. Next to it is the fairy note HrlField_Note_11 ('take what's in this treasure chest... the shiny, sparkling heart inside'). N64's Hyrule Field has no such Heart Piece, so this is an extra PoH."
+  },
+  {
+   "id": "RC_KAK_REDEAD_GROTTO_CHEST",
+   "hash": "5755485285664292988",
+   "copies": [],
+   "map": "HyruleField",
+   "rc": "RC_KAK_REDEAD_GROTTO_CHEST",
+   "region": "RR_KAK_REDEAD_GROTTO",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Redead Grotto Chest",
+   "area": "Kak Redead Grotto",
+   "confidence": "medium",
+   "evidence": "Grotto chest (Static, pedestal, AiGroup HidingHole_Level_Hole_05) behind 2 Enemy_ReDead_AlwaysRespawn. It is spawned by an EventRequestActor whose event is named KakarikoVillage_TreasureBoxAppear. That matches SoH's Kak Redead Grotto (kill 2 ReDeads, then the chest) by content and event name. However, the hole is in the HyruleField map at (165.4,155.4,36.3), 40 m from the HF->Kakariko transition, under a Song of Storms cover (Land_Kokiri_HidingHoleCover_A_01 + Strom anchor). The Kakariko map's own bomb-covered hole (-20,66) holds only a gossip stone, beehives and water. N64 contents changed (huge rupee -> purple). SoH's location rule fits; the entrance does not (see divergences)."
+  },
+  {
+   "id": "CHEST_6900843020594897860",
+   "hash": "6900843020594897860",
+   "copies": [],
+   "map": "HyruleField",
+   "rc": null,
+   "region": "RR_LH_GROTTO",
+   "condition": "logic->HasFireSourceWithTorch() && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "LH Grotto",
+   "confidence": "medium",
+   "evidence": "Remake-new. The only Lake Hylia grotto: an uncovered hole with Land_LakeHyrl_HidingHoleJoint_A_01 at (-203.5,137.7,458.4), AiGroup HidingHole_Level_Hole_30. That position is SoH's LH Grotto (deku scrubs under a liftable rock in N64). The interior has 4 Obj_CandleStick_TimeExtinguish_A_01 and a pedestal chest (red rupee) spawned by an EventRequestActor (TreasureBoxAppear_Magic), so the chest needs the timed candles lit. ZD's identical candles are lit with Deku sticks in SoH, hence HasFireSourceWithTorch. No scrubs were found in the interior."
+  },
+  {
+   "id": "CHEST_9891111455604007674",
+   "hash": "9891111455604007674",
+   "copies": [],
+   "map": "HyruleField",
+   "rc": null,
+   "region": "RR_HYRULE_FIELD",
+   "condition": "logic->IsAdult && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "Hyrule Field",
+   "confidence": "medium",
+   "evidence": "Remake-new. Red-rupee small chest in HyruleField Adult_Dynamic only, at (84.4,152.6,45.4) east of the Market entrance, guarded by an Enemy_Poe 3 m away. Child's file has fairy note HrlField_Note_04 at the same spot instead. Adult only, with no spawn condition."
+  },
+  {
+   "id": "CHEST_17023457248274633121",
+   "hash": "17023457248274633121",
+   "copies": [],
+   "map": "HyruleField",
+   "rc": null,
+   "region": "RR_LAKE_HYLIA",
+   "condition": "logic->IsAdult && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "Lake Hylia",
+   "confidence": "medium",
+   "evidence": "Remake-new. Red-rupee small chest in HyruleField Adult_Dynamic only, at (-297.4,131.3,558.1), among the Lake Hylia gossip stones (GOSSIP_LAKE_HYLIA_01/02/03 at (-192,522), (-330,501), (-235,579)), so on the Lake Hylia shore that is part of the HyruleField map. Enemy_Poe 2 m away; child's file has pots and HrlField_Note_06 there. Adult only."
+  },
+  {
+   "id": "CHEST_17445672702269453589",
+   "hash": "17445672702269453589",
+   "copies": [],
+   "map": "HyruleField",
+   "rc": null,
+   "region": "RR_LLR_TOWER",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Chest (remake only, Small)",
+   "area": "LLR Tower",
+   "confidence": "low",
+   "evidence": "Remake-new. Small chest (Business Scrub seed), Child+Adult Dynamic at (-151.9,162.0,265.3), inside a small LocationArea 'LonLonRanch' box and IndoorAreaBoxes. On the floor 11 m below (y=150.9) are the Lon Lon tower freestanding Heart Piece (SoH RC_LLR_FREESTANDING_POH), Obj_LonLonRanch_MovableBox_A_01 crates, CrawlAnchors and a Field_TunnelTooSmall event for adults: this is the LLR Tower. The chest sits on an upper floor near a nocturnal Gold Skulltula and HrlField_Note_15 (Sun's Song fairy). How the upper floor is reached (age, ladder or crates) is not known."
+  },
+  {
+   "id": "CHEST_4128092231168513176",
+   "hash": "4128092231168513176",
+   "copies": [],
+   "map": "IceCavern",
+   "rc": null,
+   "region": "RR_ICE_CAVERN_FIRE_NOOK",
+   "condition": "logic->CanUse(RG_SONG_OF_TIME) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "Ice Cavern Fire Nook",
+   "confidence": "medium",
+   "evidence": "Remake-new. Room 8 = the push-block room (Obj_SliderBox, 5 silver rupees, a door locked by the rupee counter). The chest at (-53.1,107.2,-34.2) is 13 m from the blue-fire pedestal (-54.0,103.9,-20.9, SoH's Fire Nook), at the end of 3 Obj_SongOfTimeBlock_A_01 laid in a line between them. They are controlled by Obj_SongOfTimeSign_A_01 with isDefaultActive=false, so the blocks appear only with the Song of Time. This SoH tree already gives the Fire Nook's rupees a Song of Time rule."
+  },
+  {
+   "id": "RC_ICE_CAVERN_IRON_BOOTS_CHEST",
+   "hash": "6859289214373847284",
+   "copies": [],
+   "map": "IceCavern",
+   "rc": "RC_ICE_CAVERN_IRON_BOOTS_CHEST",
+   "region": "RR_ICE_CAVERN_FINAL_ROOM",
+   "condition": null,
+   "vanilla": "Item_HeavyBoot",
+   "name": "Iron Boots Chest",
+   "area": "Ice Cavern Final Room",
+   "confidence": "high",
+   "evidence": "Big NoBake chest, Item_HeavyBoot, GetEventName SageOfWater_MelodyGet_Water (the Serenade of Water scene with Sheik). It appears on TreasureBoxAppear_Room04 after the Enemy_Wolfos_White in its AiGroup."
+  },
+  {
+   "id": "RC_ICE_CAVERN_MAP_CHEST",
+   "hash": "11498802739257120175",
+   "copies": [],
+   "map": "IceCavern",
+   "rc": "RC_ICE_CAVERN_MAP_CHEST",
+   "region": "RR_ICE_CAVERN_MAP_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Map",
+   "name": "Map Chest",
+   "area": "Ice Cavern Map Room",
+   "confidence": "high",
+   "evidence": "Big chest, Item_Dungeon_Map, frozen in red ice (Obj_RedIce_A_01 links FrozenInIce to it): SoH's blue-fire map chest."
+  },
+  {
+   "id": "RC_ICE_CAVERN_COMPASS_CHEST",
+   "hash": "13542013937093159888",
+   "copies": [],
+   "map": "IceCavern",
+   "rc": "RC_ICE_CAVERN_COMPASS_CHEST",
+   "region": "RR_ICE_CAVERN_COMPASS_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Compass",
+   "name": "Compass Chest",
+   "area": "Ice Cavern Compass Room",
+   "confidence": "high",
+   "evidence": "Big chest, Item_Dungeon_Compass, in room 6 (GS, Sun's Song fairy, a red ice block freezing two pots). Unlike on N64 it is NOT frozen (no FrozenInIce link to it), so SoH's BlueFire on the chest is redundant here. That is harmless: SoH's way into the room already needs blue fire."
+  },
+  {
+   "id": "RC_GANONS_CASTLE_LIGHT_TRIAL_FIRST_LEFT_CHEST",
+   "hash": "1029712040059298120",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_FIRST_LEFT_CHEST",
+   "region": "RR_GANONS_CASTLE_LIGHT_TRIAL_CHESTS_ROOM",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Light Trial First Left Chest",
+   "area": "Ganon's Castle Light Trial Chests Room",
+   "confidence": "high",
+   "evidence": "Room 12 (light trial chest room; entered from the hall at x=-33 walking -x, so z>-21 is left, larger x is nearer). Its 6 wall chests are 3 Obj_TBox_A_01 and 3 Obj_TBox_A_04 trap chests, and the traps sit exactly where N64's 3 ice traps are (Second Left, First Right, Third Right). This is the left chest nearest the door (-36.0,-16.5). Blue rupee as in N64."
+  },
+  {
+   "id": "RC_GANONS_CASTLE_LIGHT_TRIAL_LULLABY_CHEST",
+   "hash": "4733634471038136588",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_LULLABY_CHEST",
+   "region": "RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Green",
+   "name": "Light Trial Lullaby Chest",
+   "area": "Ganon's Castle Light Trial Triforce Room",
+   "confidence": "high",
+   "evidence": "Room 13 (triforce room). NoBake chest linked from an EventProxyRequestActor whose EventProxyRequestLink is Obj_TriForcePoint_A_12 (the Zelda's Lullaby triforce mark, 3 m away). Holds a green rupee now, not N64's small key."
+  },
+  {
+   "id": "RC_GANONS_CASTLE_LIGHT_TRIAL_THIRD_LEFT_CHEST",
+   "hash": "7461796063704896255",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_THIRD_LEFT_CHEST",
+   "region": "RR_GANONS_CASTLE_LIGHT_TRIAL_CHESTS_ROOM",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Light Trial Third Left Chest",
+   "area": "Ganon's Castle Light Trial Chests Room",
+   "confidence": "high",
+   "evidence": "Room 12, left side, farthest from the door (-45.1,-16.6). Recovery heart -> blue rupee. See the First Left entry for the layout."
+  },
+  {
+   "id": "RC_GANONS_CASTLE_SPIRIT_TRIAL_CRYSTAL_SWITCH_CHEST",
+   "hash": "7899179288432849355",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_CASTLE_SPIRIT_TRIAL_CRYSTAL_SWITCH_CHEST",
+   "region": "RR_GANONS_CASTLE_SPIRIT_TRIAL_BEFORE_SWITCH",
+   "condition": "logic->CanKillEnemy(RE_TORCH_SLUG, ED_CLOSE, true, 2) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Spirit Trial Crystal Switch Chest",
+   "area": "Ganon's Castle Spirit Trial Before Switch",
+   "confidence": "medium",
+   "evidence": "Room 17 = the spirit trial's second room (after beamos/silver-rupee room 16; crystal switch Obj_SwitchHit_A_02, spider web, light shaft, sun switches, Wallmasters, Floormasters). The trial's only chest, on a pedestal at its entrance end, before the shutter the crystal switch opens: the place of N64's Crystal Switch Chest. It now appears when the 2 Enemy_TorchSlug of its prefab die (Gimmick_TreasureBoxAppear_Magic, InsideGanonCastle_Dungeon_AppaerTreasureBox), not from the switch. Bombchus -> Scrub Business Seed. N64's invisible chest has no counterpart."
+  },
+  {
+   "id": "RC_GANONS_CASTLE_LIGHT_TRIAL_SECOND_RIGHT_CHEST",
+   "hash": "14046623154429024571",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_SECOND_RIGHT_CHEST",
+   "region": "RR_GANONS_CASTLE_LIGHT_TRIAL_CHESTS_ROOM",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Light Trial Second Right Chest",
+   "area": "Ganon's Castle Light Trial Chests Room",
+   "confidence": "high",
+   "evidence": "Room 12, right side, middle (-40.6,-27.3), between two A_04 traps. 30 arrows -> blue rupee."
+  },
+  {
+   "id": "RC_GANONS_CASTLE_WATER_TRIAL_RIGHT_CHEST",
+   "hash": "14404733996390762670",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_CASTLE_WATER_TRIAL_RIGHT_CHEST",
+   "region": "RR_GANONS_CASTLE_WATER_TRIAL_BLUE_FIRE_ROOM",
+   "condition": null,
+   "vanilla": "Item_BombchuBundle_Small",
+   "name": "Water Trial Right Chest",
+   "area": "Ganon's Castle Water Trial Blue Fire Room",
+   "confidence": "high",
+   "evidence": "Room 5 (ice pillars, icicles, Freezards, red ice: the blue-fire room). Entered from the hall walking +x, so +z is right: this chest is at z=-15.2 (right), and the Obj_TBox_A_04 trap chest at z=-26.8 (left) = N64's Water Trial Left ice trap. Recovery heart -> bombchus."
+  },
+  {
+   "id": "RC_GANONS_CASTLE_LIGHT_TRIAL_INVISIBLE_ENEMIES_CHEST",
+   "hash": "14962432460641118089",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_CASTLE_LIGHT_TRIAL_INVISIBLE_ENEMIES_CHEST",
+   "region": "RR_GANONS_CASTLE_LIGHT_TRIAL_CHESTS_ROOM",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Light Trial Invisible Enemies Chest",
+   "area": "Ganon's Castle Light Trial Chests Room",
+   "confidence": "high",
+   "evidence": "Room 12 centre pedestal (-40.4,99.9,-21). NoBake, appears via Gimmick_TreasureBoxAppear_Any_Magic grouped with Enemy_Skulltula_Truth + 3 Enemy_Keese_Truth (invisible enemies) and the room's 2 Obj_EnemyCounter. Same rule as SoH; but it holds a red rupee now, not N64's small key."
+  },
+  {
+   "id": "CHEST_15320975652699461295",
+   "hash": "15320975652699461295",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": null,
+   "region": "RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM",
+   "condition": "(ctx->GetTrickOption(RT_LENS_GANON) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Chest (remake only, Small)",
+   "area": "Ganon's Castle Light Trial Triforce Room",
+   "confidence": "high",
+   "evidence": "Remake-new. Invisible Obj_TBox_GlassTruth_A_01 in room 13 (-52.2,100,-16.5; DefaultDungeonRoomIndex 13, 9 m from the Lullaby chest), no links, no SpawnType: always there, needs the lens. It holds Ganon's Castle's only small key; the castle's only key door is the next one, triforce room -> boulder room (Obj_DoorChainLock_A_01 pair at -56.5,99.7,-21)."
+  },
+  {
+   "id": "RC_GANONS_CASTLE_FOREST_TRIAL_CHEST",
+   "hash": "16913531450403950487",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_CASTLE_FOREST_TRIAL_CHEST",
+   "region": "RR_GANONS_CASTLE_FOREST_TRIAL_WOLFOS_ROOM",
+   "condition": null,
+   "vanilla": "TBox_ArrowBundle_Medium",
+   "name": "Forest Trial Chest",
+   "area": "Ganon's Castle Forest Trial Wolfos Room",
+   "confidence": "high",
+   "evidence": "Room 2 (forest trial's first room, 2 Enemy_Wolfos, timed candles that open the next shutter). The only chest of the forest trial, on a pedestal, appearing via Gimmick_TreasureBoxAppear_Magic grouped with the Wolfos (InsideGanonCastle_Dungeon_AppaerTreasureBox_02). Blue rupee -> arrows."
+  },
+  {
+   "id": "RC_GANONS_TOWER_BOSS_KEY_CHEST",
+   "hash": "17092385671602176550",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_TOWER_BOSS_KEY_CHEST",
+   "region": "RR_GANONS_TOWER_FLOOR_3",
+   "condition": "logic->CanKillEnemy(RE_IRON_KNUCKLE, ED_CLOSE, true, 2) && logic->CanOpenLargeChest()",
+   "vanilla": "Item_Dungeon_BossKey",
+   "name": "Tower Boss Key Chest",
+   "area": "Ganon's Tower Floor 3",
+   "confidence": "high",
+   "evidence": "Ganon's Tower is part of the InsideGanonCastle map (rooms 19-26, y 133-213; the separate GanonCastle map has no chests). This ornate boss-key chest (Obj_TBox_A_03_NoBake, Item_Dungeon_BossKey) is in room 24 at y=149.65 with Enemy_IronKnuckle_Black + _White, and appears through InsideGanonCastle_DefeatEnemy_03 (flow entry DefeatIronKnuckle -> TBoxAppear). The Stalfos floor (room 22, 2 Enemy_Stalfos, InsideGanonCastle_DefeatEnemy_02) has no chest. So it moved from SoH's floor 2 (Stalfos) to floor 3 (Iron Knuckles)."
+  },
+  {
+   "id": "RC_GANONS_CASTLE_SHADOW_TRIAL_GOLDEN_GAUNTLETS_CHEST",
+   "hash": "17657623307936361670",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_CASTLE_SHADOW_TRIAL_GOLDEN_GAUNTLETS_CHEST",
+   "region": "RR_GANONS_CASTLE_SHADOW_TRIAL_CHEST_PLATFORM",
+   "condition": null,
+   "vanilla": "Item_Gauntlet_Gold",
+   "name": "Shadow Trial Golden Gauntlets Chest",
+   "area": "Ganon's Castle Shadow Chest Platform",
+   "confidence": "high",
+   "evidence": "Big chest, Item_Gauntlet_Gold, GetEventName InsideGanonCastle_Get_Gauntlet_Gold. NoBake; appears through Gimmick_TreasureBoxAppear_Magic_03 grouped with Obj_StepSwitch_A_01 (63.6,102.9,-110.3) = SoH's lower switch (LOGIC_SHADOW_TRIAL_LATE_CHEST)."
+  },
+  {
+   "id": "RC_GANONS_CASTLE_SHADOW_TRIAL_FRONT_CHEST",
+   "hash": "18277713685010400796",
+   "copies": [],
+   "map": "InsideGanonCastle",
+   "rc": "RC_GANONS_CASTLE_SHADOW_TRIAL_FRONT_CHEST",
+   "region": "RR_GANONS_CASTLE_SHADOW_TRIAL_START",
+   "condition": null,
+   "vanilla": "TBox_ArrowBundle_Medium",
+   "name": "Shadow Trial Front Chest",
+   "area": "Ganon's Castle Shadow Trial Start",
+   "confidence": "high",
+   "evidence": "Room 8 (shadow trial: Obj_InsideGanonCastle_GlassTruth_A_05 x13, Like Like, the golden-gauntlets chest). Small chest near the trial's entrance (12.6,103.9,-65.9), the room's only other chest. Blue rupee -> arrows."
+  },
+  {
+   "id": "RC_JABU_JABUS_BELLY_COMPASS_CHEST",
+   "hash": "3510516276638146208",
+   "copies": [],
+   "map": "InsideJabuJabuBelly",
+   "rc": "RC_JABU_JABUS_BELLY_COMPASS_CHEST",
+   "region": "RR_JABU_JABUS_BELLY_FORK_NORTH_WEST",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Compass",
+   "name": "Compass Chest",
+   "area": "Jabu Jabus Belly Fork North West",
+   "confidence": "high",
+   "evidence": "Big NoBake chest, Item_Dungeon_Compass, GetEventName InsideJabuJabuBelly_TreasureBoxWithRuto12, in room 12, whose AiGroup has exactly 9 Enemy_Shabom_AlwaysRespawn and an enemy counter. It appears on InsideJabuJabuBelly_Room12_TreasureBoxAppear: SoH's 'kill 9 Shabom' rule."
+  },
+  {
+   "id": "CHEST_3609242017501283521",
+   "hash": "3609242017501283521",
+   "copies": [],
+   "map": "InsideJabuJabuBelly",
+   "rc": null,
+   "region": "RR_JABU_JABUS_BELLY_B1_JIGGLY_POTS",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Chest (remake only, Small)",
+   "area": "Jabu Jabus Belly B1 Jiggly Pots",
+   "confidence": "low",
+   "evidence": "Remake-new. Small chest in room 13 = the B1 'jiggly' room (entered from holes basement room 3; water at y=81.5, Obj_InsideJabu_Jabu_SwayingFloor_A_01 at 78.95, 2 Octoroks). It is on the far ledge (y=82.47), 1-2 m from the room's 4 pots: SoH's 'B1 Jiggly Pots' region. The entry ledge with climbable ivy is across the water. SoH reaches that ledge only with hovers, megajump or bomb recoil; a chest placed there suggests the remake has a normal route, so this rule is likely too strict (but safe)."
+  },
+  {
+   "id": "RC_JABU_JABUS_BELLY_BOOMERANG_CHEST",
+   "hash": "5527401621172639818",
+   "copies": [],
+   "map": "InsideJabuJabuBelly",
+   "rc": "RC_JABU_JABUS_BELLY_BOOMERANG_CHEST",
+   "region": "RR_JABU_JABUS_BELLY_FORK_EAST",
+   "condition": null,
+   "vanilla": "Item_Boomerang",
+   "name": "Boomerang Chest",
+   "area": "Jabu Jabus Belly Fork East",
+   "confidence": "high",
+   "evidence": "Big NoBake chest, Item_Boomerang, GetEventName InsideJabuJabuBelly_TreasureBoxWithRuto09, in room 9, whose AiGroup has exactly 4 Enemy_Stinger. EventRequestActor InsideJabuJabuBelly_TreasureBoxAppear makes it appear when they die: SoH's 'kill 4 Stingers (or Ruto)' rule."
+  },
+  {
+   "id": "RC_JABU_JABUS_BELLY_MAP_CHEST",
+   "hash": "14933854942830098290",
+   "copies": [],
+   "map": "InsideJabuJabuBelly",
+   "rc": "RC_JABU_JABUS_BELLY_MAP_CHEST",
+   "region": "RR_JABU_JABUS_BELLY_WATER_SWITCH_ROOM_SOUTH",
+   "condition": "logic->CanOpenLargeChest()",
+   "vanilla": "Item_Dungeon_Map",
+   "name": "Map Chest",
+   "area": "Jabu Jabus Belly Water Switch Room South",
+   "confidence": "medium",
+   "evidence": "The dungeon map, but MOVED. On N64/SoH it is in the west fork room, behind a tentacle; the remake's tentacle rooms (8 green, 10 red, 11 blue) hold only the tentacle. This one is an ordinary always-present big chest (no links, no event) in room 14 = the water-switch room (a pit with the underwater StepSwitch_A_04 and WaterPlaneDynamic, the wall GS above the pots ledge, a hit-switch above the door). It is at main-floor height y=77.55 on the side of the door to room 18 (the lift room's lower level). Matched as the map chest by item and chest type; its location rule is replaced."
+  },
+  {
+   "id": "RC_DEKU_TREE_SLINGSHOT_CHEST",
+   "hash": "821372075822700622",
+   "copies": [],
+   "map": "InsideTheDekuTree",
+   "rc": "RC_DEKU_TREE_SLINGSHOT_CHEST",
+   "region": "RR_DEKU_TREE_SLINGSHOT_ROOM",
+   "condition": null,
+   "vanilla": "Item_Range_SlingShot",
+   "name": "Slingshot Chest",
+   "area": "Deku Tree Slingshot Room",
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName InsideTheDekuTree_GetSlingShot, room 2 (prefab Room_C_efa7)."
+  },
+  {
+   "id": "RC_DEKU_TREE_MAP_CHEST",
+   "hash": "8579518566955184384",
+   "copies": [],
+   "map": "InsideTheDekuTree",
+   "rc": "RC_DEKU_TREE_MAP_CHEST",
+   "region": "RR_DEKU_TREE_LOBBY_2F",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Map",
+   "name": "Map Chest",
+   "area": "Deku Tree Lobby 2F",
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName InsideTheDekuTree_GetMap, DefaultDungeonRoomIndex 0 (remake room 0 = main lobby, prefab Room_A with the floor web and wall Skulltulas), y=108.4, one floor above the lobby floor (~100): the 2F ledge, as on N64."
+  },
+  {
+   "id": "RC_DEKU_TREE_COMPASS_CHEST",
+   "hash": "9284193025315608699",
+   "copies": [],
+   "map": "InsideTheDekuTree",
+   "rc": "RC_DEKU_TREE_COMPASS_CHEST",
+   "region": "RR_DEKU_TREE_COMPASS_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Compass",
+   "name": "Compass Chest",
+   "area": "Deku Tree Compass Room",
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName InsideTheDekuTree_GetCompass, room 3 (prefab Room_D_b6c3, the highest room y~120 with Deku Babas, big Skulltula and a GS). Top floor of the tree, as the N64 3F compass room."
+  },
+  {
+   "id": "RC_DEKU_TREE_COMPASS_ROOM_SIDE_CHEST",
+   "hash": "11368028582977069031",
+   "copies": [],
+   "map": "InsideTheDekuTree",
+   "rc": "RC_DEKU_TREE_COMPASS_ROOM_SIDE_CHEST",
+   "region": "RR_DEKU_TREE_COMPASS_ROOM",
+   "condition": "logic->CanUse(RG_CRAWL) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_DekuNutBundle",
+   "name": "Compass Room Side Chest",
+   "area": "Deku Tree Compass Room",
+   "confidence": "medium",
+   "evidence": "Only small chest in room 3 (same room index as the compass chest). It sits 17 m west of and 5 m above the compass chest (-65.2,125.6,0), and the way there passes a crawlspace (CrawlAnchor pair at x=-52.8/-57.8, y=120.3, right behind the compass chest). The identity is sure; the crawl requirement is new versus SoH (it only matters with crawl shuffle). Contents changed (recovery heart -> TBox_DekuNutBundle)."
+  },
+  {
+   "id": "RC_DEKU_TREE_BASEMENT_CHEST",
+   "hash": "12889104996486369065",
+   "copies": [],
+   "map": "InsideTheDekuTree",
+   "rc": "RC_DEKU_TREE_BASEMENT_CHEST",
+   "region": "RR_DEKU_TREE_BASEMENT_LOWER",
+   "condition": "(logic->HasFireSourceWithTorch() || logic->CanUse(RG_FAIRY_BOW)) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_DekuStickBundle_Small",
+   "name": "Basement Chest",
+   "area": "Deku Tree Basement Lower",
+   "confidence": "medium",
+   "evidence": "Only chest in room 4, the lowest regular room (y=79.4, water plane, Deku Babas, basement GSs at y 78.7/86.9) = N64 B1. The identity is high. In the remake it sits 1.9 m behind a wall web (Obj_InsideTheDekuTree_SpiderWeb_A_02), next to a switch candle (Obj_SwitchCandleStick_A_02) and a step switch, all driven by the event InsideTheDekuTree_Gimmick_CandleAndSpiderWeb: the candle burns the web. It is unknown whether the step switch lights the candle by itself, so the condition conservatively asks for a way to light it (SoH's usual torch helper). SoH: OPEN_CHEST only. Contents changed (heart -> Item_DekuStickBundle_Small)."
+  },
+  {
+   "id": "RC_DEKU_TREE_SLINGSHOT_ROOM_SIDE_CHEST",
+   "hash": "13027331340815880287",
+   "copies": [],
+   "map": "InsideTheDekuTree",
+   "rc": "RC_DEKU_TREE_SLINGSHOT_ROOM_SIDE_CHEST",
+   "region": "RR_DEKU_TREE_SLINGSHOT_ROOM",
+   "condition": null,
+   "vanilla": "TBox_DekuNutBundle",
+   "name": "Slingshot Room Side Chest",
+   "area": "Deku Tree Slingshot Room",
+   "confidence": "high",
+   "evidence": "Only small chest in room 2 (same AiGroup Room_C_efa7 as the slingshot chest), on the upper ledge at y=116.2: 4 m above the slingshot chest (112.0) and ~11 m above the pit grass (104.9). A Skullwalltula (they sit on vine walls) is 5 m away at y=114.5, which fits SoH's climb rule. The remake also adds a FallingLadder (event InsideTheDekuTree_Gimmick_FallingLadder) that an eye switch drops next to that ledge, an alternative route (CanHitEyeTargets). SoH's rule stays sufficient if the vines are there (see open questions). Contents changed (heart -> TBox_DekuNutBundle)."
+  },
+  {
+   "id": "CHEST_11929552275106311978",
+   "hash": "11929552275106311978",
+   "copies": [
+    "13080955777249750889"
+   ],
+   "map": "KakarikoVillage",
+   "rc": null,
+   "region": "RR_KAK_WINDMILL_LOWER",
+   "condition": "logic->IsAdult && logic->CanClimbLadder() && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Chest (remake only, Small)",
+   "area": "Kak Windmill Lower",
+   "confidence": "low",
+   "evidence": "Remake-new. Adult_Dynamic copy of the windmill-top chest (see 13080955777249750889); same position, separate hash."
+  },
+  {
+   "id": "RC_KAK_OPEN_GROTTO_CHEST",
+   "hash": "12902291359202819102",
+   "copies": [],
+   "map": "KakarikoVillage",
+   "rc": "RC_KAK_OPEN_GROTTO_CHEST",
+   "region": "RR_KAK_OPEN_GROTTO",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Open Grotto Chest",
+   "area": "Kak Open Grotto",
+   "confidence": "high",
+   "evidence": "Kakariko's uncovered grotto (no cover actor) at (-25.4,100.8,14.8), north side of the village. Its generic interior holds GOSSIP_KAKARIKO_VILLAGE_01, a fairy spirit and this chest (Dynamic, all three Kakariko states). SoH's Kak Open Grotto is the village's only open grotto (generic, chest + gossip); the other Kakariko hole is bomb-covered. N64 red rupee -> remake blue."
+  },
+  {
+   "id": "CHEST_4349272251343787229",
+   "hash": "4349272251343787229",
+   "copies": [
+    "17479747339356189279"
+   ],
+   "map": "KokiriForest",
+   "rc": null,
+   "region": "RR_LW_UNDER_BRIDGE",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Chest (remake only, Small)",
+   "area": "Lost Woods Under the Bridge",
+   "confidence": "low",
+   "evidence": "Remake-new. Purple-rupee small chest in KokiriForest Child+Adult Dynamic at (-132.2,123.9,-16.0), 9.3 m above the Business Scrub selling Item_StickBag_Medium (SoH RC_LW_DEKU_SCRUB_NEAR_BRIDGE) and next to GOSSIP_LOST_WOOD_02 (SoH RC_LW_GOSSIP_STONE). Both of those are in SoH region LW Under the Bridge, near the KF->HF bridge end (LostWoodBridge_FrontOfHyruleField). It is the SAME physical chest as LostWood hash 17479747339356189279: the LostWood map holds an identical scrub/gossip/chest set with exactly the same relative offsets (-4.16,+9.3,-0.7 from the scrub), so the area is drawn in both maps. The two placements have different hashes, so give both the same item or treat them as one check. How the 9 m ledge is reached is not known from the data."
+  },
+  {
+   "id": "RC_KF_MIDOS_TOP_RIGHT_CHEST",
+   "hash": "4555665598794293658",
+   "copies": [],
+   "map": "KokiriForest",
+   "rc": "RC_KF_MIDOS_TOP_RIGHT_CHEST",
+   "region": "RR_KF_MIDOS_HOUSE",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Mido Top Right Chest",
+   "area": "KF Mido's House",
+   "confidence": "low",
+   "evidence": "Mido's house cluster: side chest of the -x corner pair (-54.21,-40.88), blue rupee (N64 top-right = blue). Corner naming inferred; logic identical."
+  },
+  {
+   "id": "RC_KF_MIDOS_TOP_LEFT_CHEST",
+   "hash": "9725242744547055868",
+   "copies": [],
+   "map": "KokiriForest",
+   "rc": "RC_KF_MIDOS_TOP_LEFT_CHEST",
+   "region": "RR_KF_MIDOS_HOUSE",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Mido Top Left Chest",
+   "area": "KF Mido's House",
+   "confidence": "low",
+   "evidence": "Mido's house cluster: side chest of the +x corner pair (-49.32,-40.89), blue rupee (N64 top-left = blue). Corner naming inferred (see bottom-right); logic identical."
+  },
+  {
+   "id": "RC_KF_MIDOS_BOTTOM_LEFT_CHEST",
+   "hash": "10831981390482426294",
+   "copies": [],
+   "map": "KokiriForest",
+   "rc": "RC_KF_MIDOS_BOTTOM_LEFT_CHEST",
+   "region": "RR_KF_MIDOS_HOUSE",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Green",
+   "name": "Mido Bottom Left Chest",
+   "area": "KF Mido's House",
+   "confidence": "medium",
+   "evidence": "One of the 4 small chests clustered at y=112.26 inside Mido's house (Land_Kokiri_House_Inside_E_*, door Obj_Kokiri_Door_A_02 at z=-33.8, sign KokiriForest_021), event KokiriForest_TreasureBox_NaviChatOff. Back-wall chest on the +x side (-50.29,-42.03). Holds the green rupee as N64's bottom-left chest does; the 4 chests form two corner pairs. Which corner SoH calls top/bottom/left/right cannot be read from the data; all four share the same SoH rule, so logic is unaffected."
+  },
+  {
+   "id": "RC_KF_MIDOS_BOTTOM_RIGHT_CHEST",
+   "hash": "12786193094758345086",
+   "copies": [],
+   "map": "KokiriForest",
+   "rc": "RC_KF_MIDOS_BOTTOM_RIGHT_CHEST",
+   "region": "RR_KF_MIDOS_HOUSE",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Blue",
+   "name": "Mido Bottom Right Chest",
+   "area": "KF Mido's House",
+   "confidence": "low",
+   "evidence": "Mido's house cluster (see bottom-left). Back-wall chest on the -x side (-53.2,-42.1), so the same row as the green chest. Remake blue rupee (the N64 recovery heart became a rupee). The assignment assumes the view that puts green at bottom-left, i.e. the room seen from the back wall; the alternative reading would swap this chest with top-left. Logic is identical for all four."
+  },
+  {
+   "id": "RC_KF_STORMS_GROTTO_CHEST",
+   "hash": "14818888396401495482",
+   "copies": [],
+   "map": "KokiriForest",
+   "rc": "RC_KF_STORMS_GROTTO_CHEST",
+   "region": "RR_KF_STORMS_GROTTO",
+   "condition": "logic->CanReflectNuts() && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Green",
+   "name": "Storms Grotto Chest",
+   "area": "KF Storms Grotto",
+   "confidence": "high",
+   "evidence": "The only grotto in Kokiri Forest: hole HidingHole_Entry_01 at (-50.6,122.4,-60.5) next to GOSSIP_KOKIRI_FOREST_01 (SoH's KF Outside Lost Woods stone), covered by Land_Kokiri_HidingHoleCover_A_01, which derives from Land_HidingHoleCover_DisappearSrom_Base (Song of Storms), with a HidingHoleCoverDisappearStrom_SafePosition anchor. That makes it the KF Storms Grotto. Interior (AiGroup HidingHole_Level_Hole_01) has a gossip stone + fairy spirit, as SoH's KF storms grotto does. The remake changed the interior: the chest (named DekuTree_T) is linked from the Deku Scrub brother 'One' (DefeatedOrder 3) of a Scrub_Deku_Brothers_Manager trio (the Deku Tree 2-3-1 puzzle). So the chest needs the scrub brothers beaten, modelled with the SoH helper SoH already uses for that puzzle (CanReflectNuts)."
+  },
+  {
+   "id": "RC_KF_KOKIRI_SWORD_CHEST",
+   "hash": "16757992849254467386",
+   "copies": [],
+   "map": "KokiriForest",
+   "rc": "RC_KF_KOKIRI_SWORD_CHEST",
+   "region": "RR_KF_BOULDER_LOOP",
+   "condition": null,
+   "vanilla": "Item_Sword_Kokiri",
+   "name": "Kokiri Sword Chest",
+   "area": "KF Boulder Loop",
+   "confidence": "high",
+   "evidence": "Big chest Obj_TBox_A_02 holding Item_Sword_Kokiri with GetEventName Get_StoneOfForest_GetSword (the sword cutscene); KokiriForest Child+Adult Dynamic at (-82.6,122.3,33.0); the only big chest in the forest. Only one Kokiri Sword chest exists in N64/SoH."
+  },
+  {
+   "id": "RC_MARKET_TREASURE_CHEST_GAME_REWARD",
+   "hash": "16881481538337649070",
+   "copies": [],
+   "map": "Market",
+   "rc": "RC_MARKET_TREASURE_CHEST_GAME_REWARD",
+   "region": "RR_MARKET_TREASURE_CHEST_GAME",
+   "condition": null,
+   "vanilla": "Obj_Heart_Piece",
+   "name": "Treasure Chest Game Reward",
+   "area": "Market Treasure Chest Game",
+   "confidence": "high",
+   "evidence": "Final-room big chest Obj_HrlCity_Shop_TBox_A_02 with Obj_Heart_Piece (DropViewActor Obj_Heart_Piece_MiniGame), event OpenClearTreasureBox. HeartPieceAnchor MiniGame_ChoiceTreasure_IsClear."
+  },
+  {
+   "id": "CHEST_1764383515296652106",
+   "hash": "1764383515296652106",
+   "copies": [],
+   "map": "SacredForestMeadow",
+   "rc": null,
+   "region": "RR_SFM_STORMS_GROTTO",
+   "condition": "logic->CanUse(RG_SONG_OF_TIME) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Chest (remake only, Small)",
+   "area": "SFM Storms Grotto",
+   "confidence": "medium",
+   "evidence": "Remake-new. Small chest (Dynamic both ages, Business Scrub seed) inside the grotto in the upper meadow by Saria (hole at (0.6,115.2,-82.8), AiGroup HidingHole_Level_Hole_23). That is where SoH's SFM Storms Grotto entrance is (in RR_SACRED_FOREST_MEADOW). The remake interior has no Business Scrubs; it holds a gossip stone (GOSSIP_KOKIRI_FOREST_02), shallow water, a Song of Time sign and 4 Obj_SongOfTimeBlock_A_01 (2x2 stack) standing on the line from the arrival point (1.3,-85.5) to the chest (12.1,-73.8). So the chest is taken to need Song of Time. Divergence: the hole cover is Land_SacredForest_HidingHoleCover_A_02, which derives from Land_HidingHoleCover_BrokenBomb_Base (bombable), not Song of Storms."
+  },
+  {
+   "id": "RC_SFM_WOLFOS_GROTTO_CHEST",
+   "hash": "7995233962349162969",
+   "copies": [],
+   "map": "SacredForestMeadow",
+   "rc": "RC_SFM_WOLFOS_GROTTO_CHEST",
+   "region": "RR_SFM_WOLFOS_GROTTO",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Wolfos Grotto Chest",
+   "area": "SFM Wolfos Grotto",
+   "confidence": "high",
+   "evidence": "Grotto at the meadow entryway, z=+54.9 (the south end, where SoH's SFM Entryway / Wolfos grotto is). Interior AiGroup HidingHole_Level_Hole_21 holds Enemy_Wolfos x2 per age, and the chest (Static, pedestal) is linked from an EventRequestActor (SacredForestMeadow_Gimmick_TreasureChestAppears), so it appears after the wolfos. Same content as N64, including the purple rupee. Divergence: the hole cover is Land_Kokiri_HidingHoleCover_A_01 (Song of Storms), not a bomb cover."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_AFTER_WIND_HIDDEN_CHEST",
+   "hash": "169081039115821925",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_AFTER_WIND_HIDDEN_CHEST",
+   "region": "RR_SHADOW_TEMPLE_ROOM_TO_BOAT",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "After Wind Hidden Chest",
+   "area": "Shadow Temple Room to Boat",
+   "confidence": "high",
+   "evidence": "Invisible key chest in room 16 (same room as the Gibdo chest), 0.6 m from a WallCrack (bombable wall) = SoH Lens && HasExplosives. Key 4 of 5, used on the dock door in the same room, as in N64."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_EARLY_SILVER_RUPEE_CHEST",
+   "hash": "1111717451118505545",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_EARLY_SILVER_RUPEE_CHEST",
+   "region": "RR_SHADOW_TEMPLE_SPINNING_BLADES",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Early Silver Rupee Chest",
+   "area": "Shadow Temple Spinning Blades",
+   "confidence": "high",
+   "evidence": "DefaultDungeonRoomIndex is the remake's own numbering, not N64's (Shadow uses 0-31 for a 23-room N64 scene, Spirit 0-33 for 29 N64 rooms; Spirit's index = prefab Room_NN minus 1). Small key chest in room 6 = prefab B2F_C (B2F, south of the Beamos room), with Obj_ShadowTemple_RotateBlade_A_01 (spinning blade) and a 5-silver-rupee group (Obj_silverRupeeCounter_04 4.7 m away; module B2F_C_1484 'SilverToken ... OpenPath') = the N64/SoH spinning-blades room, where SoH needs RG_SHADOW_SILVER_BLADES. Key 1 of 5 (4 chests + Obj_Dungeon_SmallKey in room 13, the skull-jar room)."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_COMPASS_CHEST",
+   "hash": "1733372171176975157",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_COMPASS_CHEST",
+   "region": "RR_SHADOW_TEMPLE_COMPASS_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Compass",
+   "name": "Compass Chest",
+   "area": "Shadow Temple Compass Room",
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName ShadowTemple_GetCompass. Room 7 = prefab B2F_B, off room 5 (the first-Beamos room, Enemy_Beamos at (83.9,87.2,1.4)). AiGroup holds Enemy_Gibdo x2, an EnemyCounter and a spawning EventRequestActor = SoH CanKillEnemy(RE_GIBDO) && CanOpenLargeChest."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_INVISIBLE_BLADES_INVISIBLE_CHEST",
+   "hash": "3718790579351798247",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_INVISIBLE_BLADES_INVISIBLE_CHEST",
+   "region": "RR_SHADOW_TEMPLE_INVISIBLE_SPINNING_BLADES",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Invisible Blades Invisible Chest",
+   "area": "Shadow Temple Invisible Spinning Blades",
+   "confidence": "high",
+   "evidence": "Invisible (GlassTruth) chest beside the visible one in room 31, behind the invisible-blades room's enemy-clear shutter (see 10344372963276519235). SoH's rule already needs Lens. N64 0x6976 = type 6, invisible small chest."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_AFTER_WIND_ENEMY_CHEST",
+   "hash": "5681107746948738726",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_AFTER_WIND_ENEMY_CHEST",
+   "region": "RR_SHADOW_TEMPLE_ROOM_TO_BOAT",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Green",
+   "name": "After Wind Enemy Chest",
+   "area": "Shadow Temple Room to Boat",
+   "confidence": "high",
+   "evidence": "Room 16 = prefab B3FB4F_I, the room after the wind tunnel and before the locked door to the boat dock at (109.0,52.0,-27.1). It holds Enemy_Gibdo x2, and module ff08 'Gimmick_TreasureBoxAppear_Any_Magic ... DefeatRedead' with an EventRequestActor and pedestal makes the chest appear when both Gibdos die = SoH CanKillEnemy(RE_GIBDO, ED_CLOSE, true, 2)."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_FALLING_SPIKES_SWITCH_CHEST",
+   "hash": "5781953901224064730",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_FALLING_SPIKES_SWITCH_CHEST",
+   "region": "RR_SHADOW_TEMPLE_STONE_UMBRELLA_UPPER",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Falling Spikes Switch Chest",
+   "area": "Shadow Temple Stone Umbrella Upper",
+   "confidence": "medium",
+   "evidence": "Room 11 = prefab B3FB4F_C, the falling-spikes room: 2 Obj_ShadowTemple_FallingCeiling_A_01, an Obj_MovableBox_A_05 pushed onto Obj_Gimmick_AnswerPos anchors, and a GS at (33.4,73.8,86.2) = SoH GS Falling Spikes Room. This chest is 7.1 m above the room floor (y 63.5 vs 56.4), on the upper ledge next to 2 pots (= SoH's 2 upper pots FALLING_SPIKES_POT_3/4 in STONE_UMBRELLA_UPPER). N64 has two chests up there (upper: blue rupee; switch: small key); the remake has only this one, a plain chest (no SpawnType, no switch link). Mapped to the switch chest because the N64 switch chest holds the key. Upper vs switch cannot be told apart from the data, but both are in the same SoH region with the same rule, so the choice does not change logic. Key 2 of 5."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_FALLING_SPIKES_LOWER_CHEST",
+   "hash": "8858270325665149688",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_FALLING_SPIKES_LOWER_CHEST",
+   "region": "RR_SHADOW_TEMPLE_STONE_UMBRELLA",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Falling Spikes Lower Chest",
+   "area": "Shadow Temple Stone Umbrella",
+   "confidence": "high",
+   "evidence": "In room 11 (falling-spikes room, DefaultDungeonRoomIndex 11), on the room floor (y 56.4 = DungeonRoomCenterAnchor y), 9 m from the block puzzle: the lower chest. The room's only other chest is the key chest on the upper ledge. The N64 lower chest held arrows; the remake has a red rupee."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_BOSS_KEY_CHEST",
+   "hash": "9221365632831348137",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_BOSS_KEY_CHEST",
+   "region": "RR_SHADOW_TEMPLE_WOODEN_SPIKES",
+   "condition": null,
+   "vanilla": "Item_Dungeon_BossKey",
+   "name": "Boss Key Chest",
+   "area": "Shadow Temple Wooden Spikes",
+   "confidence": "high",
+   "evidence": "Boss key chest (A_03) in room 19, behind the second spike board (see 9852624243105848451). GetEventName ForesetTemple_GetBossKey (the generic boss-key Navi flow). SoH: Din's Fire && CanOpenLargeChest. Region access changed: see divergences."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_SPIKE_WALLS_LEFT_CHEST",
+   "hash": "9852624243105848451",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_SPIKE_WALLS_LEFT_CHEST",
+   "region": "RR_SHADOW_TEMPLE_WOODEN_SPIKES",
+   "condition": null,
+   "vanilla": "Tbox_MagicJar_Large",
+   "name": "Spike Walls Left Chest",
+   "area": "Shadow Temple Wooden Spikes",
+   "confidence": "high",
+   "evidence": "Room 19 = prefab B3FB4F_M, the boss key room. It has two Obj_ShadowTemple_SpikeBoard_A_01 at x -186.7 and -176.7: this chest is behind the x -186.7 board and the boss key chest behind the other (module dd4b 'Room_19_SpikeBoardBreak'). It is the only non-boss-key chest of the N64 wooden-spike-walls room, so it is the Spike Walls Left Chest; SoH needs Din's Fire. The remake holds Tbox_MagicJar_Large (N64: blue rupee). Room access changed (small-key lock + ReDead lock-in): see divergences."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_INVISIBLE_BLADES_VISIBLE_CHEST",
+   "hash": "10344372963276519235",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_INVISIBLE_BLADES_VISIBLE_CHEST",
+   "region": "RR_SHADOW_TEMPLE_INVISIBLE_SPINNING_BLADES",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Invisible Blades Visible Chest",
+   "area": "Shadow Temple Invisible Spinning Blades",
+   "confidence": "high",
+   "evidence": "Room 31 = a small side room (prefab B3FB4F_D_3985) off room 10 (B3FB4F_D_3462: Enemy_LikeLike, 3 Enemy_Keese_Fire and Obj_ShadowTemple_RotateBlade_GlassTruth_A_01 = the invisible-scythe room). The side room's shutter (Obj_ShadowTemple_SwitchShutter_A_03 at (170.4,60.9,96.5)) is opened by event ShadowTemple_10_EnemyAnnihilation_Clear, an EnemyCounter on the Like Like and keese = SoH CanKillEnemy(RE_LIKE_LIKE) && CanKillEnemy(RE_KEESE) (CanKillEnemy treats fire keese the same as keese). This visible chest stands 3.4 m from the GlassTruth chest. The Enemy_Skulltula_Gold here = SoH GS Like Like Room."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_WIND_HINT_CHEST",
+   "hash": "12345747231768877602",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_WIND_HINT_CHEST",
+   "region": "RR_SHADOW_TEMPLE_WIND_TUNNEL_HINT_ROOM",
+   "condition": null,
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Wind Hint Chest",
+   "area": "Shadow Temple Wind Tunnel Hint Room",
+   "confidence": "high",
+   "evidence": "Invisible chest in room 15 = prefab B3FB4F_H, a dead-end room entered from room 14 (the fan/wind-tunnel room) through the shutter at (118.4,52.0,6.4). 2 Enemy_ReDead and an EnemyCounter lock the room until they die (= SoH's WIND_TUNNEL_HINT_ROOM exit, which needs CanKillEnemy(RE_REDEAD)). Obj_Well_Monument_A_04 (hint monument) is 4.6 m away. The N64 wind hint chest is also invisible (0x6955, type 6). SoH asks no Lens here; left unchanged, since Lens is already needed to reach this part."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_MAP_CHEST",
+   "hash": "13528903653876646082",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_MAP_CHEST",
+   "region": "RR_SHADOW_TEMPLE_WHISPERING_WALLS_SIDE_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Map",
+   "name": "Map Chest",
+   "area": "Shadow Temple Whispering Walls Side Room",
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName ShadowTemple_GetMap. Room 3 = prefab ShadowTemple_Level_Room_B1F_C, a B1F side room off the whispering-walls hall (shutter at (2.6,90.4,-17.1) from room 2). Its AiGroup holds Enemy_ReDead x1, Enemy_Keese x2, Obj_EnemyCounter_A_01 and an EventRequestActor that spawns the chest (pedestal + PushAirWall_Box), so the chest appears once the ReDead and Keese are dead. That matches SoH: CanKillEnemy(RE_REDEAD) && CanKillEnemy(RE_KEESE) && CanOpenLargeChest. N64 params 0x1821 = type 1 (room-clear big chest), same behaviour."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_HOVER_BOOTS_CHEST",
+   "hash": "14535080241831873137",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_HOVER_BOOTS_CHEST",
+   "region": "RR_SHADOW_TEMPLE_DEAD_HAND",
+   "condition": null,
+   "vanilla": "Item_HoverBoot",
+   "name": "Hover Boots Chest",
+   "area": "Shadow Temple Dead Hand",
+   "confidence": "high",
+   "evidence": "Big chest, GetEventName SageOfShdawo_GetHoverBoots (SageOfShadow challenge flow -> Dm_SY_Treasurebox). Room 4 = prefab B1F_D, whose AiGroup holds Enemy_DeadHand, 6 Enemy_DeadHand_Hand, an EnemyCounter and a spawning EventRequestActor. The chest appears after Dead Hand dies = SoH CanKillEnemy(RE_DEAD_HAND) && CanOpenLargeChest. N64 0x15E7 = type 1 room-clear."
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_INVISIBLE_FLOORMASTER_CHEST",
+   "hash": "17902550525792072472",
+   "copies": [],
+   "map": "ShadowTemple",
+   "rc": "RC_SHADOW_TEMPLE_INVISIBLE_FLOORMASTER_CHEST",
+   "region": "RR_SHADOW_TEMPLE_X_CROSS",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Invisible Floormaster Chest",
+   "area": "Shadow Temple X-Cross",
+   "confidence": "high",
+   "evidence": "Room 21 = prefab B3FB4F_L, north of room 18 (the maze hub beyond the boat). Enemy_Floormaster_Truth (invisible Floormaster) is 3.1 m away, and module 96ae 'TreasureBoxAppear_Any_Magic ... DefeatFloormaster_Truth' makes the chest appear when it dies = SoH Lens && CanKillEnemy(RE_FLOORMASTER). N64 0x784D = type 7 room-clear. Key 5 of 5; in the remake it opens the boss-key room door (see divergences)."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_CHILD_CLIMB_NORTH_CHEST",
+   "hash": "1501288453962537671",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_CHILD_CLIMB_NORTH_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_SUN_ON_FLOOR_2F",
+   "condition": null,
+   "vanilla": "Item_BombchuBundle_Small",
+   "name": "Child Climb North Chest",
+   "area": "Spirit Temple Sun On Floor 2F",
+   "confidence": "medium",
+   "evidence": "CHILD side (SoH SpiritShared: child normally, adult only through the statue room). Room 6 = prefab Room_07, the room behind the child-side small-key door (lock pair at (-33.6,106,-55.3) from room 5 = SoH CHILD_BOXES -> SUN_ON_FLOOR_1F). The chest is on the room's upper floor (y 119.2), SpawnType 1, and falls when Obj_SwitchHit_A_05, 4.3 m above that floor, is hit (module 30f0 'TreasureBoxAppear_Fall', event SpritTemple_Room07_AppearTreasure) = SoH CanHitSwitch(ED_BOMB_THROW). The room also has Obj_SolarSwitch_A_01 on the floor ('sun on floor'), 2 Lizalfos and Skullwalltulas. N64 has two chests here (north: bombchus, east: deku shield); the remake has one. Chosen as North because it holds bombchus. Both have the same SoH rule and region, so the choice only affects the name."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_STATUE_ROOM_HAND_CHEST",
+   "hash": "2203243501006528435",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_STATUE_ROOM_HAND_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_INNER_LEFT_HAND",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Statue Room Hand Chest",
+   "area": "Spirit Temple Inner Left Hand",
+   "confidence": "high",
+   "evidence": "EITHER age (SpiritShared). In room 7 (statue room) at y 124.8 on the west (child-side, -x) hand. SpawnType 1, linked through an EventProxyRequestActor from Obj_TriForcePoint_A_08 at the mirror-image spot (10.9,124.8,-60.5) on the east hand (module 3008 'TreasureBoxAppear_Fall_Ocarina'). Playing Zelda's Lullaby on the east (left) hand makes the chest fall on the west hand, exactly SoH's INNER_LEFT_HAND rule (ZL + a way to the other hand). The remake drops N64's second chest for this event (Statue Room Northeast)."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_EARLY_ADULT_RIGHT_CHEST",
+   "hash": "4277978357934400600",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_EARLY_ADULT_RIGHT_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_PAST_BOULDERS",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Early Adult Right Chest",
+   "area": "Spirit Temple Past Boulders",
+   "confidence": "high",
+   "evidence": "ADULT ONLY. Room 16 = prefab Room_17 (adult 1F, y 100.3), the dead-end room behind room 15. Room 15 (prefab Room_16) has 3 Obj_SpiritTemple_RollingRock_A_01 boulders, 5 silver rupees, Song of Time blocks and a GS = SoH's boulder room. Module Room_16_b7fb 'Obj_SilverToken_GroupLargeDoor ... Room16_Unlocked' opens the door to room 16 = SoH PAST_BOULDERS, which needs RG_SPIRIT_SILVER_BOULDERS. Plain chest (module 7580, no appear condition). An Enemy_LikeLike (Dynamic) stands 3.5 m from it; SoH asks nothing for it and it is not needed to open the chest. First adult-side key."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_CHILD_BRIDGE_CHEST",
+   "hash": "5309180490719879013",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_CHILD_BRIDGE_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_SWITCH_BRIDGE_NORTH",
+   "condition": null,
+   "vanilla": "TBox_Shield_Deku",
+   "name": "Child Bridge Chest",
+   "area": "Spirit Temple Switch Bridge North",
+   "confidence": "high",
+   "evidence": "CHILD ONLY. DefaultDungeonRoomIndex is the remake's own numbering, not N64's (Shadow uses 0-31 for a 23-room N64 scene, Spirit 0-33 for 29 N64 rooms; Spirit's index = prefab Room_NN minus 1). Room 2 = prefab SpiritTemple_Level_Room_03 (child side, west of the child hub, room 1). It has 2 Enemy_Bubble_Green, Obj_SwitchHit_A_03 and Obj_SpiritTemple_FallNet_B_04 (module 'Room03_BoardNet_On': the switch drops the net/bridge) = SoH's switch-bridge room. The chest is at the far end (z -67.6), next to the door to room 3 (Anubis room = SoH 1F_ANUBIS). It gives a Deku Shield as in N64 (Drop__DropActor_Substitute TBox_Rupee_Red if one is already owned)."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_CHILD_EARLY_TORCHES_CHEST",
+   "hash": "5703423643219134246",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_CHILD_EARLY_TORCHES_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_RUPEE_BRIDGE_NORTH",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Child Early Torches Chest",
+   "area": "Spirit Temple Rupee Bridge North",
+   "confidence": "high",
+   "evidence": "CHILD ONLY. Room 4 = prefab Room_05 (child side) with 5 silver rupees, Obj_SpiritTemple_FallNet_B_01 and Obj_silverRupeeCounter_06. The chest has SpawnType 1, and module b035 'BurnControl Obj_CandleStick_A_02 x2 -> TreasureBoxAppear_Fall' drops it when both torches burn = SoH LOGIC_SPIRIT_SILVER_RUPEE_BRIDGE_TORCHES. First child-side key; it opens the room 5 -> room 6 lock (= SoH CHILD_BOXES -> SUN_ON_FLOOR_1F, SmallKeys 1)."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_HALLWAY_RIGHT_INVISIBLE_CHEST",
+   "hash": "9143177002861777924",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_HALLWAY_RIGHT_INVISIBLE_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_CHEST_STAIRS",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Hallway Right Invisible Chest",
+   "area": "Spirit Temple Chest Stairs",
+   "confidence": "medium",
+   "evidence": "ADULT ONLY. Room 23 = prefab Room_24, the hall between the 4 Armos room (room 22) and the adult Iron Knuckle throne (rooms 24/25, Enemy_IronKnuckle_Silver). Its two invisible chests, 4.3 m apart, = SoH CHEST_STAIRS (Lens). This is the west one (x 53.66), on the right when walking from the Armos room toward the throne. Remake axes are +x east, -z north, confirmed by which hand holds the statue-hand chest and which holds its triforce. Left/right is a guess; the rule is the same for both."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_NEAR_FOUR_ARMOS_CHEST",
+   "hash": "12042193296697281461",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_NEAR_FOUR_ARMOS_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_4_ARMOS_SIDE_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Near Four Armos Chest",
+   "area": "Spirit Temple 4 Armos Side Room",
+   "confidence": "high",
+   "evidence": "ADULT ONLY. Room 26 = prefab Room_27 (adult 3F, y 130.9), a side room south of room 22 (prefab Room_23: Obj_Stepswitch_A_03_Amos + 3 Enemy_Amos_AlwaysRespawn = SoH's 4 Armos room). Its shutter opens from Obj_SolarSwitch_A_02, 7 m up at (55.8,137.3,-41.1) (module Room_23_1701 'LightHit -> Room23_Unlocked_02') = SoH CanUse(RG_MIRROR_SHIELD) || SunlightArrows. Plain chest. Fifth key overall, found before the room 21 -> 27 lock (= SoH BEAMOS_PITS -> BIG_WALL_BASE, SmallKeys 5)."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_FIRST_MIRROR_RIGHT_CHEST",
+   "hash": "12909857529499414969",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_FIRST_MIRROR_RIGHT_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_2F_MIRROR_ROOM",
+   "condition": null,
+   "vanilla": "Item_BombBundle_Small",
+   "name": "First Mirror Right Chest",
+   "area": "Spirit Temple 2F Mirror Room",
+   "confidence": "medium",
+   "evidence": "ADULT side (SoH's spirit data gives no child access). Room 18 = prefab Room_19, the 2F above room 17, reached through the adult-side small-key door at (33.6,104.8,-39.5) (= SoH ADULT_SIDE_HUB -> 1F_MIRROR_ROOM). It has an Obj_SpiritTemple_CapstanMirror_A_01 and 3 Obj_SolarSwitch_A_02. The chest has SpawnType 1 and falls by event SpiritTemple_Level_Room_19_SwitchOn_01 (switch at (45.8,121.5,-47.5)) once the turnable mirror sends light onto it = SoH POWER_BRACELET || SunlightArrows. The room's other N64 chest is now Obj_TBox_A_04 876108895472176682, with no Drop__DropActor and opened through 'TrapTreasureBoxOpen' (Dm_SY_TreasureboxSmall TrapOpen): a trap chest, matching N64's ice-trap Left chest. So this item chest is the Right one (N64 recovery heart -> remake bombs). The region and rule are the same either way."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_TOPMOST_CHEST",
+   "hash": "13828480906010430010",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_TOPMOST_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_BIG_MIRROR_CAVE",
+   "condition": null,
+   "vanilla": "Item_BombBundle_Small",
+   "name": "Topmost Chest",
+   "area": "Spirit Temple Big Mirror Cave",
+   "confidence": "high",
+   "evidence": "ADULT (SoH: adult Mirror Shield, or Sunlight Arrows). The highest chest in the temple (y 158.2), in room 31 = prefab Room_32, behind Obj_SpiritTemple_CrackWall_A_02 (bomb wall = SoH BIG_MIRROR_CAVE, which needs explosives). The room has 2 Obj_SpiritTemple_CapstanMirror_A_01, 2 Dinolfos and 3 White Bubbles; the chest appears from Obj_SolarSwitch_A_02 (module a8f7 'LightHit -> TreasureBoxAppear_Magic'). N64 held 20 bombs; the remake a small bomb bundle. The data does not show whether the remake needs the Mirror Shield or only the turnable mirrors; SoH's rule is the stricter of the two, so it is kept."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_MAP_CHEST",
+   "hash": "13852283723126411131",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_MAP_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_STATUE_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Map",
+   "name": "Map Chest",
+   "area": "Spirit Temple Statue Room",
+   "confidence": "high",
+   "evidence": "EITHER age (SpiritShared). Big chest in room 7 = prefab Room_08 (statue room), on the statue-room floor (y 114.15) at the statue's base. Module 12d6 'BurnControl Obj_CandleStick_A_02 -> TreasureBoxAppear_Magic' makes it appear when the unlit torch at (4.0,114.2,-57.8) is lit = SoH's fire-source rule (HasFireSource, or HasFireSourceWithTorch from the child ledge). No GetEventName."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_HALLWAY_LEFT_INVISIBLE_CHEST",
+   "hash": "14040210993541550542",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_HALLWAY_LEFT_INVISIBLE_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_CHEST_STAIRS",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Hallway Left Invisible Chest",
+   "area": "Spirit Temple Chest Stairs",
+   "confidence": "medium",
+   "evidence": "ADULT ONLY. The east one (x 57.96) of the two GlassTruth chests in room 23 (see 9143177002861777924). Left/right is a guess; the logic is the same."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_COMPASS_CHEST",
+   "hash": "15633505270333176438",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_COMPASS_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_SAND_PIT",
+   "condition": null,
+   "vanilla": "Item_Dungeon_Compass",
+   "name": "Compass Chest",
+   "area": "Spirit Temple Sand Pit",
+   "confidence": "high",
+   "evidence": "ADULT ONLY. GetEventName SpiritTemple_GetCompass. Room 14 = prefab Room_15 (adult side 1F, off the adult hub, room 13). Obj_TriForcePoint_A_07 is linked to the chest through an EventProxyRequestActor (play Zelda's Lullaby -> chest), with an Obj_HookShotTarget_A_01 1.9 m behind the chest and an Enemy_Wolfos = SoH ZL && CanOpenLargeChest && (Hookshot || ...)."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_BOSS_KEY_CHEST",
+   "hash": "16272168033146555902",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_BOSS_KEY_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_FAKE_DOORS_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_BossKey",
+   "name": "Boss Key Chest",
+   "area": "Spirit Temple Fake Doors Room",
+   "confidence": "high",
+   "evidence": "ADULT ONLY. Boss key chest (A_03) in room 29 = prefab Room_30, which has 6 Enemy_TrickyDoor_SpiritTemple (fake doors), 4 Enemy_TorchSlug, Obj_EyeSwitch_A_03 + FallNet_B_02, and Obj_StepSwitch_A_01 and Obj_FireWall_A_02 around the chest (module ca21), plus Obj_HookShotTarget_A_01 at (19.8,159,-72.1) = SoH's fake-doors room (eye target + hookshot past the fire). GetEventName ForesetTemple_GetBossKey (generic)."
+  },
+  {
+   "id": "RC_SPIRIT_TEMPLE_SUN_BLOCK_ROOM_CHEST",
+   "hash": "17407066694905911064",
+   "copies": [],
+   "map": "SpiritTemple",
+   "rc": "RC_SPIRIT_TEMPLE_SUN_BLOCK_ROOM_CHEST",
+   "region": "RR_SPIRIT_TEMPLE_SUN_BLOCK_CHEST_LEDGE",
+   "condition": "SpiritShared(RR_SPIRIT_TEMPLE_SUN_BLOCK_CHEST_LEDGE, []{return logic->HasItem(RG_POWER_BRACELET) || logic->SunlightArrows();}) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Sun Block Room Chest",
+   "area": "Spirit Temple Sun Block Chest Ledge",
+   "confidence": "medium",
+   "evidence": "EITHER age (SpiritShared). Room 9 = prefab Room_10_01, the sun block room: 5 Obj_SpiritTemple_MovableBox_A_01 sun blocks, 2 Obj_SolarSwitch_A_01, a RayShaft_A_02 light, 3 Enemy_Beamos_For_High_Place and 5 silver rupees. The chest is on the west ledge, 2.8 m above the floor (= SoH SUN_BLOCK_CHEST_LEDGE). Its identity is certain, but SoH's rule does not fit. Module 13bc's strings are ActorLogicMovableBox + ActorLogicSolarSwitch 'IsInAnswerPosition', 'LightHit', OperateAND -> Gimmick_TreasureBoxAppear_Magic (event SpiritTemple_Level_Room_10_SwitchOn_01 -> TreasureBoxAppear.Act_TBoxAppear_Magic_0): the key chest appears when the sun blocks are placed so that light hits both solar switches. Room 9 has no torch (all of Spirit's CandleSticks are in rooms 4 and 7), so SoH's rule (HasFireSource, or silver rupees + Sticks) has nothing to work on. The new condition uses SoH's block-moving ability (RG_POWER_BRACELET = RAND_INF_CAN_GRAB) and its usual sun-switch alternative (SunlightArrows, off with vanilla settings). Only the module's string table was read, not its node graph."
+  },
+  {
+   "id": "RC_WATER_TEMPLE_DRAGON_CHEST",
+   "hash": "2503861086004941173",
+   "copies": [],
+   "map": "WaterTemple",
+   "rc": "RC_WATER_TEMPLE_DRAGON_CHEST",
+   "region": "RR_WATER_TEMPLE_DRAGON_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Dragon Chest",
+   "area": "Water Temple Dragon Room",
+   "confidence": "low",
+   "evidence": "Small key in remake room 8 (west, y=102.3), the room the river (room 21, after the Longshot room) drops into (doorway y 110-111) and which also opens to the central lake at the bottom (doorway y 97-98, SoH's block U-bend side): SoH's dragon room / above-dragon area. An underwater Obj_SwitchHit_A_02 opens Obj_WaterTemple_SwitchShutter_A_07 ('WaterTempleRoom08HitSwitch'); a hookshot target is 3 m from the chest. One chest where SoH has the dragon and river chests; matched to the dragon chest (the room's own check)."
+  },
+  {
+   "id": "RC_WATER_TEMPLE_CENTRAL_BOW_TARGET_CHEST",
+   "hash": "3693930347660122883",
+   "copies": [],
+   "map": "WaterTemple",
+   "rc": "RC_WATER_TEMPLE_CENTRAL_BOW_TARGET_CHEST",
+   "region": "RR_WATER_TEMPLE_BLOCK_LOOP_BACK",
+   "condition": null,
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Central Bow Target Chest",
+   "area": "Water Temple Block Loop Back",
+   "confidence": "medium",
+   "evidence": "Small key in remake room 20 north of the central pillar (y=112), behind the shutters (Obj_WaterTemple_SwitchShutter_A_02 at y=113.5) opened by the timed Obj_EyeSwitch_A_05 above them ('WaterTemple_EyeSwitch_Focus'), with a block puzzle (Obj_MovableBox_A_05 and answer anchors): SoH's central bow target / block loop (CanHitEyeTargets)."
+  },
+  {
+   "id": "RC_WATER_TEMPLE_BOSS_KEY_CHEST",
+   "hash": "10378828369334876242",
+   "copies": [],
+   "map": "WaterTemple",
+   "rc": "RC_WATER_TEMPLE_BOSS_KEY_CHEST",
+   "region": "RR_WATER_TEMPLE_BOSS_KEY_ROOM",
+   "condition": null,
+   "vanilla": "Item_Dungeon_BossKey",
+   "name": "Boss Key Chest",
+   "area": "Water Temple Boss Key Room",
+   "confidence": "high",
+   "evidence": "Boss key chest in room 15, north-east past the boulder rooms 12, 14 and 24 (Obj_RollingRock_A_05; room 24's Gold Skulltula = GS near boss key chest)."
+  },
+  {
+   "id": "RC_WATER_TEMPLE_CENTRAL_PILLAR_CHEST",
+   "hash": "11682974908842171598",
+   "copies": [],
+   "map": "WaterTemple",
+   "rc": "RC_WATER_TEMPLE_CENTRAL_PILLAR_CHEST",
+   "region": "RR_WATER_TEMPLE_PILLAR_B1",
+   "condition": null,
+   "vanilla": "TBox_Rupee_Red",
+   "name": "Central Pillar Chest",
+   "area": "Water Temple Pillar B1",
+   "confidence": "medium",
+   "evidence": "Red rupee (N64: small key) in remake room 2 (y=92.7), the basement of the central pillar (room 1 above holds Obj_WaterTemple_StoneTablet_A_03, the middle-water emblem), behind Obj_WaterTemple_SwitchShutter_A_03 opened by 'WaterTemple_FocusonGimmick_02' (a Shell Blade and 3 Spikes) and an Obj_SwitchHit_A_02. The remake's logic still reads a flag WaterTemple_Room02_GetSmallKey: the key became a rupee."
+  },
+  {
+   "id": "RC_WATER_TEMPLE_MAP_CHEST",
+   "hash": "16384925224245172970",
+   "copies": [],
+   "map": "WaterTemple",
+   "rc": "RC_WATER_TEMPLE_MAP_CHEST",
+   "region": "RR_WATER_TEMPLE_LOW_EMBLEM",
+   "condition": "logic->CanOpenLargeChest()",
+   "vanilla": "Item_Dungeon_Map",
+   "name": "Map Chest",
+   "area": "Water Temple Low Emblem",
+   "confidence": "medium",
+   "evidence": "Big chest (map) in remake room 17 = east side tower (Ruto's 'Demo_WaterTemple_MeetAgainRutoEvent', timed torches Obj_CandleStick_TimeExtinguish_A_01, cracked wall) at its top (y=119.5), 3.5 m from Obj_WaterTemple_StoneTablet_A_01 and CheckAttentionActor_WaterTemple_Triforce, the low-water Zelda's Lullaby spot (room 17's logic modules use WaterTemple_WaterLevelChange01/02). In N64 the map is in the 4-spike room off this emblem; the remake has no such room up here (its spikes are in the torch room), so the map sits at the emblem."
+  },
+  {
+   "id": "CHEST_16424266294822218796",
+   "hash": "16424266294822218796",
+   "copies": [],
+   "map": "WaterTemple",
+   "rc": null,
+   "region": "RR_WATER_TEMPLE_MAIN",
+   "condition": "logic->WaterLevel(WL_LOW) && logic->CanUse(RG_HOOKSHOT) && logic->CanOpenLargeChest()",
+   "vanilla": "Item_Dungeon_Compass",
+   "name": "Chest (remake only, Big)",
+   "area": "Water Temple Main",
+   "confidence": "low",
+   "evidence": "Remake-new: big chest with the compass (WaterTemple_GetCompass) in remake room 3, south-west of the central pillar at the lake floor (chest y=104.3; the water plane here is at y=106.5, and at y=99.5 only with WaterTemple_WaterLevelChange01 = low water), reached over hookshot targets raised by the floor switch at (-27, 100, 20) ('WaterTemple_Waterlevelrise_FocusOnGimmick'); the room also has a Like Like, a Shell Blade and Tektites. No N64 chest is in this part of the lake (SoH's compass chest is the jet room, matched above)."
+  },
+  {
+   "id": "RC_WATER_TEMPLE_COMPASS_CHEST",
+   "hash": "16490222392193949581",
+   "copies": [],
+   "map": "WaterTemple",
+   "rc": "RC_WATER_TEMPLE_COMPASS_CHEST",
+   "region": "RR_WATER_TEMPLE_JET_CHEST_ROOM",
+   "condition": "logic->CanUseProjectile() && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Compass Chest",
+   "area": "Water Temple Jet Chest Room",
+   "confidence": "medium",
+   "evidence": "Small key (N64: compass in a big chest) in remake room 4, entered from the central lake's east wall at the 2F height (doorway x=16, y 110-112), with a water jet (Obj_WaterTemple_Fountain_A_01), an Obj_SwitchHit_A_06 to hit, 4 underwater Stingers and a hookshot target; chest at the top (y=118.4). Matches SoH's jet chest room (CanUseProjectile). Small chest now."
+  },
+  {
+   "id": "RC_WATER_TEMPLE_LONGSHOT_CHEST",
+   "hash": "18059711820131847165",
+   "copies": [],
+   "map": "WaterTemple",
+   "rc": "RC_WATER_TEMPLE_LONGSHOT_CHEST",
+   "region": "RR_WATER_TEMPLE_SOT_PIT_ROOM",
+   "condition": null,
+   "vanilla": "Item_Longshot",
+   "name": "Longshot Chest",
+   "area": "Water Temple Song Of Time Pit Room",
+   "confidence": "high",
+   "evidence": "Big chest with the Longshot in room 7, right after the Dark Link room 22 (shutters 'WaterTemple_DarkLink_DoorMovement')."
+  },
+  {
+   "id": "RC_WATER_TEMPLE_TORCHES_CHEST",
+   "hash": "18099019250896853049",
+   "copies": [],
+   "map": "WaterTemple",
+   "rc": "RC_WATER_TEMPLE_TORCHES_CHEST",
+   "region": "RR_WATER_TEMPLE_TORCH_ROOM",
+   "condition": "AnyAgeTime([]{return logic->WaterLevel(WL_LOW) && logic->CanKillEnemy(RE_SPIKE, ED_CLOSE, true, 3);}) && logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "Item_Dungeon_SmallKey",
+   "name": "Torches Chest",
+   "area": "Water Temple Torch Room",
+   "confidence": "medium",
+   "evidence": "Small key, NoBake, appears by 'WaterTemple_FocusGimmick_Room18' linked to the Obj_EnemyCounter_A_01 of the room's Enemy_Spike, in room 18 entered at the tower floor (y=100) through the shutter that the two timed torches of room 17 open: SoH's torch room (fire source or bow, low water). The enemies are 3 Spikes, not 3 Shell Blades (the Shell Blades are in the cracked-wall room 25)."
+  },
+  {
+   "id": "RC_ZD_CHEST",
+   "hash": "3130048366421939233",
+   "copies": [],
+   "map": "ZoraDomain",
+   "rc": "RC_ZD_CHEST",
+   "region": "RR_ZORAS_DOMAIN",
+   "condition": null,
+   "vanilla": "Obj_Heart_Piece",
+   "name": "Chest",
+   "area": "Zoras Domain",
+   "confidence": "high",
+   "evidence": "Child-only big chest (ZoraDomain_Child_Static, pedestal) with Obj_Heart_Piece and HeartPieceAnchor, next to Obj_CandleStick_TimeExtinguish_A_01 torches, spawned by TreasureBoxAppear_Magic_Big_Distance. That is N64's ZD torch chest (light the torches with a Deku stick as child)."
+  },
+  {
+   "id": "CHEST_15055117029957340138",
+   "hash": "15055117029957340138",
+   "copies": [],
+   "map": "ZoraFountain",
+   "rc": null,
+   "region": "RR_ZF_ROCK",
+   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "vanilla": "TBox_Rupee_Purple",
+   "name": "Chest (remake only, Small)",
+   "area": "ZF Rock",
+   "confidence": "medium",
+   "evidence": "Remake-new. Adult-only small chest (ZoraFountain_Adult_Dynamic) at (33.0,108.5,1.7), 4.7 m from Npc_Pierre_CallOcarina SCARECROW_ZORA_FOUNTAIN_01 + Obj_ScarecrowMarker. An AreaCanCallPierre is 20 m below, so it is the scarecrow-hookshot perch. SoH already models this perch as RR_ZF_ROCK (entry IsAdult && ReachScarecrow), which has only a wonder item."
+  },
+  {
+   "id": "RC_ZR_OPEN_GROTTO_CHEST",
+   "hash": "8838426083116998768",
+   "copies": [],
+   "map": "ZoraRiver",
+   "rc": "RC_ZR_OPEN_GROTTO_CHEST",
+   "region": "RR_ZR_OPEN_GROTTO",
+   "condition": null,
+   "vanilla": "Item_ScrubBusinessSeed",
+   "name": "Open Grotto Chest",
+   "area": "ZR Open Grotto",
+   "confidence": "high",
+   "evidence": "Uncovered hole (no cover actor) at (-18.1,116.1,16.2) on the upper river. Its generic interior holds GOSSIP_ZORA_RIVER_02, a fairy spirit and this chest. The other two river holes are a storm-covered gossip/butterfly-fairy grotto and a boulder-covered empty one. SoH's ZR Open Grotto is the open generic chest grotto. Contents changed (red rupee -> scrub seed)."
+  }
+ ],
+ "skipped": [
+  "566103236844767323",
+  "2854211238375368215",
+  "3522439980243161940",
+  "4529748032854378492",
+  "7234638808238324101",
+  "7346745174625046398",
+  "7458365564915336038",
+  "7589985979641292928",
+  "9947351236862205040",
+  "15858708076894317041",
+  "234006393181394602",
+  "4322670163630771947",
+  "1775586642693927992",
+  "5350594583391365806",
+  "6478285350658826847",
+  "6781536951709667179",
+  "7390716194495618474",
+  "9591654059707200528",
+  "12114077686306649660",
+  "12763522142548402103",
+  "13633455645485504369",
+  "15659683110284072977",
+  "18239509117326156183"
+ ],
+ "removed": [
+  "RC_BOTTOM_OF_THE_WELL_FRONT_CENTER_BOMBABLE_CHEST",
+  "RC_BOTTOM_OF_THE_WELL_LIKE_LIKE_CHEST",
+  "RC_BOTTOM_OF_THE_WELL_UNDERWATER_LEFT_CHEST",
+  "RC_DMT_STORMS_GROTTO_CHEST",
+  "RC_DODONGOS_CAVERN_BOSS_ROOM_CHEST",
+  "RC_FOREST_TEMPLE_MAP_CHEST",
+  "RC_GANONS_CASTLE_LIGHT_TRIAL_FIRST_RIGHT_CHEST",
+  "RC_GANONS_CASTLE_LIGHT_TRIAL_SECOND_LEFT_CHEST",
+  "RC_GANONS_CASTLE_LIGHT_TRIAL_THIRD_RIGHT_CHEST",
+  "RC_GANONS_CASTLE_SPIRIT_TRIAL_INVISIBLE_CHEST",
+  "RC_GANONS_CASTLE_WATER_TRIAL_LEFT_CHEST",
+  "RC_GERUDO_TRAINING_GROUND_HEAVY_BLOCK_FOURTH_CHEST",
+  "RC_GRAVEYARD_ROYAL_FAMILYS_TOMB_CHEST",
+  "RC_HF_NEAR_MARKET_GROTTO_CHEST",
+  "RC_HF_OPEN_GROTTO_CHEST",
+  "RC_HF_SOUTHEAST_GROTTO_CHEST",
+  "RC_LW_NEAR_SHORTCUTS_GROTTO_CHEST",
+  "RC_SHADOW_TEMPLE_FALLING_SPIKES_UPPER_CHEST",
+  "RC_SHADOW_TEMPLE_INVISIBLE_SPIKES_CHEST",
+  "RC_SPIRIT_TEMPLE_CHILD_CLIMB_EAST_CHEST",
+  "RC_SPIRIT_TEMPLE_FIRST_MIRROR_LEFT_CHEST",
+  "RC_SPIRIT_TEMPLE_STATUE_ROOM_NORTHEAST_CHEST",
+  "RC_WATER_TEMPLE_CRACKED_WALL_CHEST",
+  "RC_WATER_TEMPLE_RIVER_CHEST"
+ ],
+ "overrides": [
+  {
+   "key": [
+    "exit",
+    "RR_DEKU_TREE_SLINGSHOT_ROOM",
+    "RR_DEKU_TREE_2F_MIDDLE_ROOM"
+   ],
+   "rule": "logic->CanHitEyeTargets() || logic->CanUse(RG_BOOMERANG)",
+   "why": "Deku Tree: the slingshot room is left by a ladder its eye switch drops (seen in game: locked in without a way to hit it; the Slingshot and the Boomerang hit it, Bombchus do not). Its chest always holds one of the two (rando.items.ONE_OF)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_BOTW_MIDDLE",
+    "RR_BOTW_SKULL_WALL_ROOM"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_BOTTOM_OF_THE_WELL, 3)",
+    "SmallKeys(SCENE_BOTTOM_OF_THE_WELL, 2)"
+   ],
+   "why": "BotW: 2 keys, 2 locked doors (child_dungeons 0)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_BOTW_MIDDLE",
+    "RR_BOTW_INVISIBLE_PATH"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_BOTTOM_OF_THE_WELL, 3)",
+    "SmallKeys(SCENE_BOTTOM_OF_THE_WELL, 2)"
+   ],
+   "why": "child_dungeons 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_BOTW_SKULL_WALL_ROOM",
+    "RR_BOTW_MIDDLE"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_BOTTOM_OF_THE_WELL, 3)",
+    "SmallKeys(SCENE_BOTTOM_OF_THE_WELL, 2)"
+   ],
+   "why": "child_dungeons 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_BOTW_INVISIBLE_PATH",
+    "RR_BOTW_MIDDLE"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_BOTTOM_OF_THE_WELL, 3)",
+    "SmallKeys(SCENE_BOTTOM_OF_THE_WELL, 2)"
+   ],
+   "why": "child_dungeons 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_BOTW_CORNER_CRAWLSPACE",
+    "RR_BOTW_HIDDEN_PITS_ROOM"
+   ],
+   "rule": "ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH)",
+   "why": "BotW: the fire keese room's door has no lock, a fake wall before it (child_dungeons 1)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_BOTW_HIDDEN_PITS_ROOM",
+    "RR_BOTW_CORNER_CRAWLSPACE"
+   ],
+   "rule": "ctx->GetTrickOption(RT_LENS_BOTW) || logic->CanUse(RG_LENS_OF_TRUTH)",
+   "why": "child_dungeons 1"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_TREES",
+    "RR_FOREST_TEMPLE_OVERGROWN_HALLWAY_LOWER"
+   ],
+   "rule": "logic->SmallKeys(SCENE_FOREST_TEMPLE, 1)",
+   "why": "Forest: a locked door from the entrance room to the first hallway (forest_fire_water 0)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_OVERGROWN_HALLWAY_LOWER",
+    "RR_FOREST_TEMPLE_TREES"
+   ],
+   "rule": "logic->SmallKeys(SCENE_FOREST_TEMPLE, 1)",
+   "why": "forest_fire_water 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_LOBBY",
+    "RR_FOREST_TEMPLE_RED_DOORMAT_HALLWAY"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_FOREST_TEMPLE, 1)",
+    "SmallKeys(SCENE_FOREST_TEMPLE, 2)"
+   ],
+   "why": "forest_fire_water 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_RED_DOORMAT_HALLWAY",
+    "RR_FOREST_TEMPLE_LOBBY"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_FOREST_TEMPLE, 1)",
+    "SmallKeys(SCENE_FOREST_TEMPLE, 2)"
+   ],
+   "why": "forest_fire_water 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_BLOCK_PUSH_ROOM_TOP",
+    "RR_FOREST_TEMPLE_NW_HALLWAY_TWISTED"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_FOREST_TEMPLE, 2)",
+    "SmallKeys(SCENE_FOREST_TEMPLE, 3)"
+   ],
+   "why": "forest_fire_water 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_BLOCK_PUSH_ROOM_TOP",
+    "RR_FOREST_TEMPLE_NW_HALLWAY_STRAIGHTENED"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_FOREST_TEMPLE, 2)",
+    "SmallKeys(SCENE_FOREST_TEMPLE, 3)"
+   ],
+   "why": "forest_fire_water 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_NW_HALLWAY_TWISTED",
+    "RR_FOREST_TEMPLE_BLOCK_PUSH_ROOM_TOP"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_FOREST_TEMPLE, 2)",
+    "SmallKeys(SCENE_FOREST_TEMPLE, 3)"
+   ],
+   "why": "forest_fire_water 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_NW_HALLWAY_STRAIGHTENED",
+    "RR_FOREST_TEMPLE_BLOCK_PUSH_ROOM_TOP"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_FOREST_TEMPLE, 2)",
+    "SmallKeys(SCENE_FOREST_TEMPLE, 3)"
+   ],
+   "why": "forest_fire_water 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_NW_HALLWAY_TWISTED",
+    "RR_FOREST_TEMPLE_RED_POE_ROOM"
+   ],
+   "rule": "true",
+   "why": "Forest: the twisted hallway's door to Joelle's room is a plain door (forest_fire_water 0)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_RED_POE_ROOM",
+    "RR_FOREST_TEMPLE_NW_HALLWAY_TWISTED"
+   ],
+   "rule": "true",
+   "why": "forest_fire_water 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_UPPER_STALFOS",
+    "RR_FOREST_TEMPLE_BLUE_POE_ROOM"
+   ],
+   "sub": [
+    "logic->CanKillEnemy(RE_STALFOS, ED_CLOSE, true, 3)",
+    "logic->CanKillEnemy(RE_STALFOS, ED_CLOSE, true, 3) && logic->SmallKeys(SCENE_FOREST_TEMPLE, 4)"
+   ],
+   "why": "Forest: a locked door from the bow room to Beth's room (forest_fire_water 0)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_BLUE_POE_ROOM",
+    "RR_FOREST_TEMPLE_UPPER_STALFOS"
+   ],
+   "rule": "logic->SmallKeys(SCENE_FOREST_TEMPLE, 4)",
+   "why": "forest_fire_water 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_BLUE_POE_ROOM",
+    "RR_FOREST_TEMPLE_NE_HALLWAY_STRAIGHTENED"
+   ],
+   "rule": "logic->Get(LOGIC_FOREST_BETH)",
+   "why": "Forest: Beth's room -> NE corridor is a shutter opened by Beth's defeat (forest_fire_water 0)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_NE_HALLWAY_STRAIGHTENED",
+    "RR_FOREST_TEMPLE_BLUE_POE_ROOM"
+   ],
+   "rule": "logic->Get(LOGIC_FOREST_BETH)",
+   "why": "forest_fire_water 0"
+  },
+  {
+   "key": [
+    "event",
+    "RR_FOREST_TEMPLE_NE_COURTYARD_SWITCH",
+    "LOGIC_FOREST_DRAINED_WELL"
+   ],
+   "rule": "false",
+   "why": "Forest: the drain switch moved to the NW courtyard's upper alcove (forest_fire_water 1)"
+  },
+  {
+   "key": [
+    "add_event",
+    "RR_FOREST_TEMPLE_NW_COURTYARD_UPPER_ALCOVE",
+    "LOGIC_FOREST_DRAINED_WELL"
+   ],
+   "rule": "true",
+   "why": "forest_fire_water 1"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_NW_COURTYARD_UPPER_ALCOVE",
+    "RR_FOREST_TEMPLE_MAP_ROOM"
+   ],
+   "rule": "false",
+   "why": "Forest: no map room (forest_fire_water 1)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_NE_COURTYARD_UPPER",
+    "RR_FOREST_TEMPLE_MAP_ROOM"
+   ],
+   "rule": "false",
+   "why": "forest_fire_water 1"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FOREST_TEMPLE_LOBBY",
+    "RR_FOREST_TEMPLE_NE_COURTYARD_LOWER"
+   ],
+   "rule": "false",
+   "why": "Forest: the lobby's east door is a one-way shortcut opened from the courtyard (forest_fire_water 2)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_FOYER",
+    "RR_FIRE_TEMPLE_LOOP_HEXAGON_ROOM"
+   ],
+   "rule": "AnyAgeTime([]{return logic->CanUse(RG_MEGATON_HAMMER);}) && logic->SmallKeys(SCENE_FIRE_TEMPLE, 9)",
+   "why": "Fire: SoH's game unlocks the boss key loop door itself and its logic gives a logical key for it (counts are real keys + 1). The remake's door is locked (two Obj_DoorChainLock_A_04, 17955): with SoH's counts kept, it needs that logical key and all 8 real ones (it is behind the hammer, which comes after every other locked door)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_LOOP_HEXAGON_ROOM",
+    "RR_FIRE_TEMPLE_FOYER"
+   ],
+   "rule": "logic->SmallKeys(SCENE_FIRE_TEMPLE, 9)",
+   "why": "as above"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_LAVA_GEYSER_1F",
+    "RR_FIRE_TEMPLE_LAVA_GEYSER_GRATE"
+   ],
+   "rule": "logic->SmallKeys(SCENE_FIRE_TEMPLE, 4) && logic->FireTimer() >= 40 && (logic->HasItem(RG_CLIMB) || logic->CanUse(RG_HOOKSHOT))",
+   "why": "Fire: a locked door inside the lava geyser room (forest_fire_water 3; its room behind unconfirmed: a stricter rule)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_LAVA_GEYSER_1F",
+    "RR_FIRE_TEMPLE_LAVA_GEYSER_TORCH"
+   ],
+   "rule": "logic->SmallKeys(SCENE_FIRE_TEMPLE, 4) && logic->CanUse(RG_LONGSHOT) && logic->FireTimer() >= 40",
+   "why": "forest_fire_water 3"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_LAVA_GEYSER_2F",
+    "RR_FIRE_TEMPLE_SHORTCUT_ROOM"
+   ],
+   "rule": "true",
+   "why": "Fire: no lock (forest_fire_water 3)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_SHORTCUT_ROOM",
+    "RR_FIRE_TEMPLE_LAVA_GEYSER_2F"
+   ],
+   "rule": "true",
+   "why": "forest_fire_water 3"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_NARROW_PATH_ROOM",
+    "RR_FIRE_TEMPLE_FIRE_WALL_CHASE"
+   ],
+   "rule": "true",
+   "why": "Fire: no lock (forest_fire_water 3)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_FIRE_WALL_CHASE",
+    "RR_FIRE_TEMPLE_NARROW_PATH_ROOM"
+   ],
+   "rule": "logic->FireTimer() >= 24",
+   "why": "forest_fire_water 3"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_FIRE_WALL_SIDE_DOOR",
+    "RR_FIRE_TEMPLE_CORRIDOR"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_FIRE_TEMPLE, 7)",
+    "SmallKeys(SCENE_FIRE_TEMPLE, 6)"
+   ],
+   "why": "forest_fire_water 3"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_CORRIDOR",
+    "RR_FIRE_TEMPLE_FIRE_WALL_SIDE_DOOR"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_FIRE_TEMPLE, 7)",
+    "SmallKeys(SCENE_FIRE_TEMPLE, 6)"
+   ],
+   "why": "forest_fire_water 3"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_FIRE_TEMPLE_FIRE_MAZE_PAST_WALL",
+    "RR_FIRE_TEMPLE_3F_FLARE_DANCER"
+   ],
+   "rule": "logic->SmallKeys(SCENE_FIRE_TEMPLE, 8)",
+   "why": "Fire: a locked shutter, not a bombable wall (forest_fire_water 3)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_WATER_TEMPLE_MAIN",
+    "RR_WATER_TEMPLE_PILLAR_1F"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_WATER_TEMPLE, 5)",
+    "SmallKeys(SCENE_WATER_TEMPLE, 4)"
+   ],
+   "why": "Water: 4 keys, 4 locked doors off the central lake (forest_fire_water 5)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_WATER_TEMPLE_PILLAR_1F",
+    "RR_WATER_TEMPLE_MAIN"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_WATER_TEMPLE, 5)",
+    "SmallKeys(SCENE_WATER_TEMPLE, 4)"
+   ],
+   "why": "forest_fire_water 5"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_WATER_TEMPLE_OUTSIDE_JET_LIFT_2F",
+    "RR_WATER_TEMPLE_JET_LIFT_2F"
+   ],
+   "rule": "logic->WaterLevel(WL_MID) && logic->SmallKeys(SCENE_WATER_TEMPLE, 4)",
+   "why": "Water: the high-water emblem door is locked (forest_fire_water 5)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_WATER_TEMPLE_BEHIND_CANAL",
+    "RR_WATER_TEMPLE_BOSS_KEY_ROOM"
+   ],
+   "rule": "true",
+   "why": "Water: an unlocked shutter (forest_fire_water 5)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_WATER_TEMPLE_BOSS_KEY_ROOM",
+    "RR_WATER_TEMPLE_BEHIND_CANAL"
+   ],
+   "rule": "true",
+   "why": "forest_fire_water 5"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_WATER_TEMPLE_WATERFALL_TOP",
+    "RR_WATER_TEMPLE_TOGGLE_SWITCH"
+   ],
+   "rule": "true",
+   "why": "Water: an unlocked shutter (forest_fire_water 5)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_WATER_TEMPLE_TOGGLE_SWITCH",
+    "RR_WATER_TEMPLE_WATERFALL_TOP"
+   ],
+   "rule": "true",
+   "why": "forest_fire_water 5"
+  },
+  {
+   "key": [
+    "event",
+    "RR_WATER_TEMPLE_MAIN",
+    "LOGIC_WATER_COULD_MIDDLE"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_WATER_TEMPLE, 5)",
+    "SmallKeys(SCENE_WATER_TEMPLE, 4)"
+   ],
+   "why": "forest_fire_water 5"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_GANONS_CASTLE_LIGHT_TRIAL_CHESTS_ROOM",
+    "RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM"
+   ],
+   "rule": "(ctx->GetTrickOption(RT_LENS_GANON) || logic->CanUse(RG_LENS_OF_TRUTH)) && logic->CanKillEnemy(RE_BIG_SKULLTULA) && logic->CanKillEnemy(RE_KEESE, ED_CLOSE, true, 3)",
+   "why": "Ganon: the light trial's first door is a shutter opened by killing the invisible enemies (gtg_ganon 0)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM",
+    "RR_GANONS_CASTLE_LIGHT_TRIAL_BOULDER_ROOM"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_INSIDE_GANONS_CASTLE, 2)",
+    "SmallKeys(SCENE_INSIDE_GANONS_CASTLE, 1)"
+   ],
+   "why": "Ganon: 1 key, 1 locked door (gtg_ganon 0)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_GANONS_CASTLE_LIGHT_TRIAL_BOULDER_ROOM",
+    "RR_GANONS_CASTLE_LIGHT_TRIAL_TRIFORCE_ROOM"
+   ],
+   "sub": [
+    "SmallKeys(SCENE_INSIDE_GANONS_CASTLE, 2)",
+    "SmallKeys(SCENE_INSIDE_GANONS_CASTLE, 1)"
+   ],
+   "why": "gtg_ganon 0"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_SHADOW_TEMPLE_UPPER_HUGE_PIT_DOOR_LEDGE",
+    "RR_SHADOW_TEMPLE_INVISIBLE_SPINNING_BLADES"
+   ],
+   "rule": "true",
+   "why": "Shadow: no lock (shadow_spirit 0)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_SHADOW_TEMPLE_ACROSS_CHASM",
+    "RR_SHADOW_TEMPLE_PRE_BOSS_ROOM"
+   ],
+   "rule": "true",
+   "why": "Shadow: no lock (shadow_spirit 1)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_SHADOW_TEMPLE_PRE_BOSS_ROOM",
+    "RR_SHADOW_TEMPLE_ACROSS_CHASM"
+   ],
+   "rule": "true",
+   "why": "shadow_spirit 1"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_SHADOW_TEMPLE_MAZE",
+    "RR_SHADOW_TEMPLE_WOODEN_SPIKES"
+   ],
+   "rule": "logic->SmallKeys(SCENE_SHADOW_TEMPLE, 5)",
+   "why": "Shadow: the boss key room is behind the 5th key's door (shadow_spirit 2)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_SHADOW_TEMPLE_WOODEN_SPIKES",
+    "RR_SHADOW_TEMPLE_MAZE"
+   ],
+   "rule": "AnyAgeTime([]{return logic->CanKillEnemy(RE_REDEAD, ED_CLOSE, true, 2);})",
+   "why": "Shadow: the room locks until its 2 ReDeads die (shadow_spirit 3)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_SPIRIT_TEMPLE_SUN_BLOCK_ROOM",
+    "RR_SPIRIT_TEMPLE_SKULLTULA_STAIRS"
+   ],
+   "rule": "(logic->HasItem(RG_POWER_BRACELET) || logic->SunlightArrows()) && logic->HasItem(RG_SPIRIT_SILVER_SUN)",
+   "why": "Spirit: the silver rupees open the room's exits (shadow_spirit 5, low-medium confidence: both requirements kept)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_SPIRIT_TEMPLE_SUN_BLOCK_ROOM",
+    "RR_SPIRIT_TEMPLE_EMPTY_STAIRS"
+   ],
+   "rule": "(logic->HasItem(RG_POWER_BRACELET) || logic->SunlightArrows()) && logic->HasItem(RG_SPIRIT_SILVER_SUN)",
+   "why": "shadow_spirit 5"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_SFM_ENTRYWAY",
+    "RR_SFM_WOLFOS_GROTTO"
+   ],
+   "rule": "logic->CanOpenStormsGrotto()",
+   "why": "SFM Wolfos grotto: a Song of Storms cover (overworld 0)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_SACRED_FOREST_MEADOW",
+    "RR_SFM_STORMS_GROTTO"
+   ],
+   "rule": "logic->CanOpenBombGrotto()",
+   "why": "SFM storms grotto: a bombable cover (overworld 1)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_KAKARIKO_VILLAGE",
+    "RR_KAK_REDEAD_GROTTO"
+   ],
+   "rule": "false",
+   "why": "The ReDead grotto opens from Hyrule Field by Kakariko's gate (overworld 3)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_KAK_REDEAD_GROTTO",
+    "RR_KAKARIKO_VILLAGE"
+   ],
+   "rule": "false",
+   "why": "overworld 3"
+  },
+  {
+   "key": [
+    "add_exit",
+    "RR_HYRULE_FIELD",
+    "RR_KAK_REDEAD_GROTTO"
+   ],
+   "rule": "logic->CanOpenStormsGrotto()",
+   "why": "overworld 3"
+  },
+  {
+   "key": [
+    "add_exit",
+    "RR_KAK_REDEAD_GROTTO",
+    "RR_HYRULE_FIELD"
+   ],
+   "rule": "true",
+   "why": "overworld 3"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_HYRULE_FIELD",
+    "RR_HF_TEKTITE_GROTTO"
+   ],
+   "rule": "logic->CanOpenBombGrotto() && logic->CanOpenStormsGrotto()",
+   "why": "HF tektite grotto: probably a storms cover now (overworld 4, unconfirmed: both kept)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_LAKE_HYLIA",
+    "RR_LH_GROTTO"
+   ],
+   "rule": "true",
+   "why": "Lake Hylia grotto: an open hole (overworld 5)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_GV_FORTRESS_SIDE",
+    "RR_GV_STORMS_GROTTO"
+   ],
+   "rule": "logic->CanOpenStormsGrotto()",
+   "why": "GV storms grotto: in the child's map too (overworld 6)"
+  },
+  {
+   "key": [
+    "add_region",
+    "RR_REMAKE_GC_SECRET_HOLE"
+   ],
+   "region": {
+    "name": "Goron City Secret Hole",
+    "like": "RR_GORON_CITY"
+   },
+   "why": "A remake-only hole with a sign puzzle and 2 chests (overworld 12)"
+  },
+  {
+   "key": [
+    "add_exit",
+    "RR_GORON_CITY",
+    "RR_REMAKE_GC_SECRET_HOLE"
+   ],
+   "rule": "true",
+   "why": "overworld 12"
+  },
+  {
+   "key": [
+    "add_exit",
+    "RR_REMAKE_GC_SECRET_HOLE",
+    "RR_GORON_CITY"
+   ],
+   "rule": "true",
+   "why": "overworld 12"
+  }
+ ]
+}
