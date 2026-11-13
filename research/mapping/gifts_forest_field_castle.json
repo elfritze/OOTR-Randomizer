@@ -1,0 +1,1344 @@
+{
+ "group": "forest_field_castle",
+ "notes": [
+  "Bool queries in these flows: case 0 = true, case 1 = false (EventQueryIsGameDataBool / IsExistInPouch / IsGameDataBoolExp), verified on the Skull Kid, LW target, theater and bowling flows.",
+  "NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay passes its ReveiveItem param as ActorName to Dm_SY_GetInEvent:GetInEvent_NotTurn: rewrite ReveiveItem on the caller event.",
+  "HeartPieceAnchor actors (all maps) mark every Heart Piece for the map: MapIconHeartPieceAnchorType 1 = world/chest heart piece (Links to it), 2 = event-given, with HeartPieceAnchor_GameDataPath = the GameData flag that records it. A complete list of the game's Heart Pieces.",
+  "Business scrubs: the map's Dynamic.ScrubBusiness_ShopItemActorName0 only selects a hard-coded branch in Enemy_Scrub_Business_Common (unknown values sell nothing); rewrite the flow events, not the map field.",
+  "Songs: every teacher cutscene calls Dm_SY_Ocarina LearningOcarinaPlayExample/FollowExample/PlayAuto(ForSeek) with a MelodyType (0 Lullaby, 1 Epona, 2 Saria, 3 Sun, 4 Time, 5 Storms, 6 Minuet, 7 Bolero, 8 Serenade, 9 Requiem, 10 Nocturne, 11 Prelude, 12 Scarecrow); PlayAuto silently adds the song (Dm_SY_Ocarina events 26-31, 32/34-38, 77) before the cutscene's own GetPouchContentByActorName. This contradicts the summary 'lesson events only teach notes': Dm_SY_Ocarina entry LearningOcarinaPlayAuto (39: call PlayAuto_MelodyGet -> 18 ?EventQueryMelodyTypeForNormal {0:26,1:27,2:28,3:29,4:30,5:31,12:77}) and entry LearningOcarinaPlayAutoForSeek (25 -> 33 {6:32,7:34,8:35,9:36,10:37,11:38}) each reach a PouchSystemActor.EventTriggerAddOrRemovePouchContent with a literal Item_Melody_* Actor, Num 1 (reach check: PlayAuto -> 26/27/28/30, ForSeek -> 32/38). Confirm in game before relying on either view.",
+  "Great Fairy prices (Dm_FairyFountain_Din Pay/DontPay sub-flows): Din (Hyrule Castle) 25 rupees, Courage/Double Defense (outside Ganon's Castle) 500 rupees.",
+  "Rechecked against the rebuilt world_items.json / gift_events.json: no new Heart Piece in Hyrule Field (tektite grotto stays 'none'); new finding: Kokiri shop gives a free Obj_Shield_Deku (remake_only).",
+  "Of this group's flows only Dm_HrlCastle_0020 (Talon's Cucco) and MiniGame_HorseRace have .110 twins; the game loads the .110 ones (Event/EventFlow/EventFlowFileEntry.Product.110 'Versions') - patch both."
+ ],
+ "checks": [
+  {
+   "rc": "RC_SHEIK_IN_FOREST",
+   "remake_vanilla_item": "Item_Melody_ForestMinuet",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Forest",
+   "event": 11,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 32,
+     "param": "Actor",
+     "what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent (silent add for MelodyType 6, reached from entry LearningOcarinaPlayAutoForSeek)",
+     "note": "must be neutralised, or the original song is still given"
+    },
+    {
+     "flow": "Dm_MelodyGet_Forest",
+     "event": 235,
+     "what": "?PouchSystemActor.EventQueryIsExistInPouch Item_Hookshot",
+     "note": "only picks a branch of the ending lines; no check on the song"
+    },
+    {
+     "flow": "Npc_Hylia_Sheik_Adult",
+     "event": 22,
+     "what": "?GameDataActor.EventQueryIsGameDataBool IsGet.Item_Melody_ForestMinuet",
+     "note": "Sheik's later talk text only"
+    },
+    {
+     "flow": "SageOfWater",
+     "event": 267,
+     "what": "?IsGet.Item_Melody_ForestMinuet",
+     "note": "branch in another group's flow; look at it before shuffling"
+    }
+   ],
+   "trigger": "Adult walks into the trigger area at the Sacred Forest Meadow stage: EventRequestActor 10600549038560538766 (SacredForestMeadow_Adult_Static, (-0.3,135.8,-87.7)), RequestEventName ForestTemple_SageOfForest_MelodyGet -> flow SageOfForest entry ForestTemple_SageOfForest_MelodyGet -> EventTransition Dm_MelodyGet_Forest. Logic module SacredForestMeadow_Adult_Prefab_03df fires it while HavePlayedEvent Dm_MelodyGet_Forest is false (one time).",
+   "logic_note": "Same as SoH (adult in SFM; the trigger is only in the adult map, no other condition in its logic module).",
+   "risk": "Two places add the song: (1) the song flow's GetPouchContentByActorName (the get window) and (2) Dm_SY_Ocarina's LearningOcarinaPlayAuto/PlayAutoForSeek sub-flow, called by the same cutscene after the play-along, which silently adds the song by the current MelodyType (EventTriggerAddOrRemovePouchContent, IsGetEvent false). Rewriting only the get-window event still grants the original song. Dm_SY_Ocarina's add events are shared by all teachers, but each MelodyType is taught by exactly one cutscene (Sun's Song flow calls it twice for the same type), so its add event can be neutralised per song (e.g. its Actor set to a harmless rupee, or Num made 0 if an int-param patch is added) without touching other checks. The play-along (LearningOcarinaFollowExample) makes the player play the song on an ocarina: untested without an ocarina in the pouch.",
+   "confidence": "high",
+   "evidence": "Dm_MelodyGet_Forest entry Learn_melody_C07-13: 3 LearningOcarinaPlayExample(MelodyType 6), 4 LearningOcarinaFollowExample, 12 LearningOcarinaPlayAutoForSeek, 11 GetPouchContentByActorName Item_Melody_ForestMinuet. EventSetting row Dm_MelodyGet_Forest (default entry). Dm_SY_Ocarina 25 (entry PlayAutoForSeek) -> 33 ?MelodyType {6:32,...}; 32 adds Item_Melody_ForestMinuet. No .110 twin."
+  },
+  {
+   "rc": "RC_SHEIK_AT_TEMPLE",
+   "remake_vanilla_item": "Item_Melody_LightPrelude",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Shine",
+   "event": 249,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 38,
+     "param": "Actor",
+     "what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent (silent add for MelodyType 11, reached from entry LearningOcarinaPlayAutoForSeek)",
+     "note": "must be neutralised, or the original song is still given"
+    },
+    {
+     "flow": "Dm_MelodyGet_Shine",
+     "event": 14,
+     "what": "GameDataActor.EventTriggerSetGameDataBool Market_Adult_GetLightPrelude",
+     "note": "completion flag; keep"
+    },
+    {
+     "flow": "Npc_Hylia_009_Adult",
+     "event": 61,
+     "what": "?HavePlayedGetEvent.Item_Melody_LightPrelude",
+     "note": "Kakariko NPC text only"
+    }
+   ],
+   "trigger": "Adult enters the trigger area in the Temple of Time (Market_Adult_Static EventRequestActor 3409851866200498477 at (139.2,114.3,-33.3), next to Npc_Hylia_Sheik_Adult 2669233513522124871) -> AllSage entry Market_Adult_Field_GetLightPrelude -> event 17 EventTransition Dm_MelodyGet_Shine. Logic module Market_Adult_Prefab_edc2 requires SageOfForest_IsCompleted_Exp. Dm_MelodyGet_Shine event 14 sets Market_Adult_GetLightPrelude.",
+   "logic_note": "Same as SoH: adult in the Temple of Time after the Forest Temple (SageOfForest_IsCompleted_Exp ~ Forest Medallion).",
+   "risk": "Two places add the song: (1) the song flow's GetPouchContentByActorName (the get window) and (2) Dm_SY_Ocarina's LearningOcarinaPlayAuto/PlayAutoForSeek sub-flow, called by the same cutscene after the play-along, which silently adds the song by the current MelodyType (EventTriggerAddOrRemovePouchContent, IsGetEvent false). Rewriting only the get-window event still grants the original song. Dm_SY_Ocarina's add events are shared by all teachers, but each MelodyType is taught by exactly one cutscene (Sun's Song flow calls it twice for the same type), so its add event can be neutralised per song (e.g. its Actor set to a harmless rupee, or Num made 0 if an int-param patch is added) without touching other checks. The play-along (LearningOcarinaFollowExample) makes the player play the song on an ocarina: untested without an ocarina in the pouch. The repeat guard of the trigger was not found in its logic module (only SageOfForest_IsCompleted_Exp); probably the AllSage challenge step.",
+   "confidence": "high",
+   "evidence": "Dm_MelodyGet_Shine: C09_Learn_melody 1 PlayExample(MelodyType 11), C10_Learn_melody 2 FollowExample, C11_C13_Learn_melody 7 PlayAutoForSeek, C14_Learn_melody 249 GetPouchContentByActorName Item_Melody_LightPrelude. Dm_SY_Ocarina 33 {11:38}; 38 adds Item_Melody_LightPrelude. EventSetting row Market_Adult_Field_GetLightPrelude -> AllSage."
+  },
+  {
+   "rc": "RC_SONG_FROM_IMPA",
+   "remake_vanilla_item": "Item_Melody_ZeldaLullaby",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Zelda",
+   "event": 66,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 26,
+     "param": "Actor",
+     "what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent (silent add for MelodyType 0, reached from entry LearningOcarinaPlayAuto)",
+     "note": "must be neutralised, or the original song is still given"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 199,
+     "what": "?GameDataActor.EventQueryCheckIsGet Item_Melody_ZeldaLullaby (entry PlayOcarinaFree)",
+     "note": "free-play branch keyed on owning the Lullaby; check it does not hide the song menu"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 182,
+     "what": "?IsGet.Item_Melody_ZeldaLullaby",
+     "note": "ocarina tutorial branch"
+    }
+   ],
+   "trigger": "Child talks to Impa in Hyrule Castle after meeting Zelda: Npc_Hylia_Impa_Child 8233992157277836195 (HyruleCastle_Static (5.1,126.8,-233.4), present while DoorOfTime_IsAfter_Step01_Exp is false) -> EventSetting 3906666092_3949112793_2073510616_D_T -> DoorOfTime entry Step01_Npc_Hylia_Impa_Child_Talk -> 59 EventTransition Dm_MelodyGet_Zelda (challenge DoorOfTime Step01).",
+   "logic_note": "Same as SoH (after Zelda, in the courtyard). DoorOfTime_IsAfter_Step01_Exp, reached here, also gates the Saria's Song trigger in SFM (= SoH LOGIC_MET_ZELDA).",
+   "risk": "Two places add the song: (1) the song flow's GetPouchContentByActorName (the get window) and (2) Dm_SY_Ocarina's LearningOcarinaPlayAuto/PlayAutoForSeek sub-flow, called by the same cutscene after the play-along, which silently adds the song by the current MelodyType (EventTriggerAddOrRemovePouchContent, IsGetEvent false). Rewriting only the get-window event still grants the original song. Dm_SY_Ocarina's add events are shared by all teachers, but each MelodyType is taught by exactly one cutscene (Sun's Song flow calls it twice for the same type), so its add event can be neutralised per song (e.g. its Actor set to a harmless rupee, or Num made 0 if an int-param patch is added) without touching other checks. The play-along (LearningOcarinaFollowExample) makes the player play the song on an ocarina: untested without an ocarina in the pouch. Impa's lesson also completes DoorOfTime Step01, which other events key on (Saria trigger, Kokiri text), independent of the item.",
+   "confidence": "high",
+   "evidence": "Dm_MelodyGet_Zelda: C04-C05 4 PlayExample(MelodyType 0), C06 5 FollowExample, 6 LearningOcarinaPlayAuto, C10 66 GetPouchContentByActorName Item_Melody_ZeldaLullaby. Dm_SY_Ocarina 39 -> PlayAuto_MelodyGet -> 18 ?MelodyType {0:26}; 26 adds Item_Melody_ZeldaLullaby. DoorOfTime 67 ?HavePlayedEvent Dm_MelodyGet_Zelda."
+  },
+  {
+   "rc": "RC_SONG_FROM_MALON",
+   "remake_vanilla_item": "Item_Melody_EponaSong",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Epona",
+   "event": 50,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 27,
+     "param": "Actor",
+     "what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent (silent add for MelodyType 1, reached from entry LearningOcarinaPlayAuto)",
+     "note": "must be neutralised, or the original song is still given"
+    },
+    {
+     "flow": "Dm_MelodyGet_Epona",
+     "event": 148,
+     "what": "?PouchSystemActor.EventQueryIsExistInPouch Obj_Ocarina_Time",
+     "note": "chooses the ocarina model (XLink 144 Item_Ocarina_Fairy / 147 Item_Ocarina_Time)"
+    },
+    {
+     "flow": "Dm_MelodyGet_Epona",
+     "event": 48,
+     "what": "Challenge Get_Epona step AfterGetEponaSong",
+     "note": "Ingo/Epona race chain keys on this step, not on the song item"
+    }
+   ],
+   "trigger": "Child at Lon Lon Ranch talks to Malon after Talon is back (EventSetting Get_EponaSong -> SubEvent_GetEponaSong entry GetEponaSong_MelodyGet_Epona -> 0 EventTransition Dm_MelodyGet_Epona). Dm_MelodyGet_Epona sets Forbid_MelodyGet_Epona (47) and moves challenge Get_Epona to AfterGetEponaSong (48); Npc_Hylia_Malon_Child 8 checks HavePlayedEvent.Dm_MelodyGet_Epona.",
+   "logic_note": "Probably same as SoH (child, after Talon returned). Day/night and the ocarina requirement not confirmed from data: the cutscene only picks an ocarina model by ?IsExistInPouch Obj_Ocarina_Time (148).",
+   "risk": "Two places add the song: (1) the song flow's GetPouchContentByActorName (the get window) and (2) Dm_SY_Ocarina's LearningOcarinaPlayAuto/PlayAutoForSeek sub-flow, called by the same cutscene after the play-along, which silently adds the song by the current MelodyType (EventTriggerAddOrRemovePouchContent, IsGetEvent false). Rewriting only the get-window event still grants the original song. Dm_SY_Ocarina's add events are shared by all teachers, but each MelodyType is taught by exactly one cutscene (Sun's Song flow calls it twice for the same type), so its add event can be neutralised per song (e.g. its Actor set to a harmless rupee, or Num made 0 if an int-param patch is added) without touching other checks. The play-along (LearningOcarinaFollowExample) makes the player play the song on an ocarina: untested without an ocarina in the pouch. Getting Epona as adult is gated by the Get_Epona challenge steps advanced by this cutscene; an Epona's Song found elsewhere may not open the race.",
+   "confidence": "high",
+   "evidence": "Dm_MelodyGet_Epona: C02 1 PlayExample(MelodyType 1), C03 4 FollowExample, 6 LearningOcarinaPlayAuto, C04 50 GetPouchContentByActorName Item_Melody_EponaSong. Dm_SY_Ocarina 18 {1:27}; 27 adds Item_Melody_EponaSong."
+  },
+  {
+   "rc": "RC_SONG_FROM_SARIA",
+   "remake_vanilla_item": "Item_Melody_SariaSong",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Saria",
+   "event": 20,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 28,
+     "param": "Actor",
+     "what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent (silent add for MelodyType 2, reached from entry LearningOcarinaPlayAuto)",
+     "note": "must be neutralised, or the original song is still given"
+    },
+    {
+     "flow": "SacredForestMeadow",
+     "entry": "SacredForestMeadow_Field_MelodyGet_Saria",
+     "what": "call Get_StoneOfFire:Get_StoneOfFire_MelodyGet_Saria (challenge Get_StoneOfFire step SariaMelodyPlay)",
+     "note": "Darunia's quest step is advanced by this cutscene, not by owning the song"
+    },
+    {
+     "flow": "Npc_Kokiri_009_Child 22, 011 21, 012 40, 013 26/45, Npc_Kokiri_Mido_Child 126, Npc_Kokiri_Fado_Child 11",
+     "what": "?EventQueryCheckIsGet / IsGet Item_Melody_SariaSong",
+     "note": "Kokiri dialogue branches only"
+    }
+   ],
+   "trigger": "Child walks to Saria at the SFM stage: EventRequestActor 17677200716741898476 (SacredForestMeadow_Child_Static, (-0.3,126.4,-88.9)) RequestEventName SacredForestMeadow_Field_MelodyGet_Saria -> flow SacredForestMeadow entry of that name -> EventTransition Dm_MelodyGet_Saria, then calls Get_StoneOfFire:Get_StoneOfFire_MelodyGet_Saria (challenge step SariaMelodyPlay, if after the Darunia talk). Logic module SacredForestMeadow_Child_Prefab_bbc3: DoorOfTime_IsAfter_Step01_Exp and HavePlayedEvent Dm_MelodyGet_Saria not yet.",
+   "logic_note": "Same as SoH (child, after meeting Zelda: DoorOfTime_IsAfter_Step01_Exp comes from Impa's Lullaby event).",
+   "risk": "Two places add the song: (1) the song flow's GetPouchContentByActorName (the get window) and (2) Dm_SY_Ocarina's LearningOcarinaPlayAuto/PlayAutoForSeek sub-flow, called by the same cutscene after the play-along, which silently adds the song by the current MelodyType (EventTriggerAddOrRemovePouchContent, IsGetEvent false). Rewriting only the get-window event still grants the original song. Dm_SY_Ocarina's add events are shared by all teachers, but each MelodyType is taught by exactly one cutscene (Sun's Song flow calls it twice for the same type), so its add event can be neutralised per song (e.g. its Actor set to a harmless rupee, or Num made 0 if an int-param patch is added) without touching other checks. The play-along (LearningOcarinaFollowExample) makes the player play the song on an ocarina: untested without an ocarina in the pouch. Cross-group: Get_StoneOfFire's SariaMelodyPlay step is progressed here; if Saria's Song is placed elsewhere, check that playing it to Darunia still works (Goron group's flows).",
+   "confidence": "high",
+   "evidence": "Dm_MelodyGet_Saria: C07 26 PlayExample(MelodyType 2), C08 8 FollowExample, 9 LearningOcarinaPlayAuto, C12 20 GetPouchContentByActorName Item_Melody_SariaSong. Dm_SY_Ocarina 18 {2:28}; 28 adds Item_Melody_SariaSong."
+  },
+  {
+   "rc": "RC_SONG_FROM_OCARINA_OF_TIME",
+   "remake_vanilla_item": "Item_Melody_TimeSong",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Time",
+   "event": 93,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 30,
+     "param": "Actor",
+     "what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent (silent add for MelodyType 4, reached from entry LearningOcarinaPlayAuto)",
+     "note": "must be neutralised, or the original song is still given"
+    },
+    {
+     "flow": "Dm_MelodyGet_Time",
+     "event": 188,
+     "what": "SetGameDataBool MelodyGet_Time_EndConversationWithZelda",
+     "note": "keep"
+    }
+   ],
+   "trigger": "Same cutscene as the Ocarina of Time (see RC_HF_OCARINA_OF_TIME_ITEM): after the ocarina is picked up, Zelda teaches the Song of Time.",
+   "logic_note": "Same as SoH (child, 3 stones: the moat trigger needs challenge DoorOfTime at Step04).",
+   "risk": "Two places add the song: (1) the song flow's GetPouchContentByActorName (the get window) and (2) Dm_SY_Ocarina's LearningOcarinaPlayAuto/PlayAutoForSeek sub-flow, called by the same cutscene after the play-along, which silently adds the song by the current MelodyType (EventTriggerAddOrRemovePouchContent, IsGetEvent false). Rewriting only the get-window event still grants the original song. Dm_SY_Ocarina's add events are shared by all teachers, but each MelodyType is taught by exactly one cutscene (Sun's Song flow calls it twice for the same type), so its add event can be neutralised per song (e.g. its Actor set to a harmless rupee, or Num made 0 if an int-param patch is added) without touching other checks. The play-along (LearningOcarinaFollowExample) makes the player play the song on an ocarina: untested without an ocarina in the pouch. The play-along right before it needs an ocarina: in vanilla it is the Ocarina of Time given at event 106 of the same cutscene; if that is randomized too, the player may have no ocarina here.",
+   "confidence": "high",
+   "evidence": "Dm_MelodyGet_Time: C08 34 PlayExample(MelodyType 4), C09 41 FollowExample, 42 LearningOcarinaPlayAuto, C10 93 GetPouchContentByActorName Item_Melody_TimeSong. Dm_SY_Ocarina 18 {4:30}; 30 adds Item_Melody_TimeSong. EventSetting HyruleField_DoorOfTime_GetOcarinaOfTime -> DoorOfTime entry DoorOfTime_GetOcarinaOfTime -> 5 EventTransition Dm_MelodyGet_Time."
+  },
+  {
+   "rc": "RC_HF_OCARINA_OF_TIME_ITEM",
+   "remake_vanilla_item": "Item_Ocarina_Time",
+   "kind": "flow_param",
+   "flow": "Dm_MelodyGet_Time",
+   "event": 106,
+   "param": "Actor",
+   "what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent (Num 1, start of EntryPoint0)",
+   "also": [
+    {
+     "flow": "Dm_MelodyGet_Time",
+     "event": 255,
+     "param": "ActorName",
+     "what": "call GetPouchContent:DisplayGetByActorName (the get window)",
+     "note": "change together with 106"
+    },
+    {
+     "flow": "Dm_MelodyGet_Time",
+     "event": 155,
+     "what": "Dm_Item_Ocarina_Time.EventTriggerModelBind (Zelda's hand)",
+     "note": "cutscene model, cosmetic; the model is the flow actor, not a param"
+    },
+    {
+     "flow": "Dm_MelodyGet_Time",
+     "event": 279,
+     "param": "TargetID",
+     "what": "ZeldaNotesRequestSendDailyScreenShot Item_Ocarina_Time",
+     "note": "cosmetic"
+    },
+    {
+     "map": "HyruleField/HyruleField_Child_Static.bcett.byml.zs",
+     "hash": "2802436684568022035",
+     "gyaml": "Obj_Ocarina_Time_A_01",
+     "pos": [
+      15.5,
+      145.45,
+      43.11
+     ],
+     "note": "the ocarina lying in the moat; picking it up (ActorLogicOcarinaTime IsGet) fires the event. It is the trigger, not the pouch item"
+    },
+    {
+     "flow": "Dm_MelodyGet_Epona",
+     "event": 148,
+     "what": "?IsExistInPouch Obj_Ocarina_Time",
+     "note": "model choice in another song cutscene"
+    }
+   ],
+   "trigger": "Child, after the 3 Spiritual Stones: Zelda throws the ocarina into the moat in front of the Market gate; picking up Obj_Ocarina_Time_A_01 (HF child map, about 5 m below the field) -> logic module HyruleField_Child_Prefab_91f9 (challenge DoorOfTime at Step04) -> EventRequestActor 4847465768312838458 HyruleField_DoorOfTime_GetOcarinaOfTime -> DoorOfTime:DoorOfTime_GetOcarinaOfTime -> Dm_MelodyGet_Time.",
+   "logic_note": "Same as SoH (child, 3 stones, dive into the moat).",
+   "risk": "The Song of Time play-along in the same cutscene follows right after; with another item here the player may have no ocarina (untested). Two events must change (106 add, 255 window). SoH's progressive ocarina vs the remake's two distinct actors (Item_Ocarina_Fairy, Item_Ocarina_Time): giving Item_Ocarina_Time before the Fairy Ocarina was not tested.",
+   "confidence": "high",
+   "evidence": "Dm_MelodyGet_Time EntryPoint0 starts at 105/106; 106 Actor Item_Ocarina_Time Num 1; C03 255 DisplayGetByActorName Item_Ocarina_Time. Logic module strings: HoldChallengeCurrentStepCheckOrder DoorOfTime Step04, ActorLogicOcarinaTime IsGet, EventRequestActor_9823."
+  },
+  {
+   "rc": "RC_LW_GIFT_FROM_SARIA",
+   "remake_vanilla_item": "Item_Ocarina_Fairy",
+   "kind": "flow_param",
+   "flow": "Dm_Kokiri_0155",
+   "event": 51,
+   "param": "Actor",
+   "what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent (Num 1)",
+   "also": [
+    {
+     "flow": "Dm_Kokiri_0155",
+     "event": 52,
+     "param": "ActorName",
+     "what": "call GetPouchContent:DisplayGetByActorName (get window)",
+     "note": "change together"
+    },
+    {
+     "flow": "Dm_Kokiri_0155",
+     "event": 55,
+     "what": "Dm_Item_Ocarina_Fairy_Saria.EventTriggerModelBind (Saria's hand)",
+     "note": "cutscene model, cosmetic"
+    },
+    {
+     "flow": "Dm_Kokiri_0155",
+     "event": 65,
+     "what": "Item_Ocarina_Fairy.EventTriggerModelBind (Link's hand)",
+     "note": "cutscene model, cosmetic"
+    },
+    {
+     "flow": "Dm_Kokiri_0155",
+     "event": 90,
+     "param": "TargetID",
+     "what": "ZeldaNotesRequestSendDailyScreenShot",
+     "note": "cosmetic"
+    },
+    {
+     "flow": "Npc_Kokiri_005_Child 43/50/97, Npc_Kokiri_007_Child 40",
+     "what": "?IsExistInPouch Item_Ocarina_Fairy",
+     "note": "Kokiri dialogue branches"
+    }
+   ],
+   "trigger": "Child leaves Kokiri Forest over the bridge after the Deku Tree: EventSetting KokiriForest_ArriveLostWood -> Goto_HyruleCastle entry KokiriForest_ArriveLostWood -> 7 EventTransition Dm_Kokiri_0155 (Saria placement Npc_Kokiri_Saria_Child 1660754835063030086, KokiriForest_Child_Static (-117.1,114.5,-38.2), named KokiriForest_ArriveLostWood).",
+   "logic_note": "SoH gives it on the bridge with rule 'true'. In the remake it is a story event of challenge Goto_HyruleCastle, played when first crossing the bridge after the Deku Tree story (exact flag condition not read).",
+   "risk": "Two events (51 add, 52 window). Song cutscenes show Item_Ocarina_Fairy models regardless of ownership (Dm_MelodyGet_Saria 202, Zelda 150, Epona 144): cosmetic.",
+   "confidence": "high",
+   "evidence": "Dm_Kokiri_0155 EntryPoint0; 51 AddOrRemove Item_Ocarina_Fairy, 52 DisplayGetByActorName. Only caller: Goto_HyruleCastle event 7."
+  },
+  {
+   "rc": "RC_LW_SKULL_KID",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "Npc_SkullKid_Child",
+   "event": 62,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+   "also": [
+    {
+     "flow": "Npc_SkullKid_Child",
+     "event": 6,
+     "what": "SetGameDataBool Npc_SkullKid_Child_IsGetHeartPiece",
+     "note": "one-time flag (checked at 7 and 81); keep"
+    },
+    {
+     "map": "LostWood/LostWood_Child_Dynamic.bcett.byml.zs",
+     "hash": "605877630645816565",
+     "gyaml": "HeartPieceAnchor",
+     "note": "map heart-piece icon, HeartPieceAnchor_GameDataPath Npc_SkullKid_Child_IsGetHeartPiece; cosmetic"
+    }
+   ],
+   "trigger": "Child plays Saria's Song to the Skull Kid on the stump (Npc_SkullKid_Child 16007098343293895148, LostWood_Child_Static (-34.0,103.2,-3.7), OcarinaPoint_SkullKidEvent): EventSetting Npc_SkullKid_Child_PlayOcarinaSequence -> 82 PlayOcarinaSequence_NpcBeginningTalk MelodyType 2 -> 7 ?Npc_SkullKid_Child_IsGetHeartPiece -> 1 talk -> 62 heart piece -> 6 set flag.",
+   "logic_note": "Same as SoH (child + Saria's Song).",
+   "risk": "Low: flag-gated, no item check.",
+   "confidence": "high",
+   "evidence": "Npc_SkullKid_Child 7 (cases {0:24 already got, 1:1}), 1 -> 62 -> 6."
+  },
+  {
+   "rc": "RC_LW_OCARINA_MEMORY_GAME",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "Npc_SkullKid_Child_02",
+   "event": 203,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc",
+   "also": [
+    {
+     "flow": "Npc_SkullKid_Child_02",
+     "event": 34,
+     "what": "SetGameDataBool Minigame_SkullKidSession_IsGetHeartPiece",
+     "note": "one-time flag; afterwards event 204 gives a blue rupee"
+    },
+    {
+     "flow": "Npc_SkullKid_Child_02",
+     "event": 204,
+     "param": "ActorName",
+     "what": "GetInEvent_NotTurn_NotNpc Obj_Rupee_Blue",
+     "note": "repeat prize, leave"
+    },
+    {
+     "map": "LostWood/LostWood_Child_Static.bcett.byml.zs",
+     "hash": "18092305056327665421",
+     "gyaml": "HeartPieceAnchor",
+     "note": "map icon, flag Minigame_SkullKidSession_IsGetHeartPiece"
+    }
+   ],
+   "trigger": "Child plays the ocarina 'session' with the two Skull Kids on the stumps (Npc_SkullKid_Child_02 13944949556307164076 'SkullKid1' at (50.0,97.6,15.0) and Npc_SkullKid_Child_03 'SkullKid2', LostWood_Child_Static; OcarinaPoint_SkullKidSession). Entry SessionStart: 6-note rounds (rupee prizes 201/202) then the 8-note round (Minigame_SkullKidSession_CurrentGradeSoundNumForSession = 8); winning it with the flag unset -> 203.",
+   "logic_note": "Same as SoH in spirit (child + ocarina). Whether all 5 note buttons are needed was not checked (SoH: OcarinaButtons >= 5).",
+   "risk": "Low: flag-gated.",
+   "confidence": "high",
+   "evidence": "Npc_SkullKid_Child_02 entry SessionStart; 9 ?Grade==8 -> 35 ?Minigame_SkullKidSession_IsGetHeartPiece {0(true):204 rupee, 1:203 heart piece} -> 34 set flag."
+  },
+  {
+   "rc": "RC_LW_TARGET_IN_WOODS",
+   "remake_vanilla_item": "Item_BulletBag_Medium (Item_BulletBag_Large if IsGet.Item_BulletBag_Medium)",
+   "kind": "flow_param",
+   "flow": "Dm_LostWood_0040",
+   "event": 85,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotLookatObjectTurnOff (Item_BulletBag_Medium)",
+   "also": [
+    {
+     "flow": "Dm_LostWood_0040",
+     "event": 84,
+     "param": "ActorName",
+     "what": "GetInEvent_NotLookatObjectTurnOff Item_BulletBag_Large",
+     "note": "other branch of the same first-clear prize (when IsGet.Item_BulletBag_Medium): set both"
+    },
+    {
+     "flow": "Dm_LostWood_0040",
+     "event": 56,
+     "what": "?IsGet.Item_BulletBag_Medium chooses 84/85",
+     "note": "progressive choice; harmless once both give the same item"
+    },
+    {
+     "flow": "Dm_LostWood_0040",
+     "event": 15,
+     "what": "?IsExistInPouch Item_BulletBag_Medium chooses the bag model of cutscene C01 (ModelBind 7 / 13)",
+     "note": "cosmetic: a bullet-bag model is shown"
+    },
+    {
+     "flow": "Dm_LostWood_0040",
+     "event": 57,
+     "what": "SetGameDataBool LostWood_HitTargetOfDekuScrub_FirstClear",
+     "note": "one-time flag; later clears: rupees, wallet-full branch 86 TBox_Rupee_Green"
+    }
+   ],
+   "trigger": "Child clears the Deku scrub target game near the Lost Woods entrance (NPC_Scrub_Deku_TargetPractice 11203721189701744470 'HitTargetOfDekuScrub', LostWood_Child_Static (41.1,102.6,-4.9)); EventSetting LostWood_HitTargetOfDekuScrub_ClearDemo -> SubEvent_HitTargetOfDekuScrub -> Dm_LostWood_0040 EntryPoint0 (45 ?LostWood_HitTargetOfDekuScrub_FirstClear).",
+   "logic_note": "Same as SoH presumably (shoot targets; slingshot not confirmed from data).",
+   "risk": "Two branches by bag ownership; the cutscene shows a bullet-bag model.",
+   "confidence": "high",
+   "evidence": "Dm_LostWood_0040 45 -> 56 ?IsGet.Item_BulletBag_Medium {0:84 Large, 1:85 Medium} -> 57 set FirstClear."
+  },
+  {
+   "rc": "RC_LW_DEKU_SCRUB_NEAR_BRIDGE",
+   "remake_vanilla_item": "Item_StickBag_Medium (Item_StickBag_Large if Medium owned)",
+   "kind": "flow_param",
+   "flow": "Enemy_Scrub_Business_Common",
+   "event": 325,
+   "param": "ActorName",
+   "what": "call (self):SimpleShopSub_Scrub_Business_OneTime (Price 40), branch when the player never got Deku Sticks (IsGet.Item_DekuStick false)",
+   "also": [
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 167,
+     "param": "ActorName",
+     "what": "SimpleShopSub_Scrub_Business_OneTime Item_StickBag_Medium (has sticks, no Medium bag)",
+     "note": "set to the same item"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 165,
+     "param": "ActorName",
+     "what": "SimpleShopSub_Scrub_Business_OneTime Item_StickBag_Large (Medium bag owned)",
+     "note": "set to the same item"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 163,
+     "what": "?IsGameDataString64 Scrub_Business_TempItemName_00 == Item_StickBag_Medium",
+     "note": "dispatch on the map actor's ScrubBusiness_ShopItemActorName0 (copied by EventScrubBusinessWriteGameDataBancItemName); keep the map value: the flow only knows Obj_Heart_Piece / Item_StickBag_Medium / Item_NutBag_Medium (else 281, no sale)"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 1,
+     "what": "SetGameDataBool LostWood_Enemy_Scrub_Business_DekuStickPouch_01 after ScrubBusiness_BuySuccess",
+     "note": "one-time flag"
+    },
+    {
+     "map": "KokiriForest/KokiriForest_Child_Static + KokiriForest_Adult_Static",
+     "hash": "182031956235860994 / 7488448334396031424",
+     "gyaml": "Enemy_Scrub_Business",
+     "pos": [
+      -128.0,
+      114.6,
+      -15.3
+     ],
+     "note": "the same scrub drawn in the Kokiri Forest maps"
+    },
+    {
+     "map": "LostWood/LostWood_Child_Static + LostWood_Adult_Static",
+     "hash": "5406759280757349546 / 11192313919554167152",
+     "gyaml": "Enemy_Scrub_Business",
+     "pos": [
+      -45.2,
+      95.2,
+      72.6
+     ],
+     "note": "Dynamic ScrubBusiness_ShopItemActorName0 Item_StickBag_Medium, TalkEventName Enemy_Scrub_Business_DekuStickPouch_01"
+    }
+   ],
+   "trigger": "Talk to the business scrub under the Lost Woods bridge (approach/stun as usual: Enemy_Scrub_Business + _Leaf) and buy for 40 rupees.",
+   "logic_note": "Same as SoH (price 40). The scrub is in both ages' maps; SoH says child only: not checked whether the adult copy sells.",
+   "risk": "The item is NOT read from the map actor: Enemy_Scrub_Business_Common hard-codes it in three branches (325/167/165). They are reached only by stick-bag scrubs, and only this scrub sells Item_StickBag_Medium (all maps checked), so rewriting them affects only this check.",
+   "confidence": "high",
+   "evidence": "Entry Enemy_Scrub_Business_DekuStickPouch_01 (172 -> SimpleShopRoot_Enemy_Scrub_Business_Pouch): 162 ?Temp==Obj_Heart_Piece, 163 ?==Item_StickBag_Medium -> 324 ?IsGet.Item_DekuStick {0:166, 1:325}; 166 ?IsExistInPouch StickBag_Medium {0:165 Large, 1:167 Medium}. The overworld chest mapping already found this scrub drawn in both maps."
+  },
+  {
+   "rc": "RC_LW_DEKU_SCRUB_GROTTO_FRONT",
+   "remake_vanilla_item": "Item_NutBag_Medium (Item_NutBag_Large if Medium owned)",
+   "kind": "flow_param",
+   "flow": "Enemy_Scrub_Business_Common",
+   "event": 170,
+   "param": "ActorName",
+   "what": "call (self):SimpleShopSub_Scrub_Business_OneTime Item_NutBag_Medium (Price 40)",
+   "also": [
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 168,
+     "param": "ActorName",
+     "what": "SimpleShopSub_Scrub_Business_OneTime Item_NutBag_Large (Medium owned)",
+     "note": "set to the same item"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 164,
+     "what": "?Scrub_Business_TempItemName_00 == Item_NutBag_Medium",
+     "note": "dispatch; keep the map value"
+    },
+    {
+     "map": "LostWood/LostWood_Child_Static + LostWood_Adult_Static",
+     "hash": "4328741615941752705 / 5764461665617243979",
+     "gyaml": "Enemy_Scrub_Business",
+     "pos": [
+      7.3,
+      82.9,
+      -85.6
+     ],
+     "note": "ScrubBusiness_ShopItemActorName0 Item_NutBag_Medium, TalkEventName Enemy_Scrub_Business_DekuNutsPouch_01; next to the seed/arrow scrub 2214083465643671502 (child) / 14619830301496284497 (adult) at (8.8,82.9,-89.4) = the grotto's rear scrub"
+    }
+   ],
+   "trigger": "Buy from the front business scrub in the Lost Woods scrub grotto (y=82.9, below the woods floor) for 40 rupees.",
+   "logic_note": "Same as SoH (both ages; price 40).",
+   "risk": "As the bridge scrub: hard-coded in the shared flow (170/168), reached only by nut-bag scrubs; only this scrub sells Item_NutBag_Medium.",
+   "confidence": "high",
+   "evidence": "Entry Enemy_Scrub_Business_DekuNutsPouch_01 (171) -> pouch root: 164 ?Temp==Item_NutBag_Medium -> 169 ?IsExistInPouch NutBag_Medium {0:168 Large, 1:170 Medium}. Map scan: only LostWood holds Item_NutBag_Medium."
+  },
+  {
+   "rc": "RC_DEKU_THEATER_SKULL_MASK",
+   "remake_vanilla_item": "Item_StickBag_Medium (Item_StickBag_Large if Medium owned)",
+   "kind": "flow_param",
+   "flow": "LostWood_ScrubForestStageElder_SkullMaskFirst",
+   "event": 28,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn (Item_StickBag_Medium)",
+   "also": [
+    {
+     "flow": "LostWood_ScrubForestStageElder_SkullMaskFirst",
+     "event": 29,
+     "param": "ActorName",
+     "what": "GetInEvent_NotTurn Item_StickBag_Large (Medium already owned)",
+     "note": "set both"
+    },
+    {
+     "flow": "LostWood_ScrubForestStageElder_SkullMaskFirst",
+     "event": 12,
+     "what": "SetGameDataBool LostWood_ScrubForestStage_SkullMaskEventLaunched",
+     "note": "one-time flag"
+    }
+   ],
+   "trigger": "Wear the Skull Mask on the Deku Theater stage in the Lost Woods (Scrub_ForestStage_Manager 7344248548291809789 and Enemy_Scrub_ForestStage_Elder 3329916314930511880 'ScrubForestStageElder', LostWood_Child_Static; a copy is in LostWood_Adult_Static). EventSetting LostWood_ScrubForestStageElder_SkullMaskFirst (default entry).",
+   "logic_note": "Same as SoH (Skull Mask). The theater is part of the LostWood map, not a separate grotto scene.",
+   "risk": "Low: two branches by stick-bag ownership.",
+   "confidence": "high",
+   "evidence": "EntryPoint0: 15 ?IsExistInPouch Item_StickBag_Medium {0:29 Large, 1:28 Medium} -> 12 set SkullMaskEventLaunched."
+  },
+  {
+   "rc": "RC_DEKU_THEATER_MASK_OF_TRUTH",
+   "remake_vanilla_item": "Item_NutBag_Medium (Item_NutBag_Large if Medium owned)",
+   "kind": "flow_param",
+   "flow": "LostWood_ScrubForestStageElder_TrueMaskFirst",
+   "event": 28,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn (Item_NutBag_Medium)",
+   "also": [
+    {
+     "flow": "LostWood_ScrubForestStageElder_TrueMaskFirst",
+     "event": 29,
+     "param": "ActorName",
+     "what": "GetInEvent_NotTurn Item_NutBag_Large",
+     "note": "set both"
+    },
+    {
+     "flow": "LostWood_ScrubForestStageElder_TrueMaskFirst",
+     "event": 12,
+     "what": "SetGameDataBool LostWood_ScrubForestStage_TrueMaskEventLaunched",
+     "note": "one-time flag"
+    }
+   ],
+   "trigger": "Wear the Mask of Truth on the Deku Theater stage (same actors as the Skull Mask prize). EventSetting LostWood_ScrubForestStageElder_TrueMaskFirst.",
+   "logic_note": "Same as SoH. The Mask of Truth comes from the Market mask shop (Npc_Hylia_023_Shop_Child event 92, see remake_only).",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "EntryPoint0 (34): 15 ?IsExistInPouch Item_NutBag_Medium {0:29 Large, 1:28 Medium} -> 12 set TrueMaskEventLaunched."
+  },
+  {
+   "rc": "RC_LW_TRADE_COJIRO",
+   "remake_vanilla_item": "Item_OddMushroom",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_017_Adult",
+   "event": 72,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay (-> Dm_SY_GetInEvent:GetInEvent_NotTurn, ActorName = ReveiveItem)",
+   "also": [
+    {
+     "flow": "Npc_Hylia_017_Adult",
+     "event": 19,
+     "what": "AddOrRemovePouchContent Item_CojiroCucco Num -1",
+     "note": "takes Cojiro; keep"
+    },
+    {
+     "flow": "Npc_Hylia_017_Adult",
+     "event": 83,
+     "param": "ReveiveItem",
+     "what": "HandOver Item_OddMushroom (entries Giveup / SubEvent_GetSwordBigGoron_Step04Retry)",
+     "note": "re-issue after the mushroom spoiled (38 removes the old one, Num -1). Leave it as the vanilla re-issue, or the randomized item could be farmed"
+    },
+    {
+     "flow": "Npc_Hylia_017_Adult",
+     "event": 17,
+     "what": "?Item_OddMushroom (Talk)",
+     "note": "dialogue branch"
+    },
+    {
+     "flow": "Npc_Hylia_017_Adult",
+     "event": 8,
+     "what": "Challenge SubEvent_GetSwordBigGoron step Step04",
+     "note": "quest progression"
+    }
+   ],
+   "trigger": "Adult shows Cojiro to the sleeping man in the Lost Woods (Npc_Hylia_017_Adult 11959891550395380870, LostWood_Adult_Static (-32.8,100.5,-3.8), present while SubEvent_GetSwordBigGoron_IsAfter_Step04_Exp is false): EventSetting SubEvent_GetSwordBigGoron_Step03 -> GetSwordBiggoron_HandOver_PlayerToNpc_ForYou -> 72 Odd Mushroom -> 19 remove Cojiro -> 8 Step04.",
+   "logic_note": "Location same as SoH (adult, Lost Woods). Difference: the remake drives the trade by the challenge SubEvent_GetSwordBigGoron (Step03, Step04, Step05...), the NPC's event row is named after the step, so it is not only 'has item X'. A trade item found out of order (e.g. Cojiro from a chest) probably does not open this exchange unless the challenge is at Step03.",
+   "risk": "High for a trade shuffle: step-gated quest, a spoil timer (Giveup / Step04Retry re-issue), and Fado replaces this NPC at the same spot after Step04.",
+   "confidence": "high",
+   "evidence": "Trace SubEvent_GetSwordBigGoron_Step03: 71 HandOver_PlayerToNpc_ForYou, 72 ReveiveItem Item_OddMushroom, 19 Item_CojiroCucco -1, 8 Step04. NpcCommon_HandOver_NpcToPlayer_NoDisplay 441 = GetInEvent_NotTurn(ActorName = argument ReveiveItem)."
+  },
+  {
+   "rc": "RC_LW_TRADE_ODD_POTION",
+   "remake_vanilla_item": "Item_PoacherSaw",
+   "kind": "flow_param",
+   "flow": "Npc_Kokiri_Fado_Adult",
+   "event": 122,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_Fado",
+   "also": [
+    {
+     "flow": "Npc_Kokiri_Fado_Adult",
+     "event": 48,
+     "what": "AddOrRemovePouchContent Item_OddPowder Num -1",
+     "note": "takes the Odd Potion (remake actor Item_OddPowder); keep"
+    },
+    {
+     "flow": "Npc_Kokiri_Fado_Adult",
+     "event": 8,
+     "what": "Challenge SubEvent_GetSwordBigGoron step Step06",
+     "note": "quest progression"
+    },
+    {
+     "flow": "Npc_Hylia_012_Adult",
+     "event": 16,
+     "what": "AddOrRemovePouchContent Item_PoacherSaw (next trade, carpenter)",
+     "note": "other group; consumes the saw"
+    }
+   ],
+   "trigger": "Adult brings the Odd Potion to Fado in the Lost Woods (Npc_Kokiri_Fado_Adult 4375222428486358625, LostWood_Adult_Static (-32.5,100.5,-3.9), present when SubEvent_GetSwordBigGoron_IsAfter_Step04_Exp is true): EventSetting SubEvent_GetSwordBigGoron_Step05 -> 28 HandOver_PlayerToNpc_ForYou -> 122 Poacher's Saw -> 48 remove Odd Powder -> 8 Step06.",
+   "logic_note": "Location same as SoH; the exchange is challenge-step gated (Step05), as for Cojiro.",
+   "risk": "As RC_LW_TRADE_COJIRO (step-gated; Fado only appears after Step04).",
+   "confidence": "high",
+   "evidence": "Trace Npc_Kokiri_Fado_Adult entry SubEvent_GetSwordBigGoron_Step05: 122 GetInEvent_NotTurn_Fado Item_PoacherSaw -> 48 Item_OddPowder -1 -> 115 -> 8 Step06."
+  },
+  {
+   "rc": "RC_HF_TEKTITE_GROTTO_FREESTANDING_POH",
+   "remake_vanilla_item": null,
+   "kind": "none",
+   "replaced_by": "No Heart Piece in the tektite (storms) grotto: it has a pond with a Blue Tektite and fish and three underwater crates at y~120.5 (Obj_BrokenBox_A_01; child/adult Dynamic hashes 13505816572168486267/13942975907881711341 Obj_Rupee_Green at (-84.1,120.5,10.1), 4293238463102171135/4706627579492125828 Obj_Rupee_Green at (-82.2,120.5,8.8), 7249046631724680605/1921578605840057080 Drop_Rupee_Red2 at (-78.6,120.6,11.1)).",
+   "trigger": "-",
+   "logic_note": "Remove the location, or (to keep a check) turn one underwater crate into a chest (deep dive / iron boots, like SoH's rule).",
+   "risk": "-",
+   "confidence": "medium",
+   "evidence": "Hole (-98,146.5,17.1) with Land_Kokiri_HidingHoleCover (storms), interior anchor HidingHole_FieldExitGo at y=129.4 (overworld mapping matched it to the tektite grotto). world_items has only two Obj_Heart_Piece in the HyruleField maps (LLR crawlspace, Lake lab roof); no HeartPieceAnchor (every Heart Piece in the game has one) is near this grotto."
+  },
+  {
+   "rc": "RC_HF_DEKU_SCRUB_GROTTO",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "Enemy_Scrub_Business_Common",
+   "event": 386,
+   "param": "ActorName",
+   "what": "call (self):SimpleShopSub_Scrub_Business_OneTime (Price 100), entry Secret",
+   "also": [
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 394,
+     "param": "Value",
+     "what": "GameDataActor.EventTriggerSetGameDataString64 Shop_SelectItemName = Obj_Heart_Piece",
+     "note": "shop UI item name; set to the new item"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 427,
+     "what": "SetGameDataBool Enemy_Scrub_Business_Secret_Success",
+     "note": "quiz solved flag"
+    },
+    {
+     "flow": "Enemy_Scrub_Business_Common",
+     "event": 2,
+     "what": "SetGameDataBool HyruleField_Enemy_Scrub_Business_HeartPiece_01 after a successful buy",
+     "note": "one-time flag (also the map icon's flag)"
+    },
+    {
+     "map": "HyruleField/HyruleField_Child_Static + HyruleField_Adult_Static",
+     "hash": "10364468093017215295 / 1888007325063123154",
+     "gyaml": "Enemy_Scrub_Business",
+     "pos": [
+      25.0,
+      129.9,
+      22.1
+     ],
+     "note": "ScrubBusiness_ShopItemActorName0 Obj_Heart_Piece, ScrubBusiness_IsGenerateNPC, TalkEventName Enemy_Scrub_Business_Heart_01"
+    },
+    {
+     "map": "HyruleField/HyruleField_Child_Dynamic.bcett.byml.zs",
+     "hash": "14825051130171187671",
+     "gyaml": "HeartPieceAnchor",
+     "note": "map icon over the hole, flag HyruleField_Enemy_Scrub_Business_HeartPiece_01"
+    },
+    {
+     "note": "Do NOT touch Enemy_Scrub_Business_Common event 155 (the pouch-root heart piece branch): it is the Death Mountain Crater heart scrub (Enemy_Scrub_Business_Heart_02), another group."
+    }
+   ],
+   "trigger": "In the Hyrule Field grotto under hole (39.9,148.3,26.6) near the Market: the scrub (entry Enemy_Scrub_Business_Heart via TalkEventName Enemy_Scrub_Business_Heart_01) asks a 'secret' question (FirstTalk_Secret: 4-way choice, a HaveReadHrlField_Note07 text branch, Enemy_Scrub_Business_Secret_* flags); after the right answer it sells the Heart Piece for 100.",
+   "logic_note": "Remake-different: a quiz before the sale (answer probably in Hyrule Field fairy note 07). SoH: CanStunDeku + wallet. Grotto opening is in the overworld chest mapping.",
+   "risk": "Item hard-coded in the flow (the map value only dispatches); 386 is reached only from entries Secret / Enemy_Scrub_Business_Heart (this scrub).",
+   "confidence": "high",
+   "evidence": "reach: entries Enemy_Scrub_Business_Heart and Secret reach 386 only; Heart_02 (DMC) reaches 155. Overworld mapping: 'Near-Market hole holds the Heart Piece Business Scrub (N64's HF Inside Fence/Deku Scrub grotto content)'."
+  },
+  {
+   "rc": "RC_MARKET_BOMBCHU_BOWLING_FIRST_PRIZE",
+   "remake_vanilla_item": "Item_BombBag_Medium (Item_BombBag_Large if Medium owned)",
+   "kind": "flow_param",
+   "flow": "MiniGame_BombchuBowling",
+   "event": 297,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay (Item_BombBag_Medium)",
+   "also": [
+    {
+     "flow": "MiniGame_BombchuBowling",
+     "event": 298,
+     "param": "ReveiveItem",
+     "what": "HandOver Item_BombBag_Large (Medium owned)",
+     "note": "set both"
+    },
+    {
+     "flow": "MiniGame_BombchuBowling",
+     "event": 43,
+     "what": "?IsExistInPouch Item_BombBag_Medium {0:298, 1:297}",
+     "note": "branch choice"
+    },
+    {
+     "flow": "MiniGame_BombchuBowling",
+     "event": 241,
+     "what": "?IsExistInPouch Item_BombBag_Medium (entry AfterWakeUp)",
+     "note": "dialogue"
+    },
+    {
+     "flow": "MiniGame_BombchuBowling",
+     "entry": "MiniGameClearCount (44-47, 172)",
+     "what": "sets MiniGame_BombchuBowling_ClearFirstTime / ClearSecondTime / ClearThirdTime",
+     "note": "prize-order flags"
+    }
+   ],
+   "trigger": "Win bombchu bowling in the Market (child; NPC Npc_Hylia_067_Shop_Child 10518385126464597403 at (-28.5,100.1,9.6); challenge MiniGame_BombchuBowling) for the SECOND time. Entry MiniGame_BombchuBowling_GetPrise: 42 ?ClearFirstTime {1(not yet): 299 bombchus} -> 41 ?ClearSecondTime {1: 43 bomb bag} -> 160 ?ClearThirdTime {1: 296 heart piece, 0: 293 red rupee}.",
+   "logic_note": "Remake-different fixed prize order: 1st win Item_BombchuBundle_Medium (remake_only), 2nd win bomb bag, 3rd win heart piece, then red rupees. The bowling shop NPC Npc_Hylia_021_Shop_Child (-24.1,100.4,35.4) is present only with Get_StoneOfFire_IsCompleted_Exp (after Dodongo's Cavern), like the N64 alley opening. Whether a bomb bag is needed to play was not checked.",
+   "risk": "Two branches by bag ownership.",
+   "confidence": "high",
+   "evidence": "Trace MiniGame_BombchuBowling_GetPrise; HeartPieceAnchor 11628104451986877978 (Market_Child_Static (-22,110,9.2)) names flag MiniGame_BombchuBowling_ClearThirdTime for the heart piece."
+  },
+  {
+   "rc": "RC_MARKET_BOMBCHU_BOWLING_SECOND_PRIZE",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "MiniGame_BombchuBowling",
+   "event": 296,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    {
+     "flow": "MiniGame_BombchuBowling",
+     "event": 160,
+     "what": "?MiniGame_BombchuBowling_ClearThirdTime",
+     "note": "one-time; afterwards 293 red rupee"
+    },
+    {
+     "map": "Market/Market_Child_Static.bcett.byml.zs",
+     "hash": "11628104451986877978",
+     "gyaml": "HeartPieceAnchor",
+     "note": "map icon, flag MiniGame_BombchuBowling_ClearThirdTime"
+    }
+   ],
+   "trigger": "Third bowling win (see first prize).",
+   "logic_note": "Three wins needed (SoH: random prize cycle). Logic is unchanged if wins can be repeated freely.",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "As first prize."
+  },
+  {
+   "rc": "RC_MARKET_LOST_DOG",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "flow_param",
+   "flow": "SubEvent_FindRichard",
+   "event": 35,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "also": [
+    {
+     "flow": "SubEvent_FindRichard",
+     "event": 9,
+     "what": "SetGameDataBool SubEvent_FindRichard_GetHeartPiece",
+     "note": "one-time flag"
+    },
+    {
+     "flow": "SubEvent_FindRichard",
+     "event": 34,
+     "param": "ReveiveItem",
+     "what": "HandOver Obj_Rupee_Blue",
+     "note": "reward once the sub-event is completed; leave"
+    },
+    {
+     "map": "Market/Market_Child_Dynamic.bcett.byml.zs",
+     "hash": "8568137720802848289",
+     "gyaml": "HeartPieceAnchor",
+     "note": "map icon, flag SubEvent_FindRichard_GetHeartPiece"
+    }
+   ],
+   "trigger": "Child brings Richard the dog back to the lady (Npc_Hylia_052_Child 10930310377621137817, Market_Child_Static (8.1,100.0,-2.9)); entry SubEvent_FindRichard_ClearEvent: 8 ?SubEvent_FindRichard_IsCompleted_Exp {1(no):35 heart piece, 0:34 blue rupee} -> 4 challenge Complete.",
+   "logic_note": "Same as SoH presumably (child, night: entry nightTalk_moving; time of day not verified).",
+   "risk": "Low.",
+   "confidence": "high",
+   "evidence": "Trace above; reach: 35 from Ready_Npc_Hylia_052_Child_Talk / ClearEvent / nightTalk_moving."
+  },
+  {
+   "rc": "RC_MARKET_SHOOTING_GALLERY_REWARD",
+   "remake_vanilla_item": "Item_BulletBag_Medium (Item_BulletBag_Large if Medium owned)",
+   "kind": "flow_param",
+   "flow": "MiniGame_HitTarget",
+   "event": 292,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay (Item_BulletBag_Medium), entry Child_Reward",
+   "also": [
+    {
+     "flow": "MiniGame_HitTarget",
+     "event": 291,
+     "param": "ReveiveItem",
+     "what": "HandOver Item_BulletBag_Large (Medium owned)",
+     "note": "set both"
+    },
+    {
+     "flow": "MiniGame_HitTarget",
+     "event": 40,
+     "what": "SetGameDataBool MiniGame_HitTarget_HrlCity_Get_BulletBag",
+     "note": "one-time flag (41 checks it; afterwards 290 red rupee / hard-mode rupees)"
+    },
+    {
+     "note": "Do NOT touch 293/294 (Item_Quiver_Large/Medium, entry Adult_Reward): the Kakariko adult gallery uses the same flow (Npc_Hylia_019_Shop_Child is also in Kakariko), another group"
+    }
+   ],
+   "trigger": "Child gets the prize score at the Market shooting gallery (Npc_Hylia_019_Shop_Child 4828531328546648893, Market_Child_Static (-9.5,100.3,-15.3)); Child_Reward: 41 ?HrlCity_Get_BulletBag {1(no): 39 ?IsExistInPouch BulletBag_Medium {0:291 Large, 1:292 Medium}}.",
+   "logic_note": "Same as SoH (child, costs rupees: Check_NoMoney).",
+   "risk": "Two branches; flow shared with the adult Kakariko gallery (separate events).",
+   "confidence": "high",
+   "evidence": "Trace Child_Reward; Adult_Reward 99 uses MiniGame_HitTarget_Kakariko_Get_Quiver."
+  },
+  {
+   "rc": "RC_MARKET_10_BIG_POES",
+   "remake_vanilla_item": "Item_Bottle",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_048_BottleShop",
+   "event": 319,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_Poeshop",
+   "also": [
+    {
+     "flow": "Npc_Hylia_048_BottleShop",
+     "event": 320,
+     "param": "ActorName",
+     "what": "GetInEvent_Poeshop Obj_Rupee_Gold (900-point reward, then challenge SubEvent_GhostShop Complete)",
+     "note": "second, remake-only reward of the same NPC: leave as a rupee"
+    }
+   ],
+   "trigger": "Adult sells Big Poes (in bottles) to the poe collector (Npc_Hylia_048_BottleShop 8611096237640158008, Market_Adult_Static (15.1,102.8,54.1)); points GhostShop_CouponNum (+100 per sale at events 16 / 168); the bottle comes at the 400-point threshold (query 252 ?GhostShop_CouponNum 400), the gold rupee at 900 (166).",
+   "logic_note": "Remake-different count: the bottle seems to need 400 points (4 Big Poes if each gives 100), not 10; per-poe points not verified. SoH: adult + Big Poes >= RSK_BIG_POE_COUNT.",
+   "risk": "Threshold read from flow branches only; several sell sub-flows (Sell, Sell_InputReturn(2), Sell_AfterCheckingLoseMoney(_Pow/_900)) funnel to the single event 319.",
+   "confidence": "medium",
+   "evidence": "reach: 319/320 from entries Talk, Sell, Sell_InputReturn(2), Sell_AfterCheckingLoseMoney(_Pow/_900), BacktoChoice. Only bottle give in the flow."
+  },
+  {
+   "rc": "RC_HC_MALON_EGG",
+   "remake_vanilla_item": "Item_WeirdEgg",
+   "kind": "flow_param",
+   "flow": "Goto_HyruleCastle",
+   "event": 149,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn",
+   "also": [
+    {
+     "flow": "Goto_HyruleCastle",
+     "event": 18,
+     "what": "Challenge Goto_HyruleCastle step Step03",
+     "note": "progressed right after the gift; the hatch is driven by this challenge"
+    },
+    {
+     "flow": "Goto_HyruleCastle",
+     "event": 24,
+     "what": "AddOrRemovePouchContent Item_WeirdEgg Num -1 (entry EggHatch / Step03_01_Npc_Navi_StepStart; EventSetting GotoHyruleCastle_Egghatch_Areaboot)",
+     "note": "hatching removes the egg"
+    },
+    {
+     "flow": "Goto_HyruleCastle",
+     "event": 198,
+     "param": "ActorName",
+     "what": "call GetInEvent_EggHatche:GetInEvent_EggHatche Item_AlarmCucco",
+     "note": "the hatch gives the Cucco (SoH RG_CHICKEN, not a check)"
+    },
+    {
+     "flow": "Dm_HrlCastle_0020 and Dm_HrlCastle_0020.110",
+     "event": 137,
+     "what": "AddOrRemovePouchContent Item_AlarmCucco Num -1",
+     "note": "waking Talon takes the Cucco; the game loads the .110 twin (EventFlowFileEntry.Product.110 Versions)"
+    },
+    {
+     "flow": "Npc_Hylia_Soldier_009_Child",
+     "event": 4,
+     "what": "?IsGet.Item_WeirdEgg",
+     "note": "castle guard text"
+    }
+   ],
+   "trigger": "Child talks to Malon in front of Hyrule Castle (Npc_Hylia_Malon_Child 3576280271882277111, HyruleCastle_Static (17.6,105.5,-25.1), present until Goto_HyruleCastle_IsAfter_Step03_02_Exp): entry Goto_HyruleCastle_AfterMalonAppear -> 16 ?Goto_HyruleCastle_IsAfter_Step02_01_Exp -> 130 ?HyruleCastle_Taron_IsBefore_MeetMaron -> 149 egg -> 18 Step03.",
+   "logic_note": "Same as SoH (child at the castle gate). The egg hatches at a Goto_HyruleCastle challenge step (Navi step Step03_01, area boot), not by possession.",
+   "risk": "High: if the egg is replaced, the challenge still advances and the hatch (24 remove egg, 198 give Alarm Cucco) can still fire, giving the Cucco without the egg; an egg found elsewhere probably never hatches. Simplest: keep this check vanilla, or patch the hatch too.",
+   "confidence": "high",
+   "evidence": "reach: 149 from Goto_HyruleCastle_AfterMalonAppear; 24/198 from EggHatch and Step03_01_Npc_Navi_StepStart. EventFlowFileEntry.Product.110: Dm_HrlCastle_0020 -> 110."
+  },
+  {
+   "rc": "RC_HC_ZELDAS_LETTER",
+   "remake_vanilla_item": "Item_ZeldaLetter",
+   "kind": "flow_param",
+   "flow": "Dm_HrlCastle_0050",
+   "event": 238,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_Zeldaletter",
+   "also": [
+    {
+     "flow": "Dm_HrlCastle_0050",
+     "event": 211,
+     "what": "Item_ZeldaLetter.EventPlayAS (cutscene model)",
+     "note": "cosmetic: Zelda hands over a letter model"
+    },
+    {
+     "flow": "Npc_Hylia_Soldier_003",
+     "event": 22,
+     "what": "AddOrRemovePouchContent Item_ZeldaLetter (entry ShowItem_ZeldaLetter)",
+     "note": "Kakariko gate guard takes it; that also opens the mask shop (Npc_Hylia_023_Shop_Child Presence Npc_Hylia_Soldier_003_GateOpen)"
+    }
+   ],
+   "trigger": "Child meets Zelda in the castle courtyard: Goto_HyruleCastle entry Goto_HyruleCastle_MeetZelda (EventSetting HyruleCastle_Goto_HyruleCastle_MeetZelda) -> 4 EventTransition Dm_HrlCastle_0050 -> 238.",
+   "logic_note": "Same as SoH (LOGIC_MET_ZELDA). Impa's Lullaby event follows separately (RC_SONG_FROM_IMPA).",
+   "risk": "GetInEvent_Zeldaletter is a dedicated sub-flow (Navi_GetBig_GetInEvent, Item_Position, SetForGetWindow, AddOrRemove with the ActorName argument): generic, but its camera/animation is letter-specific; test with another item.",
+   "confidence": "high",
+   "evidence": "Dm_HrlCastle_0050 238; Dm_SY_GetInEvent entry GetInEvent_Zeldaletter -> 55 AddOrRemovePouchContent Actor = argument ActorName."
+  },
+  {
+   "rc": "RC_LLR_TALONS_CHICKENS",
+   "remake_vanilla_item": "Item_Bottle_Milk",
+   "kind": "flow_param",
+   "flow": "Minigame_FindOutCucco",
+   "event": 262,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay (first clear)",
+   "also": [
+    {
+     "flow": "Minigame_FindOutCucco",
+     "event": 57,
+     "what": "SetGameDataBool IsClear_Minigame_FindOutCucco",
+     "note": "one-time flag"
+    },
+    {
+     "flow": "Minigame_FindOutCucco",
+     "event": 190,
+     "param": "ReceiveItem",
+     "what": "NpcCommon_HandOver_NpcToPlayer_EmptyBottle Item_Bottle_Milk",
+     "note": "repeat clears fill an empty bottle; leave"
+    },
+    {
+     "flow": "Minigame_FindOutCucco",
+     "event": 261,
+     "param": "ActorName",
+     "what": "GetInEventInBottle Item_Bottle_Milk (Ready talk: buying milk)",
+     "note": "milk refill; leave"
+    },
+    {
+     "map": "HyruleField/HyruleField_Child_Static.bcett.byml.zs",
+     "hash": "11457557478267217151",
+     "gyaml": "Item_OrnamentalBottle_Milk",
+     "pos": [
+      -51.48,
+      151.81,
+      198.12
+     ],
+     "note": "display prop (camera target, event 233), not a pickup"
+    }
+   ],
+   "trigger": "Child wins Talon's 'find the super Cuccos' game in the Lon Lon Ranch house (Npc_Hylia_Talon_Child 13992935491369868918, HyruleField_Child_Static (-52.4,150.7,199.3), present after Goto_HyruleCastle_IsAfter_Step03_02_Exp; challenge DependFlagName the same). Entry Finish_Npc_Hylia_Talon_Child_StepStart -> 71 ?IsClear_Minigame_FindOutCucco {1(no): 243 -> 23 talk -> 262}.",
+   "logic_note": "Same as SoH (child, after Talon is back from the castle; costs rupees: Sub_Minigame_Cucco_RupeeShortage). Lon Lon Ranch is part of the HyruleField maps in the remake.",
+   "risk": "262 is a plain NPC hand-over (not the bottle sub-flow), so another item should work. Minigame_FindOutCucco_Start 343 ?HasAnyBottle branches the start talk (effect not verified).",
+   "confidence": "high",
+   "evidence": "reach: 190/262 from Finish_Npc_Hylia_Talon_Child_StepStart and Minigame_FindOutCucco_Hit; 261 from the Ready talk."
+  },
+  {
+   "rc": "RC_LLR_FREESTANDING_POH",
+   "remake_vanilla_item": "Obj_Heart_Piece",
+   "kind": "world_item",
+   "map": [
+    "HyruleField/HyruleField_Child_Static.bcett.byml.zs"
+   ],
+   "hash": "9814903750835309225",
+   "gyaml": "Obj_Heart_Piece",
+   "pos": [
+    -157.15,
+    150.93,
+    266.44
+   ],
+   "appearance": "Always there (no Dynamic, no links, child map only), inside the Lon Lon Ranch ruins/tower (Land_LonLon_Ruins_A_09, IndoorAreaBox) behind crawl holes (CrawlAnchor 13681104489429944682 / 7390247102065656985, FldObj_AirWall_CrawlHole) and next to a block puzzle of 7 Obj_LonLonRanch_MovableBox_A_01 with Obj_Gimmick_AnswerPosAnchor targets (logic module LonLonRanch_Child_NoTerrain_MovingBox_Prefab_5d2c, flag LonLonRanch_ClearBlockPuzzle).",
+   "also": [
+    {
+     "map": "HyruleField/HyruleField_Child_Static.bcett.byml.zs",
+     "hash": "11156084763374250886",
+     "gyaml": "HeartPieceAnchor",
+     "note": "links to the heart piece and to LocationArea_LonLonRanch; map icon (type 1)"
+    }
+   ],
+   "trigger": "Child: get past the boxes / crawl in, pick up.",
+   "logic_note": "SoH: child + RG_POWER_BRACELET + crawl. Remake: child (only in the child map), crawl holes; whether the box puzzle blocks the way (and needs any strength) was not determined.",
+   "risk": "Use the freestanding->chest mechanism (rando/freestanding.py) on hash 9814903750835309225; one placement only.",
+   "confidence": "high",
+   "evidence": "LocationArea Location LonLonRanch at (-149.5,156,268.5), 9 m away; HeartPieceAnchor links 9814903750835309225."
+  },
+  {
+   "rc": "RC_GIFT_FROM_RAURU",
+   "remake_vanilla_item": "Item_Medal_Light",
+   "kind": "flow_param",
+   "flow": "Dm_SageRoom_0005",
+   "event": 182,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    {
+     "flow": "Dm_SageRoom_0005",
+     "event": 152,
+     "what": "Item_Medal_Light.EventTriggerModelBind",
+     "note": "medallion model in Rauru's cutscene, cosmetic"
+    },
+    {
+     "flow": "Dm_SageRoom_0005",
+     "event": 431,
+     "param": "TargetID",
+     "what": "ZeldaNotesRequestSendDailyScreenShot Item_Medal_Light",
+     "note": "cosmetic"
+    }
+   ],
+   "trigger": "First time pulling the Master Sword: DoorOfTime entry SageRoom_MeetRauru (EventSetting SageRoom_MeetRauru) -> 43 Dm_SageRoom_0000 -> 47 EventTransition Dm_SageRoom_0005 -> challenge DoorOfTime Complete (41).",
+   "logic_note": "Same as SoH (adult, first arrival in the Chamber of Sages).",
+   "risk": "Dungeon reward; medallion possession may gate later story (AllSage) checks.",
+   "confidence": "high",
+   "evidence": "Dm_SageRoom_0005 entry Shine_Get_C18 reaches 182; caller DoorOfTime 47."
+  },
+  {
+   "rc": "RC_TOT_MASTER_SWORD",
+   "remake_vanilla_item": "Weapon_Sword_Master",
+   "kind": "flow_param",
+   "flow": "DoorOfTime",
+   "event": 57,
+   "param": "Actor",
+   "what": "PouchSystemActor.EventTriggerAddOrRemovePouchContent (Num 1, IsEquipDIrect true), entry SageRoom_MeetGanondorf",
+   "also": [
+    {
+     "flow": "Dm_TimeTemple_0030",
+     "event": 60,
+     "param": "ActorName",
+     "what": "call GetPouchContent:DisplayGetByActorName Weapon_Sword_Master",
+     "note": "get window when pulling the sword (DoorOfTime 46 -> Dm_TimeTemple_0030)"
+    },
+    {
+     "flow": "Dm_TimeTemple_0070 (11), Dm_TimeTemple_0088 (26), Dm_SY_BancChangeArrive, AllSage (131)",
+     "what": "EventTriggerEquipmentUserRequestCreateStaticEquipment Weapon_Sword_Master",
+     "note": "time-travel / story cutscenes create the sword on Link"
+    },
+    {
+     "flow": "Dm_TimeTemple_0085",
+     "event": 6,
+     "what": "EventTriggerPlayerRequestCreateDynamicEquipmentNoRelationPouch Weapon_Sword_Master"
+    },
+    {
+     "flow": "ReplaceEquipmentForEraChange",
+     "what": "12 events swap equipment on age change",
+     "note": "called right after event 57 (45)"
+    }
+   ],
+   "trigger": "Child with the Ocarina of Time and the 3 stones opens the Door of Time and touches the sword: DoorOfTime_DiscoverySword / Dm_TimeTemple_0030 (window), then SageRoom_MeetGanondorf (Dm_TimeTemple_0040, 57 adds the sword, ReplaceEquipmentForEraChange, Sequence_IsChildhood false).",
+   "logic_note": "Same as SoH vanilla (pedestal = time travel).",
+   "risk": "Very high: the sword is the time-travel mechanism, equipped directly (IsEquipDIrect), and the era change and several cutscenes create it on Link by name. Recommend not shuffling (SoH's Master Sword shuffle is an option, off by default).",
+   "confidence": "medium",
+   "evidence": "DoorOfTime trace SageRoom_MeetGanondorf: 42 Dm_TimeTemple_0040, 57 add Weapon_Sword_Master, 45 ReplaceEquipmentForEraChange, 49 Sequence_IsChildhood=false."
+  },
+  {
+   "rc": "RC_TOT_LIGHT_ARROWS_CUTSCENE",
+   "remake_vanilla_item": "Item_Arrow_Light",
+   "kind": "flow_param",
+   "flow": "Dm_TimeTemple_0130",
+   "event": 8,
+   "param": "ActorName",
+   "what": "call GetPouchContent:GetPouchContentByActorName",
+   "also": [
+    {
+     "flow": "Dm_TimeTemple_0130",
+     "event": 14,
+     "param": "ActorName",
+     "what": "SoundSystemActor.EventTriggerSoundStartFanfare Item_Arrow_Light",
+     "note": "fanfare; set to the new item"
+    },
+    {
+     "flow": "Dm_TimeTemple_0130",
+     "event": 25,
+     "param": "ActorName",
+     "what": "EventEffectEmitter.EventEffectStartGetItem Item_Arrow_Light",
+     "note": "get effect; set to the new item"
+    },
+    {
+     "note": "SubEvent_AllBossBattle also adds Item_Arrow_Light (Hall of Fallen Foes, other group)"
+    }
+   ],
+   "trigger": "Adult enters the Temple of Time trigger (Market_Adult_Static EventRequestActor 14618314512807768969 at (81.0,112.8,-33.0); logic module Market_Adult_Prefab_c668: challenge AllSage at Step02) -> AllSage entry Market_Adult_Field_GetArrowLight -> Dm_TimeTemple_0090...0125 -> 6 EventTransition Dm_TimeTemple_0130 -> AllSage Complete, Defeat_Ganon Step01.",
+   "logic_note": "SoH: adult + Shadow + Spirit medallions. Remake: challenge AllSage Step02 (after the sage quests); the exact condition for Step02 was not read - probably the same.",
+   "risk": "Medium: story cutscene that also starts Defeat_Ganon; the give itself is a plain GetPouchContentByActorName.",
+   "confidence": "high",
+   "evidence": "Dm_TimeTemple_0130 C01: 8, 14, 25; AllSage reach 131 from Market_Adult_Field_GetArrowLight."
+  },
+  {
+   "rc": "RC_HC_GREAT_FAIRY_REWARD",
+   "remake_vanilla_item": "Item_DinFire",
+   "kind": "flow_param",
+   "flow": "Dm_FairyFountain_Din",
+   "event": 308,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_GreatFairyDin",
+   "also": [
+    {
+     "flow": "Dm_SY_GetInEvent",
+     "entry": "GetInEvent_GreatFairyDin",
+     "what": "?GreatFairy_HasNoMPOnDinDemo -> UISystemActor.EventBornMPGauge (81)",
+     "note": "the Din sub-flow also shows the magic gauge appearing when Link has none; check that another item does not leave a gauge with no magic, or grant magic"
+    }
+   ],
+   "trigger": "Child plays Zelda's Lullaby on the Triforce mark in the Great Fairy fountain near Hyrule Castle (Obj_TriForcePoint_A_01 17092499491519760480, HyruleCastle_Dynamic (118.5,108.8,-76.8)) -> TriForcePoint entry Demo_FairyFountain_Din -> 34 EventTransition Dm_FairyFountain_Din -> C15-01 308.",
+   "logic_note": "Remake-different: the Great Fairy charges 25 rupees on the first visit (FirstTime_Din: 17 ?PouchSystemActor.EventQueryHasRuppe 25 -> 43 call Pay Value -25; not enough -> DontPay2). SoH: Zelda's Lullaby only. Add a 25-rupee requirement (child wallet is enough).",
+   "risk": "Magic-meter side effect in the Din sub-flow (GreatFairy_HasNoMPOnDinDemo). The payment sub-flows (Pay/DontPay1/DontPay2/GreatFairy_Appear) live in Dm_FairyFountain_Din and are shared with the other fairies.",
+   "confidence": "medium",
+   "evidence": "Dm_FairyFountain_Din C15-01 308. TriForcePoint A_01 is the only Triforce mark in the HyruleCastle map; Din <-> HC is the N64/SoH pairing; which mark selects which Demo_FairyFountain_* entry was not read directly."
+  },
+  {
+   "rc": "RC_OGC_GREAT_FAIRY_REWARD",
+   "remake_vanilla_item": "Item_FairyBless_DefenseDouble",
+   "kind": "flow_param",
+   "flow": "Dm_FairyFountain_Courage",
+   "event": 75,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_GreatFairyCourge",
+   "also": [],
+   "trigger": "Adult plays Zelda's Lullaby on the Triforce mark in the fountain outside Ganon's Castle (Obj_TriForcePoint_A_06 7991928718338188220, GanonCastle_Dynamic (139.2,85.2,312.5)) -> TriForcePoint entry Demo_FairyFountain_Courage -> 30 EventTransition Dm_FairyFountain_Courage -> C15-01 75.",
+   "logic_note": "Remake-different: this Great Fairy charges 500 rupees (FirstTimeAnother_Courage: 9 ?HasRuppe 500 -> 13 call Dm_FairyFountain_Din:Pay Value -500; else DontPay2), so it needs the Giant's Wallet (Item_Wallet_Large) on top of SoH's Zelda's Lullaby. Reaching the fountain is the Ganon's Castle area's logic.",
+   "risk": "Item_FairyBless_DefenseDouble is a 'blessing' upgrade actor: verify that another item given through GetInEvent_GreatFairyCourge works.",
+   "confidence": "medium",
+   "evidence": "Dm_FairyFountain_Courage C15-01 75; TriForcePoint A_06 is in GanonCastle_Dynamic."
+  }
+ ],
+ "remake_only": [
+  {
+   "soh_region_guess": "RR_MARKET_BOMBCHU_BOWLING",
+   "remake_vanilla_item": "Item_BombchuBundle_Medium",
+   "kind": "flow_param",
+   "flow": "MiniGame_BombchuBowling",
+   "event": 299,
+   "param": "ReveiveItem",
+   "what": "call NpcCommon:NpcCommon_HandOver_NpcToPlayer_NoDisplay",
+   "trigger": "First bowling win (ClearFirstTime not set).",
+   "logic_note": "One-time; the bomb-bag and heart-piece checks then need the 2nd and 3rd wins.",
+   "risk": "Bombchus are a consumable pack (SoH's bowling bombchus are not a check).",
+   "confidence": "high",
+   "evidence": "MiniGame_BombchuBowling_GetPrise 42 ?ClearFirstTime {1: 299}."
+  },
+  {
+   "soh_region_guess": "RR_MARKET_POTION_SHOP",
+   "remake_vanilla_item": "Item_Bottle",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_020_Shop_Child",
+   "event": 162,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn_FixedCamera_WarpLink",
+   "also": [
+    {
+     "flow": "Npc_Hylia_020_Shop_Child",
+     "event": 141,
+     "what": "SetGameDataBool Npc_Hylia_020_Shop_Item_Bottle_Present",
+     "note": "hides the counter bottle"
+    },
+    {
+     "map": "Market/Market_Child_Dynamic.bcett.byml.zs",
+     "hash": "6177505292770218128",
+     "gyaml": "Weapon_Bottle",
+     "pos": [
+      22.34,
+      101.18,
+      6.56
+     ],
+     "note": "bottle model on the counter, Presence Npc_Hylia_020_Shop_Item_Bottle_Present (negated): display only"
+    },
+    {
+     "flow": "Npc_Hylia_020_Shop_Child",
+     "event": 138,
+     "param": "ActorName",
+     "what": "GetInEventInEquipedBottle Item_Bottle_RedPotion (after catching the tutorial bug)",
+     "note": "fills the bottle; needs a bottle"
+    }
+   ],
+   "trigger": "Child's first talk with the Market potion-shop girl (Npc_Hylia_020_Shop_Child 17877417271769900403, Market_Child_Static (23.6,100.1,6.0)): bottle tutorial (challenge Market_Item_Bottle_TutorialEvent) - a free empty bottle, then catch the bug (Animal_Insect 'Item_Bottle_TutorialEvent') and get a red potion in it.",
+   "logic_note": "A free empty bottle for a child in the Market: a big logic change vs SoH (bottles are progression). Add it to the logic or randomize it.",
+   "risk": "The tutorial right after needs a bottle to catch the bug (event 138 fills the equipped bottle) inside a NoEscapeRangeAreaBox: with another item given it may soft-lock or skip.",
+   "confidence": "medium",
+   "evidence": "Trace Item_Bottle_TutorialEvent_Talk: 99 ?Market_DrugStore_FirstTalk ... 162 Item_Bottle -> 141 Present flag -> 19 Started -> 50 challenge Playing."
+  },
+  {
+   "soh_region_guess": "RR_MARKET_MASK_SHOP",
+   "remake_vanilla_item": "Item_Mask_Truth",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_023_Shop_Child",
+   "event": 92,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_Mask (entry Pay_usagi)",
+   "trigger": "Child pays for the Bunny Hood at the mask shop (shop present after the Kakariko guard took Zelda's letter: Presence Npc_Hylia_Soldier_003_GateOpen); the owner then lends the Mask of Truth.",
+   "logic_note": "SoH has no check here by default (mask trading not shuffled); the Mask of Truth gates RC_DEKU_THEATER_MASK_OF_TRUTH.",
+   "risk": "Masks come through a chain (SubEvent_MaskSalesman: Keaton 99, Skull 103, Bunny 111 via NpcCommon:SellMask ReceiveItem); leave vanilla unless masks are shuffled.",
+   "confidence": "medium",
+   "evidence": "gift_events: Npc_Hylia_023_Shop_Child 92 GetInEvent_Mask Item_Mask_Truth, entry Pay_usagi."
+  },
+  {
+   "soh_region_guess": "RR_KOKIRI_FOREST",
+   "remake_vanilla_item": "Obj_Rupee_Blue",
+   "kind": "flow_param",
+   "flow": "Npc_Kokiri_005_Child",
+   "event": 122,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn (entry Npc_Kokiri_005_GetInEvent)",
+   "trigger": "Kokiri child gift (Npc_Kokiri_005_Child 16465011017775622899, KokiriForest_Child_Static (-4.0,110.7,7.8)); its talk branches on Item_Ocarina_Fairy (43/50/97).",
+   "logic_note": "One-time rupee gift; being tested in game (tools/make_test_mod2.py).",
+   "risk": "Rupee only.",
+   "confidence": "high",
+   "evidence": "gift_events; test mod 2."
+  },
+  {
+   "soh_region_guess": "RR_KOKIRI_FOREST",
+   "remake_vanilla_item": "Obj_Rupee_Blue",
+   "kind": "flow_param",
+   "flow": "Npc_Kokiri_008_Child",
+   "event": 218,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_NotTurn (entries LiftRock_AllBroken_Talk / _TalkAndStand)",
+   "trigger": "Kokiri child (Npc_Kokiri_008_Child 1144806972662031190, KokiriForest_Child_Static (-45.9,112.0,-28.6)) rewards Link after all the rocks are lifted/broken.",
+   "logic_note": "One-time rupee gift; being tested in game.",
+   "risk": "Rupee only.",
+   "confidence": "high",
+   "evidence": "gift_events; test mod 2."
+  },
+  {
+   "soh_region_guess": "RR_KF_KOKIRI_SHOP",
+   "remake_vanilla_item": "Obj_Shield_Deku",
+   "kind": "flow_param",
+   "flow": "Npc_Kokiri_001_Shop_Child",
+   "event": 110,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_Mask (entry present_DekuSheld, first time)",
+   "also": [
+    {
+     "flow": "Npc_Kokiri_001_Shop_Child",
+     "event": 109,
+     "param": "ActorName",
+     "what": "GetInEvent_Mask Obj_Shield_Deku (same entry, when HaveTalked_Npc_Kokiri_001_Shop_Child_PresentDekuShield is already set)",
+     "note": "the gift repeats: set both, and note a randomized item could be farmed"
+    },
+    {
+     "flow": "Npc_Kokiri_001_Shop_Child",
+     "event": 60,
+     "what": "SetGameDataBool HaveTalked_Npc_Kokiri_001_Shop_Child_PresentDekuShield",
+     "note": "only switches the dialogue, not the gift"
+    },
+    {
+     "flow": "Npc_Kokiri_001_Shop_Child",
+     "event": 4,
+     "what": "?EventQueryCheckIsGet Weapon_Shield_Deku / 2 ?KokiriForest_Meet_DekuTree_BoughtDekuShield",
+     "note": "shop dialogue"
+    },
+    {
+     "map": "KokiriForest/KokiriForest_Child_Static.bcett.byml.zs",
+     "hash": "8161552603046357963 / 6236883368863181555",
+     "gyaml": "Shop_Weapon_Shield_Deku",
+     "note": "the shop's normal Deku Shield for sale (shop group)"
+    }
+   ],
+   "trigger": "Child talks to the Kokiri shop owner during the Deku Tree quest (Talk: 9 ?Goto_HyruleCastle_IsCompleted_Exp -> 8 ?Get_StoneOfForest_IsCompleted_Exp -> 11 ?Meet_DekuTree_IsAfter_Step02_Exp -> 76 call present_DekuSheld) without a shield equipped (57 ?Player_Event.EventQueryPlayerIsEquipWeapon): the owner gives a Deku Shield.",
+   "logic_note": "Remake-only free Deku Shield in Kokiri Forest while the Deku Tree quest is open (SoH: buy it, 40 rupees). Affects logic for the Deku Tree / Mido if shields are shuffled.",
+   "risk": "Repeatable while the conditions hold (109 after the first time); depends on the shield not being equipped.",
+   "confidence": "medium",
+   "evidence": "reach: 109/110 only from entries Talk and present_DekuSheld; caller event 76 under 11 (Meet_DekuTree_IsAfter_Step02_Exp)."
+  },
+  {
+   "soh_region_guess": "RR_MARKET_GUARD_HOUSE",
+   "remake_vanilla_item": "Obj_Rupee_Gold",
+   "kind": "flow_param",
+   "flow": "Npc_Hylia_048_BottleShop",
+   "event": 320,
+   "param": "ActorName",
+   "what": "call Dm_SY_GetInEvent:GetInEvent_Poeshop",
+   "trigger": "Poe collector at 900 points (after the bottle); completes challenge SubEvent_GhostShop.",
+   "logic_note": "One-time gold rupee, not a SoH check.",
+   "risk": "Rupee only.",
+   "confidence": "medium",
+   "evidence": "Sell_AfterCheckingLoseMoney_900 path: 166 ?CouponNum 900 ... 320 -> 19 SubEvent_GhostShop Complete."
+  }
+ ],
+ "open_questions_for_in_game_check": [
+  "Song teachers (Saria, Malon, Impa, Sheik in SFM / Temple of Time, Zelda at the moat): can the play-along be done with no ocarina in the inventory? If only a song flow's GetPouchContentByActorName is rewritten, is the original song still learned (Dm_SY_Ocarina's silent add by MelodyType)?",
+  "Ocarina of Time at the moat: if events 106/255 give another item, does the Song of Time lesson right after still work without an ocarina?",
+  "Bombchu bowling: confirm the fixed prize order (1st win bombchus, 2nd bomb bag, 3rd heart piece) and whether a bomb bag is needed to play.",
+  "Poe collector: how many Big Poes give the bottle (400 points = 4 poes?), and do other poe types give points?",
+  "Hyrule Field scrub grotto near the Market: what is the scrub's 'secret' question, and is the Heart Piece sold only after the right answer (fairy note 07)?",
+  "LLR Heart Piece: must the 7-box puzzle be solved (any strength needed?) to reach the crawl hole, and is it child-only?",
+  "Weird Egg: does it hatch at a story step (Navi/area boot) rather than by time; what happens at the hatch if the egg was not given?",
+  "Adult trade: will Grog/Fado take Cojiro / the Odd Potion if obtained out of order (e.g. from a chest), or only at the matching SubEvent_GetSwordBigGoron step?",
+  "Market potion shop: is the free empty bottle (bottle tutorial) given to every child on the first visit, and can the bug tutorial be finished?",
+  "Lost Woods bridge scrub: does it sell to adult Link too (it is placed in both ages' maps)?",
+  "Great Fairy (Din's Fire) near Hyrule Castle: does it also give the magic meter if Link has none (GreatFairy_HasNoMPOnDinDemo)?"
+ ]
+}
