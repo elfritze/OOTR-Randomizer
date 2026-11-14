@@ -66,6 +66,8 @@ def main():
     for f in sorted(glob.glob(os.path.join(ROOT, "research", "mapping", "*.json"))):
         with open(f, encoding="utf-8") as h:
             d = json.load(h)
+        if "chests" not in d:   # (research/mapping/gifts_*.json: the non-chest checks, data/gifts.json's sources)
+            continue
         for c in d["chests"]:
             mapped[int(c["hash"])] = c
         removed |= {x["rc"] for x in d.get("soh_chests_without_remake_counterpart", [])}

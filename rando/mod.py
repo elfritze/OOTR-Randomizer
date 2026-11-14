@@ -36,20 +36,27 @@ class Mod:
         """a file's contents as the mod has it so far: the game's own, or what was last written for it"""
         if rel in self.data:
             return self.data[rel]
-        return self.codec.read(os.path.join(self.romfs, *rel.split("/")))
+        path = os.path.join(self.romfs, *rel.split("/"))
+        if not rel.endswith(".zs"):   # (a loose uncompressed file, as Component/AIScheduleParam's)
+            return open(path, "rb").read()
+        return self.codec.read(path)
 
     def write(self, rel, data):
         """rel: the romfs path ("Banc/X/Y.bcett.byml.zs"); data: its new decompressed contents (build it on read(rel))"""
         self.data[rel] = data
         original = open(os.path.join(self.romfs, *rel.split("/")), "rb").read()
         name = os.path.basename(rel)
-        packed = self.codec.compress_like(data, original)
-        if self.codec.decompress(packed, name) != data:
-            raise ValueError("%s: does not decompress back" % rel)
+        if rel.endswith(".zs"):
+            packed = self.codec.compress_like(data, original)
+            if self.codec.decompress(packed, name) != data:
+                raise ValueError("%s: does not decompress back" % rel)
+            original_size = len(self.codec.decompress(original, name))
+        else:
+            packed, original_size = data, len(original)
         entry = self.table.get(rel)
         if entry is None:
             raise ValueError("%s: not in the resource size table" % rel)
-        need = entry_for(len(data), len(self.codec.decompress(original, name)), self.original_entry(rel))
+        need = entry_for(len(data), original_size, self.original_entry(rel))
         if need > entry:
             self.table.set(rel, need)
             self.grown.append((rel, entry, need))

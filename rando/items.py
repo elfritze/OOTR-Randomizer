@@ -50,6 +50,13 @@ ITEMS = {
     "Item_AgonyStone": "RG_STONE_OF_AGONY",
     "Item_BombchuBundle_Medium": "RG_BOMBCHU_10", "Item_BombchuBundle_Large": "RG_BOMBCHU_20",
     "Obj_Armor_Zora": "RG_ZORA_TUNIC",
+    # (the songs: the remake's song items, as chests, gifts and pickups give them, with Sheik's harp for a model)
+    "Item_Melody_ZeldaLullaby": "RG_ZELDAS_LULLABY", "Item_Melody_EponaSong": "RG_EPONAS_SONG",
+    "Item_Melody_SariaSong": "RG_SARIAS_SONG", "Item_Melody_SunSong": "RG_SUNS_SONG", "Item_Melody_TimeSong": "RG_SONG_OF_TIME",
+    "Item_Melody_StormSong": "RG_SONG_OF_STORMS", "Item_Melody_ForestMinuet": "RG_MINUET_OF_FOREST",
+    "Item_Melody_FireBolero": "RG_BOLERO_OF_FIRE", "Item_Melody_WaterSerenade": "RG_SERENADE_OF_WATER",
+    "Item_Melody_SpiritRequiem": "RG_REQUIEM_OF_SPIRIT", "Item_Melody_ShadowNocturne": "RG_NOCTURNE_OF_SHADOW",
+    "Item_Melody_LightPrelude": "RG_PRELUDE_OF_LIGHT",
 }
 
 # Upgrades the remake has as separate items, each setting its capacity outright (PouchActorInfo AfterExpansionMaxNum: a

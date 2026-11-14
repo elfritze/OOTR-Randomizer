@@ -678,9 +678,9 @@ class Logic:
         if i == "RG_STICKS":
             return self.IsChild and self.Get("LOGIC_STICK_ACCESS")
         if i in ("RG_PROGRESSIVE_BOMB_BAG", "RG_BOMB_BAG"):
-            # (AmmoCanDrop || Get(LOGIC_BUY_BOMB)): true in SoH. HookshotRando: the remake's Link pulls no bomb out until he has
-            # the Goron's Bracelet, bag or not (seen in game without mods, 2026-11-12). Bombchus need no bracelet.
-            return self.HasItem("RG_GORONS_BRACELET")
+            # (AmmoCanDrop || Get(LOGIC_BUY_BOMB)): true in SoH. (The remake's bombs need the Goron's Bracelet's lift grade;
+            # HookshotRando's mod gives them the free grade, rando.patches.free_bomb_lift, so the bag alone is enough, as in SoH.)
+            return True
         if i in ("RG_PROGRESSIVE_BOMBCHU_BAG", "RG_BOMBCHU_5", "RG_BOMBCHU_10", "RG_BOMBCHU_20"):
             return self.BombchuRefill() and self.BombchusEnabled()
         if i in ("RG_SKULL_MASK", "RG_MASK_OF_TRUTH", "RG_BUNNY_HOOD"):

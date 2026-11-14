@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 import random
+import shutil
 
 from . import chests, fill, gifts, patches, pickups
 from . import items as I
@@ -107,9 +108,12 @@ def seed_number(seed):
 class Setup:
     """everything a seed is made from: the tables, the chests found in this game, the locations, the logic"""
 
-    def __init__(self, romfs, codec, with_gifts=True):
+    def __init__(self, romfs, codec, with_gifts=True, songs=True):
         self.table = load_table()
         self.gifts = load_gifts() if with_gifts else {"checks": [], "excluded": []}
+        if not songs:   # (the songs where the game teaches them: their checks out of the fill, as SoH's "song locations" off)
+            self.gifts = {"checks": [c for c in self.gifts["checks"] if not c["vanilla"].startswith("Item_Melody_")],
+                          "excluded": self.gifts["excluded"]}
         self.found = chests.scan(romfs, codec)
         locs = []
         for l in self.table["locations"]:
@@ -136,6 +140,10 @@ class Setup:
                       if rc not in mapped and rc not in removed and rc in self.world.location_ids}
         self.progression = {rg for rg, info in item_info().items() if info.get("progression")}
         self.closed = closed_locations(self.world, self.locs, self.progression, self.fixed)
+        # (a chest only the remake has whose way in the research could not establish (confidence "low") gets junk only, as
+        #  logic not reaching it does: the Lost Woods' under-bridge chest, given a rule needing nothing, could not be found
+        #  a way up to in game (2026-11-13), and a seed had put the only way out of the forest in it)
+        self.closed |= {l["id"] for l in self.table["locations"] if not l["rc"] and l.get("confidence") == "low"}
 
     def fill(self, rng):
         return fill.fill(self.world, self.locs, self.fixed, self.progression, rng, self.closed)
@@ -143,12 +151,14 @@ class Setup:
 
 def generate(romfs, mods_dir, seed, settings, log=print):
     codec = zs.Codec(romfs)
-    s = Setup(romfs, codec)
+    s = Setup(romfs, codec, songs=settings.get("shuffle_songs", True))
     rng = random.Random(seed_number(seed))
     placed = s.fill(rng)
     placed = assign_tiers(s, placed, rng)
 
     out = os.path.join(mods_dir, MOD_NAME)
+    if os.path.isdir(os.path.join(out, "romfs")):   # (the last seed's files go: one it changed and this one does not
+        shutil.rmtree(os.path.join(out, "romfs"))  #  would stay as the last seed had it)
     mod = Mod(romfs, codec, os.path.join(out, "romfs"))
     by_id = {l.id: l for l in s.locs}
     copies = {l["id"]: [int(c) for c in l["copies"]] for l in s.table["locations"]}
@@ -176,6 +186,11 @@ def generate(romfs, mods_dir, seed, settings, log=print):
         pickups.place(romfs, codec, mod, loose, made)
     made.finish()
     patches.song_models(romfs, codec, mod)
+    patches.free_bomb_lift(romfs, codec, mod)
+    patches.open_zr_river(romfs, codec, mod)
+    patches.mido_keeps_blocking(romfs, codec, mod)
+    patches.starting_bags(romfs, codec, mod)
+    patches.zora_arrival_after_letter(romfs, codec, mod)
     if settings["skip_intro"]:
         patches.skip_intro(romfs, codec, mod)
     mod.finish()

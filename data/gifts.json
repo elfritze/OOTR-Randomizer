@@ -1312,69 +1312,333 @@
    "area": "Shadow Temple",
    "confidence": "high",
    "notes": "Spawned by the boss room logic (SageOfShadow_IsAfter_DefeatBoss_Exp). The after-boss timeline (Dm_*_BossOut) casts its own Obj_Heart_Container event model: check in game it does not show/spawn an extra container. Nothing else in the room depends on the container."
-  }
- ],
- "excluded": [
-  {
-   "id": "RC_SHEIK_IN_FOREST",
-   "rc": "RC_SHEIK_IN_FOREST",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
-  },
-  {
-   "id": "RC_SHEIK_AT_TEMPLE",
-   "rc": "RC_SHEIK_AT_TEMPLE",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
   },
   {
    "id": "RC_SONG_FROM_IMPA",
    "rc": "RC_SONG_FROM_IMPA",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+   "kind": "gift",
+   "vanilla": "Item_Melody_ZeldaLullaby",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Zelda",
+     "event": 66,
+     "param": "ActorName",
+     "value": "Item_Melody_ZeldaLullaby"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 26,
+     "param": "Actor",
+     "value": "Item_Melody_ZeldaLullaby",
+     "set": "Item_ScrubBusinessSeed"
+    }
+   ],
+   "soh_region": "RR_HC_GARDEN",
+   "rule": null,
+   "name": "Impa's song (after Zelda)",
+   "area": "Hyrule Castle",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 26) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned)"
   },
   {
    "id": "RC_SONG_FROM_MALON",
    "rc": "RC_SONG_FROM_MALON",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+   "kind": "gift",
+   "vanilla": "Item_Melody_EponaSong",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Epona",
+     "event": 50,
+     "param": "ActorName",
+     "value": "Item_Melody_EponaSong"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 27,
+     "param": "Actor",
+     "value": "Item_Melody_EponaSong",
+     "set": "Item_ScrubBusinessSeed"
+    }
+   ],
+   "soh_region": "RR_LON_LON_RANCH",
+   "rule": null,
+   "name": "Malon's song",
+   "area": "Lon Lon Ranch",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 27) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned)"
   },
   {
    "id": "RC_SONG_FROM_SARIA",
    "rc": "RC_SONG_FROM_SARIA",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
-  },
-  {
-   "id": "RC_SONG_FROM_OCARINA_OF_TIME",
-   "rc": "RC_SONG_FROM_OCARINA_OF_TIME",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
-  },
-  {
-   "id": "RC_SHEIK_IN_CRATER",
-   "rc": "RC_SHEIK_IN_CRATER",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
-  },
-  {
-   "id": "RC_SHEIK_IN_KAKARIKO",
-   "rc": "RC_SHEIK_IN_KAKARIKO",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+   "kind": "gift",
+   "vanilla": "Item_Melody_SariaSong",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Saria",
+     "event": 20,
+     "param": "ActorName",
+     "value": "Item_Melody_SariaSong"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 28,
+     "param": "Actor",
+     "value": "Item_Melody_SariaSong",
+     "set": "Item_ScrubBusinessSeed"
+    }
+   ],
+   "soh_region": "RR_SACRED_FOREST_MEADOW",
+   "rule": null,
+   "name": "Saria's song",
+   "area": "Sacred Forest Meadow",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 28) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned)"
   },
   {
    "id": "RC_SONG_FROM_ROYAL_FAMILYS_TOMB",
    "rc": "RC_SONG_FROM_ROYAL_FAMILYS_TOMB",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+   "kind": "gift",
+   "vanilla": "Item_Melody_SunSong",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Sun_03",
+     "event": 30,
+     "param": "ActorName",
+     "value": "Item_Melody_SunSong"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 29,
+     "param": "Actor",
+     "value": "Item_Melody_SunSong",
+     "set": "Item_ScrubBusinessSeed"
+    }
+   ],
+   "soh_region": "RR_GRAVEYARD_COMPOSERS_GRAVE",
+   "rule": null,
+   "name": "Royal Family's Tomb song",
+   "area": "Graveyard",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 29) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned)"
+  },
+  {
+   "id": "RC_SONG_FROM_OCARINA_OF_TIME",
+   "rc": "RC_SONG_FROM_OCARINA_OF_TIME",
+   "kind": "gift",
+   "vanilla": "Item_Melody_TimeSong",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Time",
+     "event": 93,
+     "param": "ActorName",
+     "value": "Item_Melody_TimeSong"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 30,
+     "param": "Actor",
+     "value": "Item_Melody_TimeSong",
+     "set": "Item_ScrubBusinessSeed"
+    }
+   ],
+   "soh_region": "RR_HYRULE_FIELD",
+   "rule": null,
+   "name": "Song at the castle moat (Ocarina of Time)",
+   "area": "Hyrule Field",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 30) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned)"
   },
   {
    "id": "RC_SONG_FROM_WINDMILL",
    "rc": "RC_SONG_FROM_WINDMILL",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+   "kind": "gift",
+   "vanilla": "Item_Melody_StormSong",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Storm",
+     "event": 21,
+     "param": "ActorName",
+     "value": "Item_Melody_StormSong"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 31,
+     "param": "Actor",
+     "value": "Item_Melody_StormSong",
+     "set": "Item_ScrubBusinessSeed"
+    },
+    {
+     "flow": "Npc_Hylia_009_Adult",
+     "event": 51,
+     "param": "GameDataName",
+     "value": "IsGet.Item_Melody_StormSong",
+     "set": "HavePlayedEvent.Dm_MelodyGet_Storm"
+    },
+    {
+     "flow": "Npc_Hylia_009_Adult",
+     "event": 54,
+     "param": "GameDataName",
+     "value": "IsGet.Item_Melody_StormSong",
+     "set": "HavePlayedEvent.Dm_MelodyGet_Storm"
+    }
+   ],
+   "soh_region": "RR_KAK_WINDMILL_LOWER",
+   "rule": null,
+   "name": "Windmill man's song",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 31) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned); Npc_Hylia_009_Adult event 51 asks HavePlayedEvent.Dm_MelodyGet_Storm instead of IsGet.Item_Melody_StormSong: he gives once; Npc_Hylia_009_Adult event 54 asks HavePlayedEvent.Dm_MelodyGet_Storm instead of IsGet.Item_Melody_StormSong: he gives once"
   },
   {
-   "id": "RC_SHEIK_AT_COLOSSUS",
-   "rc": "RC_SHEIK_AT_COLOSSUS",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+   "id": "RC_SHEIK_IN_FOREST",
+   "rc": "RC_SHEIK_IN_FOREST",
+   "kind": "gift",
+   "vanilla": "Item_Melody_ForestMinuet",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Forest",
+     "event": 11,
+     "param": "ActorName",
+     "value": "Item_Melody_ForestMinuet"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 32,
+     "param": "Actor",
+     "value": "Item_Melody_ForestMinuet",
+     "set": "Item_ScrubBusinessSeed"
+    }
+   ],
+   "soh_region": "RR_SACRED_FOREST_MEADOW",
+   "rule": null,
+   "name": "Sheik in the forest",
+   "area": "Sacred Forest Meadow",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 32) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned)"
+  },
+  {
+   "id": "RC_SHEIK_IN_CRATER",
+   "rc": "RC_SHEIK_IN_CRATER",
+   "kind": "gift",
+   "vanilla": "Item_Melody_FireBolero",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Fire",
+     "event": 208,
+     "param": "ActorName",
+     "value": "Item_Melody_FireBolero"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 34,
+     "param": "Actor",
+     "value": "Item_Melody_FireBolero",
+     "set": "Item_ScrubBusinessSeed"
+    }
+   ],
+   "soh_region": "RR_DMC_CENTRAL",
+   "rule": null,
+   "name": "Sheik in the crater",
+   "area": "Death Mountain Crater",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 34) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned)"
   },
   {
    "id": "RC_SHEIK_IN_ICE_CAVERN",
    "rc": "RC_SHEIK_IN_ICE_CAVERN",
-   "reason": "song: the teacher's cutscene also adds the song (Dm_SY_Ocarina silent PouchSystemActor add by MelodyType), pending an in-game test"
+   "kind": "gift",
+   "vanilla": "Item_Melody_WaterSerenade",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Water",
+     "event": 120,
+     "param": "ActorName",
+     "value": "Item_Melody_WaterSerenade"
+    }
+   ],
+   "soh_region": "RR_ICE_CAVERN_FINAL_ROOM",
+   "rule": null,
+   "name": "Sheik in the Ice Cavern",
+   "area": "Ice Cavern",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson only teaches the notes (LearningOcarinaPlayExample/FollowExample add nothing)"
   },
+  {
+   "id": "RC_SHEIK_AT_COLOSSUS",
+   "rc": "RC_SHEIK_AT_COLOSSUS",
+   "kind": "gift",
+   "vanilla": "Item_Melody_SpiritRequiem",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Spilit",
+     "event": 11,
+     "param": "ActorName",
+     "value": "Item_Melody_SpiritRequiem"
+    }
+   ],
+   "soh_region": "RR_DESERT_COLOSSUS_OUTSIDE_TEMPLE",
+   "rule": null,
+   "name": "Sheik at the Colossus",
+   "area": "Desert Colossus",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson only teaches the notes (LearningOcarinaPlayExample/FollowExample add nothing)"
+  },
+  {
+   "id": "RC_SHEIK_IN_KAKARIKO",
+   "rc": "RC_SHEIK_IN_KAKARIKO",
+   "kind": "gift",
+   "vanilla": "Item_Melody_ShadowNocturne",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Shadow",
+     "event": 15,
+     "param": "ActorName",
+     "value": "Item_Melody_ShadowNocturne"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 37,
+     "param": "Actor",
+     "value": "Item_Melody_ShadowNocturne",
+     "set": "Item_ScrubBusinessSeed"
+    }
+   ],
+   "soh_region": "RR_KAKARIKO_VILLAGE",
+   "rule": null,
+   "name": "Sheik in Kakariko",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 37) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned)"
+  },
+  {
+   "id": "RC_SHEIK_AT_TEMPLE",
+   "rc": "RC_SHEIK_AT_TEMPLE",
+   "kind": "gift",
+   "vanilla": "Item_Melody_LightPrelude",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Shine",
+     "event": 249,
+     "param": "ActorName",
+     "value": "Item_Melody_LightPrelude"
+    },
+    {
+     "flow": "Dm_SY_Ocarina",
+     "event": 38,
+     "param": "Actor",
+     "value": "Item_Melody_LightPrelude",
+     "set": "Item_ScrubBusinessSeed"
+    }
+   ],
+   "soh_region": "RR_TOT_BEYOND_DOOR_OF_TIME",
+   "rule": null,
+   "name": "Sheik at the Temple of Time",
+   "area": "Temple of Time",
+   "confidence": "high",
+   "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 38) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned)"
+  }
+ ],
+ "excluded": [
   {
    "id": "RC_LH_SCARECROWS_SONG",
    "rc": "RC_LH_SCARECROWS_SONG",

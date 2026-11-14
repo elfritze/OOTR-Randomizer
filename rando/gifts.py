@@ -16,8 +16,8 @@ def write(romfs, codec, mod, assignments):
     """assignments: [(gifts.json check, the actor its gift is to give)]. Returns the flow files written."""
     by_flow = collections.defaultdict(list)
     for check, actor in assignments:
-        for e in check["edits"]:
-            by_flow[e["flow"]].append((e, actor, check["id"]))
+        for e in check["edits"]:   # ("set": a value of its own, whatever the item: a song lesson's silent add switched off)
+            by_flow[e["flow"]].append((e, e.get("set", actor), check["id"]))
     written = []
     for flow, edits in sorted(by_flow.items()):
         rel = flow_path(flow)

@@ -2582,6 +2582,15 @@
   {
    "key": [
     "exit",
+    "RR_LW_BRIDGE",
+    "RR_KOKIRI_FOREST"
+   ],
+   "rule": "logic->IsAdult || logic->Get(LOGIC_DEKU_TREE_CLEAR)",
+   "why": "Kokiri Forest from the Lost Woods bridge: as a child, the Kokiri at the tunnel (Npc_Kokiri_007_Child) stands behind an invisible wall (KokiriForest_Child_Dynamic FldObj_AirWall_Player_GenerateNavMesh at (-82, 115, -38), present while KokiriForest_Npc_Kokiri_007_Child_Blocker_00) that only his talk after the Kokiri Emerald clears (his schedule: Get_StoneOfForest_IsCompleted_Exp, entry Get_StoneOfForest_IsCompleted_Exp_Talk); it stops the way in as well as out (seen in game, 2026-11-13: no way into the forest from the bridge). SoH lets the bridge into the forest always; the way out (RR_KOKIRI_FOREST to RR_LW_BRIDGE_FROM_FOREST) already asks for the Deku Tree. The adult map has no such wall"
+  },
+  {
+   "key": [
+    "exit",
     "RR_DEKU_TREE_SLINGSHOT_ROOM",
     "RR_DEKU_TREE_2F_MIDDLE_ROOM"
    ],
