@@ -2,7 +2,7 @@ import sys, json
 sys.path.insert(0, r"C:\Projects\ootremake-recomp\HookshotRando")
 from rando.formats import zs
 from rando.events import Events
-R = r"C:\Projects\ootremake-recomp\Hookshot-Build\romfs"
+R = r"C:\Projects\ootremake-recomp\Longshot-Build\romfs"
 E = Events(R, zs.Codec(R))
 fc = E.flow(sys.argv[1])
 print("entries:", fc["entries"])

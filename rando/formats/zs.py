@@ -38,7 +38,7 @@ class Codec:
 
     def compress_like(self, data, original):
         """data compressed with the dictionary the original file's frame names (none when it names none). The frame records
-        its decompressed size, as the game's own do (Hookshot reads the size table's size from it)."""
+        its decompressed size, as the game's own do (Longshot reads the size table's size from it)."""
         want = zstandard.get_frame_parameters(original).dict_id
         d = None
         if want:

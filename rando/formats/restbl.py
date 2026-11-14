@@ -1,6 +1,6 @@
 """The resource size table (System/Resource/ResourceSizeTable.Product.*.rsizetable.zs, "RESTBL"): the memory the game sets aside
 for each file, by the CRC32 of its romfs path without ".zs" (and by the full name for the few paths whose CRC32s collide).
-A file bigger than its entry does not load (Hookshot's readme, "Mods")."""
+A file bigger than its entry does not load (Longshot's readme, "Mods")."""
 import struct
 import zlib
 

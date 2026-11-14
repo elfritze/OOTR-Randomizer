@@ -97,7 +97,7 @@ def main():
     flows = {f for f, _, _ in expect}
     flow_dir = os.path.join(mod_romfs, "Event", "EventFlow")
     in_mod = {f[:-len(".bfevfl.zs")] for f in os.listdir(flow_dir)} if os.path.isdir(flow_dir) else set()
-    own = {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (patches.OPENING_FLOW, patches.WATER_FLOW)}
+    own = {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (patches.OPENING_FLOW, patches.WATER_FLOW, patches.FIRE_FLOW)}
     if own & flows:   # (those flows are checked on their own below, without gift edits)
         problems.append("a gift edit in %s (its own check does not cover gifts)" % sorted(own & flows))
     for f in sorted((flows | in_mod) - own):
@@ -156,7 +156,7 @@ def main():
         a = sarc.read(codec.read(os.path.join(romfs, *rel.split("/"))))
         b = sarc.read(codec.read(path))
         if set(a) != set(b) or any(a[k] != b[k] for k in a if k != patches.BOMB_LIFT):
-            problems.append("%s: more than the bomb's lift file changed" % rel)
+            problems.append("%s: more than the bomb's lift file changed (bomb flowers keep the bracelet)" % rel)
         x, y = byml.read(a[patches.BOMB_LIFT])[0], byml.read(b[patches.BOMB_LIFT])[0]
         if y.get("LiftGrade") != patches.FREE_LIFT_GRADE or {k: v for k, v in x.items() if k != "LiftGrade"} !=                 {k: v for k, v in y.items() if k != "LiftGrade"}:
             problems.append("%s: bomb lift %r" % (rel, y.get("LiftGrade")))
@@ -197,6 +197,24 @@ def main():
         b["events"][i]["next"] = a["events"][i]["next"]
         if not (ok and b["events"][:n] == a["events"] and b["actors"] == a["actors"] and b["entries"] == a["entries"]):
             problems.append("the water quest's flow: not the game's with the arrival scene marked after the letter")
+    # (the Goron quest: the game's flow, the bracelet added after Darunia's talk past his dance's step)
+    path = os.path.join(mod_romfs, *patches.FIRE_FLOW.split("/"))
+    if not os.path.exists(path):
+        problems.append("Darunia does not give the bracelet past his dance's step")
+    else:
+        a = evfl.read(codec.read(os.path.join(romfs, *patches.FIRE_FLOW.split("/"))))[0]
+        b = evfl.read(codec.read(path))[0]
+        n = len(a["events"])
+        i = [e["name"] for e in a["events"]].index(patches.DARUNIA_AFTER)
+        added = b["events"][n:]
+        ok = len(added) == 1 and b["events"][i]["next"] == n and added[0]["next"] == a["events"][i]["next"] and \
+            added[0]["name"] == patches.DARUNIA_EVENT and added[0]["params"] == patches.start_item_params(patches.BRACELET) and \
+            b["actors"][added[0]["actor"]]["name"] == patches.POUCH_ACTOR and \
+            b["actors"][added[0]["actor"]]["actions"][added[0]["action"]] == patches.POUCH_ADD
+        b["events"][i]["next"] = a["events"][i]["next"]
+        if not (ok and b["events"][:n] == a["events"] and b["actors"][:len(a["actors"])] == a["actors"] and
+                b["entries"] == a["entries"]):
+            problems.append("the Goron quest's flow: not the game's with the bracelet after Darunia's talk")
     # (Mido's schedule: the game's rows but the after-Zelda one, each the same)
     path = os.path.join(mod_romfs, *patches.MIDO_SCHEDULE.split("/"))
     if not os.path.exists(path):
@@ -208,6 +226,30 @@ def main():
         if b["ConditionalSchedule"] != keep or {k: v for k, v in a.items() if k != "ConditionalSchedule"} != \
                 {k: v for k, v in b.items() if k != "ConditionalSchedule"}:
             problems.append("Mido's schedule: not the game's without the after-Zelda row")
+    # (the boulder over Dodongo's Cavern stays the game's: changing it crashed the game, 2026-11-13)
+    rel = "Pack/Actor/%s.pack.zs" % patches.DC_BOULDER
+    if os.path.exists(os.path.join(mod_romfs, *rel.split("/"))):
+        problems.append("%s is in the mod (changing it crashed the game)" % rel)
+    # (the trail's logic: the game's, with a bomb at the boulder setting off the flower's scene, nothing else)
+    path = os.path.join(mod_romfs, *patches.DC_LOGIC.split("/"))
+    if not os.path.exists(path):
+        problems.append("the trail's logic not in the mod (bombs do not set off the boulder's flower)")
+    else:
+        logic = bytearray(open(os.path.join(romfs, *patches.DC_LOGIC.split("/")), "rb").read())
+        for at, _, value in patches.dc_logic_bomb_edits(bytes(logic)):
+            logic[at:at + 4] = value.to_bytes(4, "little")
+        if open(path, "rb").read() != bytes(logic):
+            problems.append("the trail's logic: not the game's with the bomb watcher in the flower's OR")
+    # (the Temple of Time's sword module: the game's, the sword never deleted before the Forest Temple, nothing else)
+    path = os.path.join(mod_romfs, *patches.TIME_LOGIC.split("/"))
+    if not os.path.exists(path):
+        problems.append("the Temple of Time's sword module not in the mod (no way back to child before the Forest Temple)")
+    else:
+        logic = bytearray(open(os.path.join(romfs, *patches.TIME_LOGIC.split("/")), "rb").read())
+        for at, _, value in patches.time_logic_edits(bytes(logic)):
+            logic[at:at + 4] = value.to_bytes(4, "little")
+        if open(path, "rb").read() != bytes(logic):
+            problems.append("the Temple of Time's sword module: not the game's with the sword never deleted")
     rows, _ = byml.read(codec.read(os.path.join(mod_romfs, *EVENT_SETTING.split("/"))))
     by = {r["__RowId"]: r for r in rows}
     if plan["settings"].get("skip_intro"):

@@ -66,7 +66,7 @@ class Mod:
             f.write(packed)
 
     def add(self, rel, data, like):
-        """a file the game does not have (Hookshot's mods may add files): compressed as the game file `like` is, with a
+        """a file the game does not have (Longshot's mods may add files): compressed as the game file `like` is, with a
         size-table entry of its size and `like`'s margin"""
         import zlib
         if os.path.exists(os.path.join(self.romfs, *rel.split("/"))):

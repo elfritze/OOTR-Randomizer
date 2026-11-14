@@ -1,15 +1,15 @@
 # HookshotRando
 
-A randomizer for The Legend of Zelda: Ocarina of Time (Nintendo Switch 2) as [Hookshot](https://github.com/NotRexed/Hookshot)
-runs it. It is a RomFS mod: no change to Hookshot, nothing to rebuild. You make it from your own copy of the game.
+A randomizer for The Legend of Zelda: Ocarina of Time (Nintendo Switch 2) as [Longshot](https://git.magicbean.dev/MagicBeanDev/Longshot)
+runs it. It is a RomFS mod: no change to Longshot, nothing to rebuild. You make it from your own copy of the game.
 
 ## Use
 
-You need Hookshot's game folder (it holds `romfs` and `mods`) and Python 3.10 or newer with `zstandard`
+You need Longshot's game folder (it holds `romfs` and `mods`) and Python 3.10 or newer with `zstandard`
 (`python -m pip install zstandard`).
 
 ```
-python randomize.py "C:\Games\Hookshot" --seed anything
+python randomize.py "C:\Games\Longshot" --seed anything
 ```
 
 The mod goes to `<game folder>\mods\HookshotRando`, with `spoiler.txt` (where everything is, and a playthrough) and
@@ -50,8 +50,8 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 - **Songs are shuffled** (12: Saria, Malon, Impa, the Royal Family's Tomb, the castle moat, the windmill and Sheik's six):
   each song's cutscene gives the item placed there, and the lesson's own silent add of the song is switched off (else the
   song would be learned as well). The windmill man gives once, then never again. A song found elsewhere shows Sheik's harp
-  (the game has no model for songs). Not yet confirmed in game: playing a song got outside its own cutscene (the game's
-  ocarina reads the song from the pouch, as a taught one). `--no-shuffle-songs` leaves each song where it is.
+  (the game has no model for songs). Playing a song got outside its own cutscene works (seen in game: Zelda's Lullaby from a
+  Heart Piece spot opened Zora's Domain). `--no-shuffle-songs` leaves each song where it is.
 - **Chest events**: the Navi lines and scenes made for a chest's own item are dropped when the item changes; the ones the
   story needs stay (Sheik's Serenade after the Ice Cavern's chest, Nabooru's capture, Dampe's race, Ruto's room).
 - **Order**: the Longshot never before the Hookshot, the Golden Gauntlets never before the Silver ones, the Silver ones
@@ -61,6 +61,22 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 - **Bombs without the Goron's Bracelet**: the remake gives Link's own bombs the bomb flowers' lift grade, so without the
   bracelet he takes a bomb out and puts it back. The mod gives them the grade Bombchus have (nothing needed; found by the
   OotrR randomizer): a bomb bag is enough, as in SoH. Bomb flowers still need the bracelet.
+- **Bombs open Dodongo's Cavern**: the remake's boulder over the entrance has no life, so bombs do nothing to it; only
+  the bomb flower above breaks it, by a scene (its bomb flies to the boulder), and picking that flower needs the Goron's
+  Bracelet. The trail's logic also watches for the player's bombs at the boulder, connected to nothing; the mod connects
+  it and lets it set off the scene by itself (`patches.dc_bombs_set_off_flower`): a bomb dropped at the boulder plays the
+  scene and breaks it (seen in game). The logic asks a child for the bomb bag there (Bombchus are not watched; the bomb
+  flower's own way still works in two of its three areas, not yet seen with the mod, so the bracelet is not counted).
+  Changing the boulder, or the flower's actor file, crashed the game.
+- **Darunia's bracelet after his quest has moved on**: breaking that boulder moves Darunia's quest to "explore Dodongo's
+  Cavern" from any step (seen in game), and beating King Dodongo moves it on too; past his dance's step, Saria's Song only
+  makes him dance and talk, the bracelet's scene never comes. The game never gets there without the dance; a seed does
+  (Saria's Song found only as an adult). His talk after the song now also adds the bracelet, silently
+  (`patches.darunia_bracelet_after_quest`); after the dance it is had already. Not yet confirmed in game.
+- **Back to child as soon as you are adult**: the remake's Master Sword takes Link back to child only once the Forest
+  Temple is done (the Temple of Time's logic removes the sword's interaction until then; seen in game: no way back). The
+  original game and SoH's logic let him go back at once, and a seed can need it (a child-only item for the Forest Temple).
+  The mod disconnects that removal (`patches.free_time_travel`). Not yet confirmed in game.
 - **Zora's River without its invisible walls**: the remake puts seven invisible walls in the river across the line of the
   two bomb boulders, so a child who came in upstream (the Lost Woods dive) and swims down is stopped there and held by the
   current. The mod makes them never appear (a condition each wall can never meet; their collision is baked into the map,
@@ -70,7 +86,12 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
   Deku Tree path, but his invisible wall stays until he has seen the Kokiri Sword and a shield. The game never meets that
   (Zelda comes after the Deku Tree); a seed can, and the way to the Deku Tree was then shut for good. The mod takes his
   "after Zelda" place out of his schedule (`patches.mido_keeps_blocking`): he stays at his post with the talk that lets you
-  pass, and after the Kokiri Emerald he goes where the game puts him then.
+  pass, and after the Kokiri Emerald he goes where the game puts him then. Seen in game.
+- **King Zora stays out of the way after the letter**: the first time you enter Zora's Domain from Zora's River, its
+  arrival scene sets the Ruto quest back to its start, whatever it was. The game always comes that way first; a seed
+  can come in from Lake Hylia under water, show the letter, and then take the river's way in: King Zora went back to his
+  seat for good, the letter gone. Showing him the letter now also marks the arrival scene as seen
+  (`patches.zora_arrival_after_letter`), so it never comes after the letter (you skip it only if you came in another way).
 - **Into Kokiri Forest from the bridge**: as a child, the Kokiri in the tunnel between the Lost Woods bridge and the village
   stands behind an invisible wall until you talk to him after the Kokiri Emerald, and it stops you going in as well as out.
   SoH lets the bridge always lead into the forest; here, as a child, it needs the Deku Tree beaten.

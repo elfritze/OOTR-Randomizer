@@ -2,7 +2,7 @@ import sys, json
 sys.path.insert(0, r"C:\Projects\ootremake-recomp\HookshotRando")
 from rando.formats import zs
 from rando.events import Events
-R = r"C:\Projects\ootremake-recomp\Hookshot-Build\romfs"
+R = r"C:\Projects\ootremake-recomp\Longshot-Build\romfs"
 E = Events(R, zs.Codec(R))
 # (skip pure presentation: camera, animation, sound, waits, fades)
 NOISE = ("Camera", "PlayAS", "Wait", "Sound", "Fade", "LookAt", "Effect", "Particle", "Rumble", "Turn", "Move", "Anim", "Xlink", "BGM", "Letterbox", "Emit")

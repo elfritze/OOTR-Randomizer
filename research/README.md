@@ -8,7 +8,7 @@ a game file, only facts read from it.
 - soh_chests.json: every SoH chest check (location_list.cpp): rc, quest (skip RCQUEST_MQ), scene, N64 actor params, name,
   vanilla item.
 - mapping/<group>.json: results, one file per area group (see the schema in each).
-- The game data itself: C:/Projects/ootremake-recomp/Hookshot-Build/romfs, read with the rando package
+- The game data itself: C:/Projects/ootremake-recomp/Longshot-Build/romfs, read with the rando package
   (rando.formats.zs.Codec, byml, sarc, evfl; rando.events.Events for event flows, rando.chests).
 - SoH sources: C:/Projects/ootremake-recomp/Shipwright/soh/soh/Enhancements/randomizer (location_access/ for regions and
   rules, location_list.cpp for checks, logic.cpp for helpers).

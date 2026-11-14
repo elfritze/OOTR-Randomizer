@@ -2,7 +2,7 @@
 major items (Obj_Arrow_Fire, the Fire Arrows on Lake Hylia; Obj_Shield_Deku, Obj_Armor_Zora): an Obj_Item_Base pickup
 whose PouchContentParam's PouchActor is the item it gives, with that item's name, model, animations and icon.
 
-A new pickup is Obj_Arrow_Fire's pack with its item swapped (Pack/Actor/<name>.pack.zs, a new file: Hookshot's mods may add
+A new pickup is Obj_Arrow_Fire's pack with its item swapped (Pack/Actor/<name>.pack.zs, a new file: Longshot's mods may add
 files), and rows like Obj_Arrow_Fire's in RSDB ActorInfo and GameActorInfo, and like the item's in PouchActorInfo. A map
 actor (a Heart Piece, a Heart Container, a rupee) becomes one by its Gyaml; its Hash, place and links stay, so whatever
 spawned it (a boss room's logic) spawns the new one."""

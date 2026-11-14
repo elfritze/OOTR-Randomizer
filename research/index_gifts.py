@@ -18,7 +18,7 @@ from rando import chests  # noqa: E402
 from rando.events import Events  # noqa: E402
 from rando.formats import byml, zs  # noqa: E402
 
-ROMFS = r"C:\Projects\ootremake-recomp\Hookshot-Build\romfs"
+ROMFS = r"C:\Projects\ootremake-recomp\Longshot-Build\romfs"
 HERE = os.path.dirname(os.path.abspath(__file__))
 ITEMISH = re.compile(r"^(Item_|Obj_Rupee|Obj_Heart|Obj_Item|Weapon_|Armor_|TBox_|Tbox_|Obj_Dungeon|Obj_Key|Obj_Bomb|Obj_Arrow"
                      r"|Obj_DekuNut|Obj_DekuStick|Obj_Seed|Obj_Fairy|Obj_GoldSkull|Obj_HeartContainer|Obj_Magic"

@@ -201,6 +201,200 @@ MIDO_ROWS = ("KokiriForest_Npc_Kokiri_Blocker", "Meet_DekuTree_IsAfter_Step02_Ex
              "Get_StoneOfForest_IsAfter_DefeatBoss_Exp", "Get_StoneOfForest_Complete_Mido_TalkEnd", MIDO_ZELDA_ROW)
 
 
+# Not done (crashes): the boulder over Dodongo's Cavern's entrance (Obj_DeathMtTrail_BrokenRock_A_01, "DodongoCavern_CrackRock",
+# only in the child's Death Mountain Trail map) has no life, so the player's bombs do nothing to it (seen in game, 2026-11-13);
+# only its bomb flower above breaks it (an event requests its death), and picking that flower needs the Goron's Bracelet. Giving
+# it the bombable boulders' life (Obj_BrokenRock_A_01's WallCrack LifeParam, CrackStoneObject damage, WallCrack life files, a
+# LifeRef in its ActorParam), with or without its ActorInfo heap raised (+32768) and GameActorInfo MaxLife 6, made the game
+# crash creating it on entering the trail (three times, 2026-11-13: write to 0x100000000000 in BaseProcCreateAndDeleteThread,
+# the registers naming Actor/Obj_DeathMt..., right after the trail's logic module, which creates it, loaded). So the logic
+# asks a child for the bracelet there (data/overrides.json), and the boulder stays as the game has it.
+DC_BOULDER = "Obj_DeathMtTrail_BrokenRock_A_01"
+# The trail's logic module (Logic/DeathMountainTrail_Child_Prefab_ffa7.logic.module.ainb) also sets the Goron quest
+# (Get_StoneOfFire) to DungeonStart (step 16) when the boulder's death procedure is complete, while the quest is before it
+# (TriggerChallengeSetStepNoEventPause <- OperateAND(HoldChallengeCurrentStepCheckOrder(DungeonStart).IsBefore,
+# OperateOR(boulder.Dead, ...))); the game breaks it only after Darunia's dance (DodongoCavernOpne, Dm_Goron_0030). An edit of
+# that check (in place) was in the mod in the first two crashes; it is not made either. (rando/formats/ainb.py reads these.)
+DC_LOGIC = "Logic/DeathMountainTrail_Child_Prefab_ffa7.logic.module.ainb"
+
+
+# Not done either (crashed, 2026-11-14): letting a bomb bag pick the flower that breaks the boulder by its fruit's AI (its
+# QueryGetGameDataBool IsGet.Armor_Child_Gauntlet_Goron asking for IsGet.Item_BombBag_Small instead, the name added to the
+# AI's string pool) and a lift file of its own named in its ActorParam's LiftableRef. The game crashed creating the fruit,
+# as it did the boulder: the one thing both had was a changed ActorParam of an actor the game has (new actors with their own
+# ActorParams, the pickups, work). Every changed file stayed within its size-table entry. Lifting every bomb flower's fruit
+# without the bracelet (its shared lift file's grade) worked: the flower's scene broke the boulder for a child without the
+# bracelet (seen in game, 2026-11-14), but every bomb flower was then liftable, so that is not kept either.
+FRUIT_LIFT = "Component/LiftableParam/Obj_BombFlower_Fruit.game__component__LiftableParam.bgyml"
+FRUIT_LIFT_PACKS = ("Obj_BombFlower_A_01", "Obj_BombFlower_A_04",
+                    "Obj_BombFlower_Fruit_For_Break_Obj_DeathMtTrail_BrokenRock_A_01")
+
+
+# Instead, a bomb at the boulder sets off the flower's scene. The trail's logic module plays it (its EventRequestActor
+# Get_StoneOfFire_DodongoCavernOpne: Dm_DeathMtTrail_0010, the fruit flying to the boulder and the boulder's death) when
+# OperateAND(the flower's CanExplosionPerformance, OperateOR(a BombFruit in Area_d584, in Area_4605, in Area_e01c)). The
+# module also watches for Item_Bomb in those same three areas (a HoldActorObserverBySensorHitInfo nothing reads: the game's
+# own, left unconnected). The OR's second source, the fruit in Area_4605, is made that bomb watcher (in place: the multi-source
+# entry, the OR's precondition entry, the two outputs' "read" bits, as all 1821 logic files keep them): a player's bomb in any
+# of the three areas, or the fruit in the first or the third, sets off the scene.
+DC_BOMB_SENSOR, DC_FRUIT_SENSOR = "Item_Bomb", "BombFruit"
+DC_FLOWER_NODE = "ActorLogicBombFlowerGrassBreakBreakDeathMtTrailBrokenRock"
+SENSOR = "HoldActorObserverBySensorHitInfo"
+
+
+def dc_logic_bomb_edits(data):
+    """[(offset, old u32, new u32)] for the trail's logic module, or ValueError if it is not the one known"""
+    from .formats import ainb
+    f = ainb.File(data)
+    pre_at = f.u32(0x30)
+    if f.u32(0x4C) != pre_at or f.u32(0x50) != pre_at:
+        raise ValueError("%s: the precondition table is not where it is known" % DC_LOGIC)
+
+    def watches(n):
+        i = n["inputs"].get("ActorName")
+        return f.value(i["value_at"], "string") if i and not i["sources"] else None
+
+    bombs = [n for n in f.nodes if n["name"] == SENSOR and watches(n) == DC_BOMB_SENSOR]
+    if len(bombs) != 1 or f.readers(bombs[0]["index"], 0) or f.readers(bombs[0]["index"], 1):
+        raise ValueError("%s: not one bomb watcher read by nothing" % DC_LOGIC)
+    bomb = bombs[0]
+    ors = [n for n in f.nodes if n["name"] == "OperateOR" and len(n["inputs"]["BoolMulti"]["sources"]) == 3 and
+           all(f.nodes[s[0]]["name"] == SENSOR and watches(f.nodes[s[0]]) == DC_FRUIT_SENSOR and s[1] == 0
+               for s in n["inputs"]["BoolMulti"]["sources"])]
+    if len(ors) != 1:
+        raise ValueError("%s: not one OR of three fruit watchers" % DC_LOGIC)
+    gate = ors[0]
+    fruit, _, entry = gate["inputs"]["BoolMulti"]["sources"][1]
+    if f.readers(fruit, 0) != [(gate["index"], "BoolMulti")] or f.readers(fruit, 1):
+        raise ValueError("%s: the fruit watcher is read by more than the OR" % DC_LOGIC)
+    o = f.nodes_at + gate["index"] * ainb.NODE_SIZE
+    base, count = f.i16(o + 0x24) & 0xFFFF, f.i16(o + 0x26) & 0xFFFF
+    pre = [pre_at + 4 * k for k in range(base, base + count)]
+    hits = [at for at in pre if f.u32(at) == fruit]
+    if len(hits) != 1 or bomb["index"] in [f.u32(at) for at in pre]:
+        raise ValueError("%s: the OR's preconditions are not the ones known" % DC_LOGIC)
+    (fruit_name, fruit_out), (bomb_name, bomb_out) = f.nodes[fruit]["outputs"]["bool"][0], bomb["outputs"]["bool"][0]
+    if fruit_name != "IsHit" or bomb_name != "IsHit" or not f.u32(fruit_out) & ainb.USED or f.u32(bomb_out) & ainb.USED:
+        raise ValueError("%s: the watchers' outputs are not the ones known" % DC_LOGIC)
+    old = f.u32(entry)
+    if old & 0xFFFF != fruit or old >> 16:
+        raise ValueError("%s: the multi-source entry is not the fruit watcher's" % DC_LOGIC)
+    # (the AND that requests the scene also asks for the flower's CanExplosionPerformance, which its AI sets only while a
+    #  picked fruit burns (HasTimeUntilTheExplosion): a bomb dropped at the boulder did nothing, 2026-11-14. Its first source
+    #  is made the OR's True, as its second: the scene is requested on a hit in the areas alone)
+    ands = [n for n in f.nodes if n["name"] == "OperateAND" and
+            [(s[0], s[1]) for s in n["inputs"]["BoolMulti"]["sources"]][1:] == [(gate["index"], 1)] and
+            len(n["inputs"]["BoolMulti"]["sources"]) == 2]
+    if len(ands) != 1:
+        raise ValueError("%s: not one AND of the flower and the OR" % DC_LOGIC)
+    flower, flower_out, flower_entry = ands[0]["inputs"]["BoolMulti"]["sources"][0]
+    flower_outs = f.nodes[flower]["outputs"]["bool"]
+    if f.nodes[flower]["name"] != DC_FLOWER_NODE or flower_outs[flower_out][0] != "CanExplosionPerformance" or \
+            f.readers(flower, flower_out) != [(ands[0]["index"], "BoolMulti")] or \
+            f.u32(flower_entry) != flower | (flower_out << 16) or not f.u32(flower_outs[flower_out][1]) & ainb.USED:
+        raise ValueError("%s: the AND's first source is not the flower's CanExplosionPerformance" % DC_LOGIC)
+    explode_at = flower_outs[flower_out][1]
+    return [(entry, old, bomb["index"]),
+            (hits[0], fruit, bomb["index"]),
+            (fruit_out, f.u32(fruit_out), f.u32(fruit_out) & ~ainb.USED),
+            (bomb_out, f.u32(bomb_out), f.u32(bomb_out) | ainb.USED),
+            (flower_entry, f.u32(flower_entry), gate["index"] | (1 << 16)),
+            (explode_at, f.u32(explode_at), f.u32(explode_at) & ~ainb.USED)]
+
+
+def dc_bombs_set_off_flower(romfs, codec, mod):
+    """a bomb at the boulder over Dodongo's Cavern sets off its bomb flower's scene"""
+    data = bytearray(mod.read(DC_LOGIC))
+    for at, _, new in dc_logic_bomb_edits(bytes(data)):
+        data[at:at + 4] = new.to_bytes(4, "little")
+    mod.write(DC_LOGIC, bytes(data))
+
+
+# Darunia gives the Goron's Bracelet in his dance's scene (Dm_Goron_0030), played when Saria's Song is played to him
+# (his ocarina reaction, always on: Get_StoneOfFire_PlayOcarina) while the Goron quest is not yet past SariaMelodyPlay; past
+# it, the same song plays his dance (Dm_Goron_0025) and then only a talk (the switch Event39 on
+# Get_StoneOfFire_IsAfter_SariaMelodyPlay_Exp: its true case Event42, a camera move, then the talk). The game never gets
+# past that step without the dance; a seed does: breaking the boulder over Dodongo's Cavern moves the quest to DungeonStart
+# from any step, and beating King Dodongo to its end (seen in game, 2026-11-14: "Explore Dodongo's Cavern" after a bomb
+# broke the boulder), and a seed can ask for the bracelet after (Saria's Song somewhere only an adult reaches). The talk's
+# way gets the bracelet added to the pouch, silently, as Saria's Fairy Ocarina is (Dm_Kokiri_0155): after the dance it is
+# had already, and adding it again changes nothing.
+FIRE_FLOW = "Event/EventFlow/Get_StoneOfFire.bfevfl.zs"
+DARUNIA_SWITCH, DARUNIA_AFTER = "Event39", "Event42"
+DARUNIA_STEP_FLAG = "Get_StoneOfFire_IsAfter_SariaMelodyPlay_Exp"
+BRACELET = "Item_Gauntlet_Goron"
+DARUNIA_EVENT = "RandoDaruniaBracelet"
+
+
+def darunia_bracelet_after_quest(romfs, codec, mod):
+    """Darunia gives the bracelet to Saria's Song past his dance's step too"""
+    vanilla = [a for a in evfl.read(mod.read(POUCH_ACTOR_FROM))[0]["actors"] if a["name"] == POUCH_ACTOR]
+    if len(vanilla) != 1 or vanilla[0]["actions"] != [POUCH_ADD] or not vanilla[0]["params"]:
+        raise ValueError("%s: not the PouchSystemActor known" % POUCH_ACTOR_FROM)
+    raw = mod.read(FIRE_FLOW)
+    flow = evfl.read(raw)[0]
+    ev = flow["events"]
+    by = {e["name"]: i for i, e in enumerate(ev)}
+    switch = ev[by[DARUNIA_SWITCH]]
+    dance = ev[switch["cases"].get(1)] if switch.get("type") == "switch" and 1 in switch["cases"] else {}
+    if switch.get("params") != {"GameDataName": DARUNIA_STEP_FLAG} or switch["cases"].get(0) != by[DARUNIA_AFTER] or \
+            (dance.get("params") or {}).get("EventName") != "Dm_Goron_0030":
+        raise ValueError("%s: Darunia's dance switch is not the one known" % FIRE_FLOW)
+    mod.write(FIRE_FLOW, evfl_patch.add_actions(raw, DARUNIA_AFTER, POUCH_ACTOR, POUCH_ADD, vanilla[0]["params"],
+                                                [(DARUNIA_EVENT, start_item_params(BRACELET))]))
+
+
+# Back to child as soon as Link is adult: the Temple of Time's logic module (Market_Adult_Prefab_89da) deletes the Master
+# Sword's interaction (ActorLogicAttentionActor, its ReceiveDoAction requesting Market_Adult_Field_AdultToChild) while the
+# Forest Temple's sage is not awakened (Logic_Delete <- InvBool(SageOfForest_IsCompleted_Exp)): the remake keeps an adult
+# Link adult until the Forest Temple is done (seen in game, 2026-11-14: no way back to child at the pedestal). The original
+# game, and SoH's logic, let him go back as soon as he is adult; a seed counts on it (a child-only item needed for the Forest
+# Temple: the Hammer by the frogs, the Hookshot behind hammer rocks). The sword's Logic_Delete is made unconnected, as the
+# module's other actor's is (no source, the unlinked flags, false), in place; the inverted flag's output loses its "read" bit.
+# The back-to-child event itself asks nothing of the Forest Temple.
+TIME_LOGIC = "Logic/Market_Adult_Prefab_89da.logic.module.ainb"
+TIME_FLAG = "SageOfForest_IsCompleted_Exp"
+UNLINKED_FLAGS = 0x01800000
+
+
+def time_logic_edits(data):
+    """[(offset, old u32, new u32)] for the Temple of Time's sword module, or ValueError if it is not the one known"""
+    from .formats import ainb
+    f = ainb.File(data)
+    swords = [n for n in f.nodes if n["name"] == "ActorLogicAttentionActor" and
+              f.value(n["imm"]["InstanceName"][1], "string").startswith("Obj_TimeTemple_MasterSword_A_01")]
+    if len(swords) != 1:
+        raise ValueError("%s: not one Master Sword attention node" % TIME_LOGIC)
+    delete = swords[0]["inputs"]["Logic_Delete"]
+    if len(delete["sources"]) != 1 or delete["sources"][0][2] is not None:
+        raise ValueError("%s: the sword's Logic_Delete is not one single source" % TIME_LOGIC)
+    inv, out, _ = delete["sources"][0]
+    flags = f.nodes[inv]["inputs"].get("BoolMulti", {}).get("sources", [])
+    if f.nodes[inv]["name"] != "InvBool.module" or len(flags) != 1 or \
+            f.value(f.nodes[flags[0][0]]["inputs"]["GameDataNameBoolExp"]["value_at"], "string") != TIME_FLAG or \
+            f.readers(inv, out) != [(swords[0]["index"], "Logic_Delete")]:
+        raise ValueError("%s: the sword is not deleted by the inverted %s alone" % (TIME_LOGIC, TIME_FLAG))
+    unlinked = [i for n in f.nodes for k, i in n["inputs"].items() if k == "Logic_Delete" and not i["sources"]]
+    e = delete["entry"]
+    if not unlinked or any(f.u32(i["entry"] + 4) != 0xFFFF or f.u32(i["entry"] + 8) != UNLINKED_FLAGS for i in unlinked) or \
+            f.u32(e + 8) != 0 or f.u32(e + 12) != 0:
+        raise ValueError("%s: the unconnected inputs are not encoded as known" % TIME_LOGIC)
+    out_at = f.nodes[inv]["outputs"]["bool"][out][1]
+    if not f.u32(out_at) & ainb.USED:
+        raise ValueError("%s: the inverted flag's output is not marked read" % TIME_LOGIC)
+    return [(e + 4, f.u32(e + 4), 0xFFFF),
+            (e + 8, 0, UNLINKED_FLAGS),
+            (out_at, f.u32(out_at), f.u32(out_at) & ~ainb.USED)]
+
+
+def free_time_travel(romfs, codec, mod):
+    """the Master Sword takes Link back to child as soon as he is adult"""
+    data = bytearray(mod.read(TIME_LOGIC))
+    for at, _, new in time_logic_edits(bytes(data)):
+        data[at:at + 4] = new.to_bytes(4, "little")
+    mod.write(TIME_LOGIC, bytes(data))
+
+
 def mido_keeps_blocking(romfs, codec, mod):
     """Mido's schedule without its after-Zelda row"""
     raw = mod.read(MIDO_SCHEDULE)

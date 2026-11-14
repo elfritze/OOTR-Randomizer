@@ -2591,6 +2591,15 @@
   {
    "key": [
     "exit",
+    "RR_DEATH_MOUNTAIN_TRAIL",
+    "RR_DODONGOS_CAVERN_ENTRYWAY"
+   ],
+   "rule": "logic->CanUse(RG_BOMB_BAG) || logic->IsAdult",
+   "why": "Dodongo's Cavern from the trail: as a child, the boulder over the entrance (Obj_DeathMtTrail_BrokenRock_A_01, child map only) has no life, so bombs do nothing to it themselves; the mod has a bomb at its base set off the bomb flower's scene that breaks it (patches.dc_bombs_set_off_flower, seen in game 2026-11-14: scene played, boulder broke). Bombchus are not watched (Item_Bomb only). The game's own way, the bomb flower (Goron's Bracelet), still triggers it in two of its three areas, not yet seen with the mod, so the bracelet is not counted. The adult map has no boulder. SoH: explosives, the bracelet, or adult."
+  },
+  {
+   "key": [
+    "exit",
     "RR_DEKU_TREE_SLINGSHOT_ROOM",
     "RR_DEKU_TREE_2F_MIDDLE_ROOM"
    ],

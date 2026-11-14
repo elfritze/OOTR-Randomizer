@@ -1,9 +1,9 @@
-"""HookshotRando: a chest randomizer for The Legend of Zelda: Ocarina of Time (Switch 2) as Hookshot runs it, made as a RomFS mod
+"""HookshotRando: a chest randomizer for The Legend of Zelda: Ocarina of Time (Switch 2) as Longshot runs it, made as a RomFS mod
 from your own copy of the game.
 
     python randomize.py <game folder> [--seed TEXT] [--no-skip-intro]
 
-<game folder> is Hookshot's (it holds romfs and mods). The mod is written to <game folder>/mods/HookshotRando, with its
+<game folder> is Longshot's (it holds romfs and mods). The mod is written to <game folder>/mods/HookshotRando, with its
 spoiler log beside its romfs folder. A new seed replaces the last one: start a new game for it."""
 import argparse
 import os
@@ -16,7 +16,7 @@ from rando import generate, settings  # noqa: E402
 
 def main():
     p = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    p.add_argument("game", help="Hookshot's game folder (with romfs and mods)")
+    p.add_argument("game", help="Longshot's game folder (with romfs and mods)")
     p.add_argument("--seed", default=None, help="any text; the same seed and settings give the same game (default: a new one)")
     settings.add_arguments(p)
     a = p.parse_args()

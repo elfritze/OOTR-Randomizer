@@ -187,10 +187,13 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     made.finish()
     patches.song_models(romfs, codec, mod)
     patches.free_bomb_lift(romfs, codec, mod)
+    patches.dc_bombs_set_off_flower(romfs, codec, mod)
     patches.open_zr_river(romfs, codec, mod)
     patches.mido_keeps_blocking(romfs, codec, mod)
     patches.starting_bags(romfs, codec, mod)
     patches.zora_arrival_after_letter(romfs, codec, mod)
+    patches.darunia_bracelet_after_quest(romfs, codec, mod)
+    patches.free_time_travel(romfs, codec, mod)
     if settings["skip_intro"]:
         patches.skip_intro(romfs, codec, mod)
     mod.finish()
