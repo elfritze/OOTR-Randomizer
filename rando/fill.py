@@ -14,9 +14,10 @@ class Location:
     """one randomized check: id (its SoH check, or CHEST_<hash> / REMAKE_<name> for one SoH does not have), hash (a chest's;
     None for others), map, vanilla actor (as the pool names it: its chest form), name, kind ("chest", "gift": an NPC's or a
     minigame's prize, "loose": an item lying in the world)"""
-    def __init__(self, id, hash, remake_map, vanilla, name, kind="chest"):
+    def __init__(self, id, hash, remake_map, vanilla, name, kind="chest", small_chest=False):
         self.id, self.hash, self.map, self.vanilla, self.name, self.kind = id, hash, remake_map, vanilla, name, kind
         self.dungeon = remake_map if remake_map in I.DUNGEONS else None
+        self.small_chest = small_chest   # (a chest of the small chests' flow: no map, compass or boss key)
 
 
 def _soh(actor, loc):
@@ -93,7 +94,7 @@ def _attempt(world, locations, fixed, progression, rng, closed):
         return world.reachable(have)
 
     def put(item, origin, spots):
-        spots = [l for l in spots if I.allowed(item, l.kind)]
+        spots = [l for l in spots if I.allowed(item, l.kind) and not (item in I.BIG_CHEST_ONLY and l.small_chest)]
         if not spots:
             raise FillError("nowhere reachable for %s (from %s)" % (item, origin.name))
         spot = rng.choice(spots)
@@ -124,7 +125,12 @@ def _attempt(world, locations, fixed, progression, rng, closed):
         later = [k for dd in order[i + 1:] for k in by_dungeon[dd]]   # (the dungeons still to fill: their keys assumed)
         for item, origin in sorted(by_dungeon[d], key=lambda k: k[0] != "Item_Dungeon_SmallKey"):
             r = reach(counted(prog) + counted(later))
-            put(item, origin, [l for l in empty if l.map == d and l.id in r])
+            spots = [l for l in empty if l.map == d and l.id in r]
+            if item not in I.BIG_CHEST_ONLY and any(l.small_chest for l in spots):
+                # (a small key in a small chest: the few big chests (3 in the Water Temple, for its map, compass and
+                #  boss key) are kept for what only they give)
+                spots = [l for l in spots if l.small_chest]
+            put(item, origin, spots)
     # 2. maps and compasses
     for item, origin in other_dungeon:
         put(item, origin, [l for l in empty + junk_only if l.map == origin.map])

@@ -121,6 +121,11 @@ DUNGEONS = {
 }
 DUNGEON_ITEMS = {"Item_Dungeon_SmallKey": "SMALL_KEY", "Item_Dungeon_BossKey": "BOSS_KEY", "Item_Dungeon_Map": "MAP",
                  "Item_Dungeon_Compass": "COMPASS"}
+# (what only a big chest gives: the big chests' flow, Dm_SY_Treasurebox, hands the dungeon's map, compass and boss key
+#  with its own steps (EventGetDungeonMap / Compass / BossKey, by EventQueryTreasureBoxIsDungeonCommonItemInside); the
+#  small chests' flow, Dm_SY_TreasureboxSmall, knows only the small key: from a small chest those three showed and were
+#  never had (2026-11-14: the Shadow Temple's boss key, from its Falling Spikes Lower Chest; its boss door stayed shut)
+BIG_CHEST_ONLY = {"Item_Dungeon_BossKey", "Item_Dungeon_Map", "Item_Dungeon_Compass"}
 
 # Pairs where getting the second before the first is not known to work in the remake (two actors, not one progressive
 # item): the fill keeps the second unreachable without the first.

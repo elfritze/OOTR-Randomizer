@@ -45,6 +45,11 @@ DYNAMIC_DROP = "TBox_ArrowBundle_Medium"
 TRAP = "Obj_TBox_A_04"   # (an ice trap's chest: no content, it opens with TrapTreasureBoxOpen)
 
 
+# (the chests that run only the small chests' flow, Dm_SY_TreasureboxSmall (their packs name no other): items.BIG_CHEST_ONLY
+#  never goes in them)
+SMALL_FLOW = {"Obj_TBox_A_01", "Obj_TBox_A_01_NoBake", "Obj_TBox_GlassTruth_A_01"}
+
+
 def is_chest(actor):
     g = actor.get("Gyaml", "")
     return g.startswith("Obj_") and "TBox" in g and "Pedestal" not in g and g != TRAP and (

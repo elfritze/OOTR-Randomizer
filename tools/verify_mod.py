@@ -352,6 +352,12 @@ def main():
     game_only = type("GameOnly", (), {"read": lambda self, rel: codec.read(os.path.join(romfs, *rel.split("/")))})()
     stones = plan.get("hints") or {}
     problems += hint_problems(romfs, codec, mod_romfs, chosen, stones, plan)
+    # (a map, compass or boss key only in a big chest: the small chests' flow never gives them)
+    from rando import items as rando_items
+    for h, (item, _) in sorted(want.items()):
+        if item in rando_items.BIG_CHEST_ONLY and found[h]["gyaml"] in chests.SMALL_FLOW:
+            problems.append("chest %d (%s, %s): %s in a small chest, which never gives it" % (
+                h, found[h]["map"], found[h]["gyaml"], item))
     english_names = hints.Names(sarc.read(game_only.read("%s/%s" % (patches.MALS, hints.ENGLISH))))
     for rel, want_files in patches.gift_message_files(romfs, game_only).items():
         path = os.path.join(mod_romfs, *rel.split("/"))

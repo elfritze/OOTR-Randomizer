@@ -47,6 +47,8 @@ Order: what can leave a seed unfinishable first, then what players expect from a
     checks marked done from the save (loose keys, gift flags, song cutscenes, unique items held, dungeon items). Left:
     automatic marks for chests of rupees and ammunition once step 3 exists, an overlay over the game.
 13. **Archipelago**: test the apworld in Archipelago, then patches, item receiving, client (`docs/ARCHIPELAGO.md`).
+    Its locations need the fill's rules for dungeon items first: in their own dungeon, and no map, compass or boss key in
+    a small chest (`items.BIG_CHEST_ONLY`, `Location.small_chest`: the small chests' flow never gives them).
 14. **Packaging**: a portable exe (PyInstaller), signed updates, a public repository under the new name.
 15. **Rename everywhere** once "Lost Woods" (or another) is chosen: the repository, the mod folder (needs a migration of an
     installed seed), the README.

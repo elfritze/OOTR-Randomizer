@@ -131,7 +131,8 @@ class Setup:
                 raise ValueError("chest %s (%s) is not in this game's maps" % (l["hash"], l["name"]))
             if self.found[h]["drop"] != l["vanilla"]:
                 raise ValueError("chest %s holds %s, the table says %s" % (l["hash"], self.found[h]["drop"], l["vanilla"]))
-            locs.append(fill.Location(l["id"], h, self.found[h]["map"], l["vanilla"], "%s: %s" % (l["area"], l["name"])))
+            locs.append(fill.Location(l["id"], h, self.found[h]["map"], l["vanilla"], "%s: %s" % (l["area"], l["name"]),
+                                      small_chest=self.found[h]["gyaml"] in chests.SMALL_FLOW))
         covered = {x.hash for x in locs} | {int(c) for l in self.table["locations"] for c in l["copies"]} | \
             {int(h) for h in self.table.get("skipped", ())}
         missing = [h for h in self.found if h not in covered]
