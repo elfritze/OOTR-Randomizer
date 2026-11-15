@@ -41,6 +41,10 @@ OPTIONS = (
     Option("shuffle_boss_keys", "dungeon", "Boss keys",
            "As maps and compasses (SoH: Boss Key Shuffle), Ganon's Castle's boss key with the others.",
            "own_dungeon", False, PLACES),
+    Option("shuffle_dungeon_rewards", "shuffle", "Shuffle dungeon rewards",
+           "The 3 spiritual stones and 6 medallions (SoH: Shuffle Dungeon Rewards): Vanilla, each from its own boss; End "
+           "of dungeon, shuffled among the 8 bosses and Rauru. The scenes still show the game's own reward; the item got "
+           "is the one placed.", "vanilla", False, (("vanilla", "Vanilla"), ("end_of_dungeon", "End of dungeon"))),
     Option("skip_intro", "timesavers", "Skip the opening movies",
            "A new game starts in Kokiri Forest without the two opening movies.", True, True),
     Option("fast_chests", "timesavers", "Fast chests",

@@ -53,6 +53,11 @@ ITEMS = {
     "Item_AgonyStone": "RG_STONE_OF_AGONY",
     "Item_BombchuBundle_Medium": "RG_BOMBCHU_10", "Item_BombchuBundle_Large": "RG_BOMBCHU_20",
     "Obj_Armor_Zora": "RG_ZORA_TUNIC",
+    # (the dungeon rewards, as their scenes' GetPouchContent windows give them: shuffled among themselves only)
+    "Item_Stone_Forest": "RG_KOKIRI_EMERALD", "Item_Stone_Fire": "RG_GORON_RUBY", "Item_Stone_Water": "RG_ZORA_SAPPHIRE",
+    "Item_Medal_Forest": "RG_FOREST_MEDALLION", "Item_Medal_Fire": "RG_FIRE_MEDALLION",
+    "Item_Medal_Water": "RG_WATER_MEDALLION", "Item_Medal_Spirit": "RG_SPIRIT_MEDALLION",
+    "Item_Medal_Shadow": "RG_SHADOW_MEDALLION", "Item_Medal_Light": "RG_LIGHT_MEDALLION",
     # (the songs: the remake's song items, as chests, gifts and pickups give them, with Sheik's harp for a model)
     "Item_Melody_ZeldaLullaby": "RG_ZELDAS_LULLABY", "Item_Melody_EponaSong": "RG_EPONAS_SONG",
     "Item_Melody_SariaSong": "RG_SARIAS_SONG", "Item_Melody_SunSong": "RG_SUNS_SONG", "Item_Melody_TimeSong": "RG_SONG_OF_TIME",
@@ -96,11 +101,19 @@ NOT_CHEST = {"Obj_Armor_Zora"}   # (its chest form is not known: the remake's Zo
 # Checks giving their item by a silent pouch add (PouchSystemActor.EventTriggerAddOrRemovePouchContent: proven for Item_
 # actors, the starting bags and Darunia's bracelet): an Item_ actor only, no song, no dungeon item.
 POUCH_ADD_CHECKS = {"RC_GC_DARUNIAS_JOY"}
+# The dungeon rewards and the checks giving them (the bosses' and Rauru's scenes): each only with the other (SoH's End of
+# Dungeon), when settings shuffle_dungeon_rewards puts them in the pool.
+REWARDS = {"Item_Stone_Forest", "Item_Stone_Fire", "Item_Stone_Water", "Item_Medal_Forest", "Item_Medal_Fire",
+           "Item_Medal_Water", "Item_Medal_Spirit", "Item_Medal_Shadow", "Item_Medal_Light"}
+REWARD_CHECKS = {"RC_QUEEN_GOHMA", "RC_KING_DODONGO", "RC_BARINADE", "RC_PHANTOM_GANON", "RC_VOLVAGIA", "RC_MORPHA",
+                 "RC_TWINROVA", "RC_BONGO_BONGO", "RC_GIFT_FROM_RAURU"}
 
 
 def fits(actor, location_id, kind):
     """allowed(), and what a check giving by a silent add can give"""
     if not allowed(actor, kind):
+        return False
+    if (actor in REWARDS) != (location_id in REWARD_CHECKS):
         return False
     if location_id in POUCH_ADD_CHECKS:
         given = form(actor, kind)

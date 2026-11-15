@@ -119,6 +119,8 @@ class Setup:
         self.gifts = load_gifts() if with_gifts else {"checks": [], "excluded": []}
 
         def kept(c):
+            if c.get("reward"):   # (the dungeon rewards: shuffled among themselves, or where the game gives them)
+                return settings is not None and settings["shuffle_dungeon_rewards"] == "end_of_dungeon"
             if c["vanilla"].startswith("Item_Melody_"):
                 return songs   # (the songs where the game teaches them, as SoH's "song locations" off)
             if settings is None:

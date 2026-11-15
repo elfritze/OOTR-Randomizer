@@ -1694,6 +1694,237 @@
    "area": "Goron City",
    "confidence": "medium",
    "notes": "His dance's scene Dm_Goron_0030 gives it (Event127: Dm_SY_GetInEvent ActorName); patches.darunia_bracelet_after_quest's two silent adds (Saria's Song past his dance, his talk) give the same item, with his line naming it. An Item_ actor only (items.POUCH_ADD_CHECKS). A shuffled item there is not yet seen in game."
+  },
+  {
+   "id": "RC_QUEEN_GOHMA",
+   "rc": "RC_QUEEN_GOHMA",
+   "kind": "gift",
+   "vanilla": "Item_Stone_Forest",
+   "edits": [
+    {
+     "flow": "Dm_Kokiri_0130",
+     "event": 0,
+     "param": "ActorName",
+     "value": "Item_Stone_Forest"
+    }
+   ],
+   "soh_region": "RR_DEKU_TREE_BOSS_ROOM",
+   "rule": null,
+   "name": "Queen Gohma (the Deku Tree's reward)",
+   "area": "Deku Tree",
+   "confidence": "medium",
+   "reward": true,
+   "notes": "A dungeon reward, given by its scene's GetPouchContent window (ActorName); shuffled only among the rewards (settings shuffle_dungeon_rewards, SoH's End of Dungeon). The scene's own model and Zelda's notes screenshot keep the game's reward. Not yet seen in game (OotrR's EVENT_GIFTS has the same events)."
+  },
+  {
+   "id": "RC_KING_DODONGO",
+   "rc": "RC_KING_DODONGO",
+   "kind": "gift",
+   "vanilla": "Item_Stone_Fire",
+   "edits": [
+    {
+     "flow": "Dm_DeathMtTrail_0025",
+     "event": 9,
+     "param": "ActorName",
+     "value": "Item_Stone_Fire"
+    }
+   ],
+   "soh_region": "RR_DODONGOS_CAVERN_BOSS_ROOM",
+   "rule": null,
+   "name": "King Dodongo (Darunia's reward)",
+   "area": "Dodongo's Cavern",
+   "confidence": "medium",
+   "reward": true,
+   "notes": "A dungeon reward, given by its scene's GetPouchContent window (ActorName); shuffled only among the rewards (settings shuffle_dungeon_rewards, SoH's End of Dungeon). The scene's own model and Zelda's notes screenshot keep the game's reward. Not yet seen in game (OotrR's EVENT_GIFTS has the same events)."
+  },
+  {
+   "id": "RC_BARINADE",
+   "rc": "RC_BARINADE",
+   "kind": "gift",
+   "vanilla": "Item_Stone_Water",
+   "edits": [
+    {
+     "flow": "Dm_InsideJabu_Jabu_0030",
+     "event": 79,
+     "param": "ActorName",
+     "value": "Item_Stone_Water"
+    },
+    {
+     "flow": "Dm_InsideJabu_Jabu_0030.110",
+     "event": 79,
+     "param": "ActorName",
+     "value": "Item_Stone_Water"
+    },
+    {
+     "flow": "Dm_ZoraFountain_0030",
+     "event": 0,
+     "param": "ActorName",
+     "value": "Item_Stone_Water"
+    }
+   ],
+   "soh_region": "RR_JABU_JABUS_BELLY_BOSS_ROOM",
+   "rule": null,
+   "name": "Barinade (Ruto's reward)",
+   "area": "Jabu-Jabu's Belly",
+   "confidence": "medium",
+   "reward": true,
+   "notes": "A dungeon reward, given by its scene's GetPouchContent window (ActorName); shuffled only among the rewards (settings shuffle_dungeon_rewards, SoH's End of Dungeon). The scene's own model and Zelda's notes screenshot keep the game's reward. Not yet seen in game (OotrR's EVENT_GIFTS has the same events)."
+  },
+  {
+   "id": "RC_PHANTOM_GANON",
+   "rc": "RC_PHANTOM_GANON",
+   "kind": "gift",
+   "vanilla": "Item_Medal_Forest",
+   "edits": [
+    {
+     "flow": "Dm_Awake_Forest_Get",
+     "event": 22,
+     "param": "ActorName",
+     "value": "Item_Medal_Forest"
+    },
+    {
+     "flow": "Dm_Awake_Forest_Get.110",
+     "event": 22,
+     "param": "ActorName",
+     "value": "Item_Medal_Forest"
+    }
+   ],
+   "soh_region": "RR_FOREST_TEMPLE_BOSS_ROOM",
+   "rule": null,
+   "name": "Phantom Ganon (Saria's medallion)",
+   "area": "Forest Temple",
+   "confidence": "medium",
+   "reward": true,
+   "notes": "A dungeon reward, given by its scene's GetPouchContent window (ActorName); shuffled only among the rewards (settings shuffle_dungeon_rewards, SoH's End of Dungeon). The scene's own model and Zelda's notes screenshot keep the game's reward. Not yet seen in game (OotrR's EVENT_GIFTS has the same events)."
+  },
+  {
+   "id": "RC_VOLVAGIA",
+   "rc": "RC_VOLVAGIA",
+   "kind": "gift",
+   "vanilla": "Item_Medal_Fire",
+   "edits": [
+    {
+     "flow": "Dm_Awake_Fire_Get",
+     "event": 22,
+     "param": "ActorName",
+     "value": "Item_Medal_Fire"
+    },
+    {
+     "flow": "Dm_Awake_Fire_Get.110",
+     "event": 22,
+     "param": "ActorName",
+     "value": "Item_Medal_Fire"
+    }
+   ],
+   "soh_region": "RR_FIRE_TEMPLE_BOSS_ROOM",
+   "rule": null,
+   "name": "Volvagia (Darunia's medallion)",
+   "area": "Fire Temple",
+   "confidence": "medium",
+   "reward": true,
+   "notes": "A dungeon reward, given by its scene's GetPouchContent window (ActorName); shuffled only among the rewards (settings shuffle_dungeon_rewards, SoH's End of Dungeon). The scene's own model and Zelda's notes screenshot keep the game's reward. Not yet seen in game (OotrR's EVENT_GIFTS has the same events)."
+  },
+  {
+   "id": "RC_MORPHA",
+   "rc": "RC_MORPHA",
+   "kind": "gift",
+   "vanilla": "Item_Medal_Water",
+   "edits": [
+    {
+     "flow": "Dm_Awake_Water_Get",
+     "event": 22,
+     "param": "ActorName",
+     "value": "Item_Medal_Water"
+    },
+    {
+     "flow": "Dm_Awake_Water_Get.110",
+     "event": 22,
+     "param": "ActorName",
+     "value": "Item_Medal_Water"
+    }
+   ],
+   "soh_region": "RR_WATER_TEMPLE_BOSS_ROOM",
+   "rule": null,
+   "name": "Morpha (Ruto's medallion)",
+   "area": "Water Temple",
+   "confidence": "medium",
+   "reward": true,
+   "notes": "A dungeon reward, given by its scene's GetPouchContent window (ActorName); shuffled only among the rewards (settings shuffle_dungeon_rewards, SoH's End of Dungeon). The scene's own model and Zelda's notes screenshot keep the game's reward. Not yet seen in game (OotrR's EVENT_GIFTS has the same events)."
+  },
+  {
+   "id": "RC_TWINROVA",
+   "rc": "RC_TWINROVA",
+   "kind": "gift",
+   "vanilla": "Item_Medal_Spirit",
+   "edits": [
+    {
+     "flow": "Dm_Awake_Spirit_Get",
+     "event": 22,
+     "param": "ActorName",
+     "value": "Item_Medal_Spirit"
+    },
+    {
+     "flow": "Dm_Awake_Spirit_Get.110",
+     "event": 22,
+     "param": "ActorName",
+     "value": "Item_Medal_Spirit"
+    }
+   ],
+   "soh_region": "RR_SPIRIT_TEMPLE_BOSS_ROOM",
+   "rule": null,
+   "name": "Twinrova (Nabooru's medallion)",
+   "area": "Spirit Temple",
+   "confidence": "medium",
+   "reward": true,
+   "notes": "A dungeon reward, given by its scene's GetPouchContent window (ActorName); shuffled only among the rewards (settings shuffle_dungeon_rewards, SoH's End of Dungeon). The scene's own model and Zelda's notes screenshot keep the game's reward. Not yet seen in game (OotrR's EVENT_GIFTS has the same events)."
+  },
+  {
+   "id": "RC_BONGO_BONGO",
+   "rc": "RC_BONGO_BONGO",
+   "kind": "gift",
+   "vanilla": "Item_Medal_Shadow",
+   "edits": [
+    {
+     "flow": "Dm_Awake_Shadow_Get",
+     "event": 22,
+     "param": "ActorName",
+     "value": "Item_Medal_Shadow"
+    },
+    {
+     "flow": "Dm_Awake_Shadow_Get.110",
+     "event": 22,
+     "param": "ActorName",
+     "value": "Item_Medal_Shadow"
+    }
+   ],
+   "soh_region": "RR_SHADOW_TEMPLE_BOSS_ROOM",
+   "rule": null,
+   "name": "Bongo Bongo (Impa's medallion)",
+   "area": "Shadow Temple",
+   "confidence": "medium",
+   "reward": true,
+   "notes": "A dungeon reward, given by its scene's GetPouchContent window (ActorName); shuffled only among the rewards (settings shuffle_dungeon_rewards, SoH's End of Dungeon). The scene's own model and Zelda's notes screenshot keep the game's reward. Not yet seen in game (OotrR's EVENT_GIFTS has the same events)."
+  },
+  {
+   "id": "RC_GIFT_FROM_RAURU",
+   "rc": "RC_GIFT_FROM_RAURU",
+   "kind": "gift",
+   "vanilla": "Item_Medal_Light",
+   "edits": [
+    {
+     "flow": "Dm_SageRoom_0005",
+     "event": 182,
+     "param": "ActorName",
+     "value": "Item_Medal_Light"
+    }
+   ],
+   "soh_region": "RR_TOT_BEYOND_DOOR_OF_TIME",
+   "rule": null,
+   "name": "Rauru (the Light Medallion)",
+   "area": "Temple of Time",
+   "confidence": "medium",
+   "reward": true,
+   "notes": "A dungeon reward, given by its scene's GetPouchContent window (ActorName); shuffled only among the rewards (settings shuffle_dungeon_rewards, SoH's End of Dungeon). The scene's own model and Zelda's notes screenshot keep the game's reward. Not yet seen in game (OotrR's EVENT_GIFTS has the same events)."
   }
  ],
  "excluded": [
@@ -1711,51 +1942,6 @@
    "id": "RC_LW_GIFT_FROM_SARIA",
    "rc": "RC_LW_GIFT_FROM_SARIA",
    "reason": "Saria's Fairy Ocarina: pending (AddOrRemovePouchContent + display; round-4 test)"
-  },
-  {
-   "id": "RC_GIFT_FROM_RAURU",
-   "rc": "RC_GIFT_FROM_RAURU",
-   "reason": "dungeon reward (Light Medallion), given by the reward cutscene: not shuffled in v1"
-  },
-  {
-   "id": "RC_QUEEN_GOHMA",
-   "rc": "RC_QUEEN_GOHMA",
-   "reason": "dungeon reward (Kokiri's Emerald), given by the reward cutscene: not shuffled in v1"
-  },
-  {
-   "id": "RC_KING_DODONGO",
-   "rc": "RC_KING_DODONGO",
-   "reason": "dungeon reward (Goron's Ruby), given by the reward cutscene: not shuffled in v1"
-  },
-  {
-   "id": "RC_BARINADE",
-   "rc": "RC_BARINADE",
-   "reason": "dungeon reward (Zora's Sapphire), given by the reward cutscene: not shuffled in v1"
-  },
-  {
-   "id": "RC_PHANTOM_GANON",
-   "rc": "RC_PHANTOM_GANON",
-   "reason": "dungeon reward (Forest Medallion), given by the reward cutscene: not shuffled in v1"
-  },
-  {
-   "id": "RC_VOLVAGIA",
-   "rc": "RC_VOLVAGIA",
-   "reason": "dungeon reward (Fire Medallion), given by the reward cutscene: not shuffled in v1"
-  },
-  {
-   "id": "RC_MORPHA",
-   "rc": "RC_MORPHA",
-   "reason": "dungeon reward (Water Medallion), given by the reward cutscene: not shuffled in v1"
-  },
-  {
-   "id": "RC_TWINROVA",
-   "rc": "RC_TWINROVA",
-   "reason": "dungeon reward (Spirit Medallion), given by the reward cutscene: not shuffled in v1"
-  },
-  {
-   "id": "RC_BONGO_BONGO",
-   "rc": "RC_BONGO_BONGO",
-   "reason": "dungeon reward (Shadow Medallion), given by the reward cutscene: not shuffled in v1"
   },
   {
    "id": "RC_GANON",

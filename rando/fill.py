@@ -156,6 +156,15 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
         open_without = without(rg, owned)
         return [l for l in spots if l.id not in open_without]
 
+    # 0. the dungeon rewards, among their own checks (I.REWARD_CHECKS): each where it is reachable with every other item
+    #    still to place counted as owned
+    rewards = [(a, o) for a, o in prog if a in I.REWARDS]
+    prog = [x for x in prog if x[0] not in I.REWARDS]
+    rng.shuffle(rewards)
+    while rewards:
+        item, origin = rewards.pop()
+        r = reach(counted(prog) + counted(keys) + counted(rewards))
+        put(item, origin, [l for l in empty if l.id in I.REWARD_CHECKS and l.id in r])
     # 1. keys
     by_dungeon = collections.defaultdict(list)
     for a, o in keys:
@@ -165,7 +174,7 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
     for i, d in enumerate(order):
         later = [k for dd in order[i + 1:] for k in by_dungeon[dd]]   # (the dungeons still to fill: their keys assumed)
         for item, origin in sorted(by_dungeon[d], key=lambda k: _kind(k[0]) != "Item_Dungeon_SmallKey"):
-            r = reach(counted(prog) + counted(later))
+            r = reach(counted(prog) + counted(later))   # (the rewards placed already)
             put(item, origin, [l for l in empty if l.id in r])
     # 2. maps and compasses
     for item, origin in other_dungeon:

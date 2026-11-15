@@ -6,7 +6,8 @@ none fails.
 
 --dungeon-items: maps and compasses, small keys and boss keys all where <place> lets them (own_dungeon, any_dungeon,
 overworld, anywhere), or one place each: <maps and compasses>,<small keys>,<boss keys>; each item is checked to be where
-its setting lets it."""
+its setting lets it.
+--set KEY=VALUE (any number): another setting (rando.settings), e.g. --set shuffle_dungeon_rewards=end_of_dungeon."""
 import collections
 import os
 import random
@@ -25,6 +26,10 @@ def main():
     place = sys.argv[sys.argv.index("--dungeon-items") + 1] if "--dungeon-items" in sys.argv else "own_dungeon"
     keys = ("shuffle_maps_compasses", "shuffle_small_keys", "shuffle_boss_keys")
     chosen = dict(zip(keys, place.split(","))) if "," in place else {k: place for k in keys}
+    for i, a in enumerate(sys.argv):
+        if a == "--set":
+            k, _, v = sys.argv[i + 1].partition("=")
+            chosen[k] = {"true": True, "false": False}.get(v.lower(), v)
     s = generate.Setup(romfs, zs.Codec(romfs), with_gifts="--chests-only" not in sys.argv,
                        settings=rando_settings.normalized(chosen))
     kinds = collections.Counter(l.kind for l in s.locs)

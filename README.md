@@ -26,6 +26,7 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Shuffle songs | on | yes |
 | Shuffle gifts and prizes (36 NPC and minigame checks, Darunia's bracelet among them) | on | yes (Darunia: not yet) |
 | Shuffle freestanding Heart Pieces (and bosses' Heart Containers, 22) | on | yes |
+| Shuffle dungeon rewards: **Vanilla** / End of dungeon (the 9 stones and medallions among the 8 bosses and Rauru) | Vanilla | not yet |
 | Maps and compasses: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
 | Small keys: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
 | Boss keys (Ganon's Castle's too): **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
@@ -82,6 +83,11 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 - **NPCs' and minigames' prizes** (36: the Skull Kid, the scrubs' upgrades, bowling, the shooting galleries, the House of
   Skulltula, fishing, the frogs, horseback archery, Dampe, the dog, Talon, Anju, King Zora, Darunia...) give the item placed
   there: `data/gifts.json` names each event parameter that says what is given.
+- **Dungeon rewards can be shuffled** (SoH's End of Dungeon): the 3 spiritual stones and 6 medallions among the 8 bosses
+  and Rauru, placed first by logic (a stone never behind the Door of Time). Each reward's scene gives it by its
+  GetPouchContent window's `ActorName` (the Jabu-Jabu and Zora's Fountain scenes both, and the `.110` twins); the scene
+  itself still shows the game's own reward. No event of the game asks for a stone or a medallion by name (only these
+  scenes name them); the remake's own story checks are not yet traced. Not yet seen in game.
 - **The Goron's Bracelet is in the pool** (with gifts shuffled): Darunia's dance scene and the two ways the randomizer adds
   for him (Saria's Song past his dance, his talk) give the item placed at his check, his line naming it; he gives an item
   only (no rupee, song or dungeon item: a silent pouch add is proven for those). The bracelet, the Silver and the Golden
