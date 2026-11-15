@@ -310,24 +310,79 @@ def dc_bombs_set_off_flower(romfs, codec, mod):
     mod.write(DC_LOGIC, bytes(data))
 
 
-# Darunia gives the Goron's Bracelet in his dance's scene (Dm_Goron_0030), played when Saria's Song is played to him
-# (his ocarina reaction, always on: Get_StoneOfFire_PlayOcarina) while the Goron quest is not yet past SariaMelodyPlay; past
-# it, the same song plays his dance (Dm_Goron_0025) and then only a talk (the switch Event39 on
-# Get_StoneOfFire_IsAfter_SariaMelodyPlay_Exp: its true case Event42, a camera move, then the talk). The game never gets
-# past that step without the dance; a seed does: breaking the boulder over Dodongo's Cavern moves the quest to DungeonStart
-# from any step, and beating King Dodongo to its end (seen in game, 2026-11-14: "Explore Dodongo's Cavern" after a bomb
-# broke the boulder), and a seed can ask for the bracelet after (Saria's Song somewhere only an adult reaches). The talk's
-# way gets the bracelet added to the pouch, silently, as Saria's Fairy Ocarina is (Dm_Kokiri_0155): after the dance it is
-# had already, and adding it again changes nothing.
+# Darunia gives the Goron's Bracelet in his dance's scene Dm_Goron_0030 (its strings: Item_Gauntlet_Goron, the quest's
+# EventExecuteProgressChallengeStep). His ocarina reaction (Get_StoneOfFire_PlayOcarina, always on) has two ways through:
+#   - the song is not the "recommended" one (switch Event35 case 0): scene Dm_Goron_0025, then switch Event39 on
+#     Get_StoneOfFire_IsAfter_SariaMelodyPlay_Exp: case 1 plays Dm_Goron_0030 (the bracelet), case 0 a camera move (Event42)
+#     and a talk;
+#   - it is (case 1): scene Dm_Goron_0028 (Event147), then only Darunia's mood and walk (Event149): no bracelet.
+# A seed can bring Saria's Song after the quest moved past his dance (a bomb broke the boulder over Dodongo's Cavern: the quest
+# jumps to DungeonStart from any step; King Dodongo ends it). Seen in game 2026-11-14 on such a save: the song played one
+# scene and gave nothing (the first fix gave the bracelet after Event42 only). Fixed after Event42 and Event147 (the end of
+# both ways that do not play Dm_Goron_0030): seen in game 2026-11-14, the bracelet came, but silently. A third try asked
+# IsGet.Item_Gauntlet_Goron before a get-item scene: no window in game; that flag is not one of the game's (the bracelet's
+# is IsGet.Armor_Child_Gauntlet_Goron; the save has no Item_Gauntlet_Goron key). Replaying Dm_Goron_0030 is no way either:
+# it sets the quest back to DodongoCavernOpne even when done (IsIgnoreCompletedChallenge false).
+# Then, for any item (the gift can go in the item pool): each way asks whether Darunia gave his gift
+# (HavePlayedEvent.Dm_Goron_0030: the dance's scene, set by the game when it plays; read only by six Gorons' talks, for their
+# after-the-dance lines) and, if not, sets it and adds the gift to the pouch, silently. Seen in game 2026-11-14 (fourth try):
+# that gives the bracelet. Tries to show the item's window as well all failed in game, and took the gift with them:
+#   - Dm_SY_GetInEvent:GetInEvent_NotTurn_NotNpc (the frogs' get-item scene) called from here did nothing: the event's RSDB
+#     GameAnalyzedEventInfo row (Meet_Darunia_PlayOcarina) does not list Dm_SY_GetInEvent (an event loads only the
+#     flowcharts its row lists: events.subflow_closure);
+#   - listed there (fifth try), and GetPouchContent:GetPouchContentByActorName (the medallions' window) listed and called
+#     after the flag and the add (sixth try): Darunia danced (the scene is a child event) and nothing of his own event
+#     after it ran: no flag, no bracelet, no window. Extending that row's SubFlowList seems to keep his event from going
+#     on after the dance. Left for later: the window from his own flowchart's actors only (no other flowchart called).
+# Seventh try (that alone again): no bracelet; the save (written after the song) shows Dm_Goron_0025 played, Dm_Goron_0030
+# not, the given flag false: on the first way, nothing after Dm_Goron_0025's transition ran (as the first try's add after
+# Event42 never came: the bracelet of the second and fourth tries came by the other way, after Dm_Goron_0028). So the
+# first way gives before its dance: after its fade-out (Event290, just before the transition Event185), when the song
+# played is Saria's (GameSystemActor.EventQueryMelodyTypeForNormal 2, as Dm_SY_Ocarina numbers the songs: 0 Zelda's
+# Lullaby, 1 Epona, 2 Saria, 3 Sun, 4 Time, 5 Storms, 6-11 the warps, 12 the scarecrow; this way is taken by every song not
+# "recommended") and the gift was not given; the second way keeps its gift after its dance.
 FIRE_FLOW = "Event/EventFlow/Get_StoneOfFire.bfevfl.zs"
-DARUNIA_SWITCH, DARUNIA_AFTER = "Event39", "Event42"
+DARUNIA_SWITCH, DARUNIA_RECOMMENDED = "Event39", "Event35"
 DARUNIA_STEP_FLAG = "Get_StoneOfFire_IsAfter_SariaMelodyPlay_Exp"
+DARUNIA_GIVEN = "HavePlayedEvent.Dm_Goron_0030"
 BRACELET = "Item_Gauntlet_Goron"
-DARUNIA_EVENT = "RandoDaruniaBracelet"
+DARUNIA_EVENT_ROW = "Meet_Darunia_PlayOcarina"   # (RSDB/EventSetting: Get_StoneOfFire, entry Get_StoneOfFire_PlayOcarina)
+# Ninth try (any song, before the first dance): no bracelet, the given flag false again, though the fade-out is the only
+# way to that dance. So the gift also comes first of all: right after the song reaction's first event (Event46, Link
+# joining the event, before any branch): every song played to Darunia passes there.
+DARUNIA_ENTRY, DARUNIA_START = "Get_StoneOfFire_PlayOcarina", "Event46"
+# (event after which the gift is given: the "given?" switch, the flag set, the silent add)
+DARUNIA_ADDS = (("Event46", "RandoDaruniaGiven0", "RandoDaruniaSetGiven0", "RandoDaruniaBracelet0"),
+                ("Event147", "RandoDaruniaGiven2", "RandoDaruniaSetGiven2", "RandoDaruniaBracelet2"))
+# (the first way: its fade-out and the transition to its dance; the events put between them)
+DARUNIA_FADE, DARUNIA_FIRST_DANCE = "Event290", "Event185"
+# Eighth try (with the check of the song, Saria's: melody 2): no bracelet, the given flag false: the dance came, so the
+# fade-out went on into the song's check, which must have said no there (the song played is checked by the game before
+# the way is chosen; asked again after, the answer is not the song). So the first way gives to any song: this way is only
+# reached by playing a song to Darunia, and a song other than Saria's giving the gift too only gives more than logic
+# counts on, never less. (Removed again at the tenth try: see TALK_FLOW.)
+
+
+# GameDataActor.EventQueryIsGameDataBool (and ...BoolExp) answer case 0 when the flag is TRUE, case 1 when it is FALSE: of
+# the game's 1015 switches on a flag with a branch setting that same flag to true, 989 do it from case 1. Read the other
+# way round from the third to the eleventh try (2026-11-14): the "given?" switch skipped the gift exactly when it was not
+# given (found by changing Darunia's talk lines: his edited flow loaded, his lines came, the gift's switches skipped it).
+# The same reading undid what is said above of Darunia's ways: Event39's case 1 (Dm_Goron_0030, the bracelet) is the quest
+# NOT past SariaMelodyPlay.
+IS_TRUE, IS_FALSE = 0, 1
+
+
+def darunia_give_events(given, set_given):
+    """the events evfl_patch.add_events puts after a way's end: gift given? if not, set given (the silent add goes after
+    it: darunia_bracelet_after_quest)"""
+    return [{"name": given, "type": "switch", "actor": "GameDataActor", "query": "EventQueryIsGameDataBool",
+             "params": {"Index": -1, "GameDataName": DARUNIA_GIVEN}, "cases": {IS_FALSE: set_given, IS_TRUE: None}},
+            {"name": set_given, "type": "action", "actor": "GameDataActor", "action": "EventTriggerSetGameDataBool",
+             "params": {"Index": -1, "Value": True, "GameDataName": DARUNIA_GIVEN}, "next": None}]
 
 
 def darunia_bracelet_after_quest(romfs, codec, mod):
-    """Darunia gives the bracelet to Saria's Song past his dance's step too"""
+    """Darunia gives the bracelet to Saria's Song past his dance's step too, whichever way his reaction goes"""
     vanilla = [a for a in evfl.read(mod.read(POUCH_ACTOR_FROM))[0]["actors"] if a["name"] == POUCH_ACTOR]
     if len(vanilla) != 1 or vanilla[0]["actions"] != [POUCH_ADD] or not vanilla[0]["params"]:
         raise ValueError("%s: not the PouchSystemActor known" % POUCH_ACTOR_FROM)
@@ -335,13 +390,61 @@ def darunia_bracelet_after_quest(romfs, codec, mod):
     flow = evfl.read(raw)[0]
     ev = flow["events"]
     by = {e["name"]: i for i, e in enumerate(ev)}
-    switch = ev[by[DARUNIA_SWITCH]]
+    switch, rec = ev[by[DARUNIA_SWITCH]], ev[by[DARUNIA_RECOMMENDED]]
     dance = ev[switch["cases"].get(1)] if switch.get("type") == "switch" and 1 in switch["cases"] else {}
-    if switch.get("params") != {"GameDataName": DARUNIA_STEP_FLAG} or switch["cases"].get(0) != by[DARUNIA_AFTER] or \
-            (dance.get("params") or {}).get("EventName") != "Dm_Goron_0030":
-        raise ValueError("%s: Darunia's dance switch is not the one known" % FIRE_FLOW)
-    mod.write(FIRE_FLOW, evfl_patch.add_actions(raw, DARUNIA_AFTER, POUCH_ACTOR, POUCH_ADD, vanilla[0]["params"],
-                                                [(DARUNIA_EVENT, start_item_params(BRACELET))]))
+    other = ev[rec["cases"].get(1)] if rec.get("type") == "switch" and 1 in rec["cases"] else {}
+    if switch.get("params") != {"GameDataName": DARUNIA_STEP_FLAG} or switch["cases"].get(0) != by["Event42"] or \
+            (dance.get("params") or {}).get("EventName") != "Dm_Goron_0030" or other.get("name") != "Event147" or \
+            (other.get("params") or {}).get("EventName") != "Dm_Goron_0028":
+        raise ValueError("%s: Darunia's song reaction is not the one known" % FIRE_FLOW)
+    fade, first = ev[by[DARUNIA_FADE]], ev[by[DARUNIA_FIRST_DANCE]]
+    if rec["cases"].get(0) != by[DARUNIA_FADE] or fade.get("next") != by[DARUNIA_FIRST_DANCE] or \
+            (first.get("params") or {}).get("EventName") != "Dm_Goron_0025" or first.get("next") != by[DARUNIA_SWITCH]:
+        raise ValueError("%s: Darunia's first way is not the one known" % FIRE_FLOW)
+    start = ev[flow["entries"][DARUNIA_ENTRY]]
+    if start["name"] != DARUNIA_START or start["type"] != "action" or start.get("next") is None:
+        raise ValueError("%s: Darunia's song reaction does not start as known" % FIRE_FLOW)
+    for after, given, set_given, silent in DARUNIA_ADDS:
+        # (after -> given? -(no)-> set given -> silent add -> the way's next; -(yes)-> the way's next)
+        raw = evfl_patch.add_events(raw, after, darunia_give_events(given, set_given))
+        raw = evfl_patch.add_actions(raw, set_given, POUCH_ACTOR, POUCH_ADD, vanilla[0]["params"],
+                                     [(silent, start_item_params(BRACELET))])
+    mod.write(FIRE_FLOW, raw)
+    # (and his talk: gift given? -(no)-> Saria's Song had? -(yes)-> set given -> silent add -> his talk)
+    raw = mod.read(TALK_FLOW)
+    talk = evfl.read(raw)[0]
+    first = talk["events"][talk["entries"]["Talk"]]
+    if first["name"] != TALK_START or first["type"] != "subflow" or first.get("next") is None:
+        raise ValueError("%s: Darunia's talk does not start as known" % TALK_FLOW)
+    given, song, set_given, silent = DARUNIA_TALK
+    raw = evfl_patch.add_events(raw, TALK_START, darunia_talk_events(given, song, set_given))
+    raw = evfl_patch.add_actions(raw, set_given, POUCH_ACTOR, POUCH_ADD, vanilla[0]["params"],
+                                 [(silent, start_item_params(BRACELET))])
+    mod.write(TALK_FLOW, raw)
+
+
+# Tenth try (the gift also first of all in the song reaction, Event46): no bracelet, the given flag false. The eighth to
+# tenth tries were the first files written with evfl_edit.FlowEdit (the first way's part); the user did not tell of the
+# dance in those tests: perhaps the whole song reaction no longer started (a file the game does not take, which the reader
+# here takes). So: that part removed (the song reaction written by evfl_patch alone, as in the tries that gave the
+# bracelet), and a second way to the gift that needs no song reaction: Darunia's talk (his schedule's talk after the quest
+# and by default: RSDB/EventSetting Npc_Goron_Darunia_Child_DC1_TT, flow Npc_Goron_Darunia_Child, entry Talk) gives it once,
+# when Saria's Song is had.
+TALK_FLOW = "Event/EventFlow/Npc_Goron_Darunia_Child.bfevfl.zs"
+TALK_START = "Event20"   # (the talk's first event: /Mask_All, then his lines)
+SARIA_SONG_HAD = "IsGet.Item_Melody_SariaSong"
+DARUNIA_TALK = ("RandoDaruniaTalkGiven", "RandoDaruniaTalkSong", "RandoDaruniaTalkSetGiven", "RandoDaruniaTalkBracelet")
+
+
+def darunia_talk_events(given, song, set_given):
+    """the events evfl_patch.add_events puts after the talk's first event: gift given? Saria's Song had? set given (the
+    silent add goes after it)"""
+    return [{"name": given, "type": "switch", "actor": "GameDataActor", "query": "EventQueryIsGameDataBool",
+             "params": {"Index": -1, "GameDataName": DARUNIA_GIVEN}, "cases": {IS_FALSE: song, IS_TRUE: None}},
+            {"name": song, "type": "switch", "actor": "GameDataActor", "query": "EventQueryIsGameDataBool",
+             "params": {"Index": -1, "GameDataName": SARIA_SONG_HAD}, "cases": {IS_TRUE: set_given, IS_FALSE: None}},
+            {"name": set_given, "type": "action", "actor": "GameDataActor", "action": "EventTriggerSetGameDataBool",
+             "params": {"Index": -1, "Value": True, "GameDataName": DARUNIA_GIVEN}, "next": None}]
 
 
 # Back to child as soon as Link is adult: the Temple of Time's logic module (Market_Adult_Prefab_89da) deletes the Master

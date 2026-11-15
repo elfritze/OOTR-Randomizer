@@ -187,7 +187,38 @@ class _Blob:
             self.pointer(dic + 8 + 16 * i + 8, names[i])
         self.pointer(at + 8, dic)
         for i, k in enumerate(keys):
-            v = params[k]
+            self.pointer(at + 0x10 + 8 * i, self.value(k, params[k]))
+        return at
+
+    def value(self, k, v):
+        """a parameter value's container: bool, int, float, str, {"argument": name}, {"actor", "sub"} (an actor's id),
+        or a list of floats / ints / bools / str (the reader's model of each)"""
+        if isinstance(v, dict) and set(v) == {"argument"}:
+            child = self.reserve(0x18)
+            self.put(child, "<BxH", evfl.ARGUMENT, 1)
+            self.pointer(child + 0x10, self.string(v["argument"]))
+        elif isinstance(v, dict) and set(v) == {"actor", "sub"}:
+            child = self.reserve(0x20)
+            self.put(child, "<BxH", evfl.ACTOR_ID, 2)
+            self.pointer(child + 0x10, self.string(v["actor"]))
+            self.pointer(child + 0x18, self.string(v["sub"]))
+        elif isinstance(v, list):
+            kinds = {type(x) for x in v}
+            if not v or len(kinds) != 1:
+                raise ValueError("parameter %s: %r" % (k, v))
+            kind = kinds.pop()
+            if kind is str:
+                child = self.reserve(0x10 + 8 * len(v))
+                self.put(child, "<BxH", evfl.STRING_ARRAY, len(v))
+                for j, s in enumerate(v):
+                    self.pointer(child + 0x10 + 8 * j, self.string(s))
+            else:
+                t, fmt = {bool: (evfl.BOOL_ARRAY, "<I"), int: (evfl.INT_ARRAY, "<i"), float: (evfl.FLOAT_ARRAY, "<f")}[kind]
+                child = self.reserve(0x10 + max(8, 4 * len(v)))
+                self.put(child, "<BxH", t, len(v))
+                for j, x in enumerate(v):
+                    self.put(child + 0x10 + 4 * j, fmt, (BOOL_TRUE if x else 0) if kind is bool else x)
+        else:
             child = self.reserve(0x18)
             if isinstance(v, bool):
                 self.put(child, "<BxH", evfl.BOOL, 1)
@@ -203,7 +234,27 @@ class _Blob:
                 self.pointer(child + 0x10, self.string(v))
             else:
                 raise ValueError("parameter %s: %r" % (k, v))
-            self.pointer(at + 0x10 + 8 * i, child)
+        return child
+
+    def container_like(self, reader, original, changes, empty):
+        """a copy of the parameter container at `original` (in the file `reader` reads), its children shared with it but
+        the keys in `changes` (new scalar values): so every untouched value keeps its exact type"""
+        names = reader.dic(reader.u64(original + 8))
+        kids = {n: reader.u64(original + 0x10 + 8 * i) for i, n in enumerate(names)}
+        unknown = set(changes) - set(names)
+        if unknown:
+            raise ValueError("no parameter %s to change" % sorted(unknown))
+        at = self.reserve(0x10 + 8 * len(names))
+        self.put(at, "<BxH", evfl.CONTAINER, len(names))
+        dic = self.reserve(8 + 16 * (len(names) + 1))
+        self.buf[dic - self.base:dic - self.base + 8] = b"DIC " + struct.pack("<I", len(names))
+        strings = [empty] + [self.string(k) for k in names]
+        for i, (bit, left, right) in enumerate(dic_nodes(names)):
+            self.put(dic + 8 + 16 * i, "<IHH", bit, left, right)
+            self.pointer(dic + 8 + 16 * i + 8, strings[i])
+        self.pointer(at + 8, dic)
+        for i, k in enumerate(names):
+            self.pointer(at + 0x10 + 8 * i, self.value(k, changes[k]) if k in changes else kids[k])
         return at
 
 
@@ -300,6 +351,108 @@ def add_actions(data, after, actor, action, actor_params, events, flow_index=0):
                                (None if following == 0xFFFF else following), "actor": actor_index,
                                "action": action_index, "params": dict(params)})
     if back != want:
+        raise ValueError("the flow read back is not the one wanted")
+    if sorted(relt_pointers(out)) != sorted(set(pointers + blob.pointers)):
+        raise ValueError("the relocation table read back is not the one written")
+    return out
+
+
+def add_events(data, after, events, flow_index=0):
+    """data with events added after the event named after (an action, join or subflow: its next goes to the first new
+    one). events: dicts, each with a "name" and a "type":
+      "action":  actor, action, params, next
+      "switch":  actor, query, params, cases ({value: target})
+      "subflow": flowchart, entry, params, next
+    a target is a new event's name, or None for the event that came after `after`. The actors, their actions and queries
+    must be in the flowchart already (nothing is added to them). Returns the new bytes, read back and checked."""
+    r = evfl.Reader(data)
+    flow_at = r.u64(r.u64(0x28) + 8 * flow_index)
+    flow = evfl.read(data)[flow_index]
+    names = [e["name"] for e in flow["events"]]
+    if names.count(after) != 1 or flow["events"][names.index(after)]["type"] not in ("action", "join", "subflow"):
+        raise ValueError("no single event %s with a next" % after)
+    new_names = [ev["name"] for ev in events]
+    if len(set(new_names)) != len(new_names) or set(new_names) & set(names):
+        raise ValueError("event names taken: %s" % sorted(set(new_names) & set(names)))
+    n_actors, n_actions, n_queries, n_events = (r.u16(flow_at + 0x10 + 2 * i) for i in range(4))
+    actors_at, events_at = r.u64(flow_at + 0x28), r.u64(flow_at + 0x30)
+    actor_names = [a["name"] for a in flow["actors"]]
+    old = bytes(data)
+    old += b"\0" * (-len(old) % 8)
+    blob = _Blob(len(old))
+    pointers = relt_pointers(data)
+    empty = next((r.u64(actors_at + 0x38 * i + 8) for i in range(n_actors)
+                  if r.string(r.u64(actors_at + 0x38 * i + 8)) == ""), None)
+    if empty is None:
+        empty = blob.string("")
+
+    new_events = blob.reserve(0x30 * (n_events + len(events)))
+    blob.buf[new_events - blob.base:new_events - blob.base + 0x30 * n_events] = data[events_at:events_at + 0x30 * n_events]
+    blob.pointers += [new_events + p - events_at for p in pointers if events_at <= p < events_at + 0x30 * n_events]
+    anchor = new_events + 0x30 * names.index(after)
+    following = struct.unpack_from("<H", blob.buf, anchor - blob.base + 0xA)[0]
+    index = {name: n_events + k for k, name in enumerate(new_names)}
+
+    def target(t):
+        return following if t is None else index[t]
+
+    def actor_of(ev, kind):
+        if ev["actor"] not in actor_names:
+            raise ValueError("no actor %s" % ev["actor"])
+        i = actor_names.index(ev["actor"])
+        listed = flow["actors"][i]["actions" if kind == "action" else "queries"]
+        if ev[kind] not in listed:
+            raise ValueError("%s has no %s %s" % (ev["actor"], kind, ev[kind]))
+        return i, listed.index(ev[kind])
+
+    want = evfl.read(data)[flow_index]
+    want["events"][names.index(after)]["next"] = n_events
+    for k, ev in enumerate(events):
+        e = new_events + 0x30 * (n_events + k)
+        blob.pointer(e, blob.string(ev["name"]))
+        t = ev["type"]
+        if t == "action":
+            ai, ki = actor_of(ev, "action")
+            blob.put(e + 8, "<BxHHH", evfl.ACTION, target(ev["next"]), ai, ki)
+            blob.pointer(e + 0x10, blob.container(ev["params"], empty))
+            back = {"next": target(ev["next"]), "actor": ai, "action": ki, "params": dict(ev["params"])}
+        elif t == "switch":
+            ai, qi = actor_of(ev, "query")
+            cases = list(ev["cases"].items())
+            blob.put(e + 8, "<BxHHH", evfl.SWITCH, len(cases), ai, qi)
+            blob.pointer(e + 0x10, blob.container(ev["params"], empty))
+            table = blob.reserve(8 * len(cases))
+            for j, (value, to) in enumerate(cases):
+                blob.put(table + 8 * j, "<II", value, target(to))
+            blob.pointer(e + 0x18, table)
+            back = {"actor": ai, "query": qi, "params": dict(ev["params"]),
+                    "cases": {value: target(to) for value, to in cases}}
+        elif t == "subflow":
+            blob.put(e + 8, "<BxH", evfl.SUBFLOW, target(ev["next"]))
+            blob.pointer(e + 0x10, blob.container(ev["params"], empty))
+            blob.pointer(e + 0x18, blob.string(ev["flowchart"]))
+            blob.pointer(e + 0x20, blob.string(ev["entry"]))
+            back = {"next": target(ev["next"]), "params": dict(ev["params"]), "flowchart": ev["flowchart"],
+                    "entry": ev["entry"]}
+        else:
+            raise ValueError("event type %s not written" % t)
+        if "next" in back and back["next"] == 0xFFFF:
+            back["next"] = None
+        want["events"].append(dict({"name": ev["name"], "type": t}, **back))
+    blob.put(anchor + 0xA, "<H", n_events)
+
+    size = blob.here()
+    blob.align()
+    out = bytearray(old + bytes(blob.buf))
+    struct.pack_into("<Q", out, flow_at + 0x30, new_events)
+    struct.pack_into("<H", out, flow_at + 0x16, n_events + len(events))
+    at = len(out)
+    out += relt_write(pointers + blob.pointers, at, size)
+    struct.pack_into("<I", out, 0x18, at)
+    struct.pack_into("<I", out, 0x1C, len(out))
+    out = bytes(out)
+
+    if evfl.read(out)[flow_index] != want:
         raise ValueError("the flow read back is not the one wanted")
     if sorted(relt_pointers(out)) != sorted(set(pointers + blob.pointers)):
         raise ValueError("the relocation table read back is not the one written")

@@ -3,6 +3,39 @@
 A randomizer for The Legend of Zelda: Ocarina of Time (Nintendo Switch 2) as [Longshot](https://git.magicbean.dev/MagicBeanDev/Longshot)
 runs it. It is a RomFS mod: no change to Longshot, nothing to rebuild. You make it from your own copy of the game.
 
+## The window
+
+`python gui.py` opens the app (public name in progress: **Lost Woods**): choose the game folder, the seed and the settings,
+generate and install the seed (refused while the game runs), verify it, turn it on or off, open the spoiler log; the
+**Tracker** page reads the game's save every few seconds and shows the seed's checks on each area's map, coloured by what
+logic reaches with what Link holds. With `python -m pip install texture2ddecoder` the maps are the game's own pause-menu
+maps (dungeons floor by floor), placed by the camera the game captured them with (`Game/MapCaptureInfo`, see
+`rando/maptex.py`); without it, each area is drawn from its placed objects. Checks inside buildings and grottos, which the
+remake builds away from the drawn map, are listed under it. A check is marked done by itself when the save shows it taken:
+a loose item's own key, a gift's one-time flag or song cutscene, an item held that only that check gives, a dungeon's map,
+compass, boss key and (all of its) small keys. The save keeps no flag of an opened chest, so chests of rupees and ammunition
+are marked by a click, or all of an area's at once ("Mark area done"). Comparison with the OotrR
+randomizer: `docs/COMPARISON.md`; Archipelago plan: `docs/ARCHIPELAGO.md`; what comes next: `docs/ROADMAP.md`.
+
+The **Settings** page groups the settings as Ship of Harkinian's randomizer does (`rando/settings.py`), with only what this
+randomizer does; SoH's other choices are shown fixed, with why. Installing a seed first copies the one installed before
+(the whole mod folder) to `<game folder>\rando-archive\<seed>-<time>`.
+
+| Setting | Default | Seen in game |
+|---|---|---|
+| Shuffle songs | on | yes |
+| Shuffle gifts and prizes (35 NPC and minigame checks) | on | yes |
+| Shuffle freestanding Heart Pieces (and bosses' Heart Containers, 22) | on | yes |
+| Skip the opening movies | on | yes |
+| Fast chests: no chest cutscene, Link holds the item up (OotrR's patch, `rando/qol.py`) | on | not yet |
+| Skippable automatic dialogues: the 12 step-started sequences (Navi, minigame rules) skip with + | on | not yet |
+| Skippable title demo and credits | on | not yet |
+| Night Gold Skulltulas also by day (30) | off | not yet |
+
+Off, a shuffle setting leaves those checks with the game's own item (logic counts it where it is). The quality-of-life
+settings follow the OotrR randomizer's patches (MIT), reimplemented on this project's formats (`rando/formats/evfl_edit.py`
+writes any change to a flowchart and reads it back).
+
 ## Use
 
 You need Longshot's game folder (it holds `romfs` and `mods`) and Python 3.10 or newer with `zstandard`
@@ -13,13 +46,14 @@ python randomize.py "C:\Games\Longshot" --seed anything
 ```
 
 The mod goes to `<game folder>\mods\HookshotRando`, with `spoiler.txt` (where everything is, and a playthrough) and
-`placements.json` beside its `romfs`. A new seed replaces the last one. **Start a new game for each seed**: a save keeps
+`placements.json` beside its `romfs`. A new seed replaces the last one (kept in `rando-archive`). **Start a new game for each seed**: a save keeps
 its chests opened. To play without the mod, rename the folder to start with `_`.
 
 | Option | |
 |---|---|
 | `--seed TEXT` | The same seed gives the same game. Without it, a new random seed |
 | `--no-skip-intro` | Play the new game's two opening movies (skipped by default) |
+| `--no-<setting>` / `--<setting>` | Any setting of the table above off (on by default) or on (off by default), e.g. `--no-fast-chests`, `--skulltulas-day-and-night` |
 
 ## Sharing
 
@@ -71,8 +105,14 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 - **Darunia's bracelet after his quest has moved on**: breaking that boulder moves Darunia's quest to "explore Dodongo's
   Cavern" from any step (seen in game), and beating King Dodongo moves it on too; past his dance's step, Saria's Song only
   makes him dance and talk, the bracelet's scene never comes. The game never gets there without the dance; a seed does
-  (Saria's Song found only as an adult). His talk after the song now also adds the bracelet, silently
-  (`patches.darunia_bracelet_after_quest`); after the dance it is had already. Not yet confirmed in game.
+  (Saria's Song found only as an adult). His song reaction has two ways that skip the bracelet's scene (a short dance and a
+  talk, or another dance, Dm_Goron_0028). While Darunia has not given his gift (HavePlayedEvent.Dm_Goron_0030, set then),
+  the first way now gives the bracelet before its dance when the song is Saria's (nothing after that dance runs in game),
+  the second after its dance; silently: no "you got" window, check the gear screen
+  (`patches.darunia_bracelet_after_quest`). The guard asks whether the gift was given, not whether the bracelet is had, so
+  the gift can go in the item pool. Seen in game 2026-11-14: the bracelet comes. Every try at the window failed in game
+  (the get-item scenes need Darunia's event to load other flowcharts, and listing them stopped his event after the dance,
+  bracelet included): to redo with his flowchart's own actors only.
 - **Back to child as soon as you are adult**: the remake's Master Sword takes Link back to child only once the Forest
   Temple is done (the Temple of Time's logic removes the sword's interaction until then; seen in game: no way back). The
   original game and SoH's logic let him go back at once, and a seed can need it (a child-only item for the Forest Temple).

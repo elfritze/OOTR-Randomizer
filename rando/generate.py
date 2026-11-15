@@ -108,12 +108,21 @@ def seed_number(seed):
 class Setup:
     """everything a seed is made from: the tables, the chests found in this game, the locations, the logic"""
 
-    def __init__(self, romfs, codec, with_gifts=True, songs=True):
+    def __init__(self, romfs, codec, with_gifts=True, songs=True, settings=None):
+        """settings (rando.settings, normalized): which checks are shuffled; songs: as settings' shuffle_songs (older
+        callers). A check not shuffled leaves the fill and keeps the game's item, which logic counts where it is (fixed)."""
+        if settings is not None:
+            songs = settings["shuffle_songs"]
         self.table = load_table()
         self.gifts = load_gifts() if with_gifts else {"checks": [], "excluded": []}
-        if not songs:   # (the songs where the game teaches them: their checks out of the fill, as SoH's "song locations" off)
-            self.gifts = {"checks": [c for c in self.gifts["checks"] if not c["vanilla"].startswith("Item_Melody_")],
-                          "excluded": self.gifts["excluded"]}
+
+        def kept(c):
+            if c["vanilla"].startswith("Item_Melody_"):
+                return songs   # (the songs where the game teaches them, as SoH's "song locations" off)
+            if settings is None:
+                return True
+            return settings["shuffle_freestanding"] if c["kind"] == "loose" else settings["shuffle_gifts"]
+        self.gifts = {"checks": [c for c in self.gifts["checks"] if kept(c)], "excluded": self.gifts["excluded"]}
         self.found = chests.scan(romfs, codec)
         locs = []
         for l in self.table["locations"]:
@@ -150,13 +159,18 @@ class Setup:
 
 
 def generate(romfs, mods_dir, seed, settings, log=print):
+    from . import qol, settings as rando_settings
+    settings = rando_settings.normalized(settings)
     codec = zs.Codec(romfs)
-    s = Setup(romfs, codec, songs=settings.get("shuffle_songs", True))
+    s = Setup(romfs, codec, settings=settings)
     rng = random.Random(seed_number(seed))
     placed = s.fill(rng)
     placed = assign_tiers(s, placed, rng)
 
     out = os.path.join(mods_dir, MOD_NAME)
+    archived = archive_installed(mods_dir)
+    if archived:
+        log("the seed installed before is kept in %s" % archived)
     if os.path.isdir(os.path.join(out, "romfs")):   # (the last seed's files go: one it changed and this one does not
         shutil.rmtree(os.path.join(out, "romfs"))  #  would stay as the last seed had it)
     mod = Mod(romfs, codec, os.path.join(out, "romfs"))
@@ -196,6 +210,14 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     patches.free_time_travel(romfs, codec, mod)
     if settings["skip_intro"]:
         patches.skip_intro(romfs, codec, mod)
+    if settings["fast_chests"]:
+        qol.fast_chests(romfs, codec, mod)
+    if settings["skip_auto_dialogues"]:
+        qol.skippable_auto_dialogues(romfs, codec, mod)
+    if settings["skip_title_and_credits"]:
+        qol.skippable_title_and_credits(romfs, codec, mod)
+    if settings["skulltulas_day_and_night"]:
+        qol.skulltulas_day_and_night(romfs, codec, mod)
     mod.finish()
     spoiler = write_spoiler(out, seed, settings, s.world, s.locs, s.fixed, placed, s.closed)
     with open(os.path.join(out, "placements.json"), "w", encoding="utf-8") as f:   # (what each check got: tools)
@@ -207,6 +229,27 @@ def generate(romfs, mods_dir, seed, settings, log=print):
         seed, len(placed), sum(1 for l in s.locs if l.kind == "chest"), len(given),
         sum(1 for l in s.locs if l.kind == "loose"), out, spoiler))
     return placed
+
+
+ARCHIVE = "rando-archive"   # (beside mods: Longshot loads every folder inside mods)
+
+
+def archive_installed(mods_dir):
+    """a copy of the installed seed (its whole mod folder, hand-made fixes included) in <game>/rando-archive/<seed>-<time>,
+    before a new seed replaces it: a mistaken click never loses a playthrough's mod. Returns the copy's folder, or None"""
+    import time
+    src = os.path.join(mods_dir, MOD_NAME)
+    if not os.path.isfile(os.path.join(src, "placements.json")):
+        return None
+    try:
+        with open(os.path.join(src, "placements.json"), encoding="utf-8") as f:
+            seed = str(json.load(f).get("seed", "seed"))
+    except (OSError, ValueError):
+        seed = "seed"
+    safe = "".join(ch if ch.isalnum() or ch in "-_" else "_" for ch in seed)[:60] or "seed"
+    dst = os.path.join(os.path.dirname(os.path.abspath(mods_dir)), ARCHIVE, "%s-%s" % (safe, time.strftime("%Y%m%d-%H%M%S")))
+    shutil.copytree(src, dst)
+    return dst
 
 
 def assign_tiers(s, placed, rng):

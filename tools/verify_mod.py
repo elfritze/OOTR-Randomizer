@@ -10,7 +10,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-from rando import chests, generate, gifts, patches, pickups  # noqa: E402
+from rando import chests, generate, gifts, patches, pickups, qol, settings as rando_settings  # noqa: E402
 from rando.formats import evfl  # noqa: E402
 from rando.events import EVENT_SETTING  # noqa: E402
 from rando.formats import byml, restbl, sarc, zs  # noqa: E402
@@ -27,6 +27,8 @@ def main():
     codec = zs.Codec(romfs)
     plan = json.load(open(os.path.join(mod, "placements.json"), encoding="utf-8"))
     want = {int(h): (c["item"], c["event"]) for h, c in plan["chests"].items()}
+    chosen = rando_settings.normalized(plan.get("settings", {}), legacy=True)
+    nocturnal_seen = 0
     loose = {int(h): a for h, a in plan.get("loose", {}).items()}
     loose_seen = set()
     found = chests.scan(romfs, codec)
@@ -71,6 +73,10 @@ def main():
                     problems.append("%s: %d is %s, planned %s" % (rel, h, y.get("Gyaml"), name))
                 if key({k: v for k, v in x.items() if k not in ("Gyaml", "Translate")}) !=                         key({k: v for k, v in y.items() if k not in ("Gyaml", "Translate")}) or                         [x["Translate"][0], x["Translate"][2]] != [y["Translate"][0], y["Translate"][2]] or                         not 0 <= y["Translate"][1] - x["Translate"][1] <= 0.6:
                     problems.append("%s: %d changed beyond its item and height" % (rel, h))
+            elif chosen["skulltulas_day_and_night"] and qol.is_nocturnal(x):
+                nocturnal_seen += 1
+                if key(y) != key(dict(x, Dynamic=dict(x["Dynamic"], **{qol.NOCTURNAL: False}))):
+                    problems.append("%s: skulltula %d changed beyond its night-only flag" % (rel, h))
             elif h in walls.get(rel, ((), ()))[1]:
                 walls_seen.add(h)
                 if key(y) != key(dict(x, Presence=patches.zr_river_presence(walls[rel][0]))):
@@ -97,7 +103,10 @@ def main():
     flows = {f for f, _, _ in expect}
     flow_dir = os.path.join(mod_romfs, "Event", "EventFlow")
     in_mod = {f[:-len(".bfevfl.zs")] for f in os.listdir(flow_dir)} if os.path.isdir(flow_dir) else set()
-    own = {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (patches.OPENING_FLOW, patches.WATER_FLOW, patches.FIRE_FLOW)}
+    own = {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (patches.OPENING_FLOW, patches.WATER_FLOW, patches.FIRE_FLOW,
+                                                                  patches.TALK_FLOW)}
+    if chosen["fast_chests"]:   # (checked on their own below)
+        own |= {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (qol.BIG_CHEST_FLOW, qol.SMALL_CHEST_FLOW)}
     if own & flows:   # (those flows are checked on their own below, without gift edits)
         problems.append("a gift edit in %s (its own check does not cover gifts)" % sorted(own & flows))
     for f in sorted((flows | in_mod) - own):
@@ -197,7 +206,8 @@ def main():
         b["events"][i]["next"] = a["events"][i]["next"]
         if not (ok and b["events"][:n] == a["events"] and b["actors"] == a["actors"] and b["entries"] == a["entries"]):
             problems.append("the water quest's flow: not the game's with the arrival scene marked after the letter")
-    # (the Goron quest: the game's flow, the bracelet added after Darunia's talk past his dance's step)
+    # (the Goron quest: the game's flow, the bracelet added at the end of each way of Darunia's song reaction that does not
+    # play his dance's scene)
     path = os.path.join(mod_romfs, *patches.FIRE_FLOW.split("/"))
     if not os.path.exists(path):
         problems.append("Darunia does not give the bracelet past his dance's step")
@@ -205,16 +215,72 @@ def main():
         a = evfl.read(codec.read(os.path.join(romfs, *patches.FIRE_FLOW.split("/"))))[0]
         b = evfl.read(codec.read(path))[0]
         n = len(a["events"])
-        i = [e["name"] for e in a["events"]].index(patches.DARUNIA_AFTER)
-        added = b["events"][n:]
-        ok = len(added) == 1 and b["events"][i]["next"] == n and added[0]["next"] == a["events"][i]["next"] and \
-            added[0]["name"] == patches.DARUNIA_EVENT and added[0]["params"] == patches.start_item_params(patches.BRACELET) and \
-            b["actors"][added[0]["actor"]]["name"] == patches.POUCH_ACTOR and \
-            b["actors"][added[0]["actor"]]["actions"][added[0]["action"]] == patches.POUCH_ADD
-        b["events"][i]["next"] = a["events"][i]["next"]
+        names = [e["name"] for e in a["events"]]
+        new = {e["name"]: k for k, e in enumerate(b["events"]) if k >= n}
+        ok = len(new) == 3 * len(patches.DARUNIA_ADDS) == len(b["events"]) - n
+        for after, given, set_given, silent in patches.DARUNIA_ADDS if ok else ():
+            if not {given, set_given, silent} <= set(new):
+                ok = False
+                break
+            i = names.index(after)
+            orig = a["events"][i]["next"]
+            sw, setter, add = (b["events"][new[k]] for k in (given, set_given, silent))
+            darunia = {e["name"]: e for e in patches.darunia_give_events(given, set_given)}
+            ok = ok and b["events"][i]["next"] == new[given] and \
+                sw["type"] == "switch" and sw["params"] == darunia[given]["params"] and \
+                sw["cases"] == {patches.IS_FALSE: new[set_given], patches.IS_TRUE: orig} and \
+                b["actors"][sw["actor"]]["name"] == darunia[given]["actor"] and \
+                b["actors"][sw["actor"]]["queries"][sw["query"]] == darunia[given]["query"] and \
+                setter["type"] == "action" and setter["next"] == new[silent] and \
+                setter["params"] == darunia[set_given]["params"] and \
+                b["actors"][setter["actor"]]["name"] == darunia[set_given]["actor"] and \
+                b["actors"][setter["actor"]]["actions"][setter["action"]] == darunia[set_given]["action"] and \
+                add["type"] == "action" and add["next"] == orig and \
+                add["params"] == patches.start_item_params(patches.BRACELET) and \
+                b["actors"][add["actor"]]["name"] == patches.POUCH_ACTOR and \
+                b["actors"][add["actor"]]["actions"][add["action"]] == patches.POUCH_ADD
+            b["events"][i]["next"] = orig
         if not (ok and b["events"][:n] == a["events"] and b["actors"][:len(a["actors"])] == a["actors"] and
                 b["entries"] == a["entries"]):
-            problems.append("the Goron quest's flow: not the game's with the bracelet after Darunia's talk")
+            problems.append("the Goron quest's flow: not the game's with the bracelet given after both of Darunia's song ways")
+    # (Darunia's talk: the game's flow, the gift given once after its first event when Saria's Song is had)
+    path = os.path.join(mod_romfs, *patches.TALK_FLOW.split("/"))
+    if not os.path.exists(path):
+        problems.append("Darunia's talk does not give the bracelet")
+    else:
+        a = evfl.read(codec.read(os.path.join(romfs, *patches.TALK_FLOW.split("/"))))[0]
+        b = evfl.read(codec.read(path))[0]
+        n = len(a["events"])
+        new = {e["name"]: k for k, e in enumerate(b["events"]) if k >= n}
+        given, song, set_given, silent = patches.DARUNIA_TALK
+        i = [e["name"] for e in a["events"]].index(patches.TALK_START)
+        orig = a["events"][i]["next"]
+        ok = set(new) == set(patches.DARUNIA_TALK) and b["events"][i]["next"] == new[given]
+        if ok:
+            spec = {e["name"]: e for e in patches.darunia_talk_events(given, song, set_given)}
+            sw1, sw2, setter, add = (b["events"][new[k]] for k in patches.DARUNIA_TALK)
+            ok = sw1["params"] == spec[given]["params"] and \
+                sw1["cases"] == {patches.IS_FALSE: new[song], patches.IS_TRUE: orig} and \
+                sw2["params"] == spec[song]["params"] and \
+                sw2["cases"] == {patches.IS_TRUE: new[set_given], patches.IS_FALSE: orig} and \
+                b["actors"][sw1["actor"]]["queries"][sw1["query"]] == "EventQueryIsGameDataBool" and \
+                b["actors"][sw2["actor"]]["queries"][sw2["query"]] == "EventQueryIsGameDataBool" and \
+                setter["params"] == spec[set_given]["params"] and setter["next"] == new[silent] and \
+                b["actors"][setter["actor"]]["actions"][setter["action"]] == "EventTriggerSetGameDataBool" and \
+                add["params"] == patches.start_item_params(patches.BRACELET) and add["next"] == orig and \
+                b["actors"][add["actor"]]["name"] == patches.POUCH_ACTOR and \
+                b["actors"][add["actor"]]["actions"][add["action"]] == patches.POUCH_ADD
+            b["events"][i]["next"] = orig
+        if not (ok and b["events"][:n] == a["events"] and b["actors"][:len(a["actors"])] == a["actors"] and
+                b["entries"] == a["entries"]):
+            problems.append("Darunia's talk: not the game's with the bracelet given once after its first event")
+    # (the events' loaded flowcharts: the game's, untouched: extending Darunia's song event's row kept his event from going
+    # on after his dance, 2026-11-14)
+    from rando import events as rando_events
+    info_path = os.path.join(mod_romfs, *rando_events.GAME_ANALYZED_EVENT_INFO.split("/"))
+    if os.path.exists(info_path) and byml.read(codec.read(info_path))[0] != byml.read(
+            codec.read(os.path.join(romfs, *rando_events.GAME_ANALYZED_EVENT_INFO.split("/"))))[0]:
+        problems.append("%s: not the game's" % rando_events.GAME_ANALYZED_EVENT_INFO)
     # (Mido's schedule: the game's rows but the after-Zelda one, each the same)
     path = os.path.join(mod_romfs, *patches.MIDO_SCHEDULE.split("/"))
     if not os.path.exists(path):
@@ -250,12 +316,47 @@ def main():
             logic[at:at + 4] = value.to_bytes(4, "little")
         if open(path, "rb").read() != bytes(logic):
             problems.append("the Temple of Time's sword module: not the game's with the sword never deleted")
-    rows, _ = byml.read(codec.read(os.path.join(mod_romfs, *EVENT_SETTING.split("/"))))
+    setting_path = os.path.join(mod_romfs, *EVENT_SETTING.split("/"))
+    game_rows = byml.read(codec.read(os.path.join(romfs, *EVENT_SETTING.split("/"))))[0]
+    rows = byml.read(codec.read(setting_path))[0] if os.path.exists(setting_path) else game_rows
     by = {r["__RowId"]: r for r in rows}
-    if plan["settings"].get("skip_intro"):
+    if chosen["skip_intro"]:
         for m in patches.OPENING_MOVIES:
             if {k: v for k, v in by[m].items() if k != "__RowId"} != {k: v for k, v in by[patches.EMPTY_EVENT].items() if k != "__RowId"}:
                 problems.append("opening movie %s not skipped" % m)
+    # (the event settings: the game's rows, but the opening movies' (skip_intro) and the step-started rows' list
+    # (skip_auto_dialogues))
+    step_lists = {qol.component_list(n) for n in qol.STEP_START_LISTS}
+    if len(rows) != len(game_rows):
+        problems.append("%s: rows added or removed" % EVENT_SETTING)
+    for g, r in zip(game_rows, rows):
+        if chosen["skip_intro"] and g["__RowId"] in patches.OPENING_MOVIES:
+            continue
+        expected_row = dict(g)
+        if chosen["skip_auto_dialogues"] and g.get("EventSettingComponentList") in step_lists:
+            expected_row["EventSettingComponentList"] = qol.component_list(qol.PAUSED_LIST)
+        if r != expected_row:
+            problems.append("%s: row %s not the game's%s" % (EVENT_SETTING, g["__RowId"], " (but its list)"
+                                                             if chosen["skip_auto_dialogues"] else ""))
+    # (fast chests: both chest flows exactly the quick ones made from the game's; off: the game's)
+    for rel, make in ((qol.BIG_CHEST_FLOW, qol.quick_big_chest), (qol.SMALL_CHEST_FLOW, qol.quick_small_chest)):
+        path = os.path.join(mod_romfs, *rel.split("/"))
+        if chosen["fast_chests"] != os.path.exists(path):
+            problems.append("%s: %s the mod with fast chests %s" % (rel, "in" if os.path.exists(path) else "not in",
+                                                                     "on" if chosen["fast_chests"] else "off"))
+        elif chosen["fast_chests"] and codec.read(path) != make(codec.read(os.path.join(romfs, *rel.split("/")))):
+            problems.append("%s: not the quick chest made from the game's" % rel)
+    # (the title demo and credits: their lists without the skip ban, or the game's)
+    for name in qol.LOCKED_CUTSCENES:
+        rel = qol.locked_path(name)
+        path = os.path.join(mod_romfs, *rel.split("/"))
+        if chosen["skip_title_and_credits"] != os.path.exists(path):
+            problems.append("%s: %s the mod" % (rel, "in" if os.path.exists(path) else "not in"))
+        elif os.path.exists(path) and open(path, "rb").read() != qol.unlock_cutscene(
+                open(os.path.join(romfs, *rel.split("/")), "rb").read()):
+            problems.append("%s: not the game's without its skip ban" % rel)
+    if chosen["skulltulas_day_and_night"] and nocturnal_seen < 20:
+        problems.append("night skulltulas made day and night: %d, about 30 expected" % nocturnal_seen)
     print("%d chests planned, %d found; %d loose items planned, %d found; %d gift parameters; %d new pickups; %d problems" % (
         len(want), len(seen), len(loose), len(loose_seen), len(expect), len(made), len(problems)))
     for p in problems[:30]:
