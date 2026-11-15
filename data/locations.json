@@ -1833,12 +1833,12 @@
    "map": "KokiriForest",
    "rc": null,
    "region": "RR_LW_UNDER_BRIDGE",
-   "condition": "logic->HasItem(RG_OPEN_CHEST)",
+   "condition": "logic->IsAdult && logic->BeanPlanted(LOGIC_PLANT_LOST_WOODS_BRIDGE_BEAN) && logic->HasItem(RG_OPEN_CHEST)",
    "vanilla": "TBox_Rupee_Purple",
    "name": "Chest (remake only, Small)",
    "area": "Lost Woods Under the Bridge",
-   "confidence": "low",
-   "evidence": "Remake-new. Purple-rupee small chest in KokiriForest Child+Adult Dynamic at (-132.2,123.9,-16.0), 9.3 m above the Business Scrub selling Item_StickBag_Medium (SoH RC_LW_DEKU_SCRUB_NEAR_BRIDGE) and next to GOSSIP_LOST_WOOD_02 (SoH RC_LW_GOSSIP_STONE). Both of those are in SoH region LW Under the Bridge, near the KF->HF bridge end (LostWoodBridge_FrontOfHyruleField). It is the SAME physical chest as LostWood hash 17479747339356189279: the LostWood map holds an identical scrub/gossip/chest set with exactly the same relative offsets (-4.16,+9.3,-0.7 from the scrub), so the area is drawn in both maps. The two placements have different hashes, so give both the same item or treat them as one check. How the 9 m ledge is reached is not known from the data."
+   "confidence": "medium",
+   "evidence": "Remake-new. Purple-rupee small chest in KokiriForest Child+Adult Dynamic at (-132.2,123.9,-16.0), 9.3 m above the Business Scrub selling Item_StickBag_Medium (SoH RC_LW_DEKU_SCRUB_NEAR_BRIDGE) and next to GOSSIP_LOST_WOOD_02 (SoH RC_LW_GOSSIP_STONE). Both of those are in SoH region LW Under the Bridge, near the KF->HF bridge end (LostWoodBridge_FrontOfHyruleField). It is the SAME physical chest as LostWood hash 17479747339356189279: the LostWood map holds an identical scrub/gossip/chest set with exactly the same relative offsets (-4.16,+9.3,-0.7 from the scrub), so the area is drawn in both maps. The two placements have different hashes, so give both the same item or treat them as one check. How the 9 m ledge is reached is not known from the data. Player report 2026-11-15: the ledge is reached as adult on the bean leaf of the bean patch planted as child (Obj_Plant_MagicBeanBud_A_01 at (-116.1,119.3,-56.4), SoH LOGIC_PLANT_LOST_WOODS_BRIDGE_BEAN)."
   },
   {
    "id": "RC_KF_MIDOS_TOP_RIGHT_CHEST",
