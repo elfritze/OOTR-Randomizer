@@ -62,6 +62,19 @@ OPTIONS = (
            "The 3 spiritual stones and 6 medallions (SoH: Shuffle Dungeon Rewards): Vanilla, each from its own boss; End "
            "of dungeon, shuffled among the 8 bosses and Rauru. The scenes still show the game's own reward; the item got "
            "is the one placed.", "vanilla", False, (("vanilla", "Vanilla"), ("end_of_dungeon", "End of dungeon"))),
+    Option("shuffle_shops", "shuffle", "Shopsanity",
+           "Shelves of the 8 shops sell items of the pool, each once (SoH: Shopsanity): that many per shop, or a random "
+           "number. The shelves logic needs (shields, tunics, Deku nuts and sticks, Bombchus) go last; the others keep "
+           "their item. The Kokiri shop sells its whole stock from the start. A bought shelf shows \"Sold Out\" (the OotrR "
+           "randomizer's way).", "off", False,
+           (("off", "Off"),) + tuple((str(n), str(n)) for n in range(1, 8)) + (("random", "Random"),)),
+    Option("shop_prices", "shuffle", "Shop prices",
+           "What a shuffled shelf costs (SoH: Shopsanity Prices): Vanilla, the price of what the shelf sold; Cheap "
+           "balanced and Balanced, SoH's random prices (about 30 and 125 rupees on average); Affordable, Balanced "
+           "lowered to the least of the wallet it needs. Logic counts the remake's wallets (200, 500, 999 rupees).",
+           "vanilla", False,
+           (("vanilla", "Vanilla"), ("cheap_balanced", "Cheap balanced"), ("balanced", "Balanced"),
+            ("affordable", "Affordable"))),
     Option("skip_intro", "timesavers", "Skip the opening movies",
            "A new game starts in Kokiri Forest without the two opening movies.", True, True),
     Option("skip_auto_dialogues", "timesavers", "Skippable automatic dialogues",

@@ -281,6 +281,7 @@ class Model:
         # (an older seed's placements.json lacks the newer settings: they mean what the randomizer did then)
         self.settings = rando_settings.normalized(self.plan.get("settings", {}), legacy=True)
         self.setup = generate.Setup(self.romfs, codec, settings=self.settings)
+        self.setup.apply_shops(self.plan.get("shops", {}))   # (the seed's shuffled shelves: checks, prices)
         self.world = self.setup.world
         self.checks = self._checks()
 
@@ -294,6 +295,7 @@ class Model:
             if h in by_hash:
                 placed[by_hash[h].id] = v["item"]
         placed.update(plan.get("gifts", {}))
+        placed.update({rc: v["item"] for rc, v in plan.get("shops", {}).items()})
         for h, a in plan.get("loose", {}).items():
             if h in loose_of:
                 placed[loose_of[h]] = a
@@ -319,6 +321,12 @@ class Model:
                         folder, age, x, y, z, _ = idx["actors"][str(a["hash"])]
                         pos = (x, z)
                         break
+            elif l.kind == "shop":   # (its shelf: bought, the shelf's AI sets its flag)
+                for rel, h in plan["shops"][l.id]["copies"]:
+                    if str(h) in idx["actors"]:
+                        folder, age, x, y, z, _ = idx["actors"][str(h)]
+                        pos = (x, z)
+                        break
             elif l.kind == "gift" and l.id in GIFT_ANCHORS:
                 folder, x, z = GIFT_ANCHORS[l.id]
                 pos, age = (x, z), "All"
@@ -338,7 +346,7 @@ class Model:
                 rg = I.soh_item(I.canonical(item), l.map)
             except (KeyError, ValueError):
                 rg = "RG_NONE"
-            flag = DONE_FLAGS.get(l.id) or next(
+            flag = (plan["shops"][l.id]["flag"] if l.kind == "shop" else None) or DONE_FLAGS.get(l.id) or next(
                 ("HavePlayedEvent." + fl for fl in flows if fl.startswith(SONG_FLOW)), None)
             out.append(Check(id=l.id, name=l.name, area=area_name, folder=folder, kind=l.kind, item=item, rg=rg,
                              pos=pos, y=y, age=age, hashes=hashes, flag=flag))

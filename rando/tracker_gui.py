@@ -531,6 +531,8 @@ class TrackerTab:
             cv.create_text(cx, cy, text="!", fill="#0b1220", font=self.window.fonts.strong, tags=(tag,))
         elif c.kind == "loose":
             cv.create_text(cx, cy, text="✦", fill="#0b1220", font=self.window.fonts.small, tags=(tag,))
+        elif c.kind == "shop":
+            cv.create_text(cx, cy, text="$", fill="#0b1220", font=self.window.fonts.small, tags=(tag,))
         cv.tag_bind(tag, "<Enter>", lambda e, c=c: self._show_tip(e, c))
         cv.tag_bind(tag, "<Leave>", lambda e: self._hide_tip())
         cv.tag_bind(tag, "<Button-1>", lambda e, c=c: self.toggle(c.id))

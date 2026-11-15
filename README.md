@@ -30,6 +30,8 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Shuffle the Fairy Ocarina (Saria's gift; an ocarina found elsewhere made playable, OotrR's fix) | off | not yet |
 | Shuffle Great Fairies (their 6 gifts in the pool; Nayru's and Ganon's Castle's need the 500-rupee wallet) | off | not yet |
 | Shuffle Gold Skulltula tokens (the 100 skulltulas drop the item placed there; the tokens in the pool) | off | not yet |
+| Shopsanity: **Off** / 1-7 per shop / Random (shelves of the 8 shops sell pool items, each once) | Off | not yet |
+| Shop prices: **Vanilla** / Cheap balanced / Balanced / Affordable (SoH's) | Vanilla | not yet |
 | Shuffle dungeon rewards: **Vanilla** / End of dungeon (the 9 stones and medallions among the 8 bosses and Rauru) | Vanilla | not yet |
 | Maps and compasses: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
 | Small keys: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
@@ -57,7 +59,8 @@ Need nothing and Stone of Agony change the stones' talk (`GossipStone.bfevfl`); 
 ## Use
 
 You need Longshot's game folder (it holds `romfs` and `mods`) and Python 3.10 or newer with `zstandard`
-(`python -m pip install zstandard`).
+(`python -m pip install zstandard`); Shopsanity also needs `ainb` 0.2.17 (`python -m pip install ainb==0.2.17`), the
+library the OotrR randomizer writes its shelves' AI with.
 
 ```
 python randomize.py "C:\Games\Longshot" --seed anything
@@ -110,6 +113,17 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
   on the token (OotrR's way: the token's AI saves the skulltula once its drop is got, it floats where the skulltula
   died and is caught by hookshot or boomerang as SoH counts). The 11 not sure (matched by elimination, or moved in the
   remake) get junk only. A token found anywhere counts for the House of Skulltula. Not yet seen in game.
+- **Shops can sell items of the pool** (SoH's Shopsanity: a number of shelves per shop, or random; `rando/shops.py`):
+  the remake's 8 shops are SoH's 8, 8 shelves each, matched to SoH's 64 shop checks. The shelves are shuffled in
+  SoH's order, with the ones logic needs (shields, tunics, Deku nuts and sticks, Bombchus) last; the others keep their
+  item, which logic now counts at the remake's own price (the tunics cost 600). A shuffled shelf is built the way the
+  OotrR randomizer builds its own, seen in its game: a new shelf actor with the item's model, name and price, and its
+  own copy of the shelf's AI (the `ainb` library, 0.2.17) that saves a flag when bought and reads it as sold out; the
+  shopkeeper sells that slot once, and a "Sold Out" board stands behind it. The Kokiri shop sells its whole stock from
+  the start; the Bombchu shop opens once King Dodongo is beaten (its seller's condition), which logic now asks for.
+  Shelves sell items, Heart Pieces and rupees; not songs, ocarinas, bottles, dungeon items, tokens or ammunition, nor the
+  shields and tunics (the shop's flow treats those apart). Prices are SoH's choices; logic counts the remake's wallets
+  (200, 500, 999). Not yet seen in game.
 - **Dungeon rewards can be shuffled** (SoH's End of Dungeon): the 3 spiritual stones and 6 medallions among the 8 bosses
   and Rauru, placed first by logic (a stone never behind the Door of Time). Each reward's scene gives it by its
   GetPouchContent window's `ActorName` (the Jabu-Jabu and Zora's Fountain scenes both, and the `.110` twins); the scene
@@ -200,7 +214,7 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 Left as they are for now (`data/gifts.json` "excluded" has each one's reason): the Scarecrow's Song,
 the stones and medallions, the Master Sword, the Light and Fire Arrows, the ocarinas, Zelda's Letter and the Weird Egg, the
 adult trade items, the Gerudo keys and card, the Great Fairies (they charge rupees in the remake and would sell again),
-Darunia's bracelet, the shops and repeatable prizes. King Zora's Zora Tunic shop gift stays: without a tunic, his later
+Darunia's bracelet, the scrubs and repeatable prizes. King Zora's Zora Tunic shop gift stays: without a tunic, his later
 talk makes the Zora shop give one free (an extra tunic, never needed by logic).
 
 Left as they are: the 22 minigame chests filled again at each play (the treasure chest game's but its Heart Piece prize,

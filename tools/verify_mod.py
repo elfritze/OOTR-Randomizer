@@ -11,7 +11,8 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 from rando import chests, dungeon_items, generate, gifts, hints, patches, pickups, qol, settings as rando_settings  # noqa: E402
-from rando import gamedata, items as rando_items  # noqa: E402
+from rando import gamedata, items as rando_items, shops  # noqa: E402
+import copy  # noqa: E402
 from rando.formats import evfl  # noqa: E402
 from rando.events import EVENT_SETTING  # noqa: E402
 from rando.formats import byml, msbt, restbl, sarc, zs  # noqa: E402
@@ -103,6 +104,23 @@ def main():
     found = chests.scan(romfs, codec)
     problems, seen = [], set()
     walls, walls_seen = patches.ZR_RIVER_WALLS, set()
+    # (the shops: each shuffled shelf's copies, by map; the Kokiri shop opened when any shelf is)
+    plan_shops = plan.get("shops", {})
+    shop_slots = {s.rc: s for s in shops.scan(romfs, codec)} if plan_shops else {}
+    shelf_at = {}
+    for rc, v in plan_shops.items():
+        for rel, h in v["copies"]:
+            shelf_at[(rel, int(h))] = (shop_slots[rc], v["shelf"])
+    shelves_seen = set()
+
+    def kokiri_open(rel, actor):   # (rando.shops.write: the full stock always, the short stock never)
+        p = actor.get("Presence")
+        if plan_shops and rel.startswith("Banc/%s/" % shops.KOKIRI) and isinstance(p, dict) and                 p.get("FlagName") == shops.KOKIRI_FLAG and actor.get("Gyaml", "").startswith(("Shop_", "Npc_Kokiri_001_Shop")):
+            if p.get("IsNegation"):
+                actor["Presence"] = shops.never(rel)
+            else:
+                del actor["Presence"]
+        return actor
     table = restbl.Table(codec.read(os.path.join(mod_romfs, *RSTB.split("/"))))
     original_table = restbl.Table(codec.read(os.path.join(romfs, *RSTB.split("/"))))
     for rel in chests.map_files(romfs):
@@ -117,11 +135,35 @@ def main():
         b, _ = byml.read(data)
         if {k: v for k, v in a.items() if k != "Actors"} != {k: v for k, v in b.items() if k != "Actors"}:
             problems.append("%s: something besides the actors changed" % rel)
-        if len(a["Actors"]) != len(b["Actors"]):
+        boards = []   # (the sold out boards this map should get, behind its shuffled shelves, in order)
+        for x in a["Actors"]:
+            if (rel, int(x.get("Hash", 0))) in shelf_at:
+                slot, actor = shelf_at[(rel, int(x["Hash"]))]
+                y_want = copy.deepcopy(x)
+                y_want["Gyaml"] = actor
+                board = shops.add_board(copy.deepcopy(a["Actors"]) + boards, y_want, shops.board_hash(slot, rel, int(x["Hash"])))
+                if board is not None:
+                    boards.append(kokiri_open(rel, board))
+        if len(b["Actors"]) != len(a["Actors"]) + len(boards):
             problems.append("%s: actor count changed" % rel)
+        added = {int(y.get("Hash", 0)): y for y in b["Actors"][len(a["Actors"]):]}
+        for want_board in boards:
+            if key(want_board) != key(added.get(int(want_board["Hash"]))):
+                problems.append("%s: sold out board %s is not the one planned" % (rel, want_board["Hash"]))
         for x, y in zip(a["Actors"], b["Actors"]):
             h = int(x.get("Hash", 0))
-            if h in want and chests.is_chest(x):
+            if (rel, h) in shelf_at:
+                shelves_seen.add((rel, h))
+                slot, actor = shelf_at[(rel, h)]
+                y_want = copy.deepcopy(x)
+                y_want["Gyaml"] = actor
+                shops.add_board(copy.deepcopy(a["Actors"]), y_want, shops.board_hash(slot, rel, h))
+                if key(y) != key(kokiri_open(rel, y_want)):
+                    problems.append("%s: shelf %d is not %s with its board link" % (rel, h, actor))
+            elif plan_shops and key(kokiri_open(rel, copy.deepcopy(x))) != key(x):
+                if key(y) != key(kokiri_open(rel, copy.deepcopy(x))):
+                    problems.append("%s: Kokiri shop actor %d not opened" % (rel, h))
+            elif h in want and chests.is_chest(x):
                 seen.add(h)
                 item, event = want[h]
                 dyn = y.get("Dynamic") or {}
@@ -163,6 +205,8 @@ def main():
         need = align32(len(data)) + original_table.get(rel) - align32(len(codec.read(os.path.join(romfs, rel))))
         if table.get(rel) < need:
             problems.append("%s: %d bytes, its table entry %d" % (rel, len(data), table.get(rel)))
+    if set(shelf_at) - shelves_seen:
+        problems.append("planned shop shelves not found: %s" % sorted(set(shelf_at) - shelves_seen)[:5])
     every_wall = {h for _, hs in walls.values() for h in hs}
     if walls_seen != every_wall:
         problems.append("Zora's River walls left as they were: %s" % sorted(every_wall - walls_seen))
@@ -235,6 +279,70 @@ def main():
     for a in made:
         if not os.path.exists(os.path.join(mod_romfs, *pickups.pack_path(pickups.name_for(a)).split("/"))):
             problems.append("no pack for %s" % pickups.name_for(a))
+    # (the shops' shelves: a pack each selling its item at its price, its AI setting and reading its flag; their rows; the shopkeepers selling each shuffled slot once at the shelf's price)
+    if plan_shops:
+        import ainb
+        tables = {tn: {r["__RowId"]: r for r in byml.read(codec.read(os.path.join(mod_romfs, *tn.split("/"))))[0]}
+                  for tn in (pickups.ACTOR_INFO, pickups.GAME_ACTOR_INFO, pickups.POUCH_ACTOR_INFO)}
+        for rc, v in sorted(plan_shops.items()):
+            name, item = v["shelf"], rando_items.form(v["item"], "shop")
+            path = os.path.join(mod_romfs, *shops.pack_path(name).split("/"))
+            if not os.path.exists(path):
+                problems.append("no pack for %s" % name)
+                continue
+            files = sarc.read(codec.read(path))
+            param = "Actor/%s.engine__actor__ActorParam.bgyml" % name
+            comps = pickups._components(files, param)
+            pouch, _ = byml.read(files[pickups._ref_file(comps["PouchContentRef"])])
+            if pouch.get("PouchActor") != "Work/Actor/%s.engine__actor__ActorParam.gyml" % item:
+                problems.append("%s: sells %s, planned %s" % (name, pouch.get("PouchActor"), item))
+            price = byml.read(files["GameParameter/PriceParam/%s.game__pouchcontent__PriceParam.bgyml" % name])[0]
+            if price.get("BuyingPrice") != v["price"]:
+                problems.append("%s: price %s, planned %d" % (name, price.get("BuyingPrice"), v["price"]))
+            ai = files.get("AI/%s.root.ainb" % name)
+            nodes = ainb.AINB.from_binary(ai).as_dict()["Nodes"] if ai else []
+            set_flag = [n for n in nodes if n["Name"] == "OneShotSetNonStructGameDataBool" and
+                        any(s.get("Default Value") == v["flag"] for s in n["Parameters"]["Inputs"].get("String", []))]
+            if len(set_flag) != 1 or comps.get("AIInfoRef") != "?AI/AIInfo/%s.engine__actor__AIInfo.bgyml" % name:
+                problems.append("%s: its AI does not set %s" % (name, v["flag"]))
+            for tn, rows in tables.items():
+                if name not in rows:
+                    problems.append("%s: no row %s" % (tn, name))
+            if name in tables[pickups.POUCH_ACTOR_INFO] and tables[pickups.POUCH_ACTOR_INFO][name].get("BuyingPrice") != v["price"]:
+                problems.append("%s: its pouch row's price is not %d" % (name, v["price"]))
+        per_seller = {}
+        for rc in plan_shops:
+            for seller in shop_slots[rc].sellers:
+                per_seller.setdefault(seller, {})[shop_slots[rc].slot] = shop_slots[rc].shelf
+        for seller in shops.KOKIRI_SELLERS:
+            per_seller.setdefault(seller, {})
+        for seller, slots in sorted(per_seller.items()):
+            rel = shops.pack_path(seller)
+            game = sarc.read(codec.read(os.path.join(romfs, *rel.split("/"))))
+            path = os.path.join(mod_romfs, *rel.split("/"))
+            mine = sarc.read(codec.read(path)) if os.path.exists(path) else {}
+            if set(game) != set(mine):
+                problems.append("%s: not in the mod, or its files changed" % rel)
+                continue
+            for f in game:
+                g, m = byml.read(game[f])[0] if f.endswith(".bgyml") else game[f],                     byml.read(mine[f])[0] if f.endswith(".bgyml") else mine[f]
+                if f not in shops.shop_param_files(game):
+                    if key(g) != key(m):
+                        problems.append("%s: %s changed" % (rel, f))
+                    continue
+                g = copy.deepcopy(g)
+                for i, good in enumerate(g.get("GoodsList", [])):
+                    if i in slots and good.get("Actor", "").endswith("/%s.engine__actor__ActorParam.gyml" % slots[i]):
+                        good["StockNum"] = 1
+                        if "PriceOffset" in good:
+                            good["PriceOffset"] = 0
+                        if good.get("ConditionalPriceOffsetList"):
+                            good["ConditionalPriceOffsetList"] = []
+                    r = good.get("Release")
+                    if seller in shops.KOKIRI_SELLERS and isinstance(r, dict) and r.get("ReleaseGameData") == shops.KOKIRI_FLAG:
+                        r["IsCheckReleaseGameData"], r["ReleaseGameData"] = False, ""
+                if key(g) != key(m):
+                    problems.append("%s: %s is not the game's with its shuffled slots sold once" % (rel, f))
     # (the shuffled Great Fairies: each one's flow the game's with her gift edits and her flag set before her gift)
     for rc in fairies:
         flow, flag, give, before = patches.GREAT_FAIRIES[rc]
@@ -252,6 +360,8 @@ def main():
         want_data = gamedata.with_bools(want_data, [patches.GREAT_FAIRIES[rc][1] for rc in fairies])
     if own_items:
         want_data = dungeon_items.with_flags(want_data, own_items)
+    if plan_shops:
+        want_data = gamedata.with_bools(want_data, [v["flag"] for _, v in sorted(plan_shops.items())])
     data_path = os.path.join(mod_romfs, *dungeon_items.GAME_DATA.split("/"))
     if want_data is game_data:
         if os.path.exists(data_path):

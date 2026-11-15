@@ -346,6 +346,9 @@ class World:
 
     def __init__(self, extra_locations=None, rule_overrides=None, removed_locations=(), options=None):
         self.ctx = logic_mod.Ctx(dict(logic_mod.SETTINGS, **(options or {})))
+        # ({RC: price}: a check's own price, as SoH's ItemLocation::SetCustomPrice: the shops' (rando.shops), set before a
+        #  fill; price() reads it first)
+        self.prices = {}
         self.regions = {}
         for rr, r in R.REGIONS.items():
             self.regions[rr] = _Region(rr, r["name"], r["scene"], r["time_pass"],
@@ -471,6 +474,8 @@ class World:
         (SoH's vanilla-price settings: SetCustomPrice(GetVanillaPrice()) for scrubs and merchants)"""
         if rc not in D.LOCATIONS:
             raise WorldError(f"GetCheckPrice of {rc}: not a SoH location")
+        if rc in self.prices:
+            return self.prices[rc]
         if placed_item != "RG_NONE" and D.ITEMS[placed_item]["type"] == "ITEMTYPE_SHOP":
             return D.ITEMS[placed_item]["price"]
         return D.LOCATIONS[rc]["price"]

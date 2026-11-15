@@ -105,7 +105,13 @@ OBJ_FORM = {"TBox_Rupee_Green": "Obj_Rupee_Green", "TBox_Rupee_Blue": "Obj_Rupee
 CHEST_ONLY = {"Item_BombBundle_Small", "Item_BombchuBundle_Small", "TBox_ArrowBundle_Medium", "TBox_ArrowBundle_Large",
               "TBox_DekuNutBundle", "Item_DekuStickBundle_Small", "Tbox_MagicJar_Large", "Item_ScrubBusinessSeed"}
 NOT_GIFT = {"Obj_Heart_Container"}
-NOT_CHEST = {"Obj_Armor_Zora"}   # (its chest form is not known: the remake's Zora Tunic only comes from King Zora and a shop)
+NOT_CHEST = {"Obj_Armor_Zora"}
+# (a shop's shelf, rando.shops: an Item_ actor but these, or one of SHOP_ALSO. Not the ocarinas (their get pose crashed in
+#  chests), the songs, the bottles (the shop's own bottle display), the token, the ammunition bundles (CHEST_ONLY; a shop
+#  refuses what the pouch is full of); the tunics and the Deku and Hylian Shields are TBox_/Obj_ actors, not taken)
+NOT_SHOP = {"Item_Ocarina_Fairy", "Item_Ocarina_Time", "Item_Token_Gold"}
+SHOP_ALSO = {"Obj_Heart_Piece", "Obj_Heart_Container", "TBox_Rupee_Green", "TBox_Rupee_Blue", "TBox_Rupee_Red",
+             "TBox_Rupee_Purple", "TBox_Rupee_Gold"}   # (its chest form is not known: the remake's Zora Tunic only comes from King Zora and a shop)
 
 
 # Checks giving their item by a silent pouch add (PouchSystemActor.EventTriggerAddOrRemovePouchContent: proven for Item_
@@ -144,13 +150,16 @@ def fits(actor, location_id, kind):
 
 def allowed(actor, kind):
     """can this item (as the pool names it: its chest form) go in a location of this kind ("chest", "gift", "loose",
-    "skulltula": a Gold Skulltula's drop, a pickup built on the token as a loose one)?"""
+    "skulltula": a Gold Skulltula's drop, a pickup built on the token as a loose one; "shop": a shelf, rando.shops)?"""
     if kind == "skulltula":
         kind = "loose"
     if kind == "chest":
         return actor not in NOT_CHEST
     if dungeon_bound(actor):   # (in chests and lying in the world: a gift may not end in the get flow crediting it)
         return kind == "loose"
+    if kind == "shop":
+        return actor in SHOP_ALSO or (actor.startswith("Item_") and actor not in CHEST_ONLY and actor not in NOT_SHOP and
+                                      not actor.startswith(("Item_Melody_", "Item_Bottle")))
     if actor in CHEST_ONLY:
         return False
     if kind == "gift":
@@ -162,7 +171,7 @@ def form(actor, kind):
     """the actor a location of this kind is written with for the item (a chest's TBox_ rupee is an Obj_ rupee elsewhere)"""
     if not allowed(actor, kind):
         raise ValueError("%s cannot go in a %s" % (actor, kind))
-    return actor if kind == "chest" else OBJ_FORM.get(actor, actor)
+    return actor if kind in ("chest", "shop") else OBJ_FORM.get(actor, actor)
 
 
 def canonical(actor):

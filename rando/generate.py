@@ -7,7 +7,7 @@ import os
 import random
 import shutil
 
-from . import chests, dungeon_items, fill, gifts, hints, patches, pickups
+from . import chests, dungeon_items, fill, gifts, hints, patches, pickups, shops
 from . import items as I
 from .formats import sarc, zs
 from .logic import soh_regions as R
@@ -120,6 +120,7 @@ class Setup:
     """everything a seed is made from: the tables, the chests found in this game, the locations, the logic"""
 
     def __init__(self, romfs, codec, with_gifts=True, songs=True, settings=None):
+        self.settings = settings
         """settings (rando.settings, normalized): which checks are shuffled; songs: as settings' shuffle_songs (older
         callers). A check not shuffled leaves the fill and keeps the game's item, which logic counts where it is (fixed)."""
         if settings is not None:
@@ -175,6 +176,14 @@ class Setup:
         removed = set(self.table.get("removed", ()))
         self.fixed = {rc: rg for rc, rg in vanilla_items().items()
                       if rc not in mapped and rc not in removed and rc in self.world.location_ids}
+        # (the shops: each of SoH's 64 shop checks is a remake shelf, what it sells as logic counts it, at the remake's price
+        #  (rando.shops); some become checks with settings shuffle_shops, chosen with each fill's draw)
+        self.shop_slots = shops.scan(romfs, codec)
+        self.shop_by_rc = {slot.rc: slot for slot in self.shop_slots}
+        for slot in self.shop_slots:
+            self.fixed[slot.rc] = slot.rg
+            self.world.prices[slot.rc] = shops.logic_price(slot.price)
+        self.shop_prices = {}
         self.progression = {rg for rg, info in item_info().items() if info.get("progression")}
         self.closed = closed_locations(self.world, self.locs, self.progression, self.fixed)
         # (a chest only the remake has whose way in the research could not establish (confidence "low") gets junk only, as
@@ -183,8 +192,52 @@ class Setup:
         self.closed |= {l["id"] for l in self.table["locations"] if not l["rc"] and l.get("confidence") == "low"}
         # (a Gold Skulltula whose match or way in is not sure (data/skulltulas.json "closed"): junk only too)
         self.closed |= {g["rc"] for g in self.skulltulas if g.get("closed")}
+        self.base = (list(self.locs), dict(self.fixed), set(self.closed))
+        if settings is not None and settings.get("shuffle_shops", "off") != "off":
+            every = [fill.Location(slot.rc, None, slot.folder, shops.JUNK[0], slot.name, kind="shop")
+                     for slot in self.shop_slots]
+            self.shop_closed = closed_locations(self.world, every, self.progression,
+                                                {k: v for k, v in self.fixed.items() if k not in self.shop_by_rc})
+
+    def choose_shops(self, rng):
+        """the shelves shuffled this time (settings shuffle_shops: that many per shop, in SoH's order, or a random number)
+        and their prices: the locations, the checks left as they are, the prices logic counts"""
+        self.locs, self.fixed, self.closed = list(self.base[0]), dict(self.base[1]), set(self.base[2])
+        self.shop_prices = {}
+        for slot in self.shop_slots:
+            self.world.prices[slot.rc] = shops.logic_price(slot.price)
+        choice = (self.settings or {}).get("shuffle_shops", "off")
+        if choice == "off":
+            return
+        n = 0
+        for code, *_ in shops.SHOPS:
+            count = shops.count_for(choice, rng)
+            for slot in sorted((s for s in self.shop_slots if s.code == code), key=lambda s: s.order)[:count]:
+                price = shops.price_for(slot, self.settings["shop_prices"], rng)
+                self.shop_prices[slot.rc] = price
+                self.world.prices[slot.rc] = shops.logic_price(price)
+                del self.fixed[slot.rc]
+                self.locs.append(fill.Location(slot.rc, None, slot.folder, shops.JUNK[n % len(shops.JUNK)], slot.name,
+                                               kind="shop"))
+                if slot.rc in self.shop_closed:
+                    self.closed.add(slot.rc)
+                n += 1
+
+    def apply_shops(self, chosen):
+        """a seed's shelves as its placements.json lists them ({RC: {"price"...}}): for the tracker and tools"""
+        self.locs, self.fixed, self.closed = list(self.base[0]), dict(self.base[1]), set(self.base[2])
+        self.shop_prices = {}
+        for slot in self.shop_slots:
+            self.world.prices[slot.rc] = shops.logic_price(slot.price)
+        for rc, v in sorted(chosen.items()):
+            slot = self.shop_by_rc[rc]
+            self.shop_prices[rc] = v["price"]
+            self.world.prices[rc] = shops.logic_price(v["price"])
+            self.fixed.pop(rc, None)
+            self.locs.append(fill.Location(rc, None, slot.folder, shops.JUNK[0], slot.name, kind="shop"))
 
     def fill(self, rng):
+        self.choose_shops(rng)
         return fill.fill(self.world, self.locs, self.fixed, self.progression, rng, self.closed, places=self.places)
 
 
@@ -246,7 +299,19 @@ def generate(romfs, mods_dir, seed, settings, log=print):
             drops[by_id[lid].hash] = made.actor_for(item, drop=True)
     if drops:
         pickups.set_drops(romfs, codec, mod, drops)
+    shelves = []   # (the shops' shuffled shelves: a new shelf actor each, rando.shops)
+    shop_builder = None
+    for lid, actor in sorted(placed.items()):
+        if by_id[lid].kind != "shop":
+            continue
+        shop_builder = shop_builder or shops.Builder(romfs, codec, mod, made)
+        slot = s.shop_by_rc[lid]
+        shelves.append((slot, shop_builder.shelf(slot, I.form(actor, "shop"), s.shop_prices[lid])))
+    if shelves:
+        shops.write(romfs, codec, mod, shelves)
     own_items.finish()   # (their names, rows, flags and the hook: before the tables are written)
+    if shop_builder:
+        shop_builder.finish()   # (the shelves' saved flags)
     made.finish()
     patches.song_models(romfs, codec, mod)
     patches.free_bomb_lift(romfs, codec, mod)
@@ -273,7 +338,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
                             random.Random(seed_number(seed) ^ HINT_SEED), info=item_info(s.options), log=log)
         hints.write(romfs, mod, stones, settings["gossip_stone_hints"])
     mod.finish()
-    spoiler = write_spoiler(out, seed, settings, s.world, s.locs, s.fixed, placed, s.closed)
+    spoiler = write_spoiler(out, seed, settings, s.world, s.locs, s.fixed, placed, s.closed, s.shop_prices)
     if stones:
         english = hints.Names(sarc.read(mod.read("Mals/USen.Product.110.sarc.zs")))
         with open(spoiler, "a", encoding="utf-8") as f:
@@ -286,10 +351,13 @@ def generate(romfs, mods_dir, seed, settings, log=print):
                    "gifts": {lid: a for lid, a in sorted(given.items())},
                    "loose": {str(h): a for h, a in sorted(loose.items())},
                    "skulltulas": {str(h): a for h, a in sorted(drops.items())},
+                   "shops": {slot.rc: {"item": placed[slot.rc], "price": s.shop_prices[slot.rc], "shelf": actor,
+                                       "flag": slot.flag, "copies": [[rel, str(h)] for rel, h in slot.copies]}
+                             for slot, actor in shelves},
                    "hints": dict(sorted(stones.items()))}, f, indent=1)
-    log("seed %s: %d checks (%d chests, %d gifts, %d lying in the world), mod in %s, spoiler %s" % (
+    log("seed %s: %d checks (%d chests, %d gifts, %d lying in the world, %d shelves), mod in %s, spoiler %s" % (
         seed, len(placed), sum(1 for l in s.locs if l.kind == "chest"), len(given),
-        sum(1 for l in s.locs if l.kind == "loose"), out, spoiler))
+        sum(1 for l in s.locs if l.kind == "loose"), len(shelves), out, spoiler))
     return placed
 
 
@@ -360,7 +428,7 @@ def closed_locations(world, locs, progression, fixed=None):
     return {l.id for l in locs if l.id not in reach}
 
 
-def write_spoiler(out, seed, settings, world, locs, fixed, placed, closed=()):
+def write_spoiler(out, seed, settings, world, locs, fixed, placed, closed=(), prices=None):
     by_id = {l.id: l for l in locs}
     every = {**fixed, **{lid: I.soh_item(a, by_id[lid].map) for lid, a in placed.items()}}
     every = {k: v for k, v in every.items() if v != "RG_NONE"}
@@ -382,10 +450,12 @@ def write_spoiler(out, seed, settings, world, locs, fixed, placed, closed=()):
             lines.append("  sphere %d" % i)
             lines += ["    " + g for g in sorted(got)]
     for kind, title in (("chest", "Chests"), ("gift", "Gifts (NPCs, minigames, scrubs)"), ("loose", "Lying in the world"),
-                        ("skulltula", "Gold Skulltulas")):
+                        ("skulltula", "Gold Skulltulas"), ("shop", "Shops (price in rupees)")):
         lines += ["", title + ":"]
         for l in sorted((l for l in locs if l.kind == kind), key=lambda l: l.name):
-            lines.append("  %-70s %s%s" % (l.name, placed[l.id], "   (not in logic: junk only)" if l.id in closed else ""))
+            price = " for %d" % prices[l.id] if prices and l.id in prices else ""
+            lines.append("  %-70s %s%s%s" % (l.name, placed[l.id], price,
+                                             "   (not in logic: junk only)" if l.id in closed else ""))
     path = os.path.join(out, "spoiler.txt")
     os.makedirs(out, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:

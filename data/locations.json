@@ -3255,6 +3255,15 @@
    ],
    "rule": "true",
    "why": "overworld 12"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_MARKET_BACK_ALLEY",
+    "RR_MARKET_BOMBCHU_SHOP"
+   ],
+   "rule": "logic->AtNight && logic->HasItem(RG_BOMBCHU_SHOP_KEY) && logic->Get(LOGIC_DODONGOS_CAVERN_CLEAR)",
+   "why": "The Bombchu Shop's seller (Npc_Hylia_021_Shop_Child, Market_Child_Static) is only there once the Fire stone's quest is done (Presence Get_StoneOfFire_IsCompleted_Exp): King Dodongo beaten (OotrR's remake layer has it too)"
   }
  ]
 }
