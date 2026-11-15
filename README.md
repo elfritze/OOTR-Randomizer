@@ -135,6 +135,10 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
   Gauntlets come in that order (the fill keeps each unreachable without the one before). Not yet seen in game.
 - **Items lying in the world** (the 14 loose Heart Pieces, the 8 bosses' Heart Containers and 2 freestanding keys) are the item placed there,
   lying where the old one was: a pickup made for each item as the remake made its own loose Fire Arrows.
+- **The clock runs from the start**: the remake holds the time at 15:00 until Impa's send-off from the castle
+  (`HavePlayedEvent.Dm_HrlField_0020`, read by the game's code), so there was no night (night-only Gold Skulltulas,
+  Dampe) before Zelda, which SoH's logic never waits for (seen in game, 2026-11-15). The new game's opening sets that flag
+  (OotrR's fix); Impa's send-off still plays. Not yet seen in game.
 - **Upgrades come in order**: the remake's bags, quivers, wallets and scales are separate items, each setting its capacity
   outright; the earliest of each kind in the playthrough is the first tier (the Bow before the quivers, the Slingshot
   before the bullet bags, the small bomb bag before the bigger ones).

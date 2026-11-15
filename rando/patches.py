@@ -125,19 +125,51 @@ def start_item_params(actor):
     return {"Num": 1, "IsEquipDIrect": False, "IsSetMessageTargetActorName": False, "Actor": actor, "IsGetEvent": False}
 
 
-def starting_bags(romfs, codec, mod):
-    """the small quiver and seed bag given at the new game's start"""
-    vanilla = [a for a in evfl.read(mod.read(POUCH_ACTOR_FROM))[0]["actors"] if a["name"] == POUCH_ACTOR]
+def opening_with_bags(raw, pouch_actor_flow):
+    """OpeningEvent.bfevfl with the small quiver and seed bag added after its first event"""
+    vanilla = [a for a in evfl.read(pouch_actor_flow)[0]["actors"] if a["name"] == POUCH_ACTOR]
     if len(vanilla) != 1 or vanilla[0]["actions"] != [POUCH_ADD] or not vanilla[0]["params"]:
         raise ValueError("%s: not the PouchSystemActor known" % POUCH_ACTOR_FROM)
-    raw = mod.read(OPENING_FLOW)
     flow = evfl.read(raw)[0]
     first = [e for e in flow["events"] if e["name"] == OPENING_ANCHOR]
     if flow["entries"].get("Opening_LoadingKokiriForest") != flow["events"].index(first[0]) or \
             first[0]["params"].get("EventName") != "Dm_Kokiri_0000":
         raise ValueError("the opening's first event is not the one known")
-    mod.write(OPENING_FLOW, evfl_patch.add_actions(raw, OPENING_ANCHOR, POUCH_ACTOR, POUCH_ADD, vanilla[0]["params"],
-                                                   [(start_item_event(a), start_item_params(a)) for a in START_ITEMS]))
+    return evfl_patch.add_actions(raw, OPENING_ANCHOR, POUCH_ACTOR, POUCH_ADD, vanilla[0]["params"],
+                                  [(start_item_event(a), start_item_params(a)) for a in START_ITEMS])
+
+
+def starting_bags(romfs, codec, mod):
+    """the small quiver and seed bag given at the new game's start"""
+    mod.write(OPENING_FLOW, opening_with_bags(mod.read(OPENING_FLOW), mod.read(POUCH_ACTOR_FROM)))
+
+
+# The remake holds the clock at 15:00 until Impa's send-off from the castle (HavePlayedEvent.Dm_HrlField_0020; the game's code
+# reads it, not its data): no night, so no night-only Gold Skulltulas, no Dampe, before Zelda, which SoH's logic never
+# waits for (OotrR's story_fixes CLOCK_FLAG, its issue #40; here seed 7cc65105, 2026-11-15: no night with Zelda's Letter
+# from Saria, the castle not yet seen). The flag is set at the new game's start, after the starting bags: the clock runs
+# from the start. The send-off still plays (DoorOfTime_SendOff, from Impa's talk, an EventTransition not asking the flag);
+# the flag is read otherwise only by two children's lines (Npc_Hylia_043_Child, Npc_Hylia_Soldier_008_Child) and the
+# Zora's River owl (ZoraRiver_Child_Prefab_07cf, with Saria's Song).
+CLOCK_FLAG = "HavePlayedEvent.Dm_HrlField_0020"
+CLOCK_EVENT = "RandoClockRuns"
+
+
+GAME_DATA_ACTOR_FROM = "Event/EventFlow/Get_StoneOfWater.bfevfl.zs"   # (the opening has no GameDataActor: its parameters)
+
+
+def opening_with_clock(raw, game_data_actor_flow):
+    """OpeningEvent.bfevfl (with the starting bags) with the clock's flag set after them"""
+    actor = [a for a in evfl.read(game_data_actor_flow)[0]["actors"] if a["name"] == "GameDataActor" and not a["sub"]]
+    if len(actor) != 1 or not actor[0]["params"]:
+        raise ValueError("%s: not the GameDataActor known" % GAME_DATA_ACTOR_FROM)
+    return evfl_patch.add_actions(raw, start_item_event(START_ITEMS[-1]), "GameDataActor", "EventTriggerSetGameDataBool",
+                                  actor[0]["params"], [(CLOCK_EVENT, {"GameDataName": CLOCK_FLAG, "Value": True, "Index": -1})])
+
+
+def clock_runs(romfs, codec, mod):
+    """the clock running from the new game's start (after starting_bags)"""
+    mod.write(OPENING_FLOW, opening_with_clock(mod.read(OPENING_FLOW), mod.read(GAME_DATA_ACTOR_FROM)))
 
 
 # King Zora (child) stands aside by the water quest's step: his schedule for each step of Get_StoneOfWater (Pack/

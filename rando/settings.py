@@ -119,6 +119,8 @@ FIXED = (
      "can give the bomb bag first."),
     ("fixes", "Starting quiver and seed bag", "Always", "The remake's bow and slingshot hold no ammunition by "
      "themselves."),
+    ("fixes", "The clock from the start", "Always", "The remake holds the time at 15:00 until Impa's send-off from the "
+     "castle: no night (night-only Gold Skulltulas, Dampe) before Zelda, which SoH's logic does not wait for."),
     ("hints", "Hint clarity", "Clear", "Items and places by the names the game gives them, in the game's language."),
     ("hints", "Item hints", "By area", "SoH names the exact check (\"the frogs' final reward\") only for its always "
      "hints; its other item hints here say the area, as its named-item hints do."),

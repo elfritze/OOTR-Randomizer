@@ -422,27 +422,14 @@ def main():
         x, y = byml.read(a[patches.BOMB_LIFT])[0], byml.read(b[patches.BOMB_LIFT])[0]
         if y.get("LiftGrade") != patches.FREE_LIFT_GRADE or {k: v for k, v in x.items() if k != "LiftGrade"} !=                 {k: v for k, v in y.items() if k != "LiftGrade"}:
             problems.append("%s: bomb lift %r" % (rel, y.get("LiftGrade")))
-    # (the opening: the game's flow, the two starting bags added after its first event)
+    # (the opening: the game's flow, the two starting bags added after its first event, then the clock's flag)
     path = os.path.join(mod_romfs, *patches.OPENING_FLOW.split("/"))
-    if not os.path.exists(path):
-        problems.append("the opening does not give the small quiver and seed bag")
-    else:
-        a = evfl.read(codec.read(os.path.join(romfs, *patches.OPENING_FLOW.split("/"))))[0]
-        b = evfl.read(codec.read(path))[0]
-        n = len(a["events"])
-        anchor = [e["name"] for e in a["events"]].index(patches.OPENING_ANCHOR)
-        added = b["events"][n:]
-        ok = len(added) == len(patches.START_ITEMS) and b["events"][anchor]["next"] == n
-        for k, (e, item) in enumerate(zip(added, patches.START_ITEMS)):
-            actor = b["actors"][e.get("actor", 0)]
-            ok = ok and e["type"] == "action" and actor["name"] == patches.POUCH_ACTOR and \
-                actor["actions"][e["action"]] == patches.POUCH_ADD and e["params"] == patches.start_item_params(item) and \
-                e["next"] == (n + k + 1 if k + 1 < len(added) else a["events"][anchor]["next"])
-        b["events"][anchor]["next"] = a["events"][anchor]["next"]
-        ok = ok and b["events"][:n] == a["events"] and b["actors"][:len(a["actors"])] == a["actors"] and \
-            b["entries"] == a["entries"]
-        if not ok:
-            problems.append("the opening: not the game's with the starting quiver and seed bag")
+    game_read = lambda rel: codec.read(os.path.join(romfs, *rel.split("/")))
+    want_opening = patches.opening_with_clock(patches.opening_with_bags(game_read(patches.OPENING_FLOW),
+                                                                        game_read(patches.POUCH_ACTOR_FROM)),
+                                              game_read(patches.GAME_DATA_ACTOR_FROM))
+    if not os.path.exists(path) or evfl.read(codec.read(path)) != evfl.read(want_opening):
+        problems.append("the opening: not the game's with the starting quiver and seed bag, then the clock running")
     # (the water quest: the game's flow, the arrival scene marked played after the letter's step)
     path = os.path.join(mod_romfs, *patches.WATER_FLOW.split("/"))
     if not os.path.exists(path):
