@@ -18,9 +18,21 @@ COLOR_TAG = b"\x0e\x00\x00\x03\x00\x02\x00"
 RED, COLOR_END = 0, 0xFFFF
 
 
-def colored(text, color=RED):
-    """text's bytes in a colour, then the box's own colour again"""
-    return COLOR_TAG + struct.pack("<H", color) + text.encode("utf-8") + COLOR_TAG + struct.pack("<H", COLOR_END)
+def colored(text, color=RED, back=COLOR_END):
+    """text's bytes in a colour, then back to `back` (the box's own colour by default; a message that sets its own colour
+    first, as the gossip stones' grey, goes back to that)"""
+    return COLOR_TAG + struct.pack("<H", color) + text.encode("utf-8") + COLOR_TAG + struct.pack("<H", back)
+
+
+def leading_tags(raw):
+    """(the tags a message starts with, before its first character, and the colour they set: COLOR_END if none)"""
+    i, color = 0, COLOR_END
+    while i < len(raw) and raw[i] == 0x0E:
+        size = struct.unpack_from("<H", raw, i + 5)[0]
+        if raw[i:i + 7] == COLOR_TAG:
+            color = struct.unpack_from("<H", raw, i + 7)[0]
+        i += 7 + size
+    return raw[:i], color
 
 
 def label_hash(label, buckets):
@@ -76,6 +88,12 @@ class Msbt:
         self.labels[label] = len(self.texts)
         self.texts.append(raw + b"\0")
         self.bucket_order.setdefault(label_hash(label, self.buckets), []).append(label)
+
+    def set(self, label, raw):
+        """an existing label's message replaced (its bytes, NUL added)"""
+        if label not in self.labels:
+            raise ValueError("no label %s" % label)
+        self.texts[self.labels[label]] = bytes(raw) + b"\0"
 
     def write(self):
         lbl = bytearray(struct.pack("<I", self.buckets))

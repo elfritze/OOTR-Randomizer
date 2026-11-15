@@ -7,9 +7,9 @@ import os
 import random
 import shutil
 
-from . import chests, fill, gifts, patches, pickups
+from . import chests, fill, gifts, hints, patches, pickups
 from . import items as I
-from .formats import zs
+from .formats import sarc, zs
 from .logic import soh_regions as R
 from .logic.search import World, item_info, vanilla_items
 from .mod import Mod
@@ -218,19 +218,32 @@ def generate(romfs, mods_dir, seed, settings, log=print):
         qol.skippable_title_and_credits(romfs, codec, mod)
     if settings["skulltulas_day_and_night"]:
         qol.skulltulas_day_and_night(romfs, codec, mod)
+    stones = {}
+    if settings["gossip_stone_hints"] != "none":   # (after Darunia's line: both change the message archives)
+        stones = hints.make(s.world, s.locs, s.fixed, placed, s.closed, settings["hint_distribution"],
+                            random.Random(seed_number(seed) ^ HINT_SEED), log=log)
+        hints.write(romfs, mod, stones, settings["gossip_stone_hints"])
     mod.finish()
     spoiler = write_spoiler(out, seed, settings, s.world, s.locs, s.fixed, placed, s.closed)
+    if stones:
+        english = hints.Names(sarc.read(mod.read("Mals/USen.Product.110.sarc.zs")))
+        with open(spoiler, "a", encoding="utf-8") as f:
+            f.write("\nGossip stones (where each stands, its rumor's label, what it says):\n")
+            for label, hint in sorted(stones.items(), key=lambda kv: (hints.STONES[kv[0]][0], kv[0])):
+                f.write("  %-20s %-34s %s\n" % (hints.STONES[label][0], label, hints.english(hint, english)))
     with open(os.path.join(out, "placements.json"), "w", encoding="utf-8") as f:   # (what each check got: tools)
         json.dump({"seed": seed, "settings": settings,
                    "chests": {str(h): {"item": a, "event": e} for h, (a, e) in sorted(contents.items())},
                    "gifts": {lid: a for lid, a in sorted(given.items())},
-                   "loose": {str(h): a for h, a in sorted(loose.items())}}, f, indent=1)
+                   "loose": {str(h): a for h, a in sorted(loose.items())},
+                   "hints": dict(sorted(stones.items()))}, f, indent=1)
     log("seed %s: %d checks (%d chests, %d gifts, %d lying in the world), mod in %s, spoiler %s" % (
         seed, len(placed), sum(1 for l in s.locs if l.kind == "chest"), len(given),
         sum(1 for l in s.locs if l.kind == "loose"), out, spoiler))
     return placed
 
 
+HINT_SEED = 0x6057   # (the hints draw from their own generator: the same seed's items whatever the hint settings)
 ARCHIVE = "rando-archive"   # (beside mods: Longshot loads every folder inside mods)
 
 

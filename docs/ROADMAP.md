@@ -36,7 +36,9 @@ Order: what can leave a seed unfinishable first, then what players expect from a
 8. **Shops and scrubs** (one-time buys), **keys anywhere** (key rings, boss keys by dungeon).
 9. **Settings and presets**: a Settings page in SoH's groups done 2026-11-14 (shuffle songs / gifts / freestanding,
    timesavers, world; SoH's other choices shown fixed). Left: presets, a **spoiler page** in the app.
-10. **Hints** from the gossip stones (neither randomizer has them: a real edge).
+10. **Hints** from the gossip stones (neither randomizer has them: a real edge): done 2026-11-14 (`rando/hints.py`;
+    SoH's kinds and distributions, all 16 languages; to see in game). Left: SoH's per-check sentences for item hints
+    (now by area), its static hints (altar, Ganondorf, Sheik, Saria, Frogs...), hint clarity (obscure/ambiguous).
 11. **Entrance shuffle** (neither has it; large).
 
 ## P2: the app

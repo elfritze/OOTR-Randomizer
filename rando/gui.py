@@ -30,6 +30,13 @@ BRAND = "Lost Woods"
 TAGLINE = "Ocarina of Time (Switch 2 remake) randomizer  ·  every path leads somewhere new"
 
 
+def option_var(option, saved):
+    """a setting's variable: on/off, or its choice's value (a saved value it no longer has: its default)"""
+    if option.choices:
+        return tk.StringVar(value=saved if saved in dict(option.choices) else option.default)
+    return tk.BooleanVar(value=saved if isinstance(saved, bool) else option.default)
+
+
 def load_state():
     try:
         with open(STATE_FILE, encoding="utf-8") as f:
@@ -130,7 +137,7 @@ class Window:
         self.page = tk.StringVar(value="generate")
         self.pages = {}
         saved = self.state.get("settings", {})
-        self.options = {o.key: tk.BooleanVar(value=bool(saved.get(o.key, o.default))) for o in settings.OPTIONS}
+        self.options = {o.key: option_var(o, saved.get(o.key, o.default)) for o in settings.OPTIONS}
         self._nav("generate", "  ◆  Generate")
         self.pages["generate"] = self._build_generate(ttk.Frame(self.content))
         self._nav("settings", "  ☰  Settings")
@@ -390,8 +397,16 @@ class Window:
             for o in (o for o in settings.OPTIONS if o.section == key):
                 row = ttk.Frame(body, style="CardBody.TFrame")
                 row.pack(fill="x", anchor="w")
-                ttk.Checkbutton(row, text="  " + o.label, variable=self.options[o.key],
-                                style="Switch.TCheckbutton").pack(side="left")
+                if o.choices:   # (its label, then one button per choice)
+                    ttk.Label(row, text=o.label, style="CardStrong.TLabel").pack(anchor="w", pady=(px(4), px(2)))
+                    seg = ttk.Frame(body, style="CardBody.TFrame")
+                    seg.pack(fill="x", anchor="w", padx=(px(44), px(0)))
+                    for value, label in o.choices:
+                        ttk.Radiobutton(seg, text=label, value=value, variable=self.options[o.key],
+                                        style="SegCard.TRadiobutton").pack(side="left", padx=(px(0), px(2)))
+                else:
+                    ttk.Checkbutton(row, text="  " + o.label, variable=self.options[o.key],
+                                    style="Switch.TCheckbutton").pack(side="left")
                 if not o.seen:
                     tk.Label(body, text=" not yet tested in game ", background=C["card2"], foreground=C["gold"],
                              font=self.fonts.small).pack(anchor="w", padx=(px(52), px(0)), pady=(px(2), px(4)))

@@ -10,7 +10,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-from rando import chests, generate, gifts, patches, pickups, qol, settings as rando_settings  # noqa: E402
+from rando import chests, generate, gifts, hints, patches, pickups, qol, settings as rando_settings  # noqa: E402
 from rando.formats import evfl  # noqa: E402
 from rando.events import EVENT_SETTING  # noqa: E402
 from rando.formats import byml, msbt, restbl, sarc, zs  # noqa: E402
@@ -19,6 +19,73 @@ from rando.mod import RSTB, align32  # noqa: E402
 
 def key(v):
     return json.dumps(v, sort_keys=True, default=str)
+
+
+def hint_problems(romfs, codec, mod_romfs, chosen, stones, plan):
+    """the gossip stones: their talk as the setting says (the game's events, but where the talk starts and Event6's next),
+    a hint on every stone when hints are on (none when off), and each item hint naming what its check holds"""
+    out = []
+    rule = chosen["gossip_stone_hints"]
+    rel = hints.GOSSIP_FLOW
+    path = os.path.join(mod_romfs, *rel.split("/"))
+    game = codec.read(os.path.join(romfs, *rel.split("/")))
+    if rule in ("none", "mask_of_truth"):
+        if os.path.exists(path):
+            out.append("%s in the mod (the stones' rule is the game's: %s)" % (rel, rule))
+    elif not os.path.exists(path):
+        out.append("%s not in the mod (the stones' rule: %s)" % (rel, rule))
+    else:
+        a, b = evfl.read(game)[0], evfl.read(codec.read(path))[0]
+        names = [e["name"] for e in b["events"]]
+        ev = {e["name"]: e for e in b["events"]}
+        first = b["events"][b["entries"]["Talk"]]
+        ok = names[ev[hints.TALK_INIT]["next"]] == hints.TALK_SECRET
+        if rule == "need_nothing":
+            ok = ok and first["name"] == hints.TALK_INIT and len(b["events"]) == len(a["events"])
+        else:
+            actor = b["actors"][first.get("actor", 0)]
+            ok = ok and first["name"] == hints.AGONY_EVENT and first["type"] == "switch" and \
+                first["params"] == {"Actor": hints.AGONY, "Num": 1} and actor["name"] == "PouchSystemActor" and \
+                actor["queries"][first["query"]] == "EventQueryIsExistInPouch" and \
+                {k: names[v] for k, v in first["cases"].items()} == {0: hints.TALK_INIT, 1: hints.TALK_NAVI} and \
+                len(b["events"]) == len(a["events"]) + 1
+        olds = [dict(e) for e in b["events"][:len(a["events"])]]
+        for e in olds:
+            if e["name"] == hints.TALK_INIT:
+                e["next"] = a["events"][[x["name"] for x in a["events"]].index(hints.TALK_INIT)]["next"]
+        entries = dict(b["entries"], Talk=a["entries"]["Talk"])
+        if not (ok and olds == a["events"] and entries == a["entries"]):
+            out.append("%s: not the game's with the stones talking as %s" % (rel, rule))
+    if rule == "none":
+        if stones:
+            out.append("hints planned though gossip stone hints are off")
+        return out
+    if set(stones) != set(hints.STONES):
+        out.append("hints: not one per stone (%d planned, %d stones)" % (len(stones), len(hints.STONES)))
+    table = {l["id"]: l for l in generate.load_table()["locations"]}
+    gift_table = {c["id"]: c for c in generate.load_gifts()["checks"]}
+
+    def holds(lid):
+        if lid in table:
+            c = plan["chests"].get(str(table[lid]["hash"]))
+            return c and c["item"]
+        if lid in plan.get("gifts", {}):
+            return plan["gifts"][lid]
+        if lid in gift_table:
+            for a in gift_table[lid].get("loose") or []:
+                if str(a["hash"]) in plan.get("loose", {}):
+                    return plan["loose"][str(a["hash"])]
+        return None
+    from rando import items as I
+    for label, h in sorted(stones.items()):
+        if h["kind"] in ("item", "always"):
+            got = holds(h["location"])
+            if got is not None and I.canonical(got) != I.canonical(h["item"]):
+                out.append("hint on %s: %s holds %s, not %s" % (label, h["location"], got, h["item"]))
+        if h["kind"] in ("woth", "foolish", "item", "always") and h.get("location") and \
+                hints.area_of(h["location"], (table.get(h["location"]) or {}).get("map")) != h["area"]:
+            out.append("hint on %s: %s is not in %s" % (label, h["location"], h["area"]))
+    return out
 
 
 def main():
@@ -107,6 +174,8 @@ def main():
                                                                   patches.TALK_FLOW)}
     if chosen["fast_chests"]:   # (checked on their own below)
         own |= {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (qol.BIG_CHEST_FLOW, qol.SMALL_CHEST_FLOW)}
+    if chosen["gossip_stone_hints"] in ("need_nothing", "stone_of_agony"):   # (the stones' talk: hint_problems)
+        own.add(hints.GOSSIP_FLOW.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
     if own & flows:   # (those flows are checked on their own below, without gift edits)
         problems.append("a gift edit in %s (its own check does not cover gifts)" % sorted(own & flows))
     for f in sorted((flows | in_mod) - own):
@@ -279,15 +348,21 @@ def main():
         problems.append("%s: not the game's with Darunia's events loading the item window" %
                         rando_events.GAME_ANALYZED_EVENT_INFO)
     # (Darunia's line: each message archive the game's, his message file with the gift's label only)
+    # (and the gossip stones' rumors replaced by the plan's hints)
     game_only = type("GameOnly", (), {"read": lambda self, rel: codec.read(os.path.join(romfs, *rel.split("/")))})()
+    stones = plan.get("hints") or {}
+    problems += hint_problems(romfs, codec, mod_romfs, chosen, stones, plan)
+    english_names = hints.Names(sarc.read(game_only.read("%s/%s" % (patches.MALS, hints.ENGLISH))))
     for rel, want_files in patches.gift_message_files(romfs, game_only).items():
         path = os.path.join(mod_romfs, *rel.split("/"))
         if not os.path.exists(path):
             problems.append("%s not in the mod (Darunia's line has no text)" % rel)
             continue
         got = sarc.read(codec.read(path))
+        if stones:
+            want_files = hints.with_hints(rel.split("/")[-1], want_files, english_names, stones)
         if got != want_files:
-            problems.append("%s: not the game's with Darunia's line added" % rel)
+            problems.append("%s: not the game's with Darunia's line added%s" % (rel, " and the hints" if stones else ""))
         elif msbt.read(got[patches.GIFT_MSBT]).get(patches.GIFT_LABEL) != patches.gift_message(rel.split("/")[-1], msbt.read(
                 got[patches.POUCH_MSBT]).text(patches.BRACELET_NAME)) + b"\0":
             problems.append("%s: Darunia's line is not the one written" % rel)

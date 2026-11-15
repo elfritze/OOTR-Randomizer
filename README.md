@@ -31,10 +31,20 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Skippable automatic dialogues: the 12 step-started sequences (Navi, minigame rules) skip with + | on | not yet |
 | Skippable title demo and credits | on | not yet |
 | Night Gold Skulltulas also by day (30) | off | not yet |
+| Gossip stone hints: No hints / **Need nothing** / Mask of Truth / Stone of Agony | Need nothing | not yet |
+| Hint distribution: Useless / **Balanced** / Strong / Very strong | Balanced | not yet |
 
 Off, a shuffle setting leaves those checks with the game's own item (logic counts it where it is). The quality-of-life
 settings follow the OotrR randomizer's patches (MIT), reimplemented on this project's formats (`rando/formats/evfl_edit.py`
 writes any change to a flowchart and reads it back).
+
+Gossip stone hints (`rando/hints.py`) follow SoH's: its distributions (way of the hero, foolish areas, item hints, its
+always hints of the checks shuffled here, the trials' barrier, junk), the way of the hero worked out as SoH does (the
+playthrough pared down, then each check the game cannot be beaten without), a hint's first copy on a stone reachable
+without its item. Each of the remake's 37 stones says its rumor by its own name (`GOSSIP_<AREA>_NN` in
+`EventFlowMsg/GossipStone.msbt`), so a hint replaces that message in all 16 languages, with the game's own names of
+areas (`LocationMsg/Location.msbt`) and items in red; a junk hint keeps the stone's rumor. The spoiler lists every stone.
+Need nothing and Stone of Agony change the stones' talk (`GossipStone.bfevfl`); Mask of Truth is the game's own rule.
 
 ## Use
 
@@ -54,6 +64,7 @@ its chests opened. To play without the mod, rename the folder to start with `_`.
 | `--seed TEXT` | The same seed gives the same game. Without it, a new random seed |
 | `--no-skip-intro` | Play the new game's two opening movies (skipped by default) |
 | `--no-<setting>` / `--<setting>` | Any setting of the table above off (on by default) or on (off by default), e.g. `--no-fast-chests`, `--skulltulas-day-and-night` |
+| `--gossip-stone-hints CHOICE` / `--hint-distribution CHOICE` | `none`, `need_nothing`, `mask_of_truth`, `stone_of_agony` / `useless`, `balanced`, `strong`, `very_strong` |
 
 ## Sharing
 
