@@ -41,6 +41,10 @@ OPTIONS = (
     Option("shuffle_boss_keys", "dungeon", "Boss keys",
            "As maps and compasses (SoH: Boss Key Shuffle), Ganon's Castle's boss key with the others.",
            "own_dungeon", False, PLACES),
+    Option("shuffle_quest_items", "shuffle", "Shuffle Zelda's Letter and the Light Arrows",
+           "Zelda's Letter (her scene in the castle garden) and the Light Arrows (her scene in the Temple of Time) are "
+           "placed with the other items; their scenes give the item placed there. The letter, wherever found, opens "
+           "Kakariko's gate.", False, False),
     Option("shuffle_great_fairies", "shuffle", "Shuffle Great Fairies",
            "The 6 Great Fairies' gifts (Din's Fire, Farore's Wind, Nayru's Love, magic, double magic, double defense) are "
            "placed with the other items, each fairy giving the item placed there once. They still ask their rupees "

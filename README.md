@@ -26,6 +26,7 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Shuffle songs | on | yes |
 | Shuffle gifts and prizes (36 NPC and minigame checks, Darunia's bracelet among them) | on | yes (Darunia: not yet) |
 | Shuffle freestanding Heart Pieces (and bosses' Heart Containers, 22) | on | yes |
+| Shuffle Zelda's Letter and the Light Arrows (her two scenes give the item placed there) | off | not yet |
 | Shuffle Great Fairies (their 6 gifts in the pool; Nayru's and Ganon's Castle's need the 500-rupee wallet) | off | not yet |
 | Shuffle dungeon rewards: **Vanilla** / End of dungeon (the 9 stones and medallions among the 8 bosses and Rauru) | Vanilla | not yet |
 | Maps and compasses: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
@@ -84,6 +85,11 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 - **NPCs' and minigames' prizes** (36: the Skull Kid, the scrubs' upgrades, bowling, the shooting galleries, the House of
   Skulltula, fishing, the frogs, horseback archery, Dampe, the dog, Talon, Anju, King Zora, Darunia...) give the item placed
   there: `data/gifts.json` names each event parameter that says what is given.
+- **Zelda's Letter and the Light Arrows can be shuffled**: her garden scene gives its item by the get event NPCs use
+  (any item), her Temple of Time scene by its get window (an `Item_` actor only, as Darunia). The letter, found
+  anywhere, is what Kakariko's guard takes to open the gate (his own flow checks the pouch). The ocarinas are not yet
+  in: an ocarina found away from Saria's bridge needs OotrR's ActionGuide fix to be playable, and the Ocarina of
+  Time's scene teaches the Song of Time. Not yet seen in game.
 - **Great Fairies can be shuffled**: each fairy's gift event gives the item placed there, and her "had it?" switch
   (IsGet of her own item: with another item there she would sell it again on every visit) asks a saved flag of her own
   instead (`rando/gamedata.py` adds it to the game's data list), set just before her gift. She still asks the game's

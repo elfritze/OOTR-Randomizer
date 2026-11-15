@@ -58,6 +58,8 @@ ITEMS = {
     "Item_Medal_Forest": "RG_FOREST_MEDALLION", "Item_Medal_Fire": "RG_FIRE_MEDALLION",
     "Item_Medal_Water": "RG_WATER_MEDALLION", "Item_Medal_Spirit": "RG_SPIRIT_MEDALLION",
     "Item_Medal_Shadow": "RG_SHADOW_MEDALLION", "Item_Medal_Light": "RG_LIGHT_MEDALLION",
+    # (quest items: in the pool with settings shuffle_quest_items)
+    "Item_ZeldaLetter": "RG_ZELDAS_LETTER", "Item_Arrow_Light": "RG_LIGHT_ARROWS",
     # (the Great Fairies' gifts: in the pool with settings shuffle_great_fairies)
     "Item_DinFire": "RG_DINS_FIRE", "Item_FaroreWind": "RG_FARORES_WIND", "Item_NayruLove": "RG_NAYRUS_LOVE",
     "Item_FairyBless_MP": "RG_PROGRESSIVE_MAGIC_METER", "Item_FairyBless_MPDouble": "RG_PROGRESSIVE_MAGIC_METER",
@@ -104,8 +106,9 @@ NOT_CHEST = {"Obj_Armor_Zora"}   # (its chest form is not known: the remake's Zo
 
 
 # Checks giving their item by a silent pouch add (PouchSystemActor.EventTriggerAddOrRemovePouchContent: proven for Item_
-# actors, the starting bags and Darunia's bracelet): an Item_ actor only, no song, no dungeon item.
-POUCH_ADD_CHECKS = {"RC_GC_DARUNIAS_JOY"}
+# actors, the starting bags and Darunia's bracelet) or a cutscene's GetPouchContent window (the rewards' and Zelda's Light
+# Arrows' way, known for Item_ actors only): an Item_ actor only, no song, no dungeon item.
+POUCH_ADD_CHECKS = {"RC_GC_DARUNIAS_JOY", "RC_TOT_LIGHT_ARROWS_CUTSCENE"}
 # The dungeon rewards and the checks giving them (the bosses' and Rauru's scenes): each only with the other (SoH's End of
 # Dungeon), when settings shuffle_dungeon_rewards puts them in the pool.
 REWARDS = {"Item_Stone_Forest", "Item_Stone_Fire", "Item_Stone_Water", "Item_Medal_Forest", "Item_Medal_Fire",

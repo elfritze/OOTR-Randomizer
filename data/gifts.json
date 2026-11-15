@@ -2093,6 +2093,48 @@
    "confidence": "medium",
    "great_fairy": true,
    "notes": "Her gift's Dm_SY_GetInEvent ActorName; her had-it switch asks RandoGreatFairy_Courage instead of IsGet.Item_FairyBless_DefenseDouble, set just before her gift (patches.great_fairies_once). She asks 500 rupees (the 500-rupee wallet: RG_ADULT_WALLET, one wallet upgrade). Settings shuffle_great_fairies. Not yet seen in game."
+  },
+  {
+   "id": "RC_HC_ZELDAS_LETTER",
+   "rc": "RC_HC_ZELDAS_LETTER",
+   "kind": "gift",
+   "vanilla": "Item_ZeldaLetter",
+   "edits": [
+    {
+     "flow": "Dm_HrlCastle_0050",
+     "event": 238,
+     "param": "ActorName",
+     "value": "Item_ZeldaLetter"
+    }
+   ],
+   "soh_region": "RR_HC_GARDEN",
+   "rule": "logic->Get(LOGIC_MET_ZELDA)",
+   "name": "Zelda's Letter",
+   "area": "Hyrule Castle",
+   "confidence": "medium",
+   "quest": true,
+   "notes": "Zelda's scene Dm_HrlCastle_0050 gives it by Dm_SY_GetInEvent (Event59). The letter itself, wherever found, is shown to Kakariko's gate guard (Npc_Hylia_Soldier_003 ShowItem_ZeldaLetter: he takes it and opens the gate), as SoH's logic has it. Settings shuffle_quest_items. Not yet seen in game."
+  },
+  {
+   "id": "RC_TOT_LIGHT_ARROWS_CUTSCENE",
+   "rc": "RC_TOT_LIGHT_ARROWS_CUTSCENE",
+   "kind": "gift",
+   "vanilla": "Item_Arrow_Light",
+   "edits": [
+    {
+     "flow": "Dm_TimeTemple_0130",
+     "event": 8,
+     "param": "ActorName",
+     "value": "Item_Arrow_Light"
+    }
+   ],
+   "soh_region": "RR_TEMPLE_OF_TIME",
+   "rule": null,
+   "name": "Zelda's Light Arrows",
+   "area": "Temple of Time",
+   "confidence": "medium",
+   "quest": true,
+   "notes": "Zelda's scene Dm_TimeTemple_0130 gives them by its GetPouchContent window (Event85): an Item_ actor only (items.POUCH_ADD_CHECKS); its fanfare and effect events keep the arrows' (looks only). No event asks IsGet.Item_Arrow_Light but the scrubs' stock. Settings shuffle_quest_items. Not yet seen in game."
   }
  ],
  "excluded": [
@@ -2122,19 +2164,9 @@
    "reason": "Master Sword: story-bound (DoorOfTime), not shuffled"
   },
   {
-   "id": "RC_TOT_LIGHT_ARROWS_CUTSCENE",
-   "rc": "RC_TOT_LIGHT_ARROWS_CUTSCENE",
-   "reason": "Light Arrows: story cutscene (Dm_TimeTemple_0130), not shuffled in v1"
-  },
-  {
    "id": "RC_LH_SUN",
    "rc": "RC_LH_SUN",
    "reason": "Fire Arrows at the lake: cutscene-bound world actor (Obj_Arrow_Fire 4598657944866228526), not shuffled in v1"
-  },
-  {
-   "id": "RC_HC_ZELDAS_LETTER",
-   "rc": "RC_HC_ZELDAS_LETTER",
-   "reason": "Zelda's Letter: story item, not shuffled in v1"
   },
   {
    "id": "RC_HC_MALON_EGG",

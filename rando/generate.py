@@ -119,6 +119,8 @@ class Setup:
         self.gifts = load_gifts() if with_gifts else {"checks": [], "excluded": []}
 
         def kept(c):
+            if c.get("quest"):
+                return settings is not None and settings["shuffle_quest_items"]
             if c.get("great_fairy"):
                 return settings is not None and settings["shuffle_great_fairies"]
             if c.get("reward"):   # (the dungeon rewards: shuffled among themselves, or where the game gives them)
