@@ -92,7 +92,9 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 - **The Fairy Ocarina can be shuffled**: Saria's bridge scene adds the item placed there and shows its window (an
   `Item_` actor only). An ocarina found away from her bridge never got its action guide (OotrR saw it unplayable):
   OotrR's fix, rewritten here, runs that guide (once: the game shows it once) on the first item get with the Fairy
-  Ocarina held. The Ocarina of Time stays at the moat (its scene teaches the Song of Time, Link playing along). To see:
+  Ocarina held. The ocarina never goes in a chest or an NPC's hands: it has no get pose (OotrR: those crashed the
+  game), so it lies in the world (a pickup; OotrR's are built on the token, ours on the Fire Arrows: to see) or stays
+  Saria's. The Ocarina of Time stays at the moat (its scene teaches the Song of Time, Link playing along). To see:
   the Fairy Ocarina got after the Ocarina of Time (a downgrade?). Not yet seen in game.
 - **Great Fairies can be shuffled**: each fairy's gift event gives the item placed there, and her "had it?" switch
   (IsGet of her own item: with another item there she would sell it again on every visit) asks a saved flag of her own

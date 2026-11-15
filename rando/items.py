@@ -118,10 +118,20 @@ REWARD_CHECKS = {"RC_QUEEN_GOHMA", "RC_KING_DODONGO", "RC_BARINADE", "RC_PHANTOM
                  "RC_TWINROVA", "RC_BONGO_BONGO", "RC_GIFT_FROM_RAURU"}
 
 
+# The ocarinas are the accessory Link plays, not an item he holds up: their packs have no Item_EventObject_Base parent, get
+# pose or animation, so the item get pose of chests and NPCs' gifts crashed the game (OotrR issue #15: the rolling Goron,
+# a chest; its item_forms.OCARINAS). The game hands them out only in its two scenes, by the get display without a pose:
+# there, and lying in the world (a pickup's own get), only.
+OCARINAS = {"Item_Ocarina_Fairy", "Item_Ocarina_Time"}
+OCARINA_CHECKS = {"RC_LW_GIFT_FROM_SARIA", "RC_HF_OCARINA_OF_TIME_ITEM"}
+
+
 def fits(actor, location_id, kind):
     """allowed(), and what a check giving by a silent add can give"""
     if not allowed(actor, kind):
         return False
+    if actor in OCARINAS:
+        return kind == "loose" or location_id in OCARINA_CHECKS
     if (actor in REWARDS) != (location_id in REWARD_CHECKS):
         return False
     if location_id in POUCH_ADD_CHECKS:
