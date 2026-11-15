@@ -126,7 +126,7 @@ DONE_FLAGS = {
 SONG_FLOW = "Dm_MelodyGet_"
 # (items a check can hold that the game also gives elsewhere, or starts with: holding one says nothing about a check)
 NOT_UNIQUE_PREFIXES = ("TBox_", "Tbox_", "Obj_Heart", "Item_Dungeon_", "Item_Bottle", "Item_ScrubBusinessSeed",
-                       "Obj_Armor_")
+                       "Obj_Armor_", "Item_SmallKey_", "Item_BossKey_", "Item_Map_", "Item_Compass_")
 NOT_UNIQUE_WORDS = ("Bundle", "Rupee")
 
 # (equipment the save names by its equipped form: IsGet.<name> -> the pool's actor)
@@ -346,13 +346,14 @@ class Model:
         fixed_keys = collections.Counter(rg for rg in self.setup.fixed.values() if rg.endswith("_SMALL_KEY"))
         keys = collections.defaultdict(list)
         for c in self.checks:
-            actor = I.canonical(c.item)
-            if actor not in I.DUNGEON_ITEMS or c.folder not in I.DUNGEONS:
+            own = I.dungeon_item(I.canonical(c.item), c.folder)   # (the game's one in its dungeon, or one of its own)
+            if own is None:
                 continue
-            base = "DungeonInfo.%s." % c.folder
+            actor, folder = own
+            base = "DungeonInfo.%s." % folder
             kind = I.DUNGEON_ITEMS[actor]
             if kind == "SMALL_KEY":
-                keys[c.folder].append(c)
+                keys[folder].append(c)
             elif bools.get(savefile.murmur3(base + {"MAP": "IsGetMap", "COMPASS": "IsGetCompass",
                                                     "BOSS_KEY": "IsGetBossKey"}[kind])):
                 out.setdefault(c.id, "dungeon item")

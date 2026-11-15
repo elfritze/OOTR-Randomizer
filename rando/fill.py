@@ -1,5 +1,5 @@
-"""Placing the chests' items so that the game can be finished, as SoH fills (fill.cpp): dungeon items first, in their own dungeon;
-then the progression items by assumed fill (each placed where it is reachable with every item not yet placed); then the rest.
+"""Placing the chests' items so that the game can be finished, as SoH fills (fill.cpp): dungeon items first, where the settings
+let each kind go (own dungeon, any dungeon, overworld, anywhere: PLACES); then the progression items by assumed fill (each placed where it is reachable with every item not yet placed); then the rest.
 A seed is checked by playing it from a new game (World.collect) and drawn again when it fails."""
 import collections
 
@@ -17,21 +17,51 @@ class Location:
     def __init__(self, id, hash, remake_map, vanilla, name, kind="chest", small_chest=False):
         self.id, self.hash, self.map, self.vanilla, self.name, self.kind = id, hash, remake_map, vanilla, name, kind
         self.dungeon = remake_map if remake_map in I.DUNGEONS else None
-        self.small_chest = small_chest   # (a chest of the small chests' flow: no map, compass or boss key)
+        self.small_chest = small_chest   # (a chest of the small chests' flow: the game's map, compass and boss key not given)
 
 
 def _soh(actor, loc):
     return I.soh_item(actor, loc.map)
 
 
-def fill(world, locations, fixed, progression, rng, closed=(), attempts=20):
+# (where a dungeon item may go, by the settings' choice: (its dungeon, a location) -> may it?)
+PLACES = {"own_dungeon": lambda d, l: l.map == d, "any_dungeon": lambda d, l: l.dungeon is not None,
+          "overworld": lambda d, l: l.dungeon is None, "anywhere": lambda d, l: True}
+# (the setting deciding each kind of dungeon item)
+PLACE_SETTING = {"Item_Dungeon_Map": "shuffle_maps_compasses", "Item_Dungeon_Compass": "shuffle_maps_compasses",
+                 "Item_Dungeon_SmallKey": "shuffle_small_keys", "Item_Dungeon_BossKey": "shuffle_boss_keys"}
+
+
+def soh_options(places):
+    """SoH's dungeon item settings for these places, for what hints count as major (Item::IsMajorItem: a key outside its
+    dungeon is). Not for logic: its one rule reading them, IsFireLoopLocked, models SoH's game unlocking the Fire Temple's
+    boss key loop door itself when keys stay home (one logical key given); the remake's door is locked whatever the
+    setting, which data/locations.json's Fire Temple rules already count with SoH's own-dungeon numbers (all 8 real keys
+    and that logical one), so logic keeps SoH's defaults and the same 8 keys open the same doors anywhere they are.
+    (Own dungeon: as the game has them, which SoH treats alike.)"""
+    def value(prefix, place):
+        return prefix + ("VANILLA" if place == "own_dungeon" else place.upper())
+    return {"RSK_SHUFFLE_MAPANDCOMPASS": value("RO_DUNGEON_ITEM_LOC_", places["Item_Dungeon_Map"]),
+            "RSK_KEYSANITY": value("RO_DUNGEON_ITEM_LOC_", places["Item_Dungeon_SmallKey"]),
+            "RSK_BOSS_KEYSANITY": value("RO_DUNGEON_ITEM_LOC_", places["Item_Dungeon_BossKey"]),
+            "RSK_GANONS_BOSS_KEY": value("RO_GANON_BOSS_KEY_", places["Item_Dungeon_BossKey"])}
+
+
+def places_of(settings=None):
+    """{the game's dungeon item: its PLACES choice} from the settings (none: own dungeon, as the game has them)"""
+    return {k: (settings or {}).get(v, "own_dungeon") for k, v in PLACE_SETTING.items()}
+
+
+def fill(world, locations, fixed, progression, rng, closed=(), attempts=20, places=None):
     """locations: [Location]; fixed: {location id: RG} for the checks the randomizer leaves as they are (they count in logic);
     progression: the set of RG items that matter to logic; closed: the ids of locations logic does not reach even with every
-    item (a remake chest whose way in is not known yet): they get items logic does not need. Returns {location id: actor}."""
+    item (a remake chest whose way in is not known yet): they get items logic does not need; places: places_of(settings).
+    Returns {location id: actor}, a dungeon item by its own name (items.own_actor)."""
+    places = places or places_of()
     last = None
     for _ in range(attempts):
         try:
-            placed = _attempt(world, locations, fixed, progression, rng, set(closed))
+            placed = _attempt(world, locations, fixed, progression, rng, set(closed), places)
             _verify(world, [l for l in locations if l.id not in closed], fixed, placed)
             return placed
         except FillError as e:
@@ -54,6 +84,12 @@ def _reachable(world, fixed, owned, placed, by_id):
 KEYS = ("Item_Dungeon_SmallKey", "Item_Dungeon_BossKey")
 
 
+def _kind(actor):
+    """the game's actor of a dungeon item (its kind), or None"""
+    d = I.dungeon_item(actor)
+    return d[0] if d else None
+
+
 def _reach_without(world, rg, owned, fixed, placed_items):
     """the locations reachable with none of rg from anywhere: owned, the fixed checks or the placed items"""
     owned = collections.Counter({k: v for k, v in owned.items() if k != rg})
@@ -62,13 +98,14 @@ def _reach_without(world, rg, owned, fixed, placed_items):
     return world.reachable(have)
 
 
-def _attempt(world, locations, fixed, progression, rng, closed):
+def _attempt(world, locations, fixed, progression, rng, closed, places):
     """1. each dungeon's keys forward: its k-th small key where it is reachable with the k-1 placed before it (every other
-    item counted as owned), then its boss key; SoH's key rules count the worst case, so this order always opens.
-    2. maps and compasses anywhere in their dungeon (logic does not use them). 3. the second of each ORDERED pair, where it
+    item counted as owned, the other dungeons' keys still to place too), then its boss key, each where its setting lets it
+    go; SoH's key rules count the worst case, so this order always opens.
+    2. maps and compasses where their setting lets them (logic does not use them). 3. the second of each ORDERED pair, where it
     is reachable only with the first; then every other progression item by assumed fill. 4. the rest anywhere."""
     by_id = {l.id: l for l in locations}
-    pool = [(l.vanilla, l) for l in locations]   # (an actor and the location it came from: a dungeon item stays in its dungeon)
+    pool = [(I.own_actor(l.vanilla, l.map), l) for l in locations]   # (an item and the location it came from)
     placed = {}
     for lid, choices in I.ONE_OF.items():   # (a room's way out drawn first, from the pool)
         if lid not in by_id:
@@ -83,8 +120,8 @@ def _attempt(world, locations, fixed, progression, rng, closed):
     def is_prog(actor, origin):
         return _soh(actor, origin) in progression
 
-    keys = [(a, o) for a, o in pool if a in KEYS]
-    other_dungeon = [(a, o) for a, o in pool if I.dungeon_bound(a) and a not in KEYS]
+    keys = [(a, o) for a, o in pool if _kind(a) in KEYS]
+    other_dungeon = [(a, o) for a, o in pool if I.dungeon_bound(a) and _kind(a) not in KEYS]
     prog = [(a, o) for a, o in pool if not I.dungeon_bound(a) and is_prog(a, o)]
     rest = [(a, o) for a, o in pool if not I.dungeon_bound(a) and not is_prog(a, o)]
     rng.shuffle(prog)
@@ -94,7 +131,11 @@ def _attempt(world, locations, fixed, progression, rng, closed):
         return world.reachable(have)
 
     def put(item, origin, spots):
-        spots = [l for l in spots if I.allowed(item, l.kind) and not (item in I.BIG_CHEST_ONLY and l.small_chest)]
+        spots = [l for l in spots if I.allowed(item, l.kind)]
+        own = I.dungeon_item(item)
+        if own:
+            where = PLACES[places[own[0]]]
+            spots = [l for l in spots if where(own[1], l)]
         if not spots:
             raise FillError("nowhere reachable for %s (from %s)" % (item, origin.name))
         spot = rng.choice(spots)
@@ -118,22 +159,17 @@ def _attempt(world, locations, fixed, progression, rng, closed):
     # 1. keys
     by_dungeon = collections.defaultdict(list)
     for a, o in keys:
-        by_dungeon[o.map].append((a, o))
+        by_dungeon[I.dungeon_item(a)[1]].append((a, o))
     order = sorted(by_dungeon)
     rng.shuffle(order)
     for i, d in enumerate(order):
         later = [k for dd in order[i + 1:] for k in by_dungeon[dd]]   # (the dungeons still to fill: their keys assumed)
-        for item, origin in sorted(by_dungeon[d], key=lambda k: k[0] != "Item_Dungeon_SmallKey"):
+        for item, origin in sorted(by_dungeon[d], key=lambda k: _kind(k[0]) != "Item_Dungeon_SmallKey"):
             r = reach(counted(prog) + counted(later))
-            spots = [l for l in empty if l.map == d and l.id in r]
-            if item not in I.BIG_CHEST_ONLY and any(l.small_chest for l in spots):
-                # (a small key in a small chest: the few big chests (3 in the Water Temple, for its map, compass and
-                #  boss key) are kept for what only they give)
-                spots = [l for l in spots if l.small_chest]
-            put(item, origin, spots)
+            put(item, origin, [l for l in empty if l.id in r])
     # 2. maps and compasses
     for item, origin in other_dungeon:
-        put(item, origin, [l for l in empty + junk_only if l.map == origin.map])
+        put(item, origin, empty + junk_only)
     # 3. the ORDERED pairs' second items, then the rest of the progression
     seconds = [s for _, s in I.ORDERED][::-1]   # (Gold before Silver: Silver is itself the second of ORDERED_FIXED)
     for second in seconds + [s for _, s in I.ORDERED_FIXED if s not in seconds]:

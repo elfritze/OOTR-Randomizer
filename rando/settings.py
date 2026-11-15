@@ -9,10 +9,17 @@ Option = collections.namedtuple("Option", "key section label help default seen c
 
 SECTIONS = collections.OrderedDict((
     ("shuffle", ("Shuffle items", "Which checks hold a random item (Ship of Harkinian: Shuffle Items).")),
+    ("dungeon", ("Dungeon items", "Where each dungeon's maps, compasses and keys may be (Ship of Harkinian: Shuffle "
+                 "Dungeon Items). Outside its own dungeon, or in a small chest, an item is the dungeon's own: \"Small "
+                 "Key (Forest Temple)\" works wherever it is found. These go in chests only.")),
     ("timesavers", ("Timesavers", "Less waiting; no check changes (Ship of Harkinian: Timesavers).")),
     ("world", ("World", "How the world behaves; no check changes.")),
     ("hints", ("Hints", "What the gossip stones say (Ship of Harkinian: Hints).")),
 ))
+
+# (where a dungeon item may go: SoH's Own Dungeon, Any Dungeon, Overworld, Anywhere)
+PLACES = (("own_dungeon", "Own dungeon"), ("any_dungeon", "Any dungeon"), ("overworld", "Overworld"),
+          ("anywhere", "Anywhere"))
 
 OPTIONS = (
     Option("shuffle_songs", "shuffle", "Shuffle songs",
@@ -24,6 +31,16 @@ OPTIONS = (
     Option("shuffle_freestanding", "shuffle", "Shuffle freestanding Heart Pieces",
            "Heart Pieces lying in the world and the bosses' Heart Containers (22 checks; SoH: Shuffle Freestanding). "
            "Off: they stay Heart Pieces and Containers.", True, True),
+    Option("shuffle_maps_compasses", "dungeon", "Maps and compasses",
+           "Own dungeon: in their dungeon, as the game has them. Any dungeon: in any dungeon. Overworld: outside the "
+           "dungeons. Anywhere: any chest.", "own_dungeon", False, PLACES),
+    Option("shuffle_small_keys", "dungeon", "Small keys",
+           "As maps and compasses (SoH: Small Key Shuffle). Logic counts each dungeon's keys wherever they are. No "
+           "Overworld: its 37 keys outnumber the chests outside the dungeons, the only places they go for now.",
+           "own_dungeon", False, tuple(p for p in PLACES if p[0] != "overworld")),
+    Option("shuffle_boss_keys", "dungeon", "Boss keys",
+           "As maps and compasses (SoH: Boss Key Shuffle), Ganon's Castle's boss key with the others.",
+           "own_dungeon", False, PLACES),
     Option("skip_intro", "timesavers", "Skip the opening movies",
            "A new game starts in Kokiri Forest without the two opening movies.", True, True),
     Option("fast_chests", "timesavers", "Fast chests",
@@ -56,10 +73,6 @@ LEGACY = {"shuffle_gifts": True, "shuffle_freestanding": True, "fast_chests": Fa
 
 # (Ship of Harkinian's other choices, shown as this randomizer has them: (section, label, value, why))
 FIXED = (
-    ("dungeon", "Maps and compasses", "Own dungeon", "The remake has one map and one compass item for every dungeon."),
-    ("dungeon", "Small keys", "Own dungeon", "The remake's small key is one item for every dungeon: a key found in "
-     "another dungeon would open that one."),
-    ("dungeon", "Boss keys", "Own dungeon", "As small keys."),
     ("world", "Logic", "Glitchless", "Ship of Harkinian's logic, with the remake's differences."),
     ("world", "Starting age", "Child", ""),
     ("world", "Entrances", "Not shuffled", ""),
@@ -77,7 +90,7 @@ FIXED = (
      "are not in this version. A junk hint keeps the stone's own rumor."),
 )
 FIXED_SECTIONS = collections.OrderedDict((
-    ("dungeon", "Dungeon items"), ("world", "Logic and world"), ("fixes", "Always on"), ("hints", "Hint details"),
+    ("world", "Logic and world"), ("fixes", "Always on"), ("hints", "Hint details"),
 ))
 
 

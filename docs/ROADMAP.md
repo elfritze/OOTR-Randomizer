@@ -33,7 +33,10 @@ Order: what can leave a seed unfinishable first, then what players expect from a
    `EventTriggerSkipAcceptStart/SkipEnd`; never on mechanism cutscenes or talks) and area presentations (their name frame
    stays on screen when skipped without OotrR's flow fix), **open forest**, the Kokiri shop full from the start, starting
    items (SoH's Starting Inventory: pool swap + logic start).
-8. **Shops and scrubs** (one-time buys), **keys anywhere** (key rings, boss keys by dungeon).
+8. **Shops and scrubs** (one-time buys). **Keys anywhere** done 2026-11-15 (`rando/dungeon_items.py`, seen in game;
+   settings own / any dungeon / overworld / anywhere, chests only). Left: dungeon items in gifts and loose spots (a
+   gift not ending in ActionGuide credits at the next item get; a pickup's name must stay within 25 characters), key
+   rings, small keys in the overworld.
 9. **Settings and presets**: a Settings page in SoH's groups done 2026-11-14 (shuffle songs / gifts / freestanding,
    timesavers, world; SoH's other choices shown fixed). Left: presets, a **spoiler page** in the app.
 10. **Hints** from the gossip stones (neither randomizer has them: a real edge): done 2026-11-14 (`rando/hints.py`;
@@ -47,8 +50,8 @@ Order: what can leave a seed unfinishable first, then what players expect from a
     checks marked done from the save (loose keys, gift flags, song cutscenes, unique items held, dungeon items). Left:
     automatic marks for chests of rupees and ammunition once step 3 exists, an overlay over the game.
 13. **Archipelago**: test the apworld in Archipelago, then patches, item receiving, client (`docs/ARCHIPELAGO.md`).
-    Its locations need the fill's rules for dungeon items first: in their own dungeon, and no map, compass or boss key in
-    a small chest (`items.BIG_CHEST_ONLY`, `Location.small_chest`: the small chests' flow never gives them).
+    Its dungeon items: each dungeon's own item (`items.own_actor`), written as the game's where that one works
+    (`items.dungeon_form`).
 14. **Packaging**: a portable exe (PyInstaller), signed updates, a public repository under the new name.
 15. **Rename everywhere** once "Lost Woods" (or another) is chosen: the repository, the mod folder (needs a migration of an
     installed seed), the README.

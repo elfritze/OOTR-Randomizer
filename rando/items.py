@@ -1,7 +1,9 @@
 """The remake's chest items (their actor names, as a chest's Drop__DropActor) and the SoH item (RG_*) each counts as in logic.
 
-A dungeon item (Item_Dungeon_SmallKey, _BossKey, _Map, _Compass) is one actor for every dungeon: it counts for the dungeon it
-is picked up in. So it can only be shuffled within its own dungeon, and its SoH item depends on that dungeon (DUNGEONS)."""
+The game's dungeon items (Item_Dungeon_SmallKey, _BossKey, _Map, _Compass) are one actor for every dungeon: each counts for
+the dungeon it is picked up in. The pool names each by its dungeon instead (Item_SmallKey_Forest: rando.dungeon_items, an
+item of its own that works anywhere); generate writes the game's own actor where that one does the same (dungeon_form)."""
+from . import dungeon_items as DI
 
 # (actor: SoH item; amounts from each actor's PouchContentParam: BundleActorNum)
 ITEMS = {
@@ -93,7 +95,7 @@ def allowed(actor, kind):
     """can this item (as the pool names it: its chest form) go in a location of this kind ("chest", "gift", "loose")?"""
     if kind == "chest":
         return actor not in NOT_CHEST
-    if actor in DUNGEON_ITEMS or actor in CHEST_ONLY:
+    if dungeon_bound(actor) or actor in CHEST_ONLY:   # (an own item's pickup name would pass the 25 characters)
         return False
     if kind == "gift":
         return actor not in NOT_GIFT
@@ -153,6 +155,9 @@ ONE_OF = {}
 
 def soh_item(actor, remake_map):
     """the SoH item a chest's actor counts as, picked up in this map"""
+    own = DI.parse(actor)
+    if own:
+        return "RG_%s_%s" % (DUNGEONS[own[1]], DUNGEON_ITEMS[own[0]])
     if actor in DUNGEON_ITEMS:
         if remake_map not in DUNGEONS:
             raise ValueError("%s outside a dungeon (%s)" % (actor, remake_map))
@@ -161,4 +166,30 @@ def soh_item(actor, remake_map):
 
 
 def dungeon_bound(actor):
-    return actor in DUNGEON_ITEMS
+    return actor in DUNGEON_ITEMS or DI.parse(actor) is not None
+
+
+def dungeon_item(actor, remake_map=None):
+    """(the game's actor, dungeon) of a dungeon item: an own one wherever it is, the game's one by the map it is in; or
+    None"""
+    own = DI.parse(actor)
+    if own:
+        return own
+    if actor in DUNGEON_ITEMS and remake_map in DUNGEONS:
+        return actor, remake_map
+    return None
+
+
+def own_actor(actor, remake_map):
+    """the pool's name of the dungeon item a location of this map holds as the game has it"""
+    return DI.actor_name(actor, remake_map) if actor in DUNGEON_ITEMS else actor
+
+
+def dungeon_form(actor, remake_map, small_chest):
+    """the actor a chest of this map is written with for a pool item: a dungeon's own item is the game's one in that
+    dungeon's chests (a small key in any; the map, compass and boss key in a big chest: the small chests' flow never gives
+    those), and its own item anywhere else"""
+    own = DI.parse(actor)
+    if own and own[1] == remake_map and (own[0] == "Item_Dungeon_SmallKey" or not small_chest):
+        return own[0]
+    return actor

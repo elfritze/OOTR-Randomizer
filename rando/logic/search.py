@@ -341,10 +341,11 @@ class World:
         (with each its rule) becomes one entry: in the location_region override's region if given, else SoH's region
         if it has one only (else an error: name the region); with the location override's rule if given, else SoH's
         rule there. An override naming something that does not exist is an error.
-    removed_locations: SoH locations the remake does not have (taken out of every region)"""
+    removed_locations: SoH locations the remake does not have (taken out of every region)
+    options: SoH settings changed from logic.SETTINGS (the dungeon items' places: RSK_KEYSANITY...)"""
 
-    def __init__(self, extra_locations=None, rule_overrides=None, removed_locations=()):
-        self.ctx = logic_mod.Ctx()
+    def __init__(self, extra_locations=None, rule_overrides=None, removed_locations=(), options=None):
+        self.ctx = logic_mod.Ctx(dict(logic_mod.SETTINGS, **(options or {})))
         self.regions = {}
         for rr, r in R.REGIONS.items():
             self.regions[rr] = _Region(rr, r["name"], r["scene"], r["time_pass"],
@@ -575,11 +576,11 @@ def _is_major(rg, ctx):
     return _is_advancement(rg, ctx)
 
 
-def item_info():
+def item_info(options=None):
     """{RG: {name, type (ITEMTYPE_*), progression (Item::IsAdvancement: what logic and playthroughs track), major
     (Item::IsMajorItem: what hints treat as major, with these settings), category (ITEM_CATEGORY_*), logicVal,
     price}} of SoH's item table (item_list.cpp)"""
-    ctx = logic_mod.Ctx()
+    ctx = logic_mod.Ctx(dict(logic_mod.SETTINGS, **(options or {})))
     out = {}
     for rg, it in D.ITEMS.items():
         out[rg] = {"name": it["name"], "type": it["type"], "progression": _is_advancement(rg, ctx),

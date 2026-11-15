@@ -10,7 +10,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-from rando import chests, generate, gifts, hints, patches, pickups, qol, settings as rando_settings  # noqa: E402
+from rando import chests, dungeon_items, generate, gifts, hints, patches, pickups, qol, settings as rando_settings  # noqa: E402
+from rando import items as rando_items  # noqa: E402
 from rando.formats import evfl  # noqa: E402
 from rando.events import EVENT_SETTING  # noqa: E402
 from rando.formats import byml, msbt, restbl, sarc, zs  # noqa: E402
@@ -176,6 +177,9 @@ def main():
         own |= {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (qol.BIG_CHEST_FLOW, qol.SMALL_CHEST_FLOW)}
     if chosen["gossip_stone_hints"] in ("need_nothing", "stone_of_agony"):   # (the stones' talk: hint_problems)
         own.add(hints.GOSSIP_FLOW.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
+    own_items = {item for item, _ in want.values() if dungeon_items.parse(item)}   # (dungeons' own items: below)
+    if own_items:
+        own.add(dungeon_items.ACTION_GUIDE.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
     if own & flows:   # (those flows are checked on their own below, without gift edits)
         problems.append("a gift edit in %s (its own check does not cover gifts)" % sorted(own & flows))
     for f in sorted((flows | in_mod) - own):
@@ -207,6 +211,29 @@ def main():
     for a in made:
         if not os.path.exists(os.path.join(mod_romfs, *pickups.pack_path(pickups.name_for(a)).split("/"))):
             problems.append("no pack for %s" % pickups.name_for(a))
+    # (the dungeons' own items: a pack each, their rows, their IsGet flags, the hook first in ActionGuide)
+    if own_items:
+        for t in (pickups.ACTOR_INFO, pickups.GAME_ACTOR_INFO, pickups.POUCH_ACTOR_INFO):
+            ids = {r["__RowId"] for r in byml.read(codec.read(os.path.join(mod_romfs, *t.split("/"))))[0]}
+            problems += ["%s: no row %s" % (t, a) for a in sorted(own_items - ids)]
+        for a in sorted(own_items):
+            if not os.path.exists(os.path.join(mod_romfs, *pickups.pack_path(a).split("/"))):
+                problems.append("no pack for %s" % a)
+        game_read = lambda rel: codec.read(os.path.join(romfs, *rel.split("/")))   # noqa: E731
+        mod_read = lambda rel: codec.read(os.path.join(mod_romfs, *rel.split("/")))   # noqa: E731
+        if byml.read(mod_read(dungeon_items.GAME_DATA))[0] != byml.read(
+                dungeon_items.with_flags(game_read(dungeon_items.GAME_DATA), own_items))[0]:
+            problems.append("%s: not the game's with the own items' IsGet flags" % dungeon_items.GAME_DATA)
+        if evfl.read(mod_read(dungeon_items.ACTION_GUIDE)) != evfl.read(
+                dungeon_items.hook(game_read(dungeon_items.ACTION_GUIDE), own_items)):
+            problems.append("%s: not the game's with the own items' hook" % dungeon_items.ACTION_GUIDE)
+    elif os.path.exists(os.path.join(mod_romfs, *dungeon_items.GAME_DATA.split("/"))):
+        problems.append("%s in the mod with no own dungeon item" % dungeon_items.GAME_DATA)
+    for h, (item, _) in sorted(want.items()):   # (a dungeon item as the game has it only where it does the same)
+        d = rando_items.dungeon_item(item, found[h]["map"])
+        if d and rando_items.dungeon_form(rando_items.own_actor(d[0], d[1]), found[h]["map"],
+                                          found[h]["gyaml"] in chests.SMALL_FLOW) != item:
+            problems.append("chest %d (%s): %s, not the form it should be written in" % (h, found[h]["map"], item))
     # (every file of the mod fits its size table entry)
     for root, _, files in os.walk(mod_romfs):
         for fn in files:
@@ -353,18 +380,22 @@ def main():
     stones = plan.get("hints") or {}
     problems += hint_problems(romfs, codec, mod_romfs, chosen, stones, plan)
     # (a map, compass or boss key only in a big chest: the small chests' flow never gives them)
-    from rando import items as rando_items
     for h, (item, _) in sorted(want.items()):
         if item in rando_items.BIG_CHEST_ONLY and found[h]["gyaml"] in chests.SMALL_FLOW:
             problems.append("chest %d (%s, %s): %s in a small chest, which never gives it" % (
                 h, found[h]["map"], found[h]["gyaml"], item))
-    english_names = hints.Names(sarc.read(game_only.read("%s/%s" % (patches.MALS, hints.ENGLISH))))
+    english_files = sarc.read(game_only.read("%s/%s" % (patches.MALS, hints.ENGLISH)))
+    if own_items:
+        english_files = dungeon_items.with_texts(english_files, english_files, own_items)
+    english_names = hints.Names(english_files)
     for rel, want_files in patches.gift_message_files(romfs, game_only).items():
         path = os.path.join(mod_romfs, *rel.split("/"))
         if not os.path.exists(path):
             problems.append("%s not in the mod (Darunia's line has no text)" % rel)
             continue
         got = sarc.read(codec.read(path))
+        if own_items:   # (the own items' names, added before Darunia's line and the hints)
+            want_files = dungeon_items.with_texts(want_files, english_files, own_items)
         if stones:
             want_files = hints.with_hints(rel.split("/")[-1], want_files, english_names, stones)
         if got != want_files:

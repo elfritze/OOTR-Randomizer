@@ -7,7 +7,7 @@ import os
 import random
 import shutil
 
-from . import chests, fill, gifts, hints, patches, pickups
+from . import chests, dungeon_items, fill, gifts, hints, patches, pickups
 from . import items as I
 from .formats import sarc, zs
 from .logic import soh_regions as R
@@ -61,7 +61,7 @@ def _entries(table, gift_table):
     return out
 
 
-def make_world(table, gift_table=None):
+def make_world(table, gift_table=None, options=None):
     entries = _entries(table, gift_table)
     seen = collections.Counter(e["rc"] for e in entries if e["rc"])
     if any(n > 1 for n in seen.values()):
@@ -98,7 +98,8 @@ def make_world(table, gift_table=None):
             overrides[key] = text.replace(old, new)
         else:
             overrides[key] = o["rule"]
-    return World(extra_locations=extra, rule_overrides=overrides, removed_locations=tuple(table.get("removed", ())))
+    return World(extra_locations=extra, rule_overrides=overrides, removed_locations=tuple(table.get("removed", ())),
+                 options=options)
 
 
 def seed_number(seed):
@@ -113,6 +114,7 @@ class Setup:
         callers). A check not shuffled leaves the fill and keeps the game's item, which logic counts where it is (fixed)."""
         if settings is not None:
             songs = settings["shuffle_songs"]
+        self.places = fill.places_of(settings)
         self.table = load_table()
         self.gifts = load_gifts() if with_gifts else {"checks": [], "excluded": []}
 
@@ -143,6 +145,7 @@ class Setup:
             locs.append(fill.Location(c["id"], None, remake_map, I.canonical(c["vanilla"]), "%s: %s" % (c["area"], c["name"]),
                                       kind=c["kind"]))
         self.locs = locs
+        self.options = fill.soh_options(self.places)   # (for hints: fill.soh_options says why not for logic)
         self.world = make_world(self.table, self.gifts)
         mapped = {e["rc"] for e in _entries(self.table, self.gifts) if e["rc"]}
         removed = set(self.table.get("removed", ()))
@@ -156,7 +159,7 @@ class Setup:
         self.closed |= {l["id"] for l in self.table["locations"] if not l["rc"] and l.get("confidence") == "low"}
 
     def fill(self, rng):
-        return fill.fill(self.world, self.locs, self.fixed, self.progression, rng, self.closed)
+        return fill.fill(self.world, self.locs, self.fixed, self.progression, rng, self.closed, places=self.places)
 
 
 def generate(romfs, mods_dir, seed, settings, log=print):
@@ -177,12 +180,19 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     mod = Mod(romfs, codec, os.path.join(out, "romfs"))
     by_id = {l.id: l for l in s.locs}
     copies = {l["id"]: [int(c) for c in l["copies"]] for l in s.table["locations"]}
+    made = pickups.Pickups(romfs, codec, mod)
+    own_items = dungeon_items.Builder(romfs, codec, mod, made)
     contents = {}
     for lid, actor in placed.items():
         if by_id[lid].kind != "chest":
             continue
         for h in [by_id[lid].hash] + copies[lid]:   # (a chest placed twice gets the same item in each copy)
-            contents[h] = (actor, chests.event_for(s.found[h], actor))
+            written = I.dungeon_form(actor, s.found[h]["map"], s.found[h]["gyaml"] in chests.SMALL_FLOW)
+            if written != actor or I.dungeon_item(actor) is None:
+                contents[h] = (written, chests.event_for(s.found[h], written))
+            else:   # (a dungeon's own item, out of the game's one's reach)
+                own = own_items.actor(*I.dungeon_item(actor))
+                contents[h] = (own, chests.event_for(s.found[h], own))
     chests.write(romfs, codec, mod, contents)
     gift_by_id = {c["id"]: c for c in s.gifts["checks"]}
     given, loose = {}, {}
@@ -196,9 +206,9 @@ def generate(romfs, mods_dir, seed, settings, log=print):
                 if new != a.get("gyaml"):   # (an item left where it was stays as the game has it)
                     loose[int(a["hash"])] = new
     gifts.write(romfs, codec, mod, [(gift_by_id[lid], actor) for lid, actor in given.items()])
-    made = pickups.Pickups(romfs, codec, mod)
     if loose:
         pickups.place(romfs, codec, mod, loose, made)
+    own_items.finish()   # (their names, rows, flags and the hook: before the tables are written)
     made.finish()
     patches.song_models(romfs, codec, mod)
     patches.free_bomb_lift(romfs, codec, mod)
@@ -222,7 +232,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     stones = {}
     if settings["gossip_stone_hints"] != "none":   # (after Darunia's line: both change the message archives)
         stones = hints.make(s.world, s.locs, s.fixed, placed, s.closed, settings["hint_distribution"],
-                            random.Random(seed_number(seed) ^ HINT_SEED), log=log)
+                            random.Random(seed_number(seed) ^ HINT_SEED), info=item_info(s.options), log=log)
         hints.write(romfs, mod, stones, settings["gossip_stone_hints"])
     mod.finish()
     spoiler = write_spoiler(out, seed, settings, s.world, s.locs, s.fixed, placed, s.closed)

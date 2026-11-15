@@ -26,6 +26,9 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Shuffle songs | on | yes |
 | Shuffle gifts and prizes (35 NPC and minigame checks) | on | yes |
 | Shuffle freestanding Heart Pieces (and bosses' Heart Containers, 22) | on | yes |
+| Maps and compasses: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
+| Small keys: **Own dungeon** / Any dungeon / Anywhere | Own dungeon | yes (own items) |
+| Boss keys (Ganon's Castle's too): **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
 | Skip the opening movies | on | yes |
 | Fast chests: no chest cutscene, Link holds the item up (OotrR's patch, `rando/qol.py`) | on | not yet |
 | Skippable automatic dialogues: the 12 step-started sequences (Navi, minigame rules) skip with + | on | not yet |
@@ -65,6 +68,7 @@ its chests opened. To play without the mod, rename the folder to start with `_`.
 | `--no-skip-intro` | Play the new game's two opening movies (skipped by default) |
 | `--no-<setting>` / `--<setting>` | Any setting of the table above off (on by default) or on (off by default), e.g. `--no-fast-chests`, `--skulltulas-day-and-night` |
 | `--gossip-stone-hints CHOICE` / `--hint-distribution CHOICE` | `none`, `need_nothing`, `mask_of_truth`, `stone_of_agony` / `useless`, `balanced`, `strong`, `very_strong` |
+| `--shuffle-maps-compasses` / `--shuffle-small-keys` / `--shuffle-boss-keys PLACE` | `own_dungeon` (default), `any_dungeon`, `overworld` (not for small keys), `anywhere` |
 
 ## Sharing
 
@@ -90,8 +94,14 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
   yet confirmed in game.
 - **Every seed can be finished**: the fill (SoH's way: dungeon items first, then assumed fill) is checked by playing the
   seed from a new game; a seed that fails is drawn again. No tricks or glitches are needed.
-- **Keys, boss keys, maps and compasses stay in their own dungeon**: the remake has one key item for every dungeon, which
-  counts for the dungeon it is picked up in.
+- **Keys, boss keys, maps and compasses where you choose** (SoH's Shuffle Dungeon Items: own dungeon, any dungeon,
+  overworld, anywhere; small keys have no "overworld": their 37 keys outnumber the chests outside the dungeons). The
+  game's key is one item for every dungeon, counting for the dungeon it is picked up in; elsewhere, or as a map, compass
+  or boss key in a small chest (whose flow never gives those), the dungeon gets an item of its own, "Small Key (Forest
+  Temple)", its dungeon's name coloured in the get message. It is credited as soon as its get ends (seen in game: two
+  Forest Temple small keys, its boss key and map and the Fire Temple's compass from Kokiri Forest's chests). Chests only
+  for now. Logic counts the keys the same wherever they are: SoH unlocks the Fire Temple's boss key loop door itself when
+  keys stay home and not otherwise, but the remake's door is always locked (`fill.soh_options`).
 - **Songs are shuffled** (12: Saria, Malon, Impa, the Royal Family's Tomb, the castle moat, the windmill and Sheik's six):
   each song's cutscene gives the item placed there, and the lesson's own silent add of the song is switched off (else the
   song would be learned as well). The windmill man gives once, then never again. A song found elsewhere shows Sheik's harp

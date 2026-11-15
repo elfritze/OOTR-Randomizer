@@ -150,8 +150,10 @@ class Hint(dict):
     "sentence": always's sentence, "args": its other values}: what placements.json keeps"""
 
 
-def _is_dungeon_item(actor):
-    return actor in I.DUNGEON_ITEMS
+def _is_dungeon_item(actor, loc):
+    """a dungeon's item in that dungeon (SoH hints none of these; one placed elsewhere is hinted as any item)"""
+    own = I.dungeon_item(actor, loc.map)
+    return own is not None and own[1] == loc.map
 
 
 def make(world, locs, fixed, placed, closed, distribution, rng, info=None, log=None):
@@ -174,7 +176,7 @@ def make(world, locs, fixed, placed, closed, distribution, rng, info=None, log=N
     progression = {rg for rg, i in info.items() if i.get("progression")}
     major = {rg for rg, i in info.items() if i.get("major")}
     # (hintable: a shuffled check in logic, with an area, not holding its own dungeon's key, map or compass)
-    hintable = [l for l in locs if l.id not in closed and not _is_dungeon_item(placed[l.id]) and
+    hintable = [l for l in locs if l.id not in closed and not _is_dungeon_item(placed[l.id], l) and
                 area_of(l.id, l.map) is not None]
     hintable_ids = {l.id for l in hintable}
     # (the way of the hero: the playthrough pared down (latest sphere first, each shuffled check whose item logic needs
