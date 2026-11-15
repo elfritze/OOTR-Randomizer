@@ -7,7 +7,8 @@ the shop's whole stock shown:
     the Deku Seeds (30) shelf:  the large Deku Stick bag for 30 (the largest: buying it never lowers a capacity)
 
 Also, for a seed with Saria's gift shuffled made before the fix: the ocarina's first play event listed by every event loading
-ActionGuide (rando.patches.ocarina_child_events: a Fairy Ocarina found elsewhere could not be equipped).
+ActionGuide (rando.patches.ocarina_child_events: a Fairy Ocarina found elsewhere could not be equipped); with the night
+skulltulas made day and night, their logic module no longer deleting them by day (rando.qol.night_module_by_day).
 
 To see: each shelf shows the item's model, name and price; buying gives the item; then "Sold Out" on that shelf, and
 still after leaving the shop and after reloading the save; the other shelves sell as before.
@@ -67,6 +68,12 @@ def main():
         if patches.ocarina_child_events(rows):
             mod.write(events.GAME_ANALYZED_EVENT_INFO, byml.write(rows, version, byml.endian(raw)))
             print("ocarina: its play event listed by the item gets' events")
+    if plan.get("settings", {}).get("skulltulas_day_and_night"):   # (the night skulltulas' module, missing before its fix)
+        from rando import qol
+        game = mod.read(qol.NIGHT_MODULE) if qol.NIGHT_MODULE not in mod.data else None
+        if game is not None and game == open(os.path.join(romfs, *qol.NIGHT_MODULE.split("/")), "rb").read():
+            mod.write(qol.NIGHT_MODULE, qol.night_module_by_day(game))
+            print("night skulltulas: their logic module no longer deletes them by day")
     mod.finish()
     plan_path = os.path.join(out, "placements.json")
     plan = json.load(open(plan_path, encoding="utf-8"))

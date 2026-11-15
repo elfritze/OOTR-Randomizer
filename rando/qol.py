@@ -132,8 +132,40 @@ def is_nocturnal(actor):
     return actor.get("Gyaml") == SKULLTULA and (actor.get("Dynamic") or {}).get(NOCTURNAL) is True
 
 
+# Each of the 30 is also one of its map's AiGroups run by the shared logic module Gimmick_Nighttime_Skulltula_Gold_Appear (with
+# its spider web): it creates both, and deletes the skulltula by day (loaded by day before any night, or day come while it
+# is alive and not fighting: HoldWmGetTimeDiv). Seen in game (seed 7cc65105, 2026-11-15): with the flag off alone, the House
+# of Skulltula's skulltula was not there by day. The module's skulltula is now never deleted (Logic_Delete a constant
+# false, as Gimmick_AllDay_Skulltula's own skulltula has it), changed in place (the file keeps its size); its web still
+# goes when it dies.
+NIGHT_MODULE = "Logic/Gimmick_Nighttime_Skulltula_Gold_Appear_05a9.logic.module.ainb"
+
+
+def night_module_by_day(data):
+    """the night skulltulas' module with its skulltula never deleted"""
+    import struct
+    from .formats import ainb
+    f = ainb.File(data)
+    gs = [n for n in f.nodes if n["name"] == "ActorLogicEnemySkulltulaGold"]
+    if len(gs) != 1 or f.nodes[2]["name"] != "OperateOR":
+        raise ValueError("%s: not the module known" % NIGHT_MODULE)
+    i = gs[0]["inputs"]["Logic_Delete"]
+    if i["type"] != "bool" or i["sources"] != [(2, 1, None)] or f.readers(2, 1) != [(gs[0]["index"], "Logic_Delete")]:
+        raise ValueError("%s: its skulltula's deletion is not the one known" % NIGHT_MODULE)
+    out = bytearray(data)
+    struct.pack_into("<hh", out, i["entry"] + 4, -1, 0)   # (no source: its own value)
+    struct.pack_into("<I", out, i["value_at"], 0)
+    at = dict(f.nodes[2]["outputs"]["bool"])["True"]   # (that output no longer read)
+    struct.pack_into("<I", out, at, f.u32(at) & ~ainb.USED)
+    g = ainb.File(bytes(out))
+    if g.nodes[gs[0]["index"]]["inputs"]["Logic_Delete"]["sources"] or len(out) != len(data):
+        raise ValueError("%s: not changed as meant" % NIGHT_MODULE)
+    return bytes(out)
+
+
 def skulltulas_day_and_night(romfs, codec, mod):
     """returns {map file: [hashes]} of the skulltulas changed"""
+    mod.write(NIGHT_MODULE, night_module_by_day(mod.read(NIGHT_MODULE)))
     changed = {}
     for rel in chests.map_files(romfs):
         raw = mod.read(rel)

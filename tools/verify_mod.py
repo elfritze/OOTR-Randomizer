@@ -624,6 +624,14 @@ def main():
             problems.append("%s: not the game's without its skip ban" % rel)
     if chosen["skulltulas_day_and_night"] and nocturnal_seen < 20:
         problems.append("night skulltulas made day and night: %d, about 30 expected" % nocturnal_seen)
+    # (and their logic module: the game's, its skulltula never deleted by day; off: the game's, not in the mod)
+    path = os.path.join(mod_romfs, *qol.NIGHT_MODULE.split("/"))
+    game_module = open(os.path.join(romfs, *qol.NIGHT_MODULE.split("/")), "rb").read()
+    if chosen["skulltulas_day_and_night"]:
+        if not os.path.exists(path) or open(path, "rb").read() != qol.night_module_by_day(game_module):
+            problems.append("%s: not the game's with its skulltula never deleted" % qol.NIGHT_MODULE)
+    elif os.path.exists(path):
+        problems.append("%s in the mod with the night skulltulas left as they are" % qol.NIGHT_MODULE)
     print("%d chests planned, %d found; %d loose items planned, %d found; %d gift parameters; %d new pickups; %d problems" % (
         len(want), len(seen), len(loose), len(loose_seen), len(expect), len(made), len(problems)))
     for p in problems[:30]:

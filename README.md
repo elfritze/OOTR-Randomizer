@@ -40,7 +40,7 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Fast chests: retired for now (`rando/qol.py` kept): small chests crashed the game as they opened (seed 7cc65105, 2026-11-15) | off | crashed |
 | Skippable automatic dialogues: the 12 step-started sequences (Navi, minigame rules) skip with + | on | not yet |
 | Skippable title demo and credits | on | not yet |
-| Night Gold Skulltulas also by day (30) | off | not yet |
+| Night Gold Skulltulas also by day (30: their night flag, and their map logic module's deletion by day) | off | not yet |
 | Gossip stone hints: No hints / **Need nothing** / Mask of Truth / Stone of Agony | Need nothing | not yet |
 | Hint distribution: Useless / **Balanced** / Strong / Very strong | Balanced | not yet |
 
