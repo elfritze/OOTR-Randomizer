@@ -122,6 +122,23 @@ DONE_FLAGS = {
     "RC_GF_HBA_1500_POINTS": "MiniGame_HorseBackArchery_Get_Quiver",
     "RC_ZR_FROGS_IN_THE_RAIN": "MiniGame_FrogTenors_StormSong",
     "RC_ZR_FROGS_OCARINA_GAME": "MiniGame_FrogTenors_InsectRepellent",
+    # (the checks of the newer settings: the scene's own played flag (saved for every scene), a fairy's once-flag)
+    "RC_GC_DARUNIAS_JOY": "HavePlayedEvent.Dm_Goron_0030",   # (set by his scene and by the randomizer's two ways)
+    "RC_QUEEN_GOHMA": "HavePlayedEvent.Dm_Kokiri_0130",
+    "RC_KING_DODONGO": "HavePlayedEvent.Dm_DeathMtTrail_0025",
+    "RC_BARINADE": "HavePlayedEvent.Dm_InsideJabu_Jabu_0030",
+    "RC_PHANTOM_GANON": "HavePlayedEvent.Dm_Awake_Forest_Get",
+    "RC_VOLVAGIA": "HavePlayedEvent.Dm_Awake_Fire_Get",
+    "RC_MORPHA": "HavePlayedEvent.Dm_Awake_Water_Get",
+    "RC_TWINROVA": "HavePlayedEvent.Dm_Awake_Spirit_Get",
+    "RC_BONGO_BONGO": "HavePlayedEvent.Dm_Awake_Shadow_Get",
+    "RC_GIFT_FROM_RAURU": "HavePlayedEvent.Dm_SageRoom_0005",
+    "RC_HC_ZELDAS_LETTER": "HavePlayedEvent.Dm_HrlCastle_0050",
+    "RC_TOT_LIGHT_ARROWS_CUTSCENE": "HavePlayedEvent.Dm_TimeTemple_0130",
+    "RC_LW_GIFT_FROM_SARIA": "HavePlayedEvent.Dm_Kokiri_0155",
+    "RC_HC_GREAT_FAIRY_REWARD": "RandoGreatFairy_Din", "RC_ZF_GREAT_FAIRY_REWARD": "RandoGreatFairy_Farore",
+    "RC_COLOSSUS_GREAT_FAIRY_REWARD": "RandoGreatFairy_Nayru", "RC_DMT_GREAT_FAIRY_REWARD": "RandoGreatFairy_Power",
+    "RC_DMC_GREAT_FAIRY_REWARD": "RandoGreatFairy_Wisdom", "RC_OGC_GREAT_FAIRY_REWARD": "RandoGreatFairy_Courage",
 }
 SONG_FLOW = "Dm_MelodyGet_"
 # (items a check can hold that the game also gives elsewhere, or starts with: holding one says nothing about a check)
