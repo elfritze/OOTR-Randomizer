@@ -3,7 +3,7 @@ import copy
 import os
 
 from .events import EVENT_SETTING
-from .formats import byml, evfl, evfl_patch, sarc
+from .formats import byml, evfl, evfl_patch, msbt, sarc
 
 # The new game's opening (OpeningEvent: Opening_LoadingKokiriForest, then Opening_Introduction) plays two movies by
 # EventTransition: Dm_Kokiri_0000 (the story's opening) and Dm_Kokiri_0030 (Navi waking Link). Nothing else plays them. Their
@@ -392,7 +392,13 @@ DARUNIA_ROW_FLOWS = ("Dm_SY_GetInEvent", "GetInEvent_NotTurn")
 # (the song's chain asks first whether the quest is past his dance's step, as Event39 asks after the dance: not past, the
 # game's own bracelet scene comes and nothing is added. It shows no window: the screen is faded out there, and the window
 # opened behind the black (thirteenth try, 2026-11-14: stuck on a black screen before the dance); the talk shows it)
-DARUNIA_SONG = ("RandoDaruniaPast", "RandoDaruniaGiven", "RandoDaruniaSetGiven", "RandoDaruniaBracelet")
+# Twentieth try: the song's chain silent, before the dance (seen: the talk's line, the bracelet). Now (user's ask) the song
+# says the gift's line too: so its chain goes after the dance, where the game itself has him talk when the quest is past
+# that step: Event39 (past) -> Event42 (camera) -> Event37 (InitTalk/InitTalk_OnEvent, Arg_Actor Darunia) -> Event32 (his EventTalk,
+# PlayOcarina_Talk_01). After Event37: given? set given, the silent add, his gift line (Event32's parameters, the gift's
+# message), then Event32. (Not past: the game's bracelet scene, Dm_Goron_0030, as before.)
+SONG_AFTER, SONG_LINE_FROM, SONG_CAMERA = "Event37", "Event32", "Event42"
+DARUNIA_SONG = ("RandoDaruniaGiven", "RandoDaruniaSetGiven", "RandoDaruniaBracelet", "RandoDaruniaLine")
 # Sixteenth try (the window alone at the talk's start): the talk waited for ever, nothing said (the window's first step
 # closes the open message box and waits for it: there was none). Every gift of the game comes after the giver's line
 # (Fado, the frogs, Skull Kid: an EventTalk, then the get): so Darunia says one of his lines first (his talk's own EventTalk
@@ -403,19 +409,86 @@ DARUNIA_SONG = ("RandoDaruniaPast", "RandoDaruniaGiven", "RandoDaruniaSetGiven",
 # the get, as his quest talks do.)
 DARUNIA_TALK = ("RandoDaruniaTalkGiven", "RandoDaruniaTalkSong", "RandoDaruniaTalkSetGiven", "RandoDaruniaTalkBracelet",
                 "RandoDaruniaTalkLine")
-TALK_LINE_FROM, TALK_LINE = "Event6", "EventFlowMsg/Npc_Goron_Darunia_Child:Talk_04"   # ("Ya gotta play that song again
-#                                                                                         for me sometime!")
+# (his line: a message of his own file, added: "Here, Brother, take this <item>!" in each of the game's languages, with the
+# item's own name as that language's ActorMsg/PouchContent.msbt gives it (<pouch name>_Name). The nineteenth try said
+# his "Ya gotta play that song again" line, Talk_04: seen in game)
+TALK_LINE_FROM = "Event6"
+GIFT_MSBT = "EventFlowMsg/Npc_Goron_Darunia_Child.msbt"
+GIFT_LABEL = "Rando_DaruniaGift"
+TALK_LINE = "EventFlowMsg/Npc_Goron_Darunia_Child:" + GIFT_LABEL
+BRACELET_NAME = "Armor_Child_Gauntlet_Goron_Name"   # (the bracelet's name label: its pouch actor's)
+MALS = "Mals"
+MALS_DATA_ALIGNMENT = 8   # (the message archives' data block: sarc.write gives them back byte for byte with it)
+POUCH_MSBT = "ActorMsg/PouchContent.msbt"
+GIFT_PHRASES = {   # (by the archive's language: its name's last two letters, and the region for Chinese)
+    "en": "Here, Brother, take this {item}!",
+    "fr": "Tiens, frérot, c'est pour toi : {item} !",
+    "es": "¡Toma, hermano, esto es para ti: {item}!",
+    "de": "Hier, Bruder, das ist für dich: {item}!",
+    "it": "Tieni, fratello, questo è per te: {item}!",
+    "pt": "Tome, irmão, isto é para você: {item}!",
+    "nl": "Hier, broeder, dit is voor jou: {item}!",
+    "pl": "Proszę, bracie, to dla ciebie: {item}!",
+    "ru": "Держи, брат, это тебе: {item}!",
+    "ja": "兄弟、これを受け取ってくれ！ {item}だ！",
+    "ko": "형제여, 이걸 받아 줘! {item}!",
+    "CNzh": "兄弟，这个给你：{item}！",
+    "TWzh": "兄弟，這個給你：{item}！",
+}
+
+
+def gift_phrase(archive):
+    """the phrase for a Mals archive ("USen.Product.110.sarc.zs")"""
+    region = archive.split(".")[0]
+    return GIFT_PHRASES.get(region) or GIFT_PHRASES[region[2:]]
+
+
+def gift_message(archive, item_name):
+    """the gift's line for a Mals archive, the item's name in red"""
+    before, after = gift_phrase(archive).split("{item}")
+    return before.encode("utf-8") + msbt.colored(item_name) + after.encode("utf-8")
+
+
+def mals_archives(romfs):
+    return sorted(f for f in os.listdir(os.path.join(romfs, MALS)) if f.endswith(".sarc.zs"))
+
+
+def gift_message_files(romfs, mod, name_label=BRACELET_NAME):
+    """{Mals archive rel: its files, Darunia's message file with the gift's line added} (the rest as the game has it)"""
+    out = {}
+    for f in mals_archives(romfs):
+        rel = "%s/%s" % (MALS, f)
+        files = sarc.read(mod.read(rel))
+        name = msbt.read(files[POUCH_MSBT]).text(name_label)
+        if not name:
+            raise ValueError("%s: no %s" % (rel, name_label))
+        m = msbt.read(files[GIFT_MSBT])
+        m.add(GIFT_LABEL, gift_message(f, name))
+        files = dict(files)
+        files[GIFT_MSBT] = m.write()
+        out[rel] = files
+    return out
 DARUNIA_ROWS = ()   # (events whose GameAnalyzedEventInfo row must list the item get's flowcharts: none while no window)
 
 
-def darunia_song_events(past, given, set_given):
-    """after the song's fade-out: quest past his dance? gift given? if not, set given (the silent add goes after it)"""
-    return [{"name": past, "type": "switch", "actor": "GameDataActor", "query": "EventQueryIsGameDataBoolExp",
-             "params": {"GameDataName": DARUNIA_STEP_FLAG}, "cases": {IS_TRUE: given, IS_FALSE: None}},
-            {"name": given, "type": "switch", "actor": "GameDataActor", "query": "EventQueryIsGameDataBool",
+def darunia_song_events(given, set_given, line, line_params):
+    """after the dance's InitTalk (the quest past his dance's step): gift given? if not, set given (the silent add goes
+    after it), his gift line, then his talk as the game has it"""
+    return [{"name": given, "type": "switch", "actor": "GameDataActor", "query": "EventQueryIsGameDataBool",
              "params": {"Index": -1, "GameDataName": DARUNIA_GIVEN}, "cases": {IS_FALSE: set_given, IS_TRUE: None}},
             {"name": set_given, "type": "action", "actor": "GameDataActor", "action": "EventTriggerSetGameDataBool",
-             "params": {"Index": -1, "Value": True, "GameDataName": DARUNIA_GIVEN}, "next": None}]
+             "params": {"Index": -1, "Value": True, "GameDataName": DARUNIA_GIVEN}, "next": line},
+            {"name": line, "type": "action", "actor": "Npc_Goron_Darunia_Child", "action": "EventTalk",
+             "params": line_params, "next": None}]
+
+
+def song_line_params(fire_flow):
+    """his after-dance line's parameters (Event32's) with the gift's message"""
+    e = next(e for e in fire_flow["events"] if e["name"] == SONG_LINE_FROM)
+    a = fire_flow["actors"][e["actor"]]
+    if (a["name"], a["actions"][e["action"]]) != ("Npc_Goron_Darunia_Child", "EventTalk"):
+        raise ValueError("%s: %s is not Darunia's talk line" % (FIRE_FLOW, SONG_LINE_FROM))
+    return dict(e["params"], MessageId=TALK_LINE)
 
 
 def talk_line_params(talk_flow):
@@ -456,8 +529,12 @@ def darunia_bracelet_after_quest(romfs, codec, mod):
             rec["cases"].get(IS_TRUE) != by[DARUNIA_FADE] or fade.get("next") != by[DARUNIA_FIRST_DANCE] or \
             (dance.get("params") or {}).get("EventName") != "Dm_Goron_0025" or dance.get("next") != by[DARUNIA_SWITCH]:
         raise ValueError("%s: Darunia's song reaction is not the one known" % FIRE_FLOW)
-    past, given, set_given, silent = DARUNIA_SONG
-    raw = evfl_patch.add_events(raw, DARUNIA_FADE, darunia_song_events(past, given, set_given))
+    camera, init = ev[by[SONG_CAMERA]], ev[by[SONG_AFTER]]
+    if switch["cases"].get(IS_TRUE) != by[SONG_CAMERA] or camera.get("next") != by[SONG_AFTER] or \
+            init["type"] != "subflow" or (init.get("flowchart"), init.get("entry")) != ("InitTalk", "InitTalk_OnEvent") or init.get("next") != by[SONG_LINE_FROM]:
+        raise ValueError("%s: Darunia's after-dance talk is not the one known" % FIRE_FLOW)
+    given, set_given, silent, line = DARUNIA_SONG
+    raw = evfl_patch.add_events(raw, SONG_AFTER, darunia_song_events(given, set_given, line, song_line_params(flow)))
     raw = evfl_patch.add_actions(raw, set_given, POUCH_ACTOR, POUCH_ADD, vanilla[0]["params"],
                                  [(silent, start_item_params(BRACELET))])
     mod.write(FIRE_FLOW, raw)
@@ -472,6 +549,8 @@ def darunia_bracelet_after_quest(romfs, codec, mod):
     raw = evfl_patch.add_actions(raw, set_given, POUCH_ACTOR, POUCH_ADD, vanilla[0]["params"],
                                  [(silent, start_item_params(BRACELET))])
     mod.write(TALK_FLOW, raw)
+    for rel, files in gift_message_files(romfs, mod).items():
+        mod.write(rel, sarc.write(files, data_alignment=MALS_DATA_ALIGNMENT))
     for row in DARUNIA_ROWS:
         list_event_subflows(mod, row, darunia_subflows(mod))
 

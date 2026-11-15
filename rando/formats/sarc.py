@@ -43,8 +43,9 @@ def _align(n, a):
     return (n + a - 1) & ~(a - 1)
 
 
-def write(files, alignment=8):
-    """files: {name: bytes}. Entries sorted by name hash, as the game's archives are."""
+def write(files, alignment=8, data_alignment=None):
+    """files: {name: bytes}. Entries sorted by name hash, as the game's archives are. data_alignment: the data block's
+    (default: alignment, at least 16, as the packs written so far; the message archives (Mals) align it to 8)"""
     entries = sorted(files.items(), key=lambda kv: name_hash(kv[0]))
     names = bytearray()
     name_offsets = []
@@ -64,7 +65,7 @@ def write(files, alignment=8):
         sfat += struct.pack("<IIII", name_hash(name), 0x01000000 | off, start, end)
     sfnt = struct.pack("<4sHH", b"SFNT", 8, 0) + bytes(names)
     head_len = 0x14 + len(sfat) + len(sfnt)
-    data_offset = _align(head_len, max(alignment, 0x10))
+    data_offset = _align(head_len, data_alignment or max(alignment, 0x10))
     total = data_offset + len(blobs)
     header = struct.pack("<4sHHIIHH", b"SARC", 0x14, 0xFEFF, total, data_offset, 0x100, 0)
     return header + sfat + sfnt + b"\0" * (data_offset - head_len) + bytes(blobs)

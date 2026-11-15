@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 from rando import chests, generate, gifts, patches, pickups, qol, settings as rando_settings  # noqa: E402
 from rando.formats import evfl  # noqa: E402
 from rando.events import EVENT_SETTING  # noqa: E402
-from rando.formats import byml, restbl, sarc, zs  # noqa: E402
+from rando.formats import byml, msbt, restbl, sarc, zs  # noqa: E402
 from rando.mod import RSTB, align32  # noqa: E402
 
 
@@ -253,9 +253,11 @@ def main():
                 b["entries"] == a["entries"]):
             return ["%s: not the game's with Darunia's gift chain after %s" % (rel, after)]
         return []
-    past, given, set_given, silent = patches.DARUNIA_SONG
-    problems += darunia_chain(patches.FIRE_FLOW, patches.DARUNIA_FADE, patches.DARUNIA_SONG,
-                              patches.darunia_song_events(past, given, set_given), set_given, silent)
+    given, set_given, silent, line = patches.DARUNIA_SONG
+    fire_game = evfl.read(codec.read(os.path.join(romfs, *patches.FIRE_FLOW.split("/"))))[0]
+    problems += darunia_chain(patches.FIRE_FLOW, patches.SONG_AFTER, patches.DARUNIA_SONG,
+                              patches.darunia_song_events(given, set_given, line, patches.song_line_params(fire_game)),
+                              set_given, silent)
     given, song, set_given, silent, line = patches.DARUNIA_TALK
     talk_game = evfl.read(codec.read(os.path.join(romfs, *patches.TALK_FLOW.split("/"))))[0]
     problems += darunia_chain(patches.TALK_FLOW, patches.TALK_START, patches.DARUNIA_TALK,
@@ -276,6 +278,19 @@ def main():
     if mod_info != expected:
         problems.append("%s: not the game's with Darunia's events loading the item window" %
                         rando_events.GAME_ANALYZED_EVENT_INFO)
+    # (Darunia's line: each message archive the game's, his message file with the gift's label only)
+    game_only = type("GameOnly", (), {"read": lambda self, rel: codec.read(os.path.join(romfs, *rel.split("/")))})()
+    for rel, want_files in patches.gift_message_files(romfs, game_only).items():
+        path = os.path.join(mod_romfs, *rel.split("/"))
+        if not os.path.exists(path):
+            problems.append("%s not in the mod (Darunia's line has no text)" % rel)
+            continue
+        got = sarc.read(codec.read(path))
+        if got != want_files:
+            problems.append("%s: not the game's with Darunia's line added" % rel)
+        elif msbt.read(got[patches.GIFT_MSBT]).get(patches.GIFT_LABEL) != patches.gift_message(rel.split("/")[-1], msbt.read(
+                got[patches.POUCH_MSBT]).text(patches.BRACELET_NAME)) + b"\0":
+            problems.append("%s: Darunia's line is not the one written" % rel)
     # (Mido's schedule: the game's rows but the after-Zelda one, each the same)
     path = os.path.join(mod_romfs, *patches.MIDO_SCHEDULE.split("/"))
     if not os.path.exists(path):
