@@ -60,6 +60,7 @@ ITEMS = {
     "Item_Medal_Shadow": "RG_SHADOW_MEDALLION", "Item_Medal_Light": "RG_LIGHT_MEDALLION",
     # (quest items: in the pool with settings shuffle_quest_items)
     "Item_ZeldaLetter": "RG_ZELDAS_LETTER", "Item_Arrow_Light": "RG_LIGHT_ARROWS",
+    "Item_Arrow_Fire": "RG_FIRE_ARROWS",   # (with settings shuffle_lake_fire_arrows: the lake's sun spot)
     "Item_Token_Gold": "RG_GOLD_SKULLTULA_TOKEN",   # (with settings shuffle_tokens: the Gold Skulltulas' drops)
     "Item_Ocarina_Fairy": "RG_PROGRESSIVE_OCARINA",   # (with settings shuffle_fairy_ocarina; the Ocarina of Time stays)
     # (the Great Fairies' gifts: in the pool with settings shuffle_great_fairies)
@@ -117,6 +118,7 @@ SHOP_ALSO = {"Obj_Heart_Piece", "Obj_Heart_Container", "TBox_Rupee_Green", "TBox
 # Checks giving their item by a silent pouch add (PouchSystemActor.EventTriggerAddOrRemovePouchContent: proven for Item_
 # actors, the starting bags and Darunia's bracelet) or a cutscene's GetPouchContent window (the rewards' and Zelda's Light
 # Arrows' way, known for Item_ actors only): an Item_ actor only, no song, no dungeon item.
+LAKE_SUN = "RC_LH_SUN"   # (the Fire Arrows' spot: an Item_ made a pickup only, the scene's actor renamed to it)
 POUCH_ADD_CHECKS = {"RC_GC_DARUNIAS_JOY", "RC_TOT_LIGHT_ARROWS_CUTSCENE", "RC_LW_GIFT_FROM_SARIA"}
 # The dungeon rewards and the checks giving them (the bosses' and Rauru's scenes): each only with the other (SoH's End of
 # Dungeon), when settings shuffle_dungeon_rewards puts them in the pool.
@@ -142,6 +144,8 @@ def fits(actor, location_id, kind):
         return kind in ("loose", "skulltula") or location_id in OCARINA_CHECKS
     if (actor in REWARDS) != (location_id in REWARD_CHECKS):
         return False
+    if location_id == LAKE_SUN:   # (our pickup in its place, as the sun's scene plays it: rando.patches.lake_sun)
+        return actor.startswith("Item_") and not dungeon_bound(actor)
     if location_id in POUCH_ADD_CHECKS:
         given = form(actor, kind)
         return given.startswith("Item_") and not given.startswith("Item_Melody_") and not dungeon_bound(actor)

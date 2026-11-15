@@ -2162,6 +2162,26 @@
    "confidence": "medium",
    "ocarina": true,
    "notes": "Saria's bridge scene Dm_Kokiri_0155 adds it silently (Event68, Actor) and shows its window (Event77, ActorName): both edited; an Item_ actor only (items.POUCH_ADD_CHECKS). The scene's own ocarina model stays. The ocarina found elsewhere is made playable by patches.ocarina_guide_on_get (OotrR's fix). Settings shuffle_fairy_ocarina. Not yet seen in game."
+  },
+  {
+   "id": "RC_LH_SUN",
+   "rc": "RC_LH_SUN",
+   "kind": "loose",
+   "vanilla": "Item_Arrow_Fire",
+   "loose": [
+    {
+     "map": "Banc/HyruleField/HyruleField_Adult_Static.bcett.byml.zs",
+     "hash": "4598657944866228526",
+     "gyaml": "Obj_Arrow_Fire"
+    }
+   ],
+   "soh_region": "RR_LAKE_HYLIA",
+   "rule": "logic->IsAdult && logic->Get(LOGIC_WATER_TEMPLE_CLEAR) && logic->HasItem(RG_BRONZE_SCALE) && logic->CanUse(RG_FAIRY_BOW)",
+   "name": "Fire Arrows (shoot the sun)",
+   "area": "Lake Hylia",
+   "confidence": "high",
+   "lake_sun": true,
+   "notes": "The lake's logic module makes the platform's item while SubEvent_GetFireArrow is at Step03 (set by the sun's shot, 6:00 to 7:30; the quest starts after the Water Temple's sage: DependFlag SageOfWater_IsAfter_Step08_Exp, Ready passed by SageOfWater_IsCompleted_Exp). SoH's other way (the scarecrow's pillar) does not count: the quest needs the lake refilled. rando.patches.lake_sun: the sun's scene takes our pickup, and the Fire Arrows found elsewhere no longer complete the quest. Settings shuffle_lake_fire_arrows. Not yet seen in game."
   }
  ],
  "excluded": [
@@ -2184,11 +2204,6 @@
    "id": "RC_TOT_MASTER_SWORD",
    "rc": "RC_TOT_MASTER_SWORD",
    "reason": "Master Sword: story-bound (DoorOfTime), not shuffled"
-  },
-  {
-   "id": "RC_LH_SUN",
-   "rc": "RC_LH_SUN",
-   "reason": "Fire Arrows at the lake: cutscene-bound world actor (Obj_Arrow_Fire 4598657944866228526), not shuffled in v1"
   },
   {
    "id": "RC_HC_MALON_EGG",

@@ -19,6 +19,7 @@ LOCATIONS = os.path.join(HERE, "..", "data", "locations.json")
 GIFTS = os.path.join(HERE, "..", "data", "gifts.json")
 SKULLTULAS = os.path.join(HERE, "..", "data", "skulltulas.json")
 TOKEN = "Item_Token_Gold"
+FIRE_ARROWS = "Item_Arrow_Fire"
 MOD_NAME = "HookshotRando"
 
 
@@ -130,6 +131,8 @@ class Setup:
         self.gifts = load_gifts() if with_gifts else {"checks": [], "excluded": []}
 
         def kept(c):
+            if c.get("lake_sun"):
+                return settings is not None and settings.get("shuffle_lake_fire_arrows", False)
             if c.get("ocarina"):
                 return settings is not None and settings["shuffle_fairy_ocarina"]
             if c.get("quest"):
@@ -280,6 +283,8 @@ def generate(romfs, mods_dir, seed, settings, log=print):
         if kind == "gift":
             given[lid] = I.form(actor, "gift")
         elif kind == "loose":
+            if lid == I.LAKE_SUN and actor == FIRE_ARROWS:   # (the arrows where they are: nothing changes)
+                continue
             new = I.loose_form(actor, by_id[lid].map)
             if I.dungeon_item(new):   # (a dungeon's own item: its pack and rows first, the pickup made of it)
                 new = own_items.actor(*I.dungeon_item(new))
@@ -293,6 +298,8 @@ def generate(romfs, mods_dir, seed, settings, log=print):
         patches.ocarina_guide_on_get(mod)
     if loose:
         pickups.place(romfs, codec, mod, loose, made)
+    if I.LAKE_SUN in placed and placed[I.LAKE_SUN] != FIRE_ARROWS:   # (the sun's scene and the arrows' quest: the pickup)
+        patches.lake_sun(romfs, codec, mod, pickups.name_for(placed[I.LAKE_SUN]))
     drops = {}   # (the Gold Skulltulas: a token left as it is; any other item, a pickup built on the token)
     for lid, actor in placed.items():
         if by_id[lid].kind == "skulltula" and actor != TOKEN:

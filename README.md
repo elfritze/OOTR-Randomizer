@@ -30,7 +30,8 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Shuffle the Fairy Ocarina (Saria's gift; an ocarina found elsewhere made playable, OotrR's fix) | off | not yet |
 | Shuffle Great Fairies (their 6 gifts in the pool; Nayru's and Ganon's Castle's need the 500-rupee wallet) | off | not yet |
 | Shuffle Gold Skulltula tokens (the 100 skulltulas drop the item placed there; the tokens in the pool) | off | not yet |
-| Shopsanity: **Off** / 1-7 per shop / Random (shelves of the 8 shops sell pool items, each once) | Off | not yet |
+| Shopsanity: **Off** / 1-7 per shop / Random (shelves of the 8 shops sell pool items, each once) | Off | yes (Kokiri shop pilot) |
+| Shuffle the Fire Arrows at Lake Hylia (the sun's platform holds the item placed there) | off | not yet |
 | Shop prices: **Vanilla** / Cheap balanced / Balanced / Affordable (SoH's) | Vanilla | not yet |
 | Shuffle dungeon rewards: **Vanilla** / End of dungeon (the 9 stones and medallions among the 8 bosses and Rauru) | Vanilla | not yet |
 | Maps and compasses: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
@@ -123,7 +124,8 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
   the start; the Bombchu shop opens once King Dodongo is beaten (its seller's condition), which logic now asks for.
   Shelves sell items, Heart Pieces and rupees; not songs, ocarinas, bottles, dungeon items, tokens or ammunition, nor the
   shields and tunics (the shop's flow treats those apart). Prices are SoH's choices; logic counts the remake's wallets
-  (200, 500, 999). Not yet seen in game.
+  (200, 500, 999). Seen in game (2026-11-15, three Kokiri shelves on an installed seed): bought once, Sold Out after
+  leaving and after a reload.
 - **Dungeon rewards can be shuffled** (SoH's End of Dungeon): the 3 spiritual stones and 6 medallions among the 8 bosses
   and Rauru, placed first by logic (a stone never behind the Door of Time). Each reward's scene gives it by its
   GetPouchContent window's `ActorName` (the Jabu-Jabu and Zora's Fountain scenes both, and the `.110` twins); the scene
@@ -135,6 +137,11 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
   Gauntlets come in that order (the fill keeps each unreachable without the one before). Not yet seen in game.
 - **Items lying in the world** (the 14 loose Heart Pieces, the 8 bosses' Heart Containers and 2 freestanding keys) are the item placed there,
   lying where the old one was: a pickup made for each item as the remake made its own loose Fire Arrows.
+- **The Fire Arrows at Lake Hylia can be shuffled** (`shuffle_lake_fire_arrows`): the platform's item, there once the sun is
+  shot at sunrise after the Water Temple (the quest SubEvent_GetFireArrow), is the item placed there, as a pickup the sun's
+  scene plays (its actor renamed to ours). The Fire Arrows found anywhere else no longer complete that quest, which would
+  have removed the platform's item before the sun was ever shot. Logic asks the Water Temple (SoH's scarecrow way does not
+  count here). Not yet seen in game.
 - **The tunnel Kokiri lets you out after the Deku Tree, Zelda met or not**: his wall goes with his talk after the
   Kokiri Emerald, but a later row of his schedule (after meeting Zelda) won when Zelda came first (seen in game,
   2026-11-15); that row is taken out, as Mido's. Not yet seen in game.

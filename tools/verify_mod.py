@@ -226,6 +226,18 @@ def main():
     in_mod = {f[:-len(".bfevfl.zs")] for f in os.listdir(flow_dir)} if os.path.isdir(flow_dir) else set()
     own = {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (patches.OPENING_FLOW, patches.WATER_FLOW, patches.FIRE_FLOW,
                                                                   patches.TALK_FLOW, patches.FAIRY_ORDER_FLOW)}
+    # (the lake's Fire Arrows spot holding another item: the sun's scene taking its pickup, the get flows not completing the
+    # arrows' quest; else those three flows the game's)
+    sun_item = plan.get("gifts", {}).get(patches.LAKE_SUN) or next(
+        (a for h, a in plan.get("loose", {}).items() if h == "4598657944866228526"), None)
+    for rel, make in [(patches.LAKE_SUN_FLOW, lambda d: patches.lake_sun_flow(d, pickups.name_for(sun_item)))] +             [(rel, lambda d, s=switch: patches.no_fire_arrow_quest_flow(d, s)) for rel, switch in patches.FIRE_ARROW_QUEST_CALLS]:
+        own.add(rel.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
+        path = os.path.join(mod_romfs, *rel.split("/"))
+        if sun_item:
+            if not os.path.exists(path) or evfl.read(codec.read(path)) != evfl.read(make(codec.read(os.path.join(romfs, *rel.split("/"))))):
+                problems.append("%s: not the game's with the lake's Fire Arrows spot holding %s" % (rel, sun_item))
+        elif os.path.exists(path):
+            problems.append("%s in the mod with the lake's Fire Arrows where they are" % rel)
     # (the fountains' Triforce mark: the game's flow, the Din's Fire check asking Zelda's Lullaby: any order)
     path = os.path.join(mod_romfs, *patches.FAIRY_ORDER_FLOW.split("/"))
     want_flow = patches.fairies_any_order_flow(codec.read(os.path.join(romfs, *patches.FAIRY_ORDER_FLOW.split("/"))))

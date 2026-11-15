@@ -37,8 +37,9 @@ Order: what can leave a seed unfinishable first, then what players expect from a
    stays on screen when skipped without OotrR's flow fix), **open forest**, the Kokiri shop full from the start, starting
    items (SoH's Starting Inventory: pool swap + logic start).
 8. **Shops and scrubs** (one-time buys). **Shopsanity** done 2026-11-15 (`rando/shops.py`, OotrR's shelves and AI with the
-   `ainb` library; settings shuffle_shops, shop_prices; to see in game: a shelf's model, name and price, bought once,
-   "Sold Out" after it and after a reload, the Kokiri shop's full stock as a child, the tracker's mark). Left: scrubs,
+   `ainb` library; settings shuffle_shops, shop_prices; seen in game 2026-11-15 on three Kokiri shelves: bought once,
+   "Sold Out" after it and after a reload). Fire Arrows at Lake Hylia done 2026-11-15 (settings shuffle_lake_fire_arrows,
+   rando.patches.lake_sun; to see in game). Left: scrubs,
    songs and dungeon items on shelves (a shop's get ends in ActionGuideForShop, not our hook). **Keys anywhere** done 2026-11-15 (`rando/dungeon_items.py`, seen in game;
    settings own / any dungeon / overworld / anywhere, chests and loose spots; the two freestanding keys are checks).
    Left: dungeon items as gifts (a gift not ending in ActionGuide credits at the next item get), key rings; to see in

@@ -45,6 +45,10 @@ OPTIONS = (
            "Zelda's Letter (her scene in the castle garden) and the Light Arrows (her scene in the Temple of Time) are "
            "placed with the other items; their scenes give the item placed there. The letter, wherever found, opens "
            "Kakariko's gate.", False, False),
+    Option("shuffle_lake_fire_arrows", "shuffle", "Shuffle the Fire Arrows at Lake Hylia",
+           "The item on the lake's platform, there once the sun is shot at sunrise (after the Water Temple), is placed with "
+           "the other items (SoH: LH Sun); the Fire Arrows go with the other items. Found elsewhere first, they no longer "
+           "close the sun's spot.", False, False),
     Option("shuffle_fairy_ocarina", "shuffle", "Shuffle the Fairy Ocarina",
            "Saria's gift on the Lost Woods bridge is placed with the other items; she gives the item placed there. An "
            "ocarina found elsewhere is made playable on the next item get (OotrR's fix). The Ocarina of Time stays at "
@@ -66,7 +70,7 @@ OPTIONS = (
            "Shelves of the 8 shops sell items of the pool, each once (SoH: Shopsanity): that many per shop, or a random "
            "number. The shelves logic needs (shields, tunics, Deku nuts and sticks, Bombchus) go last; the others keep "
            "their item. The Kokiri shop sells its whole stock from the start. A bought shelf shows \"Sold Out\" (the OotrR "
-           "randomizer's way).", "off", False,
+           "randomizer's way).", "off", True,
            (("off", "Off"),) + tuple((str(n), str(n)) for n in range(1, 8)) + (("random", "Random"),)),
     Option("shop_prices", "shuffle", "Shop prices",
            "What a shuffled shelf costs (SoH: Shopsanity Prices): Vanilla, the price of what the shelf sold; Cheap "

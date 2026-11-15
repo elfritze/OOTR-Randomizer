@@ -760,6 +760,50 @@ GREAT_FAIRIES = {
 }
 GREAT_FAIRY_GIVEN = "RandoGreatFairyGiven"
 
+# The Fire Arrows at Lake Hylia (with settings shuffle_lake_fire_arrows): a pickup on the platform (Obj_Arrow_Fire, map Name
+# "Item", HyruleField_Adult_Static) that the lake's logic module (HyruleField_LakeHylia_Adult_Prefab_5313) creates while the
+# quest SubEvent_GetFireArrow is at Step03 (the sun shot, between 6:00 and 7:30, sets it) and deletes after it. The item placed
+# there is our pickup in its place (rando.pickups, itself built on Obj_Arrow_Fire: its glow and Rotate_Obj, which the scene
+# plays); the sun's scene (Dm_LakeHrl_0030) finds its member by actor name and instance name, so its actor Obj_Arrow_Fire is
+# renamed to the pickup's. And Dm_SY_Get / Dm_SY_Get_WithoutPlayer give any item tagged as the Fire Arrows (wherever got)
+# the quest's Complete (SubEvent_GetFireArrow:GetFireArrow, case 1 of their pouch tag switch), which deletes the platform's
+# pickup before it is ever shot for: that case goes on without it (Navi's line about them goes, the quest log keeps the step).
+LAKE_SUN = "RC_LH_SUN"
+LAKE_SUN_FLOW = "Event/EventFlow/Dm_LakeHrl_0030.bfevfl.zs"
+LAKE_SUN_ACTOR = ("Obj_Arrow_Fire", "Item")
+FIRE_ARROW_QUEST_CALLS = (("Event/EventFlow/Dm_SY_Get.bfevfl.zs", "Event115"),
+                          ("Event/EventFlow/Dm_SY_Get_WithoutPlayer.bfevfl.zs", "Event9"))
+
+
+def lake_sun_flow(data, actor):
+    """the sun's scene with its Fire Arrows actor named actor"""
+    flow = evfl.read(data)[0]
+    found = [i for i, a in enumerate(flow["actors"]) if (a["name"], a["sub"]) == LAKE_SUN_ACTOR]
+    if len(found) != 1:
+        raise ValueError("%s: not the scene known" % LAKE_SUN_FLOW)
+    return evfl_patch.rename_actor(data, found[0], actor)
+
+
+def no_fire_arrow_quest_flow(data, switch):
+    """a get flow whose Fire Arrows tag case goes on without completing their quest"""
+    flow = evfl.read(data)[0]
+    names = [e["name"] for e in flow["events"]]
+    i = names.index(switch)
+    e = flow["events"][i]
+    call = flow["events"][e["cases"][1]] if e["type"] == "switch" and 1 in e.get("cases", {}) else {}
+    if call.get("type") != "subflow" or (call.get("flowchart"), call.get("entry")) != ("SubEvent_GetFireArrow",
+                                                                                         "GetFireArrow") \
+            or call.get("next") is None:
+        raise ValueError("%s: not the Fire Arrows' quest call known" % switch)
+    return evfl_patch.set_case(data, i, 1, call["next"])
+
+
+def lake_sun(romfs, codec, mod, actor):
+    """the lake's Fire Arrows spot holding the pickup actor"""
+    mod.write(LAKE_SUN_FLOW, lake_sun_flow(mod.read(LAKE_SUN_FLOW), actor))
+    for rel, switch in FIRE_ARROW_QUEST_CALLS:
+        mod.write(rel, no_fire_arrow_quest_flow(mod.read(rel), switch))
+
 # The remake has the fairies found in order: Zelda's Lullaby on any fountain's Triforce mark but Din's (the castle's) asks
 # IsGet.Item_DinFire (TriForcePoint Event8, after the ability switch Event132); without it Navi talks and no fairy comes.
 # SoH's logic has them in any order, and a seed may put Din's Fire anywhere (seen in game, seed 7cc65105, 2026-11-15: Din's

@@ -55,6 +55,49 @@ def set_string_param(data, event_index, key, value, flow_index=0):
     return bytes(out)
 
 
+def _append_string(out, value):
+    """a string as the flows hold them (u16 length, bytes, NUL) after the end of out (a bytearray); its offset"""
+    out += b"\0" * (-len(out) % 8)
+    at = len(out)
+    raw = value.encode("utf-8")
+    out += struct.pack("<H", len(raw)) + raw + b"\0"
+    out += b"\0" * (-len(out) % 8)
+    struct.pack_into("<I", out, 0x1C, len(out))   # (the header's file size)
+    return at
+
+
+def rename_actor(data, actor_index, name, flow_index=0):
+    """data with actor actor_index named name (its name's pointer moved to a new string; it is in the relocation table
+    already): an event finds its members by name, so the flow then takes that actor"""
+    r = evfl.Reader(data)
+    flow_at = r.u64(r.u64(0x28) + 8 * flow_index)
+    if not actor_index < r.u16(flow_at + 0x10):
+        raise ValueError("no actor %d" % actor_index)
+    ptr = r.u64(flow_at + 0x28) + 0x38 * actor_index
+    out = bytearray(data)
+    at = _append_string(out, name)
+    struct.pack_into("<Q", out, ptr, at)
+    return bytes(out)
+
+
+def set_case(data, event_index, value, target, flow_index=0):
+    """data with switch event event_index's case value going to event target (an index), in place"""
+    r = evfl.Reader(data)
+    flow_at = r.u64(r.u64(0x28) + 8 * flow_index)
+    e = r.u64(flow_at + 0x30) + 0x30 * event_index
+    if r.u8(e + 8) not in (evfl.SWITCH, evfl.SUBFLOW_SWITCH):
+        raise ValueError("event %d is not a switch" % event_index)
+    if not target < r.u16(flow_at + 0x16):
+        raise ValueError("no event %d" % target)
+    cases_at = r.u64(e + 0x18)
+    at = [cases_at + 8 * k for k in range(r.u16(e + 0xA)) if r.u32(cases_at + 8 * k) == value]
+    if len(at) != 1:
+        raise ValueError("event %d has no case %d" % (event_index, value))
+    out = bytearray(data)
+    struct.pack_into("<I", out, at[0] + 4, target)
+    return bytes(out)
+
+
 # ---- the relocation table
 
 def relt_section_size(data):
