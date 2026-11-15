@@ -416,7 +416,6 @@ TALK_LINE_FROM = "Event6"
 GIFT_MSBT = "EventFlowMsg/Npc_Goron_Darunia_Child.msbt"
 GIFT_LABEL = "Rando_DaruniaGift"
 TALK_LINE = "EventFlowMsg/Npc_Goron_Darunia_Child:" + GIFT_LABEL
-BRACELET_NAME = "Armor_Child_Gauntlet_Goron_Name"   # (the bracelet's name label: its pouch actor's)
 MALS = "Mals"
 MALS_DATA_ALIGNMENT = 8   # (the message archives' data block: sarc.write gives them back byte for byte with it)
 POUCH_MSBT = "ActorMsg/PouchContent.msbt"
@@ -453,13 +452,28 @@ def mals_archives(romfs):
     return sorted(f for f in os.listdir(os.path.join(romfs, MALS)) if f.endswith(".sarc.zs"))
 
 
-def gift_message_files(romfs, mod, name_label=BRACELET_NAME):
-    """{Mals archive rel: its files, Darunia's message file with the gift's line added} (the rest as the game has it)"""
+def gift_name_label(item, labels):
+    """the PouchContent label naming the item Darunia gives (hints.item_name_label: its own, else its pouch form's)"""
+    from .hints import item_name_label
+    label = item_name_label(item, labels)
+    if label is None:
+        raise ValueError("no name for %s" % item)
+    return label
+
+
+def gift_message_files(romfs, mod, item=BRACELET):
+    """{Mals archive rel: its files, Darunia's message file with the gift's line added} (the rest as the game has it); the
+    item's name as each language has it, else as English has it"""
     out = {}
+    english = msbt.read(sarc.read(mod.read("%s/USen.Product.110.sarc.zs" % MALS))[POUCH_MSBT])
     for f in mals_archives(romfs):
         rel = "%s/%s" % (MALS, f)
         files = sarc.read(mod.read(rel))
-        name = msbt.read(files[POUCH_MSBT]).text(name_label)
+        pouch = msbt.read(files[POUCH_MSBT])
+        name_label = gift_name_label(item, pouch.labels)
+        name = pouch.text(name_label)
+        if not name or not name.strip():
+            name = english.text(name_label)
         if not name:
             raise ValueError("%s: no %s" % (rel, name_label))
         m = msbt.read(files[GIFT_MSBT])
@@ -513,8 +527,9 @@ def darunia_talk_events(given, song, set_given, line, line_params):
              "params": line_params, "next": None}]
 
 
-def darunia_bracelet_after_quest(romfs, codec, mod):
-    """Darunia gives the bracelet to Saria's Song and in his talk (with his line) past his dance's step too"""
+def darunia_bracelet_after_quest(romfs, codec, mod, item=BRACELET):
+    """Darunia gives his gift (the bracelet, or the item placed at his check: his dance's own scene gives it by the gift
+    edit) to Saria's Song and in his talk (with his line) past his dance's step too"""
     vanilla = [a for a in evfl.read(mod.read(POUCH_ACTOR_FROM))[0]["actors"] if a["name"] == POUCH_ACTOR]
     if len(vanilla) != 1 or vanilla[0]["actions"] != [POUCH_ADD] or not vanilla[0]["params"]:
         raise ValueError("%s: not the PouchSystemActor known" % POUCH_ACTOR_FROM)
@@ -536,7 +551,7 @@ def darunia_bracelet_after_quest(romfs, codec, mod):
     given, set_given, silent, line = DARUNIA_SONG
     raw = evfl_patch.add_events(raw, SONG_AFTER, darunia_song_events(given, set_given, line, song_line_params(flow)))
     raw = evfl_patch.add_actions(raw, set_given, POUCH_ACTOR, POUCH_ADD, vanilla[0]["params"],
-                                 [(silent, start_item_params(BRACELET))])
+                                 [(silent, start_item_params(item))])
     mod.write(FIRE_FLOW, raw)
     raw = mod.read(TALK_FLOW)
     talk = evfl.read(raw)[0]
@@ -547,9 +562,9 @@ def darunia_bracelet_after_quest(romfs, codec, mod):
     raw = evfl_patch.add_events(raw, TALK_START, darunia_talk_events(given, song, set_given, line,
                                                                      talk_line_params(talk)))
     raw = evfl_patch.add_actions(raw, set_given, POUCH_ACTOR, POUCH_ADD, vanilla[0]["params"],
-                                 [(silent, start_item_params(BRACELET))])
+                                 [(silent, start_item_params(item))])
     mod.write(TALK_FLOW, raw)
-    for rel, files in gift_message_files(romfs, mod).items():
+    for rel, files in gift_message_files(romfs, mod, item).items():
         mod.write(rel, sarc.write(files, data_alignment=MALS_DATA_ALIGNMENT))
     for row in DARUNIA_ROWS:
         list_event_subflows(mod, row, darunia_subflows(mod))

@@ -1674,6 +1674,26 @@
    "area": "Bottom of the Well",
    "confidence": "medium",
    "notes": "The crypt's key in the burnable casket (room 3). Always created; deleted once BottomOfTheWell_Level_Room_03_Get_SmallKey is set (its Dead sets it): a new pickup there is not yet seen in game (research/mapping/gifts_dungeons_bosses.json)."
+  },
+  {
+   "id": "RC_GC_DARUNIAS_JOY",
+   "rc": "RC_GC_DARUNIAS_JOY",
+   "kind": "gift",
+   "vanilla": "Item_Gauntlet_Goron",
+   "edits": [
+    {
+     "flow": "Dm_Goron_0030",
+     "event": 128,
+     "param": "ActorName",
+     "value": "Item_Gauntlet_Goron"
+    }
+   ],
+   "soh_region": "RR_GC_DARUNIAS_CHAMBER",
+   "rule": null,
+   "name": "Darunia's Joy (Goron's Bracelet)",
+   "area": "Goron City",
+   "confidence": "medium",
+   "notes": "His dance's scene Dm_Goron_0030 gives it (Event127: Dm_SY_GetInEvent ActorName); patches.darunia_bracelet_after_quest's two silent adds (Saria's Song past his dance, his talk) give the same item, with his line naming it. An Item_ actor only (items.POUCH_ADD_CHECKS). A shuffled item there is not yet seen in game."
   }
  ],
  "excluded": [
@@ -1901,11 +1921,6 @@
    "id": "RC_COLOSSUS_GREAT_FAIRY_REWARD",
    "rc": "RC_COLOSSUS_GREAT_FAIRY_REWARD",
    "reason": "Great Fairy: the remake charges rupees and resells (Pay/DontPay sub-flows, IsGet queries)"
-  },
-  {
-   "id": "RC_GC_DARUNIAS_JOY",
-   "rc": "RC_GC_DARUNIAS_JOY",
-   "reason": "Darunia's joy (Goron's Bracelet): kept fixed by the fill's ordering rule (ORDERED_FIXED)"
   },
   {
    "id": "RC_GC_ROLLING_GORON_AS_ADULT",

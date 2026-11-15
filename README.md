@@ -24,7 +24,7 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Setting | Default | Seen in game |
 |---|---|---|
 | Shuffle songs | on | yes |
-| Shuffle gifts and prizes (35 NPC and minigame checks) | on | yes |
+| Shuffle gifts and prizes (36 NPC and minigame checks, Darunia's bracelet among them) | on | yes (Darunia: not yet) |
 | Shuffle freestanding Heart Pieces (and bosses' Heart Containers, 22) | on | yes |
 | Maps and compasses: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
 | Small keys: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
@@ -79,10 +79,14 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 
 - **Every one-time chest is randomized**: 180 locations (148 of SoH's checks, 32 chests only the remake has), each with
   the logic of Ship of Harkinian's randomizer, adapted where the remake changed a room, a door or a key.
-- **NPCs' and minigames' prizes** (35: the Skull Kid, the scrubs' upgrades, bowling, the shooting galleries, the House of
-  Skulltula, fishing, the frogs, horseback archery, Dampe, the dog, Talon, Anju, King Zora...) give the item placed there:
-  `data/gifts.json` names each event parameter that says what is given.
-- **Items lying in the world** (the 14 loose Heart Pieces and the 8 bosses' Heart Containers) are the item placed there,
+- **NPCs' and minigames' prizes** (36: the Skull Kid, the scrubs' upgrades, bowling, the shooting galleries, the House of
+  Skulltula, fishing, the frogs, horseback archery, Dampe, the dog, Talon, Anju, King Zora, Darunia...) give the item placed
+  there: `data/gifts.json` names each event parameter that says what is given.
+- **The Goron's Bracelet is in the pool** (with gifts shuffled): Darunia's dance scene and the two ways the randomizer adds
+  for him (Saria's Song past his dance, his talk) give the item placed at his check, his line naming it; he gives an item
+  only (no rupee, song or dungeon item: a silent pouch add is proven for those). The bracelet, the Silver and the Golden
+  Gauntlets come in that order (the fill keeps each unreachable without the one before). Not yet seen in game.
+- **Items lying in the world** (the 14 loose Heart Pieces, the 8 bosses' Heart Containers and 2 freestanding keys) are the item placed there,
   lying where the old one was: a pickup made for each item as the remake made its own loose Fire Arrows.
 - **Upgrades come in order**: the remake's bags, quivers, wallets and scales are separate items, each setting its capacity
   outright; the earliest of each kind in the playthrough is the first tier (the Bow before the quivers, the Slingshot

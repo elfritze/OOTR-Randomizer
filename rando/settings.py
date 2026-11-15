@@ -27,7 +27,7 @@ OPTIONS = (
            "the game teaches it.", True, True),
     Option("shuffle_gifts", "shuffle", "Shuffle gifts and prizes",
            "What NPCs give and minigames award (Skull Kid, the frogs, the shooting galleries, Dampe, the Gorons, scrubs "
-           "selling a Heart Piece...): 35 checks. Off: each gives what the game gives.", True, True),
+           "selling a Heart Piece, Darunia's Goron's Bracelet...): 36 checks. Off: each gives what the game gives.", True, True),
     Option("shuffle_freestanding", "shuffle", "Shuffle freestanding Heart Pieces",
            "Heart Pieces lying in the world and the bosses' Heart Containers (22 checks; SoH: Shuffle Freestanding). "
            "Off: they stay Heart Pieces and Containers.", True, True),

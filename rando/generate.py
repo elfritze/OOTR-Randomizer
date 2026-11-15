@@ -219,7 +219,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     patches.mido_keeps_blocking(romfs, codec, mod)
     patches.starting_bags(romfs, codec, mod)
     patches.zora_arrival_after_letter(romfs, codec, mod)
-    patches.darunia_bracelet_after_quest(romfs, codec, mod)
+    patches.darunia_bracelet_after_quest(romfs, codec, mod, given.get(DARUNIA, patches.BRACELET))
     patches.free_time_travel(romfs, codec, mod)
     if settings["skip_intro"]:
         patches.skip_intro(romfs, codec, mod)
@@ -256,6 +256,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     return placed
 
 
+DARUNIA = "RC_GC_DARUNIAS_JOY"   # (his gift: his scene's edit, and the patch's silent adds with it)
 HINT_SEED = 0x6057   # (the hints draw from their own generator: the same seed's items whatever the hint settings)
 ARCHIVE = "rando-archive"   # (beside mods: Longshot loads every folder inside mods)
 
@@ -293,7 +294,7 @@ def assign_tiers(s, placed, rng):
         spots.sort(key=lambda lid: when.get(lid, len(spheres)))
         for i, lid in enumerate(spots):
             placed[lid] = group[min(i, len(group) - 1)]
-            if not I.allowed(placed[lid], by_id[lid].kind):
+            if not I.fits(placed[lid], lid, by_id[lid].kind):
                 raise fill.FillError("%s cannot go in %s" % (placed[lid], by_id[lid].name))
     return placed
 

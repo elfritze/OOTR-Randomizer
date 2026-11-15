@@ -18,6 +18,7 @@ ITEMS = {
     "Item_HeavyBoot": "RG_IRON_BOOTS",
     "Item_HoverBoot": "RG_HOVER_BOOTS",
     "Item_GlassTruth": "RG_LENS_OF_TRUTH",
+    "Item_Gauntlet_Goron": "RG_PROGRESSIVE_STRENGTH",   # (the Goron's Bracelet: Darunia's, in the pool with gifts)
     "Item_Gauntlet_Silver": "RG_PROGRESSIVE_STRENGTH",
     "Item_Gauntlet_Gold": "RG_PROGRESSIVE_STRENGTH",
     "Item_Shield_Mirror": "RG_MIRROR_SHIELD",
@@ -92,6 +93,21 @@ NOT_GIFT = {"Obj_Heart_Container"}
 NOT_CHEST = {"Obj_Armor_Zora"}   # (its chest form is not known: the remake's Zora Tunic only comes from King Zora and a shop)
 
 
+# Checks giving their item by a silent pouch add (PouchSystemActor.EventTriggerAddOrRemovePouchContent: proven for Item_
+# actors, the starting bags and Darunia's bracelet): an Item_ actor only, no song, no dungeon item.
+POUCH_ADD_CHECKS = {"RC_GC_DARUNIAS_JOY"}
+
+
+def fits(actor, location_id, kind):
+    """allowed(), and what a check giving by a silent add can give"""
+    if not allowed(actor, kind):
+        return False
+    if location_id in POUCH_ADD_CHECKS:
+        given = form(actor, kind)
+        return given.startswith("Item_") and not given.startswith("Item_Melody_") and not dungeon_bound(actor)
+    return True
+
+
 def allowed(actor, kind):
     """can this item (as the pool names it: its chest form) go in a location of this kind ("chest", "gift", "loose")?"""
     if kind == "chest":
@@ -134,9 +150,11 @@ BIG_CHEST_ONLY = {"Item_Dungeon_BossKey", "Item_Dungeon_Map", "Item_Dungeon_Comp
 
 # Pairs where getting the second before the first is not known to work in the remake (two actors, not one progressive
 # item): the fill keeps the second unreachable without the first.
-ORDERED = (("Item_Hookshot", "Item_Longshot"), ("Item_Gauntlet_Silver", "Item_Gauntlet_Gold"))
+ORDERED = (("Item_Hookshot", "Item_Longshot"), ("Item_Gauntlet_Goron", "Item_Gauntlet_Silver"),
+           ("Item_Gauntlet_Silver", "Item_Gauntlet_Gold"))
 # The same with the first from a check the randomizer leaves as it is (SoH counts these as one progressive item: had first,
-# the second would count as the first in logic): Darunia's Goron's Bracelet before the Silver Gauntlets.
+# the second would count as the first in logic): Darunia's Goron's Bracelet before the Silver Gauntlets, when gifts are not
+# shuffled (shuffled, the bracelet is in the pool: ORDERED).
 ORDERED_FIXED = (("RC_GC_DARUNIAS_JOY", "Item_Gauntlet_Silver"),)
 
 # Ammunition the game gives without the container it goes in (its PouchContentParam's SmallBagActor): a chest's bombs before

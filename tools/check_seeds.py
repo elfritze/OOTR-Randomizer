@@ -38,7 +38,7 @@ def main():
             placed = generate.assign_tiers(s, s.fill(rng), rng)
             by_id = {l.id: l for l in s.locs}
             for lid, a in placed.items():   # (every item where its kind of location can hold it)
-                if not I.allowed(a, by_id[lid].kind):
+                if not I.fits(a, lid, by_id[lid].kind):
                     raise fill.FillError("%s in %s" % (a, by_id[lid].name))
                 own = I.dungeon_item(a)
                 if own and not fill.PLACES[s.places[own[0]]](own[1], by_id[lid]):

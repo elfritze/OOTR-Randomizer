@@ -131,7 +131,7 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
         return world.reachable(have)
 
     def put(item, origin, spots):
-        spots = [l for l in spots if I.allowed(item, l.kind)]
+        spots = [l for l in spots if I.fits(item, l.id, l.kind)]
         own = I.dungeon_item(item)
         if own:
             where = PLACES[places[own[0]]]
@@ -170,6 +170,19 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
     # 2. maps and compasses
     for item, origin in other_dungeon:
         put(item, origin, empty + junk_only)
+    # 3. a check taking few items (POUCH_ADD_CHECKS) first: any item it can give, of the progression or not (one of the
+    #    progression where the check is reachable without it, as assumed fill places); none of the ORDERED pairs (their
+    #    places are drawn below)
+    in_pairs = {a for p in I.ORDERED for a in p}
+    for spot in [l for l in empty if l.id in I.POUCH_ADD_CHECKS]:
+        fit = [x for x in prog + rest if I.fits(x[0], spot.id, spot.kind) and x[0] not in in_pairs]
+        rng.shuffle(fit)
+        for x in fit:
+            if x in prog and spot.id not in reach(counted([y for y in prog if y is not x])):
+                continue
+            (prog if x in prog else rest).remove(x)
+            put(x[0], x[1], [spot])
+            break
     # 3. the ORDERED pairs' second items, then the rest of the progression
     seconds = [s for _, s in I.ORDERED][::-1]   # (Gold before Silver: Silver is itself the second of ORDERED_FIXED)
     for second in seconds + [s for _, s in I.ORDERED_FIXED if s not in seconds]:
@@ -198,6 +211,13 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
         put(item, origin, container_spots(item, owned, [l for l in empty if l.id in r]))
     # 4. the rest: the ammunition first, where its container is needed; then what only some kinds of location take
     rng.shuffle(rest)
+    for spot in [l for l in empty + junk_only if l.id in I.POUCH_ADD_CHECKS]:   # (the checks taking few items first)
+        fit = [x for x in rest if I.fits(x[0], spot.id, spot.kind)]
+        if not fit:
+            raise FillError("nothing left that %s can give" % spot.name)
+        item, origin = rng.choice(fit)
+        rest.remove((item, origin))
+        put(item, origin, [spot])
     rest.sort(key=lambda x: (x[0] not in I.NEEDS_CONTAINER, sum(I.allowed(x[0], k) for k in ("chest", "gift", "loose"))))
     for item, origin in rest:
         spots = empty + junk_only
@@ -237,7 +257,7 @@ def _verify(world, locations, fixed, placed):
                 {k: v for k, v in placed.items() if k in by_id}, by_id)):
             raise FillError("%s can be had without its container (%s)" % (actor, by_id[lid].name))
     for first_rc, second in I.ORDERED_FIXED:
-        if second not in where or first_rc not in every:
+        if second not in where or first_rc not in fixed:   # (only while that check keeps its item: shuffled, ORDERED)
             continue
         without = {lid: rg for lid, rg in every.items() if lid != first_rc}
         have_without, _ = world.collect(collections.Counter(), without)

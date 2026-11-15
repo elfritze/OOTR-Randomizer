@@ -341,7 +341,7 @@ def main():
                 ok = ok and (got["flowchart"], got["entry"]) == (e["flowchart"], e["entry"]) and \
                     got["next"] == target(e["next"])
         add = b["events"][new[silent]]
-        ok = ok and add["params"] == patches.start_item_params(patches.BRACELET) and add["next"] == after_silent and \
+        ok = ok and add["params"] == patches.start_item_params(darunia_item) and add["next"] == after_silent and \
             b["actors"][add["actor"]]["name"] == patches.POUCH_ACTOR and \
             b["actors"][add["actor"]]["actions"][add["action"]] == patches.POUCH_ADD
         b["events"][i]["next"] = orig
@@ -349,6 +349,7 @@ def main():
                 b["entries"] == a["entries"]):
             return ["%s: not the game's with Darunia's gift chain after %s" % (rel, after)]
         return []
+    darunia_item = plan.get("gifts", {}).get(generate.DARUNIA, patches.BRACELET)   # (his gift: the plan's, else his own)
     given, set_given, silent, line = patches.DARUNIA_SONG
     fire_game = evfl.read(codec.read(os.path.join(romfs, *patches.FIRE_FLOW.split("/"))))[0]
     problems += darunia_chain(patches.FIRE_FLOW, patches.SONG_AFTER, patches.DARUNIA_SONG,
@@ -388,7 +389,7 @@ def main():
     if own_items:
         english_files = dungeon_items.with_texts(english_files, english_files, own_items)
     english_names = hints.Names(english_files)
-    for rel, want_files in patches.gift_message_files(romfs, game_only).items():
+    for rel, want_files in patches.gift_message_files(romfs, game_only, darunia_item).items():
         path = os.path.join(mod_romfs, *rel.split("/"))
         if not os.path.exists(path):
             problems.append("%s not in the mod (Darunia's line has no text)" % rel)
@@ -398,11 +399,8 @@ def main():
             want_files = dungeon_items.with_texts(want_files, english_files, own_items)
         if stones:
             want_files = hints.with_hints(rel.split("/")[-1], want_files, english_names, stones)
-        if got != want_files:
+        if got != want_files:   # (his line naming his gift included: gift_message_files writes it)
             problems.append("%s: not the game's with Darunia's line added%s" % (rel, " and the hints" if stones else ""))
-        elif msbt.read(got[patches.GIFT_MSBT]).get(patches.GIFT_LABEL) != patches.gift_message(rel.split("/")[-1], msbt.read(
-                got[patches.POUCH_MSBT]).text(patches.BRACELET_NAME)) + b"\0":
-            problems.append("%s: Darunia's line is not the one written" % rel)
     # (Mido's schedule: the game's rows but the after-Zelda one, each the same)
     path = os.path.join(mod_romfs, *patches.MIDO_SCHEDULE.split("/"))
     if not os.path.exists(path):
