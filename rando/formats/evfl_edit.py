@@ -91,8 +91,9 @@ class FlowEdit:
         def target(t):
             return 0xFFFF if t is None else self.index(t)
 
-        # (clones resolved to their source's kind; actions an actor lacks added to its list, rewritten after the end)
-        resolved, grow = [], {}
+        # (clones resolved to their source's kind; actions and queries an actor lacks added to its lists, rewritten after
+        #  the end)
+        resolved, grow, grow_q = [], {}, {}
         for ev in self.new:
             if "clone" in ev:
                 src = self.event(ev["clone"])
@@ -108,19 +109,33 @@ class FlowEdit:
                 if ev["action"] not in actors[ai]["actions"]:
                     actors[ai]["actions"].append(ev["action"])
                     grow.setdefault(ai, []).append(ev["action"])
+            elif ev["type"] == "switch":
+                ai = actor_index(ev["actor"])
+                if ev["query"] not in actors[ai]["queries"]:
+                    actors[ai]["queries"].append(ev["query"])
+                    grow_q.setdefault(ai, []).append(ev["query"])
             resolved.append(ev)
-        for ai, added in grow.items():
+        moved_lists = []
+
+        def grow_list(ai, added, ptr_off, count_off):
             a = actors_at + 0x38 * ai
-            count = r.u16(a + 0x30)
+            count = r.u16(a + count_off)
             arr = blob.reserve(8 * (count + len(added)))
-            old_arr = r.u64(a + 0x18)
+            old_arr = r.u64(a + ptr_off)
             for k in range(count):
                 blob.pointer(arr + 8 * k, r.u64(old_arr + 8 * k))
             for k, name in enumerate(added):
                 blob.pointer(arr + 8 * (count + k), blob.string(name))
-            struct.pack_into("<Q", old, a + 0x18, arr)   # (a pointer already in the relocation table)
-            struct.pack_into("<H", old, a + 0x30, count + len(added))
+            struct.pack_into("<Q", old, a + ptr_off, arr)
+            if a + ptr_off not in pointers:   # (an empty list's pointer may be null, out of the relocation table)
+                moved_lists.append(a + ptr_off)
+            struct.pack_into("<H", old, a + count_off, count + len(added))
+        for ai, added in grow.items():
+            grow_list(ai, added, 0x18, 0x30)
             n_actions += len(added)
+        for ai, added in grow_q.items():
+            grow_list(ai, added, 0x20, 0x32)
+            n_queries += len(added)
 
         # (the events: copied after the end, the new ones last)
         total = n_events + len(resolved)
@@ -213,7 +228,7 @@ class FlowEdit:
         out = bytearray(bytes(old) + bytes(blob.buf))
         struct.pack_into("<Q", out, flow_at + 0x30, new_events)
         struct.pack_into("<HHHH", out, flow_at + 0x10, n_actors, n_actions, n_queries, total)
-        every = sorted(set(pointers) | set(moved) | set(blob.pointers))
+        every = sorted(set(pointers) | set(moved) | set(moved_lists) | set(blob.pointers))
         at = len(out)
         out += relt_write(every, at, size)
         struct.pack_into("<I", out, 0x18, at)
