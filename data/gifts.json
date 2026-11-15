@@ -1636,6 +1636,44 @@
    "area": "Temple of Time",
    "confidence": "high",
    "notes": "the song's cutscene gives the placed item (its get window, GetPouchContentByActorName); its lesson's silent add of the song (Dm_SY_Ocarina event 38) gives a Scrub seed instead (checked in game with Impa, 2026-11-13: no Zelda's Lullaby learned)"
+  },
+  {
+   "id": "RC_SHADOW_TEMPLE_FREESTANDING_KEY",
+   "rc": "RC_SHADOW_TEMPLE_FREESTANDING_KEY",
+   "kind": "loose",
+   "vanilla": "Obj_Dungeon_SmallKey",
+   "loose": [
+    {
+     "map": "Banc/ShadowTemple/ShadowTemple_Static.bcett.byml.zs",
+     "hash": "12562389953863361839",
+     "gyaml": "Obj_Dungeon_SmallKey"
+    }
+   ],
+   "soh_region": "RR_SHADOW_TEMPLE_SKULL_JAR",
+   "rule": null,
+   "name": "Freestanding Key (giant skull jar)",
+   "area": "Shadow Temple",
+   "confidence": "medium",
+   "notes": "Room 13's key inside the giant skull jar Obj_ShadowTemple_SkullPot_A_01 (bombs). Its room module creates it by the jar's death and sets ShadowTemple_Level_Room_13_GetKey on its Dead, as for the Heart Pieces swapped by Hash: whether a new pickup there sets that flag is not yet seen in game (research/mapping/gifts_dungeons_bosses.json)."
+  },
+  {
+   "id": "RC_BOTTOM_OF_THE_WELL_FREESTANDING_KEY",
+   "rc": "RC_BOTTOM_OF_THE_WELL_FREESTANDING_KEY",
+   "kind": "loose",
+   "vanilla": "Obj_Dungeon_SmallKey",
+   "loose": [
+    {
+     "map": "Banc/BottomOfTheWell/BottomOfTheWell_Static.bcett.byml.zs",
+     "hash": "17649154319341333603",
+     "gyaml": "Obj_Dungeon_SmallKey"
+    }
+   ],
+   "soh_region": "RR_BOTW_CRYPT",
+   "rule": null,
+   "name": "Freestanding Key (crypt casket)",
+   "area": "Bottom of the Well",
+   "confidence": "medium",
+   "notes": "The crypt's key in the burnable casket (room 3). Always created; deleted once BottomOfTheWell_Level_Room_03_Get_SmallKey is set (its Dead sets it): a new pickup there is not yet seen in game (research/mapping/gifts_dungeons_bosses.json)."
   }
  ],
  "excluded": [
@@ -1878,16 +1916,6 @@
    "id": "RC_GC_POT_FREESTANDING_POH",
    "rc": "RC_GC_POT_FREESTANDING_POH",
    "reason": "Goron City pot Heart Piece: set in the pot's actor pack (ActorHolderParam Prize_HeartPiece), not a map actor or flow parameter"
-  },
-  {
-   "id": "RC_SHADOW_TEMPLE_FREESTANDING_KEY",
-   "rc": "RC_SHADOW_TEMPLE_FREESTANDING_KEY",
-   "reason": "freestanding dungeon key: pending"
-  },
-  {
-   "id": "RC_BOTTOM_OF_THE_WELL_FREESTANDING_KEY",
-   "rc": "RC_BOTTOM_OF_THE_WELL_FREESTANDING_KEY",
-   "reason": "freestanding dungeon key: pending"
   },
   {
    "id": "RC_KAK_100_GOLD_SKULLTULA_REWARD",

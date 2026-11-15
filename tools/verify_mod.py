@@ -177,7 +177,7 @@ def main():
         own |= {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (qol.BIG_CHEST_FLOW, qol.SMALL_CHEST_FLOW)}
     if chosen["gossip_stone_hints"] in ("need_nothing", "stone_of_agony"):   # (the stones' talk: hint_problems)
         own.add(hints.GOSSIP_FLOW.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
-    own_items = {item for item, _ in want.values() if dungeon_items.parse(item)}   # (dungeons' own items: below)
+    own_items = {item for item, _ in want.values() if dungeon_items.parse(item)} |         {a for a in loose.values() if dungeon_items.parse(a)}   # (dungeons' own items: below)
     if own_items:
         own.add(dungeon_items.ACTION_GUIDE.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
     if own & flows:   # (those flows are checked on their own below, without gift edits)

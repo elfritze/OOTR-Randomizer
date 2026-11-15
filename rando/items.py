@@ -84,7 +84,8 @@ TIER_OF = {a: g for g in TIERS for a in g}
 # (chest form: gift and loose forms)
 OBJ_FORM = {"TBox_Rupee_Green": "Obj_Rupee_Green", "TBox_Rupee_Blue": "Obj_Rupee_Blue", "TBox_Rupee_Red": "Obj_Rupee_Red",
             "TBox_Rupee_Purple": "Obj_Rupee_Purple", "TBox_Rupee_Gold": "Obj_Rupee_Gold",
-            "TBox_Shield_Deku": "Obj_Shield_Deku", "TBox_Shield_Hylian": "Obj_Shield_Hylian"}
+            "TBox_Shield_Deku": "Obj_Shield_Deku", "TBox_Shield_Hylian": "Obj_Shield_Hylian",
+            "Item_Dungeon_SmallKey": "Obj_Dungeon_SmallKey"}   # (a freestanding key: the game's loose key)
 CHEST_ONLY = {"Item_BombBundle_Small", "Item_BombchuBundle_Small", "TBox_ArrowBundle_Medium", "TBox_ArrowBundle_Large",
               "TBox_DekuNutBundle", "Item_DekuStickBundle_Small", "Tbox_MagicJar_Large", "Item_ScrubBusinessSeed"}
 NOT_GIFT = {"Obj_Heart_Container"}
@@ -95,7 +96,9 @@ def allowed(actor, kind):
     """can this item (as the pool names it: its chest form) go in a location of this kind ("chest", "gift", "loose")?"""
     if kind == "chest":
         return actor not in NOT_CHEST
-    if dungeon_bound(actor) or actor in CHEST_ONLY:   # (an own item's pickup name would pass the 25 characters)
+    if dungeon_bound(actor):   # (in chests and lying in the world: a gift may not end in the get flow crediting it)
+        return kind == "loose"
+    if actor in CHEST_ONLY:
         return False
     if kind == "gift":
         return actor not in NOT_GIFT
@@ -183,6 +186,15 @@ def dungeon_item(actor, remake_map=None):
 def own_actor(actor, remake_map):
     """the pool's name of the dungeon item a location of this map holds as the game has it"""
     return DI.actor_name(actor, remake_map) if actor in DUNGEON_ITEMS else actor
+
+
+def loose_form(actor, remake_map):
+    """the actor a loose spot of this map is written with for a pool item: a dungeon's small key lying in its own dungeon
+    is the game's loose key; any other dungeon item, its own item (a pickup is made of it)"""
+    own = DI.parse(actor)
+    if own and own == ("Item_Dungeon_SmallKey", remake_map):
+        return OBJ_FORM["Item_Dungeon_SmallKey"]
+    return form(actor, "loose")
 
 
 def dungeon_form(actor, remake_map, small_chest):

@@ -117,7 +117,7 @@ class Pickups:
         if item in self.made:
             return self.made[item]
         name = name_for(item)
-        files = sarc.read(self.codec.read(os.path.join(self.romfs, *pack_path(item).split("/"))))
+        files = sarc.read(self.mod.read(pack_path(item)))   # (the game's, or a new item's: a dungeon's own)
         comps = _components(files, "Actor/%s.engine__actor__ActorParam.bgyml" % item)
         if "PouchContentRef" not in comps:
             raise ValueError("%s has no PouchContentRef" % item)

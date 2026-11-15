@@ -35,9 +35,9 @@ OPTIONS = (
            "Own dungeon: in their dungeon, as the game has them. Any dungeon: in any dungeon. Overworld: outside the "
            "dungeons. Anywhere: any chest.", "own_dungeon", False, PLACES),
     Option("shuffle_small_keys", "dungeon", "Small keys",
-           "As maps and compasses (SoH: Small Key Shuffle). Logic counts each dungeon's keys wherever they are. No "
-           "Overworld: its 37 keys outnumber the chests outside the dungeons, the only places they go for now.",
-           "own_dungeon", False, tuple(p for p in PLACES if p[0] != "overworld")),
+           "As maps and compasses (SoH: Small Key Shuffle). Logic counts each dungeon's keys wherever they are. "
+           "Overworld for all three kinds at once is refused: 65 items, more than the chests and loose spots outside "
+           "the dungeons.", "own_dungeon", False, PLACES),
     Option("shuffle_boss_keys", "dungeon", "Boss keys",
            "As maps and compasses (SoH: Boss Key Shuffle), Ganon's Castle's boss key with the others.",
            "own_dungeon", False, PLACES),
@@ -111,6 +111,9 @@ def normalized(chosen, legacy=False):
         elif not isinstance(v, bool):
             raise ValueError("setting %s is not on/off: %r" % (k, v))
         out[k] = v
+    if all(out[k] == "overworld" for k in ("shuffle_maps_compasses", "shuffle_small_keys", "shuffle_boss_keys")):
+        raise ValueError("maps and compasses, small keys and boss keys cannot all be in the overworld: 65 items for "
+                         "about 60 places outside the dungeons; choose another place for one of them")
     return out
 
 

@@ -34,9 +34,9 @@ Order: what can leave a seed unfinishable first, then what players expect from a
    stays on screen when skipped without OotrR's flow fix), **open forest**, the Kokiri shop full from the start, starting
    items (SoH's Starting Inventory: pool swap + logic start).
 8. **Shops and scrubs** (one-time buys). **Keys anywhere** done 2026-11-15 (`rando/dungeon_items.py`, seen in game;
-   settings own / any dungeon / overworld / anywhere, chests only). Left: dungeon items in gifts and loose spots (a
-   gift not ending in ActionGuide credits at the next item get; a pickup's name must stay within 25 characters), key
-   rings, small keys in the overworld.
+   settings own / any dungeon / overworld / anywhere, chests and loose spots; the two freestanding keys are checks).
+   Left: dungeon items as gifts (a gift not ending in ActionGuide credits at the next item get), key rings; to see in
+   game: a dungeon item's pickup, a new pickup at a freestanding key's spot.
 9. **Settings and presets**: a Settings page in SoH's groups done 2026-11-14 (shuffle songs / gifts / freestanding,
    timesavers, world; SoH's other choices shown fixed). Left: presets, a **spoiler page** in the app.
 10. **Hints** from the gossip stones (neither randomizer has them: a real edge): done 2026-11-14 (`rando/hints.py`;

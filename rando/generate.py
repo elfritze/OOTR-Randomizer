@@ -201,7 +201,9 @@ def generate(romfs, mods_dir, seed, settings, log=print):
         if kind == "gift":
             given[lid] = I.form(actor, "gift")
         elif kind == "loose":
-            new = I.form(actor, "loose")
+            new = I.loose_form(actor, by_id[lid].map)
+            if I.dungeon_item(new):   # (a dungeon's own item: its pack and rows first, the pickup made of it)
+                new = own_items.actor(*I.dungeon_item(new))
             for a in gift_by_id[lid]["loose"]:
                 if new != a.get("gyaml"):   # (an item left where it was stays as the game has it)
                     loose[int(a["hash"])] = new

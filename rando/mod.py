@@ -81,6 +81,7 @@ class Mod:
         need = entry_for(len(data), len(self.codec.decompress(original, os.path.basename(like))), self.original_entry(like))
         self.table.set(rel, need)
         self.grown.append((rel, 0, need))
+        self.data[rel] = data   # (read back as a game file is: a pickup made of a new item reads its pack)
         dst = os.path.join(self.out, *rel.split("/"))
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         with open(dst, "wb") as f:
