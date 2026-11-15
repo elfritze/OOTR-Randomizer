@@ -225,7 +225,12 @@ def main():
     flow_dir = os.path.join(mod_romfs, "Event", "EventFlow")
     in_mod = {f[:-len(".bfevfl.zs")] for f in os.listdir(flow_dir)} if os.path.isdir(flow_dir) else set()
     own = {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (patches.OPENING_FLOW, patches.WATER_FLOW, patches.FIRE_FLOW,
-                                                                  patches.TALK_FLOW)}
+                                                                  patches.TALK_FLOW, patches.FAIRY_ORDER_FLOW)}
+    # (the fountains' Triforce mark: the game's flow, the Din's Fire check asking Zelda's Lullaby: any order)
+    path = os.path.join(mod_romfs, *patches.FAIRY_ORDER_FLOW.split("/"))
+    want_flow = patches.fairies_any_order_flow(codec.read(os.path.join(romfs, *patches.FAIRY_ORDER_FLOW.split("/"))))
+    if not os.path.exists(path) or evfl.read(codec.read(path)) != evfl.read(want_flow):
+        problems.append("%s: not the game's with the fairies in any order" % patches.FAIRY_ORDER_FLOW)
     if chosen["fast_chests"]:   # (checked on their own below)
         own |= {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (qol.BIG_CHEST_FLOW, qol.SMALL_CHEST_FLOW)}
     if chosen["gossip_stone_hints"] in ("need_nothing", "stone_of_agony"):   # (the stones' talk: hint_problems)

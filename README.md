@@ -135,6 +135,10 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
   Gauntlets come in that order (the fill keeps each unreachable without the one before). Not yet seen in game.
 - **Items lying in the world** (the 14 loose Heart Pieces, the 8 bosses' Heart Containers and 2 freestanding keys) are the item placed there,
   lying where the old one was: a pickup made for each item as the remake made its own loose Fire Arrows.
+- **Great Fairies in any order**: the remake opens every fountain but Din's (the castle's) only once Din's Fire is had
+  (the Triforce mark's flow); SoH's logic, and a seed putting Din's Fire anywhere, have them in any order (seen in game,
+  2026-11-15: the mountain's stayed shut after Din's fairy gave a rupee). That check now asks Zelda's Lullaby, always
+  had there. Not yet seen in game.
 - **The clock runs from the start**: the remake holds the time at 15:00 until Impa's send-off from the castle
   (`HavePlayedEvent.Dm_HrlField_0020`, read by the game's code), so there was no night (night-only Gold Skulltulas,
   Dampe) before Zelda, which SoH's logic never waits for (seen in game, 2026-11-15). The new game's opening sets that flag

@@ -734,6 +734,32 @@ GREAT_FAIRIES = {
 }
 GREAT_FAIRY_GIVEN = "RandoGreatFairyGiven"
 
+# The remake has the fairies found in order: Zelda's Lullaby on any fountain's Triforce mark but Din's (the castle's) asks
+# IsGet.Item_DinFire (TriForcePoint Event8, after the ability switch Event132); without it Navi talks and no fairy comes.
+# SoH's logic has them in any order, and a seed may put Din's Fire anywhere (seen in game, seed 7cc65105, 2026-11-15: Din's
+# fairy gave a rupee, then the mountain's fountain stayed shut). The switch asks IsGet.Item_Melody_ZeldaLullaby instead,
+# always true there (that point is only reached by playing it): every fountain opens in any order. On every seed: with the
+# fairies as the game has them, logic does not know of that order either.
+FAIRY_ORDER_FLOW = "Event/EventFlow/TriForcePoint.bfevfl.zs"
+FAIRY_ORDER_EVENT = "Event8"
+FAIRY_ORDER_FLAG = ("IsGet.Item_DinFire", "IsGet.Item_Melody_ZeldaLullaby")
+
+
+def fairies_any_order_flow(data):
+    flow = evfl.read(data)[0]
+    names = [e["name"] for e in flow["events"]]
+    i = names.index(FAIRY_ORDER_EVENT)
+    e = flow["events"][i]
+    a = flow["actors"][e["actor"]] if e["type"] == "switch" else None
+    if a is None or a["queries"][e["query"]] != "EventQueryIsGameDataBool" or             (e.get("params") or {}).get("GameDataName") != FAIRY_ORDER_FLAG[0]:
+        raise ValueError("%s: %s is not the Din's Fire check known" % (FAIRY_ORDER_FLOW, FAIRY_ORDER_EVENT))
+    return evfl_patch.set_string_param(data, i, "GameDataName", FAIRY_ORDER_FLAG[1])
+
+
+def fairies_any_order(romfs, codec, mod):
+    """every Great Fairy's fountain opens whichever fairy came before"""
+    mod.write(FAIRY_ORDER_FLOW, fairies_any_order_flow(mod.read(FAIRY_ORDER_FLOW)))
+
 
 def great_fairy_flow(data, flag, give, before):
     """a fairy's flow (its gift edits made) with her flag set between `before` and her gift"""

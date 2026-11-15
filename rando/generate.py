@@ -288,6 +288,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
                     loose[int(a["hash"])] = new
     gifts.write(romfs, codec, mod, [(gift_by_id[lid], actor) for lid, actor in given.items()])
     patches.great_fairies_once(romfs, codec, mod, [lid for lid in given if lid in patches.GREAT_FAIRIES])
+    patches.fairies_any_order(romfs, codec, mod)
     if SARIA in given:   # (an ocarina found elsewhere made playable; before the dungeon items' hook)
         patches.ocarina_guide_on_get(mod)
     if loose:
