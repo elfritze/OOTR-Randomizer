@@ -497,7 +497,7 @@ class Window:
 
     def defaults(self):
         for k, v in self.options.items():
-            v.set(settings.DEFAULTS[k])
+            v.set(settings.DEFAULTS[k])   # (RETIRED keys have no switch)
 
     def export_settings(self):
         path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("Settings", "*.json")])
@@ -517,7 +517,8 @@ class Window:
             messagebox.showerror(BRAND, "Not a settings file: %s" % e)
             return
         for k, v in chosen.items():
-            self.options[k].set(v)
+            if k in self.options:   # (a retired setting has no switch)
+                self.options[k].set(v)
         if data.get("seed"):
             self.seed.set(data["seed"])
 

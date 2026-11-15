@@ -24,7 +24,7 @@ def main():
     if not os.path.isfile(os.path.join(romfs, "Pack", "ZsDic.pack.zs")):
         raise SystemExit("%s has no game romfs" % a.game)
     seed = a.seed or secrets.token_hex(4)
-    chosen = {k: getattr(a, k) for k in settings.DEFAULTS}
+    chosen = {o.key: getattr(a, o.key) for o in settings.OPTIONS}
     generate.generate(romfs, os.path.join(a.game, "mods"), seed, chosen)
 
 

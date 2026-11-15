@@ -35,7 +35,7 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Small keys: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
 | Boss keys (Ganon's Castle's too): **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
 | Skip the opening movies | on | yes |
-| Fast chests: no chest cutscene, Link holds the item up (OotrR's patch, `rando/qol.py`) | on | not yet |
+| Fast chests: retired for now (`rando/qol.py` kept): small chests crashed the game as they opened (seed 7cc65105, 2026-11-15) | off | crashed |
 | Skippable automatic dialogues: the 12 step-started sequences (Navi, minigame rules) skip with + | on | not yet |
 | Skippable title demo and credits | on | not yet |
 | Night Gold Skulltulas also by day (30) | off | not yet |

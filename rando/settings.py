@@ -64,9 +64,6 @@ OPTIONS = (
            "is the one placed.", "vanilla", False, (("vanilla", "Vanilla"), ("end_of_dungeon", "End of dungeon"))),
     Option("skip_intro", "timesavers", "Skip the opening movies",
            "A new game starts in Kokiri Forest without the two opening movies.", True, True),
-    Option("fast_chests", "timesavers", "Fast chests",
-           "Chests open without their cutscene: the lid opens and Link holds the item up (SoH: Fast Chests; the OotrR "
-           "randomizer's patch).", True, False),
     Option("skip_auto_dialogues", "timesavers", "Skippable automatic dialogues",
            "The 12 sequences a quest step starts by itself (Navi's lines, minigames' rules) can be skipped with +.",
            True, False),
@@ -88,6 +85,11 @@ OPTIONS = (
 )
 BY_KEY = {o.key: o for o in OPTIONS}
 DEFAULTS = {o.key: o.default for o in OPTIONS}
+# (settings taken out, each at the one value it now has whatever a settings file says: fast_chests, the small chests'
+#  quick flow (qol.fast_chests), crashed the game as soon as a small chest was opened (seed 7cc65105, Goron City's maze,
+#  2026-11-15; the same seed without it opened them))
+RETIRED = {"fast_chests": False}
+DEFAULTS.update(RETIRED)
 # (settings of older seeds: their missing keys mean what the randomizer did then)
 LEGACY = {"shuffle_gifts": True, "shuffle_freestanding": True, "fast_chests": False, "skip_auto_dialogues": False,
           "skip_title_and_credits": False, "skulltulas_day_and_night": False, "gossip_stone_hints": "none"}
@@ -110,8 +112,12 @@ FIXED = (
     ("hints", "Other hints", "Off", "The Temple of Time altar, Ganondorf, Sheik, Saria and the other NPC hints of SoH "
      "are not in this version. A junk hint keeps the stone's own rumor."),
 )
+FIXED += (
+    ("off", "Fast chests", "Off", "Small chests opened without their cutscene crashed the game (seen in game): off "
+     "until fixed."),
+)
 FIXED_SECTIONS = collections.OrderedDict((
-    ("world", "Logic and world"), ("fixes", "Always on"), ("hints", "Hint details"),
+    ("world", "Logic and world"), ("fixes", "Always on"), ("hints", "Hint details"), ("off", "Off for now"),
 ))
 
 
@@ -125,6 +131,8 @@ def normalized(chosen, legacy=False):
     if legacy:
         out.update(LEGACY)
     for k, v in chosen.items():
+        if k in RETIRED:
+            continue
         o = BY_KEY[k]
         if o.choices:
             if v not in dict(o.choices):

@@ -30,8 +30,9 @@ Order: what can leave a seed unfinishable first, then what players expect from a
    drop other than a token, and the rule notes there: night-only flags, child access, the 11 closed ones).
 6. **Dungeon rewards** (End of Dungeon done 2026-11-15, to see in game; Anywhere left), **Great Fairies** (done 2026-11-15:
    a once-flag each, the wallet for 300 and 500 rupees; to see in game), **quest rewards** (stones/medallions, magic/Din/Farore/Nayru, ocarinas, Zelda's Letter).
-7. **Cutscene skips and fast chests**: fast chests, skippable step-started dialogues, title demo and credits done
-   2026-11-14 (settings; to see in game). Left: OotrR's skip windows in cutscene flows (the native
+7. **Cutscene skips and fast chests**: skippable step-started dialogues, title demo and credits done 2026-11-14
+   (settings; to see in game). Fast chests retired 2026-11-15: the quick small-chest flow crashed the game on opening a
+   plain small chest (Goron City's maze; the same seed without it opened them); to fix before it comes back. Left: OotrR's skip windows in cutscene flows (the native
    `EventTriggerSkipAcceptStart/SkipEnd`; never on mechanism cutscenes or talks) and area presentations (their name frame
    stays on screen when skipped without OotrR's flow fix), **open forest**, the Kokiri shop full from the start, starting
    items (SoH's Starting Inventory: pool swap + logic start).
