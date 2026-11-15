@@ -206,81 +206,76 @@ def main():
         b["events"][i]["next"] = a["events"][i]["next"]
         if not (ok and b["events"][:n] == a["events"] and b["actors"] == a["actors"] and b["entries"] == a["entries"]):
             problems.append("the water quest's flow: not the game's with the arrival scene marked after the letter")
-    # (the Goron quest: the game's flow, the bracelet added at the end of each way of Darunia's song reaction that does not
-    # play his dance's scene)
-    path = os.path.join(mod_romfs, *patches.FIRE_FLOW.split("/"))
-    if not os.path.exists(path):
-        problems.append("Darunia does not give the bracelet past his dance's step")
-    else:
-        a = evfl.read(codec.read(os.path.join(romfs, *patches.FIRE_FLOW.split("/"))))[0]
-        b = evfl.read(codec.read(path))[0]
-        n = len(a["events"])
-        names = [e["name"] for e in a["events"]]
-        new = {e["name"]: k for k, e in enumerate(b["events"]) if k >= n}
-        ok = len(new) == 3 * len(patches.DARUNIA_ADDS) == len(b["events"]) - n
-        for after, given, set_given, silent in patches.DARUNIA_ADDS if ok else ():
-            if not {given, set_given, silent} <= set(new):
-                ok = False
-                break
-            i = names.index(after)
-            orig = a["events"][i]["next"]
-            sw, setter, add = (b["events"][new[k]] for k in (given, set_given, silent))
-            darunia = {e["name"]: e for e in patches.darunia_give_events(given, set_given)}
-            ok = ok and b["events"][i]["next"] == new[given] and \
-                sw["type"] == "switch" and sw["params"] == darunia[given]["params"] and \
-                sw["cases"] == {patches.IS_FALSE: new[set_given], patches.IS_TRUE: orig} and \
-                b["actors"][sw["actor"]]["name"] == darunia[given]["actor"] and \
-                b["actors"][sw["actor"]]["queries"][sw["query"]] == darunia[given]["query"] and \
-                setter["type"] == "action" and setter["next"] == new[silent] and \
-                setter["params"] == darunia[set_given]["params"] and \
-                b["actors"][setter["actor"]]["name"] == darunia[set_given]["actor"] and \
-                b["actors"][setter["actor"]]["actions"][setter["action"]] == darunia[set_given]["action"] and \
-                add["type"] == "action" and add["next"] == orig and \
-                add["params"] == patches.start_item_params(patches.BRACELET) and \
-                b["actors"][add["actor"]]["name"] == patches.POUCH_ACTOR and \
-                b["actors"][add["actor"]]["actions"][add["action"]] == patches.POUCH_ADD
-            b["events"][i]["next"] = orig
-        if not (ok and b["events"][:n] == a["events"] and b["actors"][:len(a["actors"])] == a["actors"] and
-                b["entries"] == a["entries"]):
-            problems.append("the Goron quest's flow: not the game's with the bracelet given after both of Darunia's song ways")
-    # (Darunia's talk: the game's flow, the gift given once after its first event when Saria's Song is had)
-    path = os.path.join(mod_romfs, *patches.TALK_FLOW.split("/"))
-    if not os.path.exists(path):
-        problems.append("Darunia's talk does not give the bracelet")
-    else:
-        a = evfl.read(codec.read(os.path.join(romfs, *patches.TALK_FLOW.split("/"))))[0]
+    # (Darunia: his song reaction's flow and his talk's, the game's with the gift chain after the song's fade-out and after
+    # the talk's first event; his talk's row listing the window's flowcharts)
+    def darunia_chain(rel, after, names, spec, set_given, silent):
+        """problems of one flow: the game's, but `after` -> the spec's events, the silent add inserted after the flag set
+        (taking the flag set's next as its own)"""
+        path = os.path.join(mod_romfs, *rel.split("/"))
+        if not os.path.exists(path):
+            return ["%s: not in the mod (Darunia's gift)" % rel]
+        a = evfl.read(codec.read(os.path.join(romfs, *rel.split("/"))))[0]
         b = evfl.read(codec.read(path))[0]
         n = len(a["events"])
         new = {e["name"]: k for k, e in enumerate(b["events"]) if k >= n}
-        given, song, set_given, silent = patches.DARUNIA_TALK
-        i = [e["name"] for e in a["events"]].index(patches.TALK_START)
+        if set(new) != set(names):
+            return ["%s: added events %s, not %s" % (rel, sorted(new), sorted(names))]
+        i = [e["name"] for e in a["events"]].index(after)
         orig = a["events"][i]["next"]
-        ok = set(new) == set(patches.DARUNIA_TALK) and b["events"][i]["next"] == new[given]
-        if ok:
-            spec = {e["name"]: e for e in patches.darunia_talk_events(given, song, set_given)}
-            sw1, sw2, setter, add = (b["events"][new[k]] for k in patches.DARUNIA_TALK)
-            ok = sw1["params"] == spec[given]["params"] and \
-                sw1["cases"] == {patches.IS_FALSE: new[song], patches.IS_TRUE: orig} and \
-                sw2["params"] == spec[song]["params"] and \
-                sw2["cases"] == {patches.IS_TRUE: new[set_given], patches.IS_FALSE: orig} and \
-                b["actors"][sw1["actor"]]["queries"][sw1["query"]] == "EventQueryIsGameDataBool" and \
-                b["actors"][sw2["actor"]]["queries"][sw2["query"]] == "EventQueryIsGameDataBool" and \
-                setter["params"] == spec[set_given]["params"] and setter["next"] == new[silent] and \
-                b["actors"][setter["actor"]]["actions"][setter["action"]] == "EventTriggerSetGameDataBool" and \
-                add["params"] == patches.start_item_params(patches.BRACELET) and add["next"] == orig and \
-                b["actors"][add["actor"]]["name"] == patches.POUCH_ACTOR and \
-                b["actors"][add["actor"]]["actions"][add["action"]] == patches.POUCH_ADD
-            b["events"][i]["next"] = orig
+
+        def target(t):
+            return orig if t is None else new[t]
+        ok = b["events"][i]["next"] == new[names[0]]
+        after_silent = None
+        for e in spec:
+            got = b["events"][new[e["name"]]]
+            actor = b["actors"][got["actor"]] if "actor" in got else None
+            ok = ok and got["type"] == e["type"] and got["params"] == e["params"]
+            if e["type"] == "switch":
+                ok = ok and got["cases"] == {k: target(t) for k, t in e["cases"].items()} and \
+                    actor["name"] == e["actor"] and actor["queries"][got["query"]] == e["query"]
+            elif e["type"] == "action":
+                if e["name"] == set_given:
+                    after_silent = target(e["next"])
+                    ok = ok and got["next"] == new[silent]
+                else:
+                    ok = ok and got["next"] == target(e["next"])
+                ok = ok and actor["name"] == e["actor"] and actor["actions"][got["action"]] == e["action"]
+            else:
+                ok = ok and (got["flowchart"], got["entry"]) == (e["flowchart"], e["entry"]) and \
+                    got["next"] == target(e["next"])
+        add = b["events"][new[silent]]
+        ok = ok and add["params"] == patches.start_item_params(patches.BRACELET) and add["next"] == after_silent and \
+            b["actors"][add["actor"]]["name"] == patches.POUCH_ACTOR and \
+            b["actors"][add["actor"]]["actions"][add["action"]] == patches.POUCH_ADD
+        b["events"][i]["next"] = orig
         if not (ok and b["events"][:n] == a["events"] and b["actors"][:len(a["actors"])] == a["actors"] and
                 b["entries"] == a["entries"]):
-            problems.append("Darunia's talk: not the game's with the bracelet given once after its first event")
-    # (the events' loaded flowcharts: the game's, untouched: extending Darunia's song event's row kept his event from going
-    # on after his dance, 2026-11-14)
+            return ["%s: not the game's with Darunia's gift chain after %s" % (rel, after)]
+        return []
+    past, given, set_given, silent = patches.DARUNIA_SONG
+    problems += darunia_chain(patches.FIRE_FLOW, patches.DARUNIA_FADE, patches.DARUNIA_SONG,
+                              patches.darunia_song_events(past, given, set_given), set_given, silent)
+    given, song, set_given, silent, line = patches.DARUNIA_TALK
+    talk_game = evfl.read(codec.read(os.path.join(romfs, *patches.TALK_FLOW.split("/"))))[0]
+    problems += darunia_chain(patches.TALK_FLOW, patches.TALK_START, patches.DARUNIA_TALK,
+                              patches.darunia_talk_events(given, song, set_given, line,
+                                                          patches.talk_line_params(talk_game)), set_given, silent)
     from rando import events as rando_events
     info_path = os.path.join(mod_romfs, *rando_events.GAME_ANALYZED_EVENT_INFO.split("/"))
-    if os.path.exists(info_path) and byml.read(codec.read(info_path))[0] != byml.read(
-            codec.read(os.path.join(romfs, *rando_events.GAME_ANALYZED_EVENT_INFO.split("/"))))[0]:
-        problems.append("%s: not the game's" % rando_events.GAME_ANALYZED_EVENT_INFO)
+    game_info = byml.read(codec.read(os.path.join(romfs, *rando_events.GAME_ANALYZED_EVENT_INFO.split("/"))))[0]
+    mod_info = byml.read(codec.read(info_path))[0] if os.path.exists(info_path) else game_info
+    need = patches.darunia_subflows(type("GameOnly", (), {"read": lambda self, rel: codec.read(
+        os.path.join(romfs, *rel.split("/")))})())
+    expected = []
+    for r in game_info:
+        r = dict(r)
+        if r.get("__RowId") in patches.DARUNIA_ROWS:
+            r["SubFlowList"] = sorted(set(r.get("SubFlowList") or []) | need)
+        expected.append(r)
+    if mod_info != expected:
+        problems.append("%s: not the game's with Darunia's events loading the item window" %
+                        rando_events.GAME_ANALYZED_EVENT_INFO)
     # (Mido's schedule: the game's rows but the after-Zelda one, each the same)
     path = os.path.join(mod_romfs, *patches.MIDO_SCHEDULE.split("/"))
     if not os.path.exists(path):

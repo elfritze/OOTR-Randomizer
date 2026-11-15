@@ -105,14 +105,14 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 - **Darunia's bracelet after his quest has moved on**: breaking that boulder moves Darunia's quest to "explore Dodongo's
   Cavern" from any step (seen in game), and beating King Dodongo moves it on too; past his dance's step, Saria's Song only
   makes him dance and talk, the bracelet's scene never comes. The game never gets there without the dance; a seed does
-  (Saria's Song found only as an adult). His song reaction has two ways that skip the bracelet's scene (a short dance and a
-  talk, or another dance, Dm_Goron_0028). While Darunia has not given his gift (HavePlayedEvent.Dm_Goron_0030, set then),
-  the first way now gives the bracelet before its dance when the song is Saria's (nothing after that dance runs in game),
-  the second after its dance; silently: no "you got" window, check the gear screen
-  (`patches.darunia_bracelet_after_quest`). The guard asks whether the gift was given, not whether the bracelet is had, so
-  the gift can go in the item pool. Seen in game 2026-11-14: the bracelet comes. Every try at the window failed in game
-  (the get-item scenes need Darunia's event to load other flowcharts, and listing them stopped his event after the dance,
-  bracelet included): to redo with his flowchart's own actors only.
+  (Saria's Song found only as an adult). Now, while Darunia has not given his gift (HavePlayedEvent.Dm_Goron_0030, set
+  then): Saria's Song played to him past that step adds the bracelet before his dance, and talking to him with Saria's
+  Song adds it and he says "Ya gotta play that song again for me sometime!" (`patches.darunia_bracelet_after_quest`). No
+  "you got" window: check the gear screen. Seen in game 2026-11-14 (talk). The guard asks whether the gift was given, not
+  whether the bracelet is had, so the gift can go in the item pool. The window was tried every way in his talk (the
+  medallions' window, the House of Skulltula's item scene, with and without his line before): it never shows there and
+  the talk waits for ever; to try later with InitTalk (the talk camera, Link joining) before it. Note for event edits: a
+  flag switch's case 0 is TRUE, case 1 FALSE (`patches.IS_TRUE`/`IS_FALSE`).
 - **Back to child as soon as you are adult**: the remake's Master Sword takes Link back to child only once the Forest
   Temple is done (the Temple of Time's logic removes the sword's interaction until then; seen in game: no way back). The
   original game and SoH's logic let him go back at once, and a seed can need it (a child-only item for the Forest Temple).
