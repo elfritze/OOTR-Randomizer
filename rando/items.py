@@ -60,6 +60,7 @@ ITEMS = {
     "Item_Medal_Shadow": "RG_SHADOW_MEDALLION", "Item_Medal_Light": "RG_LIGHT_MEDALLION",
     # (quest items: in the pool with settings shuffle_quest_items)
     "Item_ZeldaLetter": "RG_ZELDAS_LETTER", "Item_Arrow_Light": "RG_LIGHT_ARROWS",
+    "Item_Token_Gold": "RG_GOLD_SKULLTULA_TOKEN",   # (with settings shuffle_tokens: the Gold Skulltulas' drops)
     "Item_Ocarina_Fairy": "RG_PROGRESSIVE_OCARINA",   # (with settings shuffle_fairy_ocarina; the Ocarina of Time stays)
     # (the Great Fairies' gifts: in the pool with settings shuffle_great_fairies)
     "Item_DinFire": "RG_DINS_FIRE", "Item_FaroreWind": "RG_FARORES_WIND", "Item_NayruLove": "RG_NAYRUS_LOVE",
@@ -99,7 +100,8 @@ TIER_OF = {a: g for g in TIERS for a in g}
 OBJ_FORM = {"TBox_Rupee_Green": "Obj_Rupee_Green", "TBox_Rupee_Blue": "Obj_Rupee_Blue", "TBox_Rupee_Red": "Obj_Rupee_Red",
             "TBox_Rupee_Purple": "Obj_Rupee_Purple", "TBox_Rupee_Gold": "Obj_Rupee_Gold",
             "TBox_Shield_Deku": "Obj_Shield_Deku", "TBox_Shield_Hylian": "Obj_Shield_Hylian",
-            "Item_Dungeon_SmallKey": "Obj_Dungeon_SmallKey"}   # (a freestanding key: the game's loose key)
+            "Item_Dungeon_SmallKey": "Obj_Dungeon_SmallKey",   # (a freestanding key: the game's loose key)
+            "Item_Token_Gold": "Obj_Token_Gold"}   # (a token lying in the world, or a Gold Skulltula's own drop)
 CHEST_ONLY = {"Item_BombBundle_Small", "Item_BombchuBundle_Small", "TBox_ArrowBundle_Medium", "TBox_ArrowBundle_Large",
               "TBox_DekuNutBundle", "Item_DekuStickBundle_Small", "Tbox_MagicJar_Large", "Item_ScrubBusinessSeed"}
 NOT_GIFT = {"Obj_Heart_Container"}
@@ -131,7 +133,7 @@ def fits(actor, location_id, kind):
     if not allowed(actor, kind):
         return False
     if actor in OCARINAS:
-        return kind == "loose" or location_id in OCARINA_CHECKS
+        return kind in ("loose", "skulltula") or location_id in OCARINA_CHECKS
     if (actor in REWARDS) != (location_id in REWARD_CHECKS):
         return False
     if location_id in POUCH_ADD_CHECKS:
@@ -141,7 +143,10 @@ def fits(actor, location_id, kind):
 
 
 def allowed(actor, kind):
-    """can this item (as the pool names it: its chest form) go in a location of this kind ("chest", "gift", "loose")?"""
+    """can this item (as the pool names it: its chest form) go in a location of this kind ("chest", "gift", "loose",
+    "skulltula": a Gold Skulltula's drop, a pickup built on the token as a loose one)?"""
+    if kind == "skulltula":
+        kind = "loose"
     if kind == "chest":
         return actor not in NOT_CHEST
     if dungeon_bound(actor):   # (in chests and lying in the world: a gift may not end in the get flow crediting it)

@@ -1,0 +1,852 @@
+{
+ "about": "The remake's 100 Gold Skulltulas (Enemy_Skulltula_Gold, by Hash and map folder) mapped to SoH's GS checks, one to one (research 2026-11-15 from the maps' positions, room indices, flags and the chests already mapped; scratchpad agents' reports, checked one-to-one). confidence: high (room/place and a distinctive feature agree), medium, low (by elimination). closed: logic does not count on it (junk only, as remake chests of unknown access), why given. region/rule: replace SoH's where the remake differs. rule_note: remake differences where SoH's rule is stricter (kept) or to see in game. Used with settings shuffle_tokens.",
+ "skulltulas": [
+  {
+   "rc": "RC_BOTTOM_OF_THE_WELL_GS_EAST_INNER_ROOM",
+   "hash": "12165938013608963606",
+   "folder": "BottomOfTheWell",
+   "area": "Bottom of the Well",
+   "confidence": "high",
+   "evidence": "Room 4 (4 Keese), behind the chain-locked door at (11.3,100,-22.5) on the east (+x) side = Invisible Path / east inner room."
+  },
+  {
+   "rc": "RC_BOTTOM_OF_THE_WELL_GS_LIKE_LIKE_CAGE",
+   "hash": "3889761319471426870",
+   "folder": "BottomOfTheWell",
+   "area": "Bottom of the Well",
+   "confidence": "high",
+   "evidence": "Room 7 holds Enemy_LikeLike + this GS (the Like-Like cage, next to fire-keese room 6 per chest research)."
+  },
+  {
+   "rc": "RC_BOTTOM_OF_THE_WELL_GS_WEST_INNER_ROOM",
+   "hash": "7460556442932201772",
+   "folder": "BottomOfTheWell",
+   "area": "Bottom of the Well",
+   "confidence": "high",
+   "evidence": "Room 5 (Deku Baba, pots), behind the chain-locked door at (-10.2,100,-22.5) on the west/left (-x) side = Skull Wall Room / west inner room."
+  },
+  {
+   "rc": "RC_COLOSSUS_GS_BEAN_PATCH",
+   "hash": "234735562946824289",
+   "folder": "DesertColossus",
+   "area": "Desert Colossus",
+   "confidence": "high",
+   "evidence": "Child map IsMagicBeanSoil, flag Gimmick_MagicBeanSoil_DesertColossus, at (-157.5,95.7,17.2) by the Spirit Temple entrance; start point of the bean-platform rail."
+  },
+  {
+   "rc": "RC_COLOSSUS_GS_HILL",
+   "hash": "11160993739666517210",
+   "folder": "DesertColossus",
+   "area": "Desert Colossus",
+   "confidence": "high",
+   "evidence": "At (-73.9,105.3,-5.7) on a raised cliff (Land_DesertColossus_UmeCliff_A_05 just below); the Colossus bean-platform Guide rail passes 6.4 m away, matching SoH Hill (bean planted or longshot).",
+   "rule_note": "Placed in both Adult and Child static maps; SoH is adult-only."
+  },
+  {
+   "rc": "RC_COLOSSUS_GS_TREE",
+   "hash": "15057756765324812936",
+   "folder": "DesertColossus",
+   "area": "Desert Colossus",
+   "confidence": "medium",
+   "evidence": "At (-170.1,101.8,-47.9) on Land_Gerudo_MatsuCliff_H_01 (a pine-on-cliff model) south of the Spirit Temple, with dead trees nearby (-157.5,95.3,-51.5); far (65 m) from the bean rail, so it is the hookshot/boomerang Tree GS by elimination.",
+   "rule_note": "Placed in both Adult and Child static maps; SoH is adult-only (a child with boomerang may be able to get it; verify)."
+  },
+  {
+   "rc": "RC_DEKU_TREE_GS_BASEMENT_BACK_ROOM",
+   "hash": "17501688996789643983",
+   "folder": "InsideTheDekuTree",
+   "area": "Deku Tree",
+   "confidence": "high",
+   "evidence": "Room 11 holds only this GS + a Skulltula: a dead-end room off room 8 (Gohma eggs) past wall web Obj_InsideTheDekuTree_SpiderWeb_A_02 (-68.6,82.4,6.5): the B1 back room.",
+   "rule_note": "The GS is on climbable ivy (Land_IvyClimbable_A_01, y 85-91) about 4.4 m above the floor (82.3), with a Skulltula above it. Climbing the ivy may be an alternative to SoH's HookshotOrBoomerang (as in the vines GS rule: HasItem(RG_CLIMB) || hookshot/boomerang); unverified, SoH's rule stays safe."
+  },
+  {
+   "rc": "RC_DEKU_TREE_GS_BASEMENT_GATE",
+   "hash": "18075358844331090388",
+   "folder": "InsideTheDekuTree",
+   "area": "Deku Tree",
+   "confidence": "high",
+   "evidence": "Room 4 (B1), at floor height y=78.7, 1.6 m from Land_Deku_WaterGate_A_03 (the gate), 8 m from the basement chest: the low gate GS (SoH short jumpslash)."
+  },
+  {
+   "rc": "RC_DEKU_TREE_GS_BASEMENT_VINES",
+   "hash": "16101480770659370603",
+   "folder": "InsideTheDekuTree",
+   "area": "Deku Tree",
+   "confidence": "high",
+   "evidence": "Room 4 (B1, basement chest room). Sits on Land_IvyClimbable_A_01 vines (1.2 m away) over the wall-water at y=86.9, ~5-8 m above the water/floor (82.1/79): the vines GS."
+  },
+  {
+   "rc": "RC_DEKU_TREE_GS_COMPASS_ROOM",
+   "hash": "13609975487234437568",
+   "folder": "InsideTheDekuTree",
+   "area": "Deku Tree",
+   "confidence": "high",
+   "evidence": "Only GS in room 3 (= compass room per chest research: compass chest + side chest, Deku Babas, big Skulltula), y=121 on the top floor of the tree, near floor level among ground props, matching SoH's CanAttack rule."
+  },
+  {
+   "rc": "RC_DMC_GS_BEAN_PATCH",
+   "hash": "6397182598322965076",
+   "folder": "DeathMountainCrater",
+   "area": "Death Mountain Crater",
+   "confidence": "high",
+   "evidence": "Child map IsMagicBeanSoil, flag Gimmick_MagicBeanSoil_DeathMountainCrater, on the Obj_SmallFarm soil at (3.8,110.9,-0.8)."
+  },
+  {
+   "rc": "RC_DMC_GS_CRATE",
+   "hash": "18219295034534354574",
+   "folder": "DeathMountainCrater",
+   "area": "Death Mountain Crater",
+   "confidence": "high",
+   "evidence": "Child map, AppearPopOut, placed exactly inside an Obj_BrokenBox crate at (-2.9,128.2,48.7) near the upper entry; SoH DMC GS Crate is child + CanBreakCrates."
+  },
+  {
+   "rc": "RC_DMT_GS_ABOVE_DODONGOS_CAVERN",
+   "hash": "17669199296215821346",
+   "folder": "DeathMountainTrail",
+   "area": "Death Mountain Trail",
+   "confidence": "high",
+   "evidence": "Adult map, inside a hammer rock (Obj_BrokenRock_A_02 with BrokenIronRock fragments) at (-31,125,-18) on the ledge above the Dodongo's Cavern entrance (-50.8,108.7,-21.3), beside the wall Heart Piece; the DMT bean-platform rail passes 7.6 m away (SoH trick RT_DMT_BEAN_LOWER_GS).",
+   "rule_note": "Remake actor is NOT Nocturnal; SoH requires CanGetNightTimeGS. Hammer-rock requirement matches."
+  },
+  {
+   "rc": "RC_DMT_GS_BEAN_PATCH",
+   "hash": "17425319789138387506",
+   "folder": "DeathMountainTrail",
+   "area": "Death Mountain Trail",
+   "confidence": "high",
+   "evidence": "Child map IsMagicBeanSoil, flag Gimmick_MagicBeanSoil_DeathMountainTrail, at (-45.5,109.2,-20.2) beside the Dodongo's Cavern entrance (the OoT DMT soil patch)."
+  },
+  {
+   "rc": "RC_DMT_GS_FALLING_ROCKS_PATH",
+   "hash": "832677387023638406",
+   "folder": "DeathMountainTrail",
+   "area": "Death Mountain Trail",
+   "confidence": "high",
+   "evidence": "Adult map, inside a hammer rock (Obj_BrokenRock_A_02) at (3.2,187.3,-111.3) on the upper trail toward the crater entrance (-0.3,206.5,-157), i.e. the falling-rocks path (RR_DEATH_MOUNTAIN_ROCKFALL).",
+   "rule_note": "Remake actor is NOT Nocturnal; SoH requires CanGetNightTimeGS. Hammer-rock requirement matches."
+  },
+  {
+   "rc": "RC_DMT_GS_NEAR_KAK",
+   "hash": "351345377871782696",
+   "folder": "DeathMountainTrail",
+   "area": "Death Mountain Trail",
+   "confidence": "high",
+   "evidence": "In both age maps at (-51.2,102.8,27.2), 3 m from a WallCrack (bombable wall, -54.1,100.7,26.2) on the lower trail near the Kakariko exit; SoH Near Kak is the both-ages BlastOrSmash GS."
+  },
+  {
+   "rc": "RC_DODONGOS_CAVERN_GS_ALCOVE_ABOVE_STAIRS",
+   "hash": "4565265801822094851",
+   "folder": "DodongoCavern",
+   "area": "Dodongo's Cavern",
+   "confidence": "medium",
+   "evidence": "By elimination (the other four DC GS match their rooms clearly). Room 18 is a small room (2 Enemy_Dodongo) behind WallCrack (20.5,113.28,-44) on the lobby's top-floor level (same y as the end-of-bridge chest's wall crack), not in stairs room 10. OoTR also files this GS under the Far Bridge region.",
+   "rule_note": "Remake: the GS is in its own room (18) behind a bombable wall opening off the lobby top floor (far-bridge level, y~113), at floor height (112.4 vs room floor ~111.5), guarded by 2 Dodongos. SoH's STAIRS_UPPER boomerang/longshot rules likely do not apply: it probably needs FAR_BRIDGE (lobby top floor) access + CanBreakMudWalls + CanKillEnemy(RE_GOLD_SKULLTULA) at close range. Verify in game.",
+   "closed": "its room changed (behind a bombable wall off the lobby's top floor); SoH's stairs rules do not fit, its way in not confirmed"
+  },
+  {
+   "rc": "RC_DODONGOS_CAVERN_GS_BACK_ROOM",
+   "hash": "13690401647626643497",
+   "folder": "DodongoCavern",
+   "area": "Dodongo's Cavern",
+   "confidence": "high",
+   "evidence": "Room 20 (3 Baby Dodongos, an Amos) is entered from room 19 (the boss area: movable boxes, fire Keese, boss-floor room 21 next to it) through Obj_DodongoCave_CrackWall_A_01 (-27.1,96.5,-104.25) = SoH BOSS_AREA -> BACK_ROOM via CanBreakMudWalls. GS at floor height (96.6 vs 95.5): CanAttack."
+  },
+  {
+   "rc": "RC_DODONGOS_CAVERN_GS_SCARECROW",
+   "hash": "960362013021648957",
+   "folder": "DodongoCavern",
+   "area": "Dodongo's Cavern",
+   "confidence": "high",
+   "evidence": "Room 2 (SE corridor east of the lobby, Baby Dodongos, Amos statues), 5.7 m from Obj_ScarecrowMarker_B_00 + Npc_Pierre_CallOcarina, inside an AreaCanCallPierre volume; GS at y=104.5, ~5.5 m above the corridor floor (~98.5)."
+  },
+  {
+   "rc": "RC_DODONGOS_CAVERN_GS_SIDE_ROOM_NEAR_LOWER_LIZALFOS",
+   "hash": "1171854281537584829",
+   "folder": "DodongoCavern",
+   "area": "Dodongo's Cavern",
+   "confidence": "high",
+   "evidence": "Room 3, a small side room (3 Keese) entered from room 2 (SE corridor) through WallCrack (63.97,97.25,3.05) = SoH SE Room behind the mud wall; GS at floor height (98.6 vs 97.3), matching CanAttack."
+  },
+  {
+   "rc": "RC_DODONGOS_CAVERN_GS_VINES_ABOVE_STAIRS",
+   "hash": "8470399761714006011",
+   "folder": "DodongoCavern",
+   "area": "Dodongo's Cavern",
+   "confidence": "high",
+   "evidence": "Room 10 = the stairs room (16 bomb flowers, BrokenStair), at its top y=120.3 with an Enemy_Skullwalltula 2.2 m away (a wall-vine enemy): the vines GS above the stairs."
+  },
+  {
+   "rc": "RC_FIRE_TEMPLE_GS_BOSS_KEY_LOOP",
+   "hash": "14706322686481615109",
+   "folder": "FireTemple",
+   "area": "Fire Temple",
+   "confidence": "high",
+   "evidence": "Remake room 18 = boss-key loop room with 5 Enemy_CrazyFloorTile and a Like Like (SoH Loop 5 Tile Room), between the Torch Slug room 15 and the Flare Dancer room 3.",
+   "rule_note": "The GS is 1.5 m above an Obj_BrokenRock_A_02 (hammer boulder, BrokenIronRock fragments) set against its wall, so it is probably behind a hammer rock: SoH's CanKillEnemy(RE_GOLD_SKULLTULA, ED_CLOSE) may need CanUse(RG_MEGATON_HAMMER). Verify in game.",
+   "rule": "logic->CanKillEnemy(RE_GOLD_SKULLTULA, ED_CLOSE) && logic->CanUse(RG_MEGATON_HAMMER)",
+   "override_why": "1.5 m above a hammer rock against its wall: the hammer asked as well"
+  },
+  {
+   "rc": "RC_FIRE_TEMPLE_GS_BOULDER_MAZE",
+   "hash": "12751796212121957464",
+   "folder": "FireTemple",
+   "area": "Fire Temple",
+   "confidence": "high",
+   "evidence": "Remake room 5 = boulder maze (6 rolling rocks); GS on the lower level (y=148.4, floor 147) 1.8 m behind Obj_FireTemple_CrackWall_A_01: N64's GS behind the bombable wall of the lower maze (SoH: HasExplosives)."
+  },
+  {
+   "rc": "RC_FIRE_TEMPLE_GS_SCARECROW_CLIMB",
+   "hash": "5556173334779815044",
+   "folder": "FireTemple",
+   "area": "Fire Temple",
+   "confidence": "high",
+   "evidence": "Remake room 7 = small climb/stair room (y 177-189, FldObj_AirWall_ClimbPlayer, door into top room 8) between the boulder maze's Pierre ledge and the top ruins: the scarecrow climb GS (SoH GS Climb 4F/5F). The top-room GS is the other one."
+  },
+  {
+   "rc": "RC_FIRE_TEMPLE_GS_SCARECROW_TOP",
+   "hash": "9172014785497046138",
+   "folder": "FireTemple",
+   "area": "Fire Temple",
+   "confidence": "high",
+   "evidence": "Remake room 8 = top ruins (y 187-199) with the scarecrow chest pedestal (3 chests at y=194.4, SoH 5F ruins) and hookshot targets; GS 9 m from the scarecrow chest."
+  },
+  {
+   "rc": "RC_FIRE_TEMPLE_GS_SONG_OF_TIME_ROOM",
+   "hash": "6789992996625105554",
+   "folder": "FireTemple",
+   "area": "Fire Temple",
+   "confidence": "high",
+   "evidence": "Remake room 19 = the 8 Enemy_CrazyFloorTile room reached from the big lava room by Song of Time blocks (SoH RR_FIRE_TEMPLE_8_TILE_ROOM); GS on the wall between two torches."
+  },
+  {
+   "rc": "RC_FOREST_TEMPLE_GS_BASEMENT",
+   "hash": "3072474196008424241",
+   "folder": "ForestTemple",
+   "area": "Forest Temple",
+   "confidence": "high",
+   "evidence": "Remake room 27 = basement under the lobby elevator (pivoted floor, frozen eye switch, boss-key shutter, basement chest); GS about 5 m above the basement floor beside a normal Skulltula.",
+   "rule_note": "The basement mechanics changed (Obj_ForestTemple_PivotedFloor driven by a candle event, frozen eye switch), so SoH's HasItem(RG_POWER_BRACELET) part (N64's rotating wall push) may not apply; HookshotOrBoomerang is probably still needed for a GS 5 m up. Verify in game."
+  },
+  {
+   "rc": "RC_FOREST_TEMPLE_GS_FIRST_ROOM",
+   "hash": "11081821111317815057",
+   "folder": "ForestTemple",
+   "area": "Forest Temple",
+   "confidence": "high",
+   "evidence": "Remake room 0 = entrance courtyard (4 Wolfos, first-room key chest at y=117.5); GS at y=119.8, about 18 m above the floor next to the tree-top chest, as in N64."
+  },
+  {
+   "rc": "RC_FOREST_TEMPLE_GS_LEVEL_ISLAND_COURTYARD",
+   "hash": "10970805784153267902",
+   "folder": "ForestTemple",
+   "area": "Forest Temple",
+   "confidence": "high",
+   "evidence": "Remake room 12 = west (NW) courtyard (waterfalls, Skullwalltulas, Deku Babas, Octorok, Blue Bubble, drain step switch); GS on its south wall at y=112.9 above the courtyard water. The east courtyard (room 14) has its own GS, so this is the level-island (NW) one."
+  },
+  {
+   "rc": "RC_FOREST_TEMPLE_GS_LOBBY",
+   "hash": "17612196129225973969",
+   "folder": "ForestTemple",
+   "area": "Forest Temple",
+   "confidence": "high",
+   "evidence": "Remake room 2 = lobby (Meg, four Poe candle sticks, elevator, Song of Time block); GS high in the lobby at y=109.6."
+  },
+  {
+   "rc": "RC_FOREST_TEMPLE_GS_RAISED_ISLAND_COURTYARD",
+   "hash": "2014780391754316762",
+   "folder": "ForestTemple",
+   "area": "Forest Temple",
+   "confidence": "high",
+   "evidence": "Remake room 14 = east (NE) courtyard (raised-island map chest at (38.8,101.4,-35.8)); GS at y=112.1, 3 m from Pierre/Obj_ScarecrowMarker on the upper ledge by the falling-ceiling-room door, i.e. SoH's NE courtyard scarecrow-ledge GS."
+  },
+  {
+   "rc": "RC_GC_GS_BOULDER_MAZE",
+   "hash": "569390966671955163",
+   "folder": "GoronCity",
+   "area": "Goron City",
+   "confidence": "high",
+   "evidence": "Child map, at (-48.2,113.7,-7.8) among the boulder-maze chests (Maze Left/Center/Right) and lift rocks; SoH Boulder Maze is the child GC GS.",
+   "rule_note": "In the remake it pops out of a crate (Obj_BrokenBox_A_01/_06 at the same spot), not a bombable boulder; SoH rule IsChild && BlastOrSmash() could become IsChild && CanBreakCrates() (verify in game)."
+  },
+  {
+   "rc": "RC_GC_GS_CENTER_PLATFORM",
+   "hash": "18139423190738716302",
+   "folder": "GoronCity",
+   "area": "Goron City",
+   "confidence": "high",
+   "evidence": "Adult map, at (0.5,113.4,-1.2) on the central platform (Land_Goron_Prop_A_36 at the city centre (0,110,0)); SoH Center Platform is the adult GC GS."
+  },
+  {
+   "rc": "RC_GF_GS_TOP_FLOOR",
+   "hash": "9362225887419425752",
+   "folder": "GerudoFortress",
+   "area": "Gerudo's Fortress",
+   "confidence": "high",
+   "evidence": "Adult map, Nocturnal, at (55.3,131.9,-70.2) on the fortress roof at the same height as the GF Chest (29,131.5,-93.7)."
+  },
+  {
+   "rc": "RC_GF_HBA_RANGE_GS",
+   "hash": "13037049463363052038",
+   "folder": "GerudoFortress",
+   "area": "Gerudo's Fortress",
+   "confidence": "high",
+   "evidence": "Adult map, Nocturnal, at (181.7,125.6,-88.6) on top of the horseback-archery target (Land_Gerudo_HorsebackArcheryTargetBase_A_01 at (179.7,115.9,-88.4)) at the end of the HBA range."
+  },
+  {
+   "rc": "RC_GRAVEYARD_GS_BEAN_PATCH",
+   "hash": "16798263777516949500",
+   "folder": "Graveyard",
+   "area": "Graveyard",
+   "confidence": "high",
+   "evidence": "IsMagicBeanSoil GS on the Obj_SmallFarm soil patch below the ledge Heart Piece, Presence flag Gimmick_MagicBeanSoil_Graveyard, child map."
+  },
+  {
+   "rc": "RC_GRAVEYARD_GS_WALL",
+   "hash": "229475726653285413",
+   "folder": "Graveyard",
+   "area": "Graveyard",
+   "confidence": "high",
+   "evidence": "Night GS on a web on the wall by Dampe's hut and gate (Dampe diary, graveyard gate/interior props). It is the graveyard's only GS that is not on the bean patch.",
+   "rule_note": "Remake: in both Child and Adult maps (SoH: child only), night only."
+  },
+  {
+   "rc": "RC_GV_GS_BEAN_PATCH",
+   "hash": "8326970197618554626",
+   "folder": "GerudoValley",
+   "area": "Gerudo Valley",
+   "confidence": "high",
+   "evidence": "Child map IsMagicBeanSoil, flag Gimmick_MagicBeanSoil_GerudoValley, on the valley floor (y=48) next to the cow (Animal_Cow_GerudoValley at (-7.9,47.2,-15.2)), the GV soil patch."
+  },
+  {
+   "rc": "RC_GV_GS_BEHIND_TENT",
+   "hash": "13584527502619061465",
+   "folder": "GerudoValley",
+   "area": "Gerudo Valley",
+   "confidence": "high",
+   "evidence": "Adult map, Nocturnal, at (-45.7,106.2,-35.6) right behind the carpenters' tent (Land_GerudoValley_Tent_A at (-38.1,101.2,-22.1)) on the fortress side."
+  },
+  {
+   "rc": "RC_GV_GS_PILLAR",
+   "hash": "11535915511003753934",
+   "folder": "GerudoValley",
+   "area": "Gerudo Valley",
+   "confidence": "high",
+   "evidence": "Adult map, Nocturnal, at (-34.5,110,10.3) on the fortress side 12 m from the GV Chest (RR_GV_FORTRESS_SIDE), away from the tent; the other adult-night GV GS (pillar / stone arch)."
+  },
+  {
+   "rc": "RC_GV_GS_SMALL_BRIDGE",
+   "hash": "15265071047503310220",
+   "folder": "GerudoValley",
+   "area": "Gerudo Valley",
+   "confidence": "high",
+   "evidence": "Child map, Nocturnal, at (50.8,97.4,5.1) beside the small log bridge (Land_GerudoValley_LogBridge_A_01 at (57.5,97.5,7.5)) on the Hyrule Field side."
+  },
+  {
+   "rc": "RC_HC_GS_STORMS_GROTTO",
+   "hash": "9162653017526462607",
+   "folder": "HyruleCastle",
+   "area": "Hyrule Castle",
+   "confidence": "high",
+   "evidence": "GS on a web next to a WallCrack (bombable wall) with a Skullwalltula, inside the grotto under the Song-of-Storms cover (Land_Kokiri_HidingHoleCover_A_01 at (35.9,117.3,-106.2)) with a gossip stone: N64's storms grotto GS behind the mud wall."
+  },
+  {
+   "rc": "RC_HC_GS_TREE",
+   "hash": "2504273934093629549",
+   "folder": "HyruleCastle",
+   "area": "Hyrule Castle",
+   "confidence": "high",
+   "evidence": "Pop-out GS in the Obj_Tree_A_01 by the hedges and moat on the castle grounds: tree-bonk GS like N64's castle tree."
+  },
+  {
+   "rc": "RC_HF_GS_COW_GROTTO",
+   "hash": "9047381233010434881",
+   "folder": "HyruleField",
+   "area": "Hyrule Field",
+   "confidence": "low",
+   "evidence": "GS inside a crate (Obj_BrokenBox_A_06, IsAgonyStoneBoxConnect) in the generic grotto under the bomb-type cover at (39.9,144.7,342.3), with GOSSIP_HYRULE_FIELD_03, a fairy and 2 Skullwalltulas. The remake's real cow grotto (cow, gossip stone, 3 burnable webs under the boulder at (-258.3,140.7,137.9)) has NO GS. Given by elimination.",
+   "rule_note": "Adult map only. Not behind webs and no fire needed: open the bomb-type grotto (39.9,144.7,342.3) and break the crate. That is not the cow grotto.",
+   "closed": "matched by elimination (low): a crate in a generic grotto"
+  },
+  {
+   "rc": "RC_HF_GS_NEAR_KAK_GROTTO",
+   "hash": "12007978132755687032",
+   "folder": "HyruleField",
+   "area": "Hyrule Field",
+   "confidence": "medium",
+   "evidence": "GS on a web 5 m up in a one-room grotto under a bomb-type cover (Land_HrlField_HidingHoleCover_A_01, hole (-156.1,144.2,338.4)) with one big Enemy_Skulltula: the same contents as N64's Near-Kak Skulltula grotto. The hole is on the lake side of the field, not near Kakariko.",
+   "rule_note": "The entrance is at (-156,144,338) near the Lake Hylia path, not near Kakariko; same bomb-grotto requirement and both ages.",
+   "closed": "its grotto is not where SoH's is"
+  },
+  {
+   "rc": "RC_ICE_CAVERN_GS_HEART_PIECE_ROOM",
+   "hash": "1612219105489330028",
+   "folder": "IceCavern",
+   "area": "Ice Cavern",
+   "confidence": "high",
+   "evidence": "Room 6 = the compass chest room (red ice, Sun's Song fairy), which is SoH's heart piece room; GS ~5 m above the floor (108.25 vs ~103)."
+  },
+  {
+   "rc": "RC_ICE_CAVERN_GS_PUSH_BLOCK_ROOM",
+   "hash": "14822647495538506998",
+   "folder": "IceCavern",
+   "area": "Ice Cavern",
+   "confidence": "high",
+   "evidence": "Room 8 = the push-block room (Obj_SliderBox_A_01, 5 silver rupees, Song of Time blocks, blue-fire nook chest), GS at its east edge (-18.1,108.7,-16.6)."
+  },
+  {
+   "rc": "RC_ICE_CAVERN_GS_SPINNING_SCYTHE_ROOM",
+   "hash": "7165255787572043804",
+   "folder": "IceCavern",
+   "area": "Ice Cavern",
+   "confidence": "high",
+   "evidence": "Room 3 has Obj_IceCave_RotateBlade_A_01 (the spinning scythe) and 5 silver rupees; GS 7 m above the floor (107.2 vs 100), matching SoH's HookshotOrBoomerang."
+  },
+  {
+   "rc": "RC_JABU_JABUS_BELLY_GS_LOBBY_BASEMENT_LOWER",
+   "hash": "13852835165271311030",
+   "folder": "InsideJabuJabuBelly",
+   "area": "Jabu-Jabu's Belly",
+   "confidence": "medium",
+   "evidence": "Room 3 = holes basement (below room 2's four Obj_InsideJabu_Jabu_Hole_A_01; Biris). Of its two GS this one is lower (y=88.4 vs 90.3) and far (23 m) from the Big Octo door (-24,84.9,-87.4), right under the hole at (-1.9,90.9,-90.8).",
+   "region": "RR_JABU_JABUS_BELLY_HOLES_BASEMENT",
+   "rule": "logic->HookshotOrBoomerang()",
+   "override_why": "lower and upper may be swapped: both get the rule they share (SoH's ledge ways dropped)"
+  },
+  {
+   "rc": "RC_JABU_JABUS_BELLY_GS_LOBBY_BASEMENT_UPPER",
+   "hash": "11283202900158580106",
+   "folder": "InsideJabuJabuBelly",
+   "area": "Jabu-Jabu's Belly",
+   "confidence": "medium",
+   "evidence": "Room 3 holes basement, the higher of the two (y=90.3) and 9.8 m from the door to Big Octo room 6: SoH lets an adult jumpslash the UPPER one from the Big Octo ledge, so the GS near that door is the upper one.",
+   "region": "RR_JABU_JABUS_BELLY_HOLES_BASEMENT",
+   "rule": "logic->HookshotOrBoomerang()",
+   "override_why": "lower and upper may be swapped: both get the rule they share (SoH's ledge ways dropped)"
+  },
+  {
+   "rc": "RC_JABU_JABUS_BELLY_GS_NEAR_BOSS",
+   "hash": "15983944335296207002",
+   "folder": "InsideJabuJabuBelly",
+   "area": "Jabu-Jabu's Belly",
+   "confidence": "high",
+   "evidence": "Room 5 (y 100-112, Biris): GS on an ivy wall (Land_InsideJabu_Jabu_IvyClimbable) at y=106 with a hit switch (Obj_InsideJabu_Jabu_SwitchHit_A_02, y=111.75) above, gate toward pot corridor room 16 and boss room 15: the near-boss vine room (SoH: climb or hookshot/boomerang)."
+  },
+  {
+   "rc": "RC_JABU_JABUS_BELLY_GS_WATER_SWITCH_ROOM",
+   "hash": "11513774157335944149",
+   "folder": "InsideJabuJabuBelly",
+   "area": "Jabu-Jabu's Belly",
+   "confidence": "high",
+   "evidence": "Room 14 = the water-switch room (underwater StepSwitch_A_04 x2, moved map chest), GS on the wall above the 3-pot ledge (pots 2-4 m away, y 80.6), next to ivy."
+  },
+  {
+   "rc": "RC_KAK_GS_ABOVE_IMPAS_HOUSE",
+   "hash": "3310819903461047792",
+   "folder": "KakarikoVillage",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "evidence": "Adult night GS on a web above the cow pen behind Impa's house, 8.6 m from the Impa's-house Heart Piece (RC_KAK_IMPAS_HOUSE_FREESTANDING_POH)."
+  },
+  {
+   "rc": "RC_KAK_GS_GUARDS_HOUSE",
+   "hash": "11629189455828560791",
+   "folder": "KakarikoVillage",
+   "area": "Kakariko Village",
+   "confidence": "low",
+   "evidence": "Child night GS on a web on the house that holds the adult Bazaar (House_A_04, shop items), home of child NPC 079 (door event KakarikoVillage_Hylia_079_Door). The other child-night house GS, chosen by elimination. It has the same SoH rule as the under-construction GS, so a swap does not change logic."
+  },
+  {
+   "rc": "RC_KAK_GS_HOUSE_UNDER_CONSTRUCTION",
+   "hash": "14107117960174262321",
+   "folder": "KakarikoVillage",
+   "area": "Kakariko Village",
+   "confidence": "medium",
+   "evidence": "Child night GS on a web on Land_Kakariko_House_A_07 (-61,98,63). That house model is child-only (the adult maps have another one there), as N64's unfinished house is finished later. Swapping this with the guards-house GS is possible; both have the same SoH rule."
+  },
+  {
+   "rc": "RC_KAK_GS_SKULLTULA_HOUSE",
+   "hash": "15314554401574296838",
+   "folder": "KakarikoVillage",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "evidence": "Child night GS on a web beside the door of the cobweb-covered house (Kakariko spider-web props, EftLoc_Kakariko_SkullHouse volume, SkulltulaHouse light): the House of Skulltula."
+  },
+  {
+   "rc": "RC_KAK_GS_TREE",
+   "hash": "7677963516305772491",
+   "folder": "KakarikoVillage",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "evidence": "Child pop-out GS in the Obj_Tree_A_01 in the village park (Land_Kakariko_Park, water channel): the Kakariko tree GS.",
+   "rule_note": "Remake: not night-only (SoH requires night)."
+  },
+  {
+   "rc": "RC_KAK_GS_WATCHTOWER",
+   "hash": "15118290503807073158",
+   "folder": "KakarikoVillage",
+   "area": "Kakariko Village",
+   "confidence": "high",
+   "evidence": "Child night GS on a web 9.4 m right above the Land_Kakariko_Ladder at Land_Kakariko_Tower_A_01 (-48.2,101.2,20.5): the watchtower ladder GS."
+  },
+  {
+   "rc": "RC_KF_GS_BEAN_PATCH",
+   "hash": "9623998892552467148",
+   "folder": "KokiriForest",
+   "area": "Kokiri Forest",
+   "confidence": "high",
+   "evidence": "Child map, IsMagicBeanSoil with presence flag Gimmick_MagicBeanSoil_KokiriForest, next to the shop house (Land_Kokiri_House_Outside_D at (-2,110.6,-24.5)) as in OoT."
+  },
+  {
+   "rc": "RC_KF_GS_HOUSE_OF_TWINS",
+   "hash": "7116603238806634901",
+   "folder": "KokiriForest",
+   "area": "Kokiri Forest",
+   "confidence": "high",
+   "evidence": "Only adult-map KF skulltula, Nocturnal, web on the wall of a Kokiri house (Land_Kokiri_House_Outside_C at ~(12,110,14-18), door at (11.6,109.9,14.6)); SoH House of Twins is the only adult-night KF GS."
+  },
+  {
+   "rc": "RC_KF_GS_KNOW_IT_ALL_HOUSE",
+   "hash": "17067594426901953848",
+   "folder": "KokiriForest",
+   "area": "Kokiri Forest",
+   "confidence": "high",
+   "evidence": "Child map, Nocturnal, web on the back (west side) of house F (-78.3,117.1,-16.3), the house nearest the Hyrule Field exit (-129.5,115,-38), i.e. the Know-It-All Brothers' house; SoH Know-It-All is the only child-night KF GS."
+  },
+  {
+   "rc": "RC_LH_GS_BEAN_PATCH",
+   "hash": "7014193622407727514",
+   "folder": "HyruleField",
+   "area": "Lake Hylia",
+   "confidence": "high",
+   "evidence": "IsMagicBeanSoil GS on the Obj_SmallFarm soil patch next to the Lake Hylia lab, Presence flag Gimmick_MagicBeanSoil_LakeHylia, child map."
+  },
+  {
+   "rc": "RC_LH_GS_LAB_CRATE",
+   "hash": "7388645484070660331",
+   "folder": "HyruleField",
+   "area": "Lake Hylia",
+   "confidence": "high",
+   "evidence": "Adult GS inside an underwater crate (Obj_BrokenBox, IsWaterDepthJumpOut) in the lab's diving pool (water plane, shark, rupees) under the lab: N64's lab crate GS."
+  },
+  {
+   "rc": "RC_LH_GS_LAB_WALL",
+   "hash": "13944703896577680014",
+   "folder": "HyruleField",
+   "area": "Lake Hylia",
+   "confidence": "high",
+   "evidence": "Child night GS on a web 4 m up on the lakeside laboratory (Land_LakeHrl_House*, professor Npc_Hylia_045, aquarium within 6-9 m)."
+  },
+  {
+   "rc": "RC_LH_GS_SMALL_ISLAND",
+   "hash": "8655370827943125875",
+   "folder": "HyruleField",
+   "area": "Lake Hylia",
+   "confidence": "medium",
+   "evidence": "The last Lake Hylia GS: a web on a cliff (MatsuCliff) at (-295.6,132.0,597.8) at the far south-west lake shore, behind a crawl hole, near lake-bottom rocks and the remake chest/note at (-297,131,558). By elimination; it is not clearly an island.",
+   "rule_note": "Remake: both ages and not night-only (SoH: child, night, Bronze Scale). Crawl hole close by (possibly child only).",
+   "closed": "matched by elimination: on a cliff behind a crawl hole, maybe not the island"
+  },
+  {
+   "rc": "RC_LH_GS_TREE",
+   "hash": "789492162651991711",
+   "folder": "HyruleField",
+   "area": "Lake Hylia",
+   "confidence": "high",
+   "evidence": "Adult night GS on a web 19 m up the big Land_LakeHrl_Tree_A_01 on the island with the warp point, a gossip stone and the bridge, with an FldObj_AirWall_Hookshot beside it: N64's tall lake tree GS.",
+   "rule_note": "There is a hookshot air wall here; check in game whether the Hookshot is enough (SoH needs the Longshot)."
+  },
+  {
+   "rc": "RC_LLR_GS_BACK_WALL",
+   "hash": "2730878115209290675",
+   "folder": "HyruleField",
+   "area": "Lon Lon Ranch",
+   "confidence": "low",
+   "evidence": "Night GS on a web 8 m up inside the ruined tower at the back corner of the ranch (LocationArea LonLonRanch box, crate puzzle, crawl hole, tower Heart Piece and remake chest within 6-9 m). The remake has only 3 GS in the ranch; back wall vs rain shed is a guess. Back wall chosen because the web is high up (ranged item, like SoH's back-wall rule).",
+   "rule_note": "Remake: also in the Adult map (SoH child only). Inside the tower ruin, which children reach by the crawl hole (adults get Field_TunnelTooSmall).",
+   "closed": "matched by elimination (low)"
+  },
+  {
+   "rc": "RC_LLR_GS_HOUSE_WINDOW",
+   "hash": "15889002414176907668",
+   "folder": "HyruleField",
+   "area": "Lon Lon Ranch",
+   "confidence": "medium",
+   "evidence": "Child-only night GS on a web at (-63.2,156.4,212.4), 5 m above the ground on the wall of the Lon Lon house (Land_LonLon_Interior/Plant flower boxes, gate cloth), i.e. on the ranch house like N64's house-window GS."
+  },
+  {
+   "rc": "RC_LLR_GS_RAIN_SHED",
+   "hash": "2177746409373494991",
+   "folder": "HyruleField",
+   "area": "Lon Lon Ranch",
+   "confidence": "low",
+   "evidence": "Remake-new pop-out GS in a lone Obj_Tree_A_01 at (70.5,159.7,263.8) in the open field (Stalchild placement area, about 150 m east of the ranch). No N64 GS is there. It takes the remaining Lon Lon slot because the remake ranch has only 3 GS.",
+   "rule_note": "Not in Lon Lon Ranch: in open Hyrule Field, both ages, any time; you get it by bonking the tree (like a tree GS).",
+   "closed": "matched by elimination (low): a new tree in Hyrule Field"
+  },
+  {
+   "rc": "RC_LLR_GS_TREE",
+   "hash": "341792603838029977",
+   "folder": "HyruleField",
+   "area": "Lon Lon Ranch",
+   "confidence": "high",
+   "evidence": "Pop-out GS in the Obj_Tree_A_01 (-39.6,150.6,200.6) right beside Talon's house (Talon/Cuccos/milk props 10-15 m away) inside Lon Lon Ranch; tree-bonk GS like N64's ranch tree.",
+   "rule_note": "In both Child and Adult maps and not night-only; SoH: child only."
+  },
+  {
+   "rc": "RC_LW_GS_ABOVE_THEATER",
+   "hash": "4335656213162247230",
+   "folder": "LostWood",
+   "area": "Lost Woods",
+   "confidence": "high",
+   "evidence": "Web at (14.5,105.9,-56.4), 6 m above bean patch LostWood01 (10.9,99.8,-52.1) beside the Deku Theater scrubs; the adult bean-platform Guide rail from that patch passes 4.5 m from it, matching SoH 'adult + theater bean planted'.",
+   "rule_note": "Remake actor is NOT Nocturnal and is placed in both LostWood_Adult_Static and LostWood_Child_Static, so SoH's IsAdult && CanGetNightTimeGS may be stricter than the remake (a child might reach it, e.g. with boomerang; verify in game)."
+  },
+  {
+   "rc": "RC_LW_GS_BEAN_PATCH_NEAR_BRIDGE",
+   "hash": "9333354743976439033",
+   "folder": "LostWood",
+   "area": "Lost Woods",
+   "confidence": "high",
+   "evidence": "Child map IsMagicBeanSoil, flag Gimmick_MagicBeanSoil_LostWood02, at (-33.2,100.2,31.4); its bean-platform rail ends at the bridge ledge (-46.6,104.9,72.4) by the bridge Business Scrub / gossip stone (LW Under the Bridge area)."
+  },
+  {
+   "rc": "RC_LW_GS_BEAN_PATCH_NEAR_THEATER",
+   "hash": "17796658857969527112",
+   "folder": "LostWood",
+   "area": "Lost Woods",
+   "confidence": "high",
+   "evidence": "Child map IsMagicBeanSoil, flag Gimmick_MagicBeanSoil_LostWood01, at (10.9,99.8,-52.1) next to the two theater Business Scrubs (12.2,100,-41.2)/(19.2,99.9,-51.2) near the Deku Theater."
+  },
+  {
+   "rc": "RC_MARKET_GS_GUARD_HOUSE",
+   "hash": "8942465719711548237",
+   "folder": "Market",
+   "area": "Market",
+   "confidence": "high",
+   "evidence": "Pop-out GS in a crate (Obj_BrokenBox) in the market guard house (pots room, soldiers, imprisoned Poe spirits) in the Child market map."
+  },
+  {
+   "rc": "RC_OGC_GS",
+   "hash": "5626064870824758772",
+   "folder": "GanonCastle",
+   "area": "Outside Ganon's Castle",
+   "confidence": "high",
+   "evidence": "The only Gold Skulltula in GanonCastle (the castle grounds; the interior is InsideGanonCastle) and the only OGC GS check."
+  },
+  {
+   "rc": "RC_SFM_GS",
+   "hash": "14473218207379268379",
+   "folder": "SacredForestMeadow",
+   "area": "Sacred Forest Meadow",
+   "confidence": "high",
+   "evidence": "Only Gold Skulltula in SFM; adult map only, matching SoH adult-only RC_SFM_GS (maze wall).",
+   "rule_note": "Remake actor is NOT Nocturnal; SoH requires CanGetNightTimeGS."
+  },
+  {
+   "rc": "RC_SHADOW_TEMPLE_GS_FALLING_SPIKES_ROOM",
+   "hash": "15148554628675590606",
+   "folder": "ShadowTemple",
+   "area": "Shadow Temple",
+   "confidence": "high",
+   "evidence": "Remake room 11 = falling-spikes room (2 FallingCeiling, block puzzle, both falling-spikes chests); GS high at y=73.8 (floor 56.4, upper ledge 63.5)."
+  },
+  {
+   "rc": "RC_SHADOW_TEMPLE_GS_LIKE_LIKE_ROOM",
+   "hash": "16933078188088206331",
+   "folder": "ShadowTemple",
+   "area": "Shadow Temple",
+   "confidence": "high",
+   "evidence": "Remake room 31 = side room of the invisible-blades/Like Like room 10, behind its enemy-clear shutter, holding both invisible-blades chests; GS 3 m from them. SoH's rule already requires killing the Like Like and Keese."
+  },
+  {
+   "rc": "RC_SHADOW_TEMPLE_GS_NEAR_SHIP",
+   "hash": "8823884712433934372",
+   "folder": "ShadowTemple",
+   "area": "Shadow Temple",
+   "confidence": "high",
+   "evidence": "Remake room 17 = boat dock (Obj_ShadowTemple_PaddleShip, Pierre, Stalfos) entered through room 16's locked door; GS between two pots by the dock entrance.",
+   "rule_note": "The GS is at y=52.0, about 1 m above two pots (y=51.1) at the dock entrance, so it may be killable without the Longshot (SoH: CanUse(RG_LONGSHOT)). Verify in game."
+  },
+  {
+   "rc": "RC_SHADOW_TEMPLE_GS_SINGLE_GIANT_POT",
+   "hash": "15564367841356014861",
+   "folder": "ShadowTemple",
+   "area": "Shadow Temple",
+   "confidence": "medium",
+   "evidence": "Remake room 14 = wind-tunnel/fan room (6 Obj_Fan_A_01, hookshot targets, abyss); GS on a wall about 1.4 m above the floor. The remake's single skull-jar room 13 (Obj_ShadowTemple_SkullPot with the freestanding key) has no GS and the other four GS match their N64 rooms, so the single-giant-pot GS was moved here.",
+   "rule_note": "Not in a skull jar: SoH's RR_SHADOW_TEMPLE_SKULL_JAR placement is wrong. Move it to the wind tunnel (RR_SHADOW_TEMPLE_LOWER_WIND_TUNNEL or UPPER_WIND_TUNNEL; it is at x=75.8 near the west fans) with CanKillEnemy(RE_GOLD_SKULLTULA). Verify which side in game.",
+   "closed": "moved to the wind tunnel; which side not confirmed"
+  },
+  {
+   "rc": "RC_SHADOW_TEMPLE_GS_TRIPLE_GIANT_POT",
+   "hash": "10270336409167849808",
+   "folder": "ShadowTemple",
+   "area": "Shadow Temple",
+   "confidence": "high",
+   "evidence": "Remake room 20 has 3 Obj_ShadowTemple_SkullPot_A_01 and this GS has AppearPopOut (pops out of a skull pot), beyond the boat near the maze: N64's three giant pots GS."
+  },
+  {
+   "rc": "RC_SPIRIT_TEMPLE_GS_BOULDER_ROOM",
+   "hash": "8120267919866495114",
+   "folder": "SpiritTemple",
+   "area": "Spirit Temple",
+   "confidence": "high",
+   "evidence": "Remake room 15 = adult boulder room (3 rolling rocks, 5 silver rupees, Song of Time blocks); GS 2 m from an Obj_SongOfTimeBlock, matching SoH's CanUse(RG_SONG_OF_TIME) rule."
+  },
+  {
+   "rc": "RC_SPIRIT_TEMPLE_GS_HALL_AFTER_SUN_BLOCK_ROOM",
+   "hash": "10127391959410674946",
+   "folder": "SpiritTemple",
+   "area": "Spirit Temple",
+   "confidence": "high",
+   "evidence": "Remake room 10 = short hall between the sun block room 9 and the child Iron Knuckle room 11 (pots, small-key lock); GS just past the sun block room's shutter: SoH Skulltula Stairs."
+  },
+  {
+   "rc": "RC_SPIRIT_TEMPLE_GS_LOBBY",
+   "hash": "5086449036385341804",
+   "folder": "SpiritTemple",
+   "area": "Spirit Temple",
+   "confidence": "high",
+   "evidence": "Remake room 7 = statue room; GS on the upper west (child-side) ledge at y=129.7, 5 m from Pierre/Obj_ScarecrowMarker and beside a broken wall: N64's statue-room ('lobby') GS on the GS ledge (SoH STATUE_ROOM_CHILD / INNER_WEST_HAND / GS_LEDGE)."
+  },
+  {
+   "rc": "RC_SPIRIT_TEMPLE_GS_METAL_FENCE",
+   "hash": "10530233152473742636",
+   "folder": "SpiritTemple",
+   "area": "Spirit Temple",
+   "confidence": "high",
+   "evidence": "Remake room 4 = child-side silver rupee bridge room (5 silver rupees, early-torches chest, Wallmaster, Keese); GS on the climbable fence (FldObj_AirWall_ClimbPlayer) next to a silver rupee: N64's metal fence GS."
+  },
+  {
+   "rc": "RC_SPIRIT_TEMPLE_GS_SUN_ON_FLOOR_ROOM",
+   "hash": "12959656942046734931",
+   "folder": "SpiritTemple",
+   "area": "Spirit Temple",
+   "confidence": "low",
+   "evidence": "Second GS in remake room 7 (statue room), on a wall about 1 m above the statue-room floor (y=115.2, floor 114.15) on the east side, above the adult compass room. The remake's sun-on-floor/child climb room 6 (Child Climb North chest, 4 Skullwalltulas, 2 Lizalfos) has no GS, so this is the leftover by elimination.",
+   "rule_note": "Not in the sun-on-floor room: move it to the statue room floor (RR_SPIRIT_TEMPLE_STATUE_ROOM, either age via SpiritShared) with CanKillEnemy(RE_GOLD_SKULLTULA). Verify in game that it is reachable from the floor.",
+   "closed": "matched by elimination (low): in the statue room"
+  },
+  {
+   "rc": "RC_WASTELAND_GS",
+   "hash": "14910672274965350769",
+   "folder": "HountedWasteland",
+   "area": "Haunted Wasteland",
+   "confidence": "high",
+   "evidence": "Only Wasteland Gold Skulltula, in both age maps, at (16,88.9,-99.8) next to the Wasteland Chest (16,87.7,-98.3) in the sunken structure."
+  },
+  {
+   "rc": "RC_WATER_TEMPLE_GS_BEHIND_GATE",
+   "hash": "4399424945134189769",
+   "folder": "WaterTemple",
+   "area": "Water Temple",
+   "confidence": "low",
+   "evidence": "Remake room 25 is behind the east tower's Obj_WaterTemple_CrackWall_A_01 (34.7,111.5,-4.5): 3 Shell Blades, 2 pots and this GS (SoH's cracked-wall chest is missing there). The remake has no falling-platform/waterfall room and no N64 GS cage, so BEHIND_GATE vs FALLING_PLATFORM_ROOM is by elimination; this one is matched to BEHIND_GATE because both are pot rooms reached by bombing a cracked wall at low water.",
+   "rule_note": "Real access = SoH RR_WATER_TEMPLE_CRACKED_WALL (from the east side tower: WaterLevel(WL_LOW_OR_MID) && HasExplosives), then CanKillEnemy(RE_GOLD_SKULLTULA) for a GS about 1.8 m above the floor. Move the location to RR_WATER_TEMPLE_CRACKED_WALL.",
+   "closed": "matched by elimination (low)"
+  },
+  {
+   "rc": "RC_WATER_TEMPLE_GS_CENTRAL_PILLAR",
+   "hash": "11571778270592589517",
+   "folder": "WaterTemple",
+   "area": "Water Temple",
+   "confidence": "high",
+   "evidence": "Remake room 1 = inside the central pillar (middle-water Obj_WaterTemple_StoneTablet_A_03, hookshot targets, float floor); GS at the top of it (y=126), as N64's central pillar GS (SoH Pillar 2F longshot / high-water swim)."
+  },
+  {
+   "rc": "RC_WATER_TEMPLE_GS_FALLING_PLATFORM_ROOM",
+   "hash": "16157272130665282352",
+   "folder": "WaterTemple",
+   "area": "Water Temple",
+   "confidence": "low",
+   "evidence": "Remake room 2 = central pillar basement (pillar chest, now a red rupee, behind Obj_WaterTemple_SwitchShutter_A_03 + Obj_SwitchHit_A_02, Shell Blade, 3 Spikes, 4 pots); GS at y=95.2 on the switch side of the gate. No N64 GS is here and the remake has no falling-platform room: leftover by elimination (it could equally be BEHIND_GATE: switch-opened gate and 4 pots).",
+   "rule_note": "Real access = SoH RR_WATER_TEMPLE_PILLAR_B1 (central pillar basement), probably underwater (water plane y=99.5), so iron boots plus hookshot or a close kill. Move the location to RR_WATER_TEMPLE_PILLAR_B1; SoH's waterfall/longshot rule does not apply.",
+   "closed": "matched by elimination (low)"
+  },
+  {
+   "rc": "RC_WATER_TEMPLE_GS_NEAR_BOSS_KEY_CHEST",
+   "hash": "186694424287048567",
+   "folder": "WaterTemple",
+   "area": "Water Temple",
+   "confidence": "high",
+   "evidence": "Remake room 24 = boulder/current room (Obj_RollingRock_A_05, 2 Shell Blades) right before the boss key room 15; the chest research already tied this GS to 'GS near boss key chest'."
+  },
+  {
+   "rc": "RC_WATER_TEMPLE_GS_RIVER",
+   "hash": "15506432733081566465",
+   "folder": "WaterTemple",
+   "area": "Water Temple",
+   "confidence": "high",
+   "evidence": "Remake room 21 = the river (RiverRail_WaterTemple, 22 BeltConveyor_Hole whirlpools, timed eye switch) after the Longshot room; GS over a whirlpool at y=114."
+  },
+  {
+   "rc": "RC_ZD_GS_FROZEN_WATERFALL",
+   "hash": "9600417828645642589",
+   "folder": "ZoraDomain",
+   "area": "Zora's Domain",
+   "confidence": "high",
+   "evidence": "Only ZD Gold Skulltula, in adult maps only (Adult and Adult_Alternative), at (17.3,115.5,2.7) by the frozen waterfall.",
+   "rule_note": "Remake actor is NOT Nocturnal; SoH requires CanGetNightTimeGS."
+  },
+  {
+   "rc": "RC_ZF_GS_ABOVE_THE_LOG",
+   "hash": "7152962033963346563",
+   "folder": "ZoraFountain",
+   "area": "Zora's Fountain",
+   "confidence": "high",
+   "evidence": "Child map, Nocturnal, at (14,107.8,22.8); SoH Above the Log is the only child-night ZF GS."
+  },
+  {
+   "rc": "RC_ZF_GS_HIDDEN_CAVE",
+   "hash": "9537398183107003742",
+   "folder": "ZoraFountain",
+   "area": "Zora's Fountain",
+   "confidence": "high",
+   "evidence": "At (80,133.4,12.9) among Deku_CaveProp pieces of the hidden cave above Land_ZoraFountain_Cave_B_02 (78.8,112.1,9.9), whose way in is blocked by silver-gauntlet Obj_LiftRock_B_01 rocks (~(68,101.8,26)).",
+   "rule_note": "Placed in both ZoraFountain_Adult_Static and ZoraFountain_Child_Static; SoH is adult-only. The child map has the cave geometry but no LiftRock_B, so check whether a child can reach it."
+  },
+  {
+   "rc": "RC_ZF_GS_TREE",
+   "hash": "17355397719442343054",
+   "folder": "ZoraFountain",
+   "area": "Zora's Fountain",
+   "confidence": "high",
+   "evidence": "Child map, AppearPopOut, directly above an Obj_Tree_A_01 at (49.3,102.7,32.0) (pops out of the tree when bonked); SoH ZF GS Tree is child + CanBonkTrees."
+  },
+  {
+   "rc": "RC_ZR_GS_ABOVE_BRIDGE",
+   "hash": "9450239379321634455",
+   "folder": "ZoraRiver",
+   "area": "Zora's River",
+   "confidence": "high",
+   "evidence": "Adult map, Nocturnal, at (76.3,126.8,-46.4) high above the upper bridge (Land_ZoraRiver_Bridge_A_03 at (79.7,112.9,-27.5)) near the waterfall and waterfall-ledge Heart Piece; the SoH French hint places it 'on a facade near a waterfall'."
+  },
+  {
+   "rc": "RC_ZR_GS_LADDER",
+   "hash": "8695975724114049706",
+   "folder": "ZoraRiver",
+   "area": "Zora's River",
+   "confidence": "high",
+   "evidence": "Child map, Nocturnal, at (112.6,111.8,-48.8) on the climbable ivy wall (Land_IvyClimbable_A_06/07 at (109.3,113-116,-49.3)) near the Zora's Domain end; SoH Ladder is the only child-night ZR GS."
+  },
+  {
+   "rc": "RC_ZR_GS_NEAR_RAISED_GROTTOS",
+   "hash": "10917372215719266172",
+   "folder": "ZoraRiver",
+   "area": "Zora's River",
+   "confidence": "high",
+   "evidence": "Adult map, Nocturnal, at (-35,118.8,12.5) at the edge of the raised grotto plateau (climb edges at y=114.5 around (-18,9)) right above the open grotto hole (-15.7,90.2,14.8); the SoH French hint says 'near a river grotto'."
+  },
+  {
+   "rc": "RC_ZR_GS_TREE",
+   "hash": "12370559827741970774",
+   "folder": "ZoraRiver",
+   "area": "Zora's River",
+   "confidence": "medium",
+   "evidence": "Only remaining child non-night ZR GS. The remake replaced the OoT tree skulltula with a bean-patch skulltula (IsMagicBeanSoil, flag Gimmick_MagicBeanSoil_ZoraRiver02) at (-54.6,100.6,-11.9), right next to the bean salesman (Npc_Hylia_047_Child at (-53,100.8,-12.2)); no Obj_Tree exists in the ZR maps.",
+   "rule_note": "Remake differs: spawned by dropping bugs in the ZR soil patch (like CanSpawnSoilSkull with a ZR bean soul) instead of bonking a tree in ZR Front; it sits in the main RR_ZORAS_RIVER area by the bean salesman, so SoH's RR_ZR_FRONT + CanBonkTrees rule should become RR_ZORAS_RIVER + bugs/soil.",
+   "closed": "no tree: a bean patch skulltula by the bean salesman; SoH's tree rule does not fit"
+  }
+ ]
+}

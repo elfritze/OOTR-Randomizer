@@ -29,6 +29,7 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Shuffle Zelda's Letter and the Light Arrows (her two scenes give the item placed there) | off | not yet |
 | Shuffle the Fairy Ocarina (Saria's gift; an ocarina found elsewhere made playable, OotrR's fix) | off | not yet |
 | Shuffle Great Fairies (their 6 gifts in the pool; Nayru's and Ganon's Castle's need the 500-rupee wallet) | off | not yet |
+| Shuffle Gold Skulltula tokens (the 100 skulltulas drop the item placed there; the tokens in the pool) | off | not yet |
 | Shuffle dungeon rewards: **Vanilla** / End of dungeon (the 9 stones and medallions among the 8 bosses and Rauru) | Vanilla | not yet |
 | Maps and compasses: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
 | Small keys: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
@@ -102,6 +103,13 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
   price (Din 25, the mountain's 50, Farore 100, the crater's 200, Nayru 300, the castle's 500): logic asks the 500-rupee
   wallet for the last two (as you saw: four fairies with the 200-rupee wallet, then 300 and 500). The magic meter and
   its double are one progressive item, given in order. Not yet seen in game.
+- **Gold Skulltula tokens can be shuffled** (SoH's Tokensanity, all): the remake's 100 Gold Skulltulas are mapped one
+  to one to SoH's checks in `data/skulltulas.json` (from the maps: positions, room indices, night and bean-soil flags,
+  the chests around; 83 sure, 10 likely, 7 by elimination). Each drops the item placed there through its own
+  `Drop__DropActor` (an instance parameter of the skulltula; its drop table gives the token otherwise), as a pickup built
+  on the token (OotrR's way: the token's AI saves the skulltula once its drop is got, it floats where the skulltula
+  died and is caught by hookshot or boomerang as SoH counts). The 11 not sure (matched by elimination, or moved in the
+  remake) get junk only. A token found anywhere counts for the House of Skulltula. Not yet seen in game.
 - **Dungeon rewards can be shuffled** (SoH's End of Dungeon): the 3 spiritual stones and 6 medallions among the 8 bosses
   and Rauru, placed first by logic (a stone never behind the Door of Time). Each reward's scene gives it by its
   GetPouchContent window's `ActorName` (the Jabu-Jabu and Zora's Fountain scenes both, and the `.110` twins); the scene

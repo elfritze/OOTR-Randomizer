@@ -26,7 +26,8 @@ Order: what can leave a seed unfinishable first, then what players expect from a
 
 ## P1: what players expect
 
-5. **Gold Skulltula tokens** (100; OotrR: a `Drop__DropActor` on the enemy; Bool64bitKey tracks them).
+5. **Gold Skulltula tokens**: done 2026-11-15 (settings shuffle_tokens, `data/skulltulas.json`; to see in game: a
+   drop other than a token, and the rule notes there: night-only flags, child access, the 11 closed ones).
 6. **Dungeon rewards** (End of Dungeon done 2026-11-15, to see in game; Anywhere left), **Great Fairies** (done 2026-11-15:
    a once-flag each, the wallet for 300 and 500 rupees; to see in game), **quest rewards** (stones/medallions, magic/Din/Farore/Nayru, ocarinas, Zelda's Letter).
 7. **Cutscene skips and fast chests**: fast chests, skippable step-started dialogues, title demo and credits done

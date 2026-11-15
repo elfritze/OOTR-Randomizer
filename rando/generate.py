@@ -17,6 +17,8 @@ from .mod import Mod
 HERE = os.path.dirname(os.path.abspath(__file__))
 LOCATIONS = os.path.join(HERE, "..", "data", "locations.json")
 GIFTS = os.path.join(HERE, "..", "data", "gifts.json")
+SKULLTULAS = os.path.join(HERE, "..", "data", "skulltulas.json")
+TOKEN = "Item_Token_Gold"
 MOD_NAME = "HookshotRando"
 
 
@@ -39,6 +41,13 @@ def load_gifts(path=GIFTS):
         return json.load(f)
 
 
+def load_skulltulas(path=SKULLTULAS):
+    """data/skulltulas.json: each of the remake's 100 Gold Skulltulas (by Hash, its map folder) with its SoH check, and
+    its rule where the remake's place differs"""
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)["skulltulas"]
+
+
 def soh_rule(key):
     """SoH's C++ text of the rule an override key names (exit, event or location)"""
     kind, rr = key[0], key[1]
@@ -52,17 +61,18 @@ def soh_rule(key):
     return hits[0]
 
 
-def _entries(table, gift_table):
-    """chests and gifts alike: {"id", "rc", "region", "condition"}"""
+def _entries(table, gift_table, skulltulas=()):
+    """chests, gifts and Gold Skulltulas alike: {"id", "rc", "region", "condition"}"""
     out = [{"id": l["id"], "rc": l["rc"], "region": l["region"], "condition": l.get("condition")} for l in table["locations"]]
     if gift_table:
         out += [{"id": c["id"], "rc": c["rc"], "region": c["soh_region"], "condition": c.get("rule")}
                 for c in gift_table["checks"]]
+    out += [{"id": s["rc"], "rc": s["rc"], "region": s.get("region"), "condition": s.get("rule")} for s in skulltulas]
     return out
 
 
-def make_world(table, gift_table=None, options=None):
-    entries = _entries(table, gift_table)
+def make_world(table, gift_table=None, options=None, skulltulas=()):
+    entries = _entries(table, gift_table, skulltulas)
     seen = collections.Counter(e["rc"] for e in entries if e["rc"])
     if any(n > 1 for n in seen.values()):
         raise ValueError("checks both a chest and a gift: %s" % [rc for rc, n in seen.items() if n > 1])
@@ -152,10 +162,16 @@ class Setup:
             remake_map = c["loose"][0]["map"].split("/")[1] if c["kind"] == "loose" else None
             locs.append(fill.Location(c["id"], None, remake_map, I.canonical(c["vanilla"]), "%s: %s" % (c["area"], c["name"]),
                                       kind=c["kind"]))
+        # (the Gold Skulltulas, with settings shuffle_tokens: each drops the item placed there)
+        self.skulltulas = load_skulltulas() if settings is not None and settings.get("shuffle_tokens") else []
+        for g in self.skulltulas:
+            locs.append(fill.Location(g["rc"], int(g["hash"]), g["folder"], TOKEN, "%s: Gold Skulltula (%s)" % (
+                g["area"], g["rc"].split("_GS", 1)[1].strip("_").replace("_", " ").title() or "the area's"),
+                kind="skulltula"))
         self.locs = locs
         self.options = fill.soh_options(self.places)   # (for hints: fill.soh_options says why not for logic)
-        self.world = make_world(self.table, self.gifts)
-        mapped = {e["rc"] for e in _entries(self.table, self.gifts) if e["rc"]}
+        self.world = make_world(self.table, self.gifts, skulltulas=self.skulltulas)
+        mapped = {e["rc"] for e in _entries(self.table, self.gifts, self.skulltulas) if e["rc"]}
         removed = set(self.table.get("removed", ()))
         self.fixed = {rc: rg for rc, rg in vanilla_items().items()
                       if rc not in mapped and rc not in removed and rc in self.world.location_ids}
@@ -165,6 +181,8 @@ class Setup:
         #  logic not reaching it does: the Lost Woods' under-bridge chest, given a rule needing nothing, could not be found
         #  a way up to in game (2026-11-13), and a seed had put the only way out of the forest in it)
         self.closed |= {l["id"] for l in self.table["locations"] if not l["rc"] and l.get("confidence") == "low"}
+        # (a Gold Skulltula whose match or way in is not sure (data/skulltulas.json "closed"): junk only too)
+        self.closed |= {g["rc"] for g in self.skulltulas if g.get("closed")}
 
     def fill(self, rng):
         return fill.fill(self.world, self.locs, self.fixed, self.progression, rng, self.closed, places=self.places)
@@ -221,6 +239,13 @@ def generate(romfs, mods_dir, seed, settings, log=print):
         patches.ocarina_guide_on_get(mod)
     if loose:
         pickups.place(romfs, codec, mod, loose, made)
+    drops = {}   # (the Gold Skulltulas: a token left as it is; any other item, a pickup built on the token)
+    for lid, actor in placed.items():
+        if by_id[lid].kind == "skulltula" and actor != TOKEN:
+            item = own_items.actor(*I.dungeon_item(actor)) if I.dungeon_item(actor) else actor
+            drops[by_id[lid].hash] = made.actor_for(item, drop=True)
+    if drops:
+        pickups.set_drops(romfs, codec, mod, drops)
     own_items.finish()   # (their names, rows, flags and the hook: before the tables are written)
     made.finish()
     patches.song_models(romfs, codec, mod)
@@ -260,6 +285,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
                    "chests": {str(h): {"item": a, "event": e} for h, (a, e) in sorted(contents.items())},
                    "gifts": {lid: a for lid, a in sorted(given.items())},
                    "loose": {str(h): a for h, a in sorted(loose.items())},
+                   "skulltulas": {str(h): a for h, a in sorted(drops.items())},
                    "hints": dict(sorted(stones.items()))}, f, indent=1)
     log("seed %s: %d checks (%d chests, %d gifts, %d lying in the world), mod in %s, spoiler %s" % (
         seed, len(placed), sum(1 for l in s.locs if l.kind == "chest"), len(given),
@@ -355,7 +381,8 @@ def write_spoiler(out, seed, settings, world, locs, fixed, placed, closed=()):
         if got:
             lines.append("  sphere %d" % i)
             lines += ["    " + g for g in sorted(got)]
-    for kind, title in (("chest", "Chests"), ("gift", "Gifts (NPCs, minigames, scrubs)"), ("loose", "Lying in the world")):
+    for kind, title in (("chest", "Chests"), ("gift", "Gifts (NPCs, minigames, scrubs)"), ("loose", "Lying in the world"),
+                        ("skulltula", "Gold Skulltulas")):
         lines += ["", title + ":"]
         for l in sorted((l for l in locs if l.kind == kind), key=lambda l: l.name):
             lines.append("  %-70s %s%s" % (l.name, placed[l.id], "   (not in logic: junk only)" if l.id in closed else ""))

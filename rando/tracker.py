@@ -297,6 +297,10 @@ class Model:
         for h, a in plan.get("loose", {}).items():
             if h in loose_of:
                 placed[loose_of[h]] = a
+        from .pickups import DROP_PREFIX
+        for h, a in plan.get("skulltulas", {}).items():   # (a skulltula's drop: the pickup made of the item; none: a token)
+            if h in by_hash:
+                placed[by_hash[h].id] = a[len(DROP_PREFIX):] if a.startswith(DROP_PREFIX) else a
         out = []
         for l in s.locs:
             item = placed.get(l.id, l.vanilla)
@@ -306,6 +310,8 @@ class Model:
             if l.hash is not None and str(l.hash) in idx["actors"]:
                 folder, age, x, y, z, _ = idx["actors"][str(l.hash)]
                 pos = (x, z)
+                if l.kind == "skulltula":   # (killed and its drop got: the token's AI saves the skulltula's own key)
+                    hashes = [l.hash]
             elif l.kind == "loose":
                 hashes = [int(a["hash"]) for a in gifts[l.id]["loose"]]
                 for a in gifts[l.id]["loose"]:

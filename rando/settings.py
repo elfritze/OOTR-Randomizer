@@ -54,6 +54,10 @@ OPTIONS = (
            "placed with the other items, each fairy giving the item placed there once. They still ask their rupees "
            "(25 to 500): Nayru's and the one outside Ganon's Castle (300, 500) need the 500-rupee wallet in logic.",
            False, False),
+    Option("shuffle_tokens", "shuffle", "Shuffle Gold Skulltula tokens",
+           "The 100 Gold Skulltulas drop the item placed there (SoH: Tokensanity, all), floating where each dies as its "
+           "token does; the 100 tokens go with the other items. The House of Skulltula counts tokens wherever found.",
+           False, False),
     Option("shuffle_dungeon_rewards", "shuffle", "Shuffle dungeon rewards",
            "The 3 spiritual stones and 6 medallions (SoH: Shuffle Dungeon Rewards): Vanilla, each from its own boss; End "
            "of dungeon, shuffled among the 8 bosses and Rauru. The scenes still show the game's own reward; the item got "

@@ -227,7 +227,7 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
         item, origin = rng.choice(fit)
         rest.remove((item, origin))
         put(item, origin, [spot])
-    rest.sort(key=lambda x: (x[0] not in I.NEEDS_CONTAINER, sum(I.allowed(x[0], k) for k in ("chest", "gift", "loose"))))
+    rest.sort(key=lambda x: (x[0] not in I.NEEDS_CONTAINER, sum(I.allowed(x[0], k) for k in ("chest", "gift", "loose", "skulltula"))))
     for item, origin in rest:
         spots = empty + junk_only
         if item in I.NEEDS_CONTAINER:

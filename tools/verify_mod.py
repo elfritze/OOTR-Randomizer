@@ -98,6 +98,7 @@ def main():
     chosen = rando_settings.normalized(plan.get("settings", {}), legacy=True)
     nocturnal_seen = 0
     loose = {int(h): a for h, a in plan.get("loose", {}).items()}
+    gs_drops, gs_seen = {int(h): a for h, a in plan.get("skulltulas", {}).items()}, set()
     loose_seen = set()
     found = chests.scan(romfs, codec)
     problems, seen = [], set()
@@ -141,6 +142,14 @@ def main():
                     problems.append("%s: %d is %s, planned %s" % (rel, h, y.get("Gyaml"), name))
                 if key({k: v for k, v in x.items() if k not in ("Gyaml", "Translate")}) !=                         key({k: v for k, v in y.items() if k not in ("Gyaml", "Translate")}) or                         [x["Translate"][0], x["Translate"][2]] != [y["Translate"][0], y["Translate"][2]] or                         not 0 <= y["Translate"][1] - x["Translate"][1] <= 0.6:
                     problems.append("%s: %d changed beyond its item and height" % (rel, h))
+            elif h in gs_drops and x.get("Gyaml") == pickups.GOLD_SKULLTULA:   # (its drop, its night flag if that qol)
+                want_y = dict(x, Dynamic=dict(x.get("Dynamic") or {}, Drop__DropActor=gs_drops[h]))
+                if chosen["skulltulas_day_and_night"] and qol.is_nocturnal(x):
+                    nocturnal_seen += 1
+                    want_y["Dynamic"][qol.NOCTURNAL] = False
+                gs_seen.add(h)
+                if key(y) != key(want_y):
+                    problems.append("%s: Gold Skulltula %d is not the game's with its drop %s" % (rel, h, gs_drops[h]))
             elif chosen["skulltulas_day_and_night"] and qol.is_nocturnal(x):
                 nocturnal_seen += 1
                 if key(y) != key(dict(x, Dynamic=dict(x["Dynamic"], **{qol.NOCTURNAL: False}))):
@@ -178,7 +187,9 @@ def main():
     if chosen["gossip_stone_hints"] in ("need_nothing", "stone_of_agony"):   # (the stones' talk: hint_problems)
         own.add(hints.GOSSIP_FLOW.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
     own_items = {item for item, _ in want.values() if dungeon_items.parse(item)} | \
-        {a for a in loose.values() if dungeon_items.parse(a)}   # (dungeons' own items: below)
+        {a for a in loose.values() if dungeon_items.parse(a)} | \
+        {a[len(pickups.DROP_PREFIX):] for a in gs_drops.values()
+         if dungeon_items.parse(a[len(pickups.DROP_PREFIX):])}   # (dungeons' own items: below)
     ocarina = generate.SARIA in plan.get("gifts", {})   # (ActionGuide: the ocarina's guide, then the own items' hook)
     if own_items or ocarina:
         own.add(dungeon_items.ACTION_GUIDE.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
@@ -205,6 +216,14 @@ def main():
                     problems.append("%s event %d %s: %r, planned %r" % (rel, i, k, vy, want_v))
             if key({k: v for k, v in x.items() if k != "params"}) != key({k: v for k, v in y.items() if k != "params"}):
                 problems.append("%s event %d: changed beyond its parameters" % (rel, i))
+    if set(gs_drops) - gs_seen:
+        problems.append("planned Gold Skulltula drops not found in any map: %s" % sorted(set(gs_drops) - gs_seen)[:5])
+    for a in sorted(set(gs_drops.values())):   # (the skulltulas' drops: pickups built on the token, a pack and rows each)
+        if not os.path.exists(os.path.join(mod_romfs, *pickups.pack_path(a).split("/"))):
+            problems.append("no pack for %s" % a)
+        for t in (pickups.ACTOR_INFO, pickups.GAME_ACTOR_INFO, pickups.POUCH_ACTOR_INFO):
+            if a not in {r["__RowId"] for r in byml.read(codec.read(os.path.join(mod_romfs, *t.split("/"))))[0]}:
+                problems.append("%s: no row %s" % (t, a))
     # (the new pickups: a pack each, and their rows)
     made = {a for a in loose.values() if not a.startswith("Obj_")}
     for t in (pickups.ACTOR_INFO, pickups.GAME_ACTOR_INFO, pickups.POUCH_ACTOR_INFO):

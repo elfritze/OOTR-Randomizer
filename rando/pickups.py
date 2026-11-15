@@ -14,6 +14,16 @@ from .formats import byml, sarc
 
 BASE = "Obj_Arrow_Fire"
 PREFIX = "Obj_Rando_"
+# A Gold Skulltula's drop (settings shuffle_tokens) is built on the token instead (OotrR's item_forms, its world
+# template): the token's AI saves the skulltula that dropped it when the get event ends (its Bool64bitKey rows), which no
+# other pickup does (with a rupee there, the skulltula and its check came back); it floats where the skulltula died,
+# caught on contact or by hookshot and boomerang as SoH's logic counts. Its get event plays on every pickup, even at full
+# capacity (DROP_POUCH), for that save to happen. The token's golden aura and hum go unless the item has its own.
+DROP_BASE = "Obj_Token_Gold"
+DROP_PREFIX = "Obj_GS_"
+DROP_FROM_ITEM = ("ActorNameRef", "ModelInfoRef", "AnimationRef", "CaptureRef", "ASRef")
+LINK_KEYS = ("ELinkRef", "SLinkRef")
+DROP_POUCH = {"PlayGetEventManyTimes": True, "IsPlayGetEventPouchMax": True}
 ACTOR_INFO = "RSDB/ActorInfo.Product.111.rstbl.byml.zs"
 GAME_ACTOR_INFO = "RSDB/GameActorInfo.Product.111.rstbl.byml.zs"
 POUCH_ACTOR_INFO = "RSDB/PouchActorInfo.Product.111.rstbl.byml.zs"
@@ -23,8 +33,8 @@ FROM_ITEM = ("ActorNameRef", "ModelInfoRef", "AnimationRef", "CaptureRef")
 GPT = "GameParameterTableRef"
 
 
-def name_for(item):
-    return PREFIX + item
+def name_for(item, drop=False):
+    return (DROP_PREFIX if drop else PREFIX) + item
 
 
 def pack_path(actor):
@@ -95,9 +105,15 @@ class Pickups:
 
     def __init__(self, romfs, codec, mod):
         self.romfs, self.codec, self.mod = romfs, codec, mod
-        self.base = sarc.read(codec.read(os.path.join(romfs, *pack_path(BASE).split("/"))))
+        self.bases = {}
+        self.base = self._base(BASE)
         self.tables = {}
         self.made = {}
+
+    def _base(self, name):
+        if name not in self.bases:
+            self.bases[name] = sarc.read(self.codec.read(os.path.join(self.romfs, *pack_path(name).split("/"))))
+        return self.bases[name]
 
     def _table(self, rel):
         if rel not in self.tables:
@@ -112,22 +128,33 @@ class Pickups:
             raise ValueError("%s: %d rows %s" % (rel, len(rows), row_id))
         return rows[0]
 
-    def actor_for(self, item):
-        """the pickup actor giving item (an existing one when the game has it: Obj_Shield_Deku for the Deku Shield...)"""
-        if item in self.made:
-            return self.made[item]
-        name = name_for(item)
+    def actor_for(self, item, drop=False):
+        """the pickup actor giving item (an existing one when the game has it: Obj_Shield_Deku for the Deku Shield...);
+        drop: a Gold Skulltula's drop, built on the token (DROP_BASE)"""
+        name = name_for(item, drop)
+        if name in self.made.values():
+            return name
+        base_name = DROP_BASE if drop else BASE
+        base = self._base(base_name)
         files = sarc.read(self.mod.read(pack_path(item)))   # (the game's, or a new item's: a dungeon's own)
         comps = _components(files, "Actor/%s.engine__actor__ActorParam.bgyml" % item)
         if "PouchContentRef" not in comps:
             raise ValueError("%s has no PouchContentRef" % item)
 
-        out = {k: v for k, v in self.base.items() if k != "Actor/%s.engine__actor__ActorParam.bgyml" % BASE}
-        param_file = "Actor/%s.engine__actor__ActorParam.bgyml" % BASE
-        param, version = byml.read(self.base[param_file])
-        e = byml.endian(self.base[param_file])
+        out = {k: v for k, v in base.items() if k != "Actor/%s.engine__actor__ActorParam.bgyml" % base_name}
+        param_file = "Actor/%s.engine__actor__ActorParam.bgyml" % base_name
+        param, version = byml.read(base[param_file])
+        e = byml.endian(base[param_file])
         param = copy.deepcopy(param)
-        for key in FROM_ITEM:
+        if drop:   # (the token's aura and hum only for an item having its own)
+            for key in LINK_KEYS:
+                if key in comps:
+                    param["Components"][key] = comps[key]
+                    for f in _refs_in(files, _ref_file(comps[key])):
+                        out.setdefault(f, files[f])
+                else:
+                    param["Components"].pop(key, None)
+        for key in (DROP_FROM_ITEM if drop else FROM_ITEM):
             if key not in comps:
                 continue
             param["Components"][key] = comps[key]
@@ -144,8 +171,8 @@ class Pickups:
             out[mi] = byml.write(info, v, byml.endian(out[mi]))
         # (game parameters: the item's (what the menu and its use know of it), with the pickup's physics controller, which
         #  an item's own actor, never lying in the world, has none of)
-        base_gpt_file = _ref_file(param["Components"][GPT])
-        base_gpt, _ = byml.read(self.base[base_gpt_file])
+        base_gpt_file = _ref_file(_components(base, param_file)[GPT])
+        base_gpt = {"Components": _components(base, base_gpt_file)}   # (its $parent chain: the token's names only one)
         gpt = {"Category": "GameParameterTableDefault", "Components": {}}
         if GPT in comps:
             item_gpt_file = _ref_file(comps[GPT])
@@ -164,20 +191,22 @@ class Pickups:
         item_pouch = _ref_file(comps["PouchContentRef"])
         for f in _refs_in(files, item_pouch):
             out.setdefault(f, files[f])
-        base_pouch, _ = byml.read(self.base["Component/PouchContentParam/%s.game__component__PouchContentParam.bgyml" % BASE])
+        base_pouch, _ = byml.read(base["Component/PouchContentParam/%s.game__component__PouchContentParam.bgyml" % base_name])
         pouch = {"$parent": _work(item_pouch), "IsPickedUpEmitXlinkKey": True,
                  "PickedUpEmitXlinkKey": base_pouch["PickedUpEmitXlinkKey"],
                  "PouchActor": "Work/Actor/%s.engine__actor__ActorParam.gyml" % item}
+        if drop:
+            pouch.update(DROP_POUCH)
         pouch_file = "Component/PouchContentParam/%s.game__component__PouchContentParam.bgyml" % name
         out[pouch_file] = byml.write(pouch, version, e)
         param["Components"]["PouchContentRef"] = "?" + pouch_file
         out["Actor/%s.engine__actor__ActorParam.bgyml" % name] = byml.write(param, version, e)
-        self.mod.add(pack_path(name), sarc.write(out), like=pack_path(BASE))
+        self.mod.add(pack_path(name), sarc.write(out), like=pack_path(base_name))
 
-        # (the tables: the pickup as Obj_Arrow_Fire is, with the item's model; in the pouch, as the item is)
-        base_row, item_row = self._row(ACTOR_INFO, BASE), self._row(ACTOR_INFO, item)
+        # (the tables: the pickup as its base is, with the item's model; in the pouch, as the item is)
+        base_row, item_row = self._row(ACTOR_INFO, base_name), self._row(ACTOR_INFO, item)
         row = copy.deepcopy(base_row)
-        for k in ("ActorName", "ModelProjectName", "FmdbName", "AnimationResources", "ModelAabbMin", "ModelAabbMax"):
+        for k in ("ActorName", "ModelProjectName", "FmdbName", "AnimationResources", "ModelAabbMin", "ModelAabbMax") +                 (("ELinkUserName",) if drop else ()):
             if k in item_row:
                 row[k] = copy.deepcopy(item_row[k])
             else:
@@ -188,13 +217,13 @@ class Pickups:
             row["ModelProjectName"], row["FmdbName"] = patches.SONG_MODEL
         row["__RowId"] = name
         self._add(ACTOR_INFO, row)
-        g = copy.deepcopy(self._row(GAME_ACTOR_INFO, BASE))
+        g = copy.deepcopy(self._row(GAME_ACTOR_INFO, base_name))
         g["__RowId"] = name
         self._add(GAME_ACTOR_INFO, g)
         p = copy.deepcopy(self._row(POUCH_ACTOR_INFO, item))
         p["__RowId"] = name
         self._add(POUCH_ACTOR_INFO, p)
-        self.made[item] = name
+        self.made[(item, drop)] = name
         return name
 
     def _add(self, rel, row):
@@ -224,6 +253,35 @@ def model_bottom(pickups, item):
     else:
         row = pickups._row(ACTOR_INFO, item)
     return max(0.0, -row.get("ModelAabbMin", {}).get("Y", 0.0))
+
+
+GOLD_SKULLTULA = "Enemy_Skulltula_Gold"
+
+
+def set_drops(romfs, codec, mod, drops):
+    """drops: {hash: actor}: each Gold Skulltula with that Hash drops that pickup (its Dynamic Drop__DropActor, an
+    instance parameter of the skulltula's pack, where the game names none: its drop table gives the token). Returns the
+    files written."""
+    from . import chests
+    want = {int(h): v for h, v in drops.items()}
+    written, seen = [], set()
+    for rel in chests.map_files(romfs):
+        root, version = byml.read(mod.read(rel))
+        changed = False
+        for a in root.get("Actors", []):
+            h = int(a.get("Hash", 0))
+            if h in want:
+                if a.get("Gyaml") != GOLD_SKULLTULA or "Drop__DropActor" in (a.get("Dynamic") or {}):
+                    raise ValueError("%s: %d is not a Gold Skulltula dropping its token" % (rel, h))
+                a.setdefault("Dynamic", {})["Drop__DropActor"] = want[h]
+                seen.add(h)
+                changed = True
+        if changed:
+            mod.write(rel, byml.write(root, version))
+            written.append(rel)
+    if seen != set(want):
+        raise ValueError("Gold Skulltulas not in any map: %s" % sorted(set(want) - seen))
+    return written
 
 
 def place(romfs, codec, mod, contents, pickups):
