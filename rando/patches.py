@@ -680,3 +680,56 @@ def song_models(romfs, codec, mod, songs=SONGS):
         info["FmdbName"], info["ModelProjectName"] = model, project
         files[key] = byml.write(info, version, byml.endian(files[key]))
         mod.write(rel, sarc.write(files))
+
+
+# Great Fairies (with settings shuffle_great_fairies): each fairy's flow asks IsGet of her own item to know she gave it
+# (Dm_FairyFountain_Din Event78: had -> RecoverSequence, she only heals; not had -> her visit, the price asked, her gift).
+# With another item placed there, that flag would never come and she would sell her gift again on every visit. So the
+# switch asks a flag of her own instead (a gift edit "set" in data/gifts.json, the flag added to the saved game data), set
+# just before her gift (Dm_SY_GetInEvent: the one event before it is an action, made to go to the flag first). Her prices
+# stay the game's (25, 50, 100, 200, 300, 500: Din, the mountain's, Farore, the crater's, Nayru, the castle's): the
+# last two need the 500-rupee wallet (data/gifts.json rules). Din's asks the magic meter only to note a flag
+# (GreatFairy_HasNoMPOnDinDemo): she gives either way. The other reads of these IsGet flags (her count of the fairies
+# left, NPCs' lines, TriForcePoint) are left as they are.
+# (check: flow, her flag, her give event, the action before it)
+GREAT_FAIRIES = {
+    "RC_HC_GREAT_FAIRY_REWARD": ("Dm_FairyFountain_Din", "RandoGreatFairy_Din", "Event212", "Event403"),
+    "RC_ZF_GREAT_FAIRY_REWARD": ("Dm_FairyFountain_Frore", "RandoGreatFairy_Farore", "Event174", "Event147"),
+    "RC_COLOSSUS_GREAT_FAIRY_REWARD": ("Dm_FairyFountain_Nayru", "RandoGreatFairy_Nayru", "Event163", "Event136"),
+    "RC_DMT_GREAT_FAIRY_REWARD": ("Dm_FairyFountain_Power", "RandoGreatFairy_Power", "Event141", "Event154"),
+    "RC_DMC_GREAT_FAIRY_REWARD": ("Dm_FairyFountain_Wisdom", "RandoGreatFairy_Wisdom", "Event144", "Event124"),
+    "RC_OGC_GREAT_FAIRY_REWARD": ("Dm_FairyFountain_Courage", "RandoGreatFairy_Courage", "Event144", "Event131"),
+}
+GREAT_FAIRY_GIVEN = "RandoGreatFairyGiven"
+
+
+def great_fairy_flow(data, flag, give, before):
+    """a fairy's flow (its gift edits made) with her flag set between `before` and her gift"""
+    from .formats import evfl_edit
+    edit = evfl_edit.FlowEdit(data)
+    names = [e["name"] for e in edit.flow["events"]]
+    b, g = edit.event(before), edit.event(give)
+    if b["type"] != "action" or b.get("next") != names.index(give) or g.get("flowchart") != "Dm_SY_GetInEvent":
+        raise ValueError("%s: not the fairy's gift as known (%s -> %s)" % (flag, before, give))
+    if any(e["next"] == names.index(give) for e in edit.flow["events"] if e["name"] != before and "next" in e) or \
+            any(names.index(give) in (e.get("cases") or {}).values() for e in edit.flow["events"]):
+        raise ValueError("%s: her gift is reached another way" % flag)
+    edit.add_event({"name": GREAT_FAIRY_GIVEN, "type": "action", "actor": "GameDataActor",
+                    "action": "EventTriggerSetGameDataBool",
+                    "params": {"Index": -1, "Value": True, "GameDataName": flag}, "next": give})
+    edit.set_next(before, GREAT_FAIRY_GIVEN)
+    return edit.apply()
+
+
+def great_fairies_once(romfs, codec, mod, checks):
+    """the shuffled fairies' flags set at their gift, and saved (after the gift edits: those point her switch at it)"""
+    from . import gamedata, gifts
+    flags = []
+    for rc in sorted(checks):
+        flow, flag, give, before = GREAT_FAIRIES[rc]
+        rel = gifts.flow_path(flow)
+        mod.write(rel, great_fairy_flow(mod.read(rel), flag, give, before))
+        flags.append(flag)
+    if flags:
+        mod.write(gamedata.GAME_DATA, gamedata.with_bools(mod.read(gamedata.GAME_DATA), flags))
+    return flags

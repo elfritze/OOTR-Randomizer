@@ -17,7 +17,7 @@ import copy
 import os
 import struct
 
-from . import pickups as P
+from . import gamedata, pickups as P
 from .formats import byml, evfl_edit, msbt, sarc
 
 # (each dungeon's short name, in the items' names: the 25 characters)
@@ -44,7 +44,7 @@ LOCATION_MSBT = "LocationMsg/Location.msbt"
 ACTION_GUIDE = "Event/EventFlow/ActionGuide.bfevfl.zs"
 ACTION_GUIDE_ENTRY = "ActionGuide"
 TEMPLATE = "Item_Medal_Forest"   # (a key item the pouch keeps: OotrR's template for its own items)
-GAME_DATA = "GameData/GameDataList.Product.110.byml.zs"
+GAME_DATA = gamedata.GAME_DATA
 
 
 def actor_name(generic, dungeon):
@@ -100,31 +100,11 @@ def build_pack(template_files, native_files, generic, actor):
 
 
 def with_flags(data, actors):
-    """GameDataList with each new item's IsGet.<actor> (a saved Bool as the template's) and its member of the IsGet
-    struct: the pouch writes IsGet.<name> only for the names that struct has, and keeps track of an item by it (OotrR,
-    tested in game for its souls); the saved part grows by an entry each"""
-    from .savefile import murmur3
-    root, version = byml.read(data)
-    root = copy.deepcopy(root)
-    d = root["Data"]
-    known = {en["Hash"] for entries in d.values() for en in entries if isinstance(en, dict) and "Hash" in en}
-    sample = next(en for en in d["Bool"] if en["Hash"] == murmur3("IsGet." + TEMPLATE))
-    struct = next(en for en in d["Struct"] if en["Hash"] == murmur3("IsGet"))["DefaultValue"]
-    members = {m["Hash"] for m in struct}
-    for a in sorted(actors):
-        flag = murmur3("IsGet." + a)
-        if flag in known or murmur3(a) in members:
-            raise ValueError("IsGet.%s: the game has it already" % a)
-        entry = copy.deepcopy(sample)
-        entry["Hash"], entry["DefaultValue"] = byml.U32(flag), False
-        d["Bool"].append(entry)
-        struct.append({"Hash": byml.U32(murmur3(a)), "Value": byml.U32(flag)})
-    meta, i, grown = root["MetaData"], sample["SaveFileIndex"], 8 * len(actors)
-    meta["SaveDataSize"][i] += grown
-    meta["SaveDataOffsetPos"][i] += grown
-    meta["AllDataSaveSize"] += grown
-    meta["AllDataSaveOffset"] += grown
-    return byml.write(root, version, byml.endian(data))
+    """GameDataList with each new item's IsGet.<actor> (a saved Bool) and its member of the IsGet struct: the pouch writes
+    IsGet.<name> only for the names that struct has, and keeps track of an item by it (OotrR, tested in game for its
+    souls; these items, 2026-11-15)"""
+    actors = sorted(actors)
+    return gamedata.with_bools(data, ["IsGet." + a for a in actors], members=actors)
 
 
 def texts(files, english, generic, dungeon):

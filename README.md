@@ -26,6 +26,7 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Shuffle songs | on | yes |
 | Shuffle gifts and prizes (36 NPC and minigame checks, Darunia's bracelet among them) | on | yes (Darunia: not yet) |
 | Shuffle freestanding Heart Pieces (and bosses' Heart Containers, 22) | on | yes |
+| Shuffle Great Fairies (their 6 gifts in the pool; Nayru's and Ganon's Castle's need the 500-rupee wallet) | off | not yet |
 | Shuffle dungeon rewards: **Vanilla** / End of dungeon (the 9 stones and medallions among the 8 bosses and Rauru) | Vanilla | not yet |
 | Maps and compasses: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
 | Small keys: **Own dungeon** / Any dungeon / Overworld / Anywhere | Own dungeon | yes (own items) |
@@ -83,6 +84,12 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
 - **NPCs' and minigames' prizes** (36: the Skull Kid, the scrubs' upgrades, bowling, the shooting galleries, the House of
   Skulltula, fishing, the frogs, horseback archery, Dampe, the dog, Talon, Anju, King Zora, Darunia...) give the item placed
   there: `data/gifts.json` names each event parameter that says what is given.
+- **Great Fairies can be shuffled**: each fairy's gift event gives the item placed there, and her "had it?" switch
+  (IsGet of her own item: with another item there she would sell it again on every visit) asks a saved flag of her own
+  instead (`rando/gamedata.py` adds it to the game's data list), set just before her gift. She still asks the game's
+  price (Din 25, the mountain's 50, Farore 100, the crater's 200, Nayru 300, the castle's 500): logic asks the 500-rupee
+  wallet for the last two (as you saw: four fairies with the 200-rupee wallet, then 300 and 500). The magic meter and
+  its double are one progressive item, given in order. Not yet seen in game.
 - **Dungeon rewards can be shuffled** (SoH's End of Dungeon): the 3 spiritual stones and 6 medallions among the 8 bosses
   and Rauru, placed first by logic (a stone never behind the Door of Time). Each reward's scene gives it by its
   GetPouchContent window's `ActorName` (the Jabu-Jabu and Zora's Fountain scenes both, and the `.110` twins); the scene

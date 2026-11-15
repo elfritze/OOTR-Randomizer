@@ -11,7 +11,7 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 from rando import chests, dungeon_items, generate, gifts, hints, patches, pickups, qol, settings as rando_settings  # noqa: E402
-from rando import items as rando_items  # noqa: E402
+from rando import gamedata, items as rando_items  # noqa: E402
 from rando.formats import evfl  # noqa: E402
 from rando.events import EVENT_SETTING  # noqa: E402
 from rando.formats import byml, msbt, restbl, sarc, zs  # noqa: E402
@@ -177,10 +177,14 @@ def main():
         own |= {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (qol.BIG_CHEST_FLOW, qol.SMALL_CHEST_FLOW)}
     if chosen["gossip_stone_hints"] in ("need_nothing", "stone_of_agony"):   # (the stones' talk: hint_problems)
         own.add(hints.GOSSIP_FLOW.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
-    own_items = {item for item, _ in want.values() if dungeon_items.parse(item)} |         {a for a in loose.values() if dungeon_items.parse(a)}   # (dungeons' own items: below)
+    own_items = {item for item, _ in want.values() if dungeon_items.parse(item)} | \
+        {a for a in loose.values() if dungeon_items.parse(a)}   # (dungeons' own items: below)
     if own_items:
         own.add(dungeon_items.ACTION_GUIDE.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
-    if own & flows:   # (those flows are checked on their own below, without gift edits)
+    fairies = sorted(rc for rc in plan.get("gifts", {}) if rc in patches.GREAT_FAIRIES)   # (their flows: below, with
+    fairy_flows = {patches.GREAT_FAIRIES[rc][0] for rc in fairies}                         #  their gift edits)
+    own |= fairy_flows
+    if (own - fairy_flows) & flows:   # (those flows are checked on their own below, without gift edits)
         problems.append("a gift edit in %s (its own check does not cover gifts)" % sorted(own & flows))
     for f in sorted((flows | in_mod) - own):
         rel = gifts.flow_path(f)
@@ -211,7 +215,30 @@ def main():
     for a in made:
         if not os.path.exists(os.path.join(mod_romfs, *pickups.pack_path(pickups.name_for(a)).split("/"))):
             problems.append("no pack for %s" % pickups.name_for(a))
-    # (the dungeons' own items: a pack each, their rows, their IsGet flags, the hook first in ActionGuide)
+    # (the shuffled Great Fairies: each one's flow the game's with her gift edits and her flag set before her gift)
+    for rc in fairies:
+        flow, flag, give, before = patches.GREAT_FAIRIES[rc]
+        rel = gifts.flow_path(flow)
+        edits = gifts.edits_by_flow([(table_g[rc], plan["gifts"][rc])])[flow]
+        want_flow = patches.great_fairy_flow(gifts.edited(codec.read(os.path.join(romfs, *rel.split("/"))), flow, edits),
+                                             flag, give, before)
+        path = os.path.join(mod_romfs, *rel.split("/"))
+        if not os.path.exists(path) or evfl.read(codec.read(path)) != evfl.read(want_flow):
+            problems.append("%s: not the game's with %s's gift and once-flag" % (rel, rc))
+    # (the saved game data: the game's with the fairies' flags, then the own items' IsGet flags, as generate adds them)
+    game_data = codec.read(os.path.join(romfs, *dungeon_items.GAME_DATA.split("/")))
+    want_data = game_data
+    if fairies:
+        want_data = gamedata.with_bools(want_data, [patches.GREAT_FAIRIES[rc][1] for rc in fairies])
+    if own_items:
+        want_data = dungeon_items.with_flags(want_data, own_items)
+    data_path = os.path.join(mod_romfs, *dungeon_items.GAME_DATA.split("/"))
+    if want_data is game_data:
+        if os.path.exists(data_path):
+            problems.append("%s in the mod with nothing to add to it" % dungeon_items.GAME_DATA)
+    elif not os.path.exists(data_path) or byml.read(codec.read(data_path))[0] != byml.read(want_data)[0]:
+        problems.append("%s: not the game's with the fairies' and own items' flags" % dungeon_items.GAME_DATA)
+    # (the dungeons' own items: a pack each, their rows, the hook first in ActionGuide)
     if own_items:
         for t in (pickups.ACTOR_INFO, pickups.GAME_ACTOR_INFO, pickups.POUCH_ACTOR_INFO):
             ids = {r["__RowId"] for r in byml.read(codec.read(os.path.join(mod_romfs, *t.split("/"))))[0]}
@@ -221,14 +248,9 @@ def main():
                 problems.append("no pack for %s" % a)
         game_read = lambda rel: codec.read(os.path.join(romfs, *rel.split("/")))   # noqa: E731
         mod_read = lambda rel: codec.read(os.path.join(mod_romfs, *rel.split("/")))   # noqa: E731
-        if byml.read(mod_read(dungeon_items.GAME_DATA))[0] != byml.read(
-                dungeon_items.with_flags(game_read(dungeon_items.GAME_DATA), own_items))[0]:
-            problems.append("%s: not the game's with the own items' IsGet flags" % dungeon_items.GAME_DATA)
         if evfl.read(mod_read(dungeon_items.ACTION_GUIDE)) != evfl.read(
                 dungeon_items.hook(game_read(dungeon_items.ACTION_GUIDE), own_items)):
             problems.append("%s: not the game's with the own items' hook" % dungeon_items.ACTION_GUIDE)
-    elif os.path.exists(os.path.join(mod_romfs, *dungeon_items.GAME_DATA.split("/"))):
-        problems.append("%s in the mod with no own dungeon item" % dungeon_items.GAME_DATA)
     for h, (item, _) in sorted(want.items()):   # (a dungeon item as the game has it only where it does the same)
         d = rando_items.dungeon_item(item, found[h]["map"])
         if d and rando_items.dungeon_form(rando_items.own_actor(d[0], d[1]), found[h]["map"],

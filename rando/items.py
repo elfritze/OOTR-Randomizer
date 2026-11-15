@@ -58,6 +58,10 @@ ITEMS = {
     "Item_Medal_Forest": "RG_FOREST_MEDALLION", "Item_Medal_Fire": "RG_FIRE_MEDALLION",
     "Item_Medal_Water": "RG_WATER_MEDALLION", "Item_Medal_Spirit": "RG_SPIRIT_MEDALLION",
     "Item_Medal_Shadow": "RG_SHADOW_MEDALLION", "Item_Medal_Light": "RG_LIGHT_MEDALLION",
+    # (the Great Fairies' gifts: in the pool with settings shuffle_great_fairies)
+    "Item_DinFire": "RG_DINS_FIRE", "Item_FaroreWind": "RG_FARORES_WIND", "Item_NayruLove": "RG_NAYRUS_LOVE",
+    "Item_FairyBless_MP": "RG_PROGRESSIVE_MAGIC_METER", "Item_FairyBless_MPDouble": "RG_PROGRESSIVE_MAGIC_METER",
+    "Item_FairyBless_DefenseDouble": "RG_DOUBLE_DEFENSE",
     # (the songs: the remake's song items, as chests, gifts and pickups give them, with Sheik's harp for a model)
     "Item_Melody_ZeldaLullaby": "RG_ZELDAS_LULLABY", "Item_Melody_EponaSong": "RG_EPONAS_SONG",
     "Item_Melody_SariaSong": "RG_SARIAS_SONG", "Item_Melody_SunSong": "RG_SUNS_SONG", "Item_Melody_TimeSong": "RG_SONG_OF_TIME",
@@ -79,6 +83,7 @@ TIERS = (
     ("Item_NutBag_Medium", "Item_NutBag_Large"),
     ("Item_Wallet_Medium", "Item_Wallet_Large"),
     ("Item_Scale_Silver", "Item_Scale_Gold"),
+    ("Item_FairyBless_MP", "Item_FairyBless_MPDouble"),   # (the magic meter, then its double)
 )
 TIER_OF = {a: g for g in TIERS for a in g}
 

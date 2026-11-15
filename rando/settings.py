@@ -41,6 +41,11 @@ OPTIONS = (
     Option("shuffle_boss_keys", "dungeon", "Boss keys",
            "As maps and compasses (SoH: Boss Key Shuffle), Ganon's Castle's boss key with the others.",
            "own_dungeon", False, PLACES),
+    Option("shuffle_great_fairies", "shuffle", "Shuffle Great Fairies",
+           "The 6 Great Fairies' gifts (Din's Fire, Farore's Wind, Nayru's Love, magic, double magic, double defense) are "
+           "placed with the other items, each fairy giving the item placed there once. They still ask their rupees "
+           "(25 to 500): Nayru's and the one outside Ganon's Castle (300, 500) need the 500-rupee wallet in logic.",
+           False, False),
     Option("shuffle_dungeon_rewards", "shuffle", "Shuffle dungeon rewards",
            "The 3 spiritual stones and 6 medallions (SoH: Shuffle Dungeon Rewards): Vanilla, each from its own boss; End "
            "of dungeon, shuffled among the 8 bosses and Rauru. The scenes still show the game's own reward; the item got "

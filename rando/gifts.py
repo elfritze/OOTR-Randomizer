@@ -14,29 +14,40 @@ def flow_path(flow):
 
 def write(romfs, codec, mod, assignments):
     """assignments: [(gifts.json check, the actor its gift is to give)]. Returns the flow files written."""
-    by_flow = collections.defaultdict(list)
-    for check, actor in assignments:
-        for e in check["edits"]:   # ("set": a value of its own, whatever the item: a song lesson's silent add switched off)
-            by_flow[e["flow"]].append((e, e.get("set", actor), check["id"]))
+    by_flow = edits_by_flow(assignments)   # (an edit's "set": a value of its own, whatever the item: a song lesson's
+    #                                          silent add switched off, a Great Fairy's once-flag)
     written = []
     for flow, edits in sorted(by_flow.items()):
         rel = flow_path(flow)
-        data = mod.read(rel)
-        seen = {}
-        for e, actor, cid in edits:
-            key = (e["event"], e["param"])
-            if key in seen:
-                if seen[key] != actor:
-                    raise ValueError("%s event %d %s: two checks give through it (%s)" % (flow, e["event"], e["param"], cid))
-                continue
-            seen[key] = actor
-            now = evfl.read(data)[0]["events"][e["event"]]["params"].get(e["param"])
-            if now != e["value"]:
-                raise ValueError("%s event %d %s is %r, the table says %r (%s)" % (flow, e["event"], e["param"], now,
-                                                                                  e["value"], cid))
-            data = evfl_patch.set_string_param(data, e["event"], e["param"], actor)
-            if evfl.read(data)[0]["events"][e["event"]]["params"].get(e["param"]) != actor:
-                raise ValueError("%s event %d: the change did not take" % (flow, e["event"]))
-        mod.write(rel, data)
+        mod.write(rel, edited(mod.read(rel), flow, edits))
         written.append(rel)
     return written
+
+
+def edits_by_flow(assignments):
+    """{flow: [(edit, the value it sets, check id)]} of [(gifts.json check, actor)]"""
+    by_flow = collections.defaultdict(list)
+    for check, actor in assignments:
+        for e in check["edits"]:
+            by_flow[e["flow"]].append((e, e.get("set", actor), check["id"]))
+    return by_flow
+
+
+def edited(data, flow, edits):
+    """a flow's data with its edits made: [(edit, value, check id)] (edits_by_flow's)"""
+    seen = {}
+    for e, actor, cid in edits:
+        key = (e["event"], e["param"])
+        if key in seen:
+            if seen[key] != actor:
+                raise ValueError("%s event %d %s: two checks give through it (%s)" % (flow, e["event"], e["param"], cid))
+            continue
+        seen[key] = actor
+        now = evfl.read(data)[0]["events"][e["event"]]["params"].get(e["param"])
+        if now != e["value"]:
+            raise ValueError("%s event %d %s is %r, the table says %r (%s)" % (flow, e["event"], e["param"], now,
+                                                                              e["value"], cid))
+        data = evfl_patch.set_string_param(data, e["event"], e["param"], actor)
+        if evfl.read(data)[0]["events"][e["event"]]["params"].get(e["param"]) != actor:
+            raise ValueError("%s event %d: the change did not take" % (flow, e["event"]))
+    return data

@@ -119,6 +119,8 @@ class Setup:
         self.gifts = load_gifts() if with_gifts else {"checks": [], "excluded": []}
 
         def kept(c):
+            if c.get("great_fairy"):
+                return settings is not None and settings["shuffle_great_fairies"]
             if c.get("reward"):   # (the dungeon rewards: shuffled among themselves, or where the game gives them)
                 return settings is not None and settings["shuffle_dungeon_rewards"] == "end_of_dungeon"
             if c["vanilla"].startswith("Item_Melody_"):
@@ -210,6 +212,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
                 if new != a.get("gyaml"):   # (an item left where it was stays as the game has it)
                     loose[int(a["hash"])] = new
     gifts.write(romfs, codec, mod, [(gift_by_id[lid], actor) for lid, actor in given.items()])
+    patches.great_fairies_once(romfs, codec, mod, [lid for lid in given if lid in patches.GREAT_FAIRIES])
     if loose:
         pickups.place(romfs, codec, mod, loose, made)
     own_items.finish()   # (their names, rows, flags and the hook: before the tables are written)
