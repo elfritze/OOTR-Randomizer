@@ -529,8 +529,11 @@ def main():
         if r.get("__RowId") in patches.DARUNIA_ROWS:
             r["SubFlowList"] = sorted(set(r.get("SubFlowList") or []) | need)
         expected.append(r)
+    if "RC_LW_GIFT_FROM_SARIA" in plan.get("gifts", {}):   # (an ocarina found elsewhere: its first play event listed)
+        expected = [copy.deepcopy(r) for r in expected]
+        patches.ocarina_child_events(expected)
     if mod_info != expected:
-        problems.append("%s: not the game's with Darunia's events loading the item window" %
+        problems.append("%s: not the game's with Darunia's events loading the item window (and the ocarina's play event)" %
                         rando_events.GAME_ANALYZED_EVENT_INFO)
     # (Darunia's line: each message archive the game's, his message file with the gift's label only)
     # (and the gossip stones' rumors replaced by the plan's hints)

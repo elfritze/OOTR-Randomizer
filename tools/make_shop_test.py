@@ -6,6 +6,9 @@ the shop's whole stock shown:
     the Deku Seeds (10) shelf:  a Heart Piece for 20
     the Deku Seeds (30) shelf:  the large Deku Stick bag for 30 (the largest: buying it never lowers a capacity)
 
+Also, for a seed with Saria's gift shuffled made before the fix: the ocarina's first play event listed by every event loading
+ActionGuide (rando.patches.ocarina_child_events: a Fairy Ocarina found elsewhere could not be equipped).
+
 To see: each shelf shows the item's model, name and price; buying gives the item; then "Sold Out" on that shelf, and
 still after leaving the shop and after reloading the save; the other shelves sell as before.
 
@@ -55,6 +58,15 @@ def main():
     shops.write(romfs, codec, mod, shelves)
     made.finish()
     b.finish()
+    plan = json.load(open(os.path.join(out, "placements.json"), encoding="utf-8"))
+    if "RC_LW_GIFT_FROM_SARIA" in plan.get("gifts", {}):   # (the ocarina's play event, missing from seeds before the fix)
+        from rando import events, patches
+        from rando.formats import byml
+        raw = mod.read(events.GAME_ANALYZED_EVENT_INFO)
+        rows, version = byml.read(raw)
+        if patches.ocarina_child_events(rows):
+            mod.write(events.GAME_ANALYZED_EVENT_INFO, byml.write(rows, version, byml.endian(raw)))
+            print("ocarina: its play event listed by the item gets' events")
     mod.finish()
     plan_path = os.path.join(out, "placements.json")
     plan = json.load(open(plan_path, encoding="utf-8"))

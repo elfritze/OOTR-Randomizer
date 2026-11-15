@@ -766,5 +766,42 @@ def ocarina_guide(data):
     return edit.apply()
 
 
+# The guide goes on, when the player asks for it, with EventTransition to Dm_SY_Ocarina (its first play); an event starts
+# only the events its GameAnalyzedEventInfo row lists (ChildEventList), and only the Hyrule Field arrival lists that one. From
+# an item get the transition never started and ActionGuide_IsRequestOcarina (not saved) stayed set: the ocarina could not be
+# put on a button until the save was reloaded (OotrR, user test 2026-11-12; here, seed 7cc65105 2026-11-15: the Fairy
+# Ocarina from King Dodongo's Heart Container could not be equipped). So, as OotrR's event_info.add_child_events: every
+# event listing ActionGuide among its sub-flows lists Dm_SY_Ocarina and the events it lists in turn.
+OCARINA_EVENT = "Dm_SY_Ocarina"
+
+
+def ocarina_child_events(rows):
+    """GameAnalyzedEventInfo rows (edited in place) with OCARINA_EVENT and its children listed by every row loading
+    ActionGuide; returns {row: [events added]}"""
+    by = {r["__RowId"]: r for r in rows}
+    wanted, todo = set(), [OCARINA_EVENT]
+    while todo:
+        e = todo.pop()
+        if e not in wanted:
+            wanted.add(e)
+            todo.extend(by[e].get("ChildEventList") or [])
+    added = {}
+    for r in rows:
+        if "ActionGuide" not in (r.get("SubFlowList") or []):
+            continue
+        listed = list(r.get("ChildEventList") or [])
+        missing = sorted(wanted - set(listed) - {r["__RowId"]})
+        if missing:
+            r["ChildEventList"] = sorted(set(listed) | set(missing), key=str.lower)   # (the game's order)
+            added[r["__RowId"]] = missing
+    return added
+
+
 def ocarina_guide_on_get(mod):
     mod.write(ACTION_GUIDE_FLOW, ocarina_guide(mod.read(ACTION_GUIDE_FLOW)))
+    from . import events
+    raw = mod.read(events.GAME_ANALYZED_EVENT_INFO)
+    rows, version = byml.read(raw)
+    if not ocarina_child_events(rows):
+        raise ValueError("no event loading ActionGuide lacked %s" % OCARINA_EVENT)
+    mod.write(events.GAME_ANALYZED_EVENT_INFO, byml.write(rows, version, byml.endian(raw)))
