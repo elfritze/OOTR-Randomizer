@@ -2135,6 +2135,33 @@
    "confidence": "medium",
    "quest": true,
    "notes": "Zelda's scene Dm_TimeTemple_0130 gives them by its GetPouchContent window (Event85): an Item_ actor only (items.POUCH_ADD_CHECKS); its fanfare and effect events keep the arrows' (looks only). No event asks IsGet.Item_Arrow_Light but the scrubs' stock. Settings shuffle_quest_items. Not yet seen in game."
+  },
+  {
+   "id": "RC_LW_GIFT_FROM_SARIA",
+   "rc": "RC_LW_GIFT_FROM_SARIA",
+   "kind": "gift",
+   "vanilla": "Item_Ocarina_Fairy",
+   "edits": [
+    {
+     "flow": "Dm_Kokiri_0155",
+     "event": 51,
+     "param": "Actor",
+     "value": "Item_Ocarina_Fairy"
+    },
+    {
+     "flow": "Dm_Kokiri_0155",
+     "event": 52,
+     "param": "ActorName",
+     "value": "Item_Ocarina_Fairy"
+    }
+   ],
+   "soh_region": "RR_LW_BRIDGE_FROM_FOREST",
+   "rule": null,
+   "name": "Saria's Gift (Fairy Ocarina)",
+   "area": "Lost Woods",
+   "confidence": "medium",
+   "ocarina": true,
+   "notes": "Saria's bridge scene Dm_Kokiri_0155 adds it silently (Event68, Actor) and shows its window (Event77, ActorName): both edited; an Item_ actor only (items.POUCH_ADD_CHECKS). The scene's own ocarina model stays. The ocarina found elsewhere is made playable by patches.ocarina_guide_on_get (OotrR's fix). Settings shuffle_fairy_ocarina. Not yet seen in game."
   }
  ],
  "excluded": [
@@ -2147,11 +2174,6 @@
    "id": "RC_HF_OCARINA_OF_TIME_ITEM",
    "rc": "RC_HF_OCARINA_OF_TIME_ITEM",
    "reason": "Ocarina of Time: pending (the Song of Time lesson right after needs an ocarina)"
-  },
-  {
-   "id": "RC_LW_GIFT_FROM_SARIA",
-   "rc": "RC_LW_GIFT_FROM_SARIA",
-   "reason": "Saria's Fairy Ocarina: pending (AddOrRemovePouchContent + display; round-4 test)"
   },
   {
    "id": "RC_GANON",

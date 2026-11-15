@@ -179,7 +179,8 @@ def main():
         own.add(hints.GOSSIP_FLOW.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
     own_items = {item for item, _ in want.values() if dungeon_items.parse(item)} | \
         {a for a in loose.values() if dungeon_items.parse(a)}   # (dungeons' own items: below)
-    if own_items:
+    ocarina = generate.SARIA in plan.get("gifts", {})   # (ActionGuide: the ocarina's guide, then the own items' hook)
+    if own_items or ocarina:
         own.add(dungeon_items.ACTION_GUIDE.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
     fairies = sorted(rc for rc in plan.get("gifts", {}) if rc in patches.GREAT_FAIRIES)   # (their flows: below, with
     fairy_flows = {patches.GREAT_FAIRIES[rc][0] for rc in fairies}                         #  their gift edits)
@@ -246,11 +247,16 @@ def main():
         for a in sorted(own_items):
             if not os.path.exists(os.path.join(mod_romfs, *pickups.pack_path(a).split("/"))):
                 problems.append("no pack for %s" % a)
-        game_read = lambda rel: codec.read(os.path.join(romfs, *rel.split("/")))   # noqa: E731
-        mod_read = lambda rel: codec.read(os.path.join(mod_romfs, *rel.split("/")))   # noqa: E731
-        if evfl.read(mod_read(dungeon_items.ACTION_GUIDE)) != evfl.read(
-                dungeon_items.hook(game_read(dungeon_items.ACTION_GUIDE), own_items)):
-            problems.append("%s: not the game's with the own items' hook" % dungeon_items.ACTION_GUIDE)
+    if own_items or ocarina:   # (ActionGuide: the ocarina's guide first, then the own items' hook before it)
+        guide = codec.read(os.path.join(romfs, *dungeon_items.ACTION_GUIDE.split("/")))
+        if ocarina:
+            guide = patches.ocarina_guide(guide)
+        if own_items:
+            guide = dungeon_items.hook(guide, own_items)
+        path = os.path.join(mod_romfs, *dungeon_items.ACTION_GUIDE.split("/"))
+        if not os.path.exists(path) or evfl.read(codec.read(path)) != evfl.read(guide):
+            problems.append("%s: not the game's with the ocarina's guide and the own items' hook" %
+                            dungeon_items.ACTION_GUIDE)
     for h, (item, _) in sorted(want.items()):   # (a dungeon item as the game has it only where it does the same)
         d = rando_items.dungeon_item(item, found[h]["map"])
         if d and rando_items.dungeon_form(rando_items.own_actor(d[0], d[1]), found[h]["map"],

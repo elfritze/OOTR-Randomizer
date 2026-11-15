@@ -119,6 +119,8 @@ class Setup:
         self.gifts = load_gifts() if with_gifts else {"checks": [], "excluded": []}
 
         def kept(c):
+            if c.get("ocarina"):
+                return settings is not None and settings["shuffle_fairy_ocarina"]
             if c.get("quest"):
                 return settings is not None and settings["shuffle_quest_items"]
             if c.get("great_fairy"):
@@ -215,6 +217,8 @@ def generate(romfs, mods_dir, seed, settings, log=print):
                     loose[int(a["hash"])] = new
     gifts.write(romfs, codec, mod, [(gift_by_id[lid], actor) for lid, actor in given.items()])
     patches.great_fairies_once(romfs, codec, mod, [lid for lid in given if lid in patches.GREAT_FAIRIES])
+    if SARIA in given:   # (an ocarina found elsewhere made playable; before the dungeon items' hook)
+        patches.ocarina_guide_on_get(mod)
     if loose:
         pickups.place(romfs, codec, mod, loose, made)
     own_items.finish()   # (their names, rows, flags and the hook: before the tables are written)
@@ -263,7 +267,8 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     return placed
 
 
-DARUNIA = "RC_GC_DARUNIAS_JOY"   # (his gift: his scene's edit, and the patch's silent adds with it)
+DARUNIA = "RC_GC_DARUNIAS_JOY"
+SARIA = "RC_LW_GIFT_FROM_SARIA"   # (his gift: his scene's edit, and the patch's silent adds with it)
 HINT_SEED = 0x6057   # (the hints draw from their own generator: the same seed's items whatever the hint settings)
 ARCHIVE = "rando-archive"   # (beside mods: Longshot loads every folder inside mods)
 

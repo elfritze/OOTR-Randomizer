@@ -45,6 +45,10 @@ OPTIONS = (
            "Zelda's Letter (her scene in the castle garden) and the Light Arrows (her scene in the Temple of Time) are "
            "placed with the other items; their scenes give the item placed there. The letter, wherever found, opens "
            "Kakariko's gate.", False, False),
+    Option("shuffle_fairy_ocarina", "shuffle", "Shuffle the Fairy Ocarina",
+           "Saria's gift on the Lost Woods bridge is placed with the other items; she gives the item placed there. An "
+           "ocarina found elsewhere is made playable on the next item get (OotrR's fix). The Ocarina of Time stays at "
+           "the castle moat (its scene teaches the Song of Time).", False, False),
     Option("shuffle_great_fairies", "shuffle", "Shuffle Great Fairies",
            "The 6 Great Fairies' gifts (Din's Fire, Farore's Wind, Nayru's Love, magic, double magic, double defense) are "
            "placed with the other items, each fairy giving the item placed there once. They still ask their rupees "

@@ -733,3 +733,38 @@ def great_fairies_once(romfs, codec, mod, checks):
     if flags:
         mod.write(gamedata.GAME_DATA, gamedata.with_bools(mod.read(gamedata.GAME_DATA), flags))
     return flags
+
+
+# An ocarina found away from Saria's bridge could not be played (OotrR, user test 2026-11-11): the game shows the
+# ocarina's action guide, and with it its first play event, only on the first arrival in Hyrule Field
+# (Dm_SY_BancChangeArrive -> ActionGuide/OpenActionGuideSceenForOcarina). OotrR's fix (qol_patches.ocarina_guide_on_get,
+# MIT), rewritten on FlowEdit: every item get ends in ActionGuide/ActionGuide; it first asks whether the Fairy Ocarina is
+# in the pouch and, if so, runs that entry (which shows its guide once only: EventQueryHaveOpenedActionGuide), then goes
+# on as the game does. Applied when Saria's gift is shuffled (settings shuffle_fairy_ocarina); before the dungeon items'
+# hook, which goes first in turn.
+OCARINA = "Item_Ocarina_Fairy"
+OCARINA_GUIDE_ENTRY = "OpenActionGuideSceenForOcarina"
+OCARINA_EVENTS = ("RandoOcarinaHeld", "RandoOcarinaGuide")
+ACTION_GUIDE_FLOW = "Event/EventFlow/ActionGuide.bfevfl.zs"
+
+
+def ocarina_guide(data):
+    """ActionGuide.bfevfl with the ocarina's guide run first while the Fairy Ocarina is held"""
+    from .formats import evfl_edit
+    edit = evfl_edit.FlowEdit(data)
+    flow = edit.flow
+    first = flow["events"][flow["entries"]["ActionGuide"]]
+    if first["type"] != "switch" or flow["actors"][first["actor"]]["queries"][first["query"]] != \
+            "EventQueryCheckPouchContentCategory" or OCARINA_GUIDE_ENTRY not in flow["entries"]:
+        raise ValueError("ActionGuide: not the flow known")
+    held, guide = OCARINA_EVENTS
+    edit.add_event({"name": held, "type": "switch", "actor": "PouchSystemActor", "query": "EventQueryIsExistInPouch",
+                    "params": {"Actor": OCARINA, "Num": 1}, "cases": {IS_TRUE: guide, IS_FALSE: first["name"]}})
+    edit.add_event({"name": guide, "type": "subflow", "flowchart": "", "entry": OCARINA_GUIDE_ENTRY, "params": None,
+                    "next": first["name"]})
+    edit.set_entry("ActionGuide", held)
+    return edit.apply()
+
+
+def ocarina_guide_on_get(mod):
+    mod.write(ACTION_GUIDE_FLOW, ocarina_guide(mod.read(ACTION_GUIDE_FLOW)))
