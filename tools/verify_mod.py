@@ -564,6 +564,11 @@ def main():
         if b["ConditionalSchedule"] != keep or {k: v for k, v in a.items() if k != "ConditionalSchedule"} != \
                 {k: v for k, v in b.items() if k != "ConditionalSchedule"}:
             problems.append("Mido's schedule: not the game's without the after-Zelda row")
+    # (the tunnel Kokiri's schedule: the game's without its after-Zelda row)
+    path = os.path.join(mod_romfs, *patches.KOKIRI_007_SCHEDULE.split("/"))
+    want_schedule = patches.kokiri_007_schedule(open(os.path.join(romfs, *patches.KOKIRI_007_SCHEDULE.split("/")), "rb").read())
+    if not os.path.exists(path) or byml.read(open(path, "rb").read())[0] != byml.read(want_schedule)[0]:
+        problems.append("the tunnel Kokiri's schedule: not the game's without the after-Zelda row")
     # (the boulder over Dodongo's Cavern stays the game's: changing it crashed the game, 2026-11-13)
     rel = "Pack/Actor/%s.pack.zs" % patches.DC_BOULDER
     if os.path.exists(os.path.join(mod_romfs, *rel.split("/"))):

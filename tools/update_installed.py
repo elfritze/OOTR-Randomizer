@@ -2,6 +2,7 @@
 logic would fill the same seed otherwise), with each fix it lacks and its settings call for:
 
     the Great Fairies in any order (rando.patches.fairies_any_order: every seed)
+    the tunnel Kokiri lowering his wall after Zelda was met first (rando.patches.kokiri_007_keeps_blocking: every seed)
     a Fairy Ocarina found elsewhere equipped (rando.patches.ocarina_child_events: Saria's gift shuffled)
     the night Gold Skulltulas there by day (rando.qol.night_module_by_day: skulltulas_day_and_night)
 
@@ -34,6 +35,9 @@ def main():
     if mod.read(patches.FAIRY_ORDER_FLOW) == game(patches.FAIRY_ORDER_FLOW):
         patches.fairies_any_order(romfs, codec, mod)
         done.append("Great Fairies in any order")
+    if mod.read(patches.KOKIRI_007_SCHEDULE) == game(patches.KOKIRI_007_SCHEDULE):
+        patches.kokiri_007_keeps_blocking(romfs, codec, mod)
+        done.append("the tunnel Kokiri's wall after Zelda")
     if "RC_LW_GIFT_FROM_SARIA" in plan.get("gifts", {}):
         raw = mod.read(events.GAME_ANALYZED_EVENT_INFO)
         rows, version = byml.read(raw)

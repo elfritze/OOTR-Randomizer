@@ -135,6 +135,9 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
   Gauntlets come in that order (the fill keeps each unreachable without the one before). Not yet seen in game.
 - **Items lying in the world** (the 14 loose Heart Pieces, the 8 bosses' Heart Containers and 2 freestanding keys) are the item placed there,
   lying where the old one was: a pickup made for each item as the remake made its own loose Fire Arrows.
+- **The tunnel Kokiri lets you out after the Deku Tree, Zelda met or not**: his wall goes with his talk after the
+  Kokiri Emerald, but a later row of his schedule (after meeting Zelda) won when Zelda came first (seen in game,
+  2026-11-15); that row is taken out, as Mido's. Not yet seen in game.
 - **Great Fairies in any order**: the remake opens every fountain but Din's (the castle's) only once Din's Fire is had
   (the Triforce mark's flow); SoH's logic, and a seed putting Din's Fire anywhere, have them in any order (seen in game,
   2026-11-15: the mountain's stayed shut after Din's fairy gave a rupee). That check now asks Zelda's Lullaby, always

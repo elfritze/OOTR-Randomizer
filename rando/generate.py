@@ -319,6 +319,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     patches.dc_bombs_set_off_flower(romfs, codec, mod)
     patches.open_zr_river(romfs, codec, mod)
     patches.mido_keeps_blocking(romfs, codec, mod)
+    patches.kokiri_007_keeps_blocking(romfs, codec, mod)
     patches.starting_bags(romfs, codec, mod)
     patches.clock_runs(romfs, codec, mod)
     patches.zora_arrival_after_letter(romfs, codec, mod)

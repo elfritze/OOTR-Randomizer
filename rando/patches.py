@@ -687,6 +687,32 @@ def mido_keeps_blocking(romfs, codec, mod):
     mod.write(MIDO_SCHEDULE, byml.write(doc, version, byml.endian(raw)))
 
 
+# The Kokiri at the tunnel to the Lost Woods bridge (Npc_Kokiri_007_Child) has the same trap: his invisible wall
+# (KokiriForest_Npc_Kokiri_007_Child_Blocker_00, see data/locations.json) goes only with his talk after the Kokiri Emerald
+# (row Get_StoneOfForest_IsCompleted_Exp, events C1_T/C1_N); a row for after meeting Zelda (Goto_HyruleCastle_IsCompleted_Exp,
+# talk C2C3_TT: "you don't visit often...") comes last and wins. The game meets Zelda only after his wall is down; a seed
+# need not (seen in game, seed 7cc65105, 2026-11-15: Gohma beaten after Zelda's Letter, the wall stayed and he only said
+# that). The row is taken out: the wall down, his row for that (Blocker_00 reversed) gives the same talk.
+KOKIRI_007_SCHEDULE = "Component/AIScheduleParam/Npc_Kokiri_007_Child.game__component__AIScheduleParam.bgyml"
+KOKIRI_007_ZELDA_ROW = "Goto_HyruleCastle_IsCompleted_Exp"
+KOKIRI_007_ROWS = ("KokiriForest_Npc_Kokiri_007_Child_Blocker", "Get_StoneOfForest_IsCompleted_Exp",
+                   "KokiriForest_Npc_Kokiri_007_Child_Blocker_00", KOKIRI_007_ZELDA_ROW)
+
+
+def kokiri_007_schedule(data):
+    """the tunnel Kokiri's schedule without its after-Zelda row"""
+    doc, version = byml.read(data)
+    rows = doc["ConditionalSchedule"]
+    if tuple(r.get("ConditionFlag") for r in rows) != KOKIRI_007_ROWS or             [e.get("EventName") for e in rows[2]["EventEntry"]] != [e.get("EventName") for e in rows[3]["EventEntry"]] or             not rows[2].get("IsReverseCondition"):
+        raise ValueError("the tunnel Kokiri's schedule rows are not the ones known")
+    doc["ConditionalSchedule"] = [r for r in rows if r.get("ConditionFlag") != KOKIRI_007_ZELDA_ROW]
+    return byml.write(doc, version, byml.endian(data))
+
+
+def kokiri_007_keeps_blocking(romfs, codec, mod):
+    mod.write(KOKIRI_007_SCHEDULE, kokiri_007_schedule(mod.read(KOKIRI_007_SCHEDULE)))
+
+
 # A song's item (Item_Melody_*, as a chest gives it) has a rupee for its model: the game never shows one. Every song shows
 # Sheik's harp instead: (model project, model) as a ModelInfo names them, Model/<project>.<model>.bfres.zs. (Not tinted by the
 # song: the engine recolors a model only by a material animation in its own files, as the rupee's Obj_Rupee_Color, and the
