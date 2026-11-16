@@ -3280,6 +3280,14 @@
    ],
    "rule": "logic->IsChild && logic->StoneCount() == 3 && logic->HasItem(RG_BRONZE_SCALE) && logic->Get(LOGIC_MET_ZELDA)",
    "why": "Zelda's escape at the castle moat (the DoorOfTime quest) waits for her garden and Impa's send-off, not only the three stones (OotrR's remake layer: Song from Ocarina of Time)"
+  },
+  {
+   "key": [
+    "location",
+    "RC_DMT_FREESTANDING_POH"
+   ],
+   "rule": "logic->IsAdult && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_TRAIL_BEAN)",
+   "why": "The trail's wall Heart Piece (above Dodongo's Cavern): the remake walls off the drop from the bomb flower's ledge (three FldObj_AirWall_Player_Unridable between them, DeathMountainTrail_Child_Static); it is reached only by the bean planted at the cavern's entrance, ridden as adult (seen in game, seed 889a1e52, 2026-11-16: the Fairy Ocarina there locked both ocarinas)"
   }
  ]
 }
