@@ -66,6 +66,20 @@ def running_games():
     return [exe for exe in GAME_EXES if '"%s"' % exe in out]
 
 
+# (a note's wrap width before its card has a size: without one, the Settings page's long notes each asked for one line
+#  thousands of pixels wide inside its scrolling canvas, and Tk's layout never settled: no event, no timer ran)
+NOTE_WRAP = px(360)
+
+
+def set_wrap(label, width):
+    """a label's wrap width, changed only when it differs: setting it, even to the same value, has Tk measure the label
+    again, which resizes its parent, whose <Configure> set it again: on the Settings page that loop never ended and the
+    window stopped answering (2026-11-15: minutes to start, laggy)"""
+    width = int(width)
+    if abs(int(str(label.cget("wraplength") or 0)) - width) > 2:
+        label.configure(wraplength=width)
+
+
 def game_problem(folder):
     """why folder is not a game folder the mod can be made for (None when it is)"""
     if not folder:
@@ -100,9 +114,16 @@ def open_path(path):
         subprocess.Popen(["xdg-open", path])
 
 
-def card(parent, title=None, subtitle=None):
-    """a rounded card with an optional heading; returns (outer frame, body frame)"""
-    outer = ttk.Frame(parent, style="Card.TFrame", padding=(px(20), px(16), px(20), px(18)))
+def card(parent, title=None, subtitle=None, flat=False):
+    """a rounded card with an optional heading; returns (outer frame, body frame). flat: a plain card with a thin border
+    instead, for pages of many cards: the rounded card's image (alpha, stretched) made the Settings page's layout take
+    6 to 40 seconds, freezing the window at its start (2026-11-15)"""
+    if flat:
+        edge = tk.Frame(parent, background=C["line"], padx=1, pady=1)
+        outer = ttk.Frame(edge, style="CardBody.TFrame", padding=(px(20), px(16), px(20), px(18)))
+        outer.pack(fill="both", expand=True)
+    else:
+        edge = outer = ttk.Frame(parent, style="Card.TFrame", padding=(px(20), px(16), px(20), px(18)))
     body = outer
     if title:
         ttk.Label(outer, text=title, style="CardHeading.TLabel").pack(anchor="w")
@@ -111,7 +132,7 @@ def card(parent, title=None, subtitle=None):
         body = ttk.Frame(outer, style="Card.TFrame", padding=0)
         body.configure(style="CardBody.TFrame")
         body.pack(fill="both", expand=True, pady=(px(10), px(0)))
-    return outer, body
+    return edge, body
 
 
 class Window:
@@ -123,6 +144,7 @@ class Window:
         self.queue = queue.Queue()
         self.busy = False
         self.games = []
+        self.polling = False
         root.title(BRAND + " — OoT remake randomizer")
         self.scale = max(1.0, root.winfo_fpixels("1i") / 96.0)
         root.geometry(self.state.get("geometry") or "%dx%d" % (1120 * self.scale, 800 * self.scale))
@@ -254,11 +276,10 @@ class Window:
         opts.grid(row=0, column=1, sticky="nsew")
         self.summary_labels = []
         for _ in settings.SECTIONS:
-            label = ttk.Label(body, text="", style="CardMuted.TLabel", justify="left")
+            label = ttk.Label(body, text="", style="CardMuted.TLabel", justify="left", wraplength=NOTE_WRAP)
             label.pack(anchor="w", fill="x", pady=(px(0), px(6)))
             self.summary_labels.append(label)
-        body.bind("<Configure>", lambda e: [n.configure(wraplength=max(px(120), e.width - px(8)))
-                                            for n in self.summary_labels])
+        body.bind("<Configure>", lambda e: [set_wrap(n, max(px(120), e.width - px(8))) for n in self.summary_labels])
         for var in self.options.values():
             var.trace_add("write", lambda *_: self._show_summary())
         self._show_summary()
@@ -318,6 +339,11 @@ class Window:
     def log(self, text, tag=None):
         self.queue.put(("log", (text, tag)))
 
+    def call_soon(self, fn):
+        """fn run on the window's thread at its next pump: a worker thread hands its result over this way. Tk must not be
+        called from another thread (root.after there blocked until Tk took the call: the window froze for minutes)"""
+        self.queue.put(("call", fn))
+
     def _pump(self):
         try:
             while True:
@@ -332,6 +358,8 @@ class Window:
                     self.log_text.insert("end", text.rstrip("\n") + "\n", tag or ())
                     self.log_text.see("end")
                     self.log_text.configure(state="disabled")
+                elif kind == "call":
+                    value()
                 elif kind == "done":
                     self.busy = False
                     self.generate_button.configure(state="normal")
@@ -347,11 +375,14 @@ class Window:
     def _poll_game(self):
         def work():
             games = running_games()
-            self.root.after(0, lambda: self._set_games(games))
-        threading.Thread(target=work, daemon=True).start()
+            self.call_soon(lambda: self._set_games(games))
+        if not self.polling:   # (one check at a time: tasklist can take seconds)
+            self.polling = True
+            threading.Thread(target=work, daemon=True).start()
         self.root.after(5000, self._poll_game)
 
     def _set_games(self, games):
+        self.polling = False
         if games != self.games:
             self.games = games
             self._draw_header()
@@ -388,11 +419,11 @@ class Window:
         helps = []
 
         def wrap(widget, note, indent):
-            widget.bind("<Configure>", lambda e: note.configure(wraplength=max(px(160), e.width - indent)), add="+")
+            widget.bind("<Configure>", lambda e: set_wrap(note, max(px(160), e.width - indent)), add="+")
 
         cards = []
         for key, (title, about) in settings.SECTIONS.items():
-            frame, body = card(inner, title, about)
+            frame, body = card(inner, title, about, flat=True)
             cards.append(frame)
             for o in (o for o in settings.OPTIONS if o.section == key):
                 row = ttk.Frame(body, style="CardBody.TFrame")
@@ -410,12 +441,12 @@ class Window:
                 if not o.seen:
                     tk.Label(body, text=" not yet tested in game ", background=C["card2"], foreground=C["gold"],
                              font=self.fonts.small).pack(anchor="w", padx=(px(52), px(0)), pady=(px(2), px(4)))
-                note = ttk.Label(body, text=o.help, style="CardMuted.TLabel", justify="left")
+                note = ttk.Label(body, text=o.help, style="CardMuted.TLabel", justify="left", wraplength=NOTE_WRAP)
                 note.pack(anchor="w", fill="x", padx=(px(52), px(0)), pady=(px(0), px(10)))
                 wrap(body, note, px(60))
                 helps.append(note)
         for key, title in settings.FIXED_SECTIONS.items():
-            frame, body = card(inner, title, "Fixed in this version: shown as Ship of Harkinian names them.")
+            frame, body = card(inner, title, "Fixed in this version: shown as Ship of Harkinian names them.", flat=True)
             cards.append(frame)
             for section, label, value, why in settings.FIXED:
                 if section != key:
@@ -425,7 +456,7 @@ class Window:
                 ttk.Label(line, text=label, style="CardStrong.TLabel").pack(side="left")
                 ttk.Label(line, text="  " + value, style="Good.TLabel").pack(side="left")
                 if why:
-                    note = ttk.Label(body, text=why, style="CardMuted.TLabel", justify="left")
+                    note = ttk.Label(body, text=why, style="CardMuted.TLabel", justify="left", wraplength=NOTE_WRAP)
                     note.pack(anchor="w", fill="x", pady=(px(0), px(8)))
                     wrap(body, note, px(8))
                 else:

@@ -157,7 +157,7 @@ class TrackerTab:
                         model.geo = maptex.geometry(model.romfs)
                     except Exception:   # (an unexpected romfs: the maps drawn from the placed objects)
                         model.geo = {}
-                self.frame.after(0, lambda: self._loaded(folder, model, err))
+                self.window.call_soon(lambda: self._loaded(folder, model, err))   # (never Tk from this thread)
             threading.Thread(target=work, daemon=True).start()
             return
         self.read_save(force=True)
@@ -342,7 +342,7 @@ class TrackerTab:
                         s.image()
                     except Exception:   # (no decoder, an unexpected texture: the outline is drawn instead)
                         s.failed = True
-                self.frame.after(0, lambda: self._decoded(key))
+                self.window.call_soon(lambda: self._decoded(key))
             threading.Thread(target=work, daemon=True).start()
         return False
 

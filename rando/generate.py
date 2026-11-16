@@ -124,11 +124,49 @@ def seed_number(seed):
     return int.from_bytes(hashlib.sha256(str(seed).encode("utf-8")).digest()[:8], "little")
 
 
+SCAN_CACHE_VERSION = 1
+
+
+def _scan_stamp(romfs):
+    """what the chests' and shops' scans read, as sizes and times: the cache is only used while these are the same"""
+    parts = []
+    shop_packs = [shops.pack_path(s) for s in ("Npc_Kokiri_001_Shop_Child", "Npc_Goron_011_Shop_Child")]
+    for rel in chests.map_files(romfs) + [pickups.POUCH_ACTOR_INFO] + shop_packs:
+        st = os.stat(os.path.join(romfs, *rel.split("/")))
+        parts.append("%s %d %d" % (rel, st.st_size, st.st_mtime_ns))
+    text = "\n".join(["%d" % SCAN_CACHE_VERSION] + parts)
+    return hashlib.sha256(text.encode()).hexdigest()[:20]
+
+
+def scan_game(romfs, codec, cache_dir=None):
+    """(chests.scan, shops.scan) of the game; with cache_dir, kept there as JSON and read back while the game's files
+    are the same (the tracker opens in a second instead of reading every map again: about 4 s)"""
+    path = os.path.join(cache_dir, "scan-%s.json" % _scan_stamp(romfs)) if cache_dir else None
+    if path and os.path.exists(path):
+        try:
+            with open(path, encoding="utf-8") as f:
+                data = json.load(f)
+            found = {int(h): c for h, c in data["chests"].items()}
+            return found, [shops.Slot(**dict(s, copies=[tuple(c) for c in s["copies"]])) for s in data["shops"]]
+        except (OSError, ValueError, KeyError, TypeError):
+            pass
+    found, slots = chests.scan(romfs, codec), shops.scan(romfs, codec)
+    if path:
+        try:
+            os.makedirs(cache_dir, exist_ok=True)
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump({"chests": {str(h): c for h, c in found.items()}, "shops": [vars(s) for s in slots]}, f)
+        except OSError:
+            pass
+    return found, slots
+
+
 class Setup:
     """everything a seed is made from: the tables, the chests found in this game, the locations, the logic"""
 
-    def __init__(self, romfs, codec, with_gifts=True, songs=True, settings=None):
+    def __init__(self, romfs, codec, with_gifts=True, songs=True, settings=None, cache_dir=None):
         self.settings = settings
+        scanned_chests, scanned_shops = scan_game(romfs, codec, cache_dir)
         """settings (rando.settings, normalized): which checks are shuffled; songs: as settings' shuffle_songs (older
         callers). A check not shuffled leaves the fill and keeps the game's item, which logic counts where it is (fixed)."""
         if settings is not None:
@@ -156,7 +194,7 @@ class Setup:
                 return True
             return settings["shuffle_freestanding"] if c["kind"] == "loose" else settings["shuffle_gifts"]
         self.gifts = {"checks": [c for c in self.gifts["checks"] if kept(c)], "excluded": self.gifts["excluded"]}
-        self.found = chests.scan(romfs, codec)
+        self.found = scanned_chests
         locs = []
         for l in self.table["locations"]:
             h = int(l["hash"])
@@ -193,7 +231,7 @@ class Setup:
                       if rc not in mapped and rc not in removed and rc in self.world.location_ids}
         # (the shops: each of SoH's 64 shop checks is a remake shelf, what it sells as logic counts it, at the remake's price
         #  (rando.shops); some become checks with settings shuffle_shops, chosen with each fill's draw)
-        self.shop_slots = shops.scan(romfs, codec)
+        self.shop_slots = scanned_shops
         self.shop_by_rc = {slot.rc: slot for slot in self.shop_slots}
         for slot in self.shop_slots:
             self.fixed[slot.rc] = slot.rg

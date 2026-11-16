@@ -281,7 +281,7 @@ class Model:
         from . import settings as rando_settings
         # (an older seed's placements.json lacks the newer settings: they mean what the randomizer did then)
         self.settings = rando_settings.normalized(self.plan.get("settings", {}), legacy=True)
-        self.setup = generate.Setup(self.romfs, codec, settings=self.settings)
+        self.setup = generate.Setup(self.romfs, codec, settings=self.settings, cache_dir=os.path.join(APPDATA, "cache"))
         self.setup.apply_shops(self.plan.get("shops", {}))   # (the seed's shuffled shelves: checks, prices)
         self.world = self.setup.world
         self.checks = self._checks()
