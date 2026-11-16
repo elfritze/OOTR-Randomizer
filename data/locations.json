@@ -3264,6 +3264,22 @@
    ],
    "rule": "logic->AtNight && logic->HasItem(RG_BOMBCHU_SHOP_KEY) && logic->Get(LOGIC_DODONGOS_CAVERN_CLEAR)",
    "why": "The Bombchu Shop's seller (Npc_Hylia_021_Shop_Child, Market_Child_Static) is only there once the Fire stone's quest is done (Presence Get_StoneOfFire_IsCompleted_Exp): King Dodongo beaten (OotrR's remake layer has it too)"
+  },
+  {
+   "key": [
+    "location",
+    "RC_HF_OCARINA_OF_TIME_ITEM"
+   ],
+   "rule": "logic->IsChild && logic->StoneCount() == 3 && logic->HasItem(RG_BRONZE_SCALE) && logic->Get(LOGIC_MET_ZELDA)",
+   "why": "Zelda's escape at the castle moat (the DoorOfTime quest) waits for her garden and Impa's send-off, not only the three stones (OotrR's remake layer: Song from Ocarina of Time)"
+  },
+  {
+   "key": [
+    "location",
+    "RC_SONG_FROM_OCARINA_OF_TIME"
+   ],
+   "rule": "logic->IsChild && logic->StoneCount() == 3 && logic->HasItem(RG_BRONZE_SCALE) && logic->Get(LOGIC_MET_ZELDA)",
+   "why": "Zelda's escape at the castle moat (the DoorOfTime quest) waits for her garden and Impa's send-off, not only the three stones (OotrR's remake layer: Song from Ocarina of Time)"
   }
  ]
 }

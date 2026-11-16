@@ -871,8 +871,9 @@ def great_fairies_once(romfs, codec, mod, checks):
 # on as the game does. Applied when Saria's gift is shuffled (settings shuffle_fairy_ocarina); before the dungeon items'
 # hook, which goes first in turn.
 OCARINA = "Item_Ocarina_Fairy"
+OCARINA_OF_TIME = "Item_Ocarina_Time"   # (held alone, it needs the same guide: OotrR's 15/11 report)
 OCARINA_GUIDE_ENTRY = "OpenActionGuideSceenForOcarina"
-OCARINA_EVENTS = ("RandoOcarinaHeld", "RandoOcarinaGuide")
+OCARINA_EVENTS = ("RandoOcarinaHeld", "RandoOcarinaGuide", "RandoOcarinaTimeHeld")
 ACTION_GUIDE_FLOW = "Event/EventFlow/ActionGuide.bfevfl.zs"
 
 
@@ -885,9 +886,11 @@ def ocarina_guide(data):
     if first["type"] != "switch" or flow["actors"][first["actor"]]["queries"][first["query"]] != \
             "EventQueryCheckPouchContentCategory" or OCARINA_GUIDE_ENTRY not in flow["entries"]:
         raise ValueError("ActionGuide: not the flow known")
-    held, guide = OCARINA_EVENTS
+    held, guide, held_time = OCARINA_EVENTS
     edit.add_event({"name": held, "type": "switch", "actor": "PouchSystemActor", "query": "EventQueryIsExistInPouch",
-                    "params": {"Actor": OCARINA, "Num": 1}, "cases": {IS_TRUE: guide, IS_FALSE: first["name"]}})
+                    "params": {"Actor": OCARINA, "Num": 1}, "cases": {IS_TRUE: guide, IS_FALSE: held_time}})
+    edit.add_event({"name": held_time, "type": "switch", "actor": "PouchSystemActor", "query": "EventQueryIsExistInPouch",
+                    "params": {"Actor": OCARINA_OF_TIME, "Num": 1}, "cases": {IS_TRUE: guide, IS_FALSE: first["name"]}})
     edit.add_event({"name": guide, "type": "subflow", "flowchart": "", "entry": OCARINA_GUIDE_ENTRY, "params": None,
                     "next": first["name"]})
     edit.set_entry("ActionGuide", held)

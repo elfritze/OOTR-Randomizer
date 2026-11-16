@@ -38,7 +38,7 @@ def main():
     if mod.read(patches.KOKIRI_007_SCHEDULE) == game(patches.KOKIRI_007_SCHEDULE):
         patches.kokiri_007_keeps_blocking(romfs, codec, mod)
         done.append("the tunnel Kokiri's wall after Zelda")
-    if "RC_LW_GIFT_FROM_SARIA" in plan.get("gifts", {}):
+    if {"RC_LW_GIFT_FROM_SARIA", "RC_HF_OCARINA_OF_TIME_ITEM"} & set(plan.get("gifts", {})):
         raw = mod.read(events.GAME_ANALYZED_EVENT_INFO)
         rows, version = byml.read(raw)
         if patches.ocarina_child_events(rows):

@@ -62,7 +62,8 @@ ITEMS = {
     "Item_ZeldaLetter": "RG_ZELDAS_LETTER", "Item_Arrow_Light": "RG_LIGHT_ARROWS",
     "Item_Arrow_Fire": "RG_FIRE_ARROWS",   # (with settings shuffle_lake_fire_arrows: the lake's sun spot)
     "Item_Token_Gold": "RG_GOLD_SKULLTULA_TOKEN",   # (with settings shuffle_tokens: the Gold Skulltulas' drops)
-    "Item_Ocarina_Fairy": "RG_PROGRESSIVE_OCARINA",   # (with settings shuffle_fairy_ocarina; the Ocarina of Time stays)
+    "Item_Ocarina_Fairy": "RG_PROGRESSIVE_OCARINA",   # (with settings shuffle_fairy_ocarina)
+    "Item_Ocarina_Time": "RG_PROGRESSIVE_OCARINA",   # (with settings shuffle_ocarina_of_time: the castle moat's)
     # (the Great Fairies' gifts: in the pool with settings shuffle_great_fairies)
     "Item_DinFire": "RG_DINS_FIRE", "Item_FaroreWind": "RG_FARORES_WIND", "Item_NayruLove": "RG_NAYRUS_LOVE",
     "Item_FairyBless_MP": "RG_PROGRESSIVE_MAGIC_METER", "Item_FairyBless_MPDouble": "RG_PROGRESSIVE_MAGIC_METER",
@@ -119,7 +120,8 @@ SHOP_ALSO = {"Obj_Heart_Piece", "Obj_Heart_Container", "TBox_Rupee_Green", "TBox
 # actors, the starting bags and Darunia's bracelet) or a cutscene's GetPouchContent window (the rewards' and Zelda's Light
 # Arrows' way, known for Item_ actors only): an Item_ actor only, no song, no dungeon item.
 LAKE_SUN = "RC_LH_SUN"   # (the Fire Arrows' spot: an Item_ made a pickup only, the scene's actor renamed to it)
-POUCH_ADD_CHECKS = {"RC_GC_DARUNIAS_JOY", "RC_TOT_LIGHT_ARROWS_CUTSCENE", "RC_LW_GIFT_FROM_SARIA"}
+POUCH_ADD_CHECKS = {"RC_GC_DARUNIAS_JOY", "RC_TOT_LIGHT_ARROWS_CUTSCENE", "RC_LW_GIFT_FROM_SARIA",
+                    "RC_HF_OCARINA_OF_TIME_ITEM"}
 # The dungeon rewards and the checks giving them (the bosses' and Rauru's scenes): each only with the other (SoH's End of
 # Dungeon), when settings shuffle_dungeon_rewards puts them in the pool.
 REWARDS = {"Item_Stone_Forest", "Item_Stone_Fire", "Item_Stone_Water", "Item_Medal_Forest", "Item_Medal_Fire",
@@ -201,11 +203,12 @@ BIG_CHEST_ONLY = {"Item_Dungeon_BossKey", "Item_Dungeon_Map", "Item_Dungeon_Comp
 # Pairs where getting the second before the first is not known to work in the remake (two actors, not one progressive
 # item): the fill keeps the second unreachable without the first.
 ORDERED = (("Item_Hookshot", "Item_Longshot"), ("Item_Gauntlet_Goron", "Item_Gauntlet_Silver"),
-           ("Item_Gauntlet_Silver", "Item_Gauntlet_Gold"))
+           ("Item_Gauntlet_Silver", "Item_Gauntlet_Gold"),
+           ("Item_Ocarina_Fairy", "Item_Ocarina_Time"))   # (the Fairy Ocarina got after the Ocarina of Time: not seen)
 # The same with the first from a check the randomizer leaves as it is (SoH counts these as one progressive item: had first,
 # the second would count as the first in logic): Darunia's Goron's Bracelet before the Silver Gauntlets, when gifts are not
 # shuffled (shuffled, the bracelet is in the pool: ORDERED).
-ORDERED_FIXED = (("RC_GC_DARUNIAS_JOY", "Item_Gauntlet_Silver"),)
+ORDERED_FIXED = (("RC_GC_DARUNIAS_JOY", "Item_Gauntlet_Silver"), ("RC_LW_GIFT_FROM_SARIA", "Item_Ocarina_Time"))
 
 # Ammunition the game gives without the container it goes in (its PouchContentParam's SmallBagActor): a chest's bombs before
 # any bomb bag left Link unable to use them (seen in game, 2026-11-12). Each is placed only where the container (from

@@ -2182,6 +2182,33 @@
    "confidence": "high",
    "lake_sun": true,
    "notes": "The lake's logic module makes the platform's item while SubEvent_GetFireArrow is at Step03 (set by the sun's shot, 6:00 to 7:30; the quest starts after the Water Temple's sage: DependFlag SageOfWater_IsAfter_Step08_Exp, Ready passed by SageOfWater_IsCompleted_Exp). SoH's other way (the scarecrow's pillar) does not count: the quest needs the lake refilled. rando.patches.lake_sun: the sun's scene takes our pickup, and the Fire Arrows found elsewhere no longer complete the quest. Settings shuffle_lake_fire_arrows. Not yet seen in game."
+  },
+  {
+   "id": "RC_HF_OCARINA_OF_TIME_ITEM",
+   "rc": "RC_HF_OCARINA_OF_TIME_ITEM",
+   "kind": "gift",
+   "vanilla": "Item_Ocarina_Time",
+   "edits": [
+    {
+     "flow": "Dm_MelodyGet_Time",
+     "event": 106,
+     "param": "Actor",
+     "value": "Item_Ocarina_Time"
+    },
+    {
+     "flow": "Dm_MelodyGet_Time",
+     "event": 255,
+     "param": "ActorName",
+     "value": "Item_Ocarina_Time"
+    }
+   ],
+   "soh_region": "RR_HYRULE_FIELD",
+   "rule": null,
+   "name": "Ocarina of Time (Zelda at the moat)",
+   "area": "Hyrule Field",
+   "confidence": "medium",
+   "ocarina_of_time": true,
+   "notes": "Zelda's escape scene Dm_MelodyGet_Time adds it silently at its very start (Event70, Actor) and shows its window in its third cut (Event229, ActorName): both edited, as Saria's; an Item_ actor only (items.POUCH_ADD_CHECKS). The scene's own ocarina model stays, and its Song of Time lesson (C08/C09) follows: in logic the moat needs the Fairy Ocarina with this shuffled (generate.MOAT_RULE). OotrR shuffles it the same way. Settings shuffle_ocarina_of_time. Not yet seen in game."
   }
  ],
  "excluded": [
@@ -2189,11 +2216,6 @@
    "id": "RC_LH_SCARECROWS_SONG",
    "rc": "RC_LH_SCARECROWS_SONG",
    "reason": "song (Scarecrow's Song, Npc_Bonooru 145): songs pending an in-game test"
-  },
-  {
-   "id": "RC_HF_OCARINA_OF_TIME_ITEM",
-   "rc": "RC_HF_OCARINA_OF_TIME_ITEM",
-   "reason": "Ocarina of Time: pending (the Song of Time lesson right after needs an ocarina)"
   },
   {
    "id": "RC_GANON",

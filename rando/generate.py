@@ -72,7 +72,13 @@ def _entries(table, gift_table, skulltulas=()):
     return out
 
 
-def make_world(table, gift_table=None, options=None, skulltulas=()):
+# The castle moat (Zelda's escape: the Ocarina of Time, the Song of Time): SoH's rule, and Zelda met, as the remake's escape
+# (the DoorOfTime quest) waits for the castle garden and Impa's send-off (OotrR's remake layer, Song from Ocarina of Time)
+MOAT_CHECKS = ("RC_HF_OCARINA_OF_TIME_ITEM", "RC_SONG_FROM_OCARINA_OF_TIME")
+MOAT_RULE = "logic->IsChild && logic->StoneCount() == 3 && logic->HasItem(RG_BRONZE_SCALE) && logic->Get(LOGIC_MET_ZELDA)"
+
+
+def make_world(table, gift_table=None, options=None, skulltulas=(), more=None):
     entries = _entries(table, gift_table, skulltulas)
     seen = collections.Counter(e["rc"] for e in entries if e["rc"])
     if any(n > 1 for n in seen.values()):
@@ -109,6 +115,7 @@ def make_world(table, gift_table=None, options=None, skulltulas=()):
             overrides[key] = text.replace(old, new)
         else:
             overrides[key] = o["rule"]
+    overrides.update(more or {})
     return World(extra_locations=extra, rule_overrides=overrides, removed_locations=tuple(table.get("removed", ())),
                  options=options)
 
@@ -133,6 +140,8 @@ class Setup:
         def kept(c):
             if c.get("lake_sun"):
                 return settings is not None and settings.get("shuffle_lake_fire_arrows", False)
+            if c.get("ocarina_of_time"):
+                return settings is not None and settings.get("shuffle_ocarina_of_time", False)
             if c.get("ocarina"):
                 return settings is not None and settings["shuffle_fairy_ocarina"]
             if c.get("quest"):
@@ -174,7 +183,10 @@ class Setup:
                 kind="skulltula"))
         self.locs = locs
         self.options = fill.soh_options(self.places)   # (for hints: fill.soh_options says why not for logic)
-        self.world = make_world(self.table, self.gifts, skulltulas=self.skulltulas)
+        # (the Ocarina of Time shuffled: the moat's two checks need an ocarina first, its lesson having Link play along)
+        more = {("location", rc): MOAT_RULE + " && logic->HasItem(RG_FAIRY_OCARINA)" for rc in MOAT_CHECKS} \
+            if settings is not None and settings.get("shuffle_ocarina_of_time") else {}
+        self.world = make_world(self.table, self.gifts, skulltulas=self.skulltulas, more=more)
         mapped = {e["rc"] for e in _entries(self.table, self.gifts, self.skulltulas) if e["rc"]}
         removed = set(self.table.get("removed", ()))
         self.fixed = {rc: rg for rc, rg in vanilla_items().items()
@@ -294,7 +306,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     gifts.write(romfs, codec, mod, [(gift_by_id[lid], actor) for lid, actor in given.items()])
     patches.great_fairies_once(romfs, codec, mod, [lid for lid in given if lid in patches.GREAT_FAIRIES])
     patches.fairies_any_order(romfs, codec, mod)
-    if SARIA in given:   # (an ocarina found elsewhere made playable; before the dungeon items' hook)
+    if SARIA in given or OCARINA_OF_TIME in given:   # (an ocarina found elsewhere made playable; before the own items' hook)
         patches.ocarina_guide_on_get(mod)
     if loose:
         pickups.place(romfs, codec, mod, loose, made)
@@ -372,7 +384,8 @@ def generate(romfs, mods_dir, seed, settings, log=print):
 
 
 DARUNIA = "RC_GC_DARUNIAS_JOY"
-SARIA = "RC_LW_GIFT_FROM_SARIA"   # (his gift: his scene's edit, and the patch's silent adds with it)
+SARIA = "RC_LW_GIFT_FROM_SARIA"
+OCARINA_OF_TIME = "RC_HF_OCARINA_OF_TIME_ITEM"   # (his gift: his scene's edit, and the patch's silent adds with it)
 HINT_SEED = 0x6057   # (the hints draw from their own generator: the same seed's items whatever the hint settings)
 ARCHIVE = "rando-archive"   # (beside mods: Longshot loads every folder inside mods)
 

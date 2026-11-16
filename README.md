@@ -27,7 +27,8 @@ randomizer does; SoH's other choices are shown fixed, with why. Installing a see
 | Shuffle gifts and prizes (36 NPC and minigame checks, Darunia's bracelet among them) | on | yes (Darunia: not yet) |
 | Shuffle freestanding Heart Pieces (and bosses' Heart Containers, 22) | on | yes |
 | Shuffle Zelda's Letter and the Light Arrows (her two scenes give the item placed there) | off | not yet |
-| Shuffle the Fairy Ocarina (Saria's gift; an ocarina found elsewhere made playable, OotrR's fix) | off | not yet |
+| Shuffle the Fairy Ocarina (Saria's gift; an ocarina found elsewhere made playable, OotrR's fix) | off | yes (found at King Dodongo) |
+| Shuffle the Ocarina of Time (Zelda's gift at the moat; the moat then needs the Fairy Ocarina in logic) | off | not yet |
 | Shuffle Great Fairies (their 6 gifts in the pool; Nayru's and Ganon's Castle's need the 500-rupee wallet) | off | not yet |
 | Shuffle Gold Skulltula tokens (the 100 skulltulas drop the item placed there; the tokens in the pool) | off | not yet |
 | Shopsanity: **Off** / 1-7 per shop / Random (shelves of the 8 shops sell pool items, each once) | Off | yes (Kokiri shop pilot) |
@@ -99,8 +100,12 @@ Share this folder (the code), never a generated `mods\HookshotRando`: that holds
   OotrR's fix, rewritten here, runs that guide (once: the game shows it once) on the first item get with the Fairy
   Ocarina held. The ocarina never goes in a chest or an NPC's hands: it has no get pose (OotrR: those crashed the
   game), so it lies in the world (a pickup; OotrR's are built on the token, ours on the Fire Arrows: to see) or stays
-  Saria's. The Ocarina of Time stays at the moat (its scene teaches the Song of Time, Link playing along). To see:
-  the Fairy Ocarina got after the Ocarina of Time (a downgrade?). Not yet seen in game.
+  Saria's. Seen in game (2026-11-15, from King Dodongo's Heart Container): it could not be equipped until its first play
+  event was listed for the item gets' events too (OotrR's add_child_events; done). The **Ocarina of Time** can be
+  shuffled too (`shuffle_ocarina_of_time`): Zelda's escape scene adds and shows the item placed there, then still teaches
+  the Song of Time with Link playing along, so in logic the moat then needs the Fairy Ocarina, and the Ocarina of Time
+  always comes after it (no downgrade to see). The guide runs for the Ocarina of Time held alone too. Both moat checks
+  now also need Zelda met (her escape waits for the castle garden), on every seed. Not yet seen in game.
 - **Great Fairies can be shuffled**: each fairy's gift event gives the item placed there, and her "had it?" switch
   (IsGet of her own item: with another item there she would sell it again on every visit) asks a saved flag of her own
   instead (`rando/gamedata.py` adds it to the game's data list), set just before her gift. She still asks the game's

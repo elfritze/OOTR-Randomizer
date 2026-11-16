@@ -251,7 +251,7 @@ def main():
         {a for a in loose.values() if dungeon_items.parse(a)} | \
         {a[len(pickups.DROP_PREFIX):] for a in gs_drops.values()
          if dungeon_items.parse(a[len(pickups.DROP_PREFIX):])}   # (dungeons' own items: below)
-    ocarina = generate.SARIA in plan.get("gifts", {})   # (ActionGuide: the ocarina's guide, then the own items' hook)
+    ocarina = generate.SARIA in plan.get("gifts", {}) or generate.OCARINA_OF_TIME in plan.get("gifts", {})   # (ActionGuide: the ocarina's guide, then the own items' hook)
     if own_items or ocarina:
         own.add(dungeon_items.ACTION_GUIDE.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
     fairies = sorted(rc for rc in plan.get("gifts", {}) if rc in patches.GREAT_FAIRIES)   # (their flows: below, with
@@ -533,7 +533,7 @@ def main():
         if r.get("__RowId") in patches.DARUNIA_ROWS:
             r["SubFlowList"] = sorted(set(r.get("SubFlowList") or []) | need)
         expected.append(r)
-    if "RC_LW_GIFT_FROM_SARIA" in plan.get("gifts", {}):   # (an ocarina found elsewhere: its first play event listed)
+    if ocarina:   # (an ocarina found elsewhere: its first play event listed)
         expected = [copy.deepcopy(r) for r in expected]
         patches.ocarina_child_events(expected)
     if mod_info != expected:

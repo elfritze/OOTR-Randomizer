@@ -136,6 +136,7 @@ DONE_FLAGS = {
     "RC_HC_ZELDAS_LETTER": "HavePlayedEvent.Dm_HrlCastle_0050",
     "RC_TOT_LIGHT_ARROWS_CUTSCENE": "HavePlayedEvent.Dm_TimeTemple_0130",
     "RC_LW_GIFT_FROM_SARIA": "HavePlayedEvent.Dm_Kokiri_0155",
+    "RC_HF_OCARINA_OF_TIME_ITEM": "HavePlayedEvent.Dm_MelodyGet_Time",
     "RC_HC_GREAT_FAIRY_REWARD": "RandoGreatFairy_Din", "RC_ZF_GREAT_FAIRY_REWARD": "RandoGreatFairy_Farore",
     "RC_COLOSSUS_GREAT_FAIRY_REWARD": "RandoGreatFairy_Nayru", "RC_DMT_GREAT_FAIRY_REWARD": "RandoGreatFairy_Power",
     "RC_DMC_GREAT_FAIRY_REWARD": "RandoGreatFairy_Wisdom", "RC_OGC_GREAT_FAIRY_REWARD": "RandoGreatFairy_Courage",

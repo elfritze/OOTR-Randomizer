@@ -52,7 +52,12 @@ OPTIONS = (
     Option("shuffle_fairy_ocarina", "shuffle", "Shuffle the Fairy Ocarina",
            "Saria's gift on the Lost Woods bridge is placed with the other items; she gives the item placed there. An "
            "ocarina found elsewhere is made playable on the next item get (OotrR's fix). The Ocarina of Time stays at "
-           "the castle moat (its scene teaches the Song of Time).", False, False),
+           "the castle moat unless shuffled on its own.", False, False),
+    Option("shuffle_ocarina_of_time", "shuffle", "Shuffle the Ocarina of Time",
+           "Zelda's gift at the castle moat is placed with the other items (SoH: Shuffle Ocarinas); she gives the item "
+           "placed there, and still teaches the Song of Time. In logic the moat then needs the Fairy Ocarina (its lesson "
+           "has Link play along), and the Ocarina of Time comes after the Fairy Ocarina. Found elsewhere, it is made "
+           "playable as the Fairy Ocarina is.", False, False),
     Option("shuffle_great_fairies", "shuffle", "Shuffle Great Fairies",
            "The 6 Great Fairies' gifts (Din's Fire, Farore's Wind, Nayru's Love, magic, double magic, double defense) are "
            "placed with the other items, each fairy giving the item placed there once. They still ask their rupees "
