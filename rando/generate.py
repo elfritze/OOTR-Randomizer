@@ -377,6 +377,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     patches.open_zr_river(romfs, codec, mod)
     patches.mido_keeps_blocking(romfs, codec, mod)
     patches.kokiri_007_keeps_blocking(romfs, codec, mod)
+    patches.second_malon_after_talon(romfs, codec, mod)
     patches.starting_bags(romfs, codec, mod)
     patches.clock_runs(romfs, codec, mod)
     patches.zora_arrival_after_letter(romfs, codec, mod)

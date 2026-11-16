@@ -3,6 +3,7 @@ logic would fill the same seed otherwise), with each fix it lacks and its settin
 
     the Great Fairies in any order (rando.patches.fairies_any_order: every seed)
     the tunnel Kokiri lowering his wall after Zelda was met first (rando.patches.kokiri_007_keeps_blocking: every seed)
+    Malon's second visit waiting for Talon woken (rando.patches.second_malon_after_talon: every seed)
     a Fairy Ocarina found elsewhere equipped (rando.patches.ocarina_child_events: Saria's gift shuffled)
     the night Gold Skulltulas there by day (rando.qol.night_module_by_day: skulltulas_day_and_night)
 
@@ -38,6 +39,9 @@ def main():
     if mod.read(patches.KOKIRI_007_SCHEDULE) == game(patches.KOKIRI_007_SCHEDULE):
         patches.kokiri_007_keeps_blocking(romfs, codec, mod)
         done.append("the tunnel Kokiri's wall after Zelda")
+    if mod.read(patches.EPONA_FLOW) == game(patches.EPONA_FLOW):
+        patches.second_malon_after_talon(romfs, codec, mod)
+        done.append("Malon's second visit after Talon woken")
     if {"RC_LW_GIFT_FROM_SARIA", "RC_HF_OCARINA_OF_TIME_ITEM"} & set(plan.get("gifts", {})):
         raw = mod.read(events.GAME_ANALYZED_EVENT_INFO)
         rows, version = byml.read(raw)

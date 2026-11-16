@@ -713,6 +713,55 @@ def kokiri_007_keeps_blocking(romfs, codec, mod):
     mod.write(KOKIRI_007_SCHEDULE, kokiri_007_schedule(mod.read(KOKIRI_007_SCHEDULE)))
 
 
+# Malon's second visit (the remake's guide to Lon Lon Ranch, SubEvent_GetEponaSong:GetEponaSong_StepCheck, run by
+# Dm_SY_BancChange_EscapeDungeon at every dungeon's end): until the ranch is reached after it, once the Goron's Ruby is
+# had, Malon waits at the castle (IsMalonAppear_HyruleCastleSecondTime: Malon and Npc_Hylia_Talon_Child_SecondTime, asleep
+# beside her, in HyruleCastle_Static) or, with the Zora's Sapphire too, in the market (IsMalonAppear_Market). The game has
+# Talon woken (Dm_HrlCastle_0020, Goto_HyruleCastle Step04) long before; a seed need not: seen in game (seed 889a1e52,
+# 2026-11-15: Dodongo's Cavern and the Deku Tree before the castle) a Malon at the castle's entrance with a second Talon
+# asleep beside her, and the first Talon asleep at his crates. Each visit now also waits for Talon woken, both flags
+# cleared until then (OotrR's story_fixes.second_malon_after_talon, for the castle's; the market's guarded the same way).
+EPONA_FLOW = "Event/EventFlow/SubEvent_GetEponaSong.bfevfl.zs"
+EPONA_STONES_SWITCH = "Event38"   # (the Zora's Sapphire: had, case 0, the market's visit; not, case 1, the castle's)
+MALON_FLAGS = ("IsMalonAppear_HyruleCastleSecondTime", "IsMalonAppear_Market")
+# (each case's first event: the market's clears the castle's flag, then sets its own; the castle's sets its own)
+EPONA_VISITS = {IS_TRUE: ("Event39", MALON_FLAGS[0], False), IS_FALSE: ("Event36", MALON_FLAGS[0], True)}
+TALON_AWAKE = "HavePlayedEvent.Dm_HrlCastle_0020"
+EPONA_EVENTS = ("RandoTalonAwakeMarket", "RandoTalonAwakeCastle", "RandoMalonNotYetCastle", "RandoMalonNotYetMarket")
+
+
+def epona_step_check_flow(data):
+    """SubEvent_GetEponaSong with Malon's second visits waiting for Talon woken"""
+    from .formats import evfl_edit
+    edit = evfl_edit.FlowEdit(data)
+    flow = edit.flow
+    switch = edit.event(EPONA_STONES_SWITCH)
+    if switch["type"] != "switch" or switch["params"] != {"GameDataName": "Get_StoneOfWater_IsCompleted_Exp"}:
+        raise ValueError("%s: not the stones' check known" % EPONA_FLOW)
+    for case, (event, flag, value) in EPONA_VISITS.items():
+        e = flow["events"][switch["cases"][case]] if case in switch.get("cases", {}) else {}
+        if e.get("name") != event or e.get("type") != "action" or \
+                e.get("params") != {"GameDataName": flag, "Index": -1, "Value": value}:
+            raise ValueError("%s: Malon's visit %d is not the one known" % (EPONA_FLOW, case))
+    market, castle, not_castle, not_market = EPONA_EVENTS
+    for name, visit in ((market, EPONA_VISITS[IS_TRUE][0]), (castle, EPONA_VISITS[IS_FALSE][0])):
+        edit.add_event({"name": name, "type": "switch", "actor": "GameDataActor", "query": "EventQueryIsGameDataBool",
+                        "params": {"GameDataName": TALON_AWAKE, "Index": -1},
+                        "cases": {IS_TRUE: visit, IS_FALSE: not_castle}})
+    edit.add_event({"name": not_castle, "type": "action", "actor": "GameDataActor", "action": "EventTriggerSetGameDataBool",
+                    "params": {"GameDataName": MALON_FLAGS[0], "Index": -1, "Value": False}, "next": not_market})
+    edit.add_event({"name": not_market, "type": "action", "actor": "GameDataActor", "action": "EventTriggerSetGameDataBool",
+                    "params": {"GameDataName": MALON_FLAGS[1], "Index": -1, "Value": False}, "next": None})
+    out = edit.apply()
+    i = edit.names.index(EPONA_STONES_SWITCH)
+    out = evfl_patch.set_case(out, i, IS_TRUE, edit.index(market))
+    return evfl_patch.set_case(out, i, IS_FALSE, edit.index(castle))
+
+
+def second_malon_after_talon(romfs, codec, mod):
+    mod.write(EPONA_FLOW, epona_step_check_flow(mod.read(EPONA_FLOW)))
+
+
 # A song's item (Item_Melody_*, as a chest gives it) has a rupee for its model: the game never shows one. Every song shows
 # Sheik's harp instead: (model project, model) as a ModelInfo names them, Model/<project>.<model>.bfres.zs. (Not tinted by the
 # song: the engine recolors a model only by a material animation in its own files, as the rupee's Obj_Rupee_Color, and the

@@ -225,7 +225,8 @@ def main():
     flow_dir = os.path.join(mod_romfs, "Event", "EventFlow")
     in_mod = {f[:-len(".bfevfl.zs")] for f in os.listdir(flow_dir)} if os.path.isdir(flow_dir) else set()
     own = {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (patches.OPENING_FLOW, patches.WATER_FLOW, patches.FIRE_FLOW,
-                                                                  patches.TALK_FLOW, patches.FAIRY_ORDER_FLOW)}
+                                                                  patches.TALK_FLOW, patches.FAIRY_ORDER_FLOW,
+                                                                  patches.EPONA_FLOW)}
     # (the lake's Fire Arrows spot holding another item: the sun's scene taking its pickup, the get flows not completing the
     # arrows' quest; else those three flows the game's)
     sun_item = plan.get("gifts", {}).get(patches.LAKE_SUN) or next(
@@ -581,6 +582,11 @@ def main():
     want_schedule = patches.kokiri_007_schedule(open(os.path.join(romfs, *patches.KOKIRI_007_SCHEDULE.split("/")), "rb").read())
     if not os.path.exists(path) or byml.read(open(path, "rb").read())[0] != byml.read(want_schedule)[0]:
         problems.append("the tunnel Kokiri's schedule: not the game's without the after-Zelda row")
+    # (Malon's second visit: the game's step check, each visit waiting for Talon woken)
+    path = os.path.join(mod_romfs, *patches.EPONA_FLOW.split("/"))
+    want_flow = patches.epona_step_check_flow(codec.read(os.path.join(romfs, *patches.EPONA_FLOW.split("/"))))
+    if not os.path.exists(path) or evfl.read(codec.read(path)) != evfl.read(want_flow):
+        problems.append("Malon's second visit: not waiting for Talon woken")
     # (the boulder over Dodongo's Cavern stays the game's: changing it crashed the game, 2026-11-13)
     rel = "Pack/Actor/%s.pack.zs" % patches.DC_BOULDER
     if os.path.exists(os.path.join(mod_romfs, *rel.split("/"))):

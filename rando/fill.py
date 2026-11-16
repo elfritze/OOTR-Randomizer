@@ -82,6 +82,9 @@ def _reachable(world, fixed, owned, placed, by_id):
 
 
 KEYS = ("Item_Dungeon_SmallKey", "Item_Dungeon_BossKey")
+# (checks that take only some items, filled before the others: the scenes adding to the pouch, and the lake's sun spot,
+#  an Item_ only: left to the end it found only rupees and the like, a fill in three failed so, 2026-11-16)
+FEW_ITEM_CHECKS = I.POUCH_ADD_CHECKS | {I.LAKE_SUN}
 
 
 def _kind(actor):
@@ -157,10 +160,17 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
         return [l for l in spots if l.id not in open_without]
 
     # 0. the dungeon rewards, among their own checks (I.REWARD_CHECKS): each where it is reachable with every other item
-    #    still to place counted as owned
+    #    still to place counted as owned; the one with the fewest such checks first (adult Link needs the three stones, the
+    #    Door of Time's: each stone then fits the child dungeons' bosses only, and medallions placed there first left a
+    #    stone nowhere: 2 seeds in 6 failed all 20 attempts, 2026-11-15)
     rewards = [(a, o) for a, o in prog if a in I.REWARDS]
     prog = [x for x in prog if x[0] not in I.REWARDS]
     rng.shuffle(rewards)
+    spots_without = {}
+    for x in rewards:
+        r = reach(counted(prog) + counted(keys) + counted([y for y in rewards if y is not x]))
+        spots_without[id(x)] = sum(1 for l in empty if l.id in I.REWARD_CHECKS and l.id in r)
+    rewards.sort(key=lambda x: -spots_without[id(x)])   # (popped from the end: the fewest first; ties stay shuffled)
     while rewards:
         item, origin = rewards.pop()
         r = reach(counted(prog) + counted(keys) + counted(rewards))
@@ -179,20 +189,9 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
     # 2. maps and compasses
     for item, origin in other_dungeon:
         put(item, origin, empty + junk_only)
-    # 3. a check taking few items (POUCH_ADD_CHECKS) first: any item it can give, of the progression or not (one of the
-    #    progression where the check is reachable without it, as assumed fill places); none of the ORDERED pairs (their
-    #    places are drawn below)
-    in_pairs = {a for p in I.ORDERED for a in p}
-    for spot in [l for l in empty if l.id in I.POUCH_ADD_CHECKS]:
-        fit = [x for x in prog + rest if I.fits(x[0], spot.id, spot.kind) and x[0] not in in_pairs]
-        rng.shuffle(fit)
-        for x in fit:
-            if x in prog and spot.id not in reach(counted([y for y in prog if y is not x])):
-                continue
-            (prog if x in prog else rest).remove(x)
-            put(x[0], x[1], [spot])
-            break
-    # 3. the ORDERED pairs' second items, then the rest of the progression
+    # 3. the ORDERED pairs' second items first (before the checks taking few items: the Ocarina of Time goes only where
+    #    an ocarina can, most of those in the two ocarinas' own scenes, which that step took for other items: a fill in
+    #    three failed so, 2026-11-16)
     seconds = [s for _, s in I.ORDERED][::-1]   # (Gold before Silver: Silver is itself the second of ORDERED_FIXED)
     for second in seconds + [s for _, s in I.ORDERED_FIXED if s not in seconds]:
         entry = next(((a, o) for a, o in prog if a == second), None)
@@ -213,6 +212,19 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
                 blocked_fixed = {l.id for l in empty} - reach(owned, {k: v for k, v in fixed.items() if k != rc})
                 blocked = blocked & blocked_fixed if firsts else blocked_fixed
         put(entry[0], entry[1], [l for l in empty if l.id in r and l.id in blocked])
+    # 3. then a check taking few items (FEW_ITEM_CHECKS): any item it can give, of the progression or not (one of the
+    #    progression where the check is reachable without it, as assumed fill places; the first of an ORDERED pair too,
+    #    its second placed already where it needs the first)
+    for spot in [l for l in empty if l.id in FEW_ITEM_CHECKS]:
+        fit = [x for x in prog + rest if I.fits(x[0], spot.id, spot.kind)]
+        rng.shuffle(fit)
+        for x in fit:
+            if x in prog and spot.id not in reach(counted([y for y in prog if y is not x])):
+                continue
+            (prog if x in prog else rest).remove(x)
+            put(x[0], x[1], [spot])
+            break
+    # 3. the rest of the progression
     while prog:
         item, origin = prog.pop()
         owned = counted(prog)
@@ -220,7 +232,7 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
         put(item, origin, container_spots(item, owned, [l for l in empty if l.id in r]))
     # 4. the rest: the ammunition first, where its container is needed; then what only some kinds of location take
     rng.shuffle(rest)
-    for spot in [l for l in empty + junk_only if l.id in I.POUCH_ADD_CHECKS]:   # (the checks taking few items first)
+    for spot in [l for l in empty + junk_only if l.id in FEW_ITEM_CHECKS]:   # (the checks taking few items first)
         fit = [x for x in rest if I.fits(x[0], spot.id, spot.kind)]
         if not fit:
             raise FillError("nothing left that %s can give" % spot.name)
@@ -228,12 +240,21 @@ def _attempt(world, locations, fixed, progression, rng, closed, places):
         rest.remove((item, origin))
         put(item, origin, [spot])
     rest.sort(key=lambda x: (x[0] not in I.NEEDS_CONTAINER, sum(I.allowed(x[0], k) for k in ("chest", "gift", "loose", "skulltula", "shop"))))
+    for item, origin in [x for x in rest if x[0] in I.NEEDS_CONTAINER]:
+        put(item, origin, container_spots(item, collections.Counter(), empty + junk_only))
+    rest = [x for x in rest if x[0] not in I.NEEDS_CONTAINER]
+    # (the spots not every item left fits first, the fewest choices first: the lake's sun spot takes an Item_ only, and
+    #  left to the end it found only rupees: a fill in three failed so, 2026-11-15)
+    choices = {l.id: [x for x in rest if I.fits(x[0], l.id, l.kind)] for l in empty + junk_only}
+    for spot in sorted([l for l in empty + junk_only if len(choices[l.id]) < len(rest)], key=lambda l: len(choices[l.id])):
+        fit = [x for x in choices[spot.id] if x in rest]
+        if not fit:
+            raise FillError("nothing left that %s can hold" % spot.name)
+        item, origin = rng.choice(fit)
+        rest.remove((item, origin))
+        put(item, origin, [spot])
     for item, origin in rest:
-        spots = empty + junk_only
-        if item in I.NEEDS_CONTAINER:
-            put(item, origin, container_spots(item, collections.Counter(), spots))
-        else:
-            put(item, origin, spots)
+        put(item, origin, empty + junk_only)
     if len(placed) != len(locations):
         raise FillError("%d locations for %d items" % (len(locations), len(placed)))
     return placed
