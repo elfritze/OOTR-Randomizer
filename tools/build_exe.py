@@ -1,9 +1,10 @@
-"""Builds the Windows app: dist/LostWoods.exe, one file, nothing to install.
+"""Builds the Windows apps: dist/LostWoods.exe (the randomizer) and dist/CharacterChanger.exe (the Character page on its
+own), one file each, nothing to install.
 
     python -m pip install pyinstaller zstandard ainb==0.2.17 texture2ddecoder
-    python tools/build_exe.py
+    python tools/build_exe.py [randomizer] [characters]     (both without an argument)
 
-Also makes dist/LostWoods-<version>.zip (the exe and README.md), the file to publish. 
+Also makes dist/<app>-<version>.zip (the exe and README.md), the files to publish.
 The exe holds the code (rando/), its tables (data/) and the verifier (tools/verify_mod.py); it reads the player's own copy
 of the game as gui.py does. No game file goes in it."""
 import math
@@ -20,6 +21,7 @@ sys.path.insert(0, HERE)
 from rando.gui import BRAND, VERSION   # noqa: E402
 
 NAME = "LostWoods"
+CHARACTERS = "CharacterChanger"
 BUILD = os.path.join(HERE, "build")
 DIST = os.path.join(HERE, "dist")
 GOLD, NIGHT, HALO = (0xe6, 0xb8, 0x4a), (0x0b, 0x12, 0x20), (0x1b, 0x2f, 0x55)
@@ -96,56 +98,71 @@ def make_icon(path):
         f.write(head + entries + b"".join(images))
 
 
-def version_file(path):
-    parts = [int(p) for p in VERSION.split(".")] + [0] * 4
+def version_file(path, name, product, description, version):
+    parts = [int(p) for p in version.split(".")] + [0] * 4
     v = tuple(parts[:4])
     text = """VSVersionInfo(
   ffi=FixedFileInfo(filevers=%(v)r, prodvers=%(v)r, mask=0x3f, flags=0x0, OS=0x40004, fileType=0x1, subtype=0x0,
                     date=(0, 0)),
   kids=[
     StringFileInfo([StringTable('040904B0', [
-      StringStruct('FileDescription', '%(brand)s - Ocarina of Time (Switch 2 remake) randomizer'),
+      StringStruct('FileDescription', '%(description)s'),
       StringStruct('FileVersion', '%(ver)s'),
       StringStruct('InternalName', '%(name)s'),
       StringStruct('OriginalFilename', '%(name)s.exe'),
-      StringStruct('ProductName', '%(brand)s'),
+      StringStruct('ProductName', '%(product)s'),
       StringStruct('ProductVersion', '%(ver)s')])]),
     VarFileInfo([VarStruct('Translation', [1033, 1200])])
   ]
 )
-""" % {"v": v, "brand": BRAND, "ver": VERSION, "name": NAME}
+""" % {"v": v, "product": product, "description": description, "ver": version, "name": name}
     with open(path, "w", encoding="utf-8") as f:
         f.write(text)
 
 
+def pyinstaller(name, script, product, description, version, icon, extra):
+    """one app: dist/<name>.exe"""
+    vf = os.path.join(BUILD, "version-%s.txt" % name)
+    version_file(vf, name, product, description, version)
+    cmd = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onefile", "--windowed",
+           "--name", name, "--icon", icon, "--version-file", vf,
+           "--workpath", os.path.join(BUILD, "pyinstaller-" + name), "--specpath", BUILD, "--distpath", DIST,
+           "--add-data", icon + os.pathsep + "rando", "--hidden-import", "zstandard"] + extra + [os.path.join(HERE, script)]
+    print(" ".join(cmd))
+    subprocess.run(cmd, check=True, cwd=HERE)
+    exe = os.path.join(DIST, name + ".exe")
+    print("built %s (%.1f MB)" % (exe, os.path.getsize(exe) / 1e6))
+    return exe
+
+
+def package(name, version, exe):
+    path = os.path.join(DIST, "%s-%s.zip" % (name, version))
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
+        z.write(exe, os.path.basename(exe))
+        z.write(os.path.join(HERE, "README.md"), "README.md")
+    print("release %s (%.1f MB)" % (path, os.path.getsize(path) / 1e6))
+
+
 def main():
+    from rando import playas_app
     os.makedirs(BUILD, exist_ok=True)
     icon = os.path.join(HERE, "rando", "icon.ico")
     make_icon(icon)
-    version = os.path.join(BUILD, "version.txt")
-    version_file(version)
     sep = os.pathsep
-    cmd = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onefile", "--windowed",
-           "--name", NAME, "--icon", icon, "--version-file", version,
-           "--workpath", os.path.join(BUILD, "pyinstaller"), "--specpath", BUILD, "--distpath", DIST,
-           "--add-data", os.path.join(HERE, "data") + sep + "data",
-           "--add-data", os.path.join(HERE, "tools", "verify_mod.py") + sep + "tools",
-           "--add-data", icon + sep + "rando",
-           "--collect-submodules", "rando",
-           "--collect-all", "ainb",
-           "--hidden-import", "texture2ddecoder",
-           "--hidden-import", "zstandard",
-           os.path.join(HERE, "gui.py")]
-    print(" ".join(cmd))
-    subprocess.run(cmd, check=True, cwd=HERE)
-    exe = os.path.join(DIST, NAME + ".exe")
+    which = sys.argv[1:] or ["randomizer", "characters"]
+    if "randomizer" in which:
+        exe = pyinstaller(NAME, "gui.py", BRAND, "%s - Ocarina of Time (Switch 2 remake) randomizer" % BRAND, VERSION,
+                          icon, ["--add-data", os.path.join(HERE, "data") + sep + "data",
+                                 "--add-data", os.path.join(HERE, "tools", "verify_mod.py") + sep + "tools",
+                                 "--collect-submodules", "rando", "--collect-all", "ainb",
+                                 "--hidden-import", "texture2ddecoder"])
+        package(NAME, VERSION, exe)
+    if "characters" in which:
+        exe = pyinstaller(CHARACTERS, "character_changer.py", playas_app.BRAND,
+                          "%s - play adult Link as someone else" % playas_app.BRAND, playas_app.VERSION, icon,
+                          ["--collect-submodules", "rando.playas"])
+        package(CHARACTERS, playas_app.VERSION, exe)
     shutil.copy(os.path.join(HERE, "README.md"), os.path.join(DIST, "README.md"))
-    print("built %s (%.1f MB)" % (exe, os.path.getsize(exe) / 1e6))
-    package = os.path.join(DIST, "%s-%s.zip" % (NAME, VERSION))
-    with zipfile.ZipFile(package, "w", zipfile.ZIP_DEFLATED) as z:
-        z.write(exe, NAME + ".exe")
-        z.write(os.path.join(HERE, "README.md"), "README.md")
-    print("release %s (%.1f MB)" % (package, os.path.getsize(package) / 1e6))
 
 
 if __name__ == "__main__":

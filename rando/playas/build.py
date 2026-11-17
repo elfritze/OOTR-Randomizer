@@ -24,10 +24,12 @@ fit his joints, with its own proportions. It is a model file of its own (Model/<
 character keeps its model, and its cloth file.
 
 The new files need size-table entries, and the parameter files that grow more room in theirs: the mod ships a size table,
-the one the game would read without it (the randomizer seed's, when one is installed) with these raised. The game reads
-one table, the mod's sorting last: rebuild and reinstall this mod after installing a new seed (--check says whether it
-is needed). The two characters' mods change the same files: installing one turns the other off (its folder renamed with
-a leading "_").
+every other enabled mod's merged into the game's (each file the larger entry: a randomizer seed's, a texture mod's) with
+these raised. The game reads one table, the one of the mod whose folder sorts last (Longshot host/mods.c), and a file two
+mods have comes from that one too: the character's folder is ~PlayAs<Name>, which sorts after any name of letters and
+digits, and each file it changes is built on the copy the other mods would have the game read (their changes kept). It
+works alone (on the game's own files) and beside other mods. Rebuild it when the other mods change (a new seed
+installed): --check says whether it is needed.
 
 One character's mod is on at a time (they change the same files): install() turns the others off, turn_off() all of
 them (Link as he is). The randomizer's window does it from its Character page (rando/playas_gui.py), and builds the
@@ -54,6 +56,7 @@ from .characters import CHARACTERS
 from .retarget import retarget
 
 GAME_EXES = ("longshot.exe", "hookshot.exe")
+PREFIX = "~"   # (the character's folder sorts after the other mods: its files and its size table are the ones read)
 GAME = None    # the game folder (it holds romfs and mods), ROMFS its romfs: set by use()
 ROMFS = None
 C = None       # the character built (characters.py): set by use()
@@ -177,7 +180,7 @@ def other_voice(m):
     """adult Link's voice clips replaced by the character's (voice.py): his sound archive, in place, and each clip's
     stream file (loose files the size table does not list). How many clips"""
     def stream(name):
-        return open(os.path.join(m.romfs, *STREAMS.split("/"), name + ".bwav"), "rb").read()
+        return m.read("%s/%s.bwav" % (STREAMS, name))
     sources = [(m.read("Sound/Resource/%s.bars.zs" % bars), strip, prefix) for bars, strip, prefix in C.voices]
     data, streams, done = voice.swap(m.read(LINK_SOUNDS), sources, stream, C.rules, C.other)
     m.write(LINK_SOUNDS, data)
@@ -317,35 +320,104 @@ def tunics(m, groups, with_cloth):
         m.write(rel, sarc.write(files))
 
 
+def folder(c=None):
+    """the folder a character's mod is installed in (mods/<folder>): ~PlayAs<Name>"""
+    return PREFIX + (c or C).mod
+
+
 def mod_order(mods):
-    """the enabled mods, in the order the game's loader takes them (Longshot host/mods.c: the path sorting last wins)"""
-    return sorted((n for n in os.listdir(mods) if os.path.isdir(os.path.join(mods, n)) and not n.startswith(("-", "_"))),
-                  key=lambda n: n.lower())
+    """the enabled mods as the game's loader finds them (Longshot host/mods.c find_mods): [(name, folder)], in its order,
+    the last one's files winning. A mod is any folder holding romfs or exefs, at most four levels down (emulators' layout:
+    contents/<title id>/<name>); names starting with "-", "_" or "." are off; sorted by name, case aside"""
+    found = []
+
+    def walk(path, name, depth):
+        if depth > 0 and (os.path.isdir(os.path.join(path, "romfs")) or os.path.isdir(os.path.join(path, "exefs"))):
+            found.append((name, path))
+            return
+        if depth >= 4:
+            return
+        try:
+            entries = sorted(os.listdir(path))
+        except OSError:
+            return
+        for n in entries:
+            if n.startswith(("-", "_", ".")) or not os.path.isdir(os.path.join(path, n)):
+                continue
+            walk(os.path.join(path, n), name + "/" + n if name else n, depth + 1)
+    if os.path.isdir(mods):
+        walk(mods, "", 0)
+    return sorted(found, key=lambda e: e[0].lower())
 
 
-def table_base(mods, romfs=None):
-    """(the size table the game would read without a character's mod, whose it is, the other mods that are on): the last
-    enabled mod's that has one (a randomizer seed's), else the game's ("game")"""
-    mine = {c.mod for c in CHARACTERS.values()}   # (one character's mod is on at a time: never the other's table)
-    others = [n for n in mod_order(mods) if n not in mine] if os.path.isdir(mods) else []
-    for other in reversed(others):
-        p = os.path.join(mods, other, "romfs", *modfile.RSTB.split("/"))
-        if os.path.isfile(p):
-            return p, other, others
-    return os.path.join(romfs or ROMFS, *modfile.RSTB.split("/")), "game", others
+def other_mods(mods):
+    """the enabled mods that are not a character's: [(name, its romfs folder)], in the loader's order"""
+    mine = set(ours())
+    return [(name, os.path.join(path, "romfs")) for name, path in mod_order(mods)
+            if name.split("/")[0] not in mine and os.path.isdir(os.path.join(path, "romfs"))]
+
+
+class Layered(modfile.Mod):
+    """the game's files as the other enabled mods have the game read them: a file one of them ships is read from it (the
+    last in the loader's order), so the character's changes go on top of theirs. sources: each file read, and whose"""
+    def __init__(self, romfs, codec, out_romfs, layers):
+        super().__init__(romfs, codec, out_romfs)
+        self.layers = layers
+        self.sources = {}
+
+    def where(self, rel):
+        for name, romfs in reversed(self.layers):
+            path = os.path.join(romfs, *rel.split("/"))
+            if os.path.isfile(path):
+                return name, path
+        return "game", os.path.join(self.romfs, *rel.split("/"))
+
+    def read(self, rel):
+        if rel in self.data:
+            return self.data[rel]
+        name, path = self.where(rel)
+        self.sources[rel] = name
+        if not rel.endswith(".zs"):
+            return open(path, "rb").read()
+        return self.codec.read(path)
+
+
+def fingerprint(mods, rels):
+    """(whose size tables a build merges, a hash of those tables and of the other mods' copies of the files rels): what
+    a character's mod is built on. It must be built again when that changes"""
+    layers = other_mods(mods)
+    h = hashlib.sha256()
+    tables = []
+    for name, romfs in layers:
+        path = os.path.join(romfs, *modfile.RSTB.split("/"))
+        if os.path.isfile(path):
+            tables.append(name)
+            h.update(b"table\0%s\0" % name.encode("utf-8") + hashlib.sha256(open(path, "rb").read()).digest())
+    for rel in sorted(rels):
+        for name, romfs in reversed(layers):
+            path = os.path.join(romfs, *rel.split("/"))
+            if os.path.isfile(path):
+                h.update(b"file\0%s\0%s\0" % (rel.encode("utf-8"), name.encode("utf-8")) +
+                         hashlib.sha256(open(path, "rb").read()).digest())
+                break
+    return " + ".join(["game"] + tables), h.hexdigest()
 
 
 def size_table(m, codec, with_cloth=False):
-    """the size table to ship: the one the game would read without this mod (table_base), with this mod's grown files
-    raised. Only one table is read: this mod's must sort last, and must be rebuilt when that other table changes (a new
-    seed installed, the seed's mod turned on or off)"""
-    mods = os.path.join(GAME, "mods")
-    path, source, others = table_base(mods)
-    if others and others[-1].lower() > C.mod.lower():
-        raise Problem("the mod %s sorts after %s: its size table would win over the character's. Rename it or turn "
-                      "it off" % (others[-1], C.mod))
-    base = restbl.Table(codec.read(path))
-    stamp = hashlib.sha256(open(path, "rb").read()).hexdigest()
+    """the size table to ship: the game's with every other enabled mod's merged in (each file the larger entry) and this
+    mod's grown files raised. Only one table is read, the last mod's: this one's (its folder sorts last). Whose tables"""
+    base = restbl.Table(codec.read(os.path.join(ROMFS, *modfile.RSTB.split("/"))))
+    for name, romfs in m.layers:
+        path = os.path.join(romfs, *modfile.RSTB.split("/"))
+        if not os.path.isfile(path):
+            continue
+        other = restbl.Table(codec.read(path))
+        if other.name_size != base.name_size:
+            raise Problem("the mod %s's size table is not this game version's" % name)
+        for h, size in other.crc.items():
+            base.crc[h] = max(base.crc.get(h, 0), size)
+        for k, size in other.names.items():
+            base.names[k] = max(base.names.get(k, 0), size)
     for rel, _, need in m.grown:
         base.set(rel, max(base.get(rel) or 0, need))
     # every file inside a pack that grew: the memory it is unpacked in is its own entry, and what was added costs more
@@ -372,24 +444,27 @@ def size_table(m, codec, with_cloth=False):
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     with open(dst, "wb") as f:
         f.write(packed)
-    with open(os.path.join(os.path.dirname(m.out), "size_table_base.txt"), "w", encoding="utf-8") as f:
-        f.write("%s\n%s\n" % (source, stamp))
-    return source
+    return " + ".join(["game"] + [n for n, r in m.layers if os.path.isfile(os.path.join(r, *modfile.RSTB.split("/")))])
+
+
+BASE_NOTE = "size_table_base.txt"   # (in the mod's folder: what it was built on (fingerprint), then the files it read)
 
 
 def stale(mods, mod=None, romfs=None):
-    """why the installed mod's size table no longer fits the other mods (a new seed installed since, the seed's mod
-    turned on or off), or None"""
+    """why the installed mod no longer fits the other mods (a new seed installed since, a mod turned on or off), or
+    None"""
     try:
-        source, stamp = open(os.path.join(mods, mod or C.mod, "size_table_base.txt"), encoding="utf-8").read().split()[:2]
-    except (OSError, ValueError):
+        lines = open(os.path.join(mods, mod or folder(), BASE_NOTE), encoding="utf-8").read().splitlines()
+    except OSError:
         return None
-    path, now, _ = table_base(mods, romfs)
-    if now != source:
-        return "it was built on %s's size table, and %s's is the one in use now" % (source, now)
-    if hashlib.sha256(open(path, "rb").read()).hexdigest() != stamp:
-        return "%s's size table changed" % source
-    return None
+    if len(lines) < 3:
+        return "it was made by an older version"
+    source, stamp, rels = lines[0], lines[1], lines[2:]
+    now, h = fingerprint(mods, rels)
+    if h == stamp:
+        return None
+    return "the other mods changed since it was built (then: %s; now: %s)" % (source, now) if now != source else \
+        "the other mods changed since it was built"
 
 
 def hat(m):
@@ -425,24 +500,36 @@ def running_games():
 
 
 def ours():
-    return {c.mod: key for key, c in CHARACTERS.items()}
+    """{a character's mod folder name, on: its key}: ~PlayAs<Name>, and PlayAs<Name> as versions before 1.0 named it"""
+    out = {}
+    for key, c in CHARACTERS.items():
+        out[folder(c)] = key
+        out[c.mod] = key
+    return out
+
+
+def installed(game):
+    """(the folder, the key) of the character's mod that is on in the game folder, or (None, None): Link"""
+    mods = os.path.join(game, "mods")
+    for name, key in sorted(ours().items()):
+        if os.path.isdir(os.path.join(mods, name)):
+            return name, key
+    return None, None
 
 
 def current(game):
     """the key of the character whose mod is on in the game folder (characters.CHARACTERS), or None: Link"""
-    mods = os.path.join(game, "mods")
-    for mod, key in sorted(ours().items()):
-        if os.path.isdir(os.path.join(mods, mod)):
-            return key
-    return None
+    return installed(game)[1]
 
 
 def outdated(game):
-    """why the character's mod that is on must be built again (a new seed installed since), or None"""
-    key = current(game)   # (reads only: the window asks while a build may be running, which use() would disturb)
+    """why the character's mod that is on must be built again (other mods changed since: a new seed), or None"""
+    name, key = installed(game)   # (reads only: the window asks while a build may be running, which use() would disturb)
     if key is None:
         return None
-    return stale(os.path.join(game, "mods"), CHARACTERS[key].mod, os.path.join(game, "romfs"))
+    if name != folder(CHARACTERS[key]):
+        return "it was made by an older version"
+    return stale(os.path.join(game, "mods"), name, os.path.join(game, "romfs"))
 
 
 def build(game, who, out, log=None, taller=1.0):
@@ -452,7 +539,7 @@ def build(game, who, out, log=None, taller=1.0):
     if os.path.exists(out):
         shutil.rmtree(out)
     codec = zs.Codec(ROMFS)
-    m = modfile.Mod(ROMFS, codec, os.path.join(out, "romfs"))
+    m = Layered(ROMFS, codec, os.path.join(out, "romfs"), other_mods(os.path.join(game, "mods")))
     groups = link_groups(m)
     k = C.k * taller
     with_cloth = has_cloth()
@@ -465,9 +552,15 @@ def build(game, who, out, log=None, taller=1.0):
     if getattr(C, "voices", None):
         LOG("adult Link's voice: %d clips replaced by %s's" % (other_voice(m), C.who))
     if m.grown:
-        LOG("size table: built on %s's, %d entries raised" % (size_table(m, codec, with_cloth), len(m.grown)))
+        LOG("size table: %s's merged, %d entries raised" % (size_table(m, codec, with_cloth), len(m.grown)))
     else:
         m.finish()
+    for rel, name in sorted(m.sources.items()):
+        if name != "game":
+            LOG("built on %s's %s" % (name, rel))
+    source, stamp = fingerprint(os.path.join(game, "mods"), m.sources)
+    with open(os.path.join(out, BASE_NOTE), "w", encoding="utf-8") as f:
+        f.write("%s\n%s\n%s" % (source, stamp, "".join(rel + "\n" for rel in sorted(m.sources))))
     check(os.path.join(out, "romfs"), codec)
     LOG("built %s (the tunics hide %s)" % (C.mod, ", ".join(groups)))
     return sorted(m.data)
@@ -505,26 +598,27 @@ def install(game, who, log=None, taller=1.0):
     os.makedirs(mods, exist_ok=True)
     work = tempfile.mkdtemp(prefix="playas-")
     try:
-        out = os.path.join(work, CHARACTERS[who].mod)
+        out = os.path.join(work, folder(CHARACTERS[who]))
         files = build(game, who, out, log, taller)
         if running_games():   # (started while the mod was being built)
             raise Problem("the game is running: close it first")
-        mine = set(ours())
-        for other in os.listdir(mods):   # (another mod with one of these files: the one sorting last wins)
-            if other in mine or other.startswith(("-", "_")) or not os.path.isdir(os.path.join(mods, other)):
+        # (a mod sorting after the character's would win its files and its size table: only names past "~" do)
+        for name, romfs in other_mods(mods):
+            if name.lower() <= folder().lower():
                 continue
-            for d in files:
-                if os.path.exists(os.path.join(mods, other, "romfs", *d.split("/"))):
-                    log("warning: %s also has %s" % (other, d))
-        for old in (C.mod, "_" + C.mod):   # (the mod on or off: replaced, on)
+            clash = [d for d in files + [modfile.RSTB] if os.path.exists(os.path.join(romfs, *d.split("/")))]
+            if clash:
+                raise Problem("the mod %s sorts after %s and has %s too: rename it so that it sorts before "
+                              "(a name starting with a letter or a digit)" % (name, folder(), clash[0]))
+        for old in (folder(), "_" + folder(), C.mod, "_" + C.mod):   # (the mod on or off, any version: replaced, on)
             if os.path.exists(os.path.join(mods, old)):
                 shutil.rmtree(os.path.join(mods, old))
-        turn_off(game, log, keep=C.mod)
-        shutil.copytree(out, os.path.join(mods, C.mod))
-        log("installed %s: %s is worn as the Goron and Zora tunics" % (C.mod, C.who))
+        turn_off(game, log, keep=folder())
+        shutil.copytree(out, os.path.join(mods, folder()))
+        log("installed %s: %s is worn as the Goron and Zora tunics" % (folder(), C.who))
     finally:
         shutil.rmtree(work, ignore_errors=True)
-    return C.mod
+    return folder()
 
 
 def again(game, log=None):

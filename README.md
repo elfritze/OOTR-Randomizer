@@ -1,18 +1,57 @@
 # Lost Woods
 
-A randomizer for The Legend of Zelda: Ocarina of Time (Nintendo Switch 2) as [Longshot](https://git.magicbean.dev/MagicBeanDev/Longshot)
-runs it. It is a RomFS mod: no change to Longshot, nothing to rebuild. You make it on your own PC from your own copy of
-the game.
+A randomizer for The Legend of Zelda: Ocarina of Time (Nintendo Switch 2 remake) running in
+[Longshot](https://git.magicbean.dev/MagicBeanDev/Longshot), and **Character Changer**, which lets you play adult Link
+as one of 26 other characters. Both are RomFS mods made on your own PC from your own copy of the game: nothing to
+patch, nothing to rebuild.
 
-## Getting started
+## Downloads
 
-1. Download `LostWoods-1.0.zip` from the releases page and unzip it anywhere.
-2. Run `LostWoods.exe` (nothing to install).
-3. On the Generate page, choose Longshot's game folder (the one holding `romfs` and `mods`), pick a seed and press
-   **Generate and install**. Start a new game to play it.
+From the [releases page](https://github.com/elfritze/OOTR-Randomizer/releases):
+
+| File | What it is |
+|---|---|
+| `LostWoods-1.0.zip` | The randomizer, with the tracker and the Character page built in |
+| `CharacterChanger-1.0.zip` | The character changer on its own: no randomizer needed, works beside any other mods |
+
+You only need one of them: Lost Woods already includes the character changer.
+
+## Installing
+
+You need Longshot set up with the game, so that its game folder (the folder holding `romfs`, and `mods` once you
+have mods) runs the game. Then:
+
+1. Unzip `LostWoods-1.0.zip` (or `CharacterChanger-1.0.zip`) anywhere, for example your Desktop. There is no installer.
+2. **Close the game.** Mods can only be changed while Longshot is closed (both apps refuse otherwise).
+3. Run `LostWoods.exe` (or `CharacterChanger.exe`). If Windows SmartScreen warns about an unknown app, choose
+   **More info**, then **Run anyway**.
+4. Press **Browse…** and choose Longshot's game folder (the one holding `romfs`). It shows "✓ Game found."
+5. **Lost Woods**: pick a seed (or press Random), check the Settings page, then press **Generate and install**. Start a
+   **new game** to play the seed: an old save keeps its own chests opened.
+   **Character Changer**: choose a character and press **Apply**.
+6. Start the game.
+
+To uninstall, delete the mod folders from `<game folder>\mods`: `HookshotRando` (the seed) and `~PlayAs<Name>` (the
+character). Renaming a folder to start with `_` turns it off instead, which is what the apps' off buttons do. Your
+saves are never touched.
+
+## Using other mods
+
+Both apps install into Longshot's `mods` folder beside whatever is already there.
+
+- **The randomizer** (`mods\HookshotRando`) changes chests, events and maps. A mod changing the same files wins or loses
+  by its folder name (the one sorting last wins).
+- **The character** (`mods\~PlayAs<Name>`) sorts after any other mod, so its files and its resource size table are the
+  ones the game reads. It is built on top of the other mods: if a mod changes Link's files (a texture or model mod), the
+  character starts from that mod's copy, and every other mod's size table is merged into the character's, so their
+  files still fit. When your other mods change (a new seed, a mod added or removed), build the character again: the
+  apps say so and do it by themselves when they can (after generating a seed, or when Character Changer starts).
+- A mod whose name also starts with `~` (or another character past letters and digits) and changes the same files is
+  refused with a message: rename it.
 
 From source instead: Python 3.10 or newer, `python -m pip install zstandard ainb==0.2.17 texture2ddecoder`, then
-`python gui.py`. `python tools/build_exe.py` builds the exe and the release zip.
+`python gui.py` (the randomizer) or `python character_changer.py`. `python tools/build_exe.py` builds both exes and
+their zips.
 
 ## The window
 
@@ -61,13 +100,14 @@ Ruto, Rauru, the Great Fairy, Malon, Talon, Ingo, townsfolk (the Bombchu Bowling
 the Happy Mask salesman, the Running Man, Shiro the carpenter, the Poe collector, a soldier) and monsters (Lizalfos,
 Dinolfos, Wolfos, Stalfos, Stalchild, ReDead).
 
-Choose one and press Apply whenever the game is closed. It builds a second mod beside the seed's (`mods\PlayAs<Name>`, a
-few seconds, from the game's own files) and turns the last character off; "Link, as he is" turns it off. The seed, its
-logic and your save are untouched. The character is worn as the Goron and Zora tunics, with its own cloth and voice; in
-the Kokiri tunic Link is Link, and young Link is never changed. The window rebuilds the character by itself after a new
-seed is installed or the seed is turned on or off.
+Choose one and press Apply whenever the game is closed. It builds a mod of its own (`mods\~PlayAs<Name>`, a few seconds,
+from the game's own files) and turns the last character off; "Link, as he is" turns it off. The seed, its logic, your
+save and your other mods are untouched. **Put on the Goron or Zora tunic to see the character**: it is worn as those two
+tunics, with its own cloth and voice. In the Kokiri tunic Link is Link (the game builds that tunic into him), and young
+Link is never changed.
 
-Without the window: `LostWoods.exe character <game folder> --list`, `--as zelda`, `--as link`, `--check`.
+It is in Lost Woods (the Character page) and on its own as Character Changer. Without the window:
+`CharacterChanger.exe <game folder> --list`, `--as zelda`, `--as link`, `--check` (or `LostWoods.exe character ...`).
 
 ## Command line
 
@@ -92,7 +132,7 @@ each seed**: a save keeps its chests opened. To play without the mod, rename the
 
 ## Sharing
 
-Share the seed text, never a generated `mods\HookshotRando` or `mods\PlayAs<Name>`: those hold files made from the game.
+Share the seed text, never a generated `mods\HookshotRando` or `mods\~PlayAs<Name>`: those hold files made from the game.
 Each player generates on their own copy; the same seed and settings give everyone the same game.
 
 ## What it does
@@ -154,7 +194,11 @@ game.
 
 ## Credits
 
+- **Character Changer** (the Character page, `rando/playas/` and `character_changer.py`): created by elfritze.
+- [Lost Woods / this repository](https://github.com/elfritze/OOTR-Randomizer).
 - [Longshot](https://git.magicbean.dev/MagicBeanDev/Longshot), which runs the game and loads its mods.
-- The OotrR randomizer (MIT): several fixes and quality-of-life patches follow its approach, reimplemented here.
-- The logic is a port of Ship of Harkinian's randomizer logic (its repository carries no license), adapted to the
-  remake.
+- [OotrR](https://github.com/Mozencaz/OotrR) (MIT), the OoT remake randomizer for Hookshot and emulators: several fixes
+  and quality-of-life patches follow its approach, reimplemented here, and the Shopsanity shelves use the same `ainb`
+  library.
+- [Ship of Harkinian](https://github.com/HarbourMasters/Shipwright): the logic is a port of its randomizer's logic (its
+  repository carries no license), adapted to the remake.

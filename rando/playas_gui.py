@@ -33,8 +33,8 @@ class CharacterPage:
         from .gui import card, set_wrap
         page = self.frame
         ttk.Label(page, text="Character", style="Page.TLabel").pack(anchor="w")
-        ttk.Label(page, text="Play adult Link as someone else. The seed, its logic and your save stay as they are: switch "
-                             "whenever the game is closed.", style="PageMuted.TLabel").pack(anchor="w", pady=(px(0), px(10)))
+        ttk.Label(page, text="Play adult Link as someone else. Your save, your seed and your other mods stay as they "
+                             "are: switch whenever the game is closed.", style="PageMuted.TLabel").pack(anchor="w", pady=(px(0), px(10)))
 
         # (the Apply bar stays at the bottom; the list above it scrolls when the window is short)
         bottom, body = card(page)
@@ -115,7 +115,7 @@ class CharacterPage:
         except (playas.Problem, OSError):
             why = None
         if why:
-            notes.append("Its mod was built for another seed (%s): press Apply to build it again before you play." % why)
+            notes.append("Press Apply to build it again before you play: %s." % why)
         if self.window.games:
             notes.append("The game is running: close it to switch.")
         self.status.configure(text=text)
@@ -139,7 +139,8 @@ class CharacterPage:
         meanwhile"""
         w = self.window
         w.busy = True
-        w.generate_button.configure(state="disabled")
+        if getattr(w, "generate_button", None) is not None:   # (the randomizer's window; the standalone app has none)
+            w.generate_button.configure(state="disabled")
         self.apply_button.configure(state="disabled")
         self.progress.pack(side="right")
         self.progress.start(12)
