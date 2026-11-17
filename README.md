@@ -17,6 +17,20 @@ compass, boss key and (all of its) small keys. The save keeps no flag of an open
 are marked by a click, or all of an area's at once ("Mark area done"). Comparison with the OotrR
 randomizer: `docs/COMPARISON.md`; Archipelago plan: `docs/ARCHIPELAGO.md`; what comes next: `docs/ROADMAP.md`.
 
+The **Character** page dresses adult Link as someone else: Ganondorf, Zelda, Sheik, Impa, Nabooru, Ruto, Rauru, the
+Great Fairy, Phantom Ganon, Malon, Talon, Ingo, townsfolk (the Bombchu Bowling lady, the Cucco Lady, Richard's lady, the
+Happy Mask salesman, the Running Man, Shiro the carpenter, the Poe collector, a soldier) and monsters (Lizalfos, Dinolfos,
+Wolfos, Stalfos, Stalchild, ReDead). Choose one and press Apply, whenever the game is closed: it builds a second mod
+beside the seed's (`mods\PlayAs<Name>`, a few seconds, from the game's own files) and turns the last character's off;
+"Link, as he is" turns it off. The seed, its logic and the save are untouched. The character is worn as the Goron and Zora
+tunics, with its own cloth and voice: in the Kokiri tunic Link is Link (the game builds that tunic into him), and young
+Link is never changed. The character's mod ships the one resource size table the game reads, built on the seed's: the
+window builds it again by itself after a new seed is installed or the seed is turned on or off; after changing the
+installed seed by hand (`tools/update_installed.py`...), press Apply again. The page marks which characters were seen in
+game (✓), which are built the same way and not yet seen (·), and which fit Link's skeleton roughly (≈: a body far from
+his, limbs can look pulled where they bend). Without the window: `python -m rando.playas <game folder> --list`,
+`--as zelda`, `--as link`, `--check`. How it works: `rando/playas/build.py`; who: `rando/playas/characters.py`.
+
 The **Settings** page groups the settings as Ship of Harkinian's randomizer does (`rando/settings.py`), with only what this
 randomizer does; SoH's other choices are shown fixed, with why. Installing a seed first copies the one installed before
 (the whole mod folder) to `<game folder>\rando-archive\<seed>-<time>`.

@@ -26,6 +26,8 @@ def main():
     seed = a.seed or secrets.token_hex(4)
     chosen = {o.key: getattr(a, o.key) for o in settings.OPTIONS}
     generate.generate(romfs, os.path.join(a.game, "mods"), seed, chosen)
+    from rando import playas   # (a character's mod that is on ships the size table, built on the last seed's: again)
+    playas.again(a.game)
 
 
 if __name__ == "__main__":

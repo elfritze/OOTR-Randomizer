@@ -1,5 +1,6 @@
 """HookshotRando's window: choose the game folder, the seed and the settings, generate and install the mod, verify it, turn it
-on or off, open its spoiler log; the tracker (rando.tracker_gui) is a page of it. Tkinter only.
+on or off, open its spoiler log; the tracker (rando.tracker_gui) and the character adult Link is dressed as
+(rando.playas_gui) are pages of it. Tkinter only.
 
     python gui.py
 
@@ -164,6 +165,15 @@ class Window:
         self.pages["generate"] = self._build_generate(ttk.Frame(self.content))
         self._nav("settings", "  ☰  Settings")
         self.pages["settings"] = self._build_settings(ttk.Frame(self.content))
+        self.character = None
+        try:
+            from . import playas_gui
+            frame = ttk.Frame(self.content)
+            self.character = playas_gui.CharacterPage(frame, self)
+            self._nav("character", "  ☻  Character")
+            self.pages["character"] = frame
+        except ImportError:
+            pass
         self.tracker = None
         try:
             from . import tracker_gui
@@ -242,6 +252,8 @@ class Window:
                 frame.pack_forget()
         if key == "tracker" and self.tracker:
             self.tracker.reload()
+        if key == "character" and self.character:
+            self.character.refresh()
 
     # (the Generate page)
     def _build_generate(self, page):
@@ -365,6 +377,8 @@ class Window:
                     self.generate_button.configure(state="normal")
                     self.progress.stop()
                     self.progress.pack_forget()
+                    if self.character:
+                        self.character.finished()
                     self.refresh()
                     if self.tracker:
                         self.tracker.reload()
@@ -481,6 +495,8 @@ class Window:
         save_state(self.state)
 
     def refresh(self):
+        if getattr(self, "character", None):
+            self.character.refresh()
         folder = self.folder.get().strip()
         problem = game_problem(folder)
         self.folder_note.configure(text=problem or "", style="Bad.TLabel")
@@ -580,6 +596,9 @@ class Window:
         def work():
             try:
                 generate.generate(os.path.join(folder, "romfs"), os.path.join(folder, "mods"), seed, chosen, log=self.log)
+                if self.character:   # (the character's mod ships the size table, built on the last seed's: again)
+                    from . import playas
+                    playas.again(folder, log=self.log)
                 self.log("Done. Start a new game to play it.", "ok")
             except Exception:   # (shown, not swallowed: the log is the user's only window on it)
                 self.log("Generation failed:\n" + traceback.format_exc(), "bad")
@@ -619,6 +638,10 @@ class Window:
         os.rename(os.path.join(folder, "mods", src), os.path.join(folder, "mods", dst))
         self.log("Mod turned %s (mods\\%s)." % ("off" if state == "on" else "on", dst), "ok")
         self.refresh()
+        if self.character:   # (the character's mod was built on the size table that was in use: again, on the other)
+            from . import playas
+            if playas.current(folder) and playas.outdated(folder):
+                self.character.run(folder, None, None, again=True)
 
     def open_spoiler(self):
         folder = self.folder.get().strip()
