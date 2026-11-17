@@ -158,18 +158,85 @@ CLOCK_EVENT = "RandoClockRuns"
 GAME_DATA_ACTOR_FROM = "Event/EventFlow/Get_StoneOfWater.bfevfl.zs"   # (the opening has no GameDataActor: its parameters)
 
 
+# That was half of it. Before the cap, the clock is held outright: each frame set back to a fixed hour (no night, and a
+# bed slept in until night wakes in the day: seed 889a1e52, 2026-11-17) until HyruleField_ArriveEntrance is set (the
+# game's code again: main+0x345c020, asked each frame by the clock's update, main+0x3cdf70; the Deku Tree's quest not yet
+# started leaves the clock free). One event sets it: the owl's scene at Hyrule Field's entrance (Goto_HyruleCastle,
+# Goto_HyruleCastle_Kaepora_00), a step of the story a seed need not reach: that save had been all over the field without
+# it. So the opening sets it too, after the cap's flag.
+# The scene on the bridge out of the forest (Dm_Kokiri_0155, in the same flow) sets HyruleField_ChangeENV: the field's
+# sky of the first arrival (WorldParam HyruleField_Child: MainField_Bluesky_First; a light area of the field's map by the
+# flag too), which the owl's scene clears, rebuilding the light (Event_RebuildConditionEnvTimePalette): left set, as in
+# that save. Here the bridge's scene sets it false.
+# A save made before this has neither: for it (and for whatever else might set the field's flag), the get of any item sets
+# the first and clears the second (ActionGuide's ActionGuide entry, where every item get ends: first in it, after the
+# ocarina's guide and the own items' hook are put there).
+ARRIVED_FLAG = "HyruleField_ArriveEntrance"
+ARRIVED_EVENT = "RandoClockArrived"
+FIELD_LIGHT_FLAG = "HyruleField_ChangeENV"
+FIELD_FLOW = "Event/EventFlow/Goto_HyruleCastle.bfevfl.zs"
+CLOCK_GUIDE_FLOW = "Event/EventFlow/ActionGuide.bfevfl.zs"
+CLOCK_ON_GET = ("RandoClockArrivedOnGet", "RandoFieldLightOnGet")
+SET_BOOL = ("GameDataActor", "EventTriggerSetGameDataBool")
+
+
+def bool_set(flag, value):
+    return {"GameDataName": flag, "Value": value, "Index": -1}
+
+
+def opening_with_arrival(raw):
+    """OpeningEvent.bfevfl (with the cap's flag set) with the field's arrival set after it"""
+    return evfl_patch.add_actions(raw, CLOCK_EVENT, SET_BOOL[0], SET_BOOL[1], None,
+                                  [(ARRIVED_EVENT, bool_set(ARRIVED_FLAG, True))])
+
+
 def opening_with_clock(raw, game_data_actor_flow):
-    """OpeningEvent.bfevfl (with the starting bags) with the clock's flag set after them"""
+    """OpeningEvent.bfevfl (with the starting bags) with the clock's two flags set after them"""
     actor = [a for a in evfl.read(game_data_actor_flow)[0]["actors"] if a["name"] == "GameDataActor" and not a["sub"]]
     if len(actor) != 1 or not actor[0]["params"]:
         raise ValueError("%s: not the GameDataActor known" % GAME_DATA_ACTOR_FROM)
-    return evfl_patch.add_actions(raw, start_item_event(START_ITEMS[-1]), "GameDataActor", "EventTriggerSetGameDataBool",
-                                  actor[0]["params"], [(CLOCK_EVENT, {"GameDataName": CLOCK_FLAG, "Value": True, "Index": -1})])
+    return opening_with_arrival(evfl_patch.add_actions(raw, start_item_event(START_ITEMS[-1]), SET_BOOL[0], SET_BOOL[1],
+                                                       actor[0]["params"], [(CLOCK_EVENT, bool_set(CLOCK_FLAG, True))]))
+
+
+def field_light_kept(data):
+    """Goto_HyruleCastle.bfevfl with its one event setting the field's first light setting it false"""
+    from .formats import evfl_edit
+    edit = evfl_edit.FlowEdit(data)
+    flow = edit.flow
+    sets = [e["name"] for e in flow["events"] if e["type"] == "action" and
+            (flow["actors"][e["actor"]]["name"], flow["actors"][e["actor"]]["actions"][e["action"]]) == SET_BOOL and
+            e["params"].get("GameDataName") == FIELD_LIGHT_FLAG and e["params"].get("Value") is True]
+    if len(sets) != 1:
+        raise ValueError("Goto_HyruleCastle: %d events set %s" % (len(sets), FIELD_LIGHT_FLAG))
+    edit.set_values(sets[0], {"Value": False})
+    return edit.apply()
+
+
+def clock_on_get(data):
+    """ActionGuide.bfevfl (with what else a seed puts first in it) setting the clock free first, at every item get"""
+    from .formats import evfl_edit
+    edit = evfl_edit.FlowEdit(data)
+    flow = edit.flow
+    arrived, light = CLOCK_ON_GET
+    first = flow["events"][flow["entries"]["ActionGuide"]]["name"]
+    edit.add_event({"name": arrived, "type": "action", "actor": SET_BOOL[0], "action": SET_BOOL[1],
+                    "params": bool_set(ARRIVED_FLAG, True), "next": light})
+    edit.add_event({"name": light, "type": "action", "actor": SET_BOOL[0], "action": SET_BOOL[1],
+                    "params": bool_set(FIELD_LIGHT_FLAG, False), "next": first})
+    edit.set_entry("ActionGuide", arrived)
+    return edit.apply()
 
 
 def clock_runs(romfs, codec, mod):
     """the clock running from the new game's start (after starting_bags)"""
     mod.write(OPENING_FLOW, opening_with_clock(mod.read(OPENING_FLOW), mod.read(GAME_DATA_ACTOR_FROM)))
+    mod.write(FIELD_FLOW, field_light_kept(mod.read(FIELD_FLOW)))
+
+
+def clock_runs_on_get(mod):
+    """the clock set free at every item get (after the ocarina's guide and the own items' hook)"""
+    mod.write(CLOCK_GUIDE_FLOW, clock_on_get(mod.read(CLOCK_GUIDE_FLOW)))
 
 
 # King Zora (child) stands aside by the water quest's step: his schedule for each step of Get_StoneOfWater (Pack/

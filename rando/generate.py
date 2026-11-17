@@ -368,6 +368,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     if shelves:
         shops.write(romfs, codec, mod, shelves)
     own_items.finish()   # (their names, rows, flags and the hook: before the tables are written)
+    patches.clock_runs_on_get(mod)   # (first in ActionGuide: after the own items' hook)
     if shop_builder:
         shop_builder.finish()   # (the shelves' saved flags)
     made.finish()

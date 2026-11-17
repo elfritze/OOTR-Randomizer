@@ -226,7 +226,8 @@ def main():
     in_mod = {f[:-len(".bfevfl.zs")] for f in os.listdir(flow_dir)} if os.path.isdir(flow_dir) else set()
     own = {p.rsplit("/", 1)[-1][:-len(".bfevfl.zs")] for p in (patches.OPENING_FLOW, patches.WATER_FLOW, patches.FIRE_FLOW,
                                                                   patches.TALK_FLOW, patches.FAIRY_ORDER_FLOW,
-                                                                  patches.EPONA_FLOW)}
+                                                                  patches.EPONA_FLOW, patches.FIELD_FLOW,
+                                                                  patches.CLOCK_GUIDE_FLOW)}
     # (the lake's Fire Arrows spot holding another item: the sun's scene taking its pickup, the get flows not completing the
     # arrows' quest; else those three flows the game's)
     sun_item = plan.get("gifts", {}).get(patches.LAKE_SUN) or next(
@@ -253,8 +254,6 @@ def main():
         {a[len(pickups.DROP_PREFIX):] for a in gs_drops.values()
          if dungeon_items.parse(a[len(pickups.DROP_PREFIX):])}   # (dungeons' own items: below)
     ocarina = generate.SARIA in plan.get("gifts", {}) or generate.OCARINA_OF_TIME in plan.get("gifts", {})   # (ActionGuide: the ocarina's guide, then the own items' hook)
-    if own_items or ocarina:
-        own.add(dungeon_items.ACTION_GUIDE.rsplit("/", 1)[-1][:-len(".bfevfl.zs")])
     fairies = sorted(rc for rc in plan.get("gifts", {}) if rc in patches.GREAT_FAIRIES)   # (their flows: below, with
     fairy_flows = {patches.GREAT_FAIRIES[rc][0] for rc in fairies}                         #  their gift edits)
     own |= fairy_flows
@@ -394,18 +393,18 @@ def main():
         for a in sorted(own_items):
             if not os.path.exists(os.path.join(mod_romfs, *pickups.pack_path(a).split("/"))):
                 problems.append("no pack for %s" % a)
-    if own_items or ocarina:   # (ActionGuide: the ocarina's guide first, then the own items' hook before it)
-        game_guide = codec.read(os.path.join(romfs, *dungeon_items.ACTION_GUIDE.split("/")))
-        wants = []
-        for sync_last in ((False, True) if ocarina else (False,)):   # (the ocarina's sync built in, or added later)
-            guide = patches.ocarina_guide(game_guide, sync=not sync_last) if ocarina else game_guide
-            if own_items:
-                guide = dungeon_items.hook(guide, own_items)
-            wants.append(evfl.read(patches.ocarina_sync(guide) if sync_last else guide))
-        path = os.path.join(mod_romfs, *dungeon_items.ACTION_GUIDE.split("/"))
-        if not os.path.exists(path) or evfl.read(codec.read(path)) not in wants:
-            problems.append("%s: not the game's with the ocarina's guide and the own items' hook" %
-                            dungeon_items.ACTION_GUIDE)
+    # (ActionGuide: the ocarina's guide first, then the own items' hook before it, then the clock set free before all)
+    game_guide = codec.read(os.path.join(romfs, *dungeon_items.ACTION_GUIDE.split("/")))
+    wants = []
+    for sync_last in ((False, True) if ocarina else (False,)):   # (the ocarina's sync built in, or added later)
+        guide = patches.ocarina_guide(game_guide, sync=not sync_last) if ocarina else game_guide
+        if own_items:
+            guide = dungeon_items.hook(guide, own_items)
+        wants.append(evfl.read(patches.clock_on_get(patches.ocarina_sync(guide) if sync_last else guide)))
+    path = os.path.join(mod_romfs, *dungeon_items.ACTION_GUIDE.split("/"))
+    if not os.path.exists(path) or evfl.read(codec.read(path)) not in wants:
+        problems.append("%s: not the game's with the ocarina's guide, the own items' hook and the clock set free" %
+                        dungeon_items.ACTION_GUIDE)
     for h, (item, _) in sorted(want.items()):   # (a dungeon item as the game has it only where it does the same)
         d = rando_items.dungeon_item(item, found[h]["map"])
         if d and rando_items.dungeon_form(rando_items.own_actor(d[0], d[1]), found[h]["map"],
@@ -450,6 +449,10 @@ def main():
                                               game_read(patches.GAME_DATA_ACTOR_FROM))
     if not os.path.exists(path) or evfl.read(codec.read(path)) != evfl.read(want_opening):
         problems.append("the opening: not the game's with the starting quiver and seed bag, then the clock running")
+    # (the bridge's scene leaving the field's light alone)
+    path = os.path.join(mod_romfs, *patches.FIELD_FLOW.split("/"))
+    if not os.path.exists(path) or             evfl.read(codec.read(path)) != evfl.read(patches.field_light_kept(game_read(patches.FIELD_FLOW))):
+        problems.append("%s: not the game's with the bridge's scene leaving the field's light alone" % patches.FIELD_FLOW)
     # (the water quest: the game's flow, the arrival scene marked played after the letter's step)
     path = os.path.join(mod_romfs, *patches.WATER_FLOW.split("/"))
     if not os.path.exists(path):

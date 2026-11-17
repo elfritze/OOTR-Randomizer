@@ -7,8 +7,8 @@ logic would fill the same seed otherwise), with each fix it lacks and its settin
     a Fairy Ocarina found elsewhere equipped (rando.patches.ocarina_child_events: Saria's gift shuffled)
     an ocarina got usable without a reload (rando.patches.ocarina_sync: an ocarina shuffled)
     the night Gold Skulltulas there by day (rando.qol.night_module_by_day: skulltulas_day_and_night)
-
-Fixes reaching only a new game (the clock from the start: the opening) are not for a save already made.
+    the clock running, night coming (rando.patches.clock_runs, clock_runs_on_get: every seed; a save already made has it
+    from its next item get, the opening's part reaching only a new game)
 
     python tools/update_installed.py <romfs> <installed mod folder (HookshotRando)> <new mod folder>"""
 import json
@@ -54,6 +54,18 @@ def main():
     if patches.OCARINA_EVENTS[0] in names and patches.OCARINA_SYNC not in names:
         mod.write(patches.ACTION_GUIDE_FLOW, patches.ocarina_sync(guide))
         done.append("an ocarina got usable without a reload")
+    opening = mod.read(patches.OPENING_FLOW)
+    names = {e["name"] for e in evfl.read(opening)[0]["events"]}
+    if patches.CLOCK_EVENT in names and patches.ARRIVED_EVENT not in names:
+        mod.write(patches.OPENING_FLOW, patches.opening_with_arrival(opening))
+        done.append("the clock free from a new game's start")
+    if mod.read(patches.FIELD_FLOW) == game(patches.FIELD_FLOW):
+        mod.write(patches.FIELD_FLOW, patches.field_light_kept(mod.read(patches.FIELD_FLOW)))
+        done.append("the field's light left alone by the bridge's scene")
+    guide = mod.read(patches.CLOCK_GUIDE_FLOW)   # (last in it: first to run)
+    if patches.CLOCK_ON_GET[0] not in {e["name"] for e in evfl.read(guide)[0]["events"]}:
+        mod.write(patches.CLOCK_GUIDE_FLOW, patches.clock_on_get(guide))
+        done.append("the clock set free at an item get")
     if plan.get("settings", {}).get("skulltulas_day_and_night") and mod.read(qol.NIGHT_MODULE) == game(qol.NIGHT_MODULE):
         mod.write(qol.NIGHT_MODULE, qol.night_module_by_day(mod.read(qol.NIGHT_MODULE)))
         done.append("the night skulltulas by day")
