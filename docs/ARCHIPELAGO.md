@@ -9,7 +9,7 @@ Goal: "Lost Woods" seeds playable in an Archipelago multiworld, as OotrR's "OoT 
   - `lost_woods/__init__.py`: the `World` (one region; each location's rule asks our own logic whether its check is
     reached with the player's items, cached per item set);
   - `lost_woods/rando/`, `lost_woods/data/`: the randomizer and its tables, so the logic is exactly the one solo seeds use
-    (SoH's, with the remake's changes); `lw.reach()` also collects what the game gives unshuffled (shops, prizes left as
+    (with the remake's changes); `lw.reach()` also collects what the game gives unshuffled (shops, prizes left as
     they are), as `generate.Setup` does;
   - the item pool: one item per location, the vanilla contents (as the solo fill's pool).
 - Checked without Archipelago (not installed here): the package loads with stand-in classes, 249 locations, 249 items,

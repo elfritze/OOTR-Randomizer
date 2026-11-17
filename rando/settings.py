@@ -1,45 +1,44 @@
 """The randomizer's settings, with their defaults, and how a window or a command line shows them.
 
-Grouped as Ship of Harkinian's randomizer groups its own (Shuffle Items, Shuffle Dungeon Items, Timesavers...), with only what
-this randomizer does; the rest of SoH's choices are shown fixed (FIXED), with the reason. A setting is on/off, or one of its
+Grouped by kind (Shuffle Items, Dungeon Items, Timesavers...); the choices this version does not offer are shown fixed
+(FIXED), with the reason. A setting is on/off, or one of its
 choices (Option.choices: ((value, label), ...), the value a string)."""
 import collections
 
 Option = collections.namedtuple("Option", "key section label help default seen choices", defaults=(None,))
 
 SECTIONS = collections.OrderedDict((
-    ("shuffle", ("Shuffle items", "Which checks hold a random item (Ship of Harkinian: Shuffle Items).")),
-    ("dungeon", ("Dungeon items", "Where each dungeon's maps, compasses and keys may be (Ship of Harkinian: Shuffle "
-                 "Dungeon Items). Outside its own dungeon, or in a small chest, an item is the dungeon's own: \"Small "
+    ("shuffle", ("Shuffle items", "Which checks hold a random item.")),
+    ("dungeon", ("Dungeon items", "Where each dungeon's maps, compasses and keys may be. Outside its own dungeon, or in a small chest, an item is the dungeon's own: \"Small "
                  "Key (Forest Temple)\" works wherever it is found. These go in chests only.")),
-    ("timesavers", ("Timesavers", "Less waiting; no check changes (Ship of Harkinian: Timesavers).")),
+    ("timesavers", ("Timesavers", "Less waiting; no check changes.")),
     ("world", ("World", "How the world behaves; no check changes.")),
-    ("hints", ("Hints", "What the gossip stones say (Ship of Harkinian: Hints).")),
+    ("hints", ("Hints", "What the gossip stones say.")),
 ))
 
-# (where a dungeon item may go: SoH's Own Dungeon, Any Dungeon, Overworld, Anywhere)
+# (where a dungeon item may go)
 PLACES = (("own_dungeon", "Own dungeon"), ("any_dungeon", "Any dungeon"), ("overworld", "Overworld"),
           ("anywhere", "Anywhere"))
 
 OPTIONS = (
     Option("shuffle_songs", "shuffle", "Shuffle songs",
-           "The 12 songs are placed with the other items (SoH: Shuffle Songs, anywhere). Off: each song is taught where "
+           "The 12 songs are placed with the other items. Off: each song is taught where "
            "the game teaches it.", True, True),
     Option("shuffle_gifts", "shuffle", "Shuffle gifts and prizes",
            "What NPCs give and minigames award (Skull Kid, the frogs, the shooting galleries, Dampe, the Gorons, scrubs "
            "selling a Heart Piece, Darunia's Goron's Bracelet...): 36 checks. Off: each gives what the game gives.", True, True),
     Option("shuffle_freestanding", "shuffle", "Shuffle freestanding Heart Pieces",
-           "Heart Pieces lying in the world and the bosses' Heart Containers (22 checks; SoH: Shuffle Freestanding). "
+           "Heart Pieces lying in the world and the bosses' Heart Containers (22 checks). "
            "Off: they stay Heart Pieces and Containers.", True, True),
     Option("shuffle_maps_compasses", "dungeon", "Maps and compasses",
            "Own dungeon: in their dungeon, as the game has them. Any dungeon: in any dungeon. Overworld: outside the "
            "dungeons. Anywhere: any chest.", "own_dungeon", False, PLACES),
     Option("shuffle_small_keys", "dungeon", "Small keys",
-           "As maps and compasses (SoH: Small Key Shuffle). Logic counts each dungeon's keys wherever they are. "
+           "As maps and compasses. Logic counts each dungeon's keys wherever they are. "
            "Overworld for all three kinds at once is refused: 65 items, more than the chests and loose spots outside "
            "the dungeons.", "own_dungeon", False, PLACES),
     Option("shuffle_boss_keys", "dungeon", "Boss keys",
-           "As maps and compasses (SoH: Boss Key Shuffle), Ganon's Castle's boss key with the others.",
+           "As maps and compasses, Ganon's Castle's boss key with the others.",
            "own_dungeon", False, PLACES),
     Option("shuffle_quest_items", "shuffle", "Shuffle Zelda's Letter and the Light Arrows",
            "Zelda's Letter (her scene in the castle garden) and the Light Arrows (her scene in the Temple of Time) are "
@@ -47,14 +46,14 @@ OPTIONS = (
            "Kakariko's gate.", False, False),
     Option("shuffle_lake_fire_arrows", "shuffle", "Shuffle the Fire Arrows at Lake Hylia",
            "The item on the lake's platform, there once the sun is shot at sunrise (after the Water Temple), is placed with "
-           "the other items (SoH: LH Sun); the Fire Arrows go with the other items. Found elsewhere first, they no longer "
+           "the other items; the Fire Arrows go with the other items. Found elsewhere first, they no longer "
            "close the sun's spot.", False, False),
     Option("shuffle_fairy_ocarina", "shuffle", "Shuffle the Fairy Ocarina",
            "Saria's gift on the Lost Woods bridge is placed with the other items; she gives the item placed there. An "
            "ocarina found elsewhere is made playable on the next item get (OotrR's fix). The Ocarina of Time stays at "
            "the castle moat unless shuffled on its own.", False, False),
     Option("shuffle_ocarina_of_time", "shuffle", "Shuffle the Ocarina of Time",
-           "Zelda's gift at the castle moat is placed with the other items (SoH: Shuffle Ocarinas); she gives the item "
+           "Zelda's gift at the castle moat is placed with the other items; she gives the item "
            "placed there, and still teaches the Song of Time. In logic the moat then needs the Fairy Ocarina (its lesson "
            "has Link play along), and the Ocarina of Time comes after the Fairy Ocarina. Found elsewhere, it is made "
            "playable as the Fairy Ocarina is.", False, False),
@@ -64,22 +63,22 @@ OPTIONS = (
            "(25 to 500): Nayru's and the one outside Ganon's Castle (300, 500) need the 500-rupee wallet in logic.",
            False, False),
     Option("shuffle_tokens", "shuffle", "Shuffle Gold Skulltula tokens",
-           "The 100 Gold Skulltulas drop the item placed there (SoH: Tokensanity, all), floating where each dies as its "
+           "The 100 Gold Skulltulas drop the item placed there, floating where each dies as its "
            "token does; the 100 tokens go with the other items. The House of Skulltula counts tokens wherever found.",
            False, False),
     Option("shuffle_dungeon_rewards", "shuffle", "Shuffle dungeon rewards",
-           "The 3 spiritual stones and 6 medallions (SoH: Shuffle Dungeon Rewards): Vanilla, each from its own boss; End "
+           "The 3 spiritual stones and 6 medallions: Vanilla, each from its own boss; End "
            "of dungeon, shuffled among the 8 bosses and Rauru. The scenes still show the game's own reward; the item got "
            "is the one placed.", "vanilla", False, (("vanilla", "Vanilla"), ("end_of_dungeon", "End of dungeon"))),
     Option("shuffle_shops", "shuffle", "Shopsanity",
-           "Shelves of the 8 shops sell items of the pool, each once (SoH: Shopsanity): that many per shop, or a random "
+           "Shelves of the 8 shops sell items of the pool, each once: that many per shop, or a random "
            "number. The shelves logic needs (shields, tunics, Deku nuts and sticks, Bombchus) go last; the others keep "
            "their item. The Kokiri shop sells its whole stock from the start. A bought shelf shows \"Sold Out\" (the OotrR "
            "randomizer's way).", "off", True,
            (("off", "Off"),) + tuple((str(n), str(n)) for n in range(1, 8)) + (("random", "Random"),)),
     Option("shop_prices", "shuffle", "Shop prices",
-           "What a shuffled shelf costs (SoH: Shopsanity Prices): Vanilla, the price of what the shelf sold; Cheap "
-           "balanced and Balanced, SoH's random prices (about 30 and 125 rupees on average); Affordable, Balanced "
+           "What a shuffled shelf costs: Vanilla, the price of what the shelf sold; Cheap "
+           "balanced and Balanced, random prices (about 30 and 125 rupees on average); Affordable, Balanced "
            "lowered to the least of the wallet it needs. Logic counts the remake's wallets (200, 500, 999 rupees).",
            "vanilla", False,
            (("vanilla", "Vanilla"), ("cheap_balanced", "Cheap balanced"), ("balanced", "Balanced"),
@@ -94,13 +93,13 @@ OPTIONS = (
     Option("skulltulas_day_and_night", "world", "Night Gold Skulltulas also by day",
            "The 30 Gold Skulltulas that only come out at night are there day and night.", False, False),
     Option("gossip_stone_hints", "hints", "Gossip stone hints",
-           "Gossip stones tell where items are (SoH: Gossip Stone Hints). Need nothing: any stone talks. Mask of Truth: "
+           "Gossip stones tell where items are. Need nothing: any stone talks. Mask of Truth: "
            "only while Link wears it, as in the game. Stone of Agony: once Link has it. No hints: the game's rumors.",
            "need_nothing", False,
            (("none", "No hints"), ("need_nothing", "Need nothing"), ("mask_of_truth", "Mask of Truth"),
             ("stone_of_agony", "Stone of Agony"))),
     Option("hint_distribution", "hints", "Hint distribution",
-           "How useful the hints are (SoH: Hint Distribution): Useless is jokes only; Balanced mixes the way of the "
+           "How useful the hints are: Useless is jokes only; Balanced mixes the way of the "
            "hero, foolish areas, items and some junk; Strong and Very strong give more of the useful kinds.",
            "balanced", False,
            (("useless", "Useless"), ("balanced", "Balanced"), ("strong", "Strong"), ("very_strong", "Very strong"))),
@@ -116,9 +115,9 @@ DEFAULTS.update(RETIRED)
 LEGACY = {"shuffle_gifts": True, "shuffle_freestanding": True, "fast_chests": False, "skip_auto_dialogues": False,
           "skip_title_and_credits": False, "skulltulas_day_and_night": False, "gossip_stone_hints": "none"}
 
-# (Ship of Harkinian's other choices, shown as this randomizer has them: (section, label, value, why))
+# (choices this version does not offer, shown at the value they have: (section, label, value, why))
 FIXED = (
-    ("world", "Logic", "Glitchless", "Ship of Harkinian's logic, with the remake's differences."),
+    ("world", "Logic", "Glitchless", "Every room, door and key as the remake has them."),
     ("world", "Starting age", "Child", ""),
     ("world", "Entrances", "Not shuffled", ""),
     ("fixes", "Story locks the remake adds", "Always fixed",
@@ -131,15 +130,15 @@ FIXED = (
     ("fixes", "Great Fairies in any order", "Always", "The remake opens the other fountains only once Din's Fire is "
      "had (Din's fairy first): any fountain opens with Zelda's Lullaby, whatever came before."),
     ("fixes", "The clock from the start", "Always", "The remake holds the time at 15:00 until Impa's send-off from the "
-     "castle: no night (night-only Gold Skulltulas, Dampe) before Zelda, which SoH's logic does not wait for."),
+     "castle: no night (night-only Gold Skulltulas, Dampe) before Zelda, which logic does not wait for."),
     ("hints", "Hint clarity", "Clear", "Items and places by the names the game gives them, in the game's language."),
-    ("hints", "Item hints", "By area", "SoH names the exact check (\"the frogs' final reward\") only for its always "
-     "hints; its other item hints here say the area, as its named-item hints do."),
-    ("hints", "Other hints", "Off", "The Temple of Time altar, Ganondorf, Sheik, Saria and the other NPC hints of SoH "
-     "are not in this version. A junk hint keeps the stone's own rumor."),
+    ("hints", "Item hints", "By area", "Only the always hints name the exact check (\"the frogs' final reward\"); the "
+     "other item hints say the area."),
+    ("hints", "Other hints", "Off", "The Temple of Time altar, Ganondorf, Sheik, Saria and other NPC hints are not in "
+     "this version. A junk hint keeps the stone's own rumor."),
 )
 FIXED += (
-    ("off", "Fast chests", "Off", "Small chests opened without their cutscene crashed the game (seen in game): off "
+    ("off", "Fast chests", "Off", "Small chests opened without their cutscene crashed the game: off "
      "until fixed."),
 )
 FIXED_SECTIONS = collections.OrderedDict((

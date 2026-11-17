@@ -9,7 +9,7 @@ copy, both target Hookshot/Longshot, both were built with Claude Code.
 OotrR is **wider**: many more things can be shuffled (skulltulas, shops, pots, fairies, dungeon rewards, keys, enemy
 "souls"), it has a polished app (presets, auto-tracker reading the save and the game's memory, an in-game overlay,
 signed auto-updates, portable builds) and a working **Archipelago** multiworld. We are **deeper** on the remake itself:
-our logic is Ship of Harkinian's (finer, with time of day and per-room regions), every remake chest was researched one by
+our logic is finer (time of day and per-room regions), every remake chest was researched one by
 one, songs are shuffled, and we fixed story locks of the remake that OotrR does not handle at all — and that can
 make *their* seeds impossible to finish (the Master Sword / Forest Temple lock, King Zora, the Dodongo's Cavern
 boulder, Darunia, Zora's River's walls).
@@ -40,7 +40,7 @@ boulder, Darunia, Zora's River's walls).
 | Area | Us | OotrR |
 |---|---|---|
 | Songs | the 12 songs shuffled (lesson silent adds switched off, windmill man gives once, songs found elsewhere show Sheik's harp, **confirmed playable**) | songs never shuffled |
-| Logic | Ship of Harkinian's logic, ported rule by rule (time of day, per-room regions, events), checked against SoH's C++ | Archipelago OoT 7.0 logic (coarser), no tricks |
+| Logic | per-room regions, time of day and events, checked rule by rule | Archipelago OoT 7.0 logic (coarser), no tricks |
 | Remake chest table | every remake chest mapped with evidence and confidence (research/mapping), unknown ones junk-only | automatic matching (exact/group/area/junk) by geometry |
 | **Back to child before the Forest Temple** | `free_time_travel`: the remake disables the Master Sword until the Forest Temple's sage; fixed (seen in game) | **not handled** — their logic (AP) assumes free time travel, so a seed needing a child item for the Forest Temple can dead-lock |
 | **Dodongo's Cavern boulder** | bombs set off the boulder's own scene (`dc_bombs_set_off_flower`, seen in game); logic: bomb bag | **not handled** — AP logic says explosives open it; in the remake only the bracelet does |
@@ -57,7 +57,7 @@ boulder, Darunia, Zora's River's walls).
 ## Takeaways
 
 1. **Their missing story fixes are our edge.** Their seeds can be unfinishable for the same reasons ours were (we found
-   each one by playing). Worth telling them? Their logic would also need SoH's rules to benefit.
+   each one by playing). Worth telling them? Their logic would also need finer rules to benefit.
 2. **Their breadth is the gap to close**: skulltulas, shops, dungeon rewards, keys, cutscene skips and an auto-tracker
    are what players expect from a modern randomizer.
 3. **Their techniques we can reuse** (reading their code is fine): the save decoder (`tracker/save_reader.py`), live

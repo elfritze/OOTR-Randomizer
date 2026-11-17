@@ -11,7 +11,7 @@ Order: what can leave a seed unfinishable first, then what players expect from a
    something to a story step the original did not (Mido, the tunnel kid, King Zora's arrival scene, the boulder setting
    the Goron quest, Darunia's dance, the Master Sword before the Forest Temple). Build an audit: list every logic module
    node that deletes or hides an actor (`Logic_Delete`, `Presence`) on a quest flag, and every event that sets a quest step
-   unconditionally (`TriggerChallengeSetStep`, `EventExecuteProgressChallengeStep`), and check each against SoH's logic.
+   unconditionally (`TriggerChallengeSetStep`, `EventExecuteProgressChallengeStep`), and check each against the logic.
    This is the highest-value work: one missed lock is one dead seed.
 3. **Per-check saved flags** (chests write none: checked on every save we have, 2026-11-14: the game's GameDataList
    registers a Bool64bitKey for all 180 chests, never set). Design, all pieces found (OotrR's chest_flags.py): a Bool per
@@ -35,7 +35,7 @@ Order: what can leave a seed unfinishable first, then what players expect from a
    plain small chest (Goron City's maze; the same seed without it opened them); to fix before it comes back. Left: OotrR's skip windows in cutscene flows (the native
    `EventTriggerSkipAcceptStart/SkipEnd`; never on mechanism cutscenes or talks) and area presentations (their name frame
    stays on screen when skipped without OotrR's flow fix), **open forest**, the Kokiri shop full from the start, starting
-   items (SoH's Starting Inventory: pool swap + logic start).
+   items (a starting inventory: pool swap + logic start).
 8. **Shops and scrubs** (one-time buys). **Shopsanity** done 2026-11-15 (`rando/shops.py`, OotrR's shelves and AI with the
    `ainb` library; settings shuffle_shops, shop_prices; seen in game 2026-11-15 on three Kokiri shelves: bought once,
    "Sold Out" after it and after a reload). Fire Arrows at Lake Hylia done 2026-11-15 (settings shuffle_lake_fire_arrows,
@@ -45,10 +45,10 @@ Order: what can leave a seed unfinishable first, then what players expect from a
    settings own / any dungeon / overworld / anywhere, chests and loose spots; the two freestanding keys are checks).
    Left: dungeon items as gifts (a gift not ending in ActionGuide credits at the next item get), key rings; to see in
    game: a dungeon item's pickup, a new pickup at a freestanding key's spot.
-9. **Settings and presets**: a Settings page in SoH's groups done 2026-11-14 (shuffle songs / gifts / freestanding,
-   timesavers, world; SoH's other choices shown fixed). Left: presets, a **spoiler page** in the app.
+9. **Settings and presets**: a Settings page done 2026-11-14 (shuffle songs / gifts / freestanding,
+   timesavers, world; the choices not offered shown fixed). Left: presets, a **spoiler page** in the app.
 10. **Hints** from the gossip stones (neither randomizer has them: a real edge): done 2026-11-14 (`rando/hints.py`;
-    SoH's kinds and distributions, all 16 languages; to see in game). Left: SoH's per-check sentences for item hints
+    the usual kinds and distributions, all 16 languages). Left: per-check sentences for item hints
     (now by area), its static hints (altar, Ganondorf, Sheik, Saria, Frogs...), hint clarity (obscure/ambiguous).
 11. **Entrance shuffle** (neither has it; large).
 

@@ -14,11 +14,10 @@ from .theme import C, px
 
 LINK = "link"
 COLUMNS = 4
-MARK_SEEN, MARK_NEW, MARK_ROUGH = "✓", "·", "≈"
 
 
 def tile_text(c):
-    return "%s  %s" % (MARK_ROUGH if getattr(c, "rough", False) else MARK_SEEN if c.seen else MARK_NEW, c.label)
+    return c.label
 
 
 class CharacterPage:
@@ -88,12 +87,6 @@ class CharacterPage:
                 ttk.Radiobutton(grid, text=tile_text(playas.CHARACTERS[key]), value=key, variable=self.choice,
                                 style="SegCard.TRadiobutton").grid(row=i // COLUMNS, column=i % COLUMNS, sticky="ew",
                                                                    padx=(px(0), px(3)), pady=px(2))
-        legend = ttk.Label(body, text="\n".join((
-            "%s  seen in game and approved" % MARK_SEEN,
-            "%s  built the same way, not yet seen in game" % MARK_NEW,
-            "%s  rough fit: a body far from Link's, limbs can look pulled where they bend" % MARK_ROUGH)),
-            style="CardMuted.TLabel", justify="left")
-        legend.pack(anchor="w", pady=(px(12), px(0)))
         body.bind("<Configure>", lambda e: [set_wrap(n, max(px(160), e.width - px(8))) for n in (about, self.note)], add="+")
         self.choice.trace_add("write", lambda *_: self._remember())
 

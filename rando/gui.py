@@ -337,13 +337,13 @@ class Window:
         about, body = card(page, "What it does")
         about.pack(fill="x")
         for line in (
-                "Every one-time chest, NPC gift, song and loose item of the remake is shuffled with Ship of Harkinian's "
-                "glitchless logic, adapted where the remake differs; every seed is checked to be finishable.",
+                "Every one-time chest, NPC gift, song and loose item of the remake is shuffled with glitchless logic "
+                "built for the remake's rooms, doors and keys; every seed is checked to be finishable.",
                 "The mod is made on this PC from your own copy of the game: share the seed text, never the mod folder.",
                 "Fixes for the remake's own story locks: Mido, King Zora, the Dodongo's Cavern boulder (bombs), Darunia's "
                 "bracelet, going back to child as soon as you are adult, Zora's River's walls, ammunition for the Bow "
                 "and the Slingshot.",
-                "README.md beside gui.py lists every change and what is confirmed in game."):
+                "README.md beside gui.py lists every change."):
             ttk.Label(body, text="•  " + line, style="Card.TLabel", wraplength=px(760), justify="left").pack(anchor="w", pady=px(3))
         return page
 
@@ -407,11 +407,10 @@ class Window:
             title, _, rest = line.partition(": ")
             label.configure(text="%s  ·  %s" % (title, rest))
 
-    # (the Settings page: Ship of Harkinian's groups, with what this randomizer does)
+    # (the Settings page: the settings by kind, and the choices fixed in this version)
     def _build_settings(self, page):
         ttk.Label(page, text="Settings", style="Page.TLabel").pack(anchor="w")
-        ttk.Label(page, text="Grouped as Ship of Harkinian's randomizer groups them. The same seed and settings give the "
-                             "same game.", style="PageMuted.TLabel").pack(anchor="w", pady=(px(0), px(10)))
+        ttk.Label(page, text="The same seed and settings give the same game.", style="PageMuted.TLabel").pack(anchor="w", pady=(px(0), px(10)))
         outer = ttk.Frame(page)
         outer.pack(fill="both", expand=True)
         canvas = tk.Canvas(outer, background=C["night"], highlightthickness=0)
@@ -452,15 +451,12 @@ class Window:
                 else:
                     ttk.Checkbutton(row, text="  " + o.label, variable=self.options[o.key],
                                     style="Switch.TCheckbutton").pack(side="left")
-                if not o.seen:
-                    tk.Label(body, text=" not yet tested in game ", background=C["card2"], foreground=C["gold"],
-                             font=self.fonts.small).pack(anchor="w", padx=(px(52), px(0)), pady=(px(2), px(4)))
                 note = ttk.Label(body, text=o.help, style="CardMuted.TLabel", justify="left", wraplength=NOTE_WRAP)
                 note.pack(anchor="w", fill="x", padx=(px(52), px(0)), pady=(px(0), px(10)))
                 wrap(body, note, px(60))
                 helps.append(note)
         for key, title in settings.FIXED_SECTIONS.items():
-            frame, body = card(inner, title, "Fixed in this version: shown as Ship of Harkinian names them.", flat=True)
+            frame, body = card(inner, title, "Fixed in this version.", flat=True)
             cards.append(frame)
             for section, label, value, why in settings.FIXED:
                 if section != key:
