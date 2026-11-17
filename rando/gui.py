@@ -25,7 +25,7 @@ GAME_EXES = ("longshot.exe", "hookshot.exe")
 STATE_FILE = os.path.join(os.environ.get("APPDATA") or os.path.expanduser("~"), "HookshotRando", "window.json")
 MOD = generate.MOD_NAME
 OFF = "_" + MOD   # (a mods sub-folder starting with "_" is off for Longshot and Hookshot)
-VERSION = "0.6"
+VERSION = "1.0"
 # (the randomizer's public name: "HookshotRando" was a working name; the mod's folder keeps it, see generate.MOD_NAME)
 BRAND = "Lost Woods"
 TAGLINE = "Ocarina of Time (Switch 2 remake) randomizer  ·  every path leads somewhere new"
@@ -115,6 +115,27 @@ def open_path(path):
         subprocess.Popen(["xdg-open", path])
 
 
+def flow(frame, buttons, gap=None):
+    """buttons laid out in rows in frame, as many to a row as its width holds, all of one width"""
+    gap = px(2) if gap is None else gap
+    shown = [0]
+
+    def lay(width):
+        widest = max(b.winfo_reqwidth() for b in buttons) + gap
+        cols = max(1, min(len(buttons), int(width) // widest))
+        if cols == shown[0]:   # (regridding only when the count changes: no <Configure> loop)
+            return
+        shown[0] = cols
+        for i in range(len(buttons) + 1):
+            frame.columnconfigure(i, weight=0, uniform="")
+        for i in range(cols):
+            frame.columnconfigure(i, weight=0, uniform="flow")
+        for i, b in enumerate(buttons):
+            b.grid(row=i // cols, column=i % cols, sticky="ew", padx=(px(0), gap), pady=(px(0), gap))
+    lay(len(buttons) * 10000)
+    frame.bind("<Configure>", lambda e: lay(e.width), add="+")
+
+
 def card(parent, title=None, subtitle=None, flat=False):
     """a rounded card with an optional heading; returns (outer frame, body frame). flat: a plain card with a thin border
     instead, for pages of many cards: the rounded card's image (alpha, stretched) made the Settings page's layout take
@@ -129,7 +150,9 @@ def card(parent, title=None, subtitle=None, flat=False):
     if title:
         ttk.Label(outer, text=title, style="CardHeading.TLabel").pack(anchor="w")
         if subtitle:
-            ttk.Label(outer, text=subtitle, style="CardMuted.TLabel", wraplength=px(640), justify="left").pack(anchor="w")
+            sub = ttk.Label(outer, text=subtitle, style="CardMuted.TLabel", wraplength=px(640), justify="left")
+            sub.pack(anchor="w")
+            outer.bind("<Configure>", lambda e: set_wrap(sub, max(px(160), e.width - px(44))), add="+")
         body = ttk.Frame(outer, style="Card.TFrame", padding=0)
         body.configure(style="CardBody.TFrame")
         body.pack(fill="both", expand=True, pady=(px(10), px(0)))
@@ -333,7 +356,7 @@ class Window:
 
     def _build_about(self, page):
         ttk.Label(page, text="About", style="Page.TLabel").pack(anchor="w")
-        ttk.Label(page, text="%s %s  (working name: HookshotRando)" % (BRAND, VERSION), style="PageMuted.TLabel").pack(anchor="w", pady=(px(0), px(12)))
+        ttk.Label(page, text="%s  ·  version %s" % (BRAND, VERSION), style="PageMuted.TLabel").pack(anchor="w", pady=(px(0), px(12)))
         about, body = card(page, "What it does")
         about.pack(fill="x")
         for line in (
@@ -343,7 +366,8 @@ class Window:
                 "Fixes for the remake's own story locks: Mido, King Zora, the Dodongo's Cavern boulder (bombs), Darunia's "
                 "bracelet, going back to child as soon as you are adult, Zora's River's walls, ammunition for the Bow "
                 "and the Slingshot.",
-                "README.md beside gui.py lists every change."):
+                "Play adult Link as one of 26 characters from the Character page, switched whenever the game is closed.",
+                "The Tracker reads your save as you play and shows what logic reaches on each area's map."):
             ttk.Label(body, text="•  " + line, style="Card.TLabel", wraplength=px(760), justify="left").pack(anchor="w", pady=px(3))
         return page
 
@@ -445,9 +469,8 @@ class Window:
                     ttk.Label(row, text=o.label, style="CardStrong.TLabel").pack(anchor="w", pady=(px(4), px(2)))
                     seg = ttk.Frame(body, style="CardBody.TFrame")
                     seg.pack(fill="x", anchor="w", padx=(px(44), px(0)))
-                    for value, label in o.choices:
-                        ttk.Radiobutton(seg, text=label, value=value, variable=self.options[o.key],
-                                        style="SegCard.TRadiobutton").pack(side="left", padx=(px(0), px(2)))
+                    flow(seg, [ttk.Radiobutton(seg, text=label, value=value, variable=self.options[o.key],
+                                               style="SegCard.TRadiobutton") for value, label in o.choices])
                 else:
                     ttk.Checkbutton(row, text="  " + o.label, variable=self.options[o.key],
                                     style="Switch.TCheckbutton").pack(side="left")
@@ -610,6 +633,9 @@ class Window:
         self.log("Verifying %s…" % target, "note")
 
         def work():
+            if getattr(sys, "frozen", False):
+                self.log(verify_here(os.path.join(folder, "romfs"), target))
+                return
             try:
                 out = subprocess.run([sys.executable, os.path.join(HERE, "tools", "verify_mod.py"),
                                       os.path.join(folder, "romfs"), target], capture_output=True, text=True,
@@ -672,9 +698,34 @@ def dpi_aware():
             pass
 
 
+def verify_here(romfs, target):
+    """tools/verify_mod.py run in this process (the packaged app has no Python to run it with): its report"""
+    import contextlib
+    import io
+    import runpy
+    out, argv = io.StringIO(), sys.argv
+    try:
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+            sys.argv = ["verify_mod.py", romfs, target]
+            runpy.run_path(os.path.join(HERE, "tools", "verify_mod.py"), run_name="__main__")
+    except SystemExit:
+        pass
+    except Exception:
+        out.write(traceback.format_exc())
+    finally:
+        sys.argv = argv
+    return out.getvalue().strip() or "(no output)"
+
+
 def main(argv=None):
     dpi_aware()
     root = tk.Tk()
+    icon = os.path.join(os.path.dirname(os.path.abspath(__file__)), "icon.ico")
+    if os.path.exists(icon):   # (made by tools/build_exe.py)
+        try:
+            root.iconbitmap(default=icon)
+        except tk.TclError:
+            pass
     Window(root)
     if argv and "--selftest" in argv:   # (built, shown for a moment, closed: for tests)
         root.after(1500, root.destroy)

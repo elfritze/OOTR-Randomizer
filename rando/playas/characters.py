@@ -920,7 +920,7 @@ CUCCO_LADY = Character(
 GROUPS = [
     ("Legends", "The story's own: sages, royalty, villains."),
     ("Hyrule's people", "Townsfolk, ranchers, shopkeepers."),
-    ("Monsters", "Not people's skeletons: the fit is rougher, and they have no faces to move."),
+    ("Monsters", "Creatures of Hyrule's fields and dungeons."),
 ]
 
 CHARACTERS = {

@@ -50,7 +50,7 @@ OPTIONS = (
            "close the sun's spot.", False, False),
     Option("shuffle_fairy_ocarina", "shuffle", "Shuffle the Fairy Ocarina",
            "Saria's gift on the Lost Woods bridge is placed with the other items; she gives the item placed there. An "
-           "ocarina found elsewhere is made playable on the next item get (OotrR's fix). The Ocarina of Time stays at "
+           "ocarina found elsewhere is made playable on the next item get. The Ocarina of Time stays at "
            "the castle moat unless shuffled on its own.", False, False),
     Option("shuffle_ocarina_of_time", "shuffle", "Shuffle the Ocarina of Time",
            "Zelda's gift at the castle moat is placed with the other items; she gives the item "
@@ -73,8 +73,7 @@ OPTIONS = (
     Option("shuffle_shops", "shuffle", "Shopsanity",
            "Shelves of the 8 shops sell items of the pool, each once: that many per shop, or a random "
            "number. The shelves logic needs (shields, tunics, Deku nuts and sticks, Bombchus) go last; the others keep "
-           "their item. The Kokiri shop sells its whole stock from the start. A bought shelf shows \"Sold Out\" (the OotrR "
-           "randomizer's way).", "off", True,
+           "their item. The Kokiri shop sells its whole stock from the start. A bought shelf shows \"Sold Out\".", "off", True,
            (("off", "Off"),) + tuple((str(n), str(n)) for n in range(1, 8)) + (("random", "Random"),)),
     Option("shop_prices", "shuffle", "Shop prices",
            "What a shuffled shelf costs: Vanilla, the price of what the shelf sold; Cheap "
@@ -137,12 +136,8 @@ FIXED = (
     ("hints", "Other hints", "Off", "The Temple of Time altar, Ganondorf, Sheik, Saria and other NPC hints are not in "
      "this version. A junk hint keeps the stone's own rumor."),
 )
-FIXED += (
-    ("off", "Fast chests", "Off", "Small chests opened without their cutscene crashed the game: off "
-     "until fixed."),
-)
 FIXED_SECTIONS = collections.OrderedDict((
-    ("world", "Logic and world"), ("fixes", "Always on"), ("hints", "Hint details"), ("off", "Off for now"),
+    ("world", "Logic and world"), ("fixes", "Always on"), ("hints", "Hint details"),
 ))
 
 

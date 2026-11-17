@@ -4,9 +4,17 @@ A randomizer for The Legend of Zelda: Ocarina of Time (Nintendo Switch 2) as [Lo
 runs it. It is a RomFS mod: no change to Longshot, nothing to rebuild. You make it on your own PC from your own copy of
 the game.
 
-## The window
+## Getting started
 
-`python gui.py` opens the app:
+1. Download `LostWoods-1.0.zip` from the releases page and unzip it anywhere.
+2. Run `LostWoods.exe` (nothing to install).
+3. On the Generate page, choose Longshot's game folder (the one holding `romfs` and `mods`), pick a seed and press
+   **Generate and install**. Start a new game to play it.
+
+From source instead: Python 3.10 or newer, `python -m pip install zstandard ainb==0.2.17 texture2ddecoder`, then
+`python gui.py`. `python tools/build_exe.py` builds the exe and the release zip.
+
+## The window
 
 - **Generate**: choose the game folder, the seed and the settings, then generate and install the seed (refused while the
   game runs), verify it, turn it on or off, open the spoiler log. Installing a seed first copies the one installed before
@@ -14,10 +22,9 @@ the game.
 - **Settings**: every setting below, grouped by kind. The same seed and settings give the same game.
 - **Character**: play adult Link as someone else (see below).
 - **Tracker**: reads the game's save every few seconds and shows the seed's checks on each area's map, coloured by what
-  logic reaches with what Link holds. With `python -m pip install texture2ddecoder` the maps are the game's own
-  pause-menu maps (dungeons floor by floor); without it, each area is drawn from its placed objects. A check is marked
-  done by itself when the save shows it taken; chests of rupees and ammunition are marked by a click, or a whole area at
-  once ("Mark area done").
+  logic reaches with what Link holds. The maps are the game's own pause-menu maps (dungeons floor by floor). A check is
+  marked done by itself when the save shows it taken; chests of rupees and ammunition are marked by a click, or a whole
+  area at once ("Mark area done").
 
 ## Settings
 
@@ -60,16 +67,17 @@ logic and your save are untouched. The character is worn as the Goron and Zora t
 the Kokiri tunic Link is Link, and young Link is never changed. The window rebuilds the character by itself after a new
 seed is installed or the seed is turned on or off.
 
-Without the window: `python -m rando.playas <game folder> --list`, `--as zelda`, `--as link`, `--check`.
+Without the window: `LostWoods.exe character <game folder> --list`, `--as zelda`, `--as link`, `--check`.
 
 ## Command line
 
-You need Longshot's game folder (it holds `romfs` and `mods`) and Python 3.10 or newer with `zstandard`
-(`python -m pip install zstandard`); Shopsanity also needs `ainb` 0.2.17 (`python -m pip install ainb==0.2.17`).
+```
+LostWoods.exe randomize "C:\Games\Longshot" --seed anything
+LostWoods.exe character "C:\Games\Longshot" --as zelda
+LostWoods.exe verify "C:\Games\Longshot\romfs" "C:\Games\Longshot\mods\HookshotRando"
+```
 
-```
-python randomize.py "C:\Games\Longshot" --seed anything
-```
+From source, `python randomize.py ...` and `python -m rando.playas ...` do the same.
 
 The mod goes to `<game folder>\mods\HookshotRando`, with `spoiler.txt` (where everything is, and a playthrough) and
 `placements.json` beside its `romfs`. A new seed replaces the last one (kept in `rando-archive`). **Start a new game for
@@ -143,9 +151,6 @@ autosaves before the room, so load that save.
 against the game's files; `tools/check_evfl.py` checks the event-flow writer against every event flow of the game. The
 character builder lives in `rando/playas/`, and `tools/draw_character.py` draws a character as it is worn, without the
 game.
-
-The whole randomizer, its formats, its logic port, the window and the character builder, was written with AI: coded
-with Claude (Anthropic) in Claude Code, directed and play-tested by its author.
 
 ## Credits
 
