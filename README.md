@@ -29,7 +29,7 @@ window builds it again by itself after a new seed is installed or the seed is tu
 installed seed by hand (`tools/update_installed.py`...), press Apply again. The page marks which characters were seen in
 game (✓), which are built the same way and not yet seen (·), and which fit Link's skeleton roughly (≈: a body far from
 his, limbs can look pulled where they bend). Without the window: `python -m rando.playas <game folder> --list`,
-`--as zelda`, `--as link`, `--check`. How it works: `rando/playas/build.py`; who: `rando/playas/characters.py`.
+`--as zelda`, `--as link`, `--check`. How it works: `rando/playas/build.py`; who: `rando/playas/characters.py`. `python tools/draw_character.py <game folder> <character> out.png` draws a character as it is worn, without the game (how each new one was checked: it showed the Wolfos's snout facing the sky and Talon's hair on the side of his head before anyone had to see them in game).
 
 The **Settings** page groups the settings as Ship of Harkinian's randomizer does (`rando/settings.py`), with only what this
 randomizer does; SoH's other choices are shown fixed, with why. Installing a seed first copies the one installed before

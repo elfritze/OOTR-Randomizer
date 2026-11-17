@@ -171,18 +171,44 @@ def carry(d, g, slots, H, T, k, dropped=()):
     return worst
 
 
-def retarget(ganon_bfres, link_bfres, k, moved, own=(), held=None, shift=(0.0, 0.0, 0.0)):
+def posed(g, link, shared, as_own=(), as_stood=()):
+    """the character's skeleton posed like Link (its bones' world matrices): each bone Link has takes his rotation, on
+    its own translation: the limbs then lie along Link's. But as_own: bones that keep their own rotation on their
+    parent (a creature's fingers, jaw, brows: its rig turns them another way round than Link's, and Link's rotation
+    would wring them), and as_stood: bones that keep the rotation they have in the model's own rest, whatever their
+    parents now do (a Wolfos's head, which faces forward from a back that leans, and would face the sky from a back
+    stood up like Link's; its hind legs, bent as an animal's)"""
+    G = g.worlds()
+    out = [None] * len(g.bones)
+    for b in g.bones:   # (parents come first)
+        if b.name in shared and b.name not in as_own and b.name not in as_stood:
+            local = compose(b.scale, link.by_name[b.name].rot, b.trans)
+        else:
+            local = b.local()
+        m = mul(out[b.parent], local) if b.parent is not None else local
+        if b.name in as_stood:
+            m = [[G[b.index][a][c] if c < 3 and a < 3 else m[a][c] for c in range(4)] for a in range(4)]
+        out[b.index] = m
+    return out
+
+
+def retarget(ganon_bfres, link_bfres, k, moved, own=(), held=None, shift=(0.0, 0.0, 0.0), as_own=(), as_stood=()):
     """k: the refitted mesh's size, as a fraction of the model's own; moved: rigid bones Link also has -> (the spare bone
     that carries their mesh, its new parent) (characters.py); own: bones to treat as the character's own though Link has
     one of the name (the ones a cloth simulation sets: it writes them after the bind has, so their skinning must expect
     the character's, not Link's: Link has back hair bones too); held: bones -> the bone that carries their skin (above);
     shift: where the scaled mesh is moved to as a whole, in metres (a model standing off its own root, as the Lizalfos,
-    18 cm behind it: brought back over Link's skeleton, whose root is under him)"""
+    18 cm behind it: brought back over Link's skeleton, whose root is under him); as_own, as_stood: bones posed
+    otherwise than by Link's rotation (posed, above)"""
     g = Skeleton(ganon_bfres)
     link = Skeleton(link_bfres)
     shared = {b.name for b in g.bones if b.name in link.by_name} - set(own)
     G = g.worlds()
-    GA = g.worlds(lambda b: compose(b.scale, link.by_name[b.name].rot, b.trans) if b.name in shared else b.local())
+    for name in list(as_own) + list(as_stood):
+        if name not in shared:
+            raise ValueError("%s is not a bone Link sets" % name)
+    GA = posed(g, link, shared, as_own, as_stood) if as_own or as_stood else \
+        g.worlds(lambda b: compose(b.scale, link.by_name[b.name].rot, b.trans) if b.name in shared else b.local())
     T = [scaled(m, k) for m in GA]   # (where each bone's frame belongs: S @ GA, shifted)
     for m in T:
         for i in range(3):

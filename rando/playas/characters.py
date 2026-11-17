@@ -11,6 +11,10 @@
             (his belt's), or a rigid mesh on a bone Link sets in a model with no spare bone to move it to; the carrier of
             a rigid mesh is a bone Link sets (the bone itself: its mesh stays, shifted to where the character's sits)
   shift     (optional) where the scaled mesh is moved as a whole, in metres (a model standing off its own root)
+  as_own    (optional) bones Link sets that keep their own rotation on their parent when the model is posed like Link
+            (retarget.posed): a creature's fingers and face, turned another way round in its rig than in Link's
+  as_stood  (optional) bones Link sets that keep the rotation of the model's own rest: a head that would face the sky,
+            an animal's hind legs
   pack      the actor whose pack holds the character's cloth settings and reactions; set: its physics there (no set: a
             character without cloth); cloth (optional): its cloth file's name when not the model's
   unanchored  (optional) cloth meshes whose reference skin is left reading bones Link's cloth sets too (build.py)
@@ -357,6 +361,7 @@ MALON = Character(
 # A Lizalfos: not a person's skeleton (70 bones, 38 of them Link's: the spine, the arms and three fingers, the legs, the
 # head and jaw), but the same rig, standing 18 cm behind its own root: the mesh is shifted forward over Link's (shift), and
 # then its joints are 5 cm from his on average at 0.77. Its neck (three bones), its tail and its eyes are its own: still.
+# Its head keeps the way it faces in its own rest (as_stood).
 # The eyes' model is rigid on the head. Its cloth: the sword on its hip, the apron, the waist chain, the chest string.
 # Its voice: its cries as an enemy (its archive holds its steps and chain too: only the clips named ...Voice are used).
 LIZALFOS = Character(
@@ -368,6 +373,11 @@ LIZALFOS = Character(
     shift=(0.0, 0.0, 0.14),
     moved={},
     held={"Head": "Head"},
+    # (its neck is three bones of its own, set for a back that leans: on a back stood up like Link's, the head they carry
+    #  faced the sky (drawn from the built model, 2026-11-18): it keeps the way it faces in the model's own rest. Its
+    #  thumbs and its nose are turned another way round in its rig than in Link's: they keep their own rotation)
+    as_stood=("Head",),
+    as_own=("Finger_A_1_L", "Finger_A_1_R", "Nose"),
     pack="Enemy_Lizalfos",
     set="Phive/ControllerSetParam/Enemy_Lizalfos.phive__ControllerSetParam.bgyml",
     leash={"Havok_Sword": 2.0, "Havok_Apron": 2.0, "Havol_Waist_Chain": 2.0, "Havok_Chest_String": 2.0},   # (40, 20, 40, 40)
@@ -491,9 +501,15 @@ def cries(base=None, **kinds):
     return rules
 
 
-# A Wolfos: a wolf on two legs, 44 of its 92 bones Link's. Hunched, long arms: its joints are 11 cm from Link's on average
-# at 0.70 (the wrists 19): rough. Link's head carries its eyes. Its cloth: the mane (100 cm in the file: kept to a third),
-# the beard, cheeks and moustache, the tail's fur, the sleeves, the tongue. Its voice: its cries as an enemy.
+# A Wolfos: a wolf on two legs, 44 of its 92 bones Link's. Its own rest leans far forward on an animal's hind legs, the
+# head facing forward from that back: posed like Link all through, its snout pointed at the sky and its paws stood up
+# from the ankles (drawn from the built model, 2026-11-18). So its back and arms are posed like Link's, and its head and
+# hind legs keep the rotation of its own rest (as_stood): a wolf stood up, facing forward, on its own bent legs, its
+# paws on the ground. Its jaw, eyes, brows and fingers are turned another way round in its rig than in Link's: their
+# own rotation (as_own). Its joints are 11 cm from Link's on average (the knees stand forward of his, the hocks above
+# his ankles): rough. Link's head carries its eyes. No cloth: its mane, beard and cheeks hang from the head, and a cloth
+# file places its meshes on the bone as the game poses it (Link's head, not this one): they are still, as the tail is.
+# Its voice: its cries as an enemy.
 WOLFOS = Character(
     mod="PlayAsWolfos",
     who="Wolfos",
@@ -503,13 +519,11 @@ WOLFOS = Character(
     shift=(0.0, 0.0, 0.03),
     moved={},
     held={"Eyeball_L": "Head", "Eyeball_R": "Head"},
+    as_stood=("Head", "Leg_1_L", "Leg_1_R", "Leg_2_L", "Leg_2_R", "Ankle_L", "Ankle_R"),
+    as_own=("Chin", "Eyeball_L", "Eyeball_R", "Eyebrow_In_L", "Eyebrow_In_R", "Eyebrow_Mid_L", "Eyebrow_Mid_R",
+            "Eyebrow_Out_L", "Eyebrow_Out_R", "Eyelid_Down_L", "Eyelid_Down_R",
+            "Finger_A_1_L", "Finger_A_1_R", "Finger_B_1_L", "Finger_B_1_R", "Finger_C_1_L", "Finger_C_1_R"),
     pack="Enemy_Wolfos",
-    set="Phive/ControllerSetParam/Enemy_Wolfos.phive__ControllerSetParam.bgyml",
-    leash={
-        "SimulationMesh_Hair": 0.35, "SimulationMesh_Moustache": 0.89, "SimulationMesh_Beard": 1.0,   # (100, 40, 30)
-        "SimulationMesh_Cheek": 1.0, "SimulationMesh_Fur": 1.0, "SimulationMesh_Tongue": 1.0,         # (25, 15, 30)
-        "SimulationMesh_Sleeve_L": 1.0, "SimulationMesh_Sleeve_R": 1.0,                               # (30)
-    },
     voices=[("Enemy_Wolfos", "SE_Enemy_Wolfos_Voice_", "")],
     rules=cries(
         death=["Dead"], scream=["Dead", "Intimidate"], hurt_big=["Damage", "AfterDamage"], hurt=["Damage", "AfterDamage"],
@@ -536,6 +550,10 @@ STALFOS = Character(
         "Head": "Head", "Eyeball_L": "Head", "Eyeball_R": "Head", "Waist": "Waist",
         "Leg_2_L": "Leg_2_L", "Leg_2_R": "Leg_2_R", "Weapon_L": None, "Weapon_R": None,
     },
+    # (turned another way round in its rig than in Link's, by a quarter turn or more: their own rotation)
+    as_own=("Chin", "Eyeball_R", "Eyebrow_In_L", "Eyebrow_In_R", "Eyebrow_Out_L", "Eyebrow_Out_R",
+            "Eyelid_Down_L", "Eyelid_Down_R", "Finger_B_1_L", "Finger_B_1_R", "Finger_C_1_L", "Finger_C_1_R",
+            "Finger_D_1_L", "Finger_D_1_R", "Finger_E_1_L", "Finger_E_1_R"),
     pack="Enemy_Stalfos",
     set="Phive/ControllerSetParam/Enemy_Stalfos.phive__ControllerSetParam.bgyml",
     leash={
@@ -566,6 +584,9 @@ STALCHILD = Character(
     shift=(0.0, 0.0, -0.04),
     moved={},
     held={"Head": "Head", "Chin": "Chin"},
+    # (its fingers' first bones are a quarter turn from Link's in its rig: their own rotation)
+    as_own=("Finger_B_1_L", "Finger_B_1_R", "Finger_C_1_L", "Finger_C_1_R", "Finger_D_1_L", "Finger_D_1_R",
+            "Finger_E_1_L", "Finger_E_1_R"),
     pack="Enemy_Stalchild",
     set="Phive/ControllerSetParam/Enemy_Stalchild.phive__ControllerSetParam.bgyml",
     leash={"SimulationMesh_Skirt_A": 0.74, "SimulationMesh_Skirt_B": 0.91},                           # (50, 41)
@@ -589,6 +610,7 @@ DINOLFOS = Character(
     shift=(0.0, 0.0, 0.09),
     moved={},
     held={"Weapon_R": None},
+    as_own=("Finger_A_1_L", "Finger_A_1_R", "Nose"),   # (turned another way round in its rig than in Link's)
     pack="Enemy_Dinolfos",
     set="Phive/ControllerSetParam/Enemy_Dinolfos.phive__ControllerSetParam.bgyml",
     leash={"SimulationMesh_Sword": 1.0, "SimulationMesh_Waist_Chain": 1.0},                           # (40)
@@ -615,6 +637,7 @@ REDEAD = Character(
     k=0.73,
     moved={},
     held={"Head": "Head"},
+    as_own=("Finger_A_1_L", "Finger_A_1_R"),   # (its thumbs: turned another way round in its rig than in Link's)
     pack="Enemy_ReDead",
     set="Phive/ControllerSetParam/Enemy_ReDead.phive__ControllerSetParam.bgyml",
     leash={},
@@ -716,6 +739,7 @@ MASK_SALESMAN = Character(
     k=0.93,
     moved={},
     held={"Head": "Head", "Eyeball_L": "Head", "Eyeball_R": "Head", "Ph_Collar_1_L": "Neck", "Ph_Collar_1_R": "Neck"},
+    as_own=("Ph_Collar_1_L", "Ph_Collar_1_R"),   # (not turned as Link's collar bones are: the right one half a turn off)
     pack="Npc_Hylia_023_Shop_Child",
     set="Phive/ControllerSetParam/Npc_Hylia_MN_005.phive__ControllerSetParam.bgyml",
     leash={
@@ -827,8 +851,11 @@ SOLDIER = Character(
 )
 
 # Talon: short and round, made larger than himself (1.12) to stand on Link's skeleton, and still 11 cm from his joints on
-# average (the wrists 28: short arms): rough, the roughest of the townsfolk. Link's head carries his eyes. His cloth: the
-# necklace, the sleeves, the trousers, the hair's tail. His voice is his own: he hums and snores when Link waits.
+# average (the wrists 28: short arms): rough, the roughest of the townsfolk. Link's head carries his eyes. The bone his
+# hair hangs from is a third of a turn from Link's in his rig (and Ingo's): posed like Link's it put the hair's tail on
+# the side of his head (drawn from the built model, 2026-11-18), so it keeps its own rotation. No cloth: a cloth file
+# places the hair on that bone as the game poses it (Link's, a third of a turn off), and one file holds all his cloth, so
+# his necklace, sleeves and trousers are still too. His voice is his own: he hums and snores when Link waits.
 TALON = Character(
     mod="PlayAsTalon",
     who="Talon",
@@ -837,12 +864,8 @@ TALON = Character(
     k=1.12,
     moved={},
     held={"Eyeball_L": "Head", "Eyeball_R": "Head"},
+    as_own=("Hair_Root",),
     pack="Npc_Hylia_Talon_Adult",
-    set="Phive/ControllerSetParam/Npc_Hylia_MU_Talon.phive__ControllerSetParam.bgyml",
-    leash={
-        "SimulMesh_Neckles": 1.0, "SimulMesh_Hair_Tail": 1.0,                                         # (30, 10)
-        "SimulMesh_Sleeve": 2.0, "SimulMesh_Pants": 2.0,                                              # (3, 4)
-    },
     voices=[("NV_Talon", "NV_Talon_", "")],
     rules=cries(
         TOWN, death=["Cry"], tired=["Tired", "BeWokenUp"], big_chest=["CorrectAnswer"], wait=["Sleep", "SadSleepTalk"]),
@@ -850,8 +873,8 @@ TALON = Character(
 )
 
 # Ingo as the ranch's master (the adult's model, in his finery): Link's size and rig (1.00, 4 cm from his joints). Link's
-# head carries his eyes. His cloth: the ruff, the coat's tail and flap, the cuffs, the trousers, the hair and moustache.
-# His voice is his own: his screams, his panic, his guffaw.
+# head carries his eyes. The bone his hair hangs from keeps its own rotation, and he has no cloth, as Talon and for the
+# same reason: his ruff, his coat's tail and his hair are still. His voice is his own: his screams, his panic, his guffaw.
 INGO = Character(
     mod="PlayAsIngo",
     who="Ingo",
@@ -860,13 +883,8 @@ INGO = Character(
     k=1.0,
     moved={},
     held={"Eyeball_L": "Head", "Eyeball_R": "Head"},
+    as_own=("Hair_Root",),
     pack="Npc_Hylia_Ingo_002_Adult",
-    set="Phive/ControllerSetParam/Npc_Hylia_MU_Ingo_Adult.phive__ControllerSetParam.bgyml",
-    leash={
-        "SimulMesh_Ruff": 1.0, "SimulMesh_Flap": 1.0, "SimulMesh_Tail": 1.0,                          # (24, 13, 10)
-        "SimulMesh_Ruff_Arm": 2.0, "SimulMesh_Pants": 2.0,                                            # (3, 8)
-        "SimulMesh_Hair_Su": 1.0, "SimulMesh_Hair_F": 1.0, "SimulMesh_Hair_Ff": 1.0, "SimulMesh_Hair_Beard": 1.0,   # (5)
-    },
     voices=[("NV_Ingo", "NV_Ingo_", "")],
     rules=cries(
         TOWN, death=["Cry", "IngoPainfulD"], scream=["IngoScream", "IngoPanic"], hurt_big=["IngoPainfulD"],

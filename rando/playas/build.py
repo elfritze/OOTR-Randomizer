@@ -167,7 +167,8 @@ def refit(m, with_cloth, k):
     its cloth sets are its own (Link's back hair has bones of the same names as Ganondorf's)"""
     own = cloth_scale.driven_bones(m.read(cloth_file(cloth_name()))) if with_cloth else ()
     data, worst = retarget(m.read(model_file(C.model, C.model)), m.read(LINK_MODEL), k, C.moved, own=own,
-                           held=getattr(C, "held", None), shift=getattr(C, "shift", (0.0, 0.0, 0.0)))
+                           held=getattr(C, "held", None), shift=getattr(C, "shift", (0.0, 0.0, 0.0)),
+                           as_own=getattr(C, "as_own", ()), as_stood=getattr(C, "as_stood", ()))
     m.add(model_file(C.mod, C.model), data, like=model_file(C.model, C.model))
     return worst
 
