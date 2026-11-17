@@ -9,6 +9,7 @@ logic would fill the same seed otherwise), with each fix it lacks and its settin
     the night Gold Skulltulas there by day (rando.qol.night_module_by_day: skulltulas_day_and_night)
     the clock running, night coming (rando.patches.clock_runs, clock_runs_on_get: every seed; a save already made has it
     from its next item get, the opening's part reaching only a new game)
+    the Water Temple's gate switch free of its wall (rando.patches.open_water_switch: every seed)
 
     python tools/update_installed.py <romfs> <installed mod folder (HookshotRando)> <new mod folder>"""
 import json
@@ -66,6 +67,9 @@ def main():
     if patches.CLOCK_ON_GET[0] not in {e["name"] for e in evfl.read(guide)[0]["events"]}:
         mod.write(patches.CLOCK_GUIDE_FLOW, patches.clock_on_get(guide))
         done.append("the clock set free at an item get")
+    if not patches.water_switch_open(mod):
+        patches.open_water_switch(romfs, codec, mod)
+        done.append("the Water Temple's gate switch free of its wall")
     if plan.get("settings", {}).get("skulltulas_day_and_night") and mod.read(qol.NIGHT_MODULE) == game(qol.NIGHT_MODULE):
         mod.write(qol.NIGHT_MODULE, qol.night_module_by_day(mod.read(qol.NIGHT_MODULE)))
         done.append("the night skulltulas by day")

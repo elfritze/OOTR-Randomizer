@@ -102,6 +102,43 @@ def open_zr_river(romfs, codec, mod):
         mod.write(rel, byml.write(doc, version, byml.endian(raw)))
 
 
+# The Water Temple's gate opens to the switch above it, shot with the Hookshot from the lake's bed (Obj_LakeHrl_SwitchHit_
+# A_01, at (-183.8, 109.3, 497.1); its scene, Dm_WaterTemple_0000, asks nothing). The remake wraps that switch in an
+# invisible wall (FldObj_AirWall_All, stopping everything, the Hookshot too) until the water quest is past Step03 (its
+# Presence: not SageOfWater_IsAfter_Step03_Exp): that is, until Sheik's scene in the Ice Cavern after the Iron Boots' chest,
+# or thawed King Zora's talk. A seed's Iron Boots are anywhere and its logic asks the gate only for the Hookshot and the
+# boots, as SoH's does: the switch did nothing (seed 889a1e52, 2026-11-17, the quest not begun). The wall gets a Presence it
+# never meets, as the river's; past the gate the temple's arrival sets the quest's step itself (Dm_SY_BancChangeArrive,
+# WaterTemple_Arrival).
+WATER_SWITCH_WALL = "FldObj_AirWall_All"
+WATER_SWITCH_WALL_FLAG = "SageOfWater_IsAfter_Step03_Exp"
+WATER_SWITCH_WALLS = {"Banc/HyruleField/HyruleField_Adult_Dynamic.bcett.byml.zs": (False, (2935529029587700987,))}
+NEVER_PRESENT = dict(ZR_RIVER_WALLS, **WATER_SWITCH_WALLS)   # ({map: (the age flag negated, the actors' hashes)})
+
+
+def open_water_switch(romfs, codec, mod):
+    """the wall around the Water Temple's gate switch never present"""
+    for rel, (negate, hashes) in WATER_SWITCH_WALLS.items():
+        raw = mod.read(rel)
+        doc, version = byml.read(raw)
+        by = {int(a["Hash"]): a for a in doc["Actors"]}
+        for h in hashes:
+            a = by.get(h)
+            if a is None or a.get("Gyaml") != WATER_SWITCH_WALL or a.get("Presence") !=                     {"FlagName": WATER_SWITCH_WALL_FLAG, "IsCheckLazy": False, "IsNegation": True}:
+                raise ValueError("%s: actor %d is not the switch's wall it was" % (rel, h))
+            a["Presence"] = zr_river_presence(negate)
+        mod.write(rel, byml.write(doc, version, byml.endian(raw)))
+
+
+def water_switch_open(mod):
+    """whether the mod's maps have the switch's wall never present already"""
+    for rel, (negate, hashes) in WATER_SWITCH_WALLS.items():
+        by = {int(a["Hash"]): a for a in byml.read(mod.read(rel))[0]["Actors"]}
+        if any(by[h].get("Presence") != zr_river_presence(negate) for h in hashes):
+            return False
+    return True
+
+
 # The Bow and the Slingshot carry no ammunition capacity in the remake: Item_Range_Bow's and Item_Range_SlingShot's pouch rows
 # have none, the first 30 arrows and seeds are Item_Quiver_Small's and Item_BulletBag_Small's (ExpansionMaxNumActor, MaxNum
 # 30). No event or map of the game gives those two (the game's code must, with its own Bow and Slingshot), and shops and

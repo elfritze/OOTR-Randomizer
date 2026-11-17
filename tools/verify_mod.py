@@ -103,7 +103,7 @@ def main():
     loose_seen = set()
     found = chests.scan(romfs, codec)
     problems, seen = [], set()
-    walls, walls_seen = patches.ZR_RIVER_WALLS, set()
+    walls, walls_seen = patches.NEVER_PRESENT, set()   # (the river's walls, the Water Temple switch's)
     # (the shops: each shuffled shelf's copies, by map; the Kokiri shop opened when any shelf is)
     plan_shops = plan.get("shops", {})
     shop_slots = {s.rc: s for s in shops.scan(romfs, codec)} if plan_shops else {}
@@ -199,7 +199,7 @@ def main():
             elif h in walls.get(rel, ((), ()))[1]:
                 walls_seen.add(h)
                 if key(y) != key(dict(x, Presence=patches.zr_river_presence(walls[rel][0]))):
-                    problems.append("%s: river wall %d is not given its never-met Presence alone" % (rel, h))
+                    problems.append("%s: wall %d is not given its never-met Presence alone" % (rel, h))
             elif key(x) != key(y):
                 problems.append("%s: actor %s (%s) changed" % (rel, x.get("Hash"), x.get("Gyaml")))
         need = align32(len(data)) + original_table.get(rel) - align32(len(codec.read(os.path.join(romfs, rel))))
@@ -209,7 +209,8 @@ def main():
         problems.append("planned shop shelves not found: %s" % sorted(set(shelf_at) - shelves_seen)[:5])
     every_wall = {h for _, hs in walls.values() for h in hs}
     if walls_seen != every_wall:
-        problems.append("Zora's River walls left as they were: %s" % sorted(every_wall - walls_seen))
+        problems.append("walls left as they were (Zora's River, the Water Temple's switch): %s" %
+                        sorted(every_wall - walls_seen))
     missing = set(want) - seen
     if missing:
         problems.append("planned chests not found in any map: %s" % sorted(missing)[:5])

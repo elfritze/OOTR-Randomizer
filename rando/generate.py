@@ -376,6 +376,7 @@ def generate(romfs, mods_dir, seed, settings, log=print):
     patches.free_bomb_lift(romfs, codec, mod)
     patches.dc_bombs_set_off_flower(romfs, codec, mod)
     patches.open_zr_river(romfs, codec, mod)
+    patches.open_water_switch(romfs, codec, mod)
     patches.mido_keeps_blocking(romfs, codec, mod)
     patches.kokiri_007_keeps_blocking(romfs, codec, mod)
     patches.second_malon_after_talon(romfs, codec, mod)
