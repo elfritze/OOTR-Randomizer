@@ -3288,6 +3288,18 @@
    ],
    "rule": "logic->IsAdult && logic->BeanPlanted(LOGIC_PLANT_DEATH_MOUNTAIN_TRAIL_BEAN)",
    "why": "The trail's wall Heart Piece (above Dodongo's Cavern): the remake walls off the drop from the bomb flower's ledge (three FldObj_AirWall_Player_Unridable between them, DeathMountainTrail_Child_Static); it is reached only by the bean planted at the cavern's entrance, ridden as adult (seen in game, seed 889a1e52, 2026-11-16: the Fairy Ocarina there locked both ocarinas)"
+  },
+  {
+   "key": [
+    "exit",
+    "RR_BOTW_PERIMETER",
+    "RR_BOTW_BEHIND_MOAT"
+   ],
+   "sub": [
+    "HasItem(RG_BRONZE_SCALE)",
+    "HasItem(RG_GOLDEN_SCALE)"
+   ],
+   "why": "BotW's moat: the remake puts an underwater gate on the way behind it, a deep dive the Silver Scale does not make (seen in game, seed 889a1e52, 2026-11-16: the Ocarina of Time in the crypt casket, the Golden Scale and Zelda's Lullaby both adult-only, locked a child Link with the Silver Scale). Draining the water with the lullaby still works"
   }
  ]
 }
