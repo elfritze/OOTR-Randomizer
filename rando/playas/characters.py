@@ -627,7 +627,8 @@ DINOLFOS = Character(
 )
 
 # A ReDead: a tall thin corpse (0.73), 5 cm from Link's joints on average. Its mask is rigid on the head: it stays there,
-# shifted. Its cloth (the loincloth's rags) has a cloth file and no settings in the game: simulated as the file has it.
+# shifted. No cloth: its rags have a cloth file and no settings of their own in the game (they come from the enemies'
+# common physics, which a tunic has not), so they are still rather than simulated on a guess.
 # Its voice: its moans and its scream (the 22 seconds of its waiting moan are too long for any of Link's clips).
 REDEAD = Character(
     mod="PlayAsReDead",
@@ -639,8 +640,6 @@ REDEAD = Character(
     held={"Head": "Head"},
     as_own=("Finger_A_1_L", "Finger_A_1_R"),   # (its thumbs: turned another way round in its rig than in Link's)
     pack="Enemy_ReDead",
-    set="Phive/ControllerSetParam/Enemy_ReDead.phive__ControllerSetParam.bgyml",
-    leash={},
     voices=[("Enemy_ReDead", "SE_Enemy_ReDead_", ""), ("Enemy_ReDead", "SE_ReDead_Voice_", "")],
     rules=cries(
         death=["DeadtVoice"], scream=["Shout", "DeadtVoice"], hurt_big=["AttackStVoice", "AttackVoice"],
