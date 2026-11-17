@@ -395,13 +395,15 @@ def main():
             if not os.path.exists(os.path.join(mod_romfs, *pickups.pack_path(a).split("/"))):
                 problems.append("no pack for %s" % a)
     if own_items or ocarina:   # (ActionGuide: the ocarina's guide first, then the own items' hook before it)
-        guide = codec.read(os.path.join(romfs, *dungeon_items.ACTION_GUIDE.split("/")))
-        if ocarina:
-            guide = patches.ocarina_guide(guide)
-        if own_items:
-            guide = dungeon_items.hook(guide, own_items)
+        game_guide = codec.read(os.path.join(romfs, *dungeon_items.ACTION_GUIDE.split("/")))
+        wants = []
+        for sync_last in ((False, True) if ocarina else (False,)):   # (the ocarina's sync built in, or added later)
+            guide = patches.ocarina_guide(game_guide, sync=not sync_last) if ocarina else game_guide
+            if own_items:
+                guide = dungeon_items.hook(guide, own_items)
+            wants.append(evfl.read(patches.ocarina_sync(guide) if sync_last else guide))
         path = os.path.join(mod_romfs, *dungeon_items.ACTION_GUIDE.split("/"))
-        if not os.path.exists(path) or evfl.read(codec.read(path)) != evfl.read(guide):
+        if not os.path.exists(path) or evfl.read(codec.read(path)) not in wants:
             problems.append("%s: not the game's with the ocarina's guide and the own items' hook" %
                             dungeon_items.ACTION_GUIDE)
     for h, (item, _) in sorted(want.items()):   # (a dungeon item as the game has it only where it does the same)

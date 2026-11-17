@@ -926,8 +926,9 @@ OCARINA_EVENTS = ("RandoOcarinaHeld", "RandoOcarinaGuide", "RandoOcarinaTimeHeld
 ACTION_GUIDE_FLOW = "Event/EventFlow/ActionGuide.bfevfl.zs"
 
 
-def ocarina_guide(data):
-    """ActionGuide.bfevfl with the ocarina's guide run first while the Fairy Ocarina is held"""
+def ocarina_guide(data, sync=True):
+    """ActionGuide.bfevfl with the ocarina's guide run first while the Fairy Ocarina is held (sync: ocarina_sync's
+    event too; a seed installed before it has it added last, after the own items' hook)"""
     from .formats import evfl_edit
     edit = evfl_edit.FlowEdit(data)
     flow = edit.flow
@@ -943,7 +944,35 @@ def ocarina_guide(data):
     edit.add_event({"name": guide, "type": "subflow", "flowchart": "", "entry": OCARINA_GUIDE_ENTRY, "params": None,
                     "next": first["name"]})
     edit.set_entry("ActionGuide", held)
-    return edit.apply()
+    return ocarina_sync(edit.apply()) if sync else edit.apply()
+
+
+# Still, an ocarina found as a pickup (King Dodongo's Heart Container, seed 7cc65105; the windmill's Heart Piece, seed
+# 889a1e52, 2026-11-16, its guide and play event listed) could not be put on a button until the save was reloaded. A load
+# syncs the player's equipment with the pouch (Sequence/AfterLoadSaveData: SeqOneShotPouchTargetSyncEquipmentIndex); an
+# event does it with UISystemActor.EventTriggerSyncPlayerEquipmentAndPouch (no parameters: the boss rush's, SubEvent_
+# AllBossBattle, after it swaps the pouch). So the get of an item while an ocarina is held syncs them, before the guide.
+OCARINA_SYNC = "RandoOcarinaSync"
+SYNC_ACTION = ("UISystemActor", "EventTriggerSyncPlayerEquipmentAndPouch")
+
+
+def ocarina_sync(data):
+    """ActionGuide.bfevfl (with ocarina_guide's events) syncing the equipment with the pouch before the ocarina's guide"""
+    from .formats import evfl_edit
+    edit = evfl_edit.FlowEdit(data)
+    held, guide, held_time = OCARINA_EVENTS
+    names = edit.names
+    if OCARINA_SYNC in names or not {held, guide, held_time} <= set(names):
+        raise ValueError("ActionGuide: not the ocarina guide known, or synced already")
+    for switch in (held, held_time):
+        if edit.event(switch)["cases"].get(IS_TRUE) != names.index(guide):
+            raise ValueError("ActionGuide: %s does not lead to the guide" % switch)
+    edit.add_event({"name": OCARINA_SYNC, "type": "action", "actor": SYNC_ACTION[0], "action": SYNC_ACTION[1],
+                    "params": None, "next": guide})
+    out = edit.apply()
+    for switch in (held, held_time):
+        out = evfl_patch.set_case(out, names.index(switch), IS_TRUE, edit.index(OCARINA_SYNC))
+    return out
 
 
 # The guide goes on, when the player asks for it, with EventTransition to Dm_SY_Ocarina (its first play); an event starts
